@@ -1,0 +1,50 @@
+*.py[cod]
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+README
+eggs
+parts
+var
+sdist
+develop-eggs
+.installed.cfg
+lib64
+env
+.env
+
+# Documentation
+docs/_build
+
+# Installer logs
+pip-log.txt
+
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+tests/unit/cover
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+MANIFEST
+
+# Testing
+.tox
+
+
+# Window File Explorer
+desktop.ini
+
+# Mac OS X Finder
+.DS_Store
+
+# PyCharm
+.idea

@@ -1,0 +1,5 @@
+include requirements.txt
+global-include *.jinja2
+global-include *.yml
+global-exclude *.py[co]
+
