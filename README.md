@@ -1,3 +1,6 @@
+[![Documentation Status](https://readthedocs.org/projects/hbez/badge/?version=latest)](http://hbez.readthedocs.io)
+[![UnitTest Status](https://travis-ci.org/Juniper/healthbot-py-client.svg?branch=master)](https://travis-ci.org/Juniper/healthbot-py-client)
+
 # HealthBot Python Client
 
 This repo contains a Python package to control HealthBot
