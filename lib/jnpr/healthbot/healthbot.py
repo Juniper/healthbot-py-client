@@ -31,13 +31,15 @@ class HealthBotClient(object):
             self,
             server: str,
             user: str,
-            password: str):
+            password: str,
+            *args, **kwargs):
         """
         An instance of this class represents the HealthBot Service
 
         :param str server: HealthBot Server IP Address
         :param str user: HealthBot Server (not the Linux user) UserName
         :param str password: HealthBot Server (not the Linux user) password
+        :param int port: *OPTIONAL* HealthBot Server port (defaults to 8080)
 
         Example:
         ::
@@ -45,7 +47,7 @@ class HealthBotClient(object):
             from jnpr.healthbot import HealthBotClient
             from pprint import pprint
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
+            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx', port=8000)
 
             # Get list of all existing devices
             print(hb.device.get_ids())
@@ -87,7 +89,10 @@ class HealthBotClient(object):
         self.server = server
         self.user = user
         self.password = password
-        self.url = "https://" + server + ":8080/api/" + self.api_version
+
+        self.port = kwargs.get('port', 8080)
+
+        self.url = "https://" + server + ":" + str(self.port) + "/api/" + self.api_version
 
         if server is None or server is "":
             raise ValueError("You must provide 'server' of HealthBot")
@@ -113,8 +118,8 @@ class HealthBotClient(object):
             raise ex
         else:
             logger.debug(
-                "Connected to HealthBot Server({})".format(
-                    self.server))
+                "Connected to HealthBot Server({}) on port {}".format(
+                    self.server, self.port))
         self.urlfor = UrlFor(self)
         self.device = devices.Device(self)
         self.device_group = devices.DeviceGroup(self)

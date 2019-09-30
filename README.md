@@ -20,7 +20,7 @@ from pprint import pprint
 
 
 ```python
-hb = HealthBotClient('xx.xx.xx.xxx', 'xxxxx', 'xxxxx')
+hb = HealthBotClient('xx.xx.xx.xxx', 'xxxxx', 'xxxxx', port=nnnn)
 ```
 
 # Use Case: Device
@@ -51,7 +51,7 @@ help(hb.device.get_ids)
         ::
         
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
+            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx', port=nnnn)
             print(hb.device.get_ids())
     
 
