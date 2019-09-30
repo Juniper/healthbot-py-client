@@ -1922,4 +1922,14 @@ pbb.apply()
 
 
 
-## Thanks
+# LICENSE
+
+Apache 2.0
+
+# CONTRIBUTORS
+
+Juniper Networks is actively contributing to and maintaining this repo. Please contact healthbot-hackers at juniper.net for any queries.
+
+*Contributors:*
+
+* v1.0.0: [Nitin Kumar](https://github.com/vnitinv)
