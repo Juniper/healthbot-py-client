@@ -67,6 +67,10 @@ class DeviceSchemaIAgent(object):
         :param port: The port of this DeviceSchemaIAgent.  # noqa: E501
         :type: int
         """
+        if port is not None and port > 65535:  # noqa: E501
+            raise ValueError("Invalid value for `port`, must be a value less than or equal to `65535`")  # noqa: E501
+        if port is not None and port < 1:  # noqa: E501
+            raise ValueError("Invalid value for `port`, must be a value greater than or equal to `1`")  # noqa: E501
 
         self._port = port
 

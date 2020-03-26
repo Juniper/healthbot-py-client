@@ -18,6 +18,7 @@ import six
 
 from jnpr.healthbot.swagger.models.device_schema_vendor_cisco import DeviceSchemaVendorCisco  # noqa: F401,E501
 from jnpr.healthbot.swagger.models.device_schema_vendor_juniper import DeviceSchemaVendorJuniper  # noqa: F401,E501
+from jnpr.healthbot.swagger.models.device_schema_vendor_othervendor import DeviceSchemaVendorOthervendor  # noqa: F401,E501
 
 
 class DeviceSchemaVendor(object):
@@ -35,25 +36,30 @@ class DeviceSchemaVendor(object):
     """
     swagger_types = {
         'cisco': 'DeviceSchemaVendorCisco',
-        'juniper': 'DeviceSchemaVendorJuniper'
+        'juniper': 'DeviceSchemaVendorJuniper',
+        'other_vendor': 'DeviceSchemaVendorOthervendor'
     }
 
     attribute_map = {
         'cisco': 'cisco',
-        'juniper': 'juniper'
+        'juniper': 'juniper',
+        'other_vendor': 'other-vendor'
     }
 
-    def __init__(self, cisco=None, juniper=None):  # noqa: E501
+    def __init__(self, cisco=None, juniper=None, other_vendor=None):  # noqa: E501
         """DeviceSchemaVendor - a model defined in Swagger"""  # noqa: E501
 
         self._cisco = None
         self._juniper = None
+        self._other_vendor = None
         self.discriminator = None
 
         if cisco is not None:
             self.cisco = cisco
         if juniper is not None:
             self.juniper = juniper
+        if other_vendor is not None:
+            self.other_vendor = other_vendor
 
     @property
     def cisco(self):
@@ -96,6 +102,27 @@ class DeviceSchemaVendor(object):
         """
 
         self._juniper = juniper
+
+    @property
+    def other_vendor(self):
+        """Gets the other_vendor of this DeviceSchemaVendor.  # noqa: E501
+
+
+        :return: The other_vendor of this DeviceSchemaVendor.  # noqa: E501
+        :rtype: DeviceSchemaVendorOthervendor
+        """
+        return self._other_vendor
+
+    @other_vendor.setter
+    def other_vendor(self, other_vendor):
+        """Sets the other_vendor of this DeviceSchemaVendor.
+
+
+        :param other_vendor: The other_vendor of this DeviceSchemaVendor.  # noqa: E501
+        :type: DeviceSchemaVendorOthervendor
+        """
+
+        self._other_vendor = other_vendor
 
     def to_dict(self):
         """Returns the model properties as a dict"""

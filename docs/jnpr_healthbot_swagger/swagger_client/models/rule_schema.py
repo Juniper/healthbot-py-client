@@ -48,6 +48,7 @@ class RuleSchema(object):
         'rule_name': 'str',
         'sensor': 'list[RuleSchemaSensor1]',
         'synopsis': 'str',
+        'field_aggregation_time_range': 'str',
         'trigger': 'list[RuleSchemaTrigger]',
         'variable': 'list[RuleSchemaVariable]',
         'vector': 'list[RuleSchemaVector]',
@@ -64,13 +65,14 @@ class RuleSchema(object):
         'rule_name': 'rule-name',
         'sensor': 'sensor',
         'synopsis': 'synopsis',
+        'field_aggregation_time_range': 'field-aggregation-time-range',
         'trigger': 'trigger',
         'variable': 'variable',
         'vector': 'vector',
         'rule_properties': 'rule-properties'
     }
 
-    def __init__(self, description=None, field=None, function=None, keys=None, network_rule=None, rule_frequency=None, rule_name=None, sensor=None, synopsis=None, trigger=None, variable=None, vector=None, rule_properties=None):  # noqa: E501
+    def __init__(self, description=None, field=None, function=None, keys=None, network_rule=None, rule_frequency=None, rule_name=None, sensor=None, synopsis=None, field_aggregation_time_range=None, trigger=None, variable=None, vector=None, rule_properties=None):  # noqa: E501
         """RuleSchema - a model defined in Swagger"""  # noqa: E501
 
         self._description = None
@@ -82,6 +84,7 @@ class RuleSchema(object):
         self._rule_name = None
         self._sensor = None
         self._synopsis = None
+        self._field_aggregation_time_range = None
         self._trigger = None
         self._variable = None
         self._vector = None
@@ -105,6 +108,8 @@ class RuleSchema(object):
             self.sensor = sensor
         if synopsis is not None:
             self.synopsis = synopsis
+        if field_aggregation_time_range is not None:
+            self.field_aggregation_time_range = field_aggregation_time_range
         if trigger is not None:
             self.trigger = trigger
         if variable is not None:
@@ -320,6 +325,31 @@ class RuleSchema(object):
         """
 
         self._synopsis = synopsis
+
+    @property
+    def field_aggregation_time_range(self):
+        """Gets the field_aggregation_time_range of this RuleSchema.  # noqa: E501
+
+        How much back in time should we look for field aggregation. Specify positive integer followed by s/m/h/d/w/y representing seconds/minutes/hours/days/weeks/years. Eg: 2s  # noqa: E501
+
+        :return: The field_aggregation_time_range of this RuleSchema.  # noqa: E501
+        :rtype: str
+        """
+        return self._field_aggregation_time_range
+
+    @field_aggregation_time_range.setter
+    def field_aggregation_time_range(self, field_aggregation_time_range):
+        """Sets the field_aggregation_time_range of this RuleSchema.
+
+        How much back in time should we look for field aggregation. Specify positive integer followed by s/m/h/d/w/y representing seconds/minutes/hours/days/weeks/years. Eg: 2s  # noqa: E501
+
+        :param field_aggregation_time_range: The field_aggregation_time_range of this RuleSchema.  # noqa: E501
+        :type: str
+        """
+        if field_aggregation_time_range is not None and not re.search('^[1-9][0-9]*[smhdwy]$', field_aggregation_time_range):  # noqa: E501
+            raise ValueError("Invalid value for `field_aggregation_time_range`, must be a follow pattern or equal to `/^[1-9][0-9]*[smhdwy]$/`")  # noqa: E501
+
+        self._field_aggregation_time_range = field_aggregation_time_range
 
     @property
     def trigger(self):

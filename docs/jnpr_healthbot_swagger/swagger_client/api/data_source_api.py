@@ -46,6 +46,7 @@ class DataSourceApi(object):
         :param str key: Key of data_store object (required)
         :param DatastoreSchema data: Value of data_store object (required)
         :param str group_name: Group name (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -70,12 +71,13 @@ class DataSourceApi(object):
         :param str key: Key of data_store object (required)
         :param DatastoreSchema data: Value of data_store object (required)
         :param str group_name: Group name (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['key', 'data', 'group_name']  # noqa: E501
+        all_params = ['key', 'data', 'group_name', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -114,6 +116,8 @@ class DataSourceApi(object):
             query_params.append(('key', params['key']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}

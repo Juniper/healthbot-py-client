@@ -44,6 +44,7 @@ class LogsApi(object):
 
         :param async bool
         :param str device_group_name: Device group name (required)
+        :param str authorization: authentication header object
         :param bool download: Download the logs
         :param str filename: Name of the log file
         :return: None
@@ -68,6 +69,7 @@ class LogsApi(object):
 
         :param async bool
         :param str device_group_name: Device group name (required)
+        :param str authorization: authentication header object
         :param bool download: Download the logs
         :param str filename: Name of the log file
         :return: None
@@ -75,7 +77,7 @@ class LogsApi(object):
                  returns the request thread.
         """
 
-        all_params = ['device_group_name', 'download', 'filename']  # noqa: E501
+        all_params = ['device_group_name', 'authorization', 'download', 'filename']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -113,6 +115,8 @@ class LogsApi(object):
             query_params.append(('filename', params['filename']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -157,6 +161,7 @@ class LogsApi(object):
         :param async bool
         :param str device_group_name: Device group name (required)
         :param str service_name: Device-group service name (required)
+        :param str authorization: authentication header object
         :param bool download: Download the logs
         :param str filename: Name of the log file
         :param int number_of_lines: Number of lines to show from the end of the logs
@@ -183,6 +188,7 @@ class LogsApi(object):
         :param async bool
         :param str device_group_name: Device group name (required)
         :param str service_name: Device-group service name (required)
+        :param str authorization: authentication header object
         :param bool download: Download the logs
         :param str filename: Name of the log file
         :param int number_of_lines: Number of lines to show from the end of the logs
@@ -191,7 +197,7 @@ class LogsApi(object):
                  returns the request thread.
         """
 
-        all_params = ['device_group_name', 'service_name', 'download', 'filename', 'number_of_lines']  # noqa: E501
+        all_params = ['device_group_name', 'service_name', 'authorization', 'download', 'filename', 'number_of_lines']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -241,6 +247,8 @@ class LogsApi(object):
             query_params.append(('number_of_lines', params['number_of_lines']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -284,6 +292,7 @@ class LogsApi(object):
 
         :param async bool
         :param str network_group_name: Network group name (required)
+        :param str authorization: authentication header object
         :param bool download: Download the logs
         :param str filename: Name of the log file
         :return: None
@@ -308,6 +317,7 @@ class LogsApi(object):
 
         :param async bool
         :param str network_group_name: Network group name (required)
+        :param str authorization: authentication header object
         :param bool download: Download the logs
         :param str filename: Name of the log file
         :return: None
@@ -315,7 +325,7 @@ class LogsApi(object):
                  returns the request thread.
         """
 
-        all_params = ['network_group_name', 'download', 'filename']  # noqa: E501
+        all_params = ['network_group_name', 'authorization', 'download', 'filename']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -353,6 +363,8 @@ class LogsApi(object):
             query_params.append(('filename', params['filename']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -397,6 +409,7 @@ class LogsApi(object):
         :param async bool
         :param str network_group_name: Network group name (required)
         :param str service_name: Network group service name (required)
+        :param str authorization: authentication header object
         :param bool download: Download the logs
         :param str filename: Name of the log file
         :param int number_of_lines: Number of lines to show from the end of the logs
@@ -423,6 +436,7 @@ class LogsApi(object):
         :param async bool
         :param str network_group_name: Network group name (required)
         :param str service_name: Network group service name (required)
+        :param str authorization: authentication header object
         :param bool download: Download the logs
         :param str filename: Name of the log file
         :param int number_of_lines: Number of lines to show from the end of the logs
@@ -431,7 +445,7 @@ class LogsApi(object):
                  returns the request thread.
         """
 
-        all_params = ['network_group_name', 'service_name', 'download', 'filename', 'number_of_lines']  # noqa: E501
+        all_params = ['network_group_name', 'service_name', 'authorization', 'download', 'filename', 'number_of_lines']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -481,6 +495,8 @@ class LogsApi(object):
             query_params.append(('number_of_lines', params['number_of_lines']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}

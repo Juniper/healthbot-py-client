@@ -16,10 +16,13 @@ import re  # noqa: F401
 
 import six
 
+from swagger_client.models.rule_schema_byoi import RuleSchemaByoi  # noqa: F401,E501
+from swagger_client.models.rule_schema_flow import RuleSchemaFlow  # noqa: F401,E501
 from swagger_client.models.rule_schema_i_agent import RuleSchemaIAgent  # noqa: F401,E501
 from swagger_client.models.rule_schema_nativegpb import RuleSchemaNativegpb  # noqa: F401,E501
 from swagger_client.models.rule_schema_openconfig import RuleSchemaOpenconfig  # noqa: F401,E501
 from swagger_client.models.rule_schema_snmp import RuleSchemaSnmp  # noqa: F401,E501
+from swagger_client.models.rule_schema_syslog import RuleSchemaSyslog  # noqa: F401,E501
 
 
 class RuleSchemaSensor1(object):
@@ -37,38 +40,49 @@ class RuleSchemaSensor1(object):
     """
     swagger_types = {
         'description': 'str',
+        'flow': 'RuleSchemaFlow',
         'i_agent': 'RuleSchemaIAgent',
         'native_gpb': 'RuleSchemaNativegpb',
         'open_config': 'RuleSchemaOpenconfig',
         'sensor_name': 'str',
         'snmp': 'RuleSchemaSnmp',
-        'synopsis': 'str'
+        'syslog': 'RuleSchemaSyslog',
+        'synopsis': 'str',
+        'byoi': 'RuleSchemaByoi'
     }
 
     attribute_map = {
         'description': 'description',
+        'flow': 'flow',
         'i_agent': 'iAgent',
         'native_gpb': 'native-gpb',
         'open_config': 'open-config',
         'sensor_name': 'sensor-name',
         'snmp': 'snmp',
-        'synopsis': 'synopsis'
+        'syslog': 'syslog',
+        'synopsis': 'synopsis',
+        'byoi': 'byoi'
     }
 
-    def __init__(self, description=None, i_agent=None, native_gpb=None, open_config=None, sensor_name=None, snmp=None, synopsis=None):  # noqa: E501
+    def __init__(self, description=None, flow=None, i_agent=None, native_gpb=None, open_config=None, sensor_name=None, snmp=None, syslog=None, synopsis=None, byoi=None):  # noqa: E501
         """RuleSchemaSensor1 - a model defined in Swagger"""  # noqa: E501
 
         self._description = None
+        self._flow = None
         self._i_agent = None
         self._native_gpb = None
         self._open_config = None
         self._sensor_name = None
         self._snmp = None
+        self._syslog = None
         self._synopsis = None
+        self._byoi = None
         self.discriminator = None
 
         if description is not None:
             self.description = description
+        if flow is not None:
+            self.flow = flow
         if i_agent is not None:
             self.i_agent = i_agent
         if native_gpb is not None:
@@ -78,8 +92,12 @@ class RuleSchemaSensor1(object):
         self.sensor_name = sensor_name
         if snmp is not None:
             self.snmp = snmp
+        if syslog is not None:
+            self.syslog = syslog
         if synopsis is not None:
             self.synopsis = synopsis
+        if byoi is not None:
+            self.byoi = byoi
 
     @property
     def description(self):
@@ -103,6 +121,27 @@ class RuleSchemaSensor1(object):
         """
 
         self._description = description
+
+    @property
+    def flow(self):
+        """Gets the flow of this RuleSchemaSensor1.  # noqa: E501
+
+
+        :return: The flow of this RuleSchemaSensor1.  # noqa: E501
+        :rtype: RuleSchemaFlow
+        """
+        return self._flow
+
+    @flow.setter
+    def flow(self, flow):
+        """Sets the flow of this RuleSchemaSensor1.
+
+
+        :param flow: The flow of this RuleSchemaSensor1.  # noqa: E501
+        :type: RuleSchemaFlow
+        """
+
+        self._flow = flow
 
     @property
     def i_agent(self):
@@ -218,6 +257,27 @@ class RuleSchemaSensor1(object):
         self._snmp = snmp
 
     @property
+    def syslog(self):
+        """Gets the syslog of this RuleSchemaSensor1.  # noqa: E501
+
+
+        :return: The syslog of this RuleSchemaSensor1.  # noqa: E501
+        :rtype: RuleSchemaSyslog
+        """
+        return self._syslog
+
+    @syslog.setter
+    def syslog(self, syslog):
+        """Sets the syslog of this RuleSchemaSensor1.
+
+
+        :param syslog: The syslog of this RuleSchemaSensor1.  # noqa: E501
+        :type: RuleSchemaSyslog
+        """
+
+        self._syslog = syslog
+
+    @property
     def synopsis(self):
         """Gets the synopsis of this RuleSchemaSensor1.  # noqa: E501
 
@@ -239,6 +299,27 @@ class RuleSchemaSensor1(object):
         """
 
         self._synopsis = synopsis
+
+    @property
+    def byoi(self):
+        """Gets the byoi of this RuleSchemaSensor1.  # noqa: E501
+
+
+        :return: The byoi of this RuleSchemaSensor1.  # noqa: E501
+        :rtype: RuleSchemaByoi
+        """
+        return self._byoi
+
+    @byoi.setter
+    def byoi(self, byoi):
+        """Sets the byoi of this RuleSchemaSensor1.
+
+
+        :param byoi: The byoi of this RuleSchemaSensor1.  # noqa: E501
+        :type: RuleSchemaByoi
+        """
+
+        self._byoi = byoi
 
     def to_dict(self):
         """Returns the model properties as a dict"""

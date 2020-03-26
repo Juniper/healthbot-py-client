@@ -67,8 +67,8 @@ class DestinationSchemaEmail(object):
         :param id: The id of this DestinationSchemaEmail.  # noqa: E501
         :type: str
         """
-        if id is not None and not re.search('^([\\w\\-_\\.]+)@([\\w])+[.][\\w]+$', id):  # noqa: E501
-            raise ValueError("Invalid value for `id`, must be a follow pattern or equal to `/^([\\w\\-_\\.]+)@([\\w])+[.][\\w]+$/`")  # noqa: E501
+        if id is not None and not re.search('^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.)\\w+([-]?\\w+)$', id):  # noqa: E501
+            raise ValueError("Invalid value for `id`, must be a follow pattern or equal to `/^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.)\\w+([-]?\\w+)$/`")  # noqa: E501
 
         self._id = id
 

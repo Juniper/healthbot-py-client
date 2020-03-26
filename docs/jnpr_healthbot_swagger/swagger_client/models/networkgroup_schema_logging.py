@@ -16,6 +16,7 @@ import re  # noqa: F401
 
 import six
 
+from swagger_client.models.devicegroup_schema_logging_m_lmodelbuilder import DevicegroupSchemaLoggingMLmodelbuilder  # noqa: F401,E501
 from swagger_client.models.devicegroup_schema_logging_nonsensorrules import DevicegroupSchemaLoggingNonsensorrules  # noqa: F401,E501
 from swagger_client.models.devicegroup_schema_logging_reportsgeneration import DevicegroupSchemaLoggingReportsgeneration  # noqa: F401,E501
 from swagger_client.models.devicegroup_schema_logging_triggerevaluation import DevicegroupSchemaLoggingTriggerevaluation  # noqa: F401,E501
@@ -38,23 +39,26 @@ class NetworkgroupSchemaLogging(object):
         'log_level': 'str',
         'non_sensor_rules': 'DevicegroupSchemaLoggingNonsensorrules',
         'reports_generation': 'DevicegroupSchemaLoggingReportsgeneration',
-        'trigger_evaluation': 'DevicegroupSchemaLoggingTriggerevaluation'
+        'trigger_evaluation': 'DevicegroupSchemaLoggingTriggerevaluation',
+        'ml_model_builder': 'DevicegroupSchemaLoggingMLmodelbuilder'
     }
 
     attribute_map = {
         'log_level': 'log-level',
         'non_sensor_rules': 'non-sensor-rules',
         'reports_generation': 'reports-generation',
-        'trigger_evaluation': 'trigger-evaluation'
+        'trigger_evaluation': 'trigger-evaluation',
+        'ml_model_builder': 'ML-model-builder'
     }
 
-    def __init__(self, log_level=None, non_sensor_rules=None, reports_generation=None, trigger_evaluation=None):  # noqa: E501
+    def __init__(self, log_level=None, non_sensor_rules=None, reports_generation=None, trigger_evaluation=None, ml_model_builder=None):  # noqa: E501
         """NetworkgroupSchemaLogging - a model defined in Swagger"""  # noqa: E501
 
         self._log_level = None
         self._non_sensor_rules = None
         self._reports_generation = None
         self._trigger_evaluation = None
+        self._ml_model_builder = None
         self.discriminator = None
 
         if log_level is not None:
@@ -65,6 +69,8 @@ class NetworkgroupSchemaLogging(object):
             self.reports_generation = reports_generation
         if trigger_evaluation is not None:
             self.trigger_evaluation = trigger_evaluation
+        if ml_model_builder is not None:
+            self.ml_model_builder = ml_model_builder
 
     @property
     def log_level(self):
@@ -157,6 +163,27 @@ class NetworkgroupSchemaLogging(object):
         """
 
         self._trigger_evaluation = trigger_evaluation
+
+    @property
+    def ml_model_builder(self):
+        """Gets the ml_model_builder of this NetworkgroupSchemaLogging.  # noqa: E501
+
+
+        :return: The ml_model_builder of this NetworkgroupSchemaLogging.  # noqa: E501
+        :rtype: DevicegroupSchemaLoggingMLmodelbuilder
+        """
+        return self._ml_model_builder
+
+    @ml_model_builder.setter
+    def ml_model_builder(self, ml_model_builder):
+        """Sets the ml_model_builder of this NetworkgroupSchemaLogging.
+
+
+        :param ml_model_builder: The ml_model_builder of this NetworkgroupSchemaLogging.  # noqa: E501
+        :type: DevicegroupSchemaLoggingMLmodelbuilder
+        """
+
+        self._ml_model_builder = ml_model_builder
 
     def to_dict(self):
         """Returns the model properties as a dict"""

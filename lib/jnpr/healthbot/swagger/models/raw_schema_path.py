@@ -70,7 +70,7 @@ class RawSchemaPath(object):
         """
         if aggregation_functions is None:
             raise ValueError("Invalid value for `aggregation_functions`, must not be `None`")  # noqa: E501
-        allowed_values = ["latest", "count", "mean", "min", "max", "on-change", "stddev"]  # noqa: E501
+        allowed_values = ["latest", "sum", "count", "mean", "min", "max", "on-change", "stddev"]  # noqa: E501
         if not set(aggregation_functions).issubset(set(allowed_values)):
             raise ValueError(
                 "Invalid values for `aggregation_functions` [{0}], must be a subset of [{1}]"  # noqa: E501

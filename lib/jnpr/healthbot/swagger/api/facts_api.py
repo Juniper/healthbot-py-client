@@ -44,6 +44,7 @@ class FactsApi(object):
 
         :param async bool
         :param str device_id: ID of device-id (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :param bool update: true will first update facts from device and then return facts
         :param int timeout: timeout in seconds to wait for facts from given device id
@@ -69,6 +70,7 @@ class FactsApi(object):
 
         :param async bool
         :param str device_id: ID of device-id (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :param bool update: true will first update facts from device and then return facts
         :param int timeout: timeout in seconds to wait for facts from given device id
@@ -77,7 +79,7 @@ class FactsApi(object):
                  returns the request thread.
         """
 
-        all_params = ['device_id', 'working', 'update', 'timeout']  # noqa: E501
+        all_params = ['device_id', 'authorization', 'working', 'update', 'timeout']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -112,6 +114,8 @@ class FactsApi(object):
             query_params.append(('timeout', params['timeout']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -154,6 +158,7 @@ class FactsApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :param bool update: true will first update facts from device and then return facts
         :param int timeout: timeout in seconds to wait for facts from every device
@@ -178,6 +183,7 @@ class FactsApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :param bool update: true will first update facts from device and then return facts
         :param int timeout: timeout in seconds to wait for facts from every device
@@ -186,7 +192,7 @@ class FactsApi(object):
                  returns the request thread.
         """
 
-        all_params = ['working', 'update', 'timeout']  # noqa: E501
+        all_params = ['authorization', 'working', 'update', 'timeout']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -215,6 +221,8 @@ class FactsApi(object):
             query_params.append(('timeout', params['timeout']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -258,6 +266,7 @@ class FactsApi(object):
 
         :param async bool
         :param str device_group_name: ID of group (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :param bool update: true will first update facts from device and then return facts
         :param int timeout: timeout in seconds to wait for facts from every device
@@ -283,6 +292,7 @@ class FactsApi(object):
 
         :param async bool
         :param str device_group_name: ID of group (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :param bool update: true will first update facts from device and then return facts
         :param int timeout: timeout in seconds to wait for facts from every device
@@ -291,7 +301,7 @@ class FactsApi(object):
                  returns the request thread.
         """
 
-        all_params = ['device_group_name', 'working', 'update', 'timeout']  # noqa: E501
+        all_params = ['device_group_name', 'authorization', 'working', 'update', 'timeout']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -326,6 +336,8 @@ class FactsApi(object):
             query_params.append(('timeout', params['timeout']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}

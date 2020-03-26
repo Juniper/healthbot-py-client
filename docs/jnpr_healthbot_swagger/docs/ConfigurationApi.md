@@ -19,6 +19,12 @@ Method | HTTP request | Description
 [**create_iceberg_playbooks_playbooks_by_id**](ConfigurationApi.md#create_iceberg_playbooks_playbooks_by_id) | **POST** /playbooks/ | Update or create multiple playbooks.
 [**create_iceberg_retention_policies_retention_policies_by_id**](ConfigurationApi.md#create_iceberg_retention_policies_retention_policies_by_id) | **POST** /retention-policies/ | Update or create multiple retention-policies.
 [**create_iceberg_retention_policy_retention_policy_by_id**](ConfigurationApi.md#create_iceberg_retention_policy_retention_policy_by_id) | **POST** /retention-policy/{retention_policy_name}/ | Update or create a retention-policy.
+[**create_iceberg_system_destination_by_id**](ConfigurationApi.md#create_iceberg_system_destination_by_id) | **POST** /system/report-generation/destination/{name}/ | Create destination by name
+[**create_iceberg_system_destinations**](ConfigurationApi.md#create_iceberg_system_destinations) | **POST** /system/report-generation/destinations/ | Create destinations by name
+[**create_iceberg_system_report_by_id**](ConfigurationApi.md#create_iceberg_system_report_by_id) | **POST** /system/report-generation/report/{name}/ | Create report by name
+[**create_iceberg_system_reports**](ConfigurationApi.md#create_iceberg_system_reports) | **POST** /system/report-generation/reports/ | Create reports by name
+[**create_iceberg_system_scheduler_by_id**](ConfigurationApi.md#create_iceberg_system_scheduler_by_id) | **POST** /system/scheduler/{name}/ | Create scheduler by name
+[**create_iceberg_system_schedulers**](ConfigurationApi.md#create_iceberg_system_schedulers) | **POST** /system/schedulers/ | Create schedulers by name
 [**create_iceberg_system_settings_destination_by_id**](ConfigurationApi.md#create_iceberg_system_settings_destination_by_id) | **POST** /system-settings/report-generation/destination/{name}/ | Create destination by name
 [**create_iceberg_system_settings_destinations**](ConfigurationApi.md#create_iceberg_system_settings_destinations) | **POST** /system-settings/report-generation/destinations/ | Create destinations by name
 [**create_iceberg_system_settings_report_by_id**](ConfigurationApi.md#create_iceberg_system_settings_report_by_id) | **POST** /system-settings/report-generation/report/{name}/ | Create report by name
@@ -26,9 +32,11 @@ Method | HTTP request | Description
 [**create_iceberg_system_settings_scheduler_by_id**](ConfigurationApi.md#create_iceberg_system_settings_scheduler_by_id) | **POST** /system-settings/scheduler/{name}/ | Create scheduler by name
 [**create_iceberg_system_settings_schedulers**](ConfigurationApi.md#create_iceberg_system_settings_schedulers) | **POST** /system-settings/schedulers/ | Create schedulers by name
 [**create_iceberg_system_settings_system_settings_by_id**](ConfigurationApi.md#create_iceberg_system_settings_system_settings_by_id) | **POST** /system-settings/ | Create system-settings
+[**create_iceberg_system_system_by_id**](ConfigurationApi.md#create_iceberg_system_system_by_id) | **POST** /system/ | Create system
 [**create_iceberg_topic_rule_rule_by_id**](ConfigurationApi.md#create_iceberg_topic_rule_rule_by_id) | **POST** /topic/{topic_name}/rule/{rule_name}/ | Update or create a rule.
 [**create_iceberg_topic_topic_by_id**](ConfigurationApi.md#create_iceberg_topic_topic_by_id) | **POST** /topic/{topic_name}/ | Update or create a topic.
 [**create_iceberg_topics_topics_by_id**](ConfigurationApi.md#create_iceberg_topics_topics_by_id) | **POST** /topics/ | Update or create multiple topics.
+[**delete_healthbot_ingest_settings_byoi_ingest_mappings**](ConfigurationApi.md#delete_healthbot_ingest_settings_byoi_ingest_mappings) | **DELETE** /ingest-settings/byoi/ingest-mappings/ | Delete all ingest-mappings.
 [**delete_iceberg_device_device_by_id**](ConfigurationApi.md#delete_iceberg_device_device_by_id) | **DELETE** /device/{device_id}/ | Delete device.
 [**delete_iceberg_device_group_device_group_by_id**](ConfigurationApi.md#delete_iceberg_device_group_device_group_by_id) | **DELETE** /device-group/{device_group_name}/ | Delete device-group.
 [**delete_iceberg_device_groups_device_groups_by_id**](ConfigurationApi.md#delete_iceberg_device_groups_device_groups_by_id) | **DELETE** /device-groups/ | Delete all device-groups.
@@ -41,6 +49,12 @@ Method | HTTP request | Description
 [**delete_iceberg_playbooks_playbooks_by_id**](ConfigurationApi.md#delete_iceberg_playbooks_playbooks_by_id) | **DELETE** /playbooks/ | Delete all playbooks.
 [**delete_iceberg_retention_policies_retention_policies_by_id**](ConfigurationApi.md#delete_iceberg_retention_policies_retention_policies_by_id) | **DELETE** /retention-policies/ | Delete all retention-policies.
 [**delete_iceberg_retention_policy_retention_policy_by_id**](ConfigurationApi.md#delete_iceberg_retention_policy_retention_policy_by_id) | **DELETE** /retention-policy/{retention_policy_name}/ | Delete a retention-policy.
+[**delete_iceberg_system_destination_by_id**](ConfigurationApi.md#delete_iceberg_system_destination_by_id) | **DELETE** /system/report-generation/destination/{name}/ | Delete destination by name
+[**delete_iceberg_system_destinations**](ConfigurationApi.md#delete_iceberg_system_destinations) | **DELETE** /system/report-generation/destinations/ | Delete destinations by name
+[**delete_iceberg_system_report_by_id**](ConfigurationApi.md#delete_iceberg_system_report_by_id) | **DELETE** /system/report-generation/report/{name}/ | Delete report by name
+[**delete_iceberg_system_reports**](ConfigurationApi.md#delete_iceberg_system_reports) | **DELETE** /system/report-generation/reports/ | Delete reports by name
+[**delete_iceberg_system_scheduler_by_id**](ConfigurationApi.md#delete_iceberg_system_scheduler_by_id) | **DELETE** /system/scheduler/{name}/ | Delete scheduler by name
+[**delete_iceberg_system_schedulers**](ConfigurationApi.md#delete_iceberg_system_schedulers) | **DELETE** /system/schedulers/ | Delete schedulers by name
 [**delete_iceberg_system_settings_destination_by_id**](ConfigurationApi.md#delete_iceberg_system_settings_destination_by_id) | **DELETE** /system-settings/report-generation/destination/{name}/ | Delete destination by name
 [**delete_iceberg_system_settings_destinations**](ConfigurationApi.md#delete_iceberg_system_settings_destinations) | **DELETE** /system-settings/report-generation/destinations/ | Delete destinations by name
 [**delete_iceberg_system_settings_report_by_id**](ConfigurationApi.md#delete_iceberg_system_settings_report_by_id) | **DELETE** /system-settings/report-generation/report/{name}/ | Delete report by name
@@ -48,9 +62,11 @@ Method | HTTP request | Description
 [**delete_iceberg_system_settings_scheduler_by_id**](ConfigurationApi.md#delete_iceberg_system_settings_scheduler_by_id) | **DELETE** /system-settings/scheduler/{name}/ | Delete scheduler by name
 [**delete_iceberg_system_settings_schedulers**](ConfigurationApi.md#delete_iceberg_system_settings_schedulers) | **DELETE** /system-settings/schedulers/ | Delete schedulers by name
 [**delete_iceberg_system_settings_system_settings_by_id**](ConfigurationApi.md#delete_iceberg_system_settings_system_settings_by_id) | **DELETE** /system-settings/ | Delete system-settings
+[**delete_iceberg_system_system_by_id**](ConfigurationApi.md#delete_iceberg_system_system_by_id) | **DELETE** /system/ | Delete system
 [**delete_iceberg_topic_rule_rule_by_id**](ConfigurationApi.md#delete_iceberg_topic_rule_rule_by_id) | **DELETE** /topic/{topic_name}/rule/{rule_name}/ | Delete a rule.
 [**delete_iceberg_topic_topic_by_id**](ConfigurationApi.md#delete_iceberg_topic_topic_by_id) | **DELETE** /topic/{topic_name}/ | Delete a topic.
 [**delete_iceberg_topics_topics_by_id**](ConfigurationApi.md#delete_iceberg_topics_topics_by_id) | **DELETE** /topics/ | Delete all topics.
+[**first_login**](ConfigurationApi.md#first_login) | **POST** /first-login/ | Change password after first login
 [**retrieve_affected_groups**](ConfigurationApi.md#retrieve_affected_groups) | **GET** /configuration/ | Get all groups affected by un-committed configuration changes.
 [**retrieve_device_group_status**](ConfigurationApi.md#retrieve_device_group_status) | **GET** /device-group/{device_group_name}/status/ | Get device-group&#39;s status.
 [**retrieve_iceberg_device_device**](ConfigurationApi.md#retrieve_iceberg_device_device) | **GET** /device/ | List all device-ids.
@@ -71,6 +87,12 @@ Method | HTTP request | Description
 [**retrieve_iceberg_retention_policies_retention_policies_by_id**](ConfigurationApi.md#retrieve_iceberg_retention_policies_retention_policies_by_id) | **GET** /retention-policies/ | Get all retention-policies&#39; configuration.
 [**retrieve_iceberg_retention_policy_retention_policy**](ConfigurationApi.md#retrieve_iceberg_retention_policy_retention_policy) | **GET** /retention-policy/ | List all retention-policy-names.
 [**retrieve_iceberg_retention_policy_retention_policy_by_id**](ConfigurationApi.md#retrieve_iceberg_retention_policy_retention_policy_by_id) | **GET** /retention-policy/{retention_policy_name}/ | Get a retention-policy&#39;s configuration.
+[**retrieve_iceberg_system_destination_by_id**](ConfigurationApi.md#retrieve_iceberg_system_destination_by_id) | **GET** /system/report-generation/destination/{name}/ | Retrieve destination by name
+[**retrieve_iceberg_system_destinations**](ConfigurationApi.md#retrieve_iceberg_system_destinations) | **GET** /system/report-generation/destinations/ | Retrieve destinations by name
+[**retrieve_iceberg_system_report_by_id**](ConfigurationApi.md#retrieve_iceberg_system_report_by_id) | **GET** /system/report-generation/report/{name}/ | Retrieve report by name
+[**retrieve_iceberg_system_reports**](ConfigurationApi.md#retrieve_iceberg_system_reports) | **GET** /system/report-generation/reports/ | Retrieve reports by name
+[**retrieve_iceberg_system_scheduler_by_id**](ConfigurationApi.md#retrieve_iceberg_system_scheduler_by_id) | **GET** /system/scheduler/{name}/ | Retrieve scheduler by name
+[**retrieve_iceberg_system_schedulers**](ConfigurationApi.md#retrieve_iceberg_system_schedulers) | **GET** /system/schedulers/ | Retrieve schedulers by name
 [**retrieve_iceberg_system_settings_destination_by_id**](ConfigurationApi.md#retrieve_iceberg_system_settings_destination_by_id) | **GET** /system-settings/report-generation/destination/{name}/ | Retrieve destination by name
 [**retrieve_iceberg_system_settings_destinations**](ConfigurationApi.md#retrieve_iceberg_system_settings_destinations) | **GET** /system-settings/report-generation/destinations/ | Retrieve destinations by name
 [**retrieve_iceberg_system_settings_report_by_id**](ConfigurationApi.md#retrieve_iceberg_system_settings_report_by_id) | **GET** /system-settings/report-generation/report/{name}/ | Retrieve report by name
@@ -78,12 +100,14 @@ Method | HTTP request | Description
 [**retrieve_iceberg_system_settings_scheduler_by_id**](ConfigurationApi.md#retrieve_iceberg_system_settings_scheduler_by_id) | **GET** /system-settings/scheduler/{name}/ | Retrieve scheduler by name
 [**retrieve_iceberg_system_settings_schedulers**](ConfigurationApi.md#retrieve_iceberg_system_settings_schedulers) | **GET** /system-settings/schedulers/ | Retrieve schedulers by name
 [**retrieve_iceberg_system_settings_system_settings**](ConfigurationApi.md#retrieve_iceberg_system_settings_system_settings) | **GET** /system-settings/ | Retrieve system-settings
+[**retrieve_iceberg_system_system**](ConfigurationApi.md#retrieve_iceberg_system_system) | **GET** /system/ | Retrieve system data
 [**retrieve_iceberg_topic_rule_rule**](ConfigurationApi.md#retrieve_iceberg_topic_rule_rule) | **GET** /topic/{topic_name}/rule/ | List all rule-names in a topic.
 [**retrieve_iceberg_topic_rule_rule_by_id**](ConfigurationApi.md#retrieve_iceberg_topic_rule_rule_by_id) | **GET** /topic/{topic_name}/rule/{rule_name}/ | Get a rule&#39;s configuration.
 [**retrieve_iceberg_topic_topic**](ConfigurationApi.md#retrieve_iceberg_topic_topic) | **GET** /topic/ | List all topic-names.
 [**retrieve_iceberg_topic_topic_by_id**](ConfigurationApi.md#retrieve_iceberg_topic_topic_by_id) | **GET** /topic/{topic_name}/ | Get a topic&#39;s configuration.
 [**retrieve_iceberg_topics_topics**](ConfigurationApi.md#retrieve_iceberg_topics_topics) | **GET** /topics/ | Get all topics&#39; configuration.
 [**retrieve_network_group_status**](ConfigurationApi.md#retrieve_network_group_status) | **GET** /network-group/{network_group_name}/status/ | Get network-group&#39;s status.
+[**retrieve_orchestrator**](ConfigurationApi.md#retrieve_orchestrator) | **GET** /orchestrator/ | Get Orchestrator type
 [**rollback_unsaved_configuration**](ConfigurationApi.md#rollback_unsaved_configuration) | **DELETE** /configuration/ | Delete the un-committed configuration.
 [**update_iceberg_device_device_by_id**](ConfigurationApi.md#update_iceberg_device_device_by_id) | **PUT** /device/{device_id}/ | Overwrite a device.
 [**update_iceberg_device_group_device_group_by_id**](ConfigurationApi.md#update_iceberg_device_group_device_group_by_id) | **PUT** /device-group/{device_group_name}/ | Overwrite a device-group.
@@ -97,6 +121,12 @@ Method | HTTP request | Description
 [**update_iceberg_playbooks_playbooks_by_id**](ConfigurationApi.md#update_iceberg_playbooks_playbooks_by_id) | **PUT** /playbooks/ | Overwrite all playbooks.
 [**update_iceberg_retention_policies_retention_policies_id**](ConfigurationApi.md#update_iceberg_retention_policies_retention_policies_id) | **PUT** /retention-policies/ | Overwrite all retention-policies.
 [**update_iceberg_retention_policy_retention_policy_by_id**](ConfigurationApi.md#update_iceberg_retention_policy_retention_policy_by_id) | **PUT** /retention-policy/{retention_policy_name}/ | Overwrite a retention-policy.
+[**update_iceberg_system_destination_by_id**](ConfigurationApi.md#update_iceberg_system_destination_by_id) | **PUT** /system/report-generation/destination/{name}/ | Update destination by name
+[**update_iceberg_system_destinations**](ConfigurationApi.md#update_iceberg_system_destinations) | **PUT** /system/report-generation/destinations/ | Update destinations by name
+[**update_iceberg_system_report_by_id**](ConfigurationApi.md#update_iceberg_system_report_by_id) | **PUT** /system/report-generation/report/{name}/ | Update report by name
+[**update_iceberg_system_reports**](ConfigurationApi.md#update_iceberg_system_reports) | **PUT** /system/report-generation/reports/ | Update reports by name
+[**update_iceberg_system_scheduler_by_id**](ConfigurationApi.md#update_iceberg_system_scheduler_by_id) | **PUT** /system/scheduler/{name}/ | Update scheduler by name
+[**update_iceberg_system_schedulers**](ConfigurationApi.md#update_iceberg_system_schedulers) | **PUT** /system/schedulers/ | Update schedulers by name
 [**update_iceberg_system_settings_destination_by_id**](ConfigurationApi.md#update_iceberg_system_settings_destination_by_id) | **PUT** /system-settings/report-generation/destination/{name}/ | Update destination by name
 [**update_iceberg_system_settings_destinations**](ConfigurationApi.md#update_iceberg_system_settings_destinations) | **PUT** /system-settings/report-generation/destinations/ | Update destinations by name
 [**update_iceberg_system_settings_report_by_id**](ConfigurationApi.md#update_iceberg_system_settings_report_by_id) | **PUT** /system-settings/report-generation/report/{name}/ | Update report by name
@@ -104,13 +134,16 @@ Method | HTTP request | Description
 [**update_iceberg_system_settings_scheduler_by_id**](ConfigurationApi.md#update_iceberg_system_settings_scheduler_by_id) | **PUT** /system-settings/scheduler/{name}/ | Update scheduler by name
 [**update_iceberg_system_settings_schedulers**](ConfigurationApi.md#update_iceberg_system_settings_schedulers) | **PUT** /system-settings/schedulers/ | Update schedulers by name
 [**update_iceberg_system_settings_system_settings_by_id**](ConfigurationApi.md#update_iceberg_system_settings_system_settings_by_id) | **PUT** /system-settings/ | Update system-settings by ID
+[**update_iceberg_system_system_by_id**](ConfigurationApi.md#update_iceberg_system_system_by_id) | **PUT** /system/ | Update system by ID
 [**update_iceberg_topic_rule_rule_by_id**](ConfigurationApi.md#update_iceberg_topic_rule_rule_by_id) | **PUT** /topic/{topic_name}/rule/{rule_name}/ | Overwrite a rule.
 [**update_iceberg_topic_topic_by_id**](ConfigurationApi.md#update_iceberg_topic_topic_by_id) | **PUT** /topic/{topic_name}/ | Overwrite a topic.
 [**update_iceberg_topics_topics_by_id**](ConfigurationApi.md#update_iceberg_topics_topics_by_id) | **PUT** /topics/ | Overwrite topics.
+[**user_retrieve_user_profile**](ConfigurationApi.md#user_retrieve_user_profile) | **GET** /user-profile/ | Get users profile information
+[**user_update_user_profile**](ConfigurationApi.md#user_update_user_profile) | **POST** /user-profile/ | Update user profile informations.
 
 
 # **check_device_group_unsaved_configuration**
-> check_device_group_unsaved_configuration(device_group_name)
+> check_device_group_unsaved_configuration(device_group_name, authorization=authorization)
 
 Check if the un-committed configuration of the given device group is correct
 
@@ -127,10 +160,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 device_group_name = 'device_group_name_example' # str | Name of device group
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Check if the un-committed configuration of the given device group is correct
-    api_instance.check_device_group_unsaved_configuration(device_group_name)
+    api_instance.check_device_group_unsaved_configuration(device_group_name, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->check_device_group_unsaved_configuration: %s\n" % e)
 ```
@@ -140,6 +174,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **device_group_name** | **str**| Name of device group | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -157,7 +192,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **check_network_group_unsaved_configuration**
-> check_network_group_unsaved_configuration(network_group_name)
+> check_network_group_unsaved_configuration(network_group_name, authorization=authorization)
 
 Check if the unsaved configuration of the given network group is correct.
 
@@ -174,10 +209,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 network_group_name = 'network_group_name_example' # str | Name of network group
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Check if the unsaved configuration of the given network group is correct.
-    api_instance.check_network_group_unsaved_configuration(network_group_name)
+    api_instance.check_network_group_unsaved_configuration(network_group_name, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->check_network_group_unsaved_configuration: %s\n" % e)
 ```
@@ -187,6 +223,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **network_group_name** | **str**| Name of network group | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -204,7 +241,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **commit_unsaved_configuration**
-> commit_unsaved_configuration(sync=sync)
+> commit_unsaved_configuration(authorization=authorization, sync=sync)
 
 Commit unsaved configuration.
 
@@ -220,11 +257,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 sync = true # bool | Boolean variable is set to false allow the commit to go asynchronously, default value is true which means commit will go synchronously (optional) (default to true)
 
 try:
     # Commit unsaved configuration.
-    api_instance.commit_unsaved_configuration(sync=sync)
+    api_instance.commit_unsaved_configuration(authorization=authorization, sync=sync)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->commit_unsaved_configuration: %s\n" % e)
 ```
@@ -233,6 +271,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
  **sync** | **bool**| Boolean variable is set to false allow the commit to go asynchronously, default value is true which means commit will go synchronously | [optional] [default to true]
 
 ### Return type
@@ -251,7 +290,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_device_device_by_id**
-> create_iceberg_device_device_by_id(device_id, device)
+> create_iceberg_device_device_by_id(device_id, device, authorization=authorization)
 
 Update or create a device.
 
@@ -269,10 +308,11 @@ from pprint import pprint
 api_instance = swagger_client.ConfigurationApi()
 device_id = 'device_id_example' # str | ID of device-id
 device = swagger_client.DeviceSchema() # DeviceSchema | devicebody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update or create a device.
-    api_instance.create_iceberg_device_device_by_id(device_id, device)
+    api_instance.create_iceberg_device_device_by_id(device_id, device, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_device_device_by_id: %s\n" % e)
 ```
@@ -283,6 +323,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **device_id** | **str**| ID of device-id | 
  **device** | [**DeviceSchema**](DeviceSchema.md)| devicebody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -300,7 +341,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_device_group_device_group_by_id**
-> create_iceberg_device_group_device_group_by_id(device_group_name, device_group)
+> create_iceberg_device_group_device_group_by_id(device_group_name, device_group, authorization=authorization)
 
 Update or create a device-group.
 
@@ -318,10 +359,11 @@ from pprint import pprint
 api_instance = swagger_client.ConfigurationApi()
 device_group_name = 'device_group_name_example' # str | ID of device-group-name
 device_group = swagger_client.DeviceGroupSchema() # DeviceGroupSchema | device_groupbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update or create a device-group.
-    api_instance.create_iceberg_device_group_device_group_by_id(device_group_name, device_group)
+    api_instance.create_iceberg_device_group_device_group_by_id(device_group_name, device_group, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_device_group_device_group_by_id: %s\n" % e)
 ```
@@ -332,6 +374,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **device_group_name** | **str**| ID of device-group-name | 
  **device_group** | [**DeviceGroupSchema**](DeviceGroupSchema.md)| device_groupbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -349,7 +392,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_device_groups_device_groups_by_id**
-> create_iceberg_device_groups_device_groups_by_id(device_groups)
+> create_iceberg_device_groups_device_groups_by_id(device_groups, authorization=authorization)
 
 Update or create multiple device-groups.
 
@@ -366,10 +409,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 device_groups = swagger_client.DeviceGroupsSchema() # DeviceGroupsSchema | device-groupsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update or create multiple device-groups.
-    api_instance.create_iceberg_device_groups_device_groups_by_id(device_groups)
+    api_instance.create_iceberg_device_groups_device_groups_by_id(device_groups, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_device_groups_device_groups_by_id: %s\n" % e)
 ```
@@ -379,6 +423,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **device_groups** | [**DeviceGroupsSchema**](DeviceGroupsSchema.md)| device-groupsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -396,7 +441,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_devices_devices_by_id**
-> create_iceberg_devices_devices_by_id(devices)
+> create_iceberg_devices_devices_by_id(devices, authorization=authorization)
 
 Update or create multiple devices.
 
@@ -413,10 +458,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 devices = swagger_client.DevicesSchema() # DevicesSchema | devicesbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update or create multiple devices.
-    api_instance.create_iceberg_devices_devices_by_id(devices)
+    api_instance.create_iceberg_devices_devices_by_id(devices, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_devices_devices_by_id: %s\n" % e)
 ```
@@ -426,6 +472,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **devices** | [**DevicesSchema**](DevicesSchema.md)| devicesbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -443,7 +490,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_network_group_network_group_by_id**
-> create_iceberg_network_group_network_group_by_id(network_group_name, network_group)
+> create_iceberg_network_group_network_group_by_id(network_group_name, network_group, authorization=authorization)
 
 Update or create a network-group.
 
@@ -461,10 +508,11 @@ from pprint import pprint
 api_instance = swagger_client.ConfigurationApi()
 network_group_name = 'network_group_name_example' # str | ID of network-group-name
 network_group = swagger_client.NetworkGroupSchema() # NetworkGroupSchema | network_groupbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update or create a network-group.
-    api_instance.create_iceberg_network_group_network_group_by_id(network_group_name, network_group)
+    api_instance.create_iceberg_network_group_network_group_by_id(network_group_name, network_group, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_network_group_network_group_by_id: %s\n" % e)
 ```
@@ -475,6 +523,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **network_group_name** | **str**| ID of network-group-name | 
  **network_group** | [**NetworkGroupSchema**](NetworkGroupSchema.md)| network_groupbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -492,7 +541,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_network_groups_network_groups_by_id**
-> create_iceberg_network_groups_network_groups_by_id(network_groups)
+> create_iceberg_network_groups_network_groups_by_id(network_groups, authorization=authorization)
 
 Update or create multiple network-groups.
 
@@ -509,10 +558,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 network_groups = swagger_client.NetworkGroupsSchema() # NetworkGroupsSchema | network-groupsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update or create multiple network-groups.
-    api_instance.create_iceberg_network_groups_network_groups_by_id(network_groups)
+    api_instance.create_iceberg_network_groups_network_groups_by_id(network_groups, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_network_groups_network_groups_by_id: %s\n" % e)
 ```
@@ -522,6 +572,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **network_groups** | [**NetworkGroupsSchema**](NetworkGroupsSchema.md)| network-groupsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -539,7 +590,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_notification_notification_by_id**
-> create_iceberg_notification_notification_by_id(notification_name, notification)
+> create_iceberg_notification_notification_by_id(notification_name, notification, authorization=authorization)
 
 Update or create a notification
 
@@ -557,10 +608,11 @@ from pprint import pprint
 api_instance = swagger_client.ConfigurationApi()
 notification_name = 'notification_name_example' # str | ID of notification-name
 notification = swagger_client.NotificationSchema() # NotificationSchema | notificationbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update or create a notification
-    api_instance.create_iceberg_notification_notification_by_id(notification_name, notification)
+    api_instance.create_iceberg_notification_notification_by_id(notification_name, notification, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_notification_notification_by_id: %s\n" % e)
 ```
@@ -571,6 +623,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **notification_name** | **str**| ID of notification-name | 
  **notification** | [**NotificationSchema**](NotificationSchema.md)| notificationbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -588,7 +641,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_notifications_notifications_by_id**
-> create_iceberg_notifications_notifications_by_id(notifications)
+> create_iceberg_notifications_notifications_by_id(notifications, authorization=authorization)
 
 Update or create multiple notifications.
 
@@ -605,10 +658,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 notifications = swagger_client.NotificationsSchema() # NotificationsSchema | notificationsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update or create multiple notifications.
-    api_instance.create_iceberg_notifications_notifications_by_id(notifications)
+    api_instance.create_iceberg_notifications_notifications_by_id(notifications, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_notifications_notifications_by_id: %s\n" % e)
 ```
@@ -618,6 +672,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **notifications** | [**NotificationsSchema**](NotificationsSchema.md)| notificationsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -635,7 +690,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_playbook_playbook_by_id**
-> create_iceberg_playbook_playbook_by_id(playbook_name, playbook)
+> create_iceberg_playbook_playbook_by_id(playbook_name, playbook, authorization=authorization)
 
 Update or create a playbook.
 
@@ -653,10 +708,11 @@ from pprint import pprint
 api_instance = swagger_client.ConfigurationApi()
 playbook_name = 'playbook_name_example' # str | ID of playbook-name
 playbook = swagger_client.PlaybookSchema() # PlaybookSchema | playbookbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update or create a playbook.
-    api_instance.create_iceberg_playbook_playbook_by_id(playbook_name, playbook)
+    api_instance.create_iceberg_playbook_playbook_by_id(playbook_name, playbook, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_playbook_playbook_by_id: %s\n" % e)
 ```
@@ -667,6 +723,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **playbook_name** | **str**| ID of playbook-name | 
  **playbook** | [**PlaybookSchema**](PlaybookSchema.md)| playbookbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -684,7 +741,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_playbooks_playbooks_by_id**
-> create_iceberg_playbooks_playbooks_by_id(playbooks)
+> create_iceberg_playbooks_playbooks_by_id(playbooks, authorization=authorization)
 
 Update or create multiple playbooks.
 
@@ -701,10 +758,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 playbooks = swagger_client.PlaybooksSchema() # PlaybooksSchema | playbooksbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update or create multiple playbooks.
-    api_instance.create_iceberg_playbooks_playbooks_by_id(playbooks)
+    api_instance.create_iceberg_playbooks_playbooks_by_id(playbooks, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_playbooks_playbooks_by_id: %s\n" % e)
 ```
@@ -714,6 +772,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **playbooks** | [**PlaybooksSchema**](PlaybooksSchema.md)| playbooksbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -731,7 +790,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_retention_policies_retention_policies_by_id**
-> create_iceberg_retention_policies_retention_policies_by_id(retention_policies)
+> create_iceberg_retention_policies_retention_policies_by_id(retention_policies, authorization=authorization)
 
 Update or create multiple retention-policies.
 
@@ -748,10 +807,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 retention_policies = swagger_client.RetentionPoliciesSchema() # RetentionPoliciesSchema | retention-policiesbody object object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update or create multiple retention-policies.
-    api_instance.create_iceberg_retention_policies_retention_policies_by_id(retention_policies)
+    api_instance.create_iceberg_retention_policies_retention_policies_by_id(retention_policies, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_retention_policies_retention_policies_by_id: %s\n" % e)
 ```
@@ -761,6 +821,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **retention_policies** | [**RetentionPoliciesSchema**](RetentionPoliciesSchema.md)| retention-policiesbody object object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -778,7 +839,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_retention_policy_retention_policy_by_id**
-> create_iceberg_retention_policy_retention_policy_by_id(retention_policy_name, retention_policy)
+> create_iceberg_retention_policy_retention_policy_by_id(retention_policy_name, retention_policy, authorization=authorization)
 
 Update or create a retention-policy.
 
@@ -796,10 +857,11 @@ from pprint import pprint
 api_instance = swagger_client.ConfigurationApi()
 retention_policy_name = 'retention_policy_name_example' # str | ID of retention-policy-name
 retention_policy = swagger_client.RetentionPolicySchema() # RetentionPolicySchema | retention_policybody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update or create a retention-policy.
-    api_instance.create_iceberg_retention_policy_retention_policy_by_id(retention_policy_name, retention_policy)
+    api_instance.create_iceberg_retention_policy_retention_policy_by_id(retention_policy_name, retention_policy, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_retention_policy_retention_policy_by_id: %s\n" % e)
 ```
@@ -810,6 +872,307 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **retention_policy_name** | **str**| ID of retention-policy-name | 
  **retention_policy** | [**RetentionPolicySchema**](RetentionPolicySchema.md)| retention_policybody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_iceberg_system_destination_by_id**
+> create_iceberg_system_destination_by_id(name, destination, authorization=authorization)
+
+Create destination by name
+
+Create/Update a destination by `name`. The `name` specified in URL and the request body must match. If the destination exists then, the existing destination's configuration will be updated by the new content.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+name = 'name_example' # str | Name of destination
+destination = swagger_client.DestinationSchema() # DestinationSchema | destinationsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Create destination by name
+    api_instance.create_iceberg_system_destination_by_id(name, destination, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->create_iceberg_system_destination_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of destination | 
+ **destination** | [**DestinationSchema**](DestinationSchema.md)| destinationsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_iceberg_system_destinations**
+> create_iceberg_system_destinations(destinations, authorization=authorization)
+
+Create destinations by name
+
+Create/Update multiple destinations. The new content for the existing destinations updates the existing content and the new destinations are created.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+destinations = swagger_client.DestinationsSchema() # DestinationsSchema | destinationsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Create destinations by name
+    api_instance.create_iceberg_system_destinations(destinations, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->create_iceberg_system_destinations: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **destinations** | [**DestinationsSchema**](DestinationsSchema.md)| destinationsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_iceberg_system_report_by_id**
+> create_iceberg_system_report_by_id(name, report, authorization=authorization)
+
+Create report by name
+
+Create/Update a report by `name`. The `name` specified in URL and the request body must match. If the report exists then, the existing report's configuration will be updated by the new content.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+name = 'name_example' # str | Name of report
+report = swagger_client.ReportSchema() # ReportSchema | reportsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Create report by name
+    api_instance.create_iceberg_system_report_by_id(name, report, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->create_iceberg_system_report_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of report | 
+ **report** | [**ReportSchema**](ReportSchema.md)| reportsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_iceberg_system_reports**
+> create_iceberg_system_reports(reports, authorization=authorization)
+
+Create reports by name
+
+Create/Update multiple reports. The new content for the existing reports updates the existing content and the new reports are created.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+reports = swagger_client.ReportsSchema() # ReportsSchema | reportsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Create reports by name
+    api_instance.create_iceberg_system_reports(reports, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->create_iceberg_system_reports: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **reports** | [**ReportsSchema**](ReportsSchema.md)| reportsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_iceberg_system_scheduler_by_id**
+> create_iceberg_system_scheduler_by_id(name, scheduler, authorization=authorization)
+
+Create scheduler by name
+
+Create/Update a scheduler by `name`. The `name` specified in URL and the request body must match. If the scheduler exists then, the existing scheduler's configuration will be updated by the new content.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+name = 'name_example' # str | Name of Scheduler
+scheduler = swagger_client.SchedulerSchema() # SchedulerSchema | schedulerbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Create scheduler by name
+    api_instance.create_iceberg_system_scheduler_by_id(name, scheduler, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->create_iceberg_system_scheduler_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of Scheduler | 
+ **scheduler** | [**SchedulerSchema**](SchedulerSchema.md)| schedulerbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_iceberg_system_schedulers**
+> create_iceberg_system_schedulers(schedulers, authorization=authorization)
+
+Create schedulers by name
+
+Create/Update multiple schdeulers. The new content for the existing schedulers updates the existing content and the new schedulers are created.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+schedulers = swagger_client.SchedulersSchema() # SchedulersSchema | schedulersbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Create schedulers by name
+    api_instance.create_iceberg_system_schedulers(schedulers, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->create_iceberg_system_schedulers: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **schedulers** | [**SchedulersSchema**](SchedulersSchema.md)| schedulersbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -827,7 +1190,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_system_settings_destination_by_id**
-> create_iceberg_system_settings_destination_by_id(name, destination)
+> create_iceberg_system_settings_destination_by_id(name, destination, authorization=authorization)
 
 Create destination by name
 
@@ -843,12 +1206,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
-name = 'name_example' # str | ID of name
+name = 'name_example' # str | Name of destination
 destination = swagger_client.DestinationSchema() # DestinationSchema | destinationsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Create destination by name
-    api_instance.create_iceberg_system_settings_destination_by_id(name, destination)
+    api_instance.create_iceberg_system_settings_destination_by_id(name, destination, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_system_settings_destination_by_id: %s\n" % e)
 ```
@@ -857,8 +1221,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| ID of name | 
+ **name** | **str**| Name of destination | 
  **destination** | [**DestinationSchema**](DestinationSchema.md)| destinationsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -876,7 +1241,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_system_settings_destinations**
-> create_iceberg_system_settings_destinations(destinations)
+> create_iceberg_system_settings_destinations(destinations, authorization=authorization)
 
 Create destinations by name
 
@@ -893,10 +1258,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 destinations = swagger_client.DestinationsSchema() # DestinationsSchema | destinationsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Create destinations by name
-    api_instance.create_iceberg_system_settings_destinations(destinations)
+    api_instance.create_iceberg_system_settings_destinations(destinations, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_system_settings_destinations: %s\n" % e)
 ```
@@ -906,6 +1272,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **destinations** | [**DestinationsSchema**](DestinationsSchema.md)| destinationsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -923,7 +1290,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_system_settings_report_by_id**
-> create_iceberg_system_settings_report_by_id(name, report)
+> create_iceberg_system_settings_report_by_id(name, report, authorization=authorization)
 
 Create report by name
 
@@ -939,12 +1306,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
-name = 'name_example' # str | ID of name
+name = 'name_example' # str | Name of report
 report = swagger_client.ReportSchema() # ReportSchema | reportsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Create report by name
-    api_instance.create_iceberg_system_settings_report_by_id(name, report)
+    api_instance.create_iceberg_system_settings_report_by_id(name, report, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_system_settings_report_by_id: %s\n" % e)
 ```
@@ -953,8 +1321,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| ID of name | 
+ **name** | **str**| Name of report | 
  **report** | [**ReportSchema**](ReportSchema.md)| reportsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -972,7 +1341,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_system_settings_reports**
-> create_iceberg_system_settings_reports(reports)
+> create_iceberg_system_settings_reports(reports, authorization=authorization)
 
 Create reports by name
 
@@ -989,10 +1358,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 reports = swagger_client.ReportsSchema() # ReportsSchema | reportsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Create reports by name
-    api_instance.create_iceberg_system_settings_reports(reports)
+    api_instance.create_iceberg_system_settings_reports(reports, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_system_settings_reports: %s\n" % e)
 ```
@@ -1002,6 +1372,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **reports** | [**ReportsSchema**](ReportsSchema.md)| reportsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1019,7 +1390,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_system_settings_scheduler_by_id**
-> create_iceberg_system_settings_scheduler_by_id(name, scheduler)
+> create_iceberg_system_settings_scheduler_by_id(name, scheduler, authorization=authorization)
 
 Create scheduler by name
 
@@ -1035,12 +1406,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
-name = 'name_example' # str | ID of name
+name = 'name_example' # str | Name of Scheduler
 scheduler = swagger_client.SchedulerSchema() # SchedulerSchema | schedulerbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Create scheduler by name
-    api_instance.create_iceberg_system_settings_scheduler_by_id(name, scheduler)
+    api_instance.create_iceberg_system_settings_scheduler_by_id(name, scheduler, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_system_settings_scheduler_by_id: %s\n" % e)
 ```
@@ -1049,8 +1421,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| ID of name | 
+ **name** | **str**| Name of Scheduler | 
  **scheduler** | [**SchedulerSchema**](SchedulerSchema.md)| schedulerbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1068,7 +1441,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_system_settings_schedulers**
-> create_iceberg_system_settings_schedulers(schedulers)
+> create_iceberg_system_settings_schedulers(schedulers, authorization=authorization)
 
 Create schedulers by name
 
@@ -1085,10 +1458,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 schedulers = swagger_client.SchedulersSchema() # SchedulersSchema | schedulersbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Create schedulers by name
-    api_instance.create_iceberg_system_settings_schedulers(schedulers)
+    api_instance.create_iceberg_system_settings_schedulers(schedulers, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_system_settings_schedulers: %s\n" % e)
 ```
@@ -1098,6 +1472,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **schedulers** | [**SchedulersSchema**](SchedulersSchema.md)| schedulersbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1115,7 +1490,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_system_settings_system_settings_by_id**
-> create_iceberg_system_settings_system_settings_by_id(system_settings)
+> create_iceberg_system_settings_system_settings_by_id(system_settings, authorization=authorization)
 
 Create system-settings
 
@@ -1132,10 +1507,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 system_settings = swagger_client.SystemSettingsSchema() # SystemSettingsSchema | system_settings body object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Create system-settings
-    api_instance.create_iceberg_system_settings_system_settings_by_id(system_settings)
+    api_instance.create_iceberg_system_settings_system_settings_by_id(system_settings, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_system_settings_system_settings_by_id: %s\n" % e)
 ```
@@ -1145,6 +1521,56 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_settings** | [**SystemSettingsSchema**](SystemSettingsSchema.md)| system_settings body object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_iceberg_system_system_by_id**
+> create_iceberg_system_system_by_id(system_settings, authorization=authorization)
+
+Create system
+
+Create/Update system to populate persist-raw-data, schedulers, destinations and reports.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+system_settings = swagger_client.SystemSettingsSchema() # SystemSettingsSchema | system_settings body object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Create system
+    api_instance.create_iceberg_system_system_by_id(system_settings, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->create_iceberg_system_system_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **system_settings** | [**SystemSettingsSchema**](SystemSettingsSchema.md)| system_settings body object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1162,7 +1588,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_topic_rule_rule_by_id**
-> create_iceberg_topic_rule_rule_by_id(topic_name, rule_name, rule)
+> create_iceberg_topic_rule_rule_by_id(topic_name, rule_name, rule, authorization=authorization)
 
 Update or create a rule.
 
@@ -1181,10 +1607,11 @@ api_instance = swagger_client.ConfigurationApi()
 topic_name = 'topic_name_example' # str | ID of topic-name
 rule_name = 'rule_name_example' # str | ID of rule-name
 rule = swagger_client.RuleSchema() # RuleSchema | rulebody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update or create a rule.
-    api_instance.create_iceberg_topic_rule_rule_by_id(topic_name, rule_name, rule)
+    api_instance.create_iceberg_topic_rule_rule_by_id(topic_name, rule_name, rule, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_topic_rule_rule_by_id: %s\n" % e)
 ```
@@ -1196,6 +1623,7 @@ Name | Type | Description  | Notes
  **topic_name** | **str**| ID of topic-name | 
  **rule_name** | **str**| ID of rule-name | 
  **rule** | [**RuleSchema**](RuleSchema.md)| rulebody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1213,7 +1641,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_topic_topic_by_id**
-> create_iceberg_topic_topic_by_id(topic_name, topic)
+> create_iceberg_topic_topic_by_id(topic_name, topic, authorization=authorization)
 
 Update or create a topic.
 
@@ -1231,10 +1659,11 @@ from pprint import pprint
 api_instance = swagger_client.ConfigurationApi()
 topic_name = 'topic_name_example' # str | ID of topic-name
 topic = swagger_client.TopicSchema() # TopicSchema | topicbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update or create a topic.
-    api_instance.create_iceberg_topic_topic_by_id(topic_name, topic)
+    api_instance.create_iceberg_topic_topic_by_id(topic_name, topic, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_topic_topic_by_id: %s\n" % e)
 ```
@@ -1245,6 +1674,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **topic_name** | **str**| ID of topic-name | 
  **topic** | [**TopicSchema**](TopicSchema.md)| topicbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1262,7 +1692,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_topics_topics_by_id**
-> create_iceberg_topics_topics_by_id(topics)
+> create_iceberg_topics_topics_by_id(topics, authorization=authorization)
 
 Update or create multiple topics.
 
@@ -1279,10 +1709,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 topics = swagger_client.TopicsSchema() # TopicsSchema | topicsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update or create multiple topics.
-    api_instance.create_iceberg_topics_topics_by_id(topics)
+    api_instance.create_iceberg_topics_topics_by_id(topics, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_topics_topics_by_id: %s\n" % e)
 ```
@@ -1292,6 +1723,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **topics** | [**TopicsSchema**](TopicsSchema.md)| topicsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1308,8 +1740,55 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_healthbot_ingest_settings_byoi_ingest_mappings**
+> delete_healthbot_ingest_settings_byoi_ingest_mappings(authorization=authorization)
+
+Delete all ingest-mappings.
+
+Delete all ingest-mappings.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete all ingest-mappings.
+    api_instance.delete_healthbot_ingest_settings_byoi_ingest_mappings(authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->delete_healthbot_ingest_settings_byoi_ingest_mappings: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_iceberg_device_device_by_id**
-> delete_iceberg_device_device_by_id(device_id)
+> delete_iceberg_device_device_by_id(device_id, authorization=authorization)
 
 Delete device.
 
@@ -1326,10 +1805,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 device_id = 'device_id_example' # str | ID of device-id
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete device.
-    api_instance.delete_iceberg_device_device_by_id(device_id)
+    api_instance.delete_iceberg_device_device_by_id(device_id, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->delete_iceberg_device_device_by_id: %s\n" % e)
 ```
@@ -1339,6 +1819,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **device_id** | **str**| ID of device-id | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1356,7 +1837,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_device_group_device_group_by_id**
-> delete_iceberg_device_group_device_group_by_id(device_group_name)
+> delete_iceberg_device_group_device_group_by_id(device_group_name, authorization=authorization)
 
 Delete device-group.
 
@@ -1373,10 +1854,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 device_group_name = 'device_group_name_example' # str | ID of device-group-name
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete device-group.
-    api_instance.delete_iceberg_device_group_device_group_by_id(device_group_name)
+    api_instance.delete_iceberg_device_group_device_group_by_id(device_group_name, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->delete_iceberg_device_group_device_group_by_id: %s\n" % e)
 ```
@@ -1386,6 +1868,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **device_group_name** | **str**| ID of device-group-name | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1403,7 +1886,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_device_groups_device_groups_by_id**
-> delete_iceberg_device_groups_device_groups_by_id()
+> delete_iceberg_device_groups_device_groups_by_id(authorization=authorization)
 
 Delete all device-groups.
 
@@ -1419,16 +1902,20 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete all device-groups.
-    api_instance.delete_iceberg_device_groups_device_groups_by_id()
+    api_instance.delete_iceberg_device_groups_device_groups_by_id(authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->delete_iceberg_device_groups_device_groups_by_id: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1446,7 +1933,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_devices_devices_by_id**
-> delete_iceberg_devices_devices_by_id()
+> delete_iceberg_devices_devices_by_id(authorization=authorization)
 
 Delete all devices.
 
@@ -1462,16 +1949,20 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete all devices.
-    api_instance.delete_iceberg_devices_devices_by_id()
+    api_instance.delete_iceberg_devices_devices_by_id(authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->delete_iceberg_devices_devices_by_id: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1489,7 +1980,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_network_group_network_group_by_id**
-> delete_iceberg_network_group_network_group_by_id(network_group_name)
+> delete_iceberg_network_group_network_group_by_id(network_group_name, authorization=authorization)
 
 Delete network-group.
 
@@ -1506,10 +1997,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 network_group_name = 'network_group_name_example' # str | ID of network-group-name
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete network-group.
-    api_instance.delete_iceberg_network_group_network_group_by_id(network_group_name)
+    api_instance.delete_iceberg_network_group_network_group_by_id(network_group_name, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->delete_iceberg_network_group_network_group_by_id: %s\n" % e)
 ```
@@ -1519,6 +2011,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **network_group_name** | **str**| ID of network-group-name | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1536,7 +2029,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_network_groups_network_groups_by_id**
-> delete_iceberg_network_groups_network_groups_by_id()
+> delete_iceberg_network_groups_network_groups_by_id(authorization=authorization)
 
 Delete all network-groups.
 
@@ -1552,16 +2045,20 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete all network-groups.
-    api_instance.delete_iceberg_network_groups_network_groups_by_id()
+    api_instance.delete_iceberg_network_groups_network_groups_by_id(authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->delete_iceberg_network_groups_network_groups_by_id: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1579,7 +2076,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_notification_notification_by_id**
-> delete_iceberg_notification_notification_by_id(notification_name)
+> delete_iceberg_notification_notification_by_id(notification_name, authorization=authorization)
 
 Delete a notification.
 
@@ -1596,10 +2093,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 notification_name = 'notification_name_example' # str | ID of notification-name
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete a notification.
-    api_instance.delete_iceberg_notification_notification_by_id(notification_name)
+    api_instance.delete_iceberg_notification_notification_by_id(notification_name, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->delete_iceberg_notification_notification_by_id: %s\n" % e)
 ```
@@ -1609,6 +2107,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **notification_name** | **str**| ID of notification-name | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1626,7 +2125,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_notifications_notifications_by_id**
-> delete_iceberg_notifications_notifications_by_id()
+> delete_iceberg_notifications_notifications_by_id(authorization=authorization)
 
 Delete all notifications.
 
@@ -1642,16 +2141,20 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete all notifications.
-    api_instance.delete_iceberg_notifications_notifications_by_id()
+    api_instance.delete_iceberg_notifications_notifications_by_id(authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->delete_iceberg_notifications_notifications_by_id: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1669,7 +2172,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_playbook_playbook_by_id**
-> delete_iceberg_playbook_playbook_by_id(playbook_name)
+> delete_iceberg_playbook_playbook_by_id(playbook_name, authorization=authorization)
 
 Delete a playbook.
 
@@ -1686,10 +2189,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 playbook_name = 'playbook_name_example' # str | ID of playbook-name
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete a playbook.
-    api_instance.delete_iceberg_playbook_playbook_by_id(playbook_name)
+    api_instance.delete_iceberg_playbook_playbook_by_id(playbook_name, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->delete_iceberg_playbook_playbook_by_id: %s\n" % e)
 ```
@@ -1699,6 +2203,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **playbook_name** | **str**| ID of playbook-name | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1716,7 +2221,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_playbooks_playbooks_by_id**
-> delete_iceberg_playbooks_playbooks_by_id()
+> delete_iceberg_playbooks_playbooks_by_id(authorization=authorization)
 
 Delete all playbooks.
 
@@ -1732,16 +2237,20 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete all playbooks.
-    api_instance.delete_iceberg_playbooks_playbooks_by_id()
+    api_instance.delete_iceberg_playbooks_playbooks_by_id(authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->delete_iceberg_playbooks_playbooks_by_id: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1759,7 +2268,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_retention_policies_retention_policies_by_id**
-> delete_iceberg_retention_policies_retention_policies_by_id()
+> delete_iceberg_retention_policies_retention_policies_by_id(authorization=authorization)
 
 Delete all retention-policies.
 
@@ -1775,16 +2284,20 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete all retention-policies.
-    api_instance.delete_iceberg_retention_policies_retention_policies_by_id()
+    api_instance.delete_iceberg_retention_policies_retention_policies_by_id(authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->delete_iceberg_retention_policies_retention_policies_by_id: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1802,7 +2315,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_retention_policy_retention_policy_by_id**
-> delete_iceberg_retention_policy_retention_policy_by_id(retention_policy_name)
+> delete_iceberg_retention_policy_retention_policy_by_id(retention_policy_name, authorization=authorization)
 
 Delete a retention-policy.
 
@@ -1819,10 +2332,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 retention_policy_name = 'retention_policy_name_example' # str | ID of retention-policy-name
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete a retention-policy.
-    api_instance.delete_iceberg_retention_policy_retention_policy_by_id(retention_policy_name)
+    api_instance.delete_iceberg_retention_policy_retention_policy_by_id(retention_policy_name, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->delete_iceberg_retention_policy_retention_policy_by_id: %s\n" % e)
 ```
@@ -1832,6 +2346,295 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **retention_policy_name** | **str**| ID of retention-policy-name | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_iceberg_system_destination_by_id**
+> delete_iceberg_system_destination_by_id(name, authorization=authorization)
+
+Delete destination by name
+
+Delete a destination by `name`. Delete will fail if the destination is being referenced by a report.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+name = 'name_example' # str | Name of destination
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete destination by name
+    api_instance.delete_iceberg_system_destination_by_id(name, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->delete_iceberg_system_destination_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of destination | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_iceberg_system_destinations**
+> delete_iceberg_system_destinations(authorization=authorization)
+
+Delete destinations by name
+
+Delete all destinations. This will fail if any destination is referenced in any report.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete destinations by name
+    api_instance.delete_iceberg_system_destinations(authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->delete_iceberg_system_destinations: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_iceberg_system_report_by_id**
+> delete_iceberg_system_report_by_id(name, authorization=authorization)
+
+Delete report by name
+
+Delete a report by `name`. Delete will fail if the report is being referenced by a device-group or network-group.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+name = 'name_example' # str | Name of report
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete report by name
+    api_instance.delete_iceberg_system_report_by_id(name, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->delete_iceberg_system_report_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of report | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_iceberg_system_reports**
+> delete_iceberg_system_reports(authorization=authorization)
+
+Delete reports by name
+
+Delete all reports. This will fail if any report is referenced in any device-group or network-group.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete reports by name
+    api_instance.delete_iceberg_system_reports(authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->delete_iceberg_system_reports: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_iceberg_system_scheduler_by_id**
+> delete_iceberg_system_scheduler_by_id(name, authorization=authorization)
+
+Delete scheduler by name
+
+Delete a scheduler by `name`. Delete will fail if the scheduler is being referenced by a report.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+name = 'name_example' # str | Name of Scheduler
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete scheduler by name
+    api_instance.delete_iceberg_system_scheduler_by_id(name, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->delete_iceberg_system_scheduler_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of Scheduler | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_iceberg_system_schedulers**
+> delete_iceberg_system_schedulers(authorization=authorization)
+
+Delete schedulers by name
+
+Delete all schedulers. This will fail if any scheduler is referenced in any report.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete schedulers by name
+    api_instance.delete_iceberg_system_schedulers(authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->delete_iceberg_system_schedulers: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1849,7 +2652,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_system_settings_destination_by_id**
-> delete_iceberg_system_settings_destination_by_id(name)
+> delete_iceberg_system_settings_destination_by_id(name, authorization=authorization)
 
 Delete destination by name
 
@@ -1865,11 +2668,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
-name = 'name_example' # str | ID of name
+name = 'name_example' # str | Name of destination
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete destination by name
-    api_instance.delete_iceberg_system_settings_destination_by_id(name)
+    api_instance.delete_iceberg_system_settings_destination_by_id(name, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->delete_iceberg_system_settings_destination_by_id: %s\n" % e)
 ```
@@ -1878,7 +2682,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| ID of name | 
+ **name** | **str**| Name of destination | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1896,7 +2701,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_system_settings_destinations**
-> delete_iceberg_system_settings_destinations()
+> delete_iceberg_system_settings_destinations(authorization=authorization)
 
 Delete destinations by name
 
@@ -1912,16 +2717,20 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete destinations by name
-    api_instance.delete_iceberg_system_settings_destinations()
+    api_instance.delete_iceberg_system_settings_destinations(authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->delete_iceberg_system_settings_destinations: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1939,7 +2748,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_system_settings_report_by_id**
-> delete_iceberg_system_settings_report_by_id(name)
+> delete_iceberg_system_settings_report_by_id(name, authorization=authorization)
 
 Delete report by name
 
@@ -1955,11 +2764,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
-name = 'name_example' # str | ID of name
+name = 'name_example' # str | Name of report
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete report by name
-    api_instance.delete_iceberg_system_settings_report_by_id(name)
+    api_instance.delete_iceberg_system_settings_report_by_id(name, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->delete_iceberg_system_settings_report_by_id: %s\n" % e)
 ```
@@ -1968,7 +2778,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| ID of name | 
+ **name** | **str**| Name of report | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1986,7 +2797,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_system_settings_reports**
-> delete_iceberg_system_settings_reports()
+> delete_iceberg_system_settings_reports(authorization=authorization)
 
 Delete reports by name
 
@@ -2002,16 +2813,20 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete reports by name
-    api_instance.delete_iceberg_system_settings_reports()
+    api_instance.delete_iceberg_system_settings_reports(authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->delete_iceberg_system_settings_reports: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -2029,7 +2844,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_system_settings_scheduler_by_id**
-> delete_iceberg_system_settings_scheduler_by_id(name)
+> delete_iceberg_system_settings_scheduler_by_id(name, authorization=authorization)
 
 Delete scheduler by name
 
@@ -2045,11 +2860,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
-name = 'name_example' # str | ID of name
+name = 'name_example' # str | Name of Scheduler
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete scheduler by name
-    api_instance.delete_iceberg_system_settings_scheduler_by_id(name)
+    api_instance.delete_iceberg_system_settings_scheduler_by_id(name, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->delete_iceberg_system_settings_scheduler_by_id: %s\n" % e)
 ```
@@ -2058,7 +2874,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| ID of name | 
+ **name** | **str**| Name of Scheduler | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -2076,7 +2893,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_system_settings_schedulers**
-> delete_iceberg_system_settings_schedulers()
+> delete_iceberg_system_settings_schedulers(authorization=authorization)
 
 Delete schedulers by name
 
@@ -2092,16 +2909,20 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete schedulers by name
-    api_instance.delete_iceberg_system_settings_schedulers()
+    api_instance.delete_iceberg_system_settings_schedulers(authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->delete_iceberg_system_settings_schedulers: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -2119,7 +2940,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_system_settings_system_settings_by_id**
-> delete_iceberg_system_settings_system_settings_by_id()
+> delete_iceberg_system_settings_system_settings_by_id(authorization=authorization)
 
 Delete system-settings
 
@@ -2135,16 +2956,67 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete system-settings
-    api_instance.delete_iceberg_system_settings_system_settings_by_id()
+    api_instance.delete_iceberg_system_settings_system_settings_by_id(authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->delete_iceberg_system_settings_system_settings_by_id: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_iceberg_system_system_by_id**
+> delete_iceberg_system_system_by_id(authorization=authorization)
+
+Delete system
+
+Delete system. This will delete all the reports, destinations and schedulers. The request will fail of any of the reports is being referenced by a device-group or network-group.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete system
+    api_instance.delete_iceberg_system_system_by_id(authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->delete_iceberg_system_system_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -2162,7 +3034,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_topic_rule_rule_by_id**
-> delete_iceberg_topic_rule_rule_by_id(topic_name, rule_name)
+> delete_iceberg_topic_rule_rule_by_id(topic_name, rule_name, authorization=authorization)
 
 Delete a rule.
 
@@ -2180,10 +3052,11 @@ from pprint import pprint
 api_instance = swagger_client.ConfigurationApi()
 topic_name = 'topic_name_example' # str | ID of topic-name
 rule_name = 'rule_name_example' # str | ID of rule-name
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete a rule.
-    api_instance.delete_iceberg_topic_rule_rule_by_id(topic_name, rule_name)
+    api_instance.delete_iceberg_topic_rule_rule_by_id(topic_name, rule_name, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->delete_iceberg_topic_rule_rule_by_id: %s\n" % e)
 ```
@@ -2194,6 +3067,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **topic_name** | **str**| ID of topic-name | 
  **rule_name** | **str**| ID of rule-name | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -2211,7 +3085,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_topic_topic_by_id**
-> delete_iceberg_topic_topic_by_id(topic_name)
+> delete_iceberg_topic_topic_by_id(topic_name, authorization=authorization)
 
 Delete a topic.
 
@@ -2228,10 +3102,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 topic_name = 'topic_name_example' # str | ID of topic-name
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete a topic.
-    api_instance.delete_iceberg_topic_topic_by_id(topic_name)
+    api_instance.delete_iceberg_topic_topic_by_id(topic_name, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->delete_iceberg_topic_topic_by_id: %s\n" % e)
 ```
@@ -2241,6 +3116,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **topic_name** | **str**| ID of topic-name | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -2258,7 +3134,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_topics_topics_by_id**
-> delete_iceberg_topics_topics_by_id()
+> delete_iceberg_topics_topics_by_id(authorization=authorization)
 
 Delete all topics.
 
@@ -2274,16 +3150,69 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete all topics.
-    api_instance.delete_iceberg_topics_topics_by_id()
+    api_instance.delete_iceberg_topics_topics_by_id(authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->delete_iceberg_topics_topics_by_id: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **first_login**
+> first_login(authorization, password)
+
+Change password after first login
+
+Change password in first login
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object
+password = swagger_client.Password() # Password | set new password
+
+try:
+    # Change password after first login
+    api_instance.first_login(authorization, password)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->first_login: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | 
+ **password** | [**Password**](Password.md)| set new password | 
 
 ### Return type
 
@@ -2301,7 +3230,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_affected_groups**
-> AffectedGroups retrieve_affected_groups()
+> AffectedGroups retrieve_affected_groups(authorization=authorization)
 
 Get all groups affected by un-committed configuration changes.
 
@@ -2317,17 +3246,21 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Get all groups affected by un-committed configuration changes.
-    api_response = api_instance.retrieve_affected_groups()
+    api_response = api_instance.retrieve_affected_groups(authorization=authorization)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_affected_groups: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -2345,7 +3278,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_device_group_status**
-> ServiceStatus retrieve_device_group_status(device_group_name)
+> ServiceStatus retrieve_device_group_status(device_group_name, authorization=authorization)
 
 Get device-group's status.
 
@@ -2362,10 +3295,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 device_group_name = 'device_group_name_example' # str | Name of device-group
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Get device-group's status.
-    api_response = api_instance.retrieve_device_group_status(device_group_name)
+    api_response = api_instance.retrieve_device_group_status(device_group_name, authorization=authorization)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_device_group_status: %s\n" % e)
@@ -2376,6 +3310,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **device_group_name** | **str**| Name of device-group | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -2393,7 +3328,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_device_device**
-> list[str] retrieve_iceberg_device_device(working=working)
+> list[str] retrieve_iceberg_device_device(authorization=authorization, working=working)
 
 List all device-ids.
 
@@ -2409,11 +3344,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
 
 try:
     # List all device-ids.
-    api_response = api_instance.retrieve_iceberg_device_device(working=working)
+    api_response = api_instance.retrieve_iceberg_device_device(authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_device_device: %s\n" % e)
@@ -2423,6 +3359,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
 
 ### Return type
@@ -2441,7 +3378,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_device_device_by_id**
-> DeviceSchema retrieve_iceberg_device_device_by_id(device_id, working=working)
+> DeviceSchema retrieve_iceberg_device_device_by_id(device_id, authorization=authorization, working=working)
 
 Get a device's configuration.
 
@@ -2458,11 +3395,12 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 device_id = 'device_id_example' # str | ID of device-id
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
 
 try:
     # Get a device's configuration.
-    api_response = api_instance.retrieve_iceberg_device_device_by_id(device_id, working=working)
+    api_response = api_instance.retrieve_iceberg_device_device_by_id(device_id, authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_device_device_by_id: %s\n" % e)
@@ -2473,6 +3411,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **device_id** | **str**| ID of device-id | 
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
 
 ### Return type
@@ -2491,7 +3430,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_device_group_device_group**
-> list[str] retrieve_iceberg_device_group_device_group(working=working)
+> list[str] retrieve_iceberg_device_group_device_group(authorization=authorization, working=working)
 
 List all device-group names.
 
@@ -2507,11 +3446,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
 
 try:
     # List all device-group names.
-    api_response = api_instance.retrieve_iceberg_device_group_device_group(working=working)
+    api_response = api_instance.retrieve_iceberg_device_group_device_group(authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_device_group_device_group: %s\n" % e)
@@ -2521,6 +3461,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
 
 ### Return type
@@ -2539,7 +3480,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_device_group_device_group_by_id**
-> DeviceGroupSchema retrieve_iceberg_device_group_device_group_by_id(device_group_name, working=working)
+> DeviceGroupSchema retrieve_iceberg_device_group_device_group_by_id(device_group_name, authorization=authorization, working=working)
 
 Get device-group's configuration.
 
@@ -2556,11 +3497,12 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 device_group_name = 'device_group_name_example' # str | ID of device-group-name
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
 
 try:
     # Get device-group's configuration.
-    api_response = api_instance.retrieve_iceberg_device_group_device_group_by_id(device_group_name, working=working)
+    api_response = api_instance.retrieve_iceberg_device_group_device_group_by_id(device_group_name, authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_device_group_device_group_by_id: %s\n" % e)
@@ -2571,6 +3513,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **device_group_name** | **str**| ID of device-group-name | 
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
 
 ### Return type
@@ -2589,7 +3532,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_device_groups_device_groups**
-> DeviceGroupsSchema retrieve_iceberg_device_groups_device_groups(working=working)
+> DeviceGroupsSchema retrieve_iceberg_device_groups_device_groups(authorization=authorization, working=working)
 
 Get all device-groups' configuration.
 
@@ -2605,11 +3548,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
 
 try:
     # Get all device-groups' configuration.
-    api_response = api_instance.retrieve_iceberg_device_groups_device_groups(working=working)
+    api_response = api_instance.retrieve_iceberg_device_groups_device_groups(authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_device_groups_device_groups: %s\n" % e)
@@ -2619,6 +3563,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
 
 ### Return type
@@ -2637,7 +3582,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_devices_devices**
-> DevicesSchema retrieve_iceberg_devices_devices(working=working)
+> DevicesSchema retrieve_iceberg_devices_devices(authorization=authorization, working=working)
 
 Get all devices' configuration.
 
@@ -2653,11 +3598,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
 
 try:
     # Get all devices' configuration.
-    api_response = api_instance.retrieve_iceberg_devices_devices(working=working)
+    api_response = api_instance.retrieve_iceberg_devices_devices(authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_devices_devices: %s\n" % e)
@@ -2667,6 +3613,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
 
 ### Return type
@@ -2685,7 +3632,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_network_group_network_group**
-> list[str] retrieve_iceberg_network_group_network_group(working=working)
+> list[str] retrieve_iceberg_network_group_network_group(authorization=authorization, working=working)
 
 List all network-group names.
 
@@ -2701,11 +3648,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
 
 try:
     # List all network-group names.
-    api_response = api_instance.retrieve_iceberg_network_group_network_group(working=working)
+    api_response = api_instance.retrieve_iceberg_network_group_network_group(authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_network_group_network_group: %s\n" % e)
@@ -2715,6 +3663,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
 
 ### Return type
@@ -2733,7 +3682,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_network_group_network_group_by_id**
-> NetworkGroupSchema retrieve_iceberg_network_group_network_group_by_id(network_group_name, working=working)
+> NetworkGroupSchema retrieve_iceberg_network_group_network_group_by_id(network_group_name, authorization=authorization, working=working)
 
 Get network-group's configuration.
 
@@ -2750,11 +3699,12 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 network_group_name = 'network_group_name_example' # str | ID of network-group-name
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
 
 try:
     # Get network-group's configuration.
-    api_response = api_instance.retrieve_iceberg_network_group_network_group_by_id(network_group_name, working=working)
+    api_response = api_instance.retrieve_iceberg_network_group_network_group_by_id(network_group_name, authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_network_group_network_group_by_id: %s\n" % e)
@@ -2765,6 +3715,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **network_group_name** | **str**| ID of network-group-name | 
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
 
 ### Return type
@@ -2783,7 +3734,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_network_groups_network_groups**
-> NetworkGroupsSchema retrieve_iceberg_network_groups_network_groups(working=working)
+> NetworkGroupsSchema retrieve_iceberg_network_groups_network_groups(authorization=authorization, working=working)
 
 Get all network-groups' configuration.
 
@@ -2799,11 +3750,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
 
 try:
     # Get all network-groups' configuration.
-    api_response = api_instance.retrieve_iceberg_network_groups_network_groups(working=working)
+    api_response = api_instance.retrieve_iceberg_network_groups_network_groups(authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_network_groups_network_groups: %s\n" % e)
@@ -2813,6 +3765,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
 
 ### Return type
@@ -2831,7 +3784,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_notification_notification**
-> list[str] retrieve_iceberg_notification_notification(working=working)
+> list[str] retrieve_iceberg_notification_notification(authorization=authorization, working=working)
 
 List all notification-names.
 
@@ -2847,11 +3800,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
 
 try:
     # List all notification-names.
-    api_response = api_instance.retrieve_iceberg_notification_notification(working=working)
+    api_response = api_instance.retrieve_iceberg_notification_notification(authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_notification_notification: %s\n" % e)
@@ -2861,6 +3815,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
 
 ### Return type
@@ -2879,7 +3834,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_notification_notification_by_id**
-> NotificationSchema retrieve_iceberg_notification_notification_by_id(notification_name, working=working)
+> NotificationSchema retrieve_iceberg_notification_notification_by_id(notification_name, authorization=authorization, working=working)
 
 Get a notification's configuration.
 
@@ -2896,11 +3851,12 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 notification_name = 'notification_name_example' # str | ID of notification-name
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
 
 try:
     # Get a notification's configuration.
-    api_response = api_instance.retrieve_iceberg_notification_notification_by_id(notification_name, working=working)
+    api_response = api_instance.retrieve_iceberg_notification_notification_by_id(notification_name, authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_notification_notification_by_id: %s\n" % e)
@@ -2911,6 +3867,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **notification_name** | **str**| ID of notification-name | 
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
 
 ### Return type
@@ -2929,7 +3886,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_notifications_notifications_by_id**
-> NotificationsSchema retrieve_iceberg_notifications_notifications_by_id(working=working)
+> NotificationsSchema retrieve_iceberg_notifications_notifications_by_id(authorization=authorization, working=working)
 
 Get all notifications' configuration.
 
@@ -2945,11 +3902,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
 
 try:
     # Get all notifications' configuration.
-    api_response = api_instance.retrieve_iceberg_notifications_notifications_by_id(working=working)
+    api_response = api_instance.retrieve_iceberg_notifications_notifications_by_id(authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_notifications_notifications_by_id: %s\n" % e)
@@ -2959,6 +3917,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
 
 ### Return type
@@ -2977,7 +3936,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_playbook_playbook**
-> list[str] retrieve_iceberg_playbook_playbook(working=working)
+> list[str] retrieve_iceberg_playbook_playbook(authorization=authorization, working=working)
 
 List all playbook-names.
 
@@ -2993,11 +3952,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
 
 try:
     # List all playbook-names.
-    api_response = api_instance.retrieve_iceberg_playbook_playbook(working=working)
+    api_response = api_instance.retrieve_iceberg_playbook_playbook(authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_playbook_playbook: %s\n" % e)
@@ -3007,6 +3967,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
 
 ### Return type
@@ -3025,7 +3986,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_playbook_playbook_by_id**
-> PlaybookSchema retrieve_iceberg_playbook_playbook_by_id(playbook_name, working=working)
+> PlaybookSchema retrieve_iceberg_playbook_playbook_by_id(playbook_name, authorization=authorization, working=working)
 
 Get a playbook's configuration.
 
@@ -3042,11 +4003,12 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 playbook_name = 'playbook_name_example' # str | ID of playbook-name
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
 
 try:
     # Get a playbook's configuration.
-    api_response = api_instance.retrieve_iceberg_playbook_playbook_by_id(playbook_name, working=working)
+    api_response = api_instance.retrieve_iceberg_playbook_playbook_by_id(playbook_name, authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_playbook_playbook_by_id: %s\n" % e)
@@ -3057,6 +4019,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **playbook_name** | **str**| ID of playbook-name | 
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
 
 ### Return type
@@ -3075,7 +4038,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_playbooks_playbooks_by_id**
-> PlaybooksSchema retrieve_iceberg_playbooks_playbooks_by_id(working=working)
+> PlaybooksSchema retrieve_iceberg_playbooks_playbooks_by_id(authorization=authorization, working=working)
 
 Get all playbooks' configuration.
 
@@ -3091,11 +4054,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
 
 try:
     # Get all playbooks' configuration.
-    api_response = api_instance.retrieve_iceberg_playbooks_playbooks_by_id(working=working)
+    api_response = api_instance.retrieve_iceberg_playbooks_playbooks_by_id(authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_playbooks_playbooks_by_id: %s\n" % e)
@@ -3105,6 +4069,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
 
 ### Return type
@@ -3123,7 +4088,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_retention_policies_retention_policies_by_id**
-> RetentionPoliciesSchema retrieve_iceberg_retention_policies_retention_policies_by_id(working=working)
+> RetentionPoliciesSchema retrieve_iceberg_retention_policies_retention_policies_by_id(authorization=authorization, working=working)
 
 Get all retention-policies' configuration.
 
@@ -3139,11 +4104,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
 
 try:
     # Get all retention-policies' configuration.
-    api_response = api_instance.retrieve_iceberg_retention_policies_retention_policies_by_id(working=working)
+    api_response = api_instance.retrieve_iceberg_retention_policies_retention_policies_by_id(authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_retention_policies_retention_policies_by_id: %s\n" % e)
@@ -3153,6 +4119,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
 
 ### Return type
@@ -3171,7 +4138,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_retention_policy_retention_policy**
-> list[str] retrieve_iceberg_retention_policy_retention_policy(working=working)
+> list[str] retrieve_iceberg_retention_policy_retention_policy(authorization=authorization, working=working)
 
 List all retention-policy-names.
 
@@ -3187,11 +4154,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
 
 try:
     # List all retention-policy-names.
-    api_response = api_instance.retrieve_iceberg_retention_policy_retention_policy(working=working)
+    api_response = api_instance.retrieve_iceberg_retention_policy_retention_policy(authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_retention_policy_retention_policy: %s\n" % e)
@@ -3201,6 +4169,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
 
 ### Return type
@@ -3219,7 +4188,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_retention_policy_retention_policy_by_id**
-> RetentionPolicySchema retrieve_iceberg_retention_policy_retention_policy_by_id(retention_policy_name, working=working)
+> RetentionPolicySchema retrieve_iceberg_retention_policy_retention_policy_by_id(retention_policy_name, authorization=authorization, working=working)
 
 Get a retention-policy's configuration.
 
@@ -3236,11 +4205,12 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 retention_policy_name = 'retention_policy_name_example' # str | ID of retention-policy-name
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
 
 try:
     # Get a retention-policy's configuration.
-    api_response = api_instance.retrieve_iceberg_retention_policy_retention_policy_by_id(retention_policy_name, working=working)
+    api_response = api_instance.retrieve_iceberg_retention_policy_retention_policy_by_id(retention_policy_name, authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_retention_policy_retention_policy_by_id: %s\n" % e)
@@ -3251,6 +4221,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **retention_policy_name** | **str**| ID of retention-policy-name | 
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
 
 ### Return type
@@ -3268,8 +4239,8 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **retrieve_iceberg_system_settings_destination_by_id**
-> DestinationSchema retrieve_iceberg_system_settings_destination_by_id(name, working=working)
+# **retrieve_iceberg_system_destination_by_id**
+> DestinationSchema retrieve_iceberg_system_destination_by_id(name, authorization=authorization, working=working)
 
 Retrieve destination by name
 
@@ -3285,12 +4256,319 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
-name = 'name_example' # str | ID of name
+name = 'name_example' # str | Name of destination
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries undeployed configuration (optional)
 
 try:
     # Retrieve destination by name
-    api_response = api_instance.retrieve_iceberg_system_settings_destination_by_id(name, working=working)
+    api_response = api_instance.retrieve_iceberg_system_destination_by_id(name, authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->retrieve_iceberg_system_destination_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of destination | 
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**DestinationSchema**](DestinationSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_iceberg_system_destinations**
+> DestinationsSchema retrieve_iceberg_system_destinations(authorization=authorization, working=working)
+
+Retrieve destinations by name
+
+Get the configuration details of all destinations.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve destinations by name
+    api_response = api_instance.retrieve_iceberg_system_destinations(authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->retrieve_iceberg_system_destinations: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**DestinationsSchema**](DestinationsSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_iceberg_system_report_by_id**
+> ReportSchema retrieve_iceberg_system_report_by_id(name, authorization=authorization, working=working)
+
+Retrieve report by name
+
+Get the configuration details of a report by its `name`.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+name = 'name_example' # str | Name of report
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve report by name
+    api_response = api_instance.retrieve_iceberg_system_report_by_id(name, authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->retrieve_iceberg_system_report_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of report | 
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**ReportSchema**](ReportSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_iceberg_system_reports**
+> ReportsSchema retrieve_iceberg_system_reports(authorization=authorization, working=working)
+
+Retrieve reports by name
+
+Get the configuration details of all reports.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve reports by name
+    api_response = api_instance.retrieve_iceberg_system_reports(authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->retrieve_iceberg_system_reports: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**ReportsSchema**](ReportsSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_iceberg_system_scheduler_by_id**
+> SchedulerSchema retrieve_iceberg_system_scheduler_by_id(name, authorization=authorization, working=working)
+
+Retrieve scheduler by name
+
+Get the configuration details of a scheduler by its `name`.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+name = 'name_example' # str | Name of Scheduler
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve scheduler by name
+    api_response = api_instance.retrieve_iceberg_system_scheduler_by_id(name, authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->retrieve_iceberg_system_scheduler_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of Scheduler | 
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**SchedulerSchema**](SchedulerSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_iceberg_system_schedulers**
+> SchedulersSchema retrieve_iceberg_system_schedulers(authorization=authorization, working=working)
+
+Retrieve schedulers by name
+
+Get the configuration details of all schedulers.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve schedulers by name
+    api_response = api_instance.retrieve_iceberg_system_schedulers(authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->retrieve_iceberg_system_schedulers: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**SchedulersSchema**](SchedulersSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_iceberg_system_settings_destination_by_id**
+> DestinationSchema retrieve_iceberg_system_settings_destination_by_id(name, authorization=authorization, working=working)
+
+Retrieve destination by name
+
+Get the configuration details of a destination by its `name`.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+name = 'name_example' # str | Name of destination
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve destination by name
+    api_response = api_instance.retrieve_iceberg_system_settings_destination_by_id(name, authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_system_settings_destination_by_id: %s\n" % e)
@@ -3300,7 +4578,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| ID of name | 
+ **name** | **str**| Name of destination | 
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries undeployed configuration | [optional] 
 
 ### Return type
@@ -3319,7 +4598,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_system_settings_destinations**
-> DestinationsSchema retrieve_iceberg_system_settings_destinations(working=working)
+> DestinationsSchema retrieve_iceberg_system_settings_destinations(authorization=authorization, working=working)
 
 Retrieve destinations by name
 
@@ -3335,11 +4614,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries undeployed configuration (optional)
 
 try:
     # Retrieve destinations by name
-    api_response = api_instance.retrieve_iceberg_system_settings_destinations(working=working)
+    api_response = api_instance.retrieve_iceberg_system_settings_destinations(authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_system_settings_destinations: %s\n" % e)
@@ -3349,6 +4629,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries undeployed configuration | [optional] 
 
 ### Return type
@@ -3367,7 +4648,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_system_settings_report_by_id**
-> ReportSchema retrieve_iceberg_system_settings_report_by_id(name, working=working)
+> ReportSchema retrieve_iceberg_system_settings_report_by_id(name, authorization=authorization, working=working)
 
 Retrieve report by name
 
@@ -3383,12 +4664,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
-name = 'name_example' # str | ID of name
+name = 'name_example' # str | Name of report
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries undeployed configuration (optional)
 
 try:
     # Retrieve report by name
-    api_response = api_instance.retrieve_iceberg_system_settings_report_by_id(name, working=working)
+    api_response = api_instance.retrieve_iceberg_system_settings_report_by_id(name, authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_system_settings_report_by_id: %s\n" % e)
@@ -3398,7 +4680,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| ID of name | 
+ **name** | **str**| Name of report | 
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries undeployed configuration | [optional] 
 
 ### Return type
@@ -3417,7 +4700,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_system_settings_reports**
-> ReportsSchema retrieve_iceberg_system_settings_reports(working=working)
+> ReportsSchema retrieve_iceberg_system_settings_reports(authorization=authorization, working=working)
 
 Retrieve reports by name
 
@@ -3433,11 +4716,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries undeployed configuration (optional)
 
 try:
     # Retrieve reports by name
-    api_response = api_instance.retrieve_iceberg_system_settings_reports(working=working)
+    api_response = api_instance.retrieve_iceberg_system_settings_reports(authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_system_settings_reports: %s\n" % e)
@@ -3447,6 +4731,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries undeployed configuration | [optional] 
 
 ### Return type
@@ -3465,7 +4750,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_system_settings_scheduler_by_id**
-> SchedulerSchema retrieve_iceberg_system_settings_scheduler_by_id(name, working=working)
+> SchedulerSchema retrieve_iceberg_system_settings_scheduler_by_id(name, authorization=authorization, working=working)
 
 Retrieve scheduler by name
 
@@ -3481,12 +4766,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
-name = 'name_example' # str | ID of name
+name = 'name_example' # str | Name of Scheduler
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries undeployed configuration (optional)
 
 try:
     # Retrieve scheduler by name
-    api_response = api_instance.retrieve_iceberg_system_settings_scheduler_by_id(name, working=working)
+    api_response = api_instance.retrieve_iceberg_system_settings_scheduler_by_id(name, authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_system_settings_scheduler_by_id: %s\n" % e)
@@ -3496,7 +4782,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| ID of name | 
+ **name** | **str**| Name of Scheduler | 
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries undeployed configuration | [optional] 
 
 ### Return type
@@ -3515,7 +4802,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_system_settings_schedulers**
-> SchedulersSchema retrieve_iceberg_system_settings_schedulers(working=working)
+> SchedulersSchema retrieve_iceberg_system_settings_schedulers(authorization=authorization, working=working)
 
 Retrieve schedulers by name
 
@@ -3531,11 +4818,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries undeployed configuration (optional)
 
 try:
     # Retrieve schedulers by name
-    api_response = api_instance.retrieve_iceberg_system_settings_schedulers(working=working)
+    api_response = api_instance.retrieve_iceberg_system_settings_schedulers(authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_system_settings_schedulers: %s\n" % e)
@@ -3545,6 +4833,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries undeployed configuration | [optional] 
 
 ### Return type
@@ -3563,7 +4852,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_system_settings_system_settings**
-> SystemSettingsSchema retrieve_iceberg_system_settings_system_settings(working=working)
+> SystemSettingsSchema retrieve_iceberg_system_settings_system_settings(authorization=authorization, working=working)
 
 Retrieve system-settings
 
@@ -3579,11 +4868,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries undeployed configuration (optional)
 
 try:
     # Retrieve system-settings
-    api_response = api_instance.retrieve_iceberg_system_settings_system_settings(working=working)
+    api_response = api_instance.retrieve_iceberg_system_settings_system_settings(authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_system_settings_system_settings: %s\n" % e)
@@ -3593,6 +4883,57 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**SystemSettingsSchema**](SystemSettingsSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_iceberg_system_system**
+> SystemSettingsSchema retrieve_iceberg_system_system(authorization=authorization, working=working)
+
+Retrieve system data
+
+Retrieve system details
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve system data
+    api_response = api_instance.retrieve_iceberg_system_system(authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->retrieve_iceberg_system_system: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries undeployed configuration | [optional] 
 
 ### Return type
@@ -3611,7 +4952,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_topic_rule_rule**
-> list[str] retrieve_iceberg_topic_rule_rule(topic_name, working=working)
+> list[str] retrieve_iceberg_topic_rule_rule(topic_name, authorization=authorization, working=working, action=action)
 
 List all rule-names in a topic.
 
@@ -3628,11 +4969,13 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 topic_name = 'topic_name_example' # str | ID of topic-name
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
+action = 'action_example' # str | Action to be performed (optional)
 
 try:
     # List all rule-names in a topic.
-    api_response = api_instance.retrieve_iceberg_topic_rule_rule(topic_name, working=working)
+    api_response = api_instance.retrieve_iceberg_topic_rule_rule(topic_name, authorization=authorization, working=working, action=action)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_topic_rule_rule: %s\n" % e)
@@ -3643,7 +4986,9 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **topic_name** | **str**| ID of topic-name | 
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
+ **action** | **str**| Action to be performed | [optional] 
 
 ### Return type
 
@@ -3661,7 +5006,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_topic_rule_rule_by_id**
-> RuleSchema retrieve_iceberg_topic_rule_rule_by_id(topic_name, rule_name, working=working)
+> RuleSchema retrieve_iceberg_topic_rule_rule_by_id(topic_name, rule_name, authorization=authorization, working=working)
 
 Get a rule's configuration.
 
@@ -3679,11 +5024,12 @@ from pprint import pprint
 api_instance = swagger_client.ConfigurationApi()
 topic_name = 'topic_name_example' # str | ID of topic-name
 rule_name = 'rule_name_example' # str | ID of rule-name
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
 
 try:
     # Get a rule's configuration.
-    api_response = api_instance.retrieve_iceberg_topic_rule_rule_by_id(topic_name, rule_name, working=working)
+    api_response = api_instance.retrieve_iceberg_topic_rule_rule_by_id(topic_name, rule_name, authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_topic_rule_rule_by_id: %s\n" % e)
@@ -3695,6 +5041,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **topic_name** | **str**| ID of topic-name | 
  **rule_name** | **str**| ID of rule-name | 
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
 
 ### Return type
@@ -3713,7 +5060,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_topic_topic**
-> list[str] retrieve_iceberg_topic_topic(working=working)
+> list[str] retrieve_iceberg_topic_topic(authorization=authorization, working=working)
 
 List all topic-names.
 
@@ -3729,11 +5076,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
 
 try:
     # List all topic-names.
-    api_response = api_instance.retrieve_iceberg_topic_topic(working=working)
+    api_response = api_instance.retrieve_iceberg_topic_topic(authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_topic_topic: %s\n" % e)
@@ -3743,6 +5091,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
 
 ### Return type
@@ -3761,7 +5110,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_topic_topic_by_id**
-> TopicSchema retrieve_iceberg_topic_topic_by_id(topic_name, working=working)
+> TopicSchema retrieve_iceberg_topic_topic_by_id(topic_name, authorization=authorization, working=working)
 
 Get a topic's configuration.
 
@@ -3778,11 +5127,12 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 topic_name = 'topic_name_example' # str | ID of topic-name
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
 
 try:
     # Get a topic's configuration.
-    api_response = api_instance.retrieve_iceberg_topic_topic_by_id(topic_name, working=working)
+    api_response = api_instance.retrieve_iceberg_topic_topic_by_id(topic_name, authorization=authorization, working=working)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_topic_topic_by_id: %s\n" % e)
@@ -3793,6 +5143,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **topic_name** | **str**| ID of topic-name | 
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
 
 ### Return type
@@ -3811,7 +5162,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_topics_topics**
-> TopicsSchema retrieve_iceberg_topics_topics(working=working)
+> TopicsSchema retrieve_iceberg_topics_topics(authorization=authorization, working=working, sort=sort)
 
 Get all topics' configuration.
 
@@ -3827,11 +5178,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 working = true # bool | true queries un-committed configuration (optional)
+sort = 'sort_example' # str | asc/desc queries sorted configuration (optional)
 
 try:
     # Get all topics' configuration.
-    api_response = api_instance.retrieve_iceberg_topics_topics(working=working)
+    api_response = api_instance.retrieve_iceberg_topics_topics(authorization=authorization, working=working, sort=sort)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_iceberg_topics_topics: %s\n" % e)
@@ -3841,7 +5194,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
  **working** | **bool**| true queries un-committed configuration | [optional] 
+ **sort** | **str**| asc/desc queries sorted configuration | [optional] 
 
 ### Return type
 
@@ -3859,7 +5214,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_network_group_status**
-> ServiceStatus retrieve_network_group_status(network_group_name)
+> ServiceStatus retrieve_network_group_status(network_group_name, authorization=authorization)
 
 Get network-group's status.
 
@@ -3876,10 +5231,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 network_group_name = 'network_group_name_example' # str | Name of network-group
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Get network-group's status.
-    api_response = api_instance.retrieve_network_group_status(network_group_name)
+    api_response = api_instance.retrieve_network_group_status(network_group_name, authorization=authorization)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->retrieve_network_group_status: %s\n" % e)
@@ -3890,6 +5246,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **network_group_name** | **str**| Name of network-group | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -3906,8 +5263,55 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **retrieve_orchestrator**
+> retrieve_orchestrator(authorization=authorization)
+
+Get Orchestrator type
+
+Get orchestrator type. Will be one of kubernetes or compose.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Get Orchestrator type
+    api_instance.retrieve_orchestrator(authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->retrieve_orchestrator: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **rollback_unsaved_configuration**
-> rollback_unsaved_configuration()
+> rollback_unsaved_configuration(authorization=authorization)
 
 Delete the un-committed configuration.
 
@@ -3923,16 +5327,20 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Delete the un-committed configuration.
-    api_instance.rollback_unsaved_configuration()
+    api_instance.rollback_unsaved_configuration(authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->rollback_unsaved_configuration: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -3950,7 +5358,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_device_device_by_id**
-> update_iceberg_device_device_by_id(device_id, device)
+> update_iceberg_device_device_by_id(device_id, device, authorization=authorization)
 
 Overwrite a device.
 
@@ -3968,10 +5376,11 @@ from pprint import pprint
 api_instance = swagger_client.ConfigurationApi()
 device_id = 'device_id_example' # str | ID of device-id
 device = swagger_client.DeviceSchema() # DeviceSchema | devicebody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Overwrite a device.
-    api_instance.update_iceberg_device_device_by_id(device_id, device)
+    api_instance.update_iceberg_device_device_by_id(device_id, device, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_device_device_by_id: %s\n" % e)
 ```
@@ -3982,6 +5391,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **device_id** | **str**| ID of device-id | 
  **device** | [**DeviceSchema**](DeviceSchema.md)| devicebody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -3999,7 +5409,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_device_group_device_group_by_id**
-> update_iceberg_device_group_device_group_by_id(device_group_name, device_group)
+> update_iceberg_device_group_device_group_by_id(device_group_name, device_group, authorization=authorization)
 
 Overwrite a device-group.
 
@@ -4017,10 +5427,11 @@ from pprint import pprint
 api_instance = swagger_client.ConfigurationApi()
 device_group_name = 'device_group_name_example' # str | ID of device-group-name
 device_group = swagger_client.DeviceGroupSchema() # DeviceGroupSchema | device_groupbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Overwrite a device-group.
-    api_instance.update_iceberg_device_group_device_group_by_id(device_group_name, device_group)
+    api_instance.update_iceberg_device_group_device_group_by_id(device_group_name, device_group, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_device_group_device_group_by_id: %s\n" % e)
 ```
@@ -4031,6 +5442,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **device_group_name** | **str**| ID of device-group-name | 
  **device_group** | [**DeviceGroupSchema**](DeviceGroupSchema.md)| device_groupbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -4048,7 +5460,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_device_groups_device_groups_by_id**
-> update_iceberg_device_groups_device_groups_by_id(device_groups)
+> update_iceberg_device_groups_device_groups_by_id(device_groups, authorization=authorization)
 
 Overwrite device-groups.
 
@@ -4065,10 +5477,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 device_groups = swagger_client.DeviceGroupsSchema() # DeviceGroupsSchema | device-groupsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Overwrite device-groups.
-    api_instance.update_iceberg_device_groups_device_groups_by_id(device_groups)
+    api_instance.update_iceberg_device_groups_device_groups_by_id(device_groups, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_device_groups_device_groups_by_id: %s\n" % e)
 ```
@@ -4078,6 +5491,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **device_groups** | [**DeviceGroupsSchema**](DeviceGroupsSchema.md)| device-groupsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -4095,7 +5509,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_devices_devices_by_id**
-> update_iceberg_devices_devices_by_id(devices)
+> update_iceberg_devices_devices_by_id(devices, authorization=authorization)
 
 Overwrite devices.
 
@@ -4112,10 +5526,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 devices = swagger_client.DevicesSchema() # DevicesSchema | devicesbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Overwrite devices.
-    api_instance.update_iceberg_devices_devices_by_id(devices)
+    api_instance.update_iceberg_devices_devices_by_id(devices, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_devices_devices_by_id: %s\n" % e)
 ```
@@ -4125,6 +5540,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **devices** | [**DevicesSchema**](DevicesSchema.md)| devicesbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -4142,7 +5558,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_network_group_network_group_by_id**
-> update_iceberg_network_group_network_group_by_id(network_group_name, network_group)
+> update_iceberg_network_group_network_group_by_id(network_group_name, network_group, authorization=authorization)
 
 Overwrite a network-group.
 
@@ -4160,10 +5576,11 @@ from pprint import pprint
 api_instance = swagger_client.ConfigurationApi()
 network_group_name = 'network_group_name_example' # str | ID of network-group-name
 network_group = swagger_client.NetworkGroupSchema() # NetworkGroupSchema | network_groupbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Overwrite a network-group.
-    api_instance.update_iceberg_network_group_network_group_by_id(network_group_name, network_group)
+    api_instance.update_iceberg_network_group_network_group_by_id(network_group_name, network_group, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_network_group_network_group_by_id: %s\n" % e)
 ```
@@ -4174,6 +5591,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **network_group_name** | **str**| ID of network-group-name | 
  **network_group** | [**NetworkGroupSchema**](NetworkGroupSchema.md)| network_groupbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -4191,7 +5609,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_network_groups_network_groups_by_id**
-> update_iceberg_network_groups_network_groups_by_id(network_groups)
+> update_iceberg_network_groups_network_groups_by_id(network_groups, authorization=authorization)
 
 Overwrite network-groups.
 
@@ -4208,10 +5626,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 network_groups = swagger_client.NetworkGroupsSchema() # NetworkGroupsSchema | network-groupsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Overwrite network-groups.
-    api_instance.update_iceberg_network_groups_network_groups_by_id(network_groups)
+    api_instance.update_iceberg_network_groups_network_groups_by_id(network_groups, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_network_groups_network_groups_by_id: %s\n" % e)
 ```
@@ -4221,6 +5640,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **network_groups** | [**NetworkGroupsSchema**](NetworkGroupsSchema.md)| network-groupsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -4238,7 +5658,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_notification_notification_by_id**
-> update_iceberg_notification_notification_by_id(notification_name, notification)
+> update_iceberg_notification_notification_by_id(notification_name, notification, authorization=authorization)
 
 Overwrite a notification.
 
@@ -4256,10 +5676,11 @@ from pprint import pprint
 api_instance = swagger_client.ConfigurationApi()
 notification_name = 'notification_name_example' # str | ID of notification-name
 notification = swagger_client.NotificationSchema() # NotificationSchema | notificationbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Overwrite a notification.
-    api_instance.update_iceberg_notification_notification_by_id(notification_name, notification)
+    api_instance.update_iceberg_notification_notification_by_id(notification_name, notification, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_notification_notification_by_id: %s\n" % e)
 ```
@@ -4270,6 +5691,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **notification_name** | **str**| ID of notification-name | 
  **notification** | [**NotificationSchema**](NotificationSchema.md)| notificationbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -4287,7 +5709,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_notifications_notifications_by_id**
-> update_iceberg_notifications_notifications_by_id(notifications)
+> update_iceberg_notifications_notifications_by_id(notifications, authorization=authorization)
 
 Overwrite notifications.
 
@@ -4304,10 +5726,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 notifications = swagger_client.NotificationsSchema() # NotificationsSchema | notificationsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Overwrite notifications.
-    api_instance.update_iceberg_notifications_notifications_by_id(notifications)
+    api_instance.update_iceberg_notifications_notifications_by_id(notifications, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_notifications_notifications_by_id: %s\n" % e)
 ```
@@ -4317,6 +5740,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **notifications** | [**NotificationsSchema**](NotificationsSchema.md)| notificationsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -4334,7 +5758,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_playbook_playbook_by_id**
-> update_iceberg_playbook_playbook_by_id(playbook_name, playbook)
+> update_iceberg_playbook_playbook_by_id(playbook_name, playbook, authorization=authorization)
 
 Overwrite a playbook.
 
@@ -4352,10 +5776,11 @@ from pprint import pprint
 api_instance = swagger_client.ConfigurationApi()
 playbook_name = 'playbook_name_example' # str | ID of playbook-name
 playbook = swagger_client.PlaybookSchema() # PlaybookSchema | playbookbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Overwrite a playbook.
-    api_instance.update_iceberg_playbook_playbook_by_id(playbook_name, playbook)
+    api_instance.update_iceberg_playbook_playbook_by_id(playbook_name, playbook, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_playbook_playbook_by_id: %s\n" % e)
 ```
@@ -4366,6 +5791,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **playbook_name** | **str**| ID of playbook-name | 
  **playbook** | [**PlaybookSchema**](PlaybookSchema.md)| playbookbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -4383,7 +5809,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_playbooks_playbooks_by_id**
-> update_iceberg_playbooks_playbooks_by_id(playbooks)
+> update_iceberg_playbooks_playbooks_by_id(playbooks, authorization=authorization)
 
 Overwrite all playbooks.
 
@@ -4400,10 +5826,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 playbooks = swagger_client.PlaybooksSchema() # PlaybooksSchema | playbooksbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Overwrite all playbooks.
-    api_instance.update_iceberg_playbooks_playbooks_by_id(playbooks)
+    api_instance.update_iceberg_playbooks_playbooks_by_id(playbooks, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_playbooks_playbooks_by_id: %s\n" % e)
 ```
@@ -4413,6 +5840,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **playbooks** | [**PlaybooksSchema**](PlaybooksSchema.md)| playbooksbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -4430,7 +5858,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_retention_policies_retention_policies_id**
-> update_iceberg_retention_policies_retention_policies_id(retention_policies)
+> update_iceberg_retention_policies_retention_policies_id(retention_policies, authorization=authorization)
 
 Overwrite all retention-policies.
 
@@ -4447,10 +5875,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 retention_policies = swagger_client.RetentionPoliciesSchema() # RetentionPoliciesSchema | retention-policies body object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Overwrite all retention-policies.
-    api_instance.update_iceberg_retention_policies_retention_policies_id(retention_policies)
+    api_instance.update_iceberg_retention_policies_retention_policies_id(retention_policies, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_retention_policies_retention_policies_id: %s\n" % e)
 ```
@@ -4460,6 +5889,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **retention_policies** | [**RetentionPoliciesSchema**](RetentionPoliciesSchema.md)| retention-policies body object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -4477,7 +5907,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_retention_policy_retention_policy_by_id**
-> update_iceberg_retention_policy_retention_policy_by_id(retention_policy_name, retention_policy)
+> update_iceberg_retention_policy_retention_policy_by_id(retention_policy_name, retention_policy, authorization=authorization)
 
 Overwrite a retention-policy.
 
@@ -4495,10 +5925,11 @@ from pprint import pprint
 api_instance = swagger_client.ConfigurationApi()
 retention_policy_name = 'retention_policy_name_example' # str | ID of retention-policy-name
 retention_policy = swagger_client.RetentionPolicySchema() # RetentionPolicySchema | retention_policybody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Overwrite a retention-policy.
-    api_instance.update_iceberg_retention_policy_retention_policy_by_id(retention_policy_name, retention_policy)
+    api_instance.update_iceberg_retention_policy_retention_policy_by_id(retention_policy_name, retention_policy, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_retention_policy_retention_policy_by_id: %s\n" % e)
 ```
@@ -4509,6 +5940,307 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **retention_policy_name** | **str**| ID of retention-policy-name | 
  **retention_policy** | [**RetentionPolicySchema**](RetentionPolicySchema.md)| retention_policybody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_iceberg_system_destination_by_id**
+> update_iceberg_system_destination_by_id(name, destination, authorization=authorization)
+
+Update destination by name
+
+Overwrite a destination by destination name. The destination name specified in the URL and the request body must match.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+name = 'name_example' # str | Name of destination
+destination = swagger_client.DestinationSchema() # DestinationSchema | destinationsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Update destination by name
+    api_instance.update_iceberg_system_destination_by_id(name, destination, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->update_iceberg_system_destination_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of destination | 
+ **destination** | [**DestinationSchema**](DestinationSchema.md)| destinationsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_iceberg_system_destinations**
+> update_iceberg_system_destinations(destinations, authorization=authorization)
+
+Update destinations by name
+
+Overwrite the existing configuration of destinations. New destinations are created and the existing destinations are overwritten with new content. If some existing destinations are not present in the payload, such destinations are deleted. This will fail if any of the destinations that are not present in the payload are referenced by a report.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+destinations = swagger_client.DestinationsSchema() # DestinationsSchema | destinationsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Update destinations by name
+    api_instance.update_iceberg_system_destinations(destinations, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->update_iceberg_system_destinations: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **destinations** | [**DestinationsSchema**](DestinationsSchema.md)| destinationsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_iceberg_system_report_by_id**
+> update_iceberg_system_report_by_id(name, report, authorization=authorization)
+
+Update report by name
+
+Overwrite a report by report name. The report name specified in the URL and the request body must match.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+name = 'name_example' # str | Name of report
+report = swagger_client.ReportSchema() # ReportSchema | reportsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Update report by name
+    api_instance.update_iceberg_system_report_by_id(name, report, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->update_iceberg_system_report_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of report | 
+ **report** | [**ReportSchema**](ReportSchema.md)| reportsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_iceberg_system_reports**
+> update_iceberg_system_reports(reports, authorization=authorization)
+
+Update reports by name
+
+Overwrite the existing configuration of reports. New reports are created and the existing reports are overwritten with new content. If some existing reports are not present in the payload, such reports are deleted. This will fail if any of the reports that are not present in the payload are referenced by a device-group or network-group.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+reports = swagger_client.ReportsSchema() # ReportsSchema | reportsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Update reports by name
+    api_instance.update_iceberg_system_reports(reports, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->update_iceberg_system_reports: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **reports** | [**ReportsSchema**](ReportsSchema.md)| reportsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_iceberg_system_scheduler_by_id**
+> update_iceberg_system_scheduler_by_id(name, scheduler, authorization=authorization)
+
+Update scheduler by name
+
+Overwrite a scheduler by scheduler name. The scheduler name specified in the URL and the request body must match.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+name = 'name_example' # str | Name of Scheduler
+scheduler = swagger_client.SchedulerSchema() # SchedulerSchema | schedulerbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Update scheduler by name
+    api_instance.update_iceberg_system_scheduler_by_id(name, scheduler, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->update_iceberg_system_scheduler_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of Scheduler | 
+ **scheduler** | [**SchedulerSchema**](SchedulerSchema.md)| schedulerbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_iceberg_system_schedulers**
+> update_iceberg_system_schedulers(schedulers, authorization=authorization)
+
+Update schedulers by name
+
+Update operation of resource: schedulers
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+schedulers = swagger_client.SchedulersSchema() # SchedulersSchema | schedulersbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Update schedulers by name
+    api_instance.update_iceberg_system_schedulers(schedulers, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->update_iceberg_system_schedulers: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **schedulers** | [**SchedulersSchema**](SchedulersSchema.md)| schedulersbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -4526,7 +6258,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_system_settings_destination_by_id**
-> update_iceberg_system_settings_destination_by_id(name, destination)
+> update_iceberg_system_settings_destination_by_id(name, destination, authorization=authorization)
 
 Update destination by name
 
@@ -4542,12 +6274,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
-name = 'name_example' # str | ID of name
+name = 'name_example' # str | Name of destination
 destination = swagger_client.DestinationSchema() # DestinationSchema | destinationsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update destination by name
-    api_instance.update_iceberg_system_settings_destination_by_id(name, destination)
+    api_instance.update_iceberg_system_settings_destination_by_id(name, destination, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_system_settings_destination_by_id: %s\n" % e)
 ```
@@ -4556,8 +6289,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| ID of name | 
+ **name** | **str**| Name of destination | 
  **destination** | [**DestinationSchema**](DestinationSchema.md)| destinationsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -4575,7 +6309,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_system_settings_destinations**
-> update_iceberg_system_settings_destinations(destinations)
+> update_iceberg_system_settings_destinations(destinations, authorization=authorization)
 
 Update destinations by name
 
@@ -4592,10 +6326,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 destinations = swagger_client.DestinationsSchema() # DestinationsSchema | destinationsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update destinations by name
-    api_instance.update_iceberg_system_settings_destinations(destinations)
+    api_instance.update_iceberg_system_settings_destinations(destinations, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_system_settings_destinations: %s\n" % e)
 ```
@@ -4605,6 +6340,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **destinations** | [**DestinationsSchema**](DestinationsSchema.md)| destinationsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -4622,7 +6358,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_system_settings_report_by_id**
-> update_iceberg_system_settings_report_by_id(name, report)
+> update_iceberg_system_settings_report_by_id(name, report, authorization=authorization)
 
 Update report by name
 
@@ -4638,12 +6374,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
-name = 'name_example' # str | ID of name
+name = 'name_example' # str | Name of report
 report = swagger_client.ReportSchema() # ReportSchema | reportsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update report by name
-    api_instance.update_iceberg_system_settings_report_by_id(name, report)
+    api_instance.update_iceberg_system_settings_report_by_id(name, report, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_system_settings_report_by_id: %s\n" % e)
 ```
@@ -4652,8 +6389,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| ID of name | 
+ **name** | **str**| Name of report | 
  **report** | [**ReportSchema**](ReportSchema.md)| reportsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -4671,7 +6409,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_system_settings_reports**
-> update_iceberg_system_settings_reports(reports)
+> update_iceberg_system_settings_reports(reports, authorization=authorization)
 
 Update reports by name
 
@@ -4688,10 +6426,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 reports = swagger_client.ReportsSchema() # ReportsSchema | reportsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update reports by name
-    api_instance.update_iceberg_system_settings_reports(reports)
+    api_instance.update_iceberg_system_settings_reports(reports, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_system_settings_reports: %s\n" % e)
 ```
@@ -4701,6 +6440,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **reports** | [**ReportsSchema**](ReportsSchema.md)| reportsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -4718,7 +6458,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_system_settings_scheduler_by_id**
-> update_iceberg_system_settings_scheduler_by_id(name, scheduler)
+> update_iceberg_system_settings_scheduler_by_id(name, scheduler, authorization=authorization)
 
 Update scheduler by name
 
@@ -4734,12 +6474,13 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
-name = 'name_example' # str | ID of name
+name = 'name_example' # str | Name of Scheduler
 scheduler = swagger_client.SchedulerSchema() # SchedulerSchema | schedulerbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update scheduler by name
-    api_instance.update_iceberg_system_settings_scheduler_by_id(name, scheduler)
+    api_instance.update_iceberg_system_settings_scheduler_by_id(name, scheduler, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_system_settings_scheduler_by_id: %s\n" % e)
 ```
@@ -4748,8 +6489,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**| ID of name | 
+ **name** | **str**| Name of Scheduler | 
  **scheduler** | [**SchedulerSchema**](SchedulerSchema.md)| schedulerbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -4767,7 +6509,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_system_settings_schedulers**
-> update_iceberg_system_settings_schedulers(schedulers)
+> update_iceberg_system_settings_schedulers(schedulers, authorization=authorization)
 
 Update schedulers by name
 
@@ -4784,10 +6526,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 schedulers = swagger_client.SchedulersSchema() # SchedulersSchema | schedulersbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update schedulers by name
-    api_instance.update_iceberg_system_settings_schedulers(schedulers)
+    api_instance.update_iceberg_system_settings_schedulers(schedulers, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_system_settings_schedulers: %s\n" % e)
 ```
@@ -4797,6 +6540,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **schedulers** | [**SchedulersSchema**](SchedulersSchema.md)| schedulersbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -4814,7 +6558,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_system_settings_system_settings_by_id**
-> update_iceberg_system_settings_system_settings_by_id(system_settings)
+> update_iceberg_system_settings_system_settings_by_id(system_settings, authorization=authorization)
 
 Update system-settings by ID
 
@@ -4831,10 +6575,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 system_settings = swagger_client.SystemSettingsSchema() # SystemSettingsSchema | system_settingsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update system-settings by ID
-    api_instance.update_iceberg_system_settings_system_settings_by_id(system_settings)
+    api_instance.update_iceberg_system_settings_system_settings_by_id(system_settings, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_system_settings_system_settings_by_id: %s\n" % e)
 ```
@@ -4844,6 +6589,56 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_settings** | [**SystemSettingsSchema**](SystemSettingsSchema.md)| system_settingsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_iceberg_system_system_by_id**
+> update_iceberg_system_system_by_id(system_settings, authorization=authorization)
+
+Update system by ID
+
+New endpoint to over-write the existing configuration of system-settings. New system-settings are created and existing system-settings are overwritten with new content. If some existing system-settings are not present in the payload, such system settings are deleted. This will fail if any of the reports in system-settings that are not present in the payload are referenced by a device-group or network-group.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+system_settings = swagger_client.SystemSettingsSchema() # SystemSettingsSchema | system_settings body object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Update system by ID
+    api_instance.update_iceberg_system_system_by_id(system_settings, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->update_iceberg_system_system_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **system_settings** | [**SystemSettingsSchema**](SystemSettingsSchema.md)| system_settings body object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -4861,7 +6656,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_topic_rule_rule_by_id**
-> update_iceberg_topic_rule_rule_by_id(topic_name, rule_name, rule)
+> update_iceberg_topic_rule_rule_by_id(topic_name, rule_name, rule, authorization=authorization)
 
 Overwrite a rule.
 
@@ -4880,10 +6675,11 @@ api_instance = swagger_client.ConfigurationApi()
 topic_name = 'topic_name_example' # str | ID of topic-name
 rule_name = 'rule_name_example' # str | ID of rule-name
 rule = swagger_client.RuleSchema() # RuleSchema | rulebody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Overwrite a rule.
-    api_instance.update_iceberg_topic_rule_rule_by_id(topic_name, rule_name, rule)
+    api_instance.update_iceberg_topic_rule_rule_by_id(topic_name, rule_name, rule, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_topic_rule_rule_by_id: %s\n" % e)
 ```
@@ -4895,6 +6691,7 @@ Name | Type | Description  | Notes
  **topic_name** | **str**| ID of topic-name | 
  **rule_name** | **str**| ID of rule-name | 
  **rule** | [**RuleSchema**](RuleSchema.md)| rulebody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -4912,7 +6709,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_topic_topic_by_id**
-> update_iceberg_topic_topic_by_id(topic_name, topic)
+> update_iceberg_topic_topic_by_id(topic_name, topic, authorization=authorization)
 
 Overwrite a topic.
 
@@ -4930,10 +6727,11 @@ from pprint import pprint
 api_instance = swagger_client.ConfigurationApi()
 topic_name = 'topic_name_example' # str | ID of topic-name
 topic = swagger_client.TopicSchema() # TopicSchema | topicbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Overwrite a topic.
-    api_instance.update_iceberg_topic_topic_by_id(topic_name, topic)
+    api_instance.update_iceberg_topic_topic_by_id(topic_name, topic, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_topic_topic_by_id: %s\n" % e)
 ```
@@ -4944,6 +6742,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **topic_name** | **str**| ID of topic-name | 
  **topic** | [**TopicSchema**](TopicSchema.md)| topicbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -4961,7 +6760,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_topics_topics_by_id**
-> update_iceberg_topics_topics_by_id(topics)
+> update_iceberg_topics_topics_by_id(topics, authorization=authorization)
 
 Overwrite topics.
 
@@ -4978,10 +6777,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ConfigurationApi()
 topics = swagger_client.TopicsSchema() # TopicsSchema | topicsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Overwrite topics.
-    api_instance.update_iceberg_topics_topics_by_id(topics)
+    api_instance.update_iceberg_topics_topics_by_id(topics, authorization=authorization)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_topics_topics_by_id: %s\n" % e)
 ```
@@ -4991,10 +6791,109 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **topics** | [**TopicsSchema**](TopicsSchema.md)| topicsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **user_retrieve_user_profile**
+> InlineResponse2005 user_retrieve_user_profile(authorization)
+
+Get users profile information
+
+Get user profile
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object
+
+try:
+    # Get users profile information
+    api_response = api_instance.user_retrieve_user_profile(authorization)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->user_retrieve_user_profile: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | 
+
+### Return type
+
+[**InlineResponse2005**](InlineResponse2005.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **user_update_user_profile**
+> list[InlineResponse2003] user_update_user_profile(authorization, user)
+
+Update user profile informations.
+
+Update user profile in the system
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object
+user = swagger_client.User1() # User1 | topics body object
+
+try:
+    # Update user profile informations.
+    api_response = api_instance.user_update_user_profile(authorization, user)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->user_update_user_profile: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | 
+ **user** | [**User1**](User1.md)| topics body object | 
+
+### Return type
+
+[**list[InlineResponse2003]**](InlineResponse2003.md)
 
 ### Authorization
 

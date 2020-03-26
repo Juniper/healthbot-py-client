@@ -44,6 +44,7 @@ class ServicesApi(object):
 
         :param async bool
         :param str device_group_name: Name of device group (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -66,12 +67,13 @@ class ServicesApi(object):
 
         :param async bool
         :param str device_group_name: Name of device group (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['device_group_name']  # noqa: E501
+        all_params = ['device_group_name', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -100,6 +102,8 @@ class ServicesApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -143,6 +147,7 @@ class ServicesApi(object):
 
         :param async bool
         :param str network_group_name: Name of network group (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -165,12 +170,13 @@ class ServicesApi(object):
 
         :param async bool
         :param str network_group_name: Name of network group (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['network_group_name']  # noqa: E501
+        all_params = ['network_group_name', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -199,6 +205,8 @@ class ServicesApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -242,6 +250,7 @@ class ServicesApi(object):
 
         :param async bool
         :param str device_group_name: Name of device group (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -264,12 +273,13 @@ class ServicesApi(object):
 
         :param async bool
         :param str device_group_name: Name of device group (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['device_group_name']  # noqa: E501
+        all_params = ['device_group_name', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -298,6 +308,8 @@ class ServicesApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -341,6 +353,7 @@ class ServicesApi(object):
 
         :param async bool
         :param str network_group_name: Name of network group (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -363,12 +376,13 @@ class ServicesApi(object):
 
         :param async bool
         :param str network_group_name: Name of network group (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['network_group_name']  # noqa: E501
+        all_params = ['network_group_name', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -397,6 +411,8 @@ class ServicesApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -439,6 +455,7 @@ class ServicesApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -460,12 +477,13 @@ class ServicesApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -488,6 +506,8 @@ class ServicesApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -530,6 +550,7 @@ class ServicesApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -551,12 +572,13 @@ class ServicesApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -579,6 +601,8 @@ class ServicesApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}

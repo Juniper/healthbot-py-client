@@ -72,8 +72,8 @@ class TimeRangeMandatory(object):
         """
         if time_range is None:
             raise ValueError("Invalid value for `time_range`, must not be `None`")  # noqa: E501
-        if time_range is not None and not re.search('^[1-9][0-9]*[smhdwy]$', time_range):  # noqa: E501
-            raise ValueError("Invalid value for `time_range`, must be a follow pattern or equal to `/^[1-9][0-9]*[smhdwy]$/`")  # noqa: E501
+        if time_range is not None and not re.search('^[1-9][0-9]*(o|s|m|h|d|w|y|offset)$', time_range):  # noqa: E501
+            raise ValueError("Invalid value for `time_range`, must be a follow pattern or equal to `/^[1-9][0-9]*(o|s|m|h|d|w|y|offset)$/`")  # noqa: E501
 
         self._time_range = time_range
 

@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **create_data_store**
-> create_data_store(key, data, group_name)
+> create_data_store(key, data, group_name, authorization=authorization)
 
 Create dashboard details.
 
@@ -27,10 +27,11 @@ api_instance = swagger_client.DataSourceApi()
 key = 'key_example' # str | Key of data_store object
 data = swagger_client.DatastoreSchema() # DatastoreSchema | Value of data_store object
 group_name = 'group_name_example' # str | Group name
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Create dashboard details.
-    api_instance.create_data_store(key, data, group_name)
+    api_instance.create_data_store(key, data, group_name, authorization=authorization)
 except ApiException as e:
     print("Exception when calling DataSourceApi->create_data_store: %s\n" % e)
 ```
@@ -42,6 +43,7 @@ Name | Type | Description  | Notes
  **key** | **str**| Key of data_store object | 
  **data** | [**DatastoreSchema**](DatastoreSchema.md)| Value of data_store object | 
  **group_name** | **str**| Group name | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 

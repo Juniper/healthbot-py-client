@@ -45,6 +45,7 @@ class InstanceScheduleStateApi(object):
         :param async bool
         :param str group_name: Group name (required)
         :param str group_type: Group type (required)
+        :param str authorization: authentication header object
         :return: InstancesScheduleStateSchema
                  If the method is called asynchronously,
                  returns the request thread.
@@ -68,12 +69,13 @@ class InstanceScheduleStateApi(object):
         :param async bool
         :param str group_name: Group name (required)
         :param str group_type: Group type (required)
+        :param str authorization: authentication header object
         :return: InstancesScheduleStateSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['group_name', 'group_type']  # noqa: E501
+        all_params = ['group_name', 'group_type', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -108,6 +110,8 @@ class InstanceScheduleStateApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -153,6 +157,7 @@ class InstanceScheduleStateApi(object):
         :param str group_name: Group name (required)
         :param str group_type: Group type (required)
         :param InstancesScheduleStateSchema instances_schedule_state: List of instances and their scheduled state (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -177,12 +182,13 @@ class InstanceScheduleStateApi(object):
         :param str group_name: Group name (required)
         :param str group_type: Group type (required)
         :param InstancesScheduleStateSchema instances_schedule_state: List of instances and their scheduled state (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['group_name', 'group_type', 'instances_schedule_state']  # noqa: E501
+        all_params = ['group_name', 'group_type', 'instances_schedule_state', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -221,6 +227,8 @@ class InstanceScheduleStateApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}

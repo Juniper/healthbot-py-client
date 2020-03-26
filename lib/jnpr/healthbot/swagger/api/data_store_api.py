@@ -44,6 +44,7 @@ class DataStoreApi(object):
 
         :param async bool
         :param str group_name: Group name (required)
+        :param str authorization: authentication header object
         :param list[str] key: ID of dashboard
         :return: None
                  If the method is called asynchronously,
@@ -67,13 +68,14 @@ class DataStoreApi(object):
 
         :param async bool
         :param str group_name: Group name (required)
+        :param str authorization: authentication header object
         :param list[str] key: ID of dashboard
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['group_name', 'key']  # noqa: E501
+        all_params = ['group_name', 'authorization', 'key']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -105,6 +107,8 @@ class DataStoreApi(object):
             collection_formats['key'] = 'csv'  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -148,6 +152,7 @@ class DataStoreApi(object):
 
         :param async bool
         :param str group_name: Group name (required)
+        :param str authorization: authentication header object
         :param list[str] key: Key of data_store object
         :return: DatastoreSchema
                  If the method is called asynchronously,
@@ -171,13 +176,14 @@ class DataStoreApi(object):
 
         :param async bool
         :param str group_name: Group name (required)
+        :param str authorization: authentication header object
         :param list[str] key: Key of data_store object
         :return: DatastoreSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['group_name', 'key']  # noqa: E501
+        all_params = ['group_name', 'authorization', 'key']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -209,6 +215,8 @@ class DataStoreApi(object):
             collection_formats['key'] = 'csv'  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -254,6 +262,7 @@ class DataStoreApi(object):
         :param str key: key of data_store (required)
         :param DatastoreSchema data: value of data_store object (required)
         :param str group_name: Group name (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -278,12 +287,13 @@ class DataStoreApi(object):
         :param str key: key of data_store (required)
         :param DatastoreSchema data: value of data_store object (required)
         :param str group_name: Group name (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['key', 'data', 'group_name']  # noqa: E501
+        all_params = ['key', 'data', 'group_name', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -322,6 +332,8 @@ class DataStoreApi(object):
             query_params.append(('key', params['key']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}

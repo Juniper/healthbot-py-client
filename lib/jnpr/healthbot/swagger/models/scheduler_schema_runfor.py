@@ -61,6 +61,7 @@ class SchedulerSchemaRunfor(object):
     def days(self):
         """Gets the days of this SchedulerSchemaRunfor.  # noqa: E501
 
+        Duration of time in days  # noqa: E501
 
         :return: The days of this SchedulerSchemaRunfor.  # noqa: E501
         :rtype: int
@@ -71,10 +72,15 @@ class SchedulerSchemaRunfor(object):
     def days(self, days):
         """Sets the days of this SchedulerSchemaRunfor.
 
+        Duration of time in days  # noqa: E501
 
         :param days: The days of this SchedulerSchemaRunfor.  # noqa: E501
         :type: int
         """
+        if days is not None and days > 65535:  # noqa: E501
+            raise ValueError("Invalid value for `days`, must be a value less than or equal to `65535`")  # noqa: E501
+        if days is not None and days < 1:  # noqa: E501
+            raise ValueError("Invalid value for `days`, must be a value greater than or equal to `1`")  # noqa: E501
 
         self._days = days
 
@@ -82,6 +88,7 @@ class SchedulerSchemaRunfor(object):
     def hours(self):
         """Gets the hours of this SchedulerSchemaRunfor.  # noqa: E501
 
+        Duration of time in hours  # noqa: E501
 
         :return: The hours of this SchedulerSchemaRunfor.  # noqa: E501
         :rtype: int
@@ -92,10 +99,15 @@ class SchedulerSchemaRunfor(object):
     def hours(self, hours):
         """Sets the hours of this SchedulerSchemaRunfor.
 
+        Duration of time in hours  # noqa: E501
 
         :param hours: The hours of this SchedulerSchemaRunfor.  # noqa: E501
         :type: int
         """
+        if hours is not None and hours > 65535:  # noqa: E501
+            raise ValueError("Invalid value for `hours`, must be a value less than or equal to `65535`")  # noqa: E501
+        if hours is not None and hours < 1:  # noqa: E501
+            raise ValueError("Invalid value for `hours`, must be a value greater than or equal to `1`")  # noqa: E501
 
         self._hours = hours
 
@@ -103,6 +115,7 @@ class SchedulerSchemaRunfor(object):
     def minutes(self):
         """Gets the minutes of this SchedulerSchemaRunfor.  # noqa: E501
 
+        Duration of time in minutes  # noqa: E501
 
         :return: The minutes of this SchedulerSchemaRunfor.  # noqa: E501
         :rtype: int
@@ -113,10 +126,15 @@ class SchedulerSchemaRunfor(object):
     def minutes(self, minutes):
         """Sets the minutes of this SchedulerSchemaRunfor.
 
+        Duration of time in minutes  # noqa: E501
 
         :param minutes: The minutes of this SchedulerSchemaRunfor.  # noqa: E501
         :type: int
         """
+        if minutes is not None and minutes > 65535:  # noqa: E501
+            raise ValueError("Invalid value for `minutes`, must be a value less than or equal to `65535`")  # noqa: E501
+        if minutes is not None and minutes < 1:  # noqa: E501
+            raise ValueError("Invalid value for `minutes`, must be a value greater than or equal to `1`")  # noqa: E501
 
         self._minutes = minutes
 

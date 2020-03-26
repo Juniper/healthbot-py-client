@@ -9,13 +9,18 @@ Name | Type | Description | Notes
 **devices** | **list[str]** |  | [optional] 
 **logging** | [**DevicegroupSchemaLogging**](DevicegroupSchemaLogging.md) |  | [optional] 
 **native_gpb** | [**DevicegroupSchemaNativegpb**](DevicegroupSchemaNativegpb.md) |  | [optional] 
+**flow** | [**DevicegroupSchemaFlow**](DevicegroupSchemaFlow.md) |  | [optional] 
+**ingest_frequency** | **list[str]** |  | [optional] 
 **raw_data** | [**DevicegroupSchemaRawdata**](DevicegroupSchemaRawdata.md) |  | [optional] 
 **notification** | [**DevicegroupSchemaNotification**](DevicegroupSchemaNotification.md) |  | [optional] 
 **playbooks** | **list[str]** |  | [optional] 
+**publish** | [**DevicegroupSchemaPublish**](DevicegroupSchemaPublish.md) |  | [optional] 
 **reports** | **list[str]** |  | [optional] 
 **retention_policy** | **str** | Name of the retention policy to be applied | [optional] 
 **scheduler** | [**list[DevicegroupSchemaScheduler]**](DevicegroupSchemaScheduler.md) | List of schedulers associated with the playbook instances | [optional] 
 **variable** | [**list[DevicegroupSchemaVariable]**](DevicegroupSchemaVariable.md) | Playbook variable configuration | [optional] 
+**syslog** | [**DevicegroupSchemaSyslog**](DevicegroupSchemaSyslog.md) |  | [optional] 
+**timezone** | **str** | Timezone in the format +/-hh:mm, Example: -08:00 | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

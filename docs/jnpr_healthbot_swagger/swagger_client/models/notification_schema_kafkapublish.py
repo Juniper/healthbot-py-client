@@ -122,6 +122,8 @@ class NotificationSchemaKafkapublish(object):
         :param topic: The topic of this NotificationSchemaKafkapublish.  # noqa: E501
         :type: str
         """
+        if topic is not None and len(topic) > 249:
+            raise ValueError("Invalid value for `topic`, length must be less than or equal to `249`")  # noqa: E501
         if topic is not None and not re.search('^\\.*[a-zA-Z0-9_-]+[a-zA-Z0-9\\._-]*$', topic):  # noqa: E501
             raise ValueError("Invalid value for `topic`, must be a follow pattern or equal to `/^\\.*[a-zA-Z0-9_-]+[a-zA-Z0-9\\._-]*$/`")  # noqa: E501
 

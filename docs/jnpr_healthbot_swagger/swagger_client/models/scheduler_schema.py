@@ -51,7 +51,7 @@ class SchedulerSchema(object):
         'type': 'type'
     }
 
-    def __init__(self, end_time=None, name=None, repeat=None, start_time=None, run_for=None, type=None):  # noqa: E501
+    def __init__(self, end_time=None, name=None, repeat=None, start_time=None, run_for=None, type='continuous'):  # noqa: E501
         """SchedulerSchema - a model defined in Swagger"""  # noqa: E501
 
         self._end_time = None
@@ -69,7 +69,8 @@ class SchedulerSchema(object):
         self.start_time = start_time
         if run_for is not None:
             self.run_for = run_for
-        self.type = type
+        if type is not None:
+            self.type = type
 
     @property
     def end_time(self):
@@ -214,8 +215,6 @@ class SchedulerSchema(object):
         :param type: The type of this SchedulerSchema.  # noqa: E501
         :type: str
         """
-        if type is None:
-            raise ValueError("Invalid value for `type`, must not be `None`")  # noqa: E501
         allowed_values = ["continuous", "discrete"]  # noqa: E501
         if type not in allowed_values:
             raise ValueError(

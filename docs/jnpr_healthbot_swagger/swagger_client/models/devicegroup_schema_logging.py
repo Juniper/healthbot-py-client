@@ -16,12 +16,16 @@ import re  # noqa: F401
 
 import six
 
+from swagger_client.models.devicegroup_schema_logging_byoi import DevicegroupSchemaLoggingByoi  # noqa: F401,E501
+from swagger_client.models.devicegroup_schema_logging_flow import DevicegroupSchemaLoggingFlow  # noqa: F401,E501
 from swagger_client.models.devicegroup_schema_logging_i_agent import DevicegroupSchemaLoggingIAgent  # noqa: F401,E501
+from swagger_client.models.devicegroup_schema_logging_m_lmodelbuilder import DevicegroupSchemaLoggingMLmodelbuilder  # noqa: F401,E501
 from swagger_client.models.devicegroup_schema_logging_nativegpb import DevicegroupSchemaLoggingNativegpb  # noqa: F401,E501
 from swagger_client.models.devicegroup_schema_logging_nonsensorrules import DevicegroupSchemaLoggingNonsensorrules  # noqa: F401,E501
 from swagger_client.models.devicegroup_schema_logging_openconfig import DevicegroupSchemaLoggingOpenconfig  # noqa: F401,E501
 from swagger_client.models.devicegroup_schema_logging_reportsgeneration import DevicegroupSchemaLoggingReportsgeneration  # noqa: F401,E501
 from swagger_client.models.devicegroup_schema_logging_snmp import DevicegroupSchemaLoggingSnmp  # noqa: F401,E501
+from swagger_client.models.devicegroup_schema_logging_syslog import DevicegroupSchemaLoggingSyslog  # noqa: F401,E501
 from swagger_client.models.devicegroup_schema_logging_triggerevaluation import DevicegroupSchemaLoggingTriggerevaluation  # noqa: F401,E501
 
 
@@ -46,7 +50,11 @@ class DevicegroupSchemaLogging(object):
         'open_config': 'DevicegroupSchemaLoggingOpenconfig',
         'reports_generation': 'DevicegroupSchemaLoggingReportsgeneration',
         'snmp': 'DevicegroupSchemaLoggingSnmp',
-        'trigger_evaluation': 'DevicegroupSchemaLoggingTriggerevaluation'
+        'trigger_evaluation': 'DevicegroupSchemaLoggingTriggerevaluation',
+        'ml_model_builder': 'DevicegroupSchemaLoggingMLmodelbuilder',
+        'flow': 'DevicegroupSchemaLoggingFlow',
+        'byoi': 'DevicegroupSchemaLoggingByoi',
+        'syslog': 'DevicegroupSchemaLoggingSyslog'
     }
 
     attribute_map = {
@@ -57,10 +65,14 @@ class DevicegroupSchemaLogging(object):
         'open_config': 'open-config',
         'reports_generation': 'reports-generation',
         'snmp': 'snmp',
-        'trigger_evaluation': 'trigger-evaluation'
+        'trigger_evaluation': 'trigger-evaluation',
+        'ml_model_builder': 'ML-model-builder',
+        'flow': 'flow',
+        'byoi': 'byoi',
+        'syslog': 'syslog'
     }
 
-    def __init__(self, i_agent=None, log_level=None, native_gpb=None, non_sensor_rules=None, open_config=None, reports_generation=None, snmp=None, trigger_evaluation=None):  # noqa: E501
+    def __init__(self, i_agent=None, log_level=None, native_gpb=None, non_sensor_rules=None, open_config=None, reports_generation=None, snmp=None, trigger_evaluation=None, ml_model_builder=None, flow=None, byoi=None, syslog=None):  # noqa: E501
         """DevicegroupSchemaLogging - a model defined in Swagger"""  # noqa: E501
 
         self._i_agent = None
@@ -71,6 +83,10 @@ class DevicegroupSchemaLogging(object):
         self._reports_generation = None
         self._snmp = None
         self._trigger_evaluation = None
+        self._ml_model_builder = None
+        self._flow = None
+        self._byoi = None
+        self._syslog = None
         self.discriminator = None
 
         if i_agent is not None:
@@ -89,6 +105,14 @@ class DevicegroupSchemaLogging(object):
             self.snmp = snmp
         if trigger_evaluation is not None:
             self.trigger_evaluation = trigger_evaluation
+        if ml_model_builder is not None:
+            self.ml_model_builder = ml_model_builder
+        if flow is not None:
+            self.flow = flow
+        if byoi is not None:
+            self.byoi = byoi
+        if syslog is not None:
+            self.syslog = syslog
 
     @property
     def i_agent(self):
@@ -265,6 +289,90 @@ class DevicegroupSchemaLogging(object):
         """
 
         self._trigger_evaluation = trigger_evaluation
+
+    @property
+    def ml_model_builder(self):
+        """Gets the ml_model_builder of this DevicegroupSchemaLogging.  # noqa: E501
+
+
+        :return: The ml_model_builder of this DevicegroupSchemaLogging.  # noqa: E501
+        :rtype: DevicegroupSchemaLoggingMLmodelbuilder
+        """
+        return self._ml_model_builder
+
+    @ml_model_builder.setter
+    def ml_model_builder(self, ml_model_builder):
+        """Sets the ml_model_builder of this DevicegroupSchemaLogging.
+
+
+        :param ml_model_builder: The ml_model_builder of this DevicegroupSchemaLogging.  # noqa: E501
+        :type: DevicegroupSchemaLoggingMLmodelbuilder
+        """
+
+        self._ml_model_builder = ml_model_builder
+
+    @property
+    def flow(self):
+        """Gets the flow of this DevicegroupSchemaLogging.  # noqa: E501
+
+
+        :return: The flow of this DevicegroupSchemaLogging.  # noqa: E501
+        :rtype: DevicegroupSchemaLoggingFlow
+        """
+        return self._flow
+
+    @flow.setter
+    def flow(self, flow):
+        """Sets the flow of this DevicegroupSchemaLogging.
+
+
+        :param flow: The flow of this DevicegroupSchemaLogging.  # noqa: E501
+        :type: DevicegroupSchemaLoggingFlow
+        """
+
+        self._flow = flow
+
+    @property
+    def byoi(self):
+        """Gets the byoi of this DevicegroupSchemaLogging.  # noqa: E501
+
+
+        :return: The byoi of this DevicegroupSchemaLogging.  # noqa: E501
+        :rtype: DevicegroupSchemaLoggingByoi
+        """
+        return self._byoi
+
+    @byoi.setter
+    def byoi(self, byoi):
+        """Sets the byoi of this DevicegroupSchemaLogging.
+
+
+        :param byoi: The byoi of this DevicegroupSchemaLogging.  # noqa: E501
+        :type: DevicegroupSchemaLoggingByoi
+        """
+
+        self._byoi = byoi
+
+    @property
+    def syslog(self):
+        """Gets the syslog of this DevicegroupSchemaLogging.  # noqa: E501
+
+
+        :return: The syslog of this DevicegroupSchemaLogging.  # noqa: E501
+        :rtype: DevicegroupSchemaLoggingSyslog
+        """
+        return self._syslog
+
+    @syslog.setter
+    def syslog(self, syslog):
+        """Sets the syslog of this DevicegroupSchemaLogging.
+
+
+        :param syslog: The syslog of this DevicegroupSchemaLogging.  # noqa: E501
+        :type: DevicegroupSchemaLoggingSyslog
+        """
+
+        self._syslog = syslog
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -17,11 +17,14 @@ import re  # noqa: F401
 import six
 
 from swagger_client.models.devicegroup_schema_authentication import DevicegroupSchemaAuthentication  # noqa: F401,E501
+from swagger_client.models.devicegroup_schema_flow import DevicegroupSchemaFlow  # noqa: F401,E501
 from swagger_client.models.devicegroup_schema_logging import DevicegroupSchemaLogging  # noqa: F401,E501
 from swagger_client.models.devicegroup_schema_nativegpb import DevicegroupSchemaNativegpb  # noqa: F401,E501
 from swagger_client.models.devicegroup_schema_notification import DevicegroupSchemaNotification  # noqa: F401,E501
+from swagger_client.models.devicegroup_schema_publish import DevicegroupSchemaPublish  # noqa: F401,E501
 from swagger_client.models.devicegroup_schema_rawdata import DevicegroupSchemaRawdata  # noqa: F401,E501
 from swagger_client.models.devicegroup_schema_scheduler import DevicegroupSchemaScheduler  # noqa: F401,E501
+from swagger_client.models.devicegroup_schema_syslog import DevicegroupSchemaSyslog  # noqa: F401,E501
 from swagger_client.models.devicegroup_schema_variable import DevicegroupSchemaVariable  # noqa: F401,E501
 
 
@@ -45,13 +48,18 @@ class DeviceGroupSchema(object):
         'devices': 'list[str]',
         'logging': 'DevicegroupSchemaLogging',
         'native_gpb': 'DevicegroupSchemaNativegpb',
+        'flow': 'DevicegroupSchemaFlow',
+        'ingest_frequency': 'list[str]',
         'raw_data': 'DevicegroupSchemaRawdata',
         'notification': 'DevicegroupSchemaNotification',
         'playbooks': 'list[str]',
+        'publish': 'DevicegroupSchemaPublish',
         'reports': 'list[str]',
         'retention_policy': 'str',
         'scheduler': 'list[DevicegroupSchemaScheduler]',
-        'variable': 'list[DevicegroupSchemaVariable]'
+        'variable': 'list[DevicegroupSchemaVariable]',
+        'syslog': 'DevicegroupSchemaSyslog',
+        'timezone': 'str'
     }
 
     attribute_map = {
@@ -61,16 +69,21 @@ class DeviceGroupSchema(object):
         'devices': 'devices',
         'logging': 'logging',
         'native_gpb': 'native-gpb',
+        'flow': 'flow',
+        'ingest_frequency': 'ingest-frequency',
         'raw_data': 'raw-data',
         'notification': 'notification',
         'playbooks': 'playbooks',
+        'publish': 'publish',
         'reports': 'reports',
         'retention_policy': 'retention-policy',
         'scheduler': 'scheduler',
-        'variable': 'variable'
+        'variable': 'variable',
+        'syslog': 'syslog',
+        'timezone': 'timezone'
     }
 
-    def __init__(self, authentication=None, description=None, device_group_name=None, devices=None, logging=None, native_gpb=None, raw_data=None, notification=None, playbooks=None, reports=None, retention_policy=None, scheduler=None, variable=None):  # noqa: E501
+    def __init__(self, authentication=None, description=None, device_group_name=None, devices=None, logging=None, native_gpb=None, flow=None, ingest_frequency=None, raw_data=None, notification=None, playbooks=None, publish=None, reports=None, retention_policy=None, scheduler=None, variable=None, syslog=None, timezone=None):  # noqa: E501
         """DeviceGroupSchema - a model defined in Swagger"""  # noqa: E501
 
         self._authentication = None
@@ -79,13 +92,18 @@ class DeviceGroupSchema(object):
         self._devices = None
         self._logging = None
         self._native_gpb = None
+        self._flow = None
+        self._ingest_frequency = None
         self._raw_data = None
         self._notification = None
         self._playbooks = None
+        self._publish = None
         self._reports = None
         self._retention_policy = None
         self._scheduler = None
         self._variable = None
+        self._syslog = None
+        self._timezone = None
         self.discriminator = None
 
         if authentication is not None:
@@ -99,12 +117,18 @@ class DeviceGroupSchema(object):
             self.logging = logging
         if native_gpb is not None:
             self.native_gpb = native_gpb
+        if flow is not None:
+            self.flow = flow
+        if ingest_frequency is not None:
+            self.ingest_frequency = ingest_frequency
         if raw_data is not None:
             self.raw_data = raw_data
         if notification is not None:
             self.notification = notification
         if playbooks is not None:
             self.playbooks = playbooks
+        if publish is not None:
+            self.publish = publish
         if reports is not None:
             self.reports = reports
         if retention_policy is not None:
@@ -113,6 +137,10 @@ class DeviceGroupSchema(object):
             self.scheduler = scheduler
         if variable is not None:
             self.variable = variable
+        if syslog is not None:
+            self.syslog = syslog
+        if timezone is not None:
+            self.timezone = timezone
 
     @property
     def authentication(self):
@@ -182,8 +210,8 @@ class DeviceGroupSchema(object):
             raise ValueError("Invalid value for `device_group_name`, must not be `None`")  # noqa: E501
         if device_group_name is not None and len(device_group_name) > 64:
             raise ValueError("Invalid value for `device_group_name`, length must be less than or equal to `64`")  # noqa: E501
-        if device_group_name is not None and not re.search('^[a-zA-Z][a-zA-Z0-9_-]*$', device_group_name):  # noqa: E501
-            raise ValueError("Invalid value for `device_group_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+        if device_group_name is not None and not re.search('^[a-zA-Z][a-zA-Z0-9-]*$', device_group_name):  # noqa: E501
+            raise ValueError("Invalid value for `device_group_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9-]*$/`")  # noqa: E501
 
         self._device_group_name = device_group_name
 
@@ -251,6 +279,48 @@ class DeviceGroupSchema(object):
         self._native_gpb = native_gpb
 
     @property
+    def flow(self):
+        """Gets the flow of this DeviceGroupSchema.  # noqa: E501
+
+
+        :return: The flow of this DeviceGroupSchema.  # noqa: E501
+        :rtype: DevicegroupSchemaFlow
+        """
+        return self._flow
+
+    @flow.setter
+    def flow(self, flow):
+        """Sets the flow of this DeviceGroupSchema.
+
+
+        :param flow: The flow of this DeviceGroupSchema.  # noqa: E501
+        :type: DevicegroupSchemaFlow
+        """
+
+        self._flow = flow
+
+    @property
+    def ingest_frequency(self):
+        """Gets the ingest_frequency of this DeviceGroupSchema.  # noqa: E501
+
+
+        :return: The ingest_frequency of this DeviceGroupSchema.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._ingest_frequency
+
+    @ingest_frequency.setter
+    def ingest_frequency(self, ingest_frequency):
+        """Sets the ingest_frequency of this DeviceGroupSchema.
+
+
+        :param ingest_frequency: The ingest_frequency of this DeviceGroupSchema.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._ingest_frequency = ingest_frequency
+
+    @property
     def raw_data(self):
         """Gets the raw_data of this DeviceGroupSchema.  # noqa: E501
 
@@ -312,6 +382,27 @@ class DeviceGroupSchema(object):
         """
 
         self._playbooks = playbooks
+
+    @property
+    def publish(self):
+        """Gets the publish of this DeviceGroupSchema.  # noqa: E501
+
+
+        :return: The publish of this DeviceGroupSchema.  # noqa: E501
+        :rtype: DevicegroupSchemaPublish
+        """
+        return self._publish
+
+    @publish.setter
+    def publish(self, publish):
+        """Sets the publish of this DeviceGroupSchema.
+
+
+        :param publish: The publish of this DeviceGroupSchema.  # noqa: E501
+        :type: DevicegroupSchemaPublish
+        """
+
+        self._publish = publish
 
     @property
     def reports(self):
@@ -406,6 +497,52 @@ class DeviceGroupSchema(object):
         """
 
         self._variable = variable
+
+    @property
+    def syslog(self):
+        """Gets the syslog of this DeviceGroupSchema.  # noqa: E501
+
+
+        :return: The syslog of this DeviceGroupSchema.  # noqa: E501
+        :rtype: DevicegroupSchemaSyslog
+        """
+        return self._syslog
+
+    @syslog.setter
+    def syslog(self, syslog):
+        """Sets the syslog of this DeviceGroupSchema.
+
+
+        :param syslog: The syslog of this DeviceGroupSchema.  # noqa: E501
+        :type: DevicegroupSchemaSyslog
+        """
+
+        self._syslog = syslog
+
+    @property
+    def timezone(self):
+        """Gets the timezone of this DeviceGroupSchema.  # noqa: E501
+
+        Timezone in the format +/-hh:mm, Example: -08:00  # noqa: E501
+
+        :return: The timezone of this DeviceGroupSchema.  # noqa: E501
+        :rtype: str
+        """
+        return self._timezone
+
+    @timezone.setter
+    def timezone(self, timezone):
+        """Sets the timezone of this DeviceGroupSchema.
+
+        Timezone in the format +/-hh:mm, Example: -08:00  # noqa: E501
+
+        :param timezone: The timezone of this DeviceGroupSchema.  # noqa: E501
+        :type: str
+        """
+        if timezone is not None and not re.search('^((\\+|-)((([0-1][0-9])|(2[0-3])):([0-5][0-9])))$', timezone):  # noqa: E501
+            raise ValueError("Invalid value for `timezone`, must be a follow pattern or equal to `/^((\\+|-)((([0-1][0-9])|(2[0-3])):([0-5][0-9])))$/`")  # noqa: E501
+
+        self._timezone = timezone
 
     def to_dict(self):
         """Returns the model properties as a dict"""

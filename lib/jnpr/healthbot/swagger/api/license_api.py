@@ -44,6 +44,7 @@ class LicenseApi(object):
 
         :param async bool
         :param file license_file: License key file content (required)
+        :param str authorization: authentication header object
         :return: InlineResponse2001
                  If the method is called asynchronously,
                  returns the request thread.
@@ -66,12 +67,13 @@ class LicenseApi(object):
 
         :param async bool
         :param file license_file: License key file content (required)
+        :param str authorization: authentication header object
         :return: InlineResponse2001
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['license_file']  # noqa: E501
+        all_params = ['license_file', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -98,6 +100,8 @@ class LicenseApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -142,6 +146,7 @@ class LicenseApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -163,12 +168,13 @@ class LicenseApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -191,6 +197,8 @@ class LicenseApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -234,6 +242,7 @@ class LicenseApi(object):
 
         :param async bool
         :param str license_id: License id (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -256,12 +265,13 @@ class LicenseApi(object):
 
         :param async bool
         :param str license_id: License id (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['license_id']  # noqa: E501
+        all_params = ['license_id', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -290,6 +300,8 @@ class LicenseApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -332,6 +344,7 @@ class LicenseApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -353,12 +366,13 @@ class LicenseApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -381,6 +395,8 @@ class LicenseApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -423,6 +439,7 @@ class LicenseApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: LicenseFeaturesSchema
                  If the method is called asynchronously,
                  returns the request thread.
@@ -444,12 +461,13 @@ class LicenseApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: LicenseFeaturesSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -472,6 +490,8 @@ class LicenseApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -515,6 +535,7 @@ class LicenseApi(object):
 
         :param async bool
         :param str license_id: License id (required)
+        :param str authorization: authentication header object
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
@@ -537,12 +558,13 @@ class LicenseApi(object):
 
         :param async bool
         :param str license_id: License id (required)
+        :param str authorization: authentication header object
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['license_id']  # noqa: E501
+        all_params = ['license_id', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -571,6 +593,8 @@ class LicenseApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -613,6 +637,7 @@ class LicenseApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: LicenseKeysSchema
                  If the method is called asynchronously,
                  returns the request thread.
@@ -634,12 +659,13 @@ class LicenseApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: LicenseKeysSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -662,6 +688,8 @@ class LicenseApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -705,6 +733,7 @@ class LicenseApi(object):
 
         :param async bool
         :param str license_id: License id (required)
+        :param str authorization: authentication header object
         :return: LicenseKeySchema
                  If the method is called asynchronously,
                  returns the request thread.
@@ -727,12 +756,13 @@ class LicenseApi(object):
 
         :param async bool
         :param str license_id: License id (required)
+        :param str authorization: authentication header object
         :return: LicenseKeySchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['license_id']  # noqa: E501
+        all_params = ['license_id', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -761,6 +791,8 @@ class LicenseApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -804,6 +836,7 @@ class LicenseApi(object):
 
         :param async bool
         :param LicenseRawKeysSchema license_raw_keys: License raw keys contents (required)
+        :param str authorization: authentication header object
         :return: InlineResponse2001
                  If the method is called asynchronously,
                  returns the request thread.
@@ -826,12 +859,13 @@ class LicenseApi(object):
 
         :param async bool
         :param LicenseRawKeysSchema license_raw_keys: License raw keys contents (required)
+        :param str authorization: authentication header object
         :return: InlineResponse2001
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['license_raw_keys']  # noqa: E501
+        all_params = ['license_raw_keys', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -858,6 +892,8 @@ class LicenseApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}

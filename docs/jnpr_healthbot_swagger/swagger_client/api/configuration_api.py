@@ -44,6 +44,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str device_group_name: Name of device group (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -66,12 +67,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str device_group_name: Name of device group (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['device_group_name']  # noqa: E501
+        all_params = ['device_group_name', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -100,6 +102,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -143,6 +147,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str network_group_name: Name of network group (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -165,12 +170,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str network_group_name: Name of network group (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['network_group_name']  # noqa: E501
+        all_params = ['network_group_name', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -199,6 +205,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -241,6 +249,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool sync: Boolean variable is set to false allow the commit to go asynchronously, default value is true which means commit will go synchronously
         :return: None
                  If the method is called asynchronously,
@@ -263,13 +272,14 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool sync: Boolean variable is set to false allow the commit to go asynchronously, default value is true which means commit will go synchronously
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['sync']  # noqa: E501
+        all_params = ['authorization', 'sync']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -294,6 +304,8 @@ class ConfigurationApi(object):
             query_params.append(('sync', params['sync']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -338,6 +350,7 @@ class ConfigurationApi(object):
         :param async bool
         :param str device_id: ID of device-id (required)
         :param DeviceSchema device: devicebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -361,12 +374,13 @@ class ConfigurationApi(object):
         :param async bool
         :param str device_id: ID of device-id (required)
         :param DeviceSchema device: devicebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['device_id', 'device']  # noqa: E501
+        all_params = ['device_id', 'device', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -399,6 +413,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -445,6 +461,7 @@ class ConfigurationApi(object):
         :param async bool
         :param str device_group_name: ID of device-group-name (required)
         :param DeviceGroupSchema device_group: device_groupbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -468,12 +485,13 @@ class ConfigurationApi(object):
         :param async bool
         :param str device_group_name: ID of device-group-name (required)
         :param DeviceGroupSchema device_group: device_groupbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['device_group_name', 'device_group']  # noqa: E501
+        all_params = ['device_group_name', 'device_group', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -506,6 +524,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -551,6 +571,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param DeviceGroupsSchema device_groups: device-groupsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -573,12 +594,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param DeviceGroupsSchema device_groups: device-groupsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['device_groups']  # noqa: E501
+        all_params = ['device_groups', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -605,6 +627,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -650,6 +674,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param DevicesSchema devices: devicesbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -672,12 +697,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param DevicesSchema devices: devicesbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['devices']  # noqa: E501
+        all_params = ['devices', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -704,6 +730,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -750,6 +778,7 @@ class ConfigurationApi(object):
         :param async bool
         :param str network_group_name: ID of network-group-name (required)
         :param NetworkGroupSchema network_group: network_groupbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -773,12 +802,13 @@ class ConfigurationApi(object):
         :param async bool
         :param str network_group_name: ID of network-group-name (required)
         :param NetworkGroupSchema network_group: network_groupbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['network_group_name', 'network_group']  # noqa: E501
+        all_params = ['network_group_name', 'network_group', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -811,6 +841,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -856,6 +888,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param NetworkGroupsSchema network_groups: network-groupsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -878,12 +911,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param NetworkGroupsSchema network_groups: network-groupsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['network_groups']  # noqa: E501
+        all_params = ['network_groups', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -910,6 +944,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -956,6 +992,7 @@ class ConfigurationApi(object):
         :param async bool
         :param str notification_name: ID of notification-name (required)
         :param NotificationSchema notification: notificationbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -979,12 +1016,13 @@ class ConfigurationApi(object):
         :param async bool
         :param str notification_name: ID of notification-name (required)
         :param NotificationSchema notification: notificationbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['notification_name', 'notification']  # noqa: E501
+        all_params = ['notification_name', 'notification', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1017,6 +1055,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -1062,6 +1102,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param NotificationsSchema notifications: notificationsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1084,12 +1125,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param NotificationsSchema notifications: notificationsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['notifications']  # noqa: E501
+        all_params = ['notifications', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1116,6 +1158,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -1162,6 +1206,7 @@ class ConfigurationApi(object):
         :param async bool
         :param str playbook_name: ID of playbook-name (required)
         :param PlaybookSchema playbook: playbookbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1185,12 +1230,13 @@ class ConfigurationApi(object):
         :param async bool
         :param str playbook_name: ID of playbook-name (required)
         :param PlaybookSchema playbook: playbookbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['playbook_name', 'playbook']  # noqa: E501
+        all_params = ['playbook_name', 'playbook', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1223,6 +1269,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -1268,6 +1316,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param PlaybooksSchema playbooks: playbooksbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1290,12 +1339,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param PlaybooksSchema playbooks: playbooksbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['playbooks']  # noqa: E501
+        all_params = ['playbooks', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1322,6 +1372,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -1367,6 +1419,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param RetentionPoliciesSchema retention_policies: retention-policiesbody object object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1389,12 +1442,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param RetentionPoliciesSchema retention_policies: retention-policiesbody object object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['retention_policies']  # noqa: E501
+        all_params = ['retention_policies', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1421,6 +1475,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -1467,6 +1523,7 @@ class ConfigurationApi(object):
         :param async bool
         :param str retention_policy_name: ID of retention-policy-name (required)
         :param RetentionPolicySchema retention_policy: retention_policybody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1490,12 +1547,13 @@ class ConfigurationApi(object):
         :param async bool
         :param str retention_policy_name: ID of retention-policy-name (required)
         :param RetentionPolicySchema retention_policy: retention_policybody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['retention_policy_name', 'retention_policy']  # noqa: E501
+        all_params = ['retention_policy_name', 'retention_policy', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1528,6 +1586,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -1562,6 +1622,648 @@ class ConfigurationApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def create_iceberg_system_destination_by_id(self, name, destination, **kwargs):  # noqa: E501
+        """Create destination by name  # noqa: E501
+
+        Create/Update a destination by `name`. The `name` specified in URL and the request body must match. If the destination exists then, the existing destination's configuration will be updated by the new content.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.create_iceberg_system_destination_by_id(name, destination, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of destination (required)
+        :param DestinationSchema destination: destinationsbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.create_iceberg_system_destination_by_id_with_http_info(name, destination, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_iceberg_system_destination_by_id_with_http_info(name, destination, **kwargs)  # noqa: E501
+            return data
+
+    def create_iceberg_system_destination_by_id_with_http_info(self, name, destination, **kwargs):  # noqa: E501
+        """Create destination by name  # noqa: E501
+
+        Create/Update a destination by `name`. The `name` specified in URL and the request body must match. If the destination exists then, the existing destination's configuration will be updated by the new content.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.create_iceberg_system_destination_by_id_with_http_info(name, destination, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of destination (required)
+        :param DestinationSchema destination: destinationsbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'destination', 'authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_iceberg_system_destination_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `create_iceberg_system_destination_by_id`")  # noqa: E501
+        # verify the required parameter 'destination' is set
+        if ('destination' not in params or
+                params['destination'] is None):
+            raise ValueError("Missing the required parameter `destination` when calling `create_iceberg_system_destination_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'destination' in params:
+            body_params = params['destination']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/report-generation/destination/{name}/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_iceberg_system_destinations(self, destinations, **kwargs):  # noqa: E501
+        """Create destinations by name  # noqa: E501
+
+        Create/Update multiple destinations. The new content for the existing destinations updates the existing content and the new destinations are created.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.create_iceberg_system_destinations(destinations, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param DestinationsSchema destinations: destinationsbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.create_iceberg_system_destinations_with_http_info(destinations, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_iceberg_system_destinations_with_http_info(destinations, **kwargs)  # noqa: E501
+            return data
+
+    def create_iceberg_system_destinations_with_http_info(self, destinations, **kwargs):  # noqa: E501
+        """Create destinations by name  # noqa: E501
+
+        Create/Update multiple destinations. The new content for the existing destinations updates the existing content and the new destinations are created.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.create_iceberg_system_destinations_with_http_info(destinations, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param DestinationsSchema destinations: destinationsbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['destinations', 'authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_iceberg_system_destinations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'destinations' is set
+        if ('destinations' not in params or
+                params['destinations'] is None):
+            raise ValueError("Missing the required parameter `destinations` when calling `create_iceberg_system_destinations`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'destinations' in params:
+            body_params = params['destinations']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/report-generation/destinations/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_iceberg_system_report_by_id(self, name, report, **kwargs):  # noqa: E501
+        """Create report by name  # noqa: E501
+
+        Create/Update a report by `name`. The `name` specified in URL and the request body must match. If the report exists then, the existing report's configuration will be updated by the new content.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.create_iceberg_system_report_by_id(name, report, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of report (required)
+        :param ReportSchema report: reportsbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.create_iceberg_system_report_by_id_with_http_info(name, report, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_iceberg_system_report_by_id_with_http_info(name, report, **kwargs)  # noqa: E501
+            return data
+
+    def create_iceberg_system_report_by_id_with_http_info(self, name, report, **kwargs):  # noqa: E501
+        """Create report by name  # noqa: E501
+
+        Create/Update a report by `name`. The `name` specified in URL and the request body must match. If the report exists then, the existing report's configuration will be updated by the new content.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.create_iceberg_system_report_by_id_with_http_info(name, report, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of report (required)
+        :param ReportSchema report: reportsbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'report', 'authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_iceberg_system_report_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `create_iceberg_system_report_by_id`")  # noqa: E501
+        # verify the required parameter 'report' is set
+        if ('report' not in params or
+                params['report'] is None):
+            raise ValueError("Missing the required parameter `report` when calling `create_iceberg_system_report_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'report' in params:
+            body_params = params['report']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/report-generation/report/{name}/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_iceberg_system_reports(self, reports, **kwargs):  # noqa: E501
+        """Create reports by name  # noqa: E501
+
+        Create/Update multiple reports. The new content for the existing reports updates the existing content and the new reports are created.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.create_iceberg_system_reports(reports, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param ReportsSchema reports: reportsbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.create_iceberg_system_reports_with_http_info(reports, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_iceberg_system_reports_with_http_info(reports, **kwargs)  # noqa: E501
+            return data
+
+    def create_iceberg_system_reports_with_http_info(self, reports, **kwargs):  # noqa: E501
+        """Create reports by name  # noqa: E501
+
+        Create/Update multiple reports. The new content for the existing reports updates the existing content and the new reports are created.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.create_iceberg_system_reports_with_http_info(reports, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param ReportsSchema reports: reportsbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['reports', 'authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_iceberg_system_reports" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'reports' is set
+        if ('reports' not in params or
+                params['reports'] is None):
+            raise ValueError("Missing the required parameter `reports` when calling `create_iceberg_system_reports`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'reports' in params:
+            body_params = params['reports']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/report-generation/reports/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_iceberg_system_scheduler_by_id(self, name, scheduler, **kwargs):  # noqa: E501
+        """Create scheduler by name  # noqa: E501
+
+        Create/Update a scheduler by `name`. The `name` specified in URL and the request body must match. If the scheduler exists then, the existing scheduler's configuration will be updated by the new content.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.create_iceberg_system_scheduler_by_id(name, scheduler, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of Scheduler (required)
+        :param SchedulerSchema scheduler: schedulerbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.create_iceberg_system_scheduler_by_id_with_http_info(name, scheduler, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_iceberg_system_scheduler_by_id_with_http_info(name, scheduler, **kwargs)  # noqa: E501
+            return data
+
+    def create_iceberg_system_scheduler_by_id_with_http_info(self, name, scheduler, **kwargs):  # noqa: E501
+        """Create scheduler by name  # noqa: E501
+
+        Create/Update a scheduler by `name`. The `name` specified in URL and the request body must match. If the scheduler exists then, the existing scheduler's configuration will be updated by the new content.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.create_iceberg_system_scheduler_by_id_with_http_info(name, scheduler, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of Scheduler (required)
+        :param SchedulerSchema scheduler: schedulerbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'scheduler', 'authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_iceberg_system_scheduler_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `create_iceberg_system_scheduler_by_id`")  # noqa: E501
+        # verify the required parameter 'scheduler' is set
+        if ('scheduler' not in params or
+                params['scheduler'] is None):
+            raise ValueError("Missing the required parameter `scheduler` when calling `create_iceberg_system_scheduler_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'scheduler' in params:
+            body_params = params['scheduler']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/scheduler/{name}/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_iceberg_system_schedulers(self, schedulers, **kwargs):  # noqa: E501
+        """Create schedulers by name  # noqa: E501
+
+        Create/Update multiple schdeulers. The new content for the existing schedulers updates the existing content and the new schedulers are created.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.create_iceberg_system_schedulers(schedulers, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param SchedulersSchema schedulers: schedulersbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.create_iceberg_system_schedulers_with_http_info(schedulers, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_iceberg_system_schedulers_with_http_info(schedulers, **kwargs)  # noqa: E501
+            return data
+
+    def create_iceberg_system_schedulers_with_http_info(self, schedulers, **kwargs):  # noqa: E501
+        """Create schedulers by name  # noqa: E501
+
+        Create/Update multiple schdeulers. The new content for the existing schedulers updates the existing content and the new schedulers are created.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.create_iceberg_system_schedulers_with_http_info(schedulers, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param SchedulersSchema schedulers: schedulersbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['schedulers', 'authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_iceberg_system_schedulers" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'schedulers' is set
+        if ('schedulers' not in params or
+                params['schedulers'] is None):
+            raise ValueError("Missing the required parameter `schedulers` when calling `create_iceberg_system_schedulers`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'schedulers' in params:
+            body_params = params['schedulers']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/schedulers/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def create_iceberg_system_settings_destination_by_id(self, name, destination, **kwargs):  # noqa: E501
         """Create destination by name  # noqa: E501
 
@@ -1572,8 +2274,9 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of destination (required)
         :param DestinationSchema destination: destinationsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1595,14 +2298,15 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of destination (required)
         :param DestinationSchema destination: destinationsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'destination']  # noqa: E501
+        all_params = ['name', 'destination', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1635,6 +2339,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -1680,6 +2386,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param DestinationsSchema destinations: destinationsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1702,12 +2409,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param DestinationsSchema destinations: destinationsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['destinations']  # noqa: E501
+        all_params = ['destinations', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1734,6 +2442,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -1778,8 +2488,9 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of report (required)
         :param ReportSchema report: reportsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1801,14 +2512,15 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of report (required)
         :param ReportSchema report: reportsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'report']  # noqa: E501
+        all_params = ['name', 'report', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1841,6 +2553,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -1886,6 +2600,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param ReportsSchema reports: reportsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1908,12 +2623,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param ReportsSchema reports: reportsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['reports']  # noqa: E501
+        all_params = ['reports', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1940,6 +2656,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -1984,8 +2702,9 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of Scheduler (required)
         :param SchedulerSchema scheduler: schedulerbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2007,14 +2726,15 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of Scheduler (required)
         :param SchedulerSchema scheduler: schedulerbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'scheduler']  # noqa: E501
+        all_params = ['name', 'scheduler', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2047,6 +2767,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2092,6 +2814,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param SchedulersSchema schedulers: schedulersbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2114,12 +2837,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param SchedulersSchema schedulers: schedulersbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['schedulers']  # noqa: E501
+        all_params = ['schedulers', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2146,6 +2870,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2191,6 +2917,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param SystemSettingsSchema system_settings: system_settings body object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2213,12 +2940,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param SystemSettingsSchema system_settings: system_settings body object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['system_settings']  # noqa: E501
+        all_params = ['system_settings', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2245,6 +2973,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2279,6 +3009,109 @@ class ConfigurationApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def create_iceberg_system_system_by_id(self, system_settings, **kwargs):  # noqa: E501
+        """Create system  # noqa: E501
+
+        Create/Update system to populate persist-raw-data, schedulers, destinations and reports.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.create_iceberg_system_system_by_id(system_settings, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param SystemSettingsSchema system_settings: system_settings body object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.create_iceberg_system_system_by_id_with_http_info(system_settings, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_iceberg_system_system_by_id_with_http_info(system_settings, **kwargs)  # noqa: E501
+            return data
+
+    def create_iceberg_system_system_by_id_with_http_info(self, system_settings, **kwargs):  # noqa: E501
+        """Create system  # noqa: E501
+
+        Create/Update system to populate persist-raw-data, schedulers, destinations and reports.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.create_iceberg_system_system_by_id_with_http_info(system_settings, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param SystemSettingsSchema system_settings: system_settings body object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['system_settings', 'authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_iceberg_system_system_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'system_settings' is set
+        if ('system_settings' not in params or
+                params['system_settings'] is None):
+            raise ValueError("Missing the required parameter `system_settings` when calling `create_iceberg_system_system_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'system_settings' in params:
+            body_params = params['system_settings']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def create_iceberg_topic_rule_rule_by_id(self, topic_name, rule_name, rule, **kwargs):  # noqa: E501
         """Update or create a rule.  # noqa: E501
 
@@ -2292,6 +3125,7 @@ class ConfigurationApi(object):
         :param str topic_name: ID of topic-name (required)
         :param str rule_name: ID of rule-name (required)
         :param RuleSchema rule: rulebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2316,12 +3150,13 @@ class ConfigurationApi(object):
         :param str topic_name: ID of topic-name (required)
         :param str rule_name: ID of rule-name (required)
         :param RuleSchema rule: rulebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['topic_name', 'rule_name', 'rule']  # noqa: E501
+        all_params = ['topic_name', 'rule_name', 'rule', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2360,6 +3195,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2406,6 +3243,7 @@ class ConfigurationApi(object):
         :param async bool
         :param str topic_name: ID of topic-name (required)
         :param TopicSchema topic: topicbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2429,12 +3267,13 @@ class ConfigurationApi(object):
         :param async bool
         :param str topic_name: ID of topic-name (required)
         :param TopicSchema topic: topicbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['topic_name', 'topic']  # noqa: E501
+        all_params = ['topic_name', 'topic', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2467,6 +3306,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2512,6 +3353,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param TopicsSchema topics: topicsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2534,12 +3376,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param TopicsSchema topics: topicsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['topics']  # noqa: E501
+        all_params = ['topics', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2566,6 +3409,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2600,6 +3445,101 @@ class ConfigurationApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def delete_healthbot_ingest_settings_byoi_ingest_mappings(self, **kwargs):  # noqa: E501
+        """Delete all ingest-mappings.  # noqa: E501
+
+        Delete all ingest-mappings.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.delete_healthbot_ingest_settings_byoi_ingest_mappings(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.delete_healthbot_ingest_settings_byoi_ingest_mappings_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_healthbot_ingest_settings_byoi_ingest_mappings_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def delete_healthbot_ingest_settings_byoi_ingest_mappings_with_http_info(self, **kwargs):  # noqa: E501
+        """Delete all ingest-mappings.  # noqa: E501
+
+        Delete all ingest-mappings.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.delete_healthbot_ingest_settings_byoi_ingest_mappings_with_http_info(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_healthbot_ingest_settings_byoi_ingest_mappings" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/byoi/ingest-mappings/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def delete_iceberg_device_device_by_id(self, device_id, **kwargs):  # noqa: E501
         """Delete device.  # noqa: E501
 
@@ -2611,6 +3551,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str device_id: ID of device-id (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2633,12 +3574,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str device_id: ID of device-id (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['device_id']  # noqa: E501
+        all_params = ['device_id', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2667,6 +3609,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2710,6 +3654,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str device_group_name: ID of device-group-name (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2732,12 +3677,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str device_group_name: ID of device-group-name (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['device_group_name']  # noqa: E501
+        all_params = ['device_group_name', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2766,6 +3712,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2808,6 +3756,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2829,12 +3778,13 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2857,6 +3807,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2899,6 +3851,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2920,12 +3873,13 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -2948,6 +3902,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2991,6 +3947,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str network_group_name: ID of network-group-name (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3013,12 +3970,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str network_group_name: ID of network-group-name (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['network_group_name']  # noqa: E501
+        all_params = ['network_group_name', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3047,6 +4005,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -3089,6 +4049,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3110,12 +4071,13 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3138,6 +4100,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -3181,6 +4145,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str notification_name: ID of notification-name (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3203,12 +4168,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str notification_name: ID of notification-name (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['notification_name']  # noqa: E501
+        all_params = ['notification_name', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3237,6 +4203,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -3279,6 +4247,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3300,12 +4269,13 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3328,6 +4298,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -3371,6 +4343,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str playbook_name: ID of playbook-name (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3393,12 +4366,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str playbook_name: ID of playbook-name (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['playbook_name']  # noqa: E501
+        all_params = ['playbook_name', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3427,6 +4401,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -3469,6 +4445,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3490,12 +4467,13 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3518,6 +4496,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -3560,6 +4540,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3581,12 +4562,13 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3609,6 +4591,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -3652,6 +4636,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str retention_policy_name: ID of retention-policy-name (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3674,12 +4659,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str retention_policy_name: ID of retention-policy-name (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['retention_policy_name']  # noqa: E501
+        all_params = ['retention_policy_name', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3708,6 +4694,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -3740,6 +4728,600 @@ class ConfigurationApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def delete_iceberg_system_destination_by_id(self, name, **kwargs):  # noqa: E501
+        """Delete destination by name  # noqa: E501
+
+        Delete a destination by `name`. Delete will fail if the destination is being referenced by a report.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.delete_iceberg_system_destination_by_id(name, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of destination (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.delete_iceberg_system_destination_by_id_with_http_info(name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_iceberg_system_destination_by_id_with_http_info(name, **kwargs)  # noqa: E501
+            return data
+
+    def delete_iceberg_system_destination_by_id_with_http_info(self, name, **kwargs):  # noqa: E501
+        """Delete destination by name  # noqa: E501
+
+        Delete a destination by `name`. Delete will fail if the destination is being referenced by a report.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.delete_iceberg_system_destination_by_id_with_http_info(name, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of destination (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_iceberg_system_destination_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_iceberg_system_destination_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/report-generation/destination/{name}/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_iceberg_system_destinations(self, **kwargs):  # noqa: E501
+        """Delete destinations by name  # noqa: E501
+
+        Delete all destinations. This will fail if any destination is referenced in any report.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.delete_iceberg_system_destinations(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.delete_iceberg_system_destinations_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_iceberg_system_destinations_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def delete_iceberg_system_destinations_with_http_info(self, **kwargs):  # noqa: E501
+        """Delete destinations by name  # noqa: E501
+
+        Delete all destinations. This will fail if any destination is referenced in any report.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.delete_iceberg_system_destinations_with_http_info(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_iceberg_system_destinations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/report-generation/destinations/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_iceberg_system_report_by_id(self, name, **kwargs):  # noqa: E501
+        """Delete report by name  # noqa: E501
+
+        Delete a report by `name`. Delete will fail if the report is being referenced by a device-group or network-group.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.delete_iceberg_system_report_by_id(name, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of report (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.delete_iceberg_system_report_by_id_with_http_info(name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_iceberg_system_report_by_id_with_http_info(name, **kwargs)  # noqa: E501
+            return data
+
+    def delete_iceberg_system_report_by_id_with_http_info(self, name, **kwargs):  # noqa: E501
+        """Delete report by name  # noqa: E501
+
+        Delete a report by `name`. Delete will fail if the report is being referenced by a device-group or network-group.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.delete_iceberg_system_report_by_id_with_http_info(name, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of report (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_iceberg_system_report_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_iceberg_system_report_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/report-generation/report/{name}/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_iceberg_system_reports(self, **kwargs):  # noqa: E501
+        """Delete reports by name  # noqa: E501
+
+        Delete all reports. This will fail if any report is referenced in any device-group or network-group.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.delete_iceberg_system_reports(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.delete_iceberg_system_reports_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_iceberg_system_reports_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def delete_iceberg_system_reports_with_http_info(self, **kwargs):  # noqa: E501
+        """Delete reports by name  # noqa: E501
+
+        Delete all reports. This will fail if any report is referenced in any device-group or network-group.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.delete_iceberg_system_reports_with_http_info(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_iceberg_system_reports" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/report-generation/reports/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_iceberg_system_scheduler_by_id(self, name, **kwargs):  # noqa: E501
+        """Delete scheduler by name  # noqa: E501
+
+        Delete a scheduler by `name`. Delete will fail if the scheduler is being referenced by a report.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.delete_iceberg_system_scheduler_by_id(name, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of Scheduler (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.delete_iceberg_system_scheduler_by_id_with_http_info(name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_iceberg_system_scheduler_by_id_with_http_info(name, **kwargs)  # noqa: E501
+            return data
+
+    def delete_iceberg_system_scheduler_by_id_with_http_info(self, name, **kwargs):  # noqa: E501
+        """Delete scheduler by name  # noqa: E501
+
+        Delete a scheduler by `name`. Delete will fail if the scheduler is being referenced by a report.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.delete_iceberg_system_scheduler_by_id_with_http_info(name, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of Scheduler (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_iceberg_system_scheduler_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_iceberg_system_scheduler_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/scheduler/{name}/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_iceberg_system_schedulers(self, **kwargs):  # noqa: E501
+        """Delete schedulers by name  # noqa: E501
+
+        Delete all schedulers. This will fail if any scheduler is referenced in any report.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.delete_iceberg_system_schedulers(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.delete_iceberg_system_schedulers_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_iceberg_system_schedulers_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def delete_iceberg_system_schedulers_with_http_info(self, **kwargs):  # noqa: E501
+        """Delete schedulers by name  # noqa: E501
+
+        Delete all schedulers. This will fail if any scheduler is referenced in any report.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.delete_iceberg_system_schedulers_with_http_info(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_iceberg_system_schedulers" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/schedulers/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def delete_iceberg_system_settings_destination_by_id(self, name, **kwargs):  # noqa: E501
         """Delete destination by name  # noqa: E501
 
@@ -3750,7 +5332,8 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of destination (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3772,13 +5355,14 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of destination (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name']  # noqa: E501
+        all_params = ['name', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3807,6 +5391,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -3849,6 +5435,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3870,12 +5457,13 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3898,6 +5486,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -3940,7 +5530,8 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of report (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3962,13 +5553,14 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of report (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name']  # noqa: E501
+        all_params = ['name', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3997,6 +5589,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -4039,6 +5633,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4060,12 +5655,13 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4088,6 +5684,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -4130,7 +5728,8 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of Scheduler (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4152,13 +5751,14 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of Scheduler (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name']  # noqa: E501
+        all_params = ['name', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4187,6 +5787,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -4229,6 +5831,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4250,12 +5853,13 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4278,6 +5882,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -4320,6 +5926,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4341,12 +5948,13 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4369,6 +5977,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -4401,6 +6011,101 @@ class ConfigurationApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def delete_iceberg_system_system_by_id(self, **kwargs):  # noqa: E501
+        """Delete system  # noqa: E501
+
+        Delete system. This will delete all the reports, destinations and schedulers. The request will fail of any of the reports is being referenced by a device-group or network-group.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.delete_iceberg_system_system_by_id(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.delete_iceberg_system_system_by_id_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_iceberg_system_system_by_id_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def delete_iceberg_system_system_by_id_with_http_info(self, **kwargs):  # noqa: E501
+        """Delete system  # noqa: E501
+
+        Delete system. This will delete all the reports, destinations and schedulers. The request will fail of any of the reports is being referenced by a device-group or network-group.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.delete_iceberg_system_system_by_id_with_http_info(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_iceberg_system_system_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def delete_iceberg_topic_rule_rule_by_id(self, topic_name, rule_name, **kwargs):  # noqa: E501
         """Delete a rule.  # noqa: E501
 
@@ -4413,6 +6118,7 @@ class ConfigurationApi(object):
         :param async bool
         :param str topic_name: ID of topic-name (required)
         :param str rule_name: ID of rule-name (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4436,12 +6142,13 @@ class ConfigurationApi(object):
         :param async bool
         :param str topic_name: ID of topic-name (required)
         :param str rule_name: ID of rule-name (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['topic_name', 'rule_name']  # noqa: E501
+        all_params = ['topic_name', 'rule_name', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4476,6 +6183,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -4519,6 +6228,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str topic_name: ID of topic-name (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4541,12 +6251,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str topic_name: ID of topic-name (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['topic_name']  # noqa: E501
+        all_params = ['topic_name', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4575,6 +6286,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -4617,6 +6330,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4638,12 +6352,13 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4666,6 +6381,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -4698,6 +6415,113 @@ class ConfigurationApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def first_login(self, authorization, password, **kwargs):  # noqa: E501
+        """Change password after first login  # noqa: E501
+
+        Change password in first login  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.first_login(authorization, password, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object (required)
+        :param Password password: set new password (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.first_login_with_http_info(authorization, password, **kwargs)  # noqa: E501
+        else:
+            (data) = self.first_login_with_http_info(authorization, password, **kwargs)  # noqa: E501
+            return data
+
+    def first_login_with_http_info(self, authorization, password, **kwargs):  # noqa: E501
+        """Change password after first login  # noqa: E501
+
+        Change password in first login  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.first_login_with_http_info(authorization, password, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object (required)
+        :param Password password: set new password (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization', 'password']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method first_login" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `first_login`")  # noqa: E501
+        # verify the required parameter 'password' is set
+        if ('password' not in params or
+                params['password'] is None):
+            raise ValueError("Missing the required parameter `password` when calling `first_login`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'password' in params:
+            body_params = params['password']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/first-login/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def retrieve_affected_groups(self, **kwargs):  # noqa: E501
         """Get all groups affected by un-committed configuration changes.  # noqa: E501
 
@@ -4708,6 +6532,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: AffectedGroups
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4729,12 +6554,13 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: AffectedGroups
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4757,6 +6583,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -4800,6 +6628,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str device_group_name: Name of device-group (required)
+        :param str authorization: authentication header object
         :return: ServiceStatus
                  If the method is called asynchronously,
                  returns the request thread.
@@ -4822,12 +6651,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str device_group_name: Name of device-group (required)
+        :param str authorization: authentication header object
         :return: ServiceStatus
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['device_group_name']  # noqa: E501
+        all_params = ['device_group_name', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4856,6 +6686,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -4898,6 +6730,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: list[str]
                  If the method is called asynchronously,
@@ -4920,13 +6753,14 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
+        all_params = ['authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -4951,6 +6785,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -4994,6 +6830,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str device_id: ID of device-id (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: DeviceSchema
                  If the method is called asynchronously,
@@ -5017,13 +6854,14 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str device_id: ID of device-id (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: DeviceSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['device_id', 'working']  # noqa: E501
+        all_params = ['device_id', 'authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5054,6 +6892,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -5096,6 +6936,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: list[str]
                  If the method is called asynchronously,
@@ -5118,13 +6959,14 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
+        all_params = ['authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5149,6 +6991,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -5192,6 +7036,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str device_group_name: ID of device-group-name (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: DeviceGroupSchema
                  If the method is called asynchronously,
@@ -5215,13 +7060,14 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str device_group_name: ID of device-group-name (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: DeviceGroupSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['device_group_name', 'working']  # noqa: E501
+        all_params = ['device_group_name', 'authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5252,6 +7098,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -5294,6 +7142,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: DeviceGroupsSchema
                  If the method is called asynchronously,
@@ -5316,13 +7165,14 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: DeviceGroupsSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
+        all_params = ['authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5347,6 +7197,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -5389,6 +7241,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: DevicesSchema
                  If the method is called asynchronously,
@@ -5411,13 +7264,14 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: DevicesSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
+        all_params = ['authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5442,6 +7296,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -5484,6 +7340,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: list[str]
                  If the method is called asynchronously,
@@ -5506,13 +7363,14 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
+        all_params = ['authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5537,6 +7395,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -5580,6 +7440,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str network_group_name: ID of network-group-name (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: NetworkGroupSchema
                  If the method is called asynchronously,
@@ -5603,13 +7464,14 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str network_group_name: ID of network-group-name (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: NetworkGroupSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['network_group_name', 'working']  # noqa: E501
+        all_params = ['network_group_name', 'authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5640,6 +7502,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -5682,6 +7546,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: NetworkGroupsSchema
                  If the method is called asynchronously,
@@ -5704,13 +7569,14 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: NetworkGroupsSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
+        all_params = ['authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5735,6 +7601,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -5777,6 +7645,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: list[str]
                  If the method is called asynchronously,
@@ -5799,13 +7668,14 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
+        all_params = ['authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5830,6 +7700,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -5873,6 +7745,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str notification_name: ID of notification-name (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: NotificationSchema
                  If the method is called asynchronously,
@@ -5896,13 +7769,14 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str notification_name: ID of notification-name (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: NotificationSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['notification_name', 'working']  # noqa: E501
+        all_params = ['notification_name', 'authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5933,6 +7807,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -5975,6 +7851,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: NotificationsSchema
                  If the method is called asynchronously,
@@ -5997,13 +7874,14 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: NotificationsSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
+        all_params = ['authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6028,6 +7906,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -6070,6 +7950,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: list[str]
                  If the method is called asynchronously,
@@ -6092,13 +7973,14 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
+        all_params = ['authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6123,6 +8005,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -6166,6 +8050,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str playbook_name: ID of playbook-name (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: PlaybookSchema
                  If the method is called asynchronously,
@@ -6189,13 +8074,14 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str playbook_name: ID of playbook-name (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: PlaybookSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['playbook_name', 'working']  # noqa: E501
+        all_params = ['playbook_name', 'authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6226,6 +8112,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -6268,6 +8156,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: PlaybooksSchema
                  If the method is called asynchronously,
@@ -6290,13 +8179,14 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: PlaybooksSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
+        all_params = ['authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6321,6 +8211,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -6363,6 +8255,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: RetentionPoliciesSchema
                  If the method is called asynchronously,
@@ -6385,13 +8278,14 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: RetentionPoliciesSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
+        all_params = ['authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6416,6 +8310,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -6458,6 +8354,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: list[str]
                  If the method is called asynchronously,
@@ -6480,13 +8377,14 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
+        all_params = ['authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6511,6 +8409,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -6554,6 +8454,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str retention_policy_name: ID of retention-policy-name (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: RetentionPolicySchema
                  If the method is called asynchronously,
@@ -6577,13 +8478,14 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str retention_policy_name: ID of retention-policy-name (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: RetentionPolicySchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['retention_policy_name', 'working']  # noqa: E501
+        all_params = ['retention_policy_name', 'authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6614,6 +8516,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -6646,6 +8550,624 @@ class ConfigurationApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def retrieve_iceberg_system_destination_by_id(self, name, **kwargs):  # noqa: E501
+        """Retrieve destination by name  # noqa: E501
+
+        Get the configuration details of a destination by its `name`.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.retrieve_iceberg_system_destination_by_id(name, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of destination (required)
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: DestinationSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.retrieve_iceberg_system_destination_by_id_with_http_info(name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_iceberg_system_destination_by_id_with_http_info(name, **kwargs)  # noqa: E501
+            return data
+
+    def retrieve_iceberg_system_destination_by_id_with_http_info(self, name, **kwargs):  # noqa: E501
+        """Retrieve destination by name  # noqa: E501
+
+        Get the configuration details of a destination by its `name`.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.retrieve_iceberg_system_destination_by_id_with_http_info(name, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of destination (required)
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: DestinationSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'authorization', 'working']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_iceberg_system_destination_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `retrieve_iceberg_system_destination_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/report-generation/destination/{name}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='DestinationSchema',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_iceberg_system_destinations(self, **kwargs):  # noqa: E501
+        """Retrieve destinations by name  # noqa: E501
+
+        Get the configuration details of all destinations.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.retrieve_iceberg_system_destinations(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: DestinationsSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.retrieve_iceberg_system_destinations_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_iceberg_system_destinations_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def retrieve_iceberg_system_destinations_with_http_info(self, **kwargs):  # noqa: E501
+        """Retrieve destinations by name  # noqa: E501
+
+        Get the configuration details of all destinations.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.retrieve_iceberg_system_destinations_with_http_info(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: DestinationsSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization', 'working']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_iceberg_system_destinations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/report-generation/destinations/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='DestinationsSchema',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_iceberg_system_report_by_id(self, name, **kwargs):  # noqa: E501
+        """Retrieve report by name  # noqa: E501
+
+        Get the configuration details of a report by its `name`.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.retrieve_iceberg_system_report_by_id(name, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of report (required)
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: ReportSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.retrieve_iceberg_system_report_by_id_with_http_info(name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_iceberg_system_report_by_id_with_http_info(name, **kwargs)  # noqa: E501
+            return data
+
+    def retrieve_iceberg_system_report_by_id_with_http_info(self, name, **kwargs):  # noqa: E501
+        """Retrieve report by name  # noqa: E501
+
+        Get the configuration details of a report by its `name`.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.retrieve_iceberg_system_report_by_id_with_http_info(name, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of report (required)
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: ReportSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'authorization', 'working']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_iceberg_system_report_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `retrieve_iceberg_system_report_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/report-generation/report/{name}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ReportSchema',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_iceberg_system_reports(self, **kwargs):  # noqa: E501
+        """Retrieve reports by name  # noqa: E501
+
+        Get the configuration details of all reports.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.retrieve_iceberg_system_reports(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: ReportsSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.retrieve_iceberg_system_reports_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_iceberg_system_reports_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def retrieve_iceberg_system_reports_with_http_info(self, **kwargs):  # noqa: E501
+        """Retrieve reports by name  # noqa: E501
+
+        Get the configuration details of all reports.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.retrieve_iceberg_system_reports_with_http_info(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: ReportsSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization', 'working']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_iceberg_system_reports" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/report-generation/reports/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ReportsSchema',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_iceberg_system_scheduler_by_id(self, name, **kwargs):  # noqa: E501
+        """Retrieve scheduler by name  # noqa: E501
+
+        Get the configuration details of a scheduler by its `name`.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.retrieve_iceberg_system_scheduler_by_id(name, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of Scheduler (required)
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: SchedulerSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.retrieve_iceberg_system_scheduler_by_id_with_http_info(name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_iceberg_system_scheduler_by_id_with_http_info(name, **kwargs)  # noqa: E501
+            return data
+
+    def retrieve_iceberg_system_scheduler_by_id_with_http_info(self, name, **kwargs):  # noqa: E501
+        """Retrieve scheduler by name  # noqa: E501
+
+        Get the configuration details of a scheduler by its `name`.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.retrieve_iceberg_system_scheduler_by_id_with_http_info(name, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of Scheduler (required)
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: SchedulerSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'authorization', 'working']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_iceberg_system_scheduler_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `retrieve_iceberg_system_scheduler_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/scheduler/{name}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='SchedulerSchema',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_iceberg_system_schedulers(self, **kwargs):  # noqa: E501
+        """Retrieve schedulers by name  # noqa: E501
+
+        Get the configuration details of all schedulers.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.retrieve_iceberg_system_schedulers(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: SchedulersSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.retrieve_iceberg_system_schedulers_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_iceberg_system_schedulers_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def retrieve_iceberg_system_schedulers_with_http_info(self, **kwargs):  # noqa: E501
+        """Retrieve schedulers by name  # noqa: E501
+
+        Get the configuration details of all schedulers.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.retrieve_iceberg_system_schedulers_with_http_info(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: SchedulersSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization', 'working']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_iceberg_system_schedulers" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/schedulers/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='SchedulersSchema',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def retrieve_iceberg_system_settings_destination_by_id(self, name, **kwargs):  # noqa: E501
         """Retrieve destination by name  # noqa: E501
 
@@ -6656,7 +9178,8 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of destination (required)
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: DestinationSchema
                  If the method is called asynchronously,
@@ -6679,14 +9202,15 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of destination (required)
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: DestinationSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'working']  # noqa: E501
+        all_params = ['name', 'authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6717,6 +9241,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -6759,6 +9285,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: DestinationsSchema
                  If the method is called asynchronously,
@@ -6781,13 +9308,14 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: DestinationsSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
+        all_params = ['authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6812,6 +9340,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -6854,7 +9384,8 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of report (required)
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: ReportSchema
                  If the method is called asynchronously,
@@ -6877,14 +9408,15 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of report (required)
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: ReportSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'working']  # noqa: E501
+        all_params = ['name', 'authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -6915,6 +9447,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -6957,6 +9491,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: ReportsSchema
                  If the method is called asynchronously,
@@ -6979,13 +9514,14 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: ReportsSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
+        all_params = ['authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -7010,6 +9546,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -7052,7 +9590,8 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of Scheduler (required)
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: SchedulerSchema
                  If the method is called asynchronously,
@@ -7075,14 +9614,15 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of Scheduler (required)
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: SchedulerSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'working']  # noqa: E501
+        all_params = ['name', 'authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -7113,6 +9653,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -7155,6 +9697,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: SchedulersSchema
                  If the method is called asynchronously,
@@ -7177,13 +9720,14 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: SchedulersSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
+        all_params = ['authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -7208,6 +9752,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -7250,6 +9796,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: SystemSettingsSchema
                  If the method is called asynchronously,
@@ -7272,13 +9819,14 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: SystemSettingsSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
+        all_params = ['authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -7303,6 +9851,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -7335,6 +9885,105 @@ class ConfigurationApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def retrieve_iceberg_system_system(self, **kwargs):  # noqa: E501
+        """Retrieve system data  # noqa: E501
+
+        Retrieve system details  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.retrieve_iceberg_system_system(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: SystemSettingsSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.retrieve_iceberg_system_system_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_iceberg_system_system_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def retrieve_iceberg_system_system_with_http_info(self, **kwargs):  # noqa: E501
+        """Retrieve system data  # noqa: E501
+
+        Retrieve system details  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.retrieve_iceberg_system_system_with_http_info(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: SystemSettingsSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization', 'working']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_iceberg_system_system" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='SystemSettingsSchema',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def retrieve_iceberg_topic_rule_rule(self, topic_name, **kwargs):  # noqa: E501
         """List all rule-names in a topic.  # noqa: E501
 
@@ -7346,7 +9995,9 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str topic_name: ID of topic-name (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
+        :param str action: Action to be performed
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
@@ -7369,13 +10020,15 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str topic_name: ID of topic-name (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
+        :param str action: Action to be performed
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['topic_name', 'working']  # noqa: E501
+        all_params = ['topic_name', 'authorization', 'working', 'action']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -7404,8 +10057,12 @@ class ConfigurationApi(object):
         query_params = []
         if 'working' in params:
             query_params.append(('working', params['working']))  # noqa: E501
+        if 'action' in params:
+            query_params.append(('action', params['action']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -7450,6 +10107,7 @@ class ConfigurationApi(object):
         :param async bool
         :param str topic_name: ID of topic-name (required)
         :param str rule_name: ID of rule-name (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: RuleSchema
                  If the method is called asynchronously,
@@ -7474,13 +10132,14 @@ class ConfigurationApi(object):
         :param async bool
         :param str topic_name: ID of topic-name (required)
         :param str rule_name: ID of rule-name (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: RuleSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['topic_name', 'rule_name', 'working']  # noqa: E501
+        all_params = ['topic_name', 'rule_name', 'authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -7517,6 +10176,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -7559,6 +10220,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: list[str]
                  If the method is called asynchronously,
@@ -7581,13 +10243,14 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
+        all_params = ['authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -7612,6 +10275,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -7655,6 +10320,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str topic_name: ID of topic-name (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: TopicSchema
                  If the method is called asynchronously,
@@ -7678,13 +10344,14 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str topic_name: ID of topic-name (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :return: TopicSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['topic_name', 'working']  # noqa: E501
+        all_params = ['topic_name', 'authorization', 'working']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -7715,6 +10382,8 @@ class ConfigurationApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -7757,7 +10426,9 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
+        :param str sort: asc/desc queries sorted configuration
         :return: TopicsSchema
                  If the method is called asynchronously,
                  returns the request thread.
@@ -7779,13 +10450,15 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
+        :param str sort: asc/desc queries sorted configuration
         :return: TopicsSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
+        all_params = ['authorization', 'working', 'sort']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -7808,8 +10481,12 @@ class ConfigurationApi(object):
         query_params = []
         if 'working' in params:
             query_params.append(('working', params['working']))  # noqa: E501
+        if 'sort' in params:
+            query_params.append(('sort', params['sort']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -7853,6 +10530,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str network_group_name: Name of network-group (required)
+        :param str authorization: authentication header object
         :return: ServiceStatus
                  If the method is called asynchronously,
                  returns the request thread.
@@ -7875,12 +10553,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param str network_group_name: Name of network-group (required)
+        :param str authorization: authentication header object
         :return: ServiceStatus
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['network_group_name']  # noqa: E501
+        all_params = ['network_group_name', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -7909,6 +10588,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -7941,6 +10622,101 @@ class ConfigurationApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def retrieve_orchestrator(self, **kwargs):  # noqa: E501
+        """Get Orchestrator type  # noqa: E501
+
+        Get orchestrator type. Will be one of kubernetes or compose.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.retrieve_orchestrator(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.retrieve_orchestrator_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_orchestrator_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def retrieve_orchestrator_with_http_info(self, **kwargs):  # noqa: E501
+        """Get Orchestrator type  # noqa: E501
+
+        Get orchestrator type. Will be one of kubernetes or compose.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.retrieve_orchestrator_with_http_info(async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_orchestrator" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/orchestrator/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def rollback_unsaved_configuration(self, **kwargs):  # noqa: E501
         """Delete the un-committed configuration.  # noqa: E501
 
@@ -7951,6 +10727,7 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -7972,12 +10749,13 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -8000,6 +10778,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -8044,6 +10824,7 @@ class ConfigurationApi(object):
         :param async bool
         :param str device_id: ID of device-id (required)
         :param DeviceSchema device: devicebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -8067,12 +10848,13 @@ class ConfigurationApi(object):
         :param async bool
         :param str device_id: ID of device-id (required)
         :param DeviceSchema device: devicebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['device_id', 'device']  # noqa: E501
+        all_params = ['device_id', 'device', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -8105,6 +10887,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -8151,6 +10935,7 @@ class ConfigurationApi(object):
         :param async bool
         :param str device_group_name: ID of device-group-name (required)
         :param DeviceGroupSchema device_group: device_groupbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -8174,12 +10959,13 @@ class ConfigurationApi(object):
         :param async bool
         :param str device_group_name: ID of device-group-name (required)
         :param DeviceGroupSchema device_group: device_groupbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['device_group_name', 'device_group']  # noqa: E501
+        all_params = ['device_group_name', 'device_group', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -8212,6 +10998,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -8257,6 +11045,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param DeviceGroupsSchema device_groups: device-groupsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -8279,12 +11068,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param DeviceGroupsSchema device_groups: device-groupsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['device_groups']  # noqa: E501
+        all_params = ['device_groups', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -8311,6 +11101,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -8356,6 +11148,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param DevicesSchema devices: devicesbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -8378,12 +11171,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param DevicesSchema devices: devicesbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['devices']  # noqa: E501
+        all_params = ['devices', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -8410,6 +11204,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -8456,6 +11252,7 @@ class ConfigurationApi(object):
         :param async bool
         :param str network_group_name: ID of network-group-name (required)
         :param NetworkGroupSchema network_group: network_groupbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -8479,12 +11276,13 @@ class ConfigurationApi(object):
         :param async bool
         :param str network_group_name: ID of network-group-name (required)
         :param NetworkGroupSchema network_group: network_groupbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['network_group_name', 'network_group']  # noqa: E501
+        all_params = ['network_group_name', 'network_group', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -8517,6 +11315,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -8562,6 +11362,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param NetworkGroupsSchema network_groups: network-groupsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -8584,12 +11385,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param NetworkGroupsSchema network_groups: network-groupsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['network_groups']  # noqa: E501
+        all_params = ['network_groups', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -8616,6 +11418,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -8662,6 +11466,7 @@ class ConfigurationApi(object):
         :param async bool
         :param str notification_name: ID of notification-name (required)
         :param NotificationSchema notification: notificationbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -8685,12 +11490,13 @@ class ConfigurationApi(object):
         :param async bool
         :param str notification_name: ID of notification-name (required)
         :param NotificationSchema notification: notificationbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['notification_name', 'notification']  # noqa: E501
+        all_params = ['notification_name', 'notification', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -8723,6 +11529,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -8768,6 +11576,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param NotificationsSchema notifications: notificationsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -8790,12 +11599,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param NotificationsSchema notifications: notificationsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['notifications']  # noqa: E501
+        all_params = ['notifications', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -8822,6 +11632,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -8868,6 +11680,7 @@ class ConfigurationApi(object):
         :param async bool
         :param str playbook_name: ID of playbook-name (required)
         :param PlaybookSchema playbook: playbookbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -8891,12 +11704,13 @@ class ConfigurationApi(object):
         :param async bool
         :param str playbook_name: ID of playbook-name (required)
         :param PlaybookSchema playbook: playbookbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['playbook_name', 'playbook']  # noqa: E501
+        all_params = ['playbook_name', 'playbook', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -8929,6 +11743,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -8974,6 +11790,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param PlaybooksSchema playbooks: playbooksbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -8996,12 +11813,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param PlaybooksSchema playbooks: playbooksbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['playbooks']  # noqa: E501
+        all_params = ['playbooks', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -9028,6 +11846,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -9073,6 +11893,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param RetentionPoliciesSchema retention_policies: retention-policies body object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -9095,12 +11916,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param RetentionPoliciesSchema retention_policies: retention-policies body object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['retention_policies']  # noqa: E501
+        all_params = ['retention_policies', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -9127,6 +11949,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -9173,6 +11997,7 @@ class ConfigurationApi(object):
         :param async bool
         :param str retention_policy_name: ID of retention-policy-name (required)
         :param RetentionPolicySchema retention_policy: retention_policybody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -9196,12 +12021,13 @@ class ConfigurationApi(object):
         :param async bool
         :param str retention_policy_name: ID of retention-policy-name (required)
         :param RetentionPolicySchema retention_policy: retention_policybody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['retention_policy_name', 'retention_policy']  # noqa: E501
+        all_params = ['retention_policy_name', 'retention_policy', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -9234,6 +12060,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -9268,6 +12096,648 @@ class ConfigurationApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def update_iceberg_system_destination_by_id(self, name, destination, **kwargs):  # noqa: E501
+        """Update destination by name  # noqa: E501
+
+        Overwrite a destination by destination name. The destination name specified in the URL and the request body must match.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.update_iceberg_system_destination_by_id(name, destination, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of destination (required)
+        :param DestinationSchema destination: destinationsbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.update_iceberg_system_destination_by_id_with_http_info(name, destination, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_iceberg_system_destination_by_id_with_http_info(name, destination, **kwargs)  # noqa: E501
+            return data
+
+    def update_iceberg_system_destination_by_id_with_http_info(self, name, destination, **kwargs):  # noqa: E501
+        """Update destination by name  # noqa: E501
+
+        Overwrite a destination by destination name. The destination name specified in the URL and the request body must match.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.update_iceberg_system_destination_by_id_with_http_info(name, destination, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of destination (required)
+        :param DestinationSchema destination: destinationsbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'destination', 'authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_iceberg_system_destination_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `update_iceberg_system_destination_by_id`")  # noqa: E501
+        # verify the required parameter 'destination' is set
+        if ('destination' not in params or
+                params['destination'] is None):
+            raise ValueError("Missing the required parameter `destination` when calling `update_iceberg_system_destination_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'destination' in params:
+            body_params = params['destination']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/report-generation/destination/{name}/', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_iceberg_system_destinations(self, destinations, **kwargs):  # noqa: E501
+        """Update destinations by name  # noqa: E501
+
+        Overwrite the existing configuration of destinations. New destinations are created and the existing destinations are overwritten with new content. If some existing destinations are not present in the payload, such destinations are deleted. This will fail if any of the destinations that are not present in the payload are referenced by a report.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.update_iceberg_system_destinations(destinations, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param DestinationsSchema destinations: destinationsbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.update_iceberg_system_destinations_with_http_info(destinations, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_iceberg_system_destinations_with_http_info(destinations, **kwargs)  # noqa: E501
+            return data
+
+    def update_iceberg_system_destinations_with_http_info(self, destinations, **kwargs):  # noqa: E501
+        """Update destinations by name  # noqa: E501
+
+        Overwrite the existing configuration of destinations. New destinations are created and the existing destinations are overwritten with new content. If some existing destinations are not present in the payload, such destinations are deleted. This will fail if any of the destinations that are not present in the payload are referenced by a report.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.update_iceberg_system_destinations_with_http_info(destinations, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param DestinationsSchema destinations: destinationsbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['destinations', 'authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_iceberg_system_destinations" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'destinations' is set
+        if ('destinations' not in params or
+                params['destinations'] is None):
+            raise ValueError("Missing the required parameter `destinations` when calling `update_iceberg_system_destinations`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'destinations' in params:
+            body_params = params['destinations']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/report-generation/destinations/', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_iceberg_system_report_by_id(self, name, report, **kwargs):  # noqa: E501
+        """Update report by name  # noqa: E501
+
+        Overwrite a report by report name. The report name specified in the URL and the request body must match.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.update_iceberg_system_report_by_id(name, report, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of report (required)
+        :param ReportSchema report: reportsbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.update_iceberg_system_report_by_id_with_http_info(name, report, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_iceberg_system_report_by_id_with_http_info(name, report, **kwargs)  # noqa: E501
+            return data
+
+    def update_iceberg_system_report_by_id_with_http_info(self, name, report, **kwargs):  # noqa: E501
+        """Update report by name  # noqa: E501
+
+        Overwrite a report by report name. The report name specified in the URL and the request body must match.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.update_iceberg_system_report_by_id_with_http_info(name, report, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of report (required)
+        :param ReportSchema report: reportsbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'report', 'authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_iceberg_system_report_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `update_iceberg_system_report_by_id`")  # noqa: E501
+        # verify the required parameter 'report' is set
+        if ('report' not in params or
+                params['report'] is None):
+            raise ValueError("Missing the required parameter `report` when calling `update_iceberg_system_report_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'report' in params:
+            body_params = params['report']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/report-generation/report/{name}/', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_iceberg_system_reports(self, reports, **kwargs):  # noqa: E501
+        """Update reports by name  # noqa: E501
+
+        Overwrite the existing configuration of reports. New reports are created and the existing reports are overwritten with new content. If some existing reports are not present in the payload, such reports are deleted. This will fail if any of the reports that are not present in the payload are referenced by a device-group or network-group.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.update_iceberg_system_reports(reports, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param ReportsSchema reports: reportsbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.update_iceberg_system_reports_with_http_info(reports, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_iceberg_system_reports_with_http_info(reports, **kwargs)  # noqa: E501
+            return data
+
+    def update_iceberg_system_reports_with_http_info(self, reports, **kwargs):  # noqa: E501
+        """Update reports by name  # noqa: E501
+
+        Overwrite the existing configuration of reports. New reports are created and the existing reports are overwritten with new content. If some existing reports are not present in the payload, such reports are deleted. This will fail if any of the reports that are not present in the payload are referenced by a device-group or network-group.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.update_iceberg_system_reports_with_http_info(reports, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param ReportsSchema reports: reportsbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['reports', 'authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_iceberg_system_reports" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'reports' is set
+        if ('reports' not in params or
+                params['reports'] is None):
+            raise ValueError("Missing the required parameter `reports` when calling `update_iceberg_system_reports`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'reports' in params:
+            body_params = params['reports']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/report-generation/reports/', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_iceberg_system_scheduler_by_id(self, name, scheduler, **kwargs):  # noqa: E501
+        """Update scheduler by name  # noqa: E501
+
+        Overwrite a scheduler by scheduler name. The scheduler name specified in the URL and the request body must match.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.update_iceberg_system_scheduler_by_id(name, scheduler, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of Scheduler (required)
+        :param SchedulerSchema scheduler: schedulerbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.update_iceberg_system_scheduler_by_id_with_http_info(name, scheduler, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_iceberg_system_scheduler_by_id_with_http_info(name, scheduler, **kwargs)  # noqa: E501
+            return data
+
+    def update_iceberg_system_scheduler_by_id_with_http_info(self, name, scheduler, **kwargs):  # noqa: E501
+        """Update scheduler by name  # noqa: E501
+
+        Overwrite a scheduler by scheduler name. The scheduler name specified in the URL and the request body must match.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.update_iceberg_system_scheduler_by_id_with_http_info(name, scheduler, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str name: Name of Scheduler (required)
+        :param SchedulerSchema scheduler: schedulerbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'scheduler', 'authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_iceberg_system_scheduler_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `update_iceberg_system_scheduler_by_id`")  # noqa: E501
+        # verify the required parameter 'scheduler' is set
+        if ('scheduler' not in params or
+                params['scheduler'] is None):
+            raise ValueError("Missing the required parameter `scheduler` when calling `update_iceberg_system_scheduler_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'scheduler' in params:
+            body_params = params['scheduler']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/scheduler/{name}/', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_iceberg_system_schedulers(self, schedulers, **kwargs):  # noqa: E501
+        """Update schedulers by name  # noqa: E501
+
+        Update operation of resource: schedulers  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.update_iceberg_system_schedulers(schedulers, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param SchedulersSchema schedulers: schedulersbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.update_iceberg_system_schedulers_with_http_info(schedulers, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_iceberg_system_schedulers_with_http_info(schedulers, **kwargs)  # noqa: E501
+            return data
+
+    def update_iceberg_system_schedulers_with_http_info(self, schedulers, **kwargs):  # noqa: E501
+        """Update schedulers by name  # noqa: E501
+
+        Update operation of resource: schedulers  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.update_iceberg_system_schedulers_with_http_info(schedulers, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param SchedulersSchema schedulers: schedulersbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['schedulers', 'authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_iceberg_system_schedulers" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'schedulers' is set
+        if ('schedulers' not in params or
+                params['schedulers'] is None):
+            raise ValueError("Missing the required parameter `schedulers` when calling `update_iceberg_system_schedulers`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'schedulers' in params:
+            body_params = params['schedulers']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/schedulers/', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def update_iceberg_system_settings_destination_by_id(self, name, destination, **kwargs):  # noqa: E501
         """Update destination by name  # noqa: E501
 
@@ -9278,8 +12748,9 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of destination (required)
         :param DestinationSchema destination: destinationsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -9301,14 +12772,15 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of destination (required)
         :param DestinationSchema destination: destinationsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'destination']  # noqa: E501
+        all_params = ['name', 'destination', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -9341,6 +12813,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -9386,6 +12860,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param DestinationsSchema destinations: destinationsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -9408,12 +12883,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param DestinationsSchema destinations: destinationsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['destinations']  # noqa: E501
+        all_params = ['destinations', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -9440,6 +12916,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -9484,8 +12962,9 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of report (required)
         :param ReportSchema report: reportsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -9507,14 +12986,15 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of report (required)
         :param ReportSchema report: reportsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'report']  # noqa: E501
+        all_params = ['name', 'report', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -9547,6 +13027,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -9592,6 +13074,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param ReportsSchema reports: reportsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -9614,12 +13097,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param ReportsSchema reports: reportsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['reports']  # noqa: E501
+        all_params = ['reports', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -9646,6 +13130,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -9690,8 +13176,9 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of Scheduler (required)
         :param SchedulerSchema scheduler: schedulerbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -9713,14 +13200,15 @@ class ConfigurationApi(object):
         >>> result = thread.get()
 
         :param async bool
-        :param str name: ID of name (required)
+        :param str name: Name of Scheduler (required)
         :param SchedulerSchema scheduler: schedulerbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'scheduler']  # noqa: E501
+        all_params = ['name', 'scheduler', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -9753,6 +13241,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -9798,6 +13288,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param SchedulersSchema schedulers: schedulersbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -9820,12 +13311,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param SchedulersSchema schedulers: schedulersbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['schedulers']  # noqa: E501
+        all_params = ['schedulers', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -9852,6 +13344,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -9897,6 +13391,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param SystemSettingsSchema system_settings: system_settingsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -9919,12 +13414,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param SystemSettingsSchema system_settings: system_settingsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['system_settings']  # noqa: E501
+        all_params = ['system_settings', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -9951,6 +13447,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -9985,6 +13483,109 @@ class ConfigurationApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def update_iceberg_system_system_by_id(self, system_settings, **kwargs):  # noqa: E501
+        """Update system by ID  # noqa: E501
+
+        New endpoint to over-write the existing configuration of system-settings. New system-settings are created and existing system-settings are overwritten with new content. If some existing system-settings are not present in the payload, such system settings are deleted. This will fail if any of the reports in system-settings that are not present in the payload are referenced by a device-group or network-group.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.update_iceberg_system_system_by_id(system_settings, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param SystemSettingsSchema system_settings: system_settings body object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.update_iceberg_system_system_by_id_with_http_info(system_settings, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_iceberg_system_system_by_id_with_http_info(system_settings, **kwargs)  # noqa: E501
+            return data
+
+    def update_iceberg_system_system_by_id_with_http_info(self, system_settings, **kwargs):  # noqa: E501
+        """Update system by ID  # noqa: E501
+
+        New endpoint to over-write the existing configuration of system-settings. New system-settings are created and existing system-settings are overwritten with new content. If some existing system-settings are not present in the payload, such system settings are deleted. This will fail if any of the reports in system-settings that are not present in the payload are referenced by a device-group or network-group.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.update_iceberg_system_system_by_id_with_http_info(system_settings, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param SystemSettingsSchema system_settings: system_settings body object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['system_settings', 'authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_iceberg_system_system_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'system_settings' is set
+        if ('system_settings' not in params or
+                params['system_settings'] is None):
+            raise ValueError("Missing the required parameter `system_settings` when calling `update_iceberg_system_system_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'system_settings' in params:
+            body_params = params['system_settings']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def update_iceberg_topic_rule_rule_by_id(self, topic_name, rule_name, rule, **kwargs):  # noqa: E501
         """Overwrite a rule.  # noqa: E501
 
@@ -9998,6 +13599,7 @@ class ConfigurationApi(object):
         :param str topic_name: ID of topic-name (required)
         :param str rule_name: ID of rule-name (required)
         :param RuleSchema rule: rulebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -10022,12 +13624,13 @@ class ConfigurationApi(object):
         :param str topic_name: ID of topic-name (required)
         :param str rule_name: ID of rule-name (required)
         :param RuleSchema rule: rulebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['topic_name', 'rule_name', 'rule']  # noqa: E501
+        all_params = ['topic_name', 'rule_name', 'rule', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -10066,6 +13669,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -10112,6 +13717,7 @@ class ConfigurationApi(object):
         :param async bool
         :param str topic_name: ID of topic-name (required)
         :param TopicSchema topic: topicbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -10135,12 +13741,13 @@ class ConfigurationApi(object):
         :param async bool
         :param str topic_name: ID of topic-name (required)
         :param TopicSchema topic: topicbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['topic_name', 'topic']  # noqa: E501
+        all_params = ['topic_name', 'topic', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -10173,6 +13780,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -10218,6 +13827,7 @@ class ConfigurationApi(object):
 
         :param async bool
         :param TopicsSchema topics: topicsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -10240,12 +13850,13 @@ class ConfigurationApi(object):
 
         :param async bool
         :param TopicsSchema topics: topicsbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['topics']  # noqa: E501
+        all_params = ['topics', 'authorization']  # noqa: E501
         all_params.append('async')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -10272,6 +13883,8 @@ class ConfigurationApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -10299,6 +13912,212 @@ class ConfigurationApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def user_retrieve_user_profile(self, authorization, **kwargs):  # noqa: E501
+        """Get users profile information  # noqa: E501
+
+        Get user profile  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.user_retrieve_user_profile(authorization, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object (required)
+        :return: InlineResponse2005
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.user_retrieve_user_profile_with_http_info(authorization, **kwargs)  # noqa: E501
+        else:
+            (data) = self.user_retrieve_user_profile_with_http_info(authorization, **kwargs)  # noqa: E501
+            return data
+
+    def user_retrieve_user_profile_with_http_info(self, authorization, **kwargs):  # noqa: E501
+        """Get users profile information  # noqa: E501
+
+        Get user profile  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.user_retrieve_user_profile_with_http_info(authorization, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object (required)
+        :return: InlineResponse2005
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method user_retrieve_user_profile" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `user_retrieve_user_profile`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/user-profile/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='InlineResponse2005',  # noqa: E501
+            auth_settings=auth_settings,
+            async=params.get('async'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def user_update_user_profile(self, authorization, user, **kwargs):  # noqa: E501
+        """Update user profile informations.  # noqa: E501
+
+        Update user profile in the system  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.user_update_user_profile(authorization, user, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object (required)
+        :param User1 user: topics body object (required)
+        :return: list[InlineResponse2003]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async'):
+            return self.user_update_user_profile_with_http_info(authorization, user, **kwargs)  # noqa: E501
+        else:
+            (data) = self.user_update_user_profile_with_http_info(authorization, user, **kwargs)  # noqa: E501
+            return data
+
+    def user_update_user_profile_with_http_info(self, authorization, user, **kwargs):  # noqa: E501
+        """Update user profile informations.  # noqa: E501
+
+        Update user profile in the system  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async=True
+        >>> thread = api.user_update_user_profile_with_http_info(authorization, user, async=True)
+        >>> result = thread.get()
+
+        :param async bool
+        :param str authorization: authentication header object (required)
+        :param User1 user: topics body object (required)
+        :return: list[InlineResponse2003]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization', 'user']  # noqa: E501
+        all_params.append('async')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method user_update_user_profile" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'authorization' is set
+        if ('authorization' not in params or
+                params['authorization'] is None):
+            raise ValueError("Missing the required parameter `authorization` when calling `user_update_user_profile`")  # noqa: E501
+        # verify the required parameter 'user' is set
+        if ('user' not in params or
+                params['user'] is None):
+            raise ValueError("Missing the required parameter `user` when calling `user_update_user_profile`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'user' in params:
+            body_params = params['user']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/user-profile/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[InlineResponse2003]',  # noqa: E501
             auth_settings=auth_settings,
             async=params.get('async'),
             _return_http_data_only=params.get('_return_http_data_only'),

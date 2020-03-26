@@ -102,6 +102,10 @@ class RawSchema(object):
         """
         if name is None:
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if name is not None and len(name) > 64:
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `64`")  # noqa: E501
+        if name is not None and not re.search('^[a-zA-Z][a-zA-Z0-9_-]*$', name):  # noqa: E501
+            raise ValueError("Invalid value for `name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._name = name
 

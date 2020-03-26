@@ -16,9 +16,11 @@ import re  # noqa: F401
 
 import six
 
+from swagger_client.models.device_schema_flow import DeviceSchemaFlow  # noqa: F401,E501
 from swagger_client.models.device_schema_i_agent import DeviceSchemaIAgent  # noqa: F401,E501
 from swagger_client.models.device_schema_openconfig import DeviceSchemaOpenconfig  # noqa: F401,E501
 from swagger_client.models.device_schema_snmp import DeviceSchemaSnmp  # noqa: F401,E501
+from swagger_client.models.device_schema_syslog import DeviceSchemaSyslog  # noqa: F401,E501
 from swagger_client.models.device_schema_variable import DeviceSchemaVariable  # noqa: F401,E501
 from swagger_client.models.device_schema_vendor import DeviceSchemaVendor  # noqa: F401,E501
 from swagger_client.models.devicegroup_schema_authentication import DevicegroupSchemaAuthentication  # noqa: F401,E501
@@ -41,10 +43,13 @@ class DeviceSchema(object):
         'authentication': 'DevicegroupSchemaAuthentication',
         'description': 'str',
         'device_id': 'str',
+        'flow': 'DeviceSchemaFlow',
         'host': 'str',
         'i_agent': 'DeviceSchemaIAgent',
         'open_config': 'DeviceSchemaOpenconfig',
         'snmp': 'DeviceSchemaSnmp',
+        'syslog': 'DeviceSchemaSyslog',
+        'timezone': 'str',
         'system_id': 'str',
         'variable': 'list[DeviceSchemaVariable]',
         'vendor': 'DeviceSchemaVendor'
@@ -54,25 +59,31 @@ class DeviceSchema(object):
         'authentication': 'authentication',
         'description': 'description',
         'device_id': 'device-id',
+        'flow': 'flow',
         'host': 'host',
         'i_agent': 'iAgent',
         'open_config': 'open-config',
         'snmp': 'snmp',
+        'syslog': 'syslog',
+        'timezone': 'timezone',
         'system_id': 'system-id',
         'variable': 'variable',
         'vendor': 'vendor'
     }
 
-    def __init__(self, authentication=None, description=None, device_id=None, host=None, i_agent=None, open_config=None, snmp=None, system_id=None, variable=None, vendor=None):  # noqa: E501
+    def __init__(self, authentication=None, description=None, device_id=None, flow=None, host=None, i_agent=None, open_config=None, snmp=None, syslog=None, timezone=None, system_id=None, variable=None, vendor=None):  # noqa: E501
         """DeviceSchema - a model defined in Swagger"""  # noqa: E501
 
         self._authentication = None
         self._description = None
         self._device_id = None
+        self._flow = None
         self._host = None
         self._i_agent = None
         self._open_config = None
         self._snmp = None
+        self._syslog = None
+        self._timezone = None
         self._system_id = None
         self._variable = None
         self._vendor = None
@@ -83,6 +94,8 @@ class DeviceSchema(object):
         if description is not None:
             self.description = description
         self.device_id = device_id
+        if flow is not None:
+            self.flow = flow
         self.host = host
         if i_agent is not None:
             self.i_agent = i_agent
@@ -90,6 +103,10 @@ class DeviceSchema(object):
             self.open_config = open_config
         if snmp is not None:
             self.snmp = snmp
+        if syslog is not None:
+            self.syslog = syslog
+        if timezone is not None:
+            self.timezone = timezone
         if system_id is not None:
             self.system_id = system_id
         if variable is not None:
@@ -171,10 +188,31 @@ class DeviceSchema(object):
         self._device_id = device_id
 
     @property
+    def flow(self):
+        """Gets the flow of this DeviceSchema.  # noqa: E501
+
+
+        :return: The flow of this DeviceSchema.  # noqa: E501
+        :rtype: DeviceSchemaFlow
+        """
+        return self._flow
+
+    @flow.setter
+    def flow(self, flow):
+        """Sets the flow of this DeviceSchema.
+
+
+        :param flow: The flow of this DeviceSchema.  # noqa: E501
+        :type: DeviceSchemaFlow
+        """
+
+        self._flow = flow
+
+    @property
     def host(self):
         """Gets the host of this DeviceSchema.  # noqa: E501
 
-        Name or IP the device  # noqa: E501
+        Name or IP of the device  # noqa: E501
 
         :return: The host of this DeviceSchema.  # noqa: E501
         :rtype: str
@@ -185,13 +223,17 @@ class DeviceSchema(object):
     def host(self, host):
         """Sets the host of this DeviceSchema.
 
-        Name or IP the device  # noqa: E501
+        Name or IP of the device  # noqa: E501
 
         :param host: The host of this DeviceSchema.  # noqa: E501
         :type: str
         """
         if host is None:
             raise ValueError("Invalid value for `host`, must not be `None`")  # noqa: E501
+        if host is not None and len(host) > 255:
+            raise ValueError("Invalid value for `host`, length must be less than or equal to `255`")  # noqa: E501
+        if host is not None and len(host) < 1:
+            raise ValueError("Invalid value for `host`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._host = host
 
@@ -257,6 +299,52 @@ class DeviceSchema(object):
         """
 
         self._snmp = snmp
+
+    @property
+    def syslog(self):
+        """Gets the syslog of this DeviceSchema.  # noqa: E501
+
+
+        :return: The syslog of this DeviceSchema.  # noqa: E501
+        :rtype: DeviceSchemaSyslog
+        """
+        return self._syslog
+
+    @syslog.setter
+    def syslog(self, syslog):
+        """Sets the syslog of this DeviceSchema.
+
+
+        :param syslog: The syslog of this DeviceSchema.  # noqa: E501
+        :type: DeviceSchemaSyslog
+        """
+
+        self._syslog = syslog
+
+    @property
+    def timezone(self):
+        """Gets the timezone of this DeviceSchema.  # noqa: E501
+
+        Timezone in the format +/-hh:mm, Example: -08:00  # noqa: E501
+
+        :return: The timezone of this DeviceSchema.  # noqa: E501
+        :rtype: str
+        """
+        return self._timezone
+
+    @timezone.setter
+    def timezone(self, timezone):
+        """Sets the timezone of this DeviceSchema.
+
+        Timezone in the format +/-hh:mm, Example: -08:00  # noqa: E501
+
+        :param timezone: The timezone of this DeviceSchema.  # noqa: E501
+        :type: str
+        """
+        if timezone is not None and not re.search('^((\\+|-)((([0-1][0-9])|(2[0-3])):([0-5][0-9])))$', timezone):  # noqa: E501
+            raise ValueError("Invalid value for `timezone`, must be a follow pattern or equal to `/^((\\+|-)((([0-1][0-9])|(2[0-3])):([0-5][0-9])))$/`")  # noqa: E501
+
+        self._timezone = timezone
 
     @property
     def system_id(self):

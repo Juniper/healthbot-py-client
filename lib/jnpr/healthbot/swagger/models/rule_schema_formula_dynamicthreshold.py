@@ -118,7 +118,7 @@ class RuleSchemaFormulaDynamicthreshold(object):
     def learning_period(self):
         """Gets the learning_period of this RuleSchemaFormulaDynamicthreshold.  # noqa: E501
 
-        Learning period to learn the dynamic threshold. Should be of pattern [1-9][0-9]*(seconds|minutes|hours|days|weeks|years)  # noqa: E501
+        Learning period to learn the dynamic threshold. Should be of pattern [1-9][0-9]*(seconds|minutes|hours|days|weeks|years|offset)  # noqa: E501
 
         :return: The learning_period of this RuleSchemaFormulaDynamicthreshold.  # noqa: E501
         :rtype: str
@@ -129,15 +129,15 @@ class RuleSchemaFormulaDynamicthreshold(object):
     def learning_period(self, learning_period):
         """Sets the learning_period of this RuleSchemaFormulaDynamicthreshold.
 
-        Learning period to learn the dynamic threshold. Should be of pattern [1-9][0-9]*(seconds|minutes|hours|days|weeks|years)  # noqa: E501
+        Learning period to learn the dynamic threshold. Should be of pattern [1-9][0-9]*(seconds|minutes|hours|days|weeks|years|offset)  # noqa: E501
 
         :param learning_period: The learning_period of this RuleSchemaFormulaDynamicthreshold.  # noqa: E501
         :type: str
         """
         if learning_period is None:
             raise ValueError("Invalid value for `learning_period`, must not be `None`")  # noqa: E501
-        if learning_period is not None and not re.search('^[1-9][0-9]*(seconds|minutes|hours|days|weeks|years|s|m|h|d|w|y)$', learning_period):  # noqa: E501
-            raise ValueError("Invalid value for `learning_period`, must be a follow pattern or equal to `/^[1-9][0-9]*(seconds|minutes|hours|days|weeks|years|s|m|h|d|w|y)$/`")  # noqa: E501
+        if learning_period is not None and not re.search('^[1-9][0-9]*(offset|seconds|minutes|hours|days|weeks|years|o|s|m|h|d|w|y)$', learning_period):  # noqa: E501
+            raise ValueError("Invalid value for `learning_period`, must be a follow pattern or equal to `/^[1-9][0-9]*(offset|seconds|minutes|hours|days|weeks|years|o|s|m|h|d|w|y)$/`")  # noqa: E501
 
         self._learning_period = learning_period
 

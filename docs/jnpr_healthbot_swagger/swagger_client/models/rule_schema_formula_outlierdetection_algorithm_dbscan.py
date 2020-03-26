@@ -75,8 +75,8 @@ class RuleSchemaFormulaOutlierdetectionAlgorithmDbscan(object):
         """
         if learning_period is None:
             raise ValueError("Invalid value for `learning_period`, must not be `None`")  # noqa: E501
-        if learning_period is not None and not re.search('^[1-9][0-9]*[smhdwy]$', learning_period):  # noqa: E501
-            raise ValueError("Invalid value for `learning_period`, must be a follow pattern or equal to `/^[1-9][0-9]*[smhdwy]$/`")  # noqa: E501
+        if learning_period is not None and not re.search('^[1-9][0-9]*(o|s|m|h|d|w|y|offset)$', learning_period):  # noqa: E501
+            raise ValueError("Invalid value for `learning_period`, must be a follow pattern or equal to `/^[1-9][0-9]*(o|s|m|h|d|w|y|offset)$/`")  # noqa: E501
 
         self._learning_period = learning_period
 
