@@ -1,5 +1,6 @@
 import requests
 import logging
+from requests.exceptions import HTTPError
 
 import re
 import os
@@ -12,8 +13,13 @@ from jnpr.healthbot.modules import database
 from jnpr.healthbot.modules import settings
 from jnpr.healthbot.modules import profiles
 
+from jnpr.healthbot.swagger.api.authentication_api import AuthenticationApi
+from jnpr.healthbot.swagger.api_client import ApiClient
+from jnpr.healthbot.swagger.configuration import Configuration
 from jnpr.healthbot.swagger.models.health_schema import HealthSchema
+from jnpr.healthbot.swagger.models.refresh_token import RefreshToken
 
+from jnpr.healthbot.swagger.rest import ApiException
 from pathlib import Path
 
 import urllib3
@@ -104,22 +110,11 @@ class HealthBotClient(object):
             raise ValueError("You must provide 'password' of HealthBot")
 
         self.hbot_session = requests.Session()
-        self.hbot_session.auth = (user, password)
         self.hbot_session.headers.update(
             {"Accept": "application/json", "Content-Type": "application/json"}
         )
         self.hbot_session.verify = False
-        try:
-            req = self.hbot_session.get(self.url + '/')
-            # HTTP errors are not raised by default, this statement does that
-            req.raise_for_status()
-        except Exception as ex:
-            logger.error("Error: {}".format(ex))
-            raise ex
-        else:
-            logger.debug(
-                "Connected to HealthBot Server({}) on port {}".format(
-                    self.server, self.port))
+
         self.urlfor = UrlFor(self)
         self.device = devices.Device(self)
         self.device_group = devices.DeviceGroup(self)
@@ -129,6 +124,50 @@ class HealthBotClient(object):
         self.playbook = playbooks.Playbook(self)
         self.settings = settings.Settings(self)
         self.profile = profiles.Profile(self)
+        self._auth = None
+        self.connected = False
+        self.user_token = None
+
+    def open(self):
+        conf = Configuration()
+        conf.host = self.url
+        conf.verify_ssl = False
+        api_client = ApiClient(configuration=conf)
+        self._auth = AuthenticationApi(api_client=api_client)
+        try:
+            self.user_token = self._auth.user_login(
+                credential={"userName": self.user, "password": self.password})
+            self.hbot_session.headers.update({
+                'Authorization': 'Bearer ' + self.user_token.access_token})
+            self.connected = True
+        except ApiException as ex:
+            logger.debug("This version of HealthBot does not support authorization key")
+            # continue to next code in this case
+            self.hbot_session.auth = (self.user, self.password)
+        except Exception as ex:
+            logger.error("User Login Error: {}".format(ex))
+            raise ex
+
+        try:
+            req = self.hbot_session.get(self.url + '/')
+            self.connected = True
+            # HTTP errors are not raised by default, this statement does that
+            req.raise_for_status()
+        except Exception as ex:
+            logger.error("Error: {}".format(ex))
+            raise ex
+        else:
+            logger.debug(
+                "Connected to HealthBot Server({}) on port {}".format(
+                    self.server, self.port))
+        return True
+
+    login = open
+
+    def logout(self):
+        if self.user_token:
+            refresh_token = RefreshToken(token=self.user_token.refresh_token)
+            self._auth.user_logout(refresh_token=refresh_token)
 
     @property
     def tsdb(self):
@@ -334,10 +373,17 @@ class HealthBotClient(object):
     def close(self):
         self.hbot_session.close()
 
+    def __repr__(self):
+        return "HealthBot(%s)" % self.server
+    # -----------------------------------------------------------------------
+    # Context Manager
+    # -----------------------------------------------------------------------
     def __enter__(self):
+        self.open()
         return self
 
-    def __exit__(self, *args):
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.logout()
         self.close()
 
     def __repr__(self):
