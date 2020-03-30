@@ -3,6 +3,8 @@ from jnpr.healthbot.swagger.models.local_certificate_schema import LocalCertific
 from jnpr.healthbot.swagger.models.ssh_key_profile_schema import SshKeyProfileSchema
 from jnpr.healthbot.exception import SchemaError, NotFoundError
 
+from jnpr.healthbot.modules import BaseModule
+
 import logging
 logger = logging.getLogger(__file__)
 
@@ -32,16 +34,13 @@ class Security(object):
         self.ssh_key_profile = SshKeyProfile(hbot)
 
 
-class CaProfile(object):
+class CaProfile(BaseModule):
 
     def __init__(self, hbot):
         """
         :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
         """
-
-        self.hbot = hbot
-        self.url = hbot.url
-        self.api = hbot.hbot_session
+        super().__init__(hbot)
 
     def get(self, name: str = None, uncommitted: bool = True):
         """
@@ -193,16 +192,13 @@ class CaProfile(object):
         return True
 
 
-class LocalCertificate(object):
+class LocalCertificate(BaseModule):
 
     def __init__(self, hbot):
         """
         :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
         """
-
-        self.hbot = hbot
-        self.url = hbot.url
-        self.api = hbot.hbot_session
+        super().__init__(hbot)
 
     def get(self, name: str = None, uncommitted: bool = True):
         """
@@ -354,16 +350,13 @@ class LocalCertificate(object):
         return True
 
 
-class SshKeyProfile(object):
+class SshKeyProfile(BaseModule):
 
     def __init__(self, hbot):
         """
         :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
         """
-
-        self.hbot = hbot
-        self.url = hbot.url
-        self.api = hbot.hbot_session
+        super().__init__(hbot)
 
     def get(self, name: str = None, uncommitted: bool = True):
         """
@@ -516,27 +509,23 @@ class SshKeyProfile(object):
         return True
 
 
-class DataSummarization(object):
+class DataSummarization(BaseModule):
 
     def __init__(self, hbot):
         """
         :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
         """
-
-        self._hbot = hbot
+        super().__init__(hbot)
         self.raw = Raw(hbot)
 
 
-class Raw(object):
+class Raw(BaseModule):
 
     def __init__(self, hbot):
         """
         :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
         """
-
-        self.hbot = hbot
-        self.url = hbot.url
-        self.api = hbot.hbot_session
+        super().__init__(hbot)
 
     def get(self): pass
 

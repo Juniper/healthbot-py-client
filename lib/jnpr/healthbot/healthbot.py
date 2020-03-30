@@ -4,6 +4,7 @@ from requests.exceptions import HTTPError
 
 import re
 import os
+import time
 
 from jnpr.healthbot.urlfor import UrlFor
 from jnpr.healthbot.modules import devices
@@ -18,9 +19,12 @@ from jnpr.healthbot.swagger.api_client import ApiClient
 from jnpr.healthbot.swagger.configuration import Configuration
 from jnpr.healthbot.swagger.models.health_schema import HealthSchema
 from jnpr.healthbot.swagger.models.refresh_token import RefreshToken
+from jnpr.healthbot.swagger.models.token import Token
 
 from jnpr.healthbot.swagger.rest import ApiException
 from pathlib import Path
+
+import jwt
 
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -109,11 +113,8 @@ class HealthBotClient(object):
         if password is None or password is "":
             raise ValueError("You must provide 'password' of HealthBot")
 
-        self.hbot_session = requests.Session()
-        self.hbot_session.headers.update(
-            {"Accept": "application/json", "Content-Type": "application/json"}
-        )
-        self.hbot_session.verify = False
+        self._hbot_session = None
+        self.user_token = None
 
         self.urlfor = UrlFor(self)
         self.device = devices.Device(self)
@@ -126,28 +127,10 @@ class HealthBotClient(object):
         self.profile = profiles.Profile(self)
         self._auth = None
         self.connected = False
-        self.user_token = None
+        self._token_expire_time = None
 
     def open(self):
-        conf = Configuration()
-        conf.host = self.url
-        conf.verify_ssl = False
-        api_client = ApiClient(configuration=conf)
-        self._auth = AuthenticationApi(api_client=api_client)
-        try:
-            self.user_token = self._auth.user_login(
-                credential={"userName": self.user, "password": self.password})
-            self.hbot_session.headers.update({
-                'Authorization': 'Bearer ' + self.user_token.access_token})
-            self.connected = True
-        except ApiException as ex:
-            logger.debug("This version of HealthBot does not support authorization key")
-            # continue to next code in this case
-            self.hbot_session.auth = (self.user, self.password)
-        except Exception as ex:
-            logger.error("User Login Error: {}".format(ex))
-            raise ex
-
+        self.set_user_token()
         try:
             req = self.hbot_session.get(self.url + '/')
             self.connected = True
@@ -163,6 +146,53 @@ class HealthBotClient(object):
         return True
 
     login = open
+
+    @property
+    def hbot_session(self):
+        if self._hbot_session is None:
+            self._hbot_session = requests.Session()
+            self._hbot_session.headers.update(
+                {"Accept": "application/json", "Content-Type": "application/json"}
+            )
+            self._hbot_session.verify = False
+        if self.user_token:
+            if self._token_expire_time and time.time() >= self._token_expire_time:
+                logger.debug("Token expired, hence refreshing")
+                self.user_token = self._auth.refresh_token(token=Token(
+                    refresh_token=self.user_token.refresh_token))
+                self._hbot_session.headers.update({
+                    'Authorization': 'Bearer ' + self.user_token.access_token})
+                logger.debug("Token refreshed")
+
+        return self._hbot_session
+
+    def set_user_token(self):
+        conf = Configuration()
+        conf.host = self.url
+        conf.verify_ssl = False
+        api_client = ApiClient(configuration=conf)
+        self._auth = AuthenticationApi(api_client=api_client)
+        try:
+            self.user_token = self._auth.user_login(
+                credential={"userName": self.user, "password": self.password})
+            self._token_expire_time = self._get_token_expire()
+            self.hbot_session.headers.update({
+                'Authorization': 'Bearer ' + self.user_token.access_token})
+            self.connected = True
+        except ApiException as ex:
+            logger.debug("This version of HealthBot does not support authorization key")
+            # set user/password used by older healthbot version APIs
+            self.hbot_session.auth = (self.user, self.password)
+        except Exception as ex:
+            logger.error("User Login Error: {}".format(ex))
+            raise ex
+
+    def _get_token_expire(self):
+        obj = jwt.decode(self.user_token.access_token, 'secret', verify=False)
+        timeout = obj.get('exp', 0) - obj.get('iat')
+        logger.debug("Access authorization key expiration timeout: {}".format(
+            timeout))
+        return time.time() + timeout
 
     def logout(self):
         if self.user_token:
@@ -378,13 +408,13 @@ class HealthBotClient(object):
     # -----------------------------------------------------------------------
     # Context Manager
     # -----------------------------------------------------------------------
+
     def __enter__(self):
-        self.open()
+        self.login()
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.logout()
-        self.close()
 
     def __repr__(self):
         return "HealthBot(%s)" % self.server

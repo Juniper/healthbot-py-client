@@ -2,20 +2,18 @@ from jnpr.healthbot.swagger.models.rule_schema import RuleSchema
 from jnpr.healthbot.swagger.models.topic_schema import TopicSchema
 from jnpr.healthbot.exception import SchemaError, NotFoundError
 
+from jnpr.healthbot.modules import BaseModule
 import logging
 logger = logging.getLogger(__file__)
 
 
-class Rule(object):
+class Rule(BaseModule):
 
     def __init__(self, hbot):
         """
         :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
         """
-
-        self.hbot = hbot
-        self.url = hbot.url
-        self.api = hbot.hbot_session
+        super().__init__(hbot)
 
     def add(self, topic_name: str, schema: RuleSchema = None, **kwargs):
         """
@@ -261,16 +259,13 @@ class Rule(object):
         return self.hbot.upload_helper_file(filename)
 
 
-class Topic(object):
+class Topic(BaseModule):
 
     def __init__(self, hbot):
         """
         :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
         """
-
-        self.hbot = hbot
-        self.url = hbot.url
-        self.api = hbot.hbot_session
+        super().__init__(hbot)
 
     def get(self, topic_name: str = None, uncommitted: bool = True):
         """

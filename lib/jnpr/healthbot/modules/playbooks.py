@@ -3,6 +3,7 @@ import copy
 
 from jnpr.healthbot.swagger.models.playbook_schema import PlaybookSchema
 from jnpr.healthbot.swagger.models.rule_schema_variable import RuleSchemaVariable
+from jnpr.healthbot.modules import BaseModule
 from jnpr.healthbot.modules.rules import Rule
 from jnpr.healthbot.modules.devices import Device, DeviceGroup
 
@@ -12,16 +13,14 @@ import logging
 logger = logging.getLogger(__file__)
 
 
-class Playbook(object):
+class Playbook(BaseModule):
 
     def __init__(self, hbot):
         """
         :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
         """
 
-        self.hbot = hbot
-        self.url = hbot.url
-        self.api = hbot.hbot_session
+        super().__init__(hbot)
 
     def add(self, schema: PlaybookSchema = None, **kwargs):
         """

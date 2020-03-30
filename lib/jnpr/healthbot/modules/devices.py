@@ -9,20 +9,20 @@ from jnpr.healthbot.swagger.models.device_health_tree import DeviceHealthTree
 from jnpr.healthbot.swagger.models.device_group_health_tree import DeviceGroupHealthTree
 from jnpr.healthbot.swagger.models.network_health_tree import NetworkHealthTree
 
+from jnpr.healthbot.modules import BaseModule
+
 import logging
 logger = logging.getLogger(__file__)
 
 
-class Device(object):
+class Device(BaseModule):
 
     def __init__(self, hbot):
         """
         :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
         """
 
-        self.hbot = hbot
-        self.url = hbot.url
-        self.api = hbot.hbot_session
+        super().__init__(hbot)
 
     def add(self, device_id: str = None, host: str = None,
             username: str = None, password: str = None,
@@ -42,18 +42,18 @@ class Device(object):
             from jnpr.healthbot import HealthBotClient
             from jnpr.healthbot import DeviceSchema
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            ds = DeviceSchema(device_id='xyz', host='xx.xxx.xxx.xxx',
-                  authentication={"password": {"password": "xxxxx", "username": "xxxxx"}})
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                ds = DeviceSchema(device_id='xyz', host='xx.xxx.xxx.xxx',
+                      authentication={"password": {"password": "xxxxx", "username": "xxxxx"}})
 
-            # we can also later assign values like this
-            ds.description = "HbEZ testing"
+                # we can also later assign values like this
+                ds.description = "HbEZ testing"
 
-            # This will add device in candidate DB
-            hb.device.add(schema=ds)
+                # This will add device in candidate DB
+                hb.device.add(schema=ds)
 
-            # commit changes to master DB
-            hb.commit()
+                # commit changes to master DB
+                hb.commit()
 
         """
         def _add_device(device_id=None):
@@ -357,16 +357,14 @@ class Device(object):
         return self.hbot._create_schema(resp, DeviceHealthTree)
 
 
-class DeviceGroup(object):
+class DeviceGroup(BaseModule):
 
     def __init__(self, hbot):
         """
         :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
         """
 
-        self.hbot = hbot
-        self.url = hbot.url
-        self.api = hbot.hbot_session
+        super().__init__(hbot)
 
     def add(self, schema: DeviceGroupSchema = None, **kwargs):
         """
@@ -636,16 +634,14 @@ class DeviceGroup(object):
         return self.hbot._create_schema(resp, DeviceGroupHealthTree)
 
 
-class NetworkGroup(object):
+class NetworkGroup(BaseModule):
 
     def __init__(self, hbot):
         """
         :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
         """
 
-        self.hbot = hbot
-        self.url = hbot.url
-        self.api = hbot.hbot_session
+        super().__init__(hbot)
 
     def add(self, schema: NetworkGroupSchema = None, **kwargs):
         """

@@ -8,6 +8,8 @@ from jnpr.healthbot.swagger.models.destination_schema import DestinationSchema
 
 from jnpr.healthbot.exception import SchemaError, NotFoundError
 
+from jnpr.healthbot.modules import BaseModule
+
 import logging
 logger = logging.getLogger(__file__)
 
@@ -28,16 +30,13 @@ class Settings(object):
         self.security = Security(hbot)
 
 
-class Notification(object):
+class Notification(BaseModule):
 
     def __init__(self, hbot):
         """
         :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
         """
-
-        self.hbot = hbot
-        self.url = hbot.url
-        self.api = hbot.hbot_session
+        super().__init__(hbot)
 
     def get(self, notification_name: str = None, uncommitted: bool = True):
         """
@@ -183,16 +182,13 @@ class Notification(object):
         return True
 
 
-class RetentionPolicy(object):
+class RetentionPolicy(BaseModule):
 
     def __init__(self, hbot):
         """
         :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
         """
-
-        self.hbot = hbot
-        self.url = hbot.url
-        self.api = hbot.hbot_session
+        super().__init__(hbot)
 
     def get(
             self,
@@ -347,16 +343,13 @@ class RetentionPolicy(object):
         return True
 
 
-class Scheduler(object):
+class Scheduler(BaseModule):
 
     def __init__(self, hbot):
         """
         :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
         """
-
-        self.hbot = hbot
-        self.url = hbot.url
-        self.api = hbot.hbot_session
+        super().__init__(hbot)
 
     def get(self, name: str = None, uncommitted: bool = True):
         """
@@ -503,16 +496,13 @@ class Scheduler(object):
         return True
 
 
-class Destination(object):
+class Destination(BaseModule):
 
     def __init__(self, hbot):
         """
         :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
         """
-
-        self.hbot = hbot
-        self.url = hbot.url
-        self.api = hbot.hbot_session
+        super().__init__(hbot)
 
     def get(self, name: str = None, uncommitted: bool = True):
         """
@@ -658,16 +648,13 @@ class Destination(object):
         return True
 
 
-class Report(object):
+class Report(BaseModule):
 
     def __init__(self, hbot):
         """
         :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
         """
-
-        self.hbot = hbot
-        self.url = hbot.url
-        self.api = hbot.hbot_session
+        super().__init__(hbot)
 
     def get(self, name: str = None, uncommitted: bool = True):
         """
