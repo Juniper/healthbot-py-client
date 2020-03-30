@@ -135,12 +135,12 @@ class Device(BaseModule):
 
             from jnpr.healthbot import HealthBotClient
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            # This will delete device in candidate DB
-            hb.device.delete('xyz')
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                # This will delete device in candidate DB
+                hb.device.delete('xyz')
 
-            # commit changes to master DB
-            hb.commit()
+                # commit changes to master DB
+                hb.commit()
 
         :returns: True when OK
 
@@ -184,8 +184,8 @@ class Device(BaseModule):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            print(hb.device.get_ids())
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                print(hb.device.get_ids())
         """
         devices_list_url = self.hbot.urlfor.device()
         resp = self.api.get(devices_list_url)
@@ -209,13 +209,14 @@ class Device(BaseModule):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            device = hb.device.get('vmx')
-            print(device)
 
-            devices = hb.device.get()
-            for device in devices:
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                device = hb.device.get('vmx')
                 print(device)
+
+                devices = hb.device.get()
+                for device in devices:
+                    print(device)
 
         :return: `DeviceSchema(s) <jnpr.healthbot.swagger.models.html#deviceschema>`_
         """
@@ -265,12 +266,13 @@ class Device(BaseModule):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            schemaObj = hb.device.get('xyz')
-            schemaObj.description = 'changed description'
-            hb.device.update(schemaObj)
 
-            hb.device.update(device_id="xyz", host='xx.xxx.x.xx', system_id="xxxx")
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                schemaObj = hb.device.get('xyz')
+                schemaObj.description = 'changed description'
+                hb.device.update(schemaObj)
+
+                hb.device.update(device_id="xyz", host='xx.xxx.x.xx', system_id="xxxx")
 
         :returns: True when OK
         """
@@ -306,11 +308,11 @@ class Device(BaseModule):
             from jnpr.healthbot import HealthBotClient
             from pprint import pprint
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            facts = hb.device.get_facts('vmx')
-            pprint(facts)
-            facts = hb.device.get_facts()
-            pprint(facts)
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                facts = hb.device.get_facts('vmx')
+                pprint(facts)
+                facts = hb.device.get_facts()
+                pprint(facts)
 
         :return: Single/List of dicts of facts
 
@@ -343,8 +345,9 @@ class Device(BaseModule):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            print(hb.device.health('core'))
+
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                print(hb.device.health('core'))
 
         :return: `DeviceHealthTree <jnpr.healthbot.swagger.models.html#deviceheathtree>`_
         """
@@ -520,10 +523,11 @@ class DeviceGroup(BaseModule):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            schemaObj = hb.device_group.get('Core')
-            schemaObj.description = "Changed"
-            hb.device_group.update(schemaObj)
+
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                schemaObj = hb.device_group.get('Core')
+                schemaObj.description = "Changed"
+                hb.device_group.update(schemaObj)
 
         :returns: True when OK
 
@@ -555,8 +559,8 @@ class DeviceGroup(BaseModule):
         ::
             from jnpr.healthbot import HealthBotClient
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            print(hb.device_group.check_device_in_group('vmx', 'QFabric'))
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                print(hb.device_group.check_device_in_group('vmx', 'QFabric'))
 
         Returns:
             True if action successful
@@ -582,8 +586,8 @@ class DeviceGroup(BaseModule):
         ::
             from jnpr.healthbot import HealthBotClient
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            hb.device_group.add_device_in_group('vmx', 'QFabric')
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                hb.device_group.add_device_in_group('vmx', 'QFabric')
 
         Raises:
             HTTPError: When error making changes via the HBOT API
@@ -619,8 +623,9 @@ class DeviceGroup(BaseModule):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            print(hb.device_group.health('edge'))
+
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                print(hb.device_group.health('edge'))
 
         :return: `DeviceGroupHealthTree <jnpr.healthbot.swagger.models.html#devicegroupheathtree>`_
         """
@@ -657,15 +662,16 @@ class NetworkGroup(BaseModule):
         ::
             from jnpr.healthbot import HealthBotClient
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            hb.devices.add_network_group(network_group_name="HbEZ")
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                hb.devices.add_network_group(network_group_name="HbEZ")
 
             # or
             from jnpr.healthbot import HealthBotClient
             from jnpr.healthbot import NetworkGroupSchema
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            ngs = NetworkGroupSchema(network_group_name="HbEZ")
-            hb.network_group.add(schema = ngs)
+
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                ngs = NetworkGroupSchema(network_group_name="HbEZ")
+                hb.network_group.add(schema = ngs)
 
         """
         if schema is None:
@@ -700,8 +706,8 @@ class NetworkGroup(BaseModule):
         ::
             from jnpr.healthbot import HealthBotClient
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            hb.network_group.delete(network_group_name="HbEZ")
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                hb.network_group.delete(network_group_name="HbEZ")
         """
 
         payload = {'network-group-name': network_group_name}
@@ -724,10 +730,11 @@ class NetworkGroup(BaseModule):
         ::
             from jnpr.healthbot import HealthBotClient
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            print(hb.network_group.get(network_group_name="HbEZ"))
-            # for all network groups
-            print(hb.network_group.get())
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                print(hb.network_group.get(network_group_name="HbEZ"))
+                # for all network groups
+                print(hb.network_group.get())
+
         """
         if network_group_name is not None:
             network_group_url = self.hbot.urlfor.network_group(
@@ -774,10 +781,11 @@ class NetworkGroup(BaseModule):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            schemaObj = hb.network_group.get("HbEZ")
-            schemaObj.description = "HbEZ example"
-            hb.network_group.update(schemaObj)
+
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                schemaObj = hb.network_group.get("HbEZ")
+                schemaObj.description = "HbEZ example"
+                hb.network_group.update(schemaObj)
 
         :returns: True when OK
 
@@ -808,8 +816,9 @@ class NetworkGroup(BaseModule):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            print(hb.network_group.health('core'))
+
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                print(hb.network_group.health('core'))
 
         :return: `NetworkHealthTree <jnpr.healthbot.swagger.models.html#networkheathtree>`_
         """

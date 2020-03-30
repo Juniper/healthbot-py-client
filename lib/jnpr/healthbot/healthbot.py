@@ -1,6 +1,5 @@
 import requests
 import logging
-from requests.exceptions import HTTPError
 
 import re
 import os
@@ -57,43 +56,43 @@ class HealthBotClient(object):
             from jnpr.healthbot import HealthBotClient
             from pprint import pprint
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx', port=8000)
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx', port=8000) as hb:
 
-            # Get list of all existing devices
-            print(hb.device.get_ids())
+                # Get list of all existing devices
+                print(hb.device.get_ids())
 
-            # Get config details of a given device id
-            pprint(hb.device.get('core-01'))
+                # Get config details of a given device id
+                pprint(hb.device.get('core-01'))
 
-            # Get config details of all the device
-            pprint(hb.device.get())
+                # Get config details of all the device
+                pprint(hb.device.get())
 
-            # Get device facts of a given device id
-            pprint(hb.device.get_facts('avro'))
+                # Get device facts of a given device id
+                pprint(hb.device.get_facts('avro'))
 
-            # Get device facts for all the devices in HB
-            pprint(hb.device.get_facts())
+                # Get device facts for all the devices in HB
+                pprint(hb.device.get_facts())
 
-            # Add a device
-            from jnpr.healthbot import DeviceSchema
-            ds = DeviceSchema(device_id='xyz', host='xx.xxx.xxx.xxx',
-                  authentication={"password": {"password": "xxxxx", "username": "xxxxx"}})
+                # Add a device
+                from jnpr.healthbot import DeviceSchema
+                ds = DeviceSchema(device_id='xyz', host='xx.xxx.xxx.xxx',
+                      authentication={"password": {"password": "xxxxx", "username": "xxxxx"}})
 
-            # we can also later assign values like this
-            ds.description = "HbEZ testing"
+                # we can also later assign values like this
+                ds.description = "HbEZ testing"
 
-            # This will add device in candidate DB
-            hb.device.add(schema=ds)
+                # This will add device in candidate DB
+                hb.device.add(schema=ds)
 
-            # Add device group
-            print(hb.device_group.add(device_group_name="edge",
-            description="All devices on the edge", devices=['demo']))
+                # Add device group
+                print(hb.device_group.add(device_group_name="edge",
+                description="All devices on the edge", devices=['demo']))
 
-            # commit changes to master DB
-            hb.commit()
+                # commit changes to master DB
+                hb.commit()
 
-            # get details of a given topic/rule
-            pprint(hb.rule.get('linecard.ospf', 'check-ddos-statistics'))
+                # get details of a given topic/rule
+                pprint(hb.rule.get('linecard.ospf', 'check-ddos-statistics'))
 
         """
         self.server = server
@@ -130,6 +129,12 @@ class HealthBotClient(object):
         self._token_expire_time = None
 
     def open(self):
+        """
+        Open session with HealthBot server. First sets user token (for healthbot
+        3.0.0 and above) and check a top level URL for confirmation of API to be
+        working.
+
+        """
         self.set_user_token()
         try:
             req = self.hbot_session.get(self.url + '/')
@@ -149,6 +154,12 @@ class HealthBotClient(object):
 
     @property
     def hbot_session(self):
+        """
+        Property provides requests module session object. Also help in updating
+        Access token key when expires. Any call to hbot_session.apis should go
+        through this property to keep a check on token key expiry.
+
+        """
         if self._hbot_session is None:
             self._hbot_session = requests.Session()
             self._hbot_session.headers.update(
@@ -162,11 +173,16 @@ class HealthBotClient(object):
                     refresh_token=self.user_token.refresh_token))
                 self._hbot_session.headers.update({
                     'Authorization': 'Bearer ' + self.user_token.access_token})
-                logger.debug("Token refreshed")
 
         return self._hbot_session
 
     def set_user_token(self):
+        """
+        From HealthBot 3.0.0 APIs will be token based. This function helps in
+        setting user based token. This token will be used in header of any
+        REST API calls.
+
+        """
         conf = Configuration()
         conf.host = self.url
         conf.verify_ssl = False
@@ -188,6 +204,11 @@ class HealthBotClient(object):
             raise ex
 
     def _get_token_expire(self):
+        """
+        USing PyJWT module, decode exisiing access token to figure our token
+        expiry time (in seconds).
+
+        """
         obj = jwt.decode(self.user_token.access_token, 'secret', verify=False)
         timeout = obj.get('exp', 0) - obj.get('iat')
         logger.debug("Access authorization key expiration timeout: {}".format(
@@ -195,6 +216,10 @@ class HealthBotClient(object):
         return time.time() + timeout
 
     def logout(self):
+        """
+        Call user logout function to discard access tokens.
+
+        """
         if self.user_token:
             refresh_token = RefreshToken(token=self.user_token.refresh_token)
             self._auth.user_logout(refresh_token=refresh_token)
@@ -254,18 +279,18 @@ class HealthBotClient(object):
             from jnpr.healthbot import HealthBotClient
             from jnpr.healthbot import DeviceSchema
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            ds = DeviceSchema(device_id='xyz', host='xx.xxx.xxx.xxx',
-                  authentication={"password": {"password": "xxxxx", "username": "xxxxx"}})
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                ds = DeviceSchema(device_id='xyz', host='xx.xxx.xxx.xxx',
+                      authentication={"password": {"password": "xxxxx", "username": "xxxxx"}})
 
-            # we can also later assign values like this
-            ds.description = "HbEZ testing"
+                # we can also later assign values like this
+                ds.description = "HbEZ testing"
 
-            # This will add device in candidate DB
-            hb.device.add(schema=ds)
+                # This will add device in candidate DB
+                hb.device.add(schema=ds)
 
-            # commit changes to master DB
-            hb.commit()
+                # commit changes to master DB
+                hb.commit()
 
         :raises: Any requests exception
 
@@ -287,12 +312,12 @@ class HealthBotClient(object):
 
             from jnpr.healthbot import HealthBotClient
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            # This will delete device in candidate DB
-            hb.device.delete('xyz')
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                # This will delete device in candidate DB
+                hb.device.delete('xyz')
 
-            # rollback candidate configuration
-            hb.rollback()
+                # rollback candidate configuration
+                hb.rollback()
 
         :raises: Any requests exception
 
@@ -387,8 +412,8 @@ class HealthBotClient(object):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            print(hb.health())
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                print(hb.health())
 
         :return: `HealthSchema <jnpr.healthbot.swagger.models.html#healthschema>`_
         """
