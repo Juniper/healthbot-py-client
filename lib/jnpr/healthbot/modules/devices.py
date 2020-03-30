@@ -386,20 +386,20 @@ class DeviceGroup(BaseModule):
             from jnpr.healthbot import DeviceSchema
             from jnpr.healthbot import DeviceGroupSchema
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            ds = DeviceSchema(device_id='xyz', host='xx.xxx.xxx.xxx',
-                  authentication={"password": {"password": "xxxxx", "username": "xxxxx"}})
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                ds = DeviceSchema(device_id='xyz', host='xx.xxx.xxx.xxx',
+                      authentication={"password": {"password": "xxxxx", "username": "xxxxx"}})
 
-            # This will add device in candidate DB
-            hb.device.add(schema=ds)
+                # This will add device in candidate DB
+                hb.device.add(schema=ds)
 
-            dgs = DeviceGroupSchema(device_group_name="edge",
-                                            description="All devices on the edge",
-                                            devices=['xyz'])
-            hb.device_group.add(dgs)
+                dgs = DeviceGroupSchema(device_group_name="edge",
+                                                description="All devices on the edge",
+                                                devices=['xyz'])
+                hb.device_group.add(dgs)
 
-            # commit changes to master DB
-            hb.commit()
+                # commit changes to master DB
+                hb.commit()
 
         :returns: True when OK
 

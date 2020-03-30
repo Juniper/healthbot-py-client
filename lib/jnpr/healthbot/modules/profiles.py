@@ -55,11 +55,11 @@ class CaProfile(BaseModule):
             ::
                 from jnpr.healthbot import HealthBotClient
 
-                hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-                print(hb.settings.security.ca_profile.get('xyz')
+                with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                    print(hb.settings.security.ca_profile.get('xyz')
 
-                # for all
-                print(hb.settings.security.ca_profile.get()
+                    # for all
+                    print(hb.settings.security.ca_profile.get()
 
         :return: `CaProfileSchema(s) <jnpr.healthbot.swagger.models.html#caprofileschema>`_
         """
@@ -111,10 +111,9 @@ class CaProfile(BaseModule):
             from jnpr.healthbot import HealthBotClient
             from jnpr.healthbot import CaProfileSchema
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-
-            ca_prof_schema = CaProfileSchema(certificate_authority_crt='abc.crt', name='hbez')
-            hb.settings.security.ca_profile.add(ca_prof_schema)
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                ca_prof_schema = CaProfileSchema(certificate_authority_crt='abc.crt', name='hbez')
+                hb.settings.security.ca_profile.add(ca_prof_schema)
 
         :returns: True when OK
 
@@ -168,10 +167,11 @@ class CaProfile(BaseModule):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            schemaObj = hb.settings.security.ca_profile.get('xyz')
-            schemaObj.certificate_authority_crt = 'pqr.crt'
-            hb.settings.security.ca_profile.update(schemaObj)
+
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                schemaObj = hb.settings.security.ca_profile.get('xyz')
+                schemaObj.certificate_authority_crt = 'pqr.crt'
+                hb.settings.security.ca_profile.update(schemaObj)
 
         :returns: True when OK
         """
@@ -213,11 +213,11 @@ class LocalCertificate(BaseModule):
             ::
                 from jnpr.healthbot import HealthBotClient
 
-                hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-                print(hb.settings.security.local_certificate.get('xyz')
+                with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                    print(hb.settings.security.local_certificate.get('xyz')
 
-                # for all
-                print(hb.settings.security.local_certificate.get()
+                    # for all
+                    print(hb.settings.security.local_certificate.get()
 
         :return: `LocalCertificateSchema(s) <jnpr.healthbot.swagger.models.html#localcertificateschema>`_
         """
@@ -269,10 +269,9 @@ class LocalCertificate(BaseModule):
             from jnpr.healthbot import HealthBotClient
             from jnpr.healthbot import LocalCertificateSchema
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-
-            local_cert_schema = LocalCertificateSchema(client_crt='abc.crt', client_key='pqr.key', name='hbez')
-            hb.settings.security.local_certificate.add(local_cert_schema)
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                local_cert_schema = LocalCertificateSchema(client_crt='abc.crt', client_key='pqr.key', name='hbez')
+                hb.settings.security.local_certificate.add(local_cert_schema)
 
         :returns: True when OK
 
@@ -326,10 +325,11 @@ class LocalCertificate(BaseModule):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            schemaObj = hb.settings.security.local_certificate.get('xyz')
-            schemaObj.client_key = 'xyz.key'
-            hb.settings.security.local_certificate.update(schemaObj)
+
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                schemaObj = hb.settings.security.local_certificate.get('xyz')
+                schemaObj.client_key = 'xyz.key'
+                hb.settings.security.local_certificate.update(schemaObj)
 
         :returns: True when OK
         """
@@ -371,11 +371,11 @@ class SshKeyProfile(BaseModule):
             ::
                 from jnpr.healthbot import HealthBotClient
 
-                hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-                print(hb.settings.security.ssh_key_profile.get('xyz')
+                with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                    print(hb.settings.security.ssh_key_profile.get('xyz')
 
-                # for all
-                print(hb.settings.security.ssh_key_profile.get()
+                    # for all
+                    print(hb.settings.security.ssh_key_profile.get()
 
         :return: `SshKeyProfileSchema(s) <jnpr.healthbot.swagger.models.html#sshkeyprofileschema>`_
         """
@@ -427,11 +427,10 @@ class SshKeyProfile(BaseModule):
             from jnpr.healthbot import HealthBotClient
             from jnpr.healthbot import SshKeyProfileSchema
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-
-            ssh_key_prof_schema = SshKeyProfileSchema(name='hbez', ssh_private_key_file='abc.crt',
-                ssh_private_key_passphrase='%$#@#')
-            hb.settings.security.ssh_key_profile.add(ssh_key_prof_schema)
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                ssh_key_prof_schema = SshKeyProfileSchema(name='hbez', ssh_private_key_file='abc.crt',
+                    ssh_private_key_passphrase='%$#@#')
+                hb.settings.security.ssh_key_profile.add(ssh_key_prof_schema)
 
         :returns: True when OK
 
@@ -485,10 +484,11 @@ class SshKeyProfile(BaseModule):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            schemaObj = hb.settings.security.ssh_key_profile.get('xyz')
-            schemaObj.certificate_authority_crt = 'pqr.crt'
-            hb.settings.security.ssh_key_profile.update(schemaObj)
+
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                schemaObj = hb.settings.security.ssh_key_profile.get('xyz')
+                schemaObj.certificate_authority_crt = 'pqr.crt'
+                hb.settings.security.ssh_key_profile.update(schemaObj)
 
         :returns: True when OK
         """

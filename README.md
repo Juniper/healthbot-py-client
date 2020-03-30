@@ -21,9 +21,19 @@ from jnpr.healthbot import HealthBotClient
 from pprint import pprint
 ```
 
+## Opening connection
 
 ```python
 hb = HealthBotClient('xx.xx.xx.xxx', 'xxxxx', 'xxxxx', port=nnnn)
+hb.open()
+```
+
+### using Python `with`context manager
+* Takes care of login and logout with access tokens
+
+```python
+with HealthBotClient('xx.xx.xx.xxx', 'xxxxx', 'xxxxx', port=nnnn) as hb:
+    pprint(hb.device.get_ids())
 ```
 
 # Use Case: Device

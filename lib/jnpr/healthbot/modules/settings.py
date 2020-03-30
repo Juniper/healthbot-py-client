@@ -51,8 +51,8 @@ class Notification(BaseModule):
             ::
                 from jnpr.healthbot import HealthBotClient
 
-                hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-                print(hb.settings.notification.get('xyz')
+                with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                    print(hb.settings.notification.get('xyz')
 
         :return: `NotificationSchema(s) <jnpr.healthbot.swagger.models.html#notificationschema>`_
         """
@@ -99,11 +99,11 @@ class Notification(BaseModule):
             from jnpr.healthbot import HealthBotClient
             from jnpr.healthbot import NotificationSchema, NotificationSchemaSlack
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            ns = NotificationSchema(notification_name='HbEZ-notification')
-            ns.description = "example of adding notification via API"
-            ns.slack = NotificationSchemaSlack(channel="HbEZ", url='http://testing')
-            hb.settings.notification.add(ns)
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                ns = NotificationSchema(notification_name='HbEZ-notification')
+                ns.description = "example of adding notification via API"
+                ns.slack = NotificationSchemaSlack(channel="HbEZ", url='http://testing')
+                hb.settings.notification.add(ns)
 
         :returns: True when OK
 
@@ -158,10 +158,10 @@ class Notification(BaseModule):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            schemaObj = hb.settings.notification.get('xyz')
-            schemaObj.description = 'changed description'
-            hb.settings.notification.update(schemaObj)
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                schemaObj = hb.settings.notification.get('xyz')
+                schemaObj.description = 'changed description'
+                hb.settings.notification.update(schemaObj)
 
         :returns: True when OK
         """
@@ -206,11 +206,11 @@ class RetentionPolicy(BaseModule):
             ::
                 from jnpr.healthbot import HealthBotClient
 
-                hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-                print(hb.settings.retention_policy.get('xyz')
+                with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                    print(hb.settings.retention_policy.get('xyz')
 
-                # for all
-                print(hb.settings.retention_policy.get()
+                    # for all
+                    print(hb.settings.retention_policy.get()
 
         :return: `RetentionPolicySchema(s) <jnpr.healthbot.swagger.models.html#retentionpolicyschema>`_
         """
@@ -261,9 +261,9 @@ class RetentionPolicy(BaseModule):
             from jnpr.healthbot import HealthBotClient
             from jnpr.healthbot import RetentionPolicySchema
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            rps = RetentionPolicySchema(retention_policy_name='HbEZ-rentention-policy')
-            hb.settings.retention_policy.add(rps)
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                rps = RetentionPolicySchema(retention_policy_name='HbEZ-rentention-policy')
+                hb.settings.retention_policy.add(rps)
 
         :returns: True when OK
 
@@ -319,10 +319,11 @@ class RetentionPolicy(BaseModule):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            schemaObj = hb.settings.retention_policy.get('xyz')
-            schemaObj.description = 'changed description'
-            hb.settings.retention_policy.update(schemaObj)
+
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                schemaObj = hb.settings.retention_policy.get('xyz')
+                schemaObj.description = 'changed description'
+                hb.settings.retention_policy.update(schemaObj)
 
         :returns: True when OK
         """
@@ -364,11 +365,11 @@ class Scheduler(BaseModule):
             ::
                 from jnpr.healthbot import HealthBotClient
 
-                hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-                print(hb.settings.scheduler.get('xyz')
+                with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                    print(hb.settings.scheduler.get('xyz')
 
-                # for all
-                print(hb.settings.scheduler.get()
+                    # for all
+                    print(hb.settings.scheduler.get()
 
         :return: `SchedulerSchema(s) <jnpr.healthbot.swagger.models.html#schedulerschema>`_
         """
@@ -414,11 +415,10 @@ class Scheduler(BaseModule):
             from jnpr.healthbot import HealthBotClient
             from jnpr.healthbot import SchedulerSchema
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-
-            sc = SchedulerSchema(name='HbEZ', repeat={'every': 'week'},
-                    start_time="2019-07-22T05:32:23Z")
-            hb.settings.scheduler.add(sc)
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                sc = SchedulerSchema(name='HbEZ', repeat={'every': 'week'},
+                        start_time="2019-07-22T05:32:23Z")
+                hb.settings.scheduler.add(sc)
 
         :returns: True when OK
 
@@ -472,10 +472,10 @@ class Scheduler(BaseModule):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            schemaObj = hb.settings.scheduler.get('xyz')
-            schemaObj.description = 'changed description'
-            hb.settings.scheduler.update(schemaObj)
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                schemaObj = hb.settings.scheduler.get('xyz')
+                schemaObj.description = 'changed description'
+                hb.settings.scheduler.update(schemaObj)
 
         :returns: True when OK
         """
@@ -517,11 +517,11 @@ class Destination(BaseModule):
             ::
                 from jnpr.healthbot import HealthBotClient
 
-                hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-                print(hb.settings.destination.get('xyz')
+                with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                    print(hb.settings.destination.get('xyz')
 
-                # for all
-                print(hb.settings.destination.get()
+                    # for all
+                    print(hb.settings.destination.get()
 
         :return: `DestinationSchema(s) <jnpr.healthbot.swagger.models.html#destinationschema>`_
         """
@@ -568,9 +568,9 @@ class Destination(BaseModule):
             from jnpr.healthbot import HealthBotClient
             from jnpr.healthbot import DestinationSchema
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            ds = DestinationSchema(name='HbEZ-destination')
-            hb.settings.destination.add(ds)
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                ds = DestinationSchema(name='HbEZ-destination')
+                hb.settings.destination.add(ds)
 
         :returns: True when OK
 
@@ -624,10 +624,10 @@ class Destination(BaseModule):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            schemaObj = hb.settings.destination.get('xyz')
-            schemaObj.description = 'changed description'
-            hb.settings.destination.update(schemaObj)
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                schemaObj = hb.settings.destination.get('xyz')
+                schemaObj.description = 'changed description'
+                hb.settings.destination.update(schemaObj)
 
         :returns: True when OK
         """
@@ -669,11 +669,11 @@ class Report(BaseModule):
             ::
                 from jnpr.healthbot import HealthBotClient
 
-                hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-                print(hb.settings.report.get('xyz')
+                with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                    print(hb.settings.report.get('xyz')
 
-                # for all
-                print(hb.settings.report.get()
+                    # for all
+                    print(hb.settings.report.get()
 
         :return: `ReportSchema(s) <jnpr.healthbot.swagger.models.html#reportschema>`_
         """
@@ -720,22 +720,22 @@ class Report(BaseModule):
             from jnpr.healthbot import HealthBotClient
             from jnpr.healthbot import ReportSchema
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
 
-            from jnpr.healthbot import SchedulerSchema
-            sc = SchedulerSchema(name='HbEZ-schedule', repeat={'every': 'week'},
-                            start_time="2019-07-22T05:32:23Z")
-            hb.settings.scheduler.add(sc)
+                from jnpr.healthbot import SchedulerSchema
+                sc = SchedulerSchema(name='HbEZ-schedule', repeat={'every': 'week'},
+                                start_time="2019-07-22T05:32:23Z")
+                hb.settings.scheduler.add(sc)
 
-            from jnpr.healthbot import DestinationSchema
-            ds = DestinationSchema(name='HbEZ-destination',
-                            email={'id': 'nitinkr@juniper.net'})
-            hb.settings.destination.add(ds)
+                from jnpr.healthbot import DestinationSchema
+                ds = DestinationSchema(name='HbEZ-destination',
+                                email={'id': 'nitinkr@juniper.net'})
+                hb.settings.destination.add(ds)
 
-            from jnpr.healthbot import ReportSchema
-            rs = ReportSchema(name="HbEZ-report", destination=['HbEZ-destination'],
-                            format="html", schedule=["HbEZ-schedule"])
-            hb.settings.report.add(rs)
+                from jnpr.healthbot import ReportSchema
+                rs = ReportSchema(name="HbEZ-report", destination=['HbEZ-destination'],
+                                format="html", schedule=["HbEZ-schedule"])
+                hb.settings.report.add(rs)
 
         :returns: True when OK
 
@@ -789,10 +789,10 @@ class Report(BaseModule):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            schemaObj = hb.settings.report.get('xyz')
-            schemaObj.description = 'changed description'
-            hb.settings.report.update(schemaObj)
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                schemaObj = hb.settings.report.get('xyz')
+                schemaObj.description = 'changed description'
+                hb.settings.report.update(schemaObj)
 
         :returns: True when OK
         """
