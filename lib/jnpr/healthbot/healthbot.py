@@ -173,6 +173,7 @@ class HealthBotClient(object):
                     refresh_token=self.user_token.refresh_token))
                 self._hbot_session.headers.update({
                     'Authorization': 'Bearer ' + self.user_token.access_token})
+                self._token_expire_time = self._get_token_expire()
 
         return self._hbot_session
 
@@ -427,6 +428,7 @@ class HealthBotClient(object):
 
     def close(self):
         self.hbot_session.close()
+        self.connected = False
 
     def __repr__(self):
         return "HealthBot(%s)" % self.server
@@ -440,6 +442,7 @@ class HealthBotClient(object):
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.logout()
+        self.connected = False
 
     def __repr__(self):
         return "HealthBot(%s)" % self.server
