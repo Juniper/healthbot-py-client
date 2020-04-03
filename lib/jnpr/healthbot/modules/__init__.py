@@ -10,3 +10,11 @@ class BaseModule(object):
     @property
     def api(self):
         return self.hbot.hbot_session
+
+    @property
+    def api_client(self):
+        return self.hbot.api_client
+
+    @property
+    def authorization(self):
+        return 'Bearer ' + self.hbot.user_token.access_token

@@ -1,4 +1,5 @@
 import requests
+from requests.models import Response
 import logging
 
 import re
@@ -12,6 +13,7 @@ from jnpr.healthbot.modules import playbooks
 from jnpr.healthbot.modules import database
 from jnpr.healthbot.modules import settings
 from jnpr.healthbot.modules import profiles
+from jnpr.healthbot.modules import administration
 
 from jnpr.healthbot.swagger.api.authentication_api import AuthenticationApi
 from jnpr.healthbot.swagger.api_client import ApiClient
@@ -113,17 +115,8 @@ class HealthBotClient(object):
             raise ValueError("You must provide 'password' of HealthBot")
 
         self._hbot_session = None
-        self.user_token = None
-
-        self.urlfor = UrlFor(self)
-        self.device = devices.Device(self)
-        self.device_group = devices.DeviceGroup(self)
-        self.network_group = devices.NetworkGroup(self)
-        self.rule = rules.Rule(self)
-        self.topic = rules.Topic(self)
-        self.playbook = playbooks.Playbook(self)
-        self.settings = settings.Settings(self)
-        self.profile = profiles.Profile(self)
+        self._user_token = None
+        self.api_client = None
         self._auth = None
         self.connected = False
         self._token_expire_time = None
@@ -148,6 +141,16 @@ class HealthBotClient(object):
             logger.debug(
                 "Connected to HealthBot Server({}) on port {}".format(
                     self.server, self.port))
+        self.urlfor = UrlFor(self)
+        self.device = devices.Device(self)
+        self.device_group = devices.DeviceGroup(self)
+        self.network_group = devices.NetworkGroup(self)
+        self.rule = rules.Rule(self)
+        self.topic = rules.Topic(self)
+        self.playbook = playbooks.Playbook(self)
+        self.settings = settings.Settings(self)
+        self.profile = profiles.Profile(self)
+        self.administration = administration.Administration(self)
         return True
 
     login = open
@@ -166,16 +169,20 @@ class HealthBotClient(object):
                 {"Accept": "application/json", "Content-Type": "application/json"}
             )
             self._hbot_session.verify = False
-        if self.user_token:
-            if self._token_expire_time and time.time() >= self._token_expire_time:
-                logger.debug("Token expired, hence refreshing")
-                self.user_token = self._auth.refresh_token(token=Token(
-                    refresh_token=self.user_token.refresh_token))
-                self._hbot_session.headers.update({
-                    'Authorization': 'Bearer ' + self.user_token.access_token})
-                self._token_expire_time = self._get_token_expire()
-
+        # this call should make sure to check for token expiry
+        self.user_token
         return self._hbot_session
+
+    @property
+    def user_token(self):
+        if self._token_expire_time and time.time() >= self._token_expire_time:
+            logger.debug("Token expired, hence refreshing")
+            self._user_token = self._auth.refresh_token(token=Token(
+                refresh_token=self._user_token.refresh_token))
+            self._hbot_session.headers.update({
+                'Authorization': 'Bearer ' + self._user_token.access_token})
+            self._token_expire_time = self._get_token_expire()
+        return self._user_token
 
     def set_user_token(self):
         """
@@ -187,17 +194,17 @@ class HealthBotClient(object):
         conf = Configuration()
         conf.host = self.url
         conf.verify_ssl = False
-        api_client = ApiClient(configuration=conf)
-        self._auth = AuthenticationApi(api_client=api_client)
+        self.api_client = ApiClient(configuration=conf)
+        self._auth = AuthenticationApi(api_client=self.api_client)
         try:
-            self.user_token = self._auth.user_login(
+            self._user_token = self._auth.user_login(
                 credential={"userName": self.user, "password": self.password})
             self._token_expire_time = self._get_token_expire()
             self.hbot_session.headers.update({
-                'Authorization': 'Bearer ' + self.user_token.access_token})
+                'Authorization': 'Bearer ' + self._user_token.access_token})
             self.connected = True
         except ApiException as ex:
-            logger.debug("This version of HealthBot does not support authorization key")
+            logger.debug("Check if given HealthBot version support authorization key")
             # set user/password used by older healthbot version APIs
             self.hbot_session.auth = (self.user, self.password)
         except Exception as ex:
@@ -210,7 +217,7 @@ class HealthBotClient(object):
         expiry time (in seconds).
 
         """
-        obj = jwt.decode(self.user_token.access_token, 'secret', verify=False)
+        obj = jwt.decode(self._user_token.access_token, 'secret', verify=False)
         timeout = obj.get('exp', 0) - obj.get('iat')
         logger.debug("Access authorization key expiration timeout: {}".format(
             timeout))
@@ -221,8 +228,8 @@ class HealthBotClient(object):
         Call user logout function to discard access tokens.
 
         """
-        if self.user_token:
-            refresh_token = RefreshToken(token=self.user_token.refresh_token)
+        if self._user_token:
+            refresh_token = RefreshToken(token=self._user_token.refresh_token)
             self._auth.user_logout(refresh_token=refresh_token)
 
     @property
@@ -367,15 +374,21 @@ class HealthBotClient(object):
 
     def _create_schema(self, response: requests.models.Response, schema):
         attribute_map = schema.attribute_map
-        attribute_map_values = attribute_map.values()
-        attribute_map_reversed = {v: k for k, v in attribute_map.items()}
         if not isinstance(response, dict):
-            response = response.json()
-        attributes = dict()
-        for key, value in response.items():
-            if key in attribute_map_values:
-                attributes[attribute_map_reversed[key]] = response.get(key)
-        return schema(**attributes)
+            attributes = dict()
+            if isinstance(response, Response):
+                response = response.json()
+                attribute_map_values = attribute_map.values()
+                attribute_map_reversed = {v: k for k, v in attribute_map.items()}
+                for key, value in response.items():
+                    if key in attribute_map_values:
+                        attributes[attribute_map_reversed[key]] = response.get(key)
+            else:
+                response = response.to_dict()
+                for key, value in response.items():
+                    if key in attribute_map:
+                        attributes[key] = response.get(key)
+            return schema(**attributes)
 
     def _create_payload(self, schemaObj):
         """
@@ -400,6 +413,13 @@ class HealthBotClient(object):
                         else:
                             attributes[attribute_map[key]
                                        ] = self._create_payload(childSchema)
+                    elif isinstance(value, list) and filter(
+                            lambda i: isinstance(i, dict), value):
+                        childSchemas = getattr(schemaObj, key)
+                        attributes[attribute_map[key]] = []
+                        for childSchema in childSchemas:
+                            attributes[attribute_map[key]].append(
+                                self._create_payload(childSchema))
                     else:
                         attributes[attribute_map[key]] = payload.get(key)
         return attributes
