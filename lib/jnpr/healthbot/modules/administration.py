@@ -111,25 +111,51 @@ class User(BaseModule):
             raise ex
         return True
 
-    def delete(self, userid: str):
+    def delete(self, userid: str = None, user_name: str = None):
         """
         Remove give user id
 
         :param userid: ID of user
+        :param user_name: Can pass user name if user id is not known
 
         Example:
         ::
-            hb.administration.user.delete('425453652efwfer')
+            hb.administration.user.delete(userid ='425453652efwfer')
+            hb.administration.user.delete(user_name='dummy')
 
         :returns: True when OK
         """
+        if userid is not None and user_name is not None:
+            raise Exception("userid & user_name are mutually exclusive")
 
+        if userid is not None:
+            try:
+                self._admin_api.delete_user(authorization=self.authorization,
+                                            userid=userid)
+                return True
+            except ApiException as ex:
+                raise ex
+        if user_name is not None:
+            try:
+                self._admin_api.delete_user(
+                    authorization=self.authorization,
+                    userid=self.get_userid_from_user_name(user_name))
+                return True
+            except ApiException as ex:
+                raise ex
+        return False
+
+    def get_userid_from_user_name(self, user_name: str):
         try:
-            self._admin_api.delete_user(authorization=self.authorization,
-                                        userid=userid)
+            responses = self._admin_api.retrieve_users(
+                authorization=self.authorization)
         except ApiException as ex:
             raise ex
-        return True
+        for response in responses:
+            if user_name == response.user_name:
+                return response.user_id
+        logger.error('Not able to find userid for given user_name: "{}"'.format(
+            user_name))
     #
     # def update(self, schema: NotificationSchema = None, **kwargs):
     #     """
