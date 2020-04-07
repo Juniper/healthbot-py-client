@@ -389,6 +389,14 @@ class HealthBotClient(object):
                     if key in attribute_map:
                         attributes[key] = response.get(key)
             return schema(**attributes)
+        else:
+            attributes = dict()
+            attribute_map_values = attribute_map.values()
+            attribute_map_reversed = {v: k for k, v in attribute_map.items()}
+            for key, value in response.items():
+                if key in attribute_map_values:
+                    attributes[attribute_map_reversed[key]] = response.get(key)
+            return schema(**attributes)
 
     def _create_payload(self, schemaObj):
         """
@@ -397,7 +405,13 @@ class HealthBotClient(object):
         :param payload: dict which needs clean up of None values
         :return: dict of payload without None values
         """
-        payload = schemaObj.to_dict()
+        try:
+            payload = schemaObj.to_dict()
+        except AttributeError:
+            if isinstance(schemaObj, dict):
+                return schemaObj
+            else:
+                raise
         # remove None values
         attribute_map = schemaObj.attribute_map
         attributes = dict()
