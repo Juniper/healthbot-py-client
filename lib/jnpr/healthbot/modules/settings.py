@@ -5,10 +5,11 @@ from jnpr.healthbot.swagger.models.retention_policy_schema import RetentionPolic
 from jnpr.healthbot.swagger.models.scheduler_schema import SchedulerSchema
 from jnpr.healthbot.swagger.models.report_schema import ReportSchema
 from jnpr.healthbot.swagger.models.destination_schema import DestinationSchema
-
+from jnpr.healthbot.swagger.api.license_api import LicenseApi
 from jnpr.healthbot.exception import SchemaError, NotFoundError
 
 from jnpr.healthbot.modules import BaseModule
+# from jnpr.healthbot import AutoGenClass
 
 import logging
 logger = logging.getLogger(__file__)
@@ -28,6 +29,7 @@ class Settings(object):
         self.report = Report(hbot)
         self.destination = Destination(hbot)
         self.security = Security(hbot)
+        self.license = LicenseKeyManagement(hbot)
 
 
 class Notification(BaseModule):
@@ -810,4 +812,121 @@ class Report(BaseModule):
         if response.status_code != 200:
             logger.error(response.text)
         response.raise_for_status()
+        return True
+
+
+class LicenseKeyManagement(BaseModule):
+
+    def __init__(self, hbot):
+        """
+        :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
+        """
+        super().__init__(hbot)
+        self._license_api = LicenseApi(hbot.api_client)
+
+    def get_features(self):
+        """
+        Get `LicenseFeatureSchema(s) <jnpr.healthbot.swagger.models.html#licensefeatureschema>`_ for
+        given license id or for all licence id
+
+        :param license_id: License ID
+
+        Example:
+            ::
+                from jnpr.healthbot import HealthBotClient
+
+                with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                    print(hb.settings.license.get()
+
+                    # for given licence id
+                    print(hb.settings.report.get('xxxxx')
+
+        :return: `LicenseFeatureSchema(s) <jnpr.healthbot.swagger.models.html#licensefeatureschema>`_
+
+        """
+        response = self._license_api.retrieve_iceberg_license_features_info(
+            authorization=self.authorization)
+        return response.license_feature
+
+    def get_ids(self):
+        """
+        List of all licence id
+
+        Example:
+            ::
+                from jnpr.healthbot import HealthBotClient
+
+                with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                    # print all existing licence ids
+                    print(hb.settings.license.get()
+        :return: `List of license ids`
+
+        """
+        return self._license_api.retrieve_iceberg_get_all_license_id(
+            authorization=self.authorization)
+
+    def get(self, license_id: str = None):
+        """
+        Get `LicenseKeySchema(s) <jnpr.healthbot.swagger.models.html#licensekeyschema>`_ for
+        given license id or for all licence id
+
+        :param license_id: License ID
+
+        Example:
+            ::
+                from jnpr.healthbot import HealthBotClient
+
+                with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                    print(hb.settings.license.get()
+
+                    # for given licence id
+                    print(hb.settings.report.get('xxxxx')
+
+        :return: `LicenseKeySchema(s) <jnpr.healthbot.swagger.models.html#licensekeyschema>`_
+        """
+        if license_id is not None:
+            return self._license_api.retrieve_iceberg_license_key_contents_by_id(
+                    license_id, authorization=self.authorization)
+        else:
+            response = self._license_api.retrieve_iceberg_license_key_contents(
+                authorization=self.authorization)
+            return response.license_key
+
+    def add(self, license_file):
+        """
+        Add report to HealthBot
+
+        :param path license_file: license file path
+
+        Example:
+        ::
+
+            from jnpr.healthbot import HealthBotClient
+
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                hb.settings.license.add(license_file='/var/tmp/xyz')
+
+        :returns: license_id if OK
+
+        """
+        response = self._license_api.create_iceberg_add_license_from_file(
+            license_file, authorization=self.authorization)
+        return response.license_id
+
+    def delete(self, license_id: str):
+        """
+        Remove report from settings
+
+        :param str license_id: The license id be deleted
+
+        Example:
+        ::
+            hb.settings.license.delete('xx-xxx-xxx-xxx-xx')
+
+        :returns: True when OK
+        """
+
+        self._license_api.delete_iceberg_delete_license_by_id(
+            license_id, authorization=self.authorization)
+
         return True

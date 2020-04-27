@@ -1,12 +1,12 @@
 import requests
 from requests.models import Response
+from requests.exceptions import HTTPError
 import logging
 
 import re
 import os
 import time
-
-from jnpr.healthbot.urlfor import UrlFor
+from jnpr.healthbot.exception import ConnectAuthError
 from jnpr.healthbot.modules import devices
 from jnpr.healthbot.modules import rules
 from jnpr.healthbot.modules import playbooks
@@ -23,6 +23,8 @@ from jnpr.healthbot.swagger.models.refresh_token import RefreshToken
 from jnpr.healthbot.swagger.models.token import Token
 
 from jnpr.healthbot.swagger.rest import ApiException
+from jnpr.healthbot.urlfor import UrlFor
+
 from pathlib import Path
 
 import jwt
@@ -128,19 +130,25 @@ class HealthBotClient(object):
         working.
 
         """
-        self.set_user_token()
-        try:
-            req = self.hbot_session.get(self.url + '/')
-            self.connected = True
-            # HTTP errors are not raised by default, this statement does that
-            req.raise_for_status()
-        except Exception as ex:
-            logger.error("Error: {}".format(ex))
-            raise ex
-        else:
-            logger.debug(
-                "Connected to HealthBot Server({}) on port {}".format(
-                    self.server, self.port))
+        # set_user_token returning False can be the case for older Healthbot
+        if not self.set_user_token():
+            try:
+                # Call one dummy URL to check if login was successful
+                # needed for <3.0 HealthBots
+                req = self.hbot_session.get(self.url + '/device')
+                # HTTP errors are not raised by default, this statement does that
+                req.raise_for_status()
+                self.connected = True
+            except HTTPError as ex:
+                logger.error("Check user credentials")
+                raise ConnectAuthError(self, "Check user credentials")
+            except Exception as ex:
+                logger.error("Error: {}".format(ex))
+                raise ex
+            else:
+                logger.debug(
+                    "Connected to HealthBot Server({}) on port {}".format(
+                        self.server, self.port))
         self.urlfor = UrlFor(self)
         self.device = devices.Device(self)
         self.device_group = devices.DeviceGroup(self)
@@ -151,9 +159,38 @@ class HealthBotClient(object):
         self.settings = settings.Settings(self)
         self.profile = profiles.Profile(self)
         self.administration = administration.Administration(self)
-        return True
+        return self
 
     login = open
+
+    def set_user_token(self):
+        """
+        From HealthBot 3.0.0 APIs will be token based. This function helps in
+        setting user based token. This token will be used in header of any
+        REST API calls.
+
+        """
+        conf = Configuration()
+        conf.host = self.url
+        conf.verify_ssl = False
+        self.api_client = ApiClient(configuration=conf)
+        self._auth = AuthenticationApi(api_client=self.api_client)
+        try:
+            self._user_token = self._auth.user_login(
+                credential={"userName": self.user, "password": self.password})
+            self._token_expire_time = self._get_token_expire()
+            self.hbot_session.headers.update({
+                'Authorization': 'Bearer ' + self._user_token.access_token})
+            self.connected = True
+        except ApiException as ex:
+            logger.debug("Check if given HealthBot version support authorization key")
+            # set user/password used by older healthbot version APIs
+            self.hbot_session.auth = (self.user, self.password)
+            return False
+        except Exception as ex:
+            logger.error("User Login Error: {}".format(ex))
+            raise ex
+        return True
 
     @property
     def hbot_session(self):
@@ -183,34 +220,7 @@ class HealthBotClient(object):
                 'Authorization': 'Bearer ' + self._user_token.access_token})
             self._token_expire_time = self._get_token_expire()
         return self._user_token
-
-    def set_user_token(self):
-        """
-        From HealthBot 3.0.0 APIs will be token based. This function helps in
-        setting user based token. This token will be used in header of any
-        REST API calls.
-
-        """
-        conf = Configuration()
-        conf.host = self.url
-        conf.verify_ssl = False
-        self.api_client = ApiClient(configuration=conf)
-        self._auth = AuthenticationApi(api_client=self.api_client)
-        try:
-            self._user_token = self._auth.user_login(
-                credential={"userName": self.user, "password": self.password})
-            self._token_expire_time = self._get_token_expire()
-            self.hbot_session.headers.update({
-                'Authorization': 'Bearer ' + self._user_token.access_token})
-            self.connected = True
-        except ApiException as ex:
-            logger.debug("Check if given HealthBot version support authorization key")
-            # set user/password used by older healthbot version APIs
-            self.hbot_session.auth = (self.user, self.password)
-        except Exception as ex:
-            logger.error("User Login Error: {}".format(ex))
-            raise ex
-
+    
     def _get_token_expire(self):
         """
         USing PyJWT module, decode exisiing access token to figure our token
@@ -471,8 +481,7 @@ class HealthBotClient(object):
     # -----------------------------------------------------------------------
 
     def __enter__(self):
-        self.login()
-        return self
+        return self.login()
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.logout()
