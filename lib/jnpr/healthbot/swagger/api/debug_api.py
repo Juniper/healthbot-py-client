@@ -38,18 +38,18 @@ class DebugApi(object):
 
         Request Healthbot MGD service to generate the debug related configuration for healthbot debugger to consume.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.healthbot_debug_generate_configuration(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.healthbot_debug_generate_configuration(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.healthbot_debug_generate_configuration_with_http_info(**kwargs)  # noqa: E501
         else:
             (data) = self.healthbot_debug_generate_configuration_with_http_info(**kwargs)  # noqa: E501
@@ -60,11 +60,11 @@ class DebugApi(object):
 
         Request Healthbot MGD service to generate the debug related configuration for healthbot debugger to consume.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.healthbot_debug_generate_configuration_with_http_info(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.healthbot_debug_generate_configuration_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
@@ -72,7 +72,7 @@ class DebugApi(object):
         """
 
         all_params = ['authorization']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -122,7 +122,7 @@ class DebugApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -133,20 +133,20 @@ class DebugApi(object):
 
         Run debugging for the given scenario name  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_debug_for_scenario(scenario_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_debug_for_scenario(scenario_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str scenario_name: Scenario name (required)
         :param str authorization: authentication header object
         :param DebugArgumentsSchema debug_arguments: Debug arguments object
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_debug_for_scenario_with_http_info(scenario_name, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_debug_for_scenario_with_http_info(scenario_name, **kwargs)  # noqa: E501
@@ -157,21 +157,21 @@ class DebugApi(object):
 
         Run debugging for the given scenario name  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_debug_for_scenario_with_http_info(scenario_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_debug_for_scenario_with_http_info(scenario_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str scenario_name: Scenario name (required)
         :param str authorization: authentication header object
         :param DebugArgumentsSchema debug_arguments: Debug arguments object
-        :return: None
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         all_params = ['scenario_name', 'authorization', 'debug_arguments']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -227,9 +227,9 @@ class DebugApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='object',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),

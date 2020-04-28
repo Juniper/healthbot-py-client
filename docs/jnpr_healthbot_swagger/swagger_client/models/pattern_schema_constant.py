@@ -183,6 +183,9 @@ class PatternSchemaConstant(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(PatternSchemaConstant, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

@@ -56,7 +56,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_debug_for_scenario**
-> retrieve_debug_for_scenario(scenario_name, authorization=authorization, debug_arguments=debug_arguments)
+> object retrieve_debug_for_scenario(scenario_name, authorization=authorization, debug_arguments=debug_arguments)
 
 Run debugging for the given scenario name
 
@@ -78,7 +78,8 @@ debug_arguments = swagger_client.DebugArgumentsSchema() # DebugArgumentsSchema |
 
 try:
     # Run debugging for the given scenario name
-    api_instance.retrieve_debug_for_scenario(scenario_name, authorization=authorization, debug_arguments=debug_arguments)
+    api_response = api_instance.retrieve_debug_for_scenario(scenario_name, authorization=authorization, debug_arguments=debug_arguments)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DebugApi->retrieve_debug_for_scenario: %s\n" % e)
 ```
@@ -93,7 +94,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 

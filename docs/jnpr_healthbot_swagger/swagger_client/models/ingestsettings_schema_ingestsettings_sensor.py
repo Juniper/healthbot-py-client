@@ -72,8 +72,8 @@ class IngestsettingsSchemaIngestsettingsSensor(object):
         """
         if frequency is None:
             raise ValueError("Invalid value for `frequency`, must not be `None`")  # noqa: E501
-        if frequency is not None and not re.search('^[0-9]+(seconds|minutes|hours|days|weeks|years)$', frequency):  # noqa: E501
-            raise ValueError("Invalid value for `frequency`, must be a follow pattern or equal to `/^[0-9]+(seconds|minutes|hours|days|weeks|years)$/`")  # noqa: E501
+        if frequency is not None and not re.search(r'^[0-9]+(seconds|minutes|hours|days|weeks|years)$', frequency):  # noqa: E501
+            raise ValueError(r"Invalid value for `frequency`, must be a follow pattern or equal to `/^[0-9]+(seconds|minutes|hours|days|weeks|years)$/`")  # noqa: E501
 
         self._frequency = frequency
 
@@ -123,6 +123,9 @@ class IngestsettingsSchemaIngestsettingsSensor(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(IngestsettingsSchemaIngestsettingsSensor, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

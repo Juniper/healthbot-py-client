@@ -469,7 +469,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_healthbot_system_time_series_database_time_series_database_by_id**
-> create_healthbot_system_time_series_database_time_series_database_by_id(time_series_database)
+> create_healthbot_system_time_series_database_time_series_database_by_id(time_series_database, force_tsdb=force_tsdb)
 
 Create time-series-database by ID
 
@@ -486,10 +486,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
 time_series_database = swagger_client.TsdbSchema() # TsdbSchema | time_series_databasebody object
+force_tsdb = false # bool | force update tsdb when force is set to True (optional) (default to false)
 
 try:
     # Create time-series-database by ID
-    api_instance.create_healthbot_system_time_series_database_time_series_database_by_id(time_series_database)
+    api_instance.create_healthbot_system_time_series_database_time_series_database_by_id(time_series_database, force_tsdb=force_tsdb)
 except ApiException as e:
     print("Exception when calling DefaultApi->create_healthbot_system_time_series_database_time_series_database_by_id: %s\n" % e)
 ```
@@ -499,6 +500,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **time_series_database** | [**TsdbSchema**](TsdbSchema.md)| time_series_databasebody object | 
+ **force_tsdb** | **bool**| force update tsdb when force is set to True | [optional] [default to false]
 
 ### Return type
 
@@ -2262,7 +2264,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_debug_jobs**
-> retrieve_debug_jobs(authorization=authorization, job_id=job_id)
+> object retrieve_debug_jobs(authorization=authorization, job_id=job_id)
 
 
 
@@ -2282,7 +2284,8 @@ authorization = 'authorization_example' # str | authentication header object (op
 job_id = 'job_id_example' # str | Id of Job (optional)
 
 try:
-    api_instance.retrieve_debug_jobs(authorization=authorization, job_id=job_id)
+    api_response = api_instance.retrieve_debug_jobs(authorization=authorization, job_id=job_id)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->retrieve_debug_jobs: %s\n" % e)
 ```
@@ -2296,7 +2299,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -4826,7 +4829,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_healthbot_system_time_series_database_time_series_database_by_id**
-> update_healthbot_system_time_series_database_time_series_database_by_id(time_series_database)
+> update_healthbot_system_time_series_database_time_series_database_by_id(time_series_database, force_tsdb=force_tsdb)
 
 Update time-series-database by ID
 
@@ -4843,10 +4846,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
 time_series_database = swagger_client.TsdbSchema() # TsdbSchema | time_series_databasebody object
+force_tsdb = false # bool | force update tsdb when force is set to True (optional) (default to false)
 
 try:
     # Update time-series-database by ID
-    api_instance.update_healthbot_system_time_series_database_time_series_database_by_id(time_series_database)
+    api_instance.update_healthbot_system_time_series_database_time_series_database_by_id(time_series_database, force_tsdb=force_tsdb)
 except ApiException as e:
     print("Exception when calling DefaultApi->update_healthbot_system_time_series_database_time_series_database_by_id: %s\n" % e)
 ```
@@ -4856,6 +4860,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **time_series_database** | [**TsdbSchema**](TsdbSchema.md)| time_series_databasebody object | 
+ **force_tsdb** | **bool**| force update tsdb when force is set to True | [optional] [default to false]
 
 ### Return type
 

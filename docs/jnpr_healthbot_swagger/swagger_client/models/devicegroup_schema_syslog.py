@@ -89,6 +89,9 @@ class DevicegroupSchemaSyslog(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(DevicegroupSchemaSyslog, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

@@ -116,6 +116,9 @@ class NetworkgroupSchemaPublish(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(NetworkgroupSchemaPublish, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

@@ -316,7 +316,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_group_details**
-> InlineResponse2007 get_group_details(authorization, groupid)
+> InlineResponse2008 get_group_details(authorization, groupid)
 
 Get lits of all the groups
 
@@ -352,7 +352,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**InlineResponse2008**](InlineResponse2008.md)
 
 ### Authorization
 
@@ -416,7 +416,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_groups**
-> list[InlineResponse2007] retrieve_groups(authorization)
+> list[InlineResponse2008] retrieve_groups(authorization)
 
 Get lits of all the groups
 
@@ -450,7 +450,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[InlineResponse2007]**](InlineResponse2007.md)
+[**list[InlineResponse2008]**](InlineResponse2008.md)
 
 ### Authorization
 
@@ -560,7 +560,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_group**
-> InlineResponse2008 update_group(authorization, groupid, group)
+> InlineResponse2009 update_group(authorization, groupid, group)
 
 Get lits of all the roles
 
@@ -598,7 +598,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**InlineResponse2009**](InlineResponse2009.md)
 
 ### Authorization
 

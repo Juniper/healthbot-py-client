@@ -27,8 +27,6 @@ from jnpr.healthbot.urlfor import UrlFor
 
 from pathlib import Path
 
-import jwt
-
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -178,7 +176,8 @@ class HealthBotClient(object):
         try:
             self._user_token = self._auth.user_login(
                 credential={"userName": self.user, "password": self.password})
-            self._token_expire_time = self._get_token_expire()
+            self._token_expire_time = time.time() + \
+                                      int(self._user_token.token_expires)
             self.hbot_session.headers.update({
                 'Authorization': 'Bearer ' + self._user_token.access_token})
             self.connected = True
@@ -214,24 +213,15 @@ class HealthBotClient(object):
     def user_token(self):
         if self._token_expire_time and time.time() >= self._token_expire_time:
             logger.debug("Token expired, hence refreshing")
-            self._user_token = self._auth.refresh_token(token=Token(
+            obj = self._auth.refresh_token(token=Token(
                 refresh_token=self._user_token.refresh_token))
+            self._user_token.access_token = obj.access_token
+            self._user_token.refresh_token = obj.refresh_token
             self._hbot_session.headers.update({
                 'Authorization': 'Bearer ' + self._user_token.access_token})
-            self._token_expire_time = self._get_token_expire()
+            self._token_expire_time = time.time() + \
+                                      int(self._user_token.token_expires)
         return self._user_token
-    
-    def _get_token_expire(self):
-        """
-        USing PyJWT module, decode exisiing access token to figure our token
-        expiry time (in seconds).
-
-        """
-        obj = jwt.decode(self._user_token.access_token, 'secret', verify=False)
-        timeout = obj.get('exp', 0) - obj.get('iat')
-        logger.debug("Access authorization key expiration timeout: {}".format(
-            timeout))
-        return time.time() + timeout
 
     def logout(self):
         """

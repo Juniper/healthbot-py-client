@@ -134,6 +134,48 @@ class TestConfigurationApi(unittest.TestCase):
         """
         pass
 
+    def test_create_iceberg_system_destination_by_id(self):
+        """Test case for create_iceberg_system_destination_by_id
+
+        Create destination by name  # noqa: E501
+        """
+        pass
+
+    def test_create_iceberg_system_destinations(self):
+        """Test case for create_iceberg_system_destinations
+
+        Create destinations by name  # noqa: E501
+        """
+        pass
+
+    def test_create_iceberg_system_report_by_id(self):
+        """Test case for create_iceberg_system_report_by_id
+
+        Create report by name  # noqa: E501
+        """
+        pass
+
+    def test_create_iceberg_system_reports(self):
+        """Test case for create_iceberg_system_reports
+
+        Create reports by name  # noqa: E501
+        """
+        pass
+
+    def test_create_iceberg_system_scheduler_by_id(self):
+        """Test case for create_iceberg_system_scheduler_by_id
+
+        Create scheduler by name  # noqa: E501
+        """
+        pass
+
+    def test_create_iceberg_system_schedulers(self):
+        """Test case for create_iceberg_system_schedulers
+
+        Create schedulers by name  # noqa: E501
+        """
+        pass
+
     def test_create_iceberg_system_settings_destination_by_id(self):
         """Test case for create_iceberg_system_settings_destination_by_id
 
@@ -183,6 +225,13 @@ class TestConfigurationApi(unittest.TestCase):
         """
         pass
 
+    def test_create_iceberg_system_system_by_id(self):
+        """Test case for create_iceberg_system_system_by_id
+
+        Create system  # noqa: E501
+        """
+        pass
+
     def test_create_iceberg_topic_rule_rule_by_id(self):
         """Test case for create_iceberg_topic_rule_rule_by_id
 
@@ -201,6 +250,13 @@ class TestConfigurationApi(unittest.TestCase):
         """Test case for create_iceberg_topics_topics_by_id
 
         Update or create multiple topics.  # noqa: E501
+        """
+        pass
+
+    def test_delete_healthbot_ingest_settings_byoi_ingest_mappings(self):
+        """Test case for delete_healthbot_ingest_settings_byoi_ingest_mappings
+
+        Delete all ingest-mappings.  # noqa: E501
         """
         pass
 
@@ -288,6 +344,48 @@ class TestConfigurationApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_iceberg_system_destination_by_id(self):
+        """Test case for delete_iceberg_system_destination_by_id
+
+        Delete destination by name  # noqa: E501
+        """
+        pass
+
+    def test_delete_iceberg_system_destinations(self):
+        """Test case for delete_iceberg_system_destinations
+
+        Delete destinations by name  # noqa: E501
+        """
+        pass
+
+    def test_delete_iceberg_system_report_by_id(self):
+        """Test case for delete_iceberg_system_report_by_id
+
+        Delete report by name  # noqa: E501
+        """
+        pass
+
+    def test_delete_iceberg_system_reports(self):
+        """Test case for delete_iceberg_system_reports
+
+        Delete reports by name  # noqa: E501
+        """
+        pass
+
+    def test_delete_iceberg_system_scheduler_by_id(self):
+        """Test case for delete_iceberg_system_scheduler_by_id
+
+        Delete scheduler by name  # noqa: E501
+        """
+        pass
+
+    def test_delete_iceberg_system_schedulers(self):
+        """Test case for delete_iceberg_system_schedulers
+
+        Delete schedulers by name  # noqa: E501
+        """
+        pass
+
     def test_delete_iceberg_system_settings_destination_by_id(self):
         """Test case for delete_iceberg_system_settings_destination_by_id
 
@@ -337,6 +435,13 @@ class TestConfigurationApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_iceberg_system_system_by_id(self):
+        """Test case for delete_iceberg_system_system_by_id
+
+        Delete system  # noqa: E501
+        """
+        pass
+
     def test_delete_iceberg_topic_rule_rule_by_id(self):
         """Test case for delete_iceberg_topic_rule_rule_by_id
 
@@ -355,6 +460,13 @@ class TestConfigurationApi(unittest.TestCase):
         """Test case for delete_iceberg_topics_topics_by_id
 
         Delete all topics.  # noqa: E501
+        """
+        pass
+
+    def test_first_login(self):
+        """Test case for first_login
+
+        Change password after first login  # noqa: E501
         """
         pass
 
@@ -498,6 +610,48 @@ class TestConfigurationApi(unittest.TestCase):
         """
         pass
 
+    def test_retrieve_iceberg_system_destination_by_id(self):
+        """Test case for retrieve_iceberg_system_destination_by_id
+
+        Retrieve destination by name  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_iceberg_system_destinations(self):
+        """Test case for retrieve_iceberg_system_destinations
+
+        Retrieve destinations by name  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_iceberg_system_report_by_id(self):
+        """Test case for retrieve_iceberg_system_report_by_id
+
+        Retrieve report by name  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_iceberg_system_reports(self):
+        """Test case for retrieve_iceberg_system_reports
+
+        Retrieve reports by name  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_iceberg_system_scheduler_by_id(self):
+        """Test case for retrieve_iceberg_system_scheduler_by_id
+
+        Retrieve scheduler by name  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_iceberg_system_schedulers(self):
+        """Test case for retrieve_iceberg_system_schedulers
+
+        Retrieve schedulers by name  # noqa: E501
+        """
+        pass
+
     def test_retrieve_iceberg_system_settings_destination_by_id(self):
         """Test case for retrieve_iceberg_system_settings_destination_by_id
 
@@ -547,6 +701,13 @@ class TestConfigurationApi(unittest.TestCase):
         """
         pass
 
+    def test_retrieve_iceberg_system_system(self):
+        """Test case for retrieve_iceberg_system_system
+
+        Retrieve system data  # noqa: E501
+        """
+        pass
+
     def test_retrieve_iceberg_topic_rule_rule(self):
         """Test case for retrieve_iceberg_topic_rule_rule
 
@@ -586,6 +747,13 @@ class TestConfigurationApi(unittest.TestCase):
         """Test case for retrieve_network_group_status
 
         Get network-group's status.  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_orchestrator(self):
+        """Test case for retrieve_orchestrator
+
+        Get Orchestrator type  # noqa: E501
         """
         pass
 
@@ -680,6 +848,48 @@ class TestConfigurationApi(unittest.TestCase):
         """
         pass
 
+    def test_update_iceberg_system_destination_by_id(self):
+        """Test case for update_iceberg_system_destination_by_id
+
+        Update destination by name  # noqa: E501
+        """
+        pass
+
+    def test_update_iceberg_system_destinations(self):
+        """Test case for update_iceberg_system_destinations
+
+        Update destinations by name  # noqa: E501
+        """
+        pass
+
+    def test_update_iceberg_system_report_by_id(self):
+        """Test case for update_iceberg_system_report_by_id
+
+        Update report by name  # noqa: E501
+        """
+        pass
+
+    def test_update_iceberg_system_reports(self):
+        """Test case for update_iceberg_system_reports
+
+        Update reports by name  # noqa: E501
+        """
+        pass
+
+    def test_update_iceberg_system_scheduler_by_id(self):
+        """Test case for update_iceberg_system_scheduler_by_id
+
+        Update scheduler by name  # noqa: E501
+        """
+        pass
+
+    def test_update_iceberg_system_schedulers(self):
+        """Test case for update_iceberg_system_schedulers
+
+        Update schedulers by name  # noqa: E501
+        """
+        pass
+
     def test_update_iceberg_system_settings_destination_by_id(self):
         """Test case for update_iceberg_system_settings_destination_by_id
 
@@ -729,6 +939,13 @@ class TestConfigurationApi(unittest.TestCase):
         """
         pass
 
+    def test_update_iceberg_system_system_by_id(self):
+        """Test case for update_iceberg_system_system_by_id
+
+        Update system by ID  # noqa: E501
+        """
+        pass
+
     def test_update_iceberg_topic_rule_rule_by_id(self):
         """Test case for update_iceberg_topic_rule_rule_by_id
 
@@ -747,6 +964,20 @@ class TestConfigurationApi(unittest.TestCase):
         """Test case for update_iceberg_topics_topics_by_id
 
         Overwrite topics.  # noqa: E501
+        """
+        pass
+
+    def test_user_retrieve_user_profile(self):
+        """Test case for user_retrieve_user_profile
+
+        Get users profile information  # noqa: E501
+        """
+        pass
+
+    def test_user_update_user_profile(self):
+        """Test case for user_update_user_profile
+
+        Update user profile informations.  # noqa: E501
         """
         pass
 

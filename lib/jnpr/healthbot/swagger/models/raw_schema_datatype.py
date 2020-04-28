@@ -132,6 +132,9 @@ class RawSchemaDatatype(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(RawSchemaDatatype, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

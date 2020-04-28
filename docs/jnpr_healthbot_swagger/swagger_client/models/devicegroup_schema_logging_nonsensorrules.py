@@ -131,6 +131,9 @@ class DevicegroupSchemaLoggingNonsensorrules(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(DevicegroupSchemaLoggingNonsensorrules, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

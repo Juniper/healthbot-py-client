@@ -115,6 +115,9 @@ class AssociatedUserSchemaInner(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(AssociatedUserSchemaInner, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

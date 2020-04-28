@@ -73,8 +73,8 @@ class RuleSchemaFormulaCount(object):
         """
         if field_name is None:
             raise ValueError("Invalid value for `field_name`, must not be `None`")  # noqa: E501
-        if field_name is not None and not re.search('^[$@][a-z][a-zA-Z0-9_-]*$', field_name):  # noqa: E501
-            raise ValueError("Invalid value for `field_name`, must be a follow pattern or equal to `/^[$@][a-z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+        if field_name is not None and not re.search(r'^[$@][a-z][a-zA-Z0-9_-]*$', field_name):  # noqa: E501
+            raise ValueError(r"Invalid value for `field_name`, must be a follow pattern or equal to `/^[$@][a-z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._field_name = field_name
 
@@ -98,8 +98,8 @@ class RuleSchemaFormulaCount(object):
         :param time_range: The time_range of this RuleSchemaFormulaCount.  # noqa: E501
         :type: str
         """
-        if time_range is not None and not re.search('^[1-9][0-9]*(o|s|m|h|d|w|y|offset)$', time_range):  # noqa: E501
-            raise ValueError("Invalid value for `time_range`, must be a follow pattern or equal to `/^[1-9][0-9]*(o|s|m|h|d|w|y|offset)$/`")  # noqa: E501
+        if time_range is not None and not re.search(r'^[1-9][0-9]*(o|s|m|h|d|w|y|offset)$', time_range):  # noqa: E501
+            raise ValueError(r"Invalid value for `time_range`, must be a follow pattern or equal to `/^[1-9][0-9]*(o|s|m|h|d|w|y|offset)$/`")  # noqa: E501
 
         self._time_range = time_range
 
@@ -124,6 +124,9 @@ class RuleSchemaFormulaCount(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(RuleSchemaFormulaCount, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

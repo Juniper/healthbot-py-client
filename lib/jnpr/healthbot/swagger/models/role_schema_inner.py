@@ -119,6 +119,9 @@ class RoleSchemaInner(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(RoleSchemaInner, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

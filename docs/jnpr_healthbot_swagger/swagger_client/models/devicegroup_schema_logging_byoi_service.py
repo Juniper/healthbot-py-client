@@ -160,6 +160,9 @@ class DevicegroupSchemaLoggingByoiService(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(DevicegroupSchemaLoggingByoiService, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

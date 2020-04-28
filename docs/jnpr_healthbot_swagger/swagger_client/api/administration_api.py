@@ -38,11 +38,11 @@ class AdministrationApi(object):
 
         Create group in the system  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_groups(authorization, groups, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_groups(authorization, groups, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :param list[Groups] groups: group details (required)
         :return: None
@@ -50,7 +50,7 @@ class AdministrationApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.create_groups_with_http_info(authorization, groups, **kwargs)  # noqa: E501
         else:
             (data) = self.create_groups_with_http_info(authorization, groups, **kwargs)  # noqa: E501
@@ -61,11 +61,11 @@ class AdministrationApi(object):
 
         Create group in the system  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_groups_with_http_info(authorization, groups, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_groups_with_http_info(authorization, groups, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :param list[Groups] groups: group details (required)
         :return: None
@@ -74,7 +74,7 @@ class AdministrationApi(object):
         """
 
         all_params = ['authorization', 'groups']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -134,7 +134,7 @@ class AdministrationApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -145,11 +145,11 @@ class AdministrationApi(object):
 
         Create users in the system  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_users(authorization, users, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_users(authorization, users, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :param list[UserSchema] users: List of users (required)
         :return: list[str]
@@ -157,7 +157,7 @@ class AdministrationApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.create_users_with_http_info(authorization, users, **kwargs)  # noqa: E501
         else:
             (data) = self.create_users_with_http_info(authorization, users, **kwargs)  # noqa: E501
@@ -168,11 +168,11 @@ class AdministrationApi(object):
 
         Create users in the system  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_users_with_http_info(authorization, users, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_users_with_http_info(authorization, users, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :param list[UserSchema] users: List of users (required)
         :return: list[str]
@@ -181,7 +181,7 @@ class AdministrationApi(object):
         """
 
         all_params = ['authorization', 'users']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -241,7 +241,7 @@ class AdministrationApi(object):
             files=local_var_files,
             response_type='list[str]',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -252,11 +252,11 @@ class AdministrationApi(object):
 
         Delete the groups  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_group(authorization, groupid, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_group(authorization, groupid, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :param str groupid: Id of group (required)
         :return: None
@@ -264,7 +264,7 @@ class AdministrationApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.delete_group_with_http_info(authorization, groupid, **kwargs)  # noqa: E501
         else:
             (data) = self.delete_group_with_http_info(authorization, groupid, **kwargs)  # noqa: E501
@@ -275,11 +275,11 @@ class AdministrationApi(object):
 
         Delete the groups  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_group_with_http_info(authorization, groupid, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_group_with_http_info(authorization, groupid, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :param str groupid: Id of group (required)
         :return: None
@@ -288,7 +288,7 @@ class AdministrationApi(object):
         """
 
         all_params = ['authorization', 'groupid']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -348,7 +348,7 @@ class AdministrationApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -359,11 +359,11 @@ class AdministrationApi(object):
 
         Delete list of users from system, for administrative purpose  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_user(authorization, userid, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_user(authorization, userid, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :param str userid: Id of user (required)
         :return: None
@@ -371,7 +371,7 @@ class AdministrationApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.delete_user_with_http_info(authorization, userid, **kwargs)  # noqa: E501
         else:
             (data) = self.delete_user_with_http_info(authorization, userid, **kwargs)  # noqa: E501
@@ -382,11 +382,11 @@ class AdministrationApi(object):
 
         Delete list of users from system, for administrative purpose  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_user_with_http_info(authorization, userid, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_user_with_http_info(authorization, userid, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :param str userid: Id of user (required)
         :return: None
@@ -395,7 +395,7 @@ class AdministrationApi(object):
         """
 
         all_params = ['authorization', 'userid']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -455,7 +455,7 @@ class AdministrationApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -466,11 +466,11 @@ class AdministrationApi(object):
 
         Flush the existing groups and create new set of groups  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.flush_groups(authorization, groups, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.flush_groups(authorization, groups, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :param list[Groups] groups: Group data (required)
         :return: None
@@ -478,7 +478,7 @@ class AdministrationApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.flush_groups_with_http_info(authorization, groups, **kwargs)  # noqa: E501
         else:
             (data) = self.flush_groups_with_http_info(authorization, groups, **kwargs)  # noqa: E501
@@ -489,11 +489,11 @@ class AdministrationApi(object):
 
         Flush the existing groups and create new set of groups  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.flush_groups_with_http_info(authorization, groups, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.flush_groups_with_http_info(authorization, groups, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :param list[Groups] groups: Group data (required)
         :return: None
@@ -502,7 +502,7 @@ class AdministrationApi(object):
         """
 
         all_params = ['authorization', 'groups']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -562,7 +562,7 @@ class AdministrationApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -573,11 +573,11 @@ class AdministrationApi(object):
 
         Flush the user base with new records  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.flush_users(authorization, users, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.flush_users(authorization, users, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :param list[UserSchema] users: User details (required)
         :return: list[InlineResponse2003]
@@ -585,7 +585,7 @@ class AdministrationApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.flush_users_with_http_info(authorization, users, **kwargs)  # noqa: E501
         else:
             (data) = self.flush_users_with_http_info(authorization, users, **kwargs)  # noqa: E501
@@ -596,11 +596,11 @@ class AdministrationApi(object):
 
         Flush the user base with new records  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.flush_users_with_http_info(authorization, users, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.flush_users_with_http_info(authorization, users, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :param list[UserSchema] users: User details (required)
         :return: list[InlineResponse2003]
@@ -609,7 +609,7 @@ class AdministrationApi(object):
         """
 
         all_params = ['authorization', 'users']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -669,7 +669,7 @@ class AdministrationApi(object):
             files=local_var_files,
             response_type='list[InlineResponse2003]',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -680,19 +680,19 @@ class AdministrationApi(object):
 
         Get list of registered groups, for administrative purpose  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_group_details(authorization, groupid, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_group_details(authorization, groupid, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :param str groupid: Id of group (required)
-        :return: InlineResponse2007
+        :return: InlineResponse2008
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.get_group_details_with_http_info(authorization, groupid, **kwargs)  # noqa: E501
         else:
             (data) = self.get_group_details_with_http_info(authorization, groupid, **kwargs)  # noqa: E501
@@ -703,20 +703,20 @@ class AdministrationApi(object):
 
         Get list of registered groups, for administrative purpose  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_group_details_with_http_info(authorization, groupid, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_group_details_with_http_info(authorization, groupid, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :param str groupid: Id of group (required)
-        :return: InlineResponse2007
+        :return: InlineResponse2008
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         all_params = ['authorization', 'groupid']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -774,9 +774,9 @@ class AdministrationApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2007',  # noqa: E501
+            response_type='InlineResponse2008',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -787,11 +787,11 @@ class AdministrationApi(object):
 
         Get details of registered users, for administrative purpose  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_user_details(authorization, userid, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_user_details(authorization, userid, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :param str userid: Id of user (required)
         :return: InlineResponse2004
@@ -799,7 +799,7 @@ class AdministrationApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.get_user_details_with_http_info(authorization, userid, **kwargs)  # noqa: E501
         else:
             (data) = self.get_user_details_with_http_info(authorization, userid, **kwargs)  # noqa: E501
@@ -810,11 +810,11 @@ class AdministrationApi(object):
 
         Get details of registered users, for administrative purpose  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.get_user_details_with_http_info(authorization, userid, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_user_details_with_http_info(authorization, userid, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :param str userid: Id of user (required)
         :return: InlineResponse2004
@@ -823,7 +823,7 @@ class AdministrationApi(object):
         """
 
         all_params = ['authorization', 'userid']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -883,7 +883,7 @@ class AdministrationApi(object):
             files=local_var_files,
             response_type='InlineResponse2004',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -894,18 +894,18 @@ class AdministrationApi(object):
 
         Get list of registered groups, for administrative purpose  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_groups(authorization, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_groups(authorization, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
-        :return: list[InlineResponse2007]
+        :return: list[InlineResponse2008]
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_groups_with_http_info(authorization, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_groups_with_http_info(authorization, **kwargs)  # noqa: E501
@@ -916,19 +916,19 @@ class AdministrationApi(object):
 
         Get list of registered groups, for administrative purpose  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_groups_with_http_info(authorization, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_groups_with_http_info(authorization, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
-        :return: list[InlineResponse2007]
+        :return: list[InlineResponse2008]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         all_params = ['authorization']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -980,9 +980,9 @@ class AdministrationApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='list[InlineResponse2007]',  # noqa: E501
+            response_type='list[InlineResponse2008]',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -993,18 +993,18 @@ class AdministrationApi(object):
 
         Get list of registered roles, for administrative purpose  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_roles(authorization, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_roles(authorization, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :return: RoleSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_roles_with_http_info(authorization, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_roles_with_http_info(authorization, **kwargs)  # noqa: E501
@@ -1015,11 +1015,11 @@ class AdministrationApi(object):
 
         Get list of registered roles, for administrative purpose  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_roles_with_http_info(authorization, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_roles_with_http_info(authorization, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :return: RoleSchema
                  If the method is called asynchronously,
@@ -1027,7 +1027,7 @@ class AdministrationApi(object):
         """
 
         all_params = ['authorization']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1081,7 +1081,7 @@ class AdministrationApi(object):
             files=local_var_files,
             response_type='RoleSchema',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -1092,18 +1092,18 @@ class AdministrationApi(object):
 
         Get list of registered users, for administrative purpose  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_users(authorization, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_users(authorization, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :return: list[InlineResponse2002]
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_users_with_http_info(authorization, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_users_with_http_info(authorization, **kwargs)  # noqa: E501
@@ -1114,11 +1114,11 @@ class AdministrationApi(object):
 
         Get list of registered users, for administrative purpose  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_users_with_http_info(authorization, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_users_with_http_info(authorization, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :return: list[InlineResponse2002]
                  If the method is called asynchronously,
@@ -1126,7 +1126,7 @@ class AdministrationApi(object):
         """
 
         all_params = ['authorization']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1180,7 +1180,7 @@ class AdministrationApi(object):
             files=local_var_files,
             response_type='list[InlineResponse2002]',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -1191,20 +1191,20 @@ class AdministrationApi(object):
 
         Update group  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_group(authorization, groupid, group, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_group(authorization, groupid, group, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :param str groupid: Id of group (required)
         :param Group group: group details (required)
-        :return: InlineResponse2008
+        :return: InlineResponse2009
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.update_group_with_http_info(authorization, groupid, group, **kwargs)  # noqa: E501
         else:
             (data) = self.update_group_with_http_info(authorization, groupid, group, **kwargs)  # noqa: E501
@@ -1215,21 +1215,21 @@ class AdministrationApi(object):
 
         Update group  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_group_with_http_info(authorization, groupid, group, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_group_with_http_info(authorization, groupid, group, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :param str groupid: Id of group (required)
         :param Group group: group details (required)
-        :return: InlineResponse2008
+        :return: InlineResponse2009
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         all_params = ['authorization', 'groupid', 'group']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1293,9 +1293,9 @@ class AdministrationApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2008',  # noqa: E501
+            response_type='InlineResponse2009',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -1306,11 +1306,11 @@ class AdministrationApi(object):
 
         Update a user profile in the system  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_user_profile(authorization, userid, user, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_user_profile(authorization, userid, user, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :param str userid: Id of user (required)
         :param User user: user details (required)
@@ -1319,7 +1319,7 @@ class AdministrationApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.update_user_profile_with_http_info(authorization, userid, user, **kwargs)  # noqa: E501
         else:
             (data) = self.update_user_profile_with_http_info(authorization, userid, user, **kwargs)  # noqa: E501
@@ -1330,11 +1330,11 @@ class AdministrationApi(object):
 
         Update a user profile in the system  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_user_profile_with_http_info(authorization, userid, user, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_user_profile_with_http_info(authorization, userid, user, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object (required)
         :param str userid: Id of user (required)
         :param User user: user details (required)
@@ -1344,7 +1344,7 @@ class AdministrationApi(object):
         """
 
         all_params = ['authorization', 'userid', 'user']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1410,7 +1410,7 @@ class AdministrationApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),

@@ -120,6 +120,9 @@ class CustompluginSchemaParameters(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(CustompluginSchemaParameters, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

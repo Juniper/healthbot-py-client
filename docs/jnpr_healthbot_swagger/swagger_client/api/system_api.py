@@ -38,18 +38,18 @@ class SystemApi(object):
 
         Get the list of available nodes in the installation.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_available_nodes(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_available_nodes(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_available_nodes_with_http_info(**kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_available_nodes_with_http_info(**kwargs)  # noqa: E501
@@ -60,11 +60,11 @@ class SystemApi(object):
 
         Get the list of available nodes in the installation.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_available_nodes_with_http_info(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_available_nodes_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
@@ -72,7 +72,7 @@ class SystemApi(object):
         """
 
         all_params = ['authorization']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -122,22 +122,22 @@ class SystemApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
     def retrieve_sensor_device_group(self, device_group_name, **kwargs):  # noqa: E501
-        """Get all All API&#39;s.  # noqa: E501
+        """Get all All API's.  # noqa: E501
 
         GET sensors subscribed for a device-group  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_sensor_device_group(device_group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_sensor_device_group(device_group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str device_group_name: Device Group (required)
         :param str authorization: authentication header object
         :return: None
@@ -145,22 +145,22 @@ class SystemApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_sensor_device_group_with_http_info(device_group_name, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_sensor_device_group_with_http_info(device_group_name, **kwargs)  # noqa: E501
             return data
 
     def retrieve_sensor_device_group_with_http_info(self, device_group_name, **kwargs):  # noqa: E501
-        """Get all All API&#39;s.  # noqa: E501
+        """Get all All API's.  # noqa: E501
 
         GET sensors subscribed for a device-group  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_sensor_device_group_with_http_info(device_group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_sensor_device_group_with_http_info(device_group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str device_group_name: Device Group (required)
         :param str authorization: authentication header object
         :return: None
@@ -169,7 +169,7 @@ class SystemApi(object):
         """
 
         all_params = ['device_group_name', 'authorization']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -225,7 +225,7 @@ class SystemApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -236,11 +236,11 @@ class SystemApi(object):
 
         Retrieve system details for HealthBot system.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_system_details(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_system_details(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object
         :param str service_name: service name takes in the name of the service for which details are required.
         :return: None
@@ -248,7 +248,7 @@ class SystemApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_system_details_with_http_info(**kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_system_details_with_http_info(**kwargs)  # noqa: E501
@@ -259,11 +259,11 @@ class SystemApi(object):
 
         Retrieve system details for HealthBot system.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_system_details_with_http_info(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_system_details_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str authorization: authentication header object
         :param str service_name: service name takes in the name of the service for which details are required.
         :return: None
@@ -272,7 +272,7 @@ class SystemApi(object):
         """
 
         all_params = ['authorization', 'service_name']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -324,7 +324,102 @@ class SystemApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_tsdb_counters(self, **kwargs):  # noqa: E501
+        """TSDB counters  # noqa: E501
+
+        Get TSDB counters  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_tsdb_counters(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_tsdb_counters_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_tsdb_counters_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def retrieve_tsdb_counters_with_http_info(self, **kwargs):  # noqa: E501
+        """TSDB counters  # noqa: E501
+
+        Get TSDB counters  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_tsdb_counters_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_tsdb_counters" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/tsdb-counters/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),

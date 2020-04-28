@@ -131,6 +131,9 @@ class DevicegroupSchemaLoggingSnmp(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(DevicegroupSchemaLoggingSnmp, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **author** | **str** | E-mail address of the rule writer | [optional] 
 **catalogue** | [**RuleSchemaRulepropertiesCatalogue**](RuleSchemaRulepropertiesCatalogue.md) |  | [optional] 
 **contributor** | **str** |  | [optional] 
-**date** | **str** |  | [optional] 
+**_date** | **str** |  | [optional] 
 **helper_files** | [**list[RuleSchemaRulepropertiesHelperfiles]**](RuleSchemaRulepropertiesHelperfiles.md) |  | [optional] 
 **supported_devices** | [**RuleSchemaRulepropertiesSupporteddevices**](RuleSchemaRulepropertiesSupporteddevices.md) |  | [optional] 
 **supported_healthbot_version** | **str** | Healthbot version in which is rule is supported | [optional] 

@@ -58,7 +58,7 @@ class SshKeyProfileSchema(object):
     def name(self):
         """Gets the name of this SshKeyProfileSchema.  # noqa: E501
 
-        SSH Key profile name  # noqa: E501
+        SSH Key profile name. Should be of pattern [a-zA-Z][a-zA-Z0-9_-]*  # noqa: E501
 
         :return: The name of this SshKeyProfileSchema.  # noqa: E501
         :rtype: str
@@ -69,13 +69,17 @@ class SshKeyProfileSchema(object):
     def name(self, name):
         """Sets the name of this SshKeyProfileSchema.
 
-        SSH Key profile name  # noqa: E501
+        SSH Key profile name. Should be of pattern [a-zA-Z][a-zA-Z0-9_-]*  # noqa: E501
 
         :param name: The name of this SshKeyProfileSchema.  # noqa: E501
         :type: str
         """
         if name is None:
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if name is not None and len(name) > 64:
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `64`")  # noqa: E501
+        if name is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', name):  # noqa: E501
+            raise ValueError(r"Invalid value for `name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._name = name
 
@@ -150,6 +154,9 @@ class SshKeyProfileSchema(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(SshKeyProfileSchema, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

@@ -38,11 +38,11 @@ class DataSourceApi(object):
 
         Store data-store details in database for the requested group name and key.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_data_store(key, data, group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_data_store(key, data, group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str key: Key of data_store object (required)
         :param DatastoreSchema data: Value of data_store object (required)
         :param str group_name: Group name (required)
@@ -52,7 +52,7 @@ class DataSourceApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.create_data_store_with_http_info(key, data, group_name, **kwargs)  # noqa: E501
         else:
             (data) = self.create_data_store_with_http_info(key, data, group_name, **kwargs)  # noqa: E501
@@ -63,11 +63,11 @@ class DataSourceApi(object):
 
         Store data-store details in database for the requested group name and key.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_data_store_with_http_info(key, data, group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_data_store_with_http_info(key, data, group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str key: Key of data_store object (required)
         :param DatastoreSchema data: Value of data_store object (required)
         :param str group_name: Group name (required)
@@ -78,7 +78,7 @@ class DataSourceApi(object):
         """
 
         all_params = ['key', 'data', 'group_name', 'authorization']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -146,7 +146,7 @@ class DataSourceApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),

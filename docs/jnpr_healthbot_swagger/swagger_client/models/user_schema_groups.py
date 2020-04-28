@@ -115,6 +115,9 @@ class UserSchemaGroups(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(UserSchemaGroups, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

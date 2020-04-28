@@ -136,8 +136,8 @@ class RuleSchemaFormulaDynamicthreshold(object):
         """
         if learning_period is None:
             raise ValueError("Invalid value for `learning_period`, must not be `None`")  # noqa: E501
-        if learning_period is not None and not re.search('^[1-9][0-9]*(offset|seconds|minutes|hours|days|weeks|years|o|s|m|h|d|w|y)$', learning_period):  # noqa: E501
-            raise ValueError("Invalid value for `learning_period`, must be a follow pattern or equal to `/^[1-9][0-9]*(offset|seconds|minutes|hours|days|weeks|years|o|s|m|h|d|w|y)$/`")  # noqa: E501
+        if learning_period is not None and not re.search(r'^[1-9][0-9]*(offset|seconds|minutes|hours|days|weeks|years|o|s|m|h|d|w|y)$', learning_period):  # noqa: E501
+            raise ValueError(r"Invalid value for `learning_period`, must be a follow pattern or equal to `/^[1-9][0-9]*(offset|seconds|minutes|hours|days|weeks|years|o|s|m|h|d|w|y)$/`")  # noqa: E501
 
         self._learning_period = learning_period
 
@@ -163,8 +163,8 @@ class RuleSchemaFormulaDynamicthreshold(object):
         """
         if pattern_periodicity is None:
             raise ValueError("Invalid value for `pattern_periodicity`, must not be `None`")  # noqa: E501
-        if pattern_periodicity is not None and not re.search('^[1-9][0-9]*(minutes|hours|days|weeks|months|t|h|d|w|m|T|H|D|W|M)(,[1-9][0-9]*(minutes|hours|days|weeks|months|t|h|d|w|m|T|H|D|W|M))*$', pattern_periodicity):  # noqa: E501
-            raise ValueError("Invalid value for `pattern_periodicity`, must be a follow pattern or equal to `/^[1-9][0-9]*(minutes|hours|days|weeks|months|t|h|d|w|m|T|H|D|W|M)(,[1-9][0-9]*(minutes|hours|days|weeks|months|t|h|d|w|m|T|H|D|W|M))*$/`")  # noqa: E501
+        if pattern_periodicity is not None and not re.search(r'^[1-9][0-9]*(minutes|hours|days|weeks|months|t|h|d|w|m|T|H|D|W|M)(,[1-9][0-9]*(minutes|hours|days|weeks|months|t|h|d|w|m|T|H|D|W|M))*$', pattern_periodicity):  # noqa: E501
+            raise ValueError(r"Invalid value for `pattern_periodicity`, must be a follow pattern or equal to `/^[1-9][0-9]*(minutes|hours|days|weeks|months|t|h|d|w|m|T|H|D|W|M)(,[1-9][0-9]*(minutes|hours|days|weeks|months|t|h|d|w|m|T|H|D|W|M))*$/`")  # noqa: E501
 
         self._pattern_periodicity = pattern_periodicity
 
@@ -189,6 +189,9 @@ class RuleSchemaFormulaDynamicthreshold(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(RuleSchemaFormulaDynamicthreshold, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

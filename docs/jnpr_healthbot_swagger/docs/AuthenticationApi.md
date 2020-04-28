@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **refresh_token**
-> InlineResponse2006 refresh_token(token)
+> InlineResponse2007 refresh_token(token)
 
 Re-issue tokens from existing token
 
@@ -44,7 +44,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**InlineResponse2007**](InlineResponse2007.md)
 
 ### Authorization
 

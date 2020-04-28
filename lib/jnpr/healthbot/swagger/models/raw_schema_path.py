@@ -126,6 +126,9 @@ class RawSchemaPath(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(RawSchemaPath, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

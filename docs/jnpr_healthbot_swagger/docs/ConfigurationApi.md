@@ -1490,7 +1490,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_system_settings_system_settings_by_id**
-> create_iceberg_system_settings_system_settings_by_id(system_settings, authorization=authorization)
+> create_iceberg_system_settings_system_settings_by_id(system_settings, authorization=authorization, force_tsdb=force_tsdb)
 
 Create system-settings
 
@@ -1508,10 +1508,11 @@ from pprint import pprint
 api_instance = swagger_client.ConfigurationApi()
 system_settings = swagger_client.SystemSettingsSchema() # SystemSettingsSchema | system_settings body object
 authorization = 'authorization_example' # str | authentication header object (optional)
+force_tsdb = false # bool | force update tsdb when force is set to True (optional) (default to false)
 
 try:
     # Create system-settings
-    api_instance.create_iceberg_system_settings_system_settings_by_id(system_settings, authorization=authorization)
+    api_instance.create_iceberg_system_settings_system_settings_by_id(system_settings, authorization=authorization, force_tsdb=force_tsdb)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_system_settings_system_settings_by_id: %s\n" % e)
 ```
@@ -1522,6 +1523,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_settings** | [**SystemSettingsSchema**](SystemSettingsSchema.md)| system_settings body object | 
  **authorization** | **str**| authentication header object | [optional] 
+ **force_tsdb** | **bool**| force update tsdb when force is set to True | [optional] [default to false]
 
 ### Return type
 
@@ -1539,7 +1541,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_iceberg_system_system_by_id**
-> create_iceberg_system_system_by_id(system_settings, authorization=authorization)
+> create_iceberg_system_system_by_id(system_settings, authorization=authorization, force_tsdb=force_tsdb)
 
 Create system
 
@@ -1557,10 +1559,11 @@ from pprint import pprint
 api_instance = swagger_client.ConfigurationApi()
 system_settings = swagger_client.SystemSettingsSchema() # SystemSettingsSchema | system_settings body object
 authorization = 'authorization_example' # str | authentication header object (optional)
+force_tsdb = false # bool | force update tsdb when force is set to True (optional) (default to false)
 
 try:
     # Create system
-    api_instance.create_iceberg_system_system_by_id(system_settings, authorization=authorization)
+    api_instance.create_iceberg_system_system_by_id(system_settings, authorization=authorization, force_tsdb=force_tsdb)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->create_iceberg_system_system_by_id: %s\n" % e)
 ```
@@ -1571,6 +1574,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_settings** | [**SystemSettingsSchema**](SystemSettingsSchema.md)| system_settings body object | 
  **authorization** | **str**| authentication header object | [optional] 
+ **force_tsdb** | **bool**| force update tsdb when force is set to True | [optional] [default to false]
 
 ### Return type
 
@@ -6558,7 +6562,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_system_settings_system_settings_by_id**
-> update_iceberg_system_settings_system_settings_by_id(system_settings, authorization=authorization)
+> update_iceberg_system_settings_system_settings_by_id(system_settings, authorization=authorization, force_tsdb=force_tsdb)
 
 Update system-settings by ID
 
@@ -6576,10 +6580,11 @@ from pprint import pprint
 api_instance = swagger_client.ConfigurationApi()
 system_settings = swagger_client.SystemSettingsSchema() # SystemSettingsSchema | system_settingsbody object
 authorization = 'authorization_example' # str | authentication header object (optional)
+force_tsdb = false # bool | force update tsdb when force is set to True (optional) (default to false)
 
 try:
     # Update system-settings by ID
-    api_instance.update_iceberg_system_settings_system_settings_by_id(system_settings, authorization=authorization)
+    api_instance.update_iceberg_system_settings_system_settings_by_id(system_settings, authorization=authorization, force_tsdb=force_tsdb)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_system_settings_system_settings_by_id: %s\n" % e)
 ```
@@ -6590,6 +6595,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_settings** | [**SystemSettingsSchema**](SystemSettingsSchema.md)| system_settingsbody object | 
  **authorization** | **str**| authentication header object | [optional] 
+ **force_tsdb** | **bool**| force update tsdb when force is set to True | [optional] [default to false]
 
 ### Return type
 
@@ -6607,7 +6613,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_system_system_by_id**
-> update_iceberg_system_system_by_id(system_settings, authorization=authorization)
+> update_iceberg_system_system_by_id(system_settings, authorization=authorization, force_tsdb=force_tsdb)
 
 Update system by ID
 
@@ -6625,10 +6631,11 @@ from pprint import pprint
 api_instance = swagger_client.ConfigurationApi()
 system_settings = swagger_client.SystemSettingsSchema() # SystemSettingsSchema | system_settings body object
 authorization = 'authorization_example' # str | authentication header object (optional)
+force_tsdb = false # bool | force update tsdb when force is set to True (optional) (default to false)
 
 try:
     # Update system by ID
-    api_instance.update_iceberg_system_system_by_id(system_settings, authorization=authorization)
+    api_instance.update_iceberg_system_system_by_id(system_settings, authorization=authorization, force_tsdb=force_tsdb)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->update_iceberg_system_system_by_id: %s\n" % e)
 ```
@@ -6639,6 +6646,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **system_settings** | [**SystemSettingsSchema**](SystemSettingsSchema.md)| system_settings body object | 
  **authorization** | **str**| authentication header object | [optional] 
+ **force_tsdb** | **bool**| force update tsdb when force is set to True | [optional] [default to false]
 
 ### Return type
 

@@ -75,8 +75,8 @@ class RuleSchemaNativegpb(object):
         :param frequency: The frequency of this RuleSchemaNativegpb.  # noqa: E501
         :type: str
         """
-        if frequency is not None and not re.search('^[0-9]+[smhdwy]$', frequency):  # noqa: E501
-            raise ValueError("Invalid value for `frequency`, must be a follow pattern or equal to `/^[0-9]+[smhdwy]$/`")  # noqa: E501
+        if frequency is not None and not re.search(r'^[0-9]+[smhdwy]$', frequency):  # noqa: E501
+            raise ValueError(r"Invalid value for `frequency`, must be a follow pattern or equal to `/^[0-9]+[smhdwy]$/`")  # noqa: E501
 
         self._frequency = frequency
 
@@ -155,6 +155,9 @@ class RuleSchemaNativegpb(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(RuleSchemaNativegpb, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

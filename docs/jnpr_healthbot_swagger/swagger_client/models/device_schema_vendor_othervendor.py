@@ -73,8 +73,8 @@ class DeviceSchemaVendorOthervendor(object):
         """
         if operating_system is not None and len(operating_system) > 64:
             raise ValueError("Invalid value for `operating_system`, length must be less than or equal to `64`")  # noqa: E501
-        if operating_system is not None and not re.search('^[a-zA-Z][a-zA-Z0-9_-]*$', operating_system):  # noqa: E501
-            raise ValueError("Invalid value for `operating_system`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+        if operating_system is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', operating_system):  # noqa: E501
+            raise ValueError(r"Invalid value for `operating_system`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._operating_system = operating_system
 
@@ -102,8 +102,8 @@ class DeviceSchemaVendorOthervendor(object):
             raise ValueError("Invalid value for `vendor_name`, must not be `None`")  # noqa: E501
         if vendor_name is not None and len(vendor_name) > 64:
             raise ValueError("Invalid value for `vendor_name`, length must be less than or equal to `64`")  # noqa: E501
-        if vendor_name is not None and not re.search('^[a-zA-Z][a-zA-Z0-9_-]*$', vendor_name):  # noqa: E501
-            raise ValueError("Invalid value for `vendor_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+        if vendor_name is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', vendor_name):  # noqa: E501
+            raise ValueError(r"Invalid value for `vendor_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._vendor_name = vendor_name
 
@@ -128,6 +128,9 @@ class DeviceSchemaVendorOthervendor(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(DeviceSchemaVendorOthervendor, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

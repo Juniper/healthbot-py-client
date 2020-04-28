@@ -91,6 +91,9 @@ class DeviceSchemaSnmpV2(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(DeviceSchemaSnmpV2, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

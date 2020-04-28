@@ -51,8 +51,9 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
 # create an instance of the API class
-api_instance = swagger_client.AdministrationApi()
+api_instance = swagger_client.AdministrationApi(swagger_client.ApiClient(configuration))
 authorization = 'authorization_example' # str | authentication header object
 groups = [swagger_client.Groups()] # list[Groups] | group details
 
@@ -360,6 +361,7 @@ Class | Method | HTTP request | Description
 *SystemApi* | [**retrieve_available_nodes**](docs/SystemApi.md#retrieve_available_nodes) | **GET** /nodes/ | List of available nodes
 *SystemApi* | [**retrieve_sensor_device_group**](docs/SystemApi.md#retrieve_sensor_device_group) | **GET** /sensor/device-group/{device_group_name}/ | Get all All API&#39;s.
 *SystemApi* | [**retrieve_system_details**](docs/SystemApi.md#retrieve_system_details) | **GET** /system-details/ | Retrieve system details.
+*SystemApi* | [**retrieve_tsdb_counters**](docs/SystemApi.md#retrieve_tsdb_counters) | **GET** /tsdb-counters/ | TSDB counters
 
 
 ## Documentation For Models
@@ -454,6 +456,11 @@ Class | Method | HTTP request | Description
  - [IngestSettingsSchema](docs/IngestSettingsSchema.md)
  - [IngestmappingSchemaIAgent](docs/IngestmappingSchemaIAgent.md)
  - [IngestmappingSchemaIAgentUseplugin](docs/IngestmappingSchemaIAgentUseplugin.md)
+ - [IngestmappingSchemaNativegpb](docs/IngestmappingSchemaNativegpb.md)
+ - [IngestmappingSchemaNetflow](docs/IngestmappingSchemaNetflow.md)
+ - [IngestmappingSchemaOpenconfig](docs/IngestmappingSchemaOpenconfig.md)
+ - [IngestmappingSchemaSnmp](docs/IngestmappingSchemaSnmp.md)
+ - [IngestmappingSchemaSyslog](docs/IngestmappingSchemaSyslog.md)
  - [IngestsettingsSchemaIngestsettings](docs/IngestsettingsSchemaIngestsettings.md)
  - [IngestsettingsSchemaIngestsettingsByoi](docs/IngestsettingsSchemaIngestsettingsByoi.md)
  - [IngestsettingsSchemaIngestsettingsByoiDefaultplugin](docs/IngestsettingsSchemaIngestsettingsByoiDefaultplugin.md)
@@ -476,6 +483,7 @@ Class | Method | HTTP request | Description
  - [InlineResponse2006](docs/InlineResponse2006.md)
  - [InlineResponse2007](docs/InlineResponse2007.md)
  - [InlineResponse2008](docs/InlineResponse2008.md)
+ - [InlineResponse2009](docs/InlineResponse2009.md)
  - [InstanceScheduleStateSchema](docs/InstanceScheduleStateSchema.md)
  - [InstancesScheduleStateSchema](docs/InstancesScheduleStateSchema.md)
  - [LicenseFeatureSchema](docs/LicenseFeatureSchema.md)

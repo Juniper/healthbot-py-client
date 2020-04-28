@@ -96,8 +96,8 @@ class RuleSchemaSyslog(object):
         :param maximum_hold_period: The maximum_hold_period of this RuleSchemaSyslog.  # noqa: E501
         :type: str
         """
-        if maximum_hold_period is not None and not re.search('[1-9][0-9]*[smhd]', maximum_hold_period):  # noqa: E501
-            raise ValueError("Invalid value for `maximum_hold_period`, must be a follow pattern or equal to `/[1-9][0-9]*[smhd]/`")  # noqa: E501
+        if maximum_hold_period is not None and not re.search(r'[1-9][0-9]*[smhd]', maximum_hold_period):  # noqa: E501
+            raise ValueError(r"Invalid value for `maximum_hold_period`, must be a follow pattern or equal to `/[1-9][0-9]*[smhd]/`")  # noqa: E501
 
         self._maximum_hold_period = maximum_hold_period
 
@@ -122,6 +122,9 @@ class RuleSchemaSyslog(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(RuleSchemaSyslog, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

@@ -180,8 +180,8 @@ class RuleSchemaWhenMaxrateofincrease(object):
         :param time_range: The time_range of this RuleSchemaWhenMaxrateofincrease.  # noqa: E501
         :type: str
         """
-        if time_range is not None and not re.search('^[1-9][0-9]*(o|s|m|h|d|w|y|offset)$', time_range):  # noqa: E501
-            raise ValueError("Invalid value for `time_range`, must be a follow pattern or equal to `/^[1-9][0-9]*(o|s|m|h|d|w|y|offset)$/`")  # noqa: E501
+        if time_range is not None and not re.search(r'^[1-9][0-9]*(o|s|m|h|d|w|y|offset)$', time_range):  # noqa: E501
+            raise ValueError(r"Invalid value for `time_range`, must be a follow pattern or equal to `/^[1-9][0-9]*(o|s|m|h|d|w|y|offset)$/`")  # noqa: E501
 
         self._time_range = time_range
 
@@ -206,6 +206,9 @@ class RuleSchemaWhenMaxrateofincrease(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(RuleSchemaWhenMaxrateofincrease, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

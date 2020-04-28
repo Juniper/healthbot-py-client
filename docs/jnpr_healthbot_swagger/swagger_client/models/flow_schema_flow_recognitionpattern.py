@@ -115,6 +115,9 @@ class FlowSchemaFlowRecognitionpattern(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(FlowSchemaFlowRecognitionpattern, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

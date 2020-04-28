@@ -61,6 +61,9 @@ class ServiceStatus(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(ServiceStatus, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

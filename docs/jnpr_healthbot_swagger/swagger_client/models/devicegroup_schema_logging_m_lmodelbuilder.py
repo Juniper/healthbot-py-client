@@ -98,6 +98,9 @@ class DevicegroupSchemaLoggingMLmodelbuilder(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(DevicegroupSchemaLoggingMLmodelbuilder, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

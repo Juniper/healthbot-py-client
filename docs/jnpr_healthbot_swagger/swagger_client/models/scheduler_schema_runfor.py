@@ -159,6 +159,9 @@ class SchedulerSchemaRunfor(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(SchedulerSchemaRunfor, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

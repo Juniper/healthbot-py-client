@@ -155,8 +155,9 @@ class User(BaseModule):
         for response in responses:
             if user_name == response.user_name:
                 return response.user_id
-        raise NotFoundError('Not able to find userid for given user_name: "{}"'.format(
-            user_name))
+        raise NotFoundError({'detail': 'Not able to find userid for given '
+                                       'user_name: "{}"'.format(user_name),
+                             'status': 404})
 
     def update(self, schema: UserSchema = None, **kwargs):
         """
@@ -335,8 +336,9 @@ class Group(BaseModule):
         for response in responses:
             if group_name == response.group_name:
                 return response.group_id
-        raise NotFoundError('Not able to find groupid for given group_name: "{}"'.format(
-            group_name))
+        raise NotFoundError(
+            {'detail': 'Not able to find groupid for given group_name: "{}"'.
+                format(group_name), 'status': 404})
 
     def update(self, schema: Groups = None, **kwargs):
         """

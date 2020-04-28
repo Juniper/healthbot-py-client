@@ -89,6 +89,9 @@ class DevicegroupSchemaNativegpb(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(DevicegroupSchemaNativegpb, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

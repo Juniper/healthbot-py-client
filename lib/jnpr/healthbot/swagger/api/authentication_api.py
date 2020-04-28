@@ -38,18 +38,18 @@ class AuthenticationApi(object):
 
         Re-issue tokens from existing token  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.refresh_token(token, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.refresh_token(token, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param Token token: Token object (required)
-        :return: InlineResponse2006
+        :return: InlineResponse2007
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.refresh_token_with_http_info(token, **kwargs)  # noqa: E501
         else:
             (data) = self.refresh_token_with_http_info(token, **kwargs)  # noqa: E501
@@ -60,19 +60,19 @@ class AuthenticationApi(object):
 
         Re-issue tokens from existing token  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.refresh_token_with_http_info(token, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.refresh_token_with_http_info(token, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param Token token: Token object (required)
-        :return: InlineResponse2006
+        :return: InlineResponse2007
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
         all_params = ['token']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -124,9 +124,9 @@ class AuthenticationApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='InlineResponse2006',  # noqa: E501
+            response_type='InlineResponse2007',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -137,18 +137,18 @@ class AuthenticationApi(object):
 
         User login and recive tokens  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.user_login(credential, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.user_login(credential, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param Credential credential: topics body object (required)
         :return: InlineResponse2006
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.user_login_with_http_info(credential, **kwargs)  # noqa: E501
         else:
             (data) = self.user_login_with_http_info(credential, **kwargs)  # noqa: E501
@@ -159,11 +159,11 @@ class AuthenticationApi(object):
 
         User login and recive tokens  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.user_login_with_http_info(credential, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.user_login_with_http_info(credential, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param Credential credential: topics body object (required)
         :return: InlineResponse2006
                  If the method is called asynchronously,
@@ -171,7 +171,7 @@ class AuthenticationApi(object):
         """
 
         all_params = ['credential']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -225,7 +225,7 @@ class AuthenticationApi(object):
             files=local_var_files,
             response_type='InlineResponse2006',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -236,18 +236,18 @@ class AuthenticationApi(object):
 
         User logout  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.user_logout(refresh_token, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.user_logout(refresh_token, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param RefreshToken refresh_token: request body object (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.user_logout_with_http_info(refresh_token, **kwargs)  # noqa: E501
         else:
             (data) = self.user_logout_with_http_info(refresh_token, **kwargs)  # noqa: E501
@@ -258,11 +258,11 @@ class AuthenticationApi(object):
 
         User logout  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.user_logout_with_http_info(refresh_token, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.user_logout_with_http_info(refresh_token, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param RefreshToken refresh_token: request body object (required)
         :return: None
                  If the method is called asynchronously,
@@ -270,7 +270,7 @@ class AuthenticationApi(object):
         """
 
         all_params = ['refresh_token']  # noqa: E501
-        all_params.append('async')
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -324,7 +324,7 @@ class AuthenticationApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),

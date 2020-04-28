@@ -89,6 +89,9 @@ class NotificationSchemaEmailsFilter(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(NotificationSchemaEmailsFilter, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

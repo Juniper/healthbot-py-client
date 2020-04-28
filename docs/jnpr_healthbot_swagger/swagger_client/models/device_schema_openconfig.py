@@ -96,6 +96,9 @@ class DeviceSchemaOpenconfig(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(DeviceSchemaOpenconfig, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

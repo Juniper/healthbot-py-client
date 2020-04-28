@@ -147,6 +147,9 @@ class WhenLhsRhsGroup(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(WhenLhsRhsGroup, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

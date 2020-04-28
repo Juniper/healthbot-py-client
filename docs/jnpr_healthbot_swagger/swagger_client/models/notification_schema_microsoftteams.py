@@ -92,6 +92,9 @@ class NotificationSchemaMicrosoftteams(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(NotificationSchemaMicrosoftteams, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

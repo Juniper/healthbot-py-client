@@ -36,7 +36,8 @@ class InstanceScheduleStateSchema(object):
         'name': 'str',
         'rule': 'str',
         'playbook': 'str',
-        'state': 'str'
+        'state': 'str',
+        'update_time': 'object'
     }
 
     attribute_map = {
@@ -45,10 +46,11 @@ class InstanceScheduleStateSchema(object):
         'name': 'name',
         'rule': 'rule',
         'playbook': 'playbook',
-        'state': 'state'
+        'state': 'state',
+        'update_time': 'update-time'
     }
 
-    def __init__(self, group_name=None, group_type=None, name=None, rule=None, playbook=None, state=None):  # noqa: E501
+    def __init__(self, group_name=None, group_type=None, name=None, rule=None, playbook=None, state=None, update_time=None):  # noqa: E501
         """InstanceScheduleStateSchema - a model defined in Swagger"""  # noqa: E501
 
         self._group_name = None
@@ -57,6 +59,7 @@ class InstanceScheduleStateSchema(object):
         self._rule = None
         self._playbook = None
         self._state = None
+        self._update_time = None
         self.discriminator = None
 
         self.group_name = group_name
@@ -65,6 +68,8 @@ class InstanceScheduleStateSchema(object):
         self.rule = rule
         self.playbook = playbook
         self.state = state
+        if update_time is not None:
+            self.update_time = update_time
 
     @property
     def group_name(self):
@@ -228,6 +233,29 @@ class InstanceScheduleStateSchema(object):
 
         self._state = state
 
+    @property
+    def update_time(self):
+        """Gets the update_time of this InstanceScheduleStateSchema.  # noqa: E501
+
+        Time the current status is updated for this instance in elapsed seconds since epoch  # noqa: E501
+
+        :return: The update_time of this InstanceScheduleStateSchema.  # noqa: E501
+        :rtype: object
+        """
+        return self._update_time
+
+    @update_time.setter
+    def update_time(self, update_time):
+        """Sets the update_time of this InstanceScheduleStateSchema.
+
+        Time the current status is updated for this instance in elapsed seconds since epoch  # noqa: E501
+
+        :param update_time: The update_time of this InstanceScheduleStateSchema.  # noqa: E501
+        :type: object
+        """
+
+        self._update_time = update_time
+
     def to_dict(self):
         """Returns the model properties as a dict"""
         result = {}
@@ -249,6 +277,9 @@ class InstanceScheduleStateSchema(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(InstanceScheduleStateSchema, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

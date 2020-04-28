@@ -121,6 +121,9 @@ class CustompluginSchemaSecurityparametersUserauthentication(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(CustompluginSchemaSecurityparametersUserauthentication, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

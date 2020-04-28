@@ -119,6 +119,9 @@ class TlivekafkaocSchemaSecuritySasl(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(TlivekafkaocSchemaSecuritySasl, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 
