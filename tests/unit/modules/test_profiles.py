@@ -7,18 +7,24 @@ from jnpr.healthbot import HealthBotClient
 from jnpr.healthbot import CaProfileSchema
 from jnpr.healthbot import LocalCertificateSchema
 from jnpr.healthbot import SshKeyProfileSchema
-
+from requests.models import Response
+from . import _mock_user_login
 
 @attr('unit')
-class TestRules(unittest.TestCase):
+class TestProfiles(unittest.TestCase):
 
     @patch('jnpr.healthbot.healthbot.requests.Session')
-    def setUp(self, mock_request):
+    @patch('jnpr.healthbot.swagger.api.authentication_api.AuthenticationApi.user_login')
+    def setUp(self, mock_user_login, mock_request):
+        self.mock_user_login = _mock_user_login
         self.mock_request = mock_request
         self.conn = HealthBotClient(
             server='1.1.1.1',
             user='test',
-            password='password123')
+            password='password123').open()
+
+    def tearDown(self) -> None:
+        self.conn.close()
 
     def test_add_caprofile(self):
         ca_prof_schema = CaProfileSchema(
@@ -48,7 +54,7 @@ class TestRules(unittest.TestCase):
     def test_delete_caprofile(self):
         self.mock_request().get.side_effect = self._mock_manager
         self.conn.profile.security.ca_profile.delete("hbez")
-        self.assertEqual(self.mock_request().mock_calls[3][0],
+        self.assertEqual(self.mock_request().mock_calls[2][0],
                          'delete')
 
     def test_add_local_certificate(self):
@@ -78,7 +84,7 @@ class TestRules(unittest.TestCase):
     def test_delete_local_certificate(self):
         self.mock_request().get.side_effect = self._mock_manager
         self.conn.profile.security.local_certificate.delete("hbez")
-        self.assertEqual(self.mock_request().mock_calls[3][0],
+        self.assertEqual(self.mock_request().mock_calls[2][0],
                          'delete')
 
     def test_add_ssh_key_profile(self):
@@ -116,17 +122,23 @@ class TestRules(unittest.TestCase):
     def test_delete_ssh_key_profile(self):
         self.mock_request().get.side_effect = self._mock_manager
         self.conn.profile.security.ssh_key_profile.delete("hbez")
-        self.assertEqual(self.mock_request().mock_calls[3][0],
+        self.assertEqual(self.mock_request().mock_calls[2][0],
                          'delete')
 
     def _mock_manager(self, *args):
-        class MockResponse:
+        class MockResponse(Response):
             def __init__(self, json_data, status_code):
                 self.json_data = json_data
                 self.status_code = status_code
-                self.text = 'did you just hit an error'
+
+            @property
+            def text(self):
+                return 'did you just hit an error'
 
             def json(self):
+                return self.json_data
+
+            def to_dict(self):
                 return self.json_data
 
             def raise_for_status(self):
