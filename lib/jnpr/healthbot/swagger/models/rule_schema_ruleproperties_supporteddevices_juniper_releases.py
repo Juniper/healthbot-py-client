@@ -99,8 +99,8 @@ class RuleSchemaRulepropertiesSupporteddevicesJuniperReleases(object):
         """
         if release_name is None:
             raise ValueError("Invalid value for `release_name`, must not be `None`")  # noqa: E501
-        if release_name is not None and not re.search(r'^(\\d){1,2}[.](\\d){1}([\\w\\-_\\.]*)$', release_name):  # noqa: E501
-            raise ValueError(r"Invalid value for `release_name`, must be a follow pattern or equal to `/^(\\d){1,2}[.](\\d){1}([\\w\\-_\\.]*)$/`")  # noqa: E501
+        if release_name is not None and not re.search(r'^(\d){1,2}[.](\d){1}([\w\-_\.]*)$', release_name):  # noqa: E501
+            raise ValueError(r"Invalid value for `release_name`, must be a follow pattern or equal to `/^(\d){1,2}[.](\d){1}([\w\-_\.]*)$/`")  # noqa: E501
 
         self._release_name = release_name
 

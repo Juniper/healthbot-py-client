@@ -5,18 +5,24 @@ from jnpr.healthbot import HealthBotClient
 from jnpr.healthbot import DeviceSchema, DeviceGroupSchema
 from jnpr.healthbot.exception import SchemaError
 from mock import patch
-
+from requests.models import Response
+from . import _mock_user_login
 
 @attr('unit')
 class TestDevices(unittest.TestCase):
 
     @patch('jnpr.healthbot.healthbot.requests.Session')
-    def setUp(self, mock_request):
+    @patch('jnpr.healthbot.swagger.api.authentication_api.AuthenticationApi.user_login')
+    def setUp(self, mock_user_login, mock_request):
+        self.mock_user_login = _mock_user_login
         self.mock_request = mock_request
         self.conn = HealthBotClient(
             server='1.1.1.1',
             user='test',
-            password='password123')
+            password='password123').open()
+
+    def tearDown(self) -> None:
+        self.conn.close()
 
     def test_add_device(self):
         self.mock_request().post.side_effect = self._mock_manager
@@ -159,7 +165,7 @@ class TestDevices(unittest.TestCase):
             self.conn.device_group.add_device_in_group(
                 'test', 'Core'))
         self.assertEqual(
-            self.mock_request().mock_calls[5][2]['json']['devices'], [
+            self.mock_request().mock_calls[4][2]['json']['devices'], [
                 'vmx', 'core', 'test'])
 
     def test_add_device_in_group_with_group_data_none(self):
@@ -223,12 +229,15 @@ class TestDevices(unittest.TestCase):
         self.assertEqual(health.color, 'yellow')
 
     def _mock_manager(self, *args, **kwargs):
-        class MockResponse:
+        class MockResponse(Response):
             def __init__(self, json_data, status_code):
                 self.json_data = json_data
                 self.status_code = status_code
 
             def json(self):
+                return self.json_data
+
+            def to_dict(self):
                 return self.json_data
 
             def raise_for_status(self):

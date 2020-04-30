@@ -158,7 +158,7 @@ class TopicSchema(object):
     def topic_name(self):
         """Gets the topic_name of this TopicSchema.  # noqa: E501
 
-        Name of the topic. Should be of pattern [a-z][a-z-]*(\\.{1}[a-z0-9-]+)*  # noqa: E501
+        Name of the topic. Should be of pattern [a-z][a-z-]*(\.{1}[a-z0-9-]+)*  # noqa: E501
 
         :return: The topic_name of this TopicSchema.  # noqa: E501
         :rtype: str
@@ -169,7 +169,7 @@ class TopicSchema(object):
     def topic_name(self, topic_name):
         """Sets the topic_name of this TopicSchema.
 
-        Name of the topic. Should be of pattern [a-z][a-z-]*(\\.{1}[a-z0-9-]+)*  # noqa: E501
+        Name of the topic. Should be of pattern [a-z][a-z-]*(\.{1}[a-z0-9-]+)*  # noqa: E501
 
         :param topic_name: The topic_name of this TopicSchema.  # noqa: E501
         :type: str
@@ -178,8 +178,8 @@ class TopicSchema(object):
             raise ValueError("Invalid value for `topic_name`, must not be `None`")  # noqa: E501
         if topic_name is not None and len(topic_name) > 64:
             raise ValueError("Invalid value for `topic_name`, length must be less than or equal to `64`")  # noqa: E501
-        if topic_name is not None and not re.search(r'^[a-z][a-z-]*(\\.{1}[a-z0-9-]+)*$', topic_name):  # noqa: E501
-            raise ValueError(r"Invalid value for `topic_name`, must be a follow pattern or equal to `/^[a-z][a-z-]*(\\.{1}[a-z0-9-]+)*$/`")  # noqa: E501
+        if topic_name is not None and not re.search(r'^[a-z][a-z-]*(\.{1}[a-z0-9-]+)*$', topic_name):  # noqa: E501
+            raise ValueError(r"Invalid value for `topic_name`, must be a follow pattern or equal to `/^[a-z][a-z-]*(\.{1}[a-z0-9-]+)*$/`")  # noqa: E501
 
         self._topic_name = topic_name
 

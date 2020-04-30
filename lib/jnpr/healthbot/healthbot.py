@@ -432,8 +432,11 @@ class HealthBotClient(object):
                         childSchemas = getattr(schemaObj, key)
                         attributes[attribute_map[key]] = []
                         for childSchema in childSchemas:
-                            attributes[attribute_map[key]].append(
-                                self._create_payload(childSchema))
+                            if isinstance(childSchema, str):
+                                child_val = childSchema
+                            else:
+                                child_val = self._create_payload(childSchema)
+                            attributes[attribute_map[key]].append(child_val)
                     else:
                         attributes[attribute_map[key]] = payload.get(key)
         return attributes

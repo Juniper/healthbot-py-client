@@ -528,8 +528,8 @@ class DeviceGroupSchema(object):
         :param timezone: The timezone of this DeviceGroupSchema.  # noqa: E501
         :type: str
         """
-        if timezone is not None and not re.search(r'^((\\+|-)((([0-1][0-9])|(2[0-3])):([0-5][0-9])))$', timezone):  # noqa: E501
-            raise ValueError(r"Invalid value for `timezone`, must be a follow pattern or equal to `/^((\\+|-)((([0-1][0-9])|(2[0-3])):([0-5][0-9])))$/`")  # noqa: E501
+        if timezone is not None and not re.search(r'^((\+|-)((([0-1][0-9])|(2[0-3])):([0-5][0-9])))$', timezone):  # noqa: E501
+            raise ValueError(r"Invalid value for `timezone`, must be a follow pattern or equal to `/^((\+|-)((([0-1][0-9])|(2[0-3])):([0-5][0-9])))$/`")  # noqa: E501
 
         self._timezone = timezone
 

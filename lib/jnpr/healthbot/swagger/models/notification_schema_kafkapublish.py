@@ -104,7 +104,7 @@ class NotificationSchemaKafkapublish(object):
     def topic(self):
         """Gets the topic of this NotificationSchemaKafkapublish.  # noqa: E501
 
-        Kafka topic to which Healthbot should publish. Should be of pattern \\.*[a-zA-Z0-9_-]+[a-zA-Z0-9\\._-]* , Default value is derived from <device/network-group>.<device-id>.<topic>.<rule>.<trigger>  # noqa: E501
+        Kafka topic to which Healthbot should publish. Should be of pattern \.*[a-zA-Z0-9_-]+[a-zA-Z0-9\._-]* , Default value is derived from <device/network-group>.<device-id>.<topic>.<rule>.<trigger>  # noqa: E501
 
         :return: The topic of this NotificationSchemaKafkapublish.  # noqa: E501
         :rtype: str
@@ -115,15 +115,15 @@ class NotificationSchemaKafkapublish(object):
     def topic(self, topic):
         """Sets the topic of this NotificationSchemaKafkapublish.
 
-        Kafka topic to which Healthbot should publish. Should be of pattern \\.*[a-zA-Z0-9_-]+[a-zA-Z0-9\\._-]* , Default value is derived from <device/network-group>.<device-id>.<topic>.<rule>.<trigger>  # noqa: E501
+        Kafka topic to which Healthbot should publish. Should be of pattern \.*[a-zA-Z0-9_-]+[a-zA-Z0-9\._-]* , Default value is derived from <device/network-group>.<device-id>.<topic>.<rule>.<trigger>  # noqa: E501
 
         :param topic: The topic of this NotificationSchemaKafkapublish.  # noqa: E501
         :type: str
         """
         if topic is not None and len(topic) > 249:
             raise ValueError("Invalid value for `topic`, length must be less than or equal to `249`")  # noqa: E501
-        if topic is not None and not re.search(r'^\\.*[a-zA-Z0-9_-]+[a-zA-Z0-9\\._-]*$', topic):  # noqa: E501
-            raise ValueError(r"Invalid value for `topic`, must be a follow pattern or equal to `/^\\.*[a-zA-Z0-9_-]+[a-zA-Z0-9\\._-]*$/`")  # noqa: E501
+        if topic is not None and not re.search(r'^\.*[a-zA-Z0-9_-]+[a-zA-Z0-9\._-]*$', topic):  # noqa: E501
+            raise ValueError(r"Invalid value for `topic`, must be a follow pattern or equal to `/^\.*[a-zA-Z0-9_-]+[a-zA-Z0-9\._-]*$/`")  # noqa: E501
 
         self._topic = topic
 

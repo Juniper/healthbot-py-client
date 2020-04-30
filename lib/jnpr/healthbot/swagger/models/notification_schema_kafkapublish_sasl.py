@@ -61,7 +61,7 @@ class NotificationSchemaKafkapublishSasl(object):
     def certificate(self):
         """Gets the certificate of this NotificationSchemaKafkapublishSasl.  # noqa: E501
 
-        File path to kafka CA-Certificate. Should be of pattern .+\\.pem  # noqa: E501
+        File path to kafka CA-Certificate. Should be of pattern .+\.pem  # noqa: E501
 
         :return: The certificate of this NotificationSchemaKafkapublishSasl.  # noqa: E501
         :rtype: str
@@ -72,13 +72,13 @@ class NotificationSchemaKafkapublishSasl(object):
     def certificate(self, certificate):
         """Sets the certificate of this NotificationSchemaKafkapublishSasl.
 
-        File path to kafka CA-Certificate. Should be of pattern .+\\.pem  # noqa: E501
+        File path to kafka CA-Certificate. Should be of pattern .+\.pem  # noqa: E501
 
         :param certificate: The certificate of this NotificationSchemaKafkapublishSasl.  # noqa: E501
         :type: str
         """
-        if certificate is not None and not re.search(r'^.+\\.pem$', certificate):  # noqa: E501
-            raise ValueError(r"Invalid value for `certificate`, must be a follow pattern or equal to `/^.+\\.pem$/`")  # noqa: E501
+        if certificate is not None and not re.search(r'^.+\.pem$', certificate):  # noqa: E501
+            raise ValueError(r"Invalid value for `certificate`, must be a follow pattern or equal to `/^.+\.pem$/`")  # noqa: E501
 
         self._certificate = certificate
 
