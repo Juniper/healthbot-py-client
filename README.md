@@ -1547,23 +1547,27 @@ rs = RuleSchema(rule_name="hbez-fpc-heap-utilization")
 rs.description = "HealthBot EZ example"
 rs.synopsis = "Using python client for demo"
 rs.sensor = [{'description': 'Monitors FPC buffer, heap and cpu utilization',
-             'iAgent': {'file': 'fpc-utilization.yml',
-                        'frequency': '30s',
-                        'table': 'FPCCPUHEAPutilizationTable'},
-             'sensor_name': 'fpccpuheaputilization'}]
+              'iAgent': {'file': 'fpc-utilization.yml',
+                         'frequency': '30s',
+                         'table': 'FPCCPUHEAPutilizationTable'},
+              'sensor-name': 'fpccpuheaputilization'}]
 ```
 
 
 ```python
-rs.field = [{'constant': {'value': '{{fpc-buffer-usage-threshold}}'},
-            'description': 'This field is for buffer usage threshold',
-            'field_name': 'linecard-buffer-usage-threshold'},
-           {'constant': {'value': '{{fpc-cpu-usage-threshold}}'},
-            'description': 'This field is for linecard cpu usage threshold',
-            'field_name': 'linecard-cpu-usage-threshold'},
-           {'constant': {'value': '{{fpc-heap-usage-threshold}}'},
-            'description': 'This field is for linecard heap usage threshold',
-            'field_name': 'linecard-heap-usage-threshold'}]
+from jnpr.healthbot.swagger.models.rule_schema_field import RuleSchemaField
+from jnpr.healthbot.swagger.models.rule_schema_constant import RuleSchemaConstant
+
+rs.field = [RuleSchemaField(constant=RuleSchemaConstant(value='{{fpc-buffer-usage-threshold}}'),
+                            description='This field is for buffer usage threshold',
+                            field_name='linecard-buffer-usage-threshold'),
+            RuleSchemaField(constant=RuleSchemaConstant(value='{{fpc-cpu-usage-threshold}}'),
+                            description='This field is for linecard cpu usage threshold',
+                            field_name='linecard-cpu-usage-threshold'),
+            RuleSchemaField(constant=RuleSchemaConstant(value='{{fpc-heap-usage-threshold}}'),
+                            description='This field is for linecard heap usage threshold',
+                            field_name='linecard-heap-usage-threshold')]
+
 rs.keys = ['slot']
 ```
 
@@ -1586,51 +1590,51 @@ rs.variable = [{'description': 'Linecard Buffer Memory usage threshold value',
 
 ```python
 rs.trigger = [{'description': 'Sets health based on linecard buffer memory',
-              'frequency': '60s',
-              'synopsis': 'Linecard buffer memory kpi',
-              'term': [{'term_name': 'is-buffer-memory-utilization-greater-than-threshold',
-                        'then': {'status': {'color': 'red',
-                                            'message': 'FPC buffer memory '
-                                                       'utilization '
-                                                       '($memory-buffer-utilization) '
-                                                       'is over threshold '
-                                                       '($linecard-buffer-usage-threshold)'}},
-                        'when': {'greater_than': [{'left_operand': '$memory-buffer-utilization',
-                                                   'right_operand': '$linecard-buffer-usage-threshold'}]}},
-                       {'term_name': 'buffer-utilization-less-than-threshold',
-                        'then': {'status': {'color': 'green'}}}],
-              'trigger_name': 'fpc-buffer-memory-utilization'},
-             {'description': 'Sets health based on linecard cpu utilization',
-              'frequency': '60s',
-              'synopsis': 'Linecard cpu utilization kpi',
-              'term': [{'term_name': 'is-cpu-utilization-greater-than-80',
-                        'then': {'status': {'color': 'red',
-                                            'message': 'FPC CPU utilization '
-                                                       '($cpu-total) is over '
-                                                       'threshold '
-                                                       '($linecard-cpu-usage-threshold)'}},
-                        'when': {'greater_than': [{'left_operand': '$cpu-total',
-                                                   'right_operand': '$linecard-cpu-usage-threshold',
-                                                   'time_range': '180s'}]}},
-                       {'term_name': 'cpu-utilization-less-than-threshold',
-                        'then': {'status': {'color': 'green'}}}],
-              'trigger_name': 'fpc-cpu-utilization'},
-             {'description': 'Sets health based on linecard heap memory '
-                             'utilization',
-              'frequency': '60s',
-              'synopsis': 'Linecard heap memory kpi',
-              'term': [{'term_name': 'is-heap-memory-utilization-greater-than-threshold',
-                        'then': {'status': {'color': 'red',
-                                            'message': 'FPC heap memory '
-                                                       'utilization '
-                                                       '($memory-heap-utilization) '
-                                                       'is over threshold '
-                                                       '($linecard-heap-usage-threshold)'}},
-                        'when': {'greater_than': [{'left_operand': '$memory-heap-utilization',
-                                                   'right_operand': '$linecard-heap-usage-threshold'}]}},
-                       {'term_name': 'heap-memory-utilization-less-than-threshold',
-                        'then': {'status': {'color': 'green'}}}],
-              'trigger_name': 'fpc-heap-memory-utilization'}]
+               'frequency': '60s',
+               'synopsis': 'Linecard buffer memory kpi',
+               'term': [{'term-name': 'is-buffer-memory-utilization-greater-than-threshold',
+                         'then': {'status': {'color': 'red',
+                                             'message': 'FPC buffer memory '
+                                                        'utilization '
+                                                        '($memory-buffer-utilization) '
+                                                        'is over threshold '
+                                                        '($linecard-buffer-usage-threshold)'}},
+                         'when': {'greater-than': [{'left-operand': '$memory-buffer-utilization',
+                                                    'right-operand': '$linecard-buffer-usage-threshold'}]}},
+                        {'term-name': 'buffer-utilization-less-than-threshold',
+                         'then': {'status': {'color': 'green'}}}],
+               'trigger-name': 'fpc-buffer-memory-utilization'},
+              {'description': 'Sets health based on linecard cpu utilization',
+               'frequency': '60s',
+               'synopsis': 'Linecard cpu utilization kpi',
+               'term': [{'term-name': 'is-cpu-utilization-greater-than-80',
+                         'then': {'status': {'color': 'red',
+                                             'message': 'FPC CPU utilization '
+                                                        '($cpu-total) is over '
+                                                        'threshold '
+                                                        '($linecard-cpu-usage-threshold)'}},
+                         'when': {'greater-than': [{'left-operand': '$cpu-total',
+                                                    'right-operand': '$linecard-cpu-usage-threshold',
+                                                    'time-range': '180s'}]}},
+                        {'term-name': 'cpu-utilization-less-than-threshold',
+                         'then': {'status': {'color': 'green'}}}],
+               'trigger-name': 'fpc-cpu-utilization'},
+              {'description': 'Sets health based on linecard heap memory '
+                              'utilization',
+               'frequency': '60s',
+               'synopsis': 'Linecard heap memory kpi',
+               'term': [{'term-name': 'is-heap-memory-utilization-greater-than-threshold',
+                         'then': {'status': {'color': 'red',
+                                             'message': 'FPC heap memory '
+                                                        'utilization '
+                                                        '($memory-heap-utilization) '
+                                                        'is over threshold '
+                                                        '($linecard-heap-usage-threshold)'}},
+                         'when': {'greater-than': [{'left-operand': '$memory-heap-utilization',
+                                                    'right-operand': '$linecard-heap-usage-threshold'}]}},
+                        {'term-name': 'heap-memory-utilization-less-than-threshold',
+                         'then': {'status': {'color': 'green'}}}],
+               'trigger-name': 'fpc-heap-memory-utilization'}]
 ```
 
 ### If the topic name is not present, first it will create given topic

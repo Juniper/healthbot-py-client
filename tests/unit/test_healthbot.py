@@ -55,12 +55,13 @@ class TestHealthBotClient(unittest.TestCase):
     def test_version_old_versions(self):
         self.assertEqual(self.conn.version, '2.0.1')
 
-    # @patch('jnpr.healthbot.healthbot.requests.Session')
-    # @patch('jnpr.healthbot.swagger.api.authentication_api.AuthenticationApi.user_login')
-    # def test_context_manager(self, mock_user_login, mock_request):
-    #     self.mock_user_login = _mock_user_login
-    #     with HealthBotClient(server='1.1.1.1', user='test', password='password123') as conn:
-    #         self.assertEqual(conn.version, '2.0.1')
+    @patch('jnpr.healthbot.healthbot.requests.Session')
+    @patch('jnpr.healthbot.swagger.api.authentication_api.AuthenticationApi.user_login')
+    @patch('jnpr.healthbot.swagger.api.authentication_api.AuthenticationApi.user_logout')
+    def test_context_manager(self, mock_user_logout, mock_user_login, mock_request):
+        self.mock_user_login = _mock_user_login
+        with HealthBotClient(server='1.1.1.1', user='test', password='password123') as conn:
+            self.assertEqual(conn.version, '2.0.1')
 
     def test_rollback(self):
         self.conn.rollback()
