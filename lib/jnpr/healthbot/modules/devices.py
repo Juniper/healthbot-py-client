@@ -9,20 +9,20 @@ from jnpr.healthbot.swagger.models.device_health_tree import DeviceHealthTree
 from jnpr.healthbot.swagger.models.device_group_health_tree import DeviceGroupHealthTree
 from jnpr.healthbot.swagger.models.network_health_tree import NetworkHealthTree
 
+from jnpr.healthbot.modules import BaseModule
+
 import logging
 logger = logging.getLogger(__file__)
 
 
-class Device(object):
+class Device(BaseModule):
 
     def __init__(self, hbot):
         """
         :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
         """
 
-        self.hbot = hbot
-        self.url = hbot.url
-        self.api = hbot.hbot_session
+        super().__init__(hbot)
 
     def add(self, device_id: str = None, host: str = None,
             username: str = None, password: str = None,
@@ -42,18 +42,18 @@ class Device(object):
             from jnpr.healthbot import HealthBotClient
             from jnpr.healthbot import DeviceSchema
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            ds = DeviceSchema(device_id='xyz', host='xx.xxx.xxx.xxx',
-                  authentication={"password": {"password": "xxxxx", "username": "xxxxx"}})
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                ds = DeviceSchema(device_id='xyz', host='xx.xxx.xxx.xxx',
+                      authentication={"password": {"password": "xxxxx", "username": "xxxxx"}})
 
-            # we can also later assign values like this
-            ds.description = "HbEZ testing"
+                # we can also later assign values like this
+                ds.description = "HbEZ testing"
 
-            # This will add device in candidate DB
-            hb.device.add(schema=ds)
+                # This will add device in candidate DB
+                hb.device.add(schema=ds)
 
-            # commit changes to master DB
-            hb.commit()
+                # commit changes to master DB
+                hb.commit()
 
         """
         def _add_device(device_id=None):
@@ -135,12 +135,12 @@ class Device(object):
 
             from jnpr.healthbot import HealthBotClient
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            # This will delete device in candidate DB
-            hb.device.delete('xyz')
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                # This will delete device in candidate DB
+                hb.device.delete('xyz')
 
-            # commit changes to master DB
-            hb.commit()
+                # commit changes to master DB
+                hb.commit()
 
         :returns: True when OK
 
@@ -184,8 +184,8 @@ class Device(object):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            print(hb.device.get_ids())
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                print(hb.device.get_ids())
         """
         devices_list_url = self.hbot.urlfor.device()
         resp = self.api.get(devices_list_url)
@@ -209,13 +209,14 @@ class Device(object):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            device = hb.device.get('vmx')
-            print(device)
 
-            devices = hb.device.get()
-            for device in devices:
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                device = hb.device.get('vmx')
                 print(device)
+
+                devices = hb.device.get()
+                for device in devices:
+                    print(device)
 
         :return: `DeviceSchema(s) <jnpr.healthbot.swagger.models.html#deviceschema>`_
         """
@@ -265,12 +266,13 @@ class Device(object):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            schemaObj = hb.device.get('xyz')
-            schemaObj.description = 'changed description'
-            hb.device.update(schemaObj)
 
-            hb.device.update(device_id="xyz", host='xx.xxx.x.xx', system_id="xxxx")
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                schemaObj = hb.device.get('xyz')
+                schemaObj.description = 'changed description'
+                hb.device.update(schemaObj)
+
+                hb.device.update(device_id="xyz", host='xx.xxx.x.xx', system_id="xxxx")
 
         :returns: True when OK
         """
@@ -306,11 +308,11 @@ class Device(object):
             from jnpr.healthbot import HealthBotClient
             from pprint import pprint
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            facts = hb.device.get_facts('vmx')
-            pprint(facts)
-            facts = hb.device.get_facts()
-            pprint(facts)
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                facts = hb.device.get_facts('vmx')
+                pprint(facts)
+                facts = hb.device.get_facts()
+                pprint(facts)
 
         :return: Single/List of dicts of facts
 
@@ -343,8 +345,9 @@ class Device(object):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            print(hb.device.health('core'))
+
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                print(hb.device.health('core'))
 
         :return: `DeviceHealthTree <jnpr.healthbot.swagger.models.html#deviceheathtree>`_
         """
@@ -357,16 +360,14 @@ class Device(object):
         return self.hbot._create_schema(resp, DeviceHealthTree)
 
 
-class DeviceGroup(object):
+class DeviceGroup(BaseModule):
 
     def __init__(self, hbot):
         """
         :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
         """
 
-        self.hbot = hbot
-        self.url = hbot.url
-        self.api = hbot.hbot_session
+        super().__init__(hbot)
 
     def add(self, schema: DeviceGroupSchema = None, **kwargs):
         """
@@ -385,20 +386,20 @@ class DeviceGroup(object):
             from jnpr.healthbot import DeviceSchema
             from jnpr.healthbot import DeviceGroupSchema
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            ds = DeviceSchema(device_id='xyz', host='xx.xxx.xxx.xxx',
-                  authentication={"password": {"password": "xxxxx", "username": "xxxxx"}})
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                ds = DeviceSchema(device_id='xyz', host='xx.xxx.xxx.xxx',
+                      authentication={"password": {"password": "xxxxx", "username": "xxxxx"}})
 
-            # This will add device in candidate DB
-            hb.device.add(schema=ds)
+                # This will add device in candidate DB
+                hb.device.add(schema=ds)
 
-            dgs = DeviceGroupSchema(device_group_name="edge",
-                                            description="All devices on the edge",
-                                            devices=['xyz'])
-            hb.device_group.add(dgs)
+                dgs = DeviceGroupSchema(device_group_name="edge",
+                                                description="All devices on the edge",
+                                                devices=['xyz'])
+                hb.device_group.add(dgs)
 
-            # commit changes to master DB
-            hb.commit()
+                # commit changes to master DB
+                hb.commit()
 
         :returns: True when OK
 
@@ -522,10 +523,11 @@ class DeviceGroup(object):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            schemaObj = hb.device_group.get('Core')
-            schemaObj.description = "Changed"
-            hb.device_group.update(schemaObj)
+
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                schemaObj = hb.device_group.get('Core')
+                schemaObj.description = "Changed"
+                hb.device_group.update(schemaObj)
 
         :returns: True when OK
 
@@ -557,8 +559,8 @@ class DeviceGroup(object):
         ::
             from jnpr.healthbot import HealthBotClient
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            print(hb.device_group.check_device_in_group('vmx', 'QFabric'))
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                print(hb.device_group.check_device_in_group('vmx', 'QFabric'))
 
         Returns:
             True if action successful
@@ -584,8 +586,8 @@ class DeviceGroup(object):
         ::
             from jnpr.healthbot import HealthBotClient
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            hb.device_group.add_device_in_group('vmx', 'QFabric')
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                hb.device_group.add_device_in_group('vmx', 'QFabric')
 
         Raises:
             HTTPError: When error making changes via the HBOT API
@@ -621,8 +623,9 @@ class DeviceGroup(object):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            print(hb.device_group.health('edge'))
+
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                print(hb.device_group.health('edge'))
 
         :return: `DeviceGroupHealthTree <jnpr.healthbot.swagger.models.html#devicegroupheathtree>`_
         """
@@ -636,16 +639,14 @@ class DeviceGroup(object):
         return self.hbot._create_schema(resp, DeviceGroupHealthTree)
 
 
-class NetworkGroup(object):
+class NetworkGroup(BaseModule):
 
     def __init__(self, hbot):
         """
         :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
         """
 
-        self.hbot = hbot
-        self.url = hbot.url
-        self.api = hbot.hbot_session
+        super().__init__(hbot)
 
     def add(self, schema: NetworkGroupSchema = None, **kwargs):
         """
@@ -661,15 +662,16 @@ class NetworkGroup(object):
         ::
             from jnpr.healthbot import HealthBotClient
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            hb.devices.add_network_group(network_group_name="HbEZ")
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                hb.devices.add_network_group(network_group_name="HbEZ")
 
             # or
             from jnpr.healthbot import HealthBotClient
             from jnpr.healthbot import NetworkGroupSchema
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            ngs = NetworkGroupSchema(network_group_name="HbEZ")
-            hb.network_group.add(schema = ngs)
+
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                ngs = NetworkGroupSchema(network_group_name="HbEZ")
+                hb.network_group.add(schema = ngs)
 
         """
         if schema is None:
@@ -704,8 +706,8 @@ class NetworkGroup(object):
         ::
             from jnpr.healthbot import HealthBotClient
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            hb.network_group.delete(network_group_name="HbEZ")
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                hb.network_group.delete(network_group_name="HbEZ")
         """
 
         payload = {'network-group-name': network_group_name}
@@ -728,10 +730,11 @@ class NetworkGroup(object):
         ::
             from jnpr.healthbot import HealthBotClient
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            print(hb.network_group.get(network_group_name="HbEZ"))
-            # for all network groups
-            print(hb.network_group.get())
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                print(hb.network_group.get(network_group_name="HbEZ"))
+                # for all network groups
+                print(hb.network_group.get())
+
         """
         if network_group_name is not None:
             network_group_url = self.hbot.urlfor.network_group(
@@ -778,10 +781,11 @@ class NetworkGroup(object):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            schemaObj = hb.network_group.get("HbEZ")
-            schemaObj.description = "HbEZ example"
-            hb.network_group.update(schemaObj)
+
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                schemaObj = hb.network_group.get("HbEZ")
+                schemaObj.description = "HbEZ example"
+                hb.network_group.update(schemaObj)
 
         :returns: True when OK
 
@@ -812,8 +816,9 @@ class NetworkGroup(object):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            print(hb.network_group.health('core'))
+
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                print(hb.network_group.health('core'))
 
         :return: `NetworkHealthTree <jnpr.healthbot.swagger.models.html#networkheathtree>`_
         """

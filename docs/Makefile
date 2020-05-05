@@ -51,8 +51,8 @@ clean:
 	rm -rf $(BUILDDIR)/*
 
 html:
-	if [ ! -f swagger-codegen-cli-2.3.0.jar ]; then wget https://oss.sonatype.org/content/repositories/releases/io/swagger/swagger-codegen-cli/2.3.0/swagger-codegen-cli-2.3.0.jar; fi;
-	java -jar swagger-codegen-cli-2.3.0.jar generate -i external_api.json -l python -o ./jnpr_healthbot_swagger
+	if [ ! -f swagger-codegen-cli-2.4.13.jar ]; then wget https://oss.sonatype.org/content/repositories/releases/io/swagger/swagger-codegen-cli/2.4.13/swagger-codegen-cli-2.4.13.jar; fi;
+	java -jar swagger-codegen-cli-2.4.13.jar generate -i external_api.json -l python -o ./jnpr_healthbot_swagger
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	cp jnpr_healthbot_swagger/docs/*.md $(BUILDDIR)/html
 	@echo

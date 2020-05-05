@@ -143,8 +143,8 @@ class RuleSchemaWhenIncreasingatleastbyrate(object):
         """
         if field_name is None:
             raise ValueError("Invalid value for `field_name`, must not be `None`")  # noqa: E501
-        if field_name is not None and not re.search('^\\$[a-z][a-zA-Z0-9_-]*$', field_name):  # noqa: E501
-            raise ValueError("Invalid value for `field_name`, must be a follow pattern or equal to `/^\\$[a-z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+        if field_name is not None and not re.search(r'^\\$[a-z][a-zA-Z0-9_-]*$', field_name):  # noqa: E501
+            raise ValueError(r"Invalid value for `field_name`, must be a follow pattern or equal to `/^\\$[a-z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._field_name = field_name
 
@@ -183,7 +183,7 @@ class RuleSchemaWhenIncreasingatleastbyrate(object):
     def time_range(self):
         """Gets the time_range of this RuleSchemaWhenIncreasingatleastbyrate.  # noqa: E501
 
-        How much back in time should we look for data. Specify positive integer followed by s/m/h/d/w/y representing seconds/minutes/hours/days/weeks/years. Eg: 2s  # noqa: E501
+        How much back in time should we look for data. Specify positive integer followed by s/m/h/d/w/y/o representing seconds/minutes/hours/days/weeks/years/offset. Eg: 2s  # noqa: E501
 
         :return: The time_range of this RuleSchemaWhenIncreasingatleastbyrate.  # noqa: E501
         :rtype: str
@@ -194,13 +194,13 @@ class RuleSchemaWhenIncreasingatleastbyrate(object):
     def time_range(self, time_range):
         """Sets the time_range of this RuleSchemaWhenIncreasingatleastbyrate.
 
-        How much back in time should we look for data. Specify positive integer followed by s/m/h/d/w/y representing seconds/minutes/hours/days/weeks/years. Eg: 2s  # noqa: E501
+        How much back in time should we look for data. Specify positive integer followed by s/m/h/d/w/y/o representing seconds/minutes/hours/days/weeks/years/offset. Eg: 2s  # noqa: E501
 
         :param time_range: The time_range of this RuleSchemaWhenIncreasingatleastbyrate.  # noqa: E501
         :type: str
         """
-        if time_range is not None and not re.search('^[1-9][0-9]*[smhdwy]$', time_range):  # noqa: E501
-            raise ValueError("Invalid value for `time_range`, must be a follow pattern or equal to `/^[1-9][0-9]*[smhdwy]$/`")  # noqa: E501
+        if time_range is not None and not re.search(r'^[1-9][0-9]*(o|s|m|h|d|w|y|offset)$', time_range):  # noqa: E501
+            raise ValueError(r"Invalid value for `time_range`, must be a follow pattern or equal to `/^[1-9][0-9]*(o|s|m|h|d|w|y|offset)$/`")  # noqa: E501
 
         self._time_range = time_range
 
@@ -224,8 +224,8 @@ class RuleSchemaWhenIncreasingatleastbyrate(object):
         :param value: The value of this RuleSchemaWhenIncreasingatleastbyrate.  # noqa: E501
         :type: str
         """
-        if value is not None and not re.search('(^\\d+(\\.\\d{0,2})?$)|(^\\$[a-z][a-zA-Z0-9_-]*$)', value):  # noqa: E501
-            raise ValueError("Invalid value for `value`, must be a follow pattern or equal to `/(^\\d+(\\.\\d{0,2})?$)|(^\\$[a-z][a-zA-Z0-9_-]*$)/`")  # noqa: E501
+        if value is not None and not re.search(r'(^\\d+(\\.\\d{0,2})?$)|(^\\$[a-z][a-zA-Z0-9_-]*$)', value):  # noqa: E501
+            raise ValueError(r"Invalid value for `value`, must be a follow pattern or equal to `/(^\\d+(\\.\\d{0,2})?$)|(^\\$[a-z][a-zA-Z0-9_-]*$)/`")  # noqa: E501
 
         self._value = value
 
@@ -249,8 +249,8 @@ class RuleSchemaWhenIncreasingatleastbyrate(object):
         :param percentage: The percentage of this RuleSchemaWhenIncreasingatleastbyrate.  # noqa: E501
         :type: str
         """
-        if percentage is not None and not re.search('(^\\d+(\\.\\d{0,2})?$)|(^\\$[a-z][a-zA-Z0-9_-]*$)', percentage):  # noqa: E501
-            raise ValueError("Invalid value for `percentage`, must be a follow pattern or equal to `/(^\\d+(\\.\\d{0,2})?$)|(^\\$[a-z][a-zA-Z0-9_-]*$)/`")  # noqa: E501
+        if percentage is not None and not re.search(r'(^\\d+(\\.\\d{0,2})?$)|(^\\$[a-z][a-zA-Z0-9_-]*$)', percentage):  # noqa: E501
+            raise ValueError(r"Invalid value for `percentage`, must be a follow pattern or equal to `/(^\\d+(\\.\\d{0,2})?$)|(^\\$[a-z][a-zA-Z0-9_-]*$)/`")  # noqa: E501
 
         self._percentage = percentage
 
@@ -275,6 +275,9 @@ class RuleSchemaWhenIncreasingatleastbyrate(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(RuleSchemaWhenIncreasingatleastbyrate, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

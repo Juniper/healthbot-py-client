@@ -18,8 +18,11 @@ class Database(InfluxDBClient):
         """
         self.hbot = hbot
         self.url = hbot.url
-        self.api = hbot.hbot_session
         InfluxDBClient.__init__(self, hbot.server, 8086)
+
+    @property
+    def api(self):
+        return self.hbot.hbot_session
 
     def get_table(self):
         """

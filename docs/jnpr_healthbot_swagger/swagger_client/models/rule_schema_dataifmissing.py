@@ -91,6 +91,9 @@ class RuleSchemaDataifmissing(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(RuleSchemaDataifmissing, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

@@ -98,6 +98,9 @@ class DevicegroupSchemaLoggingReportsgeneration(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(DevicegroupSchemaLoggingReportsgeneration, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

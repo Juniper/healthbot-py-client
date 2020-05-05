@@ -74,8 +74,8 @@ class RuleSchemaThenArgument(object):
             raise ValueError("Invalid value for `argument`, must not be `None`")  # noqa: E501
         if argument is not None and len(argument) > 64:
             raise ValueError("Invalid value for `argument`, length must be less than or equal to `64`")  # noqa: E501
-        if argument is not None and not re.search('^[a-zA-Z][a-zA-Z0-9_-]*$', argument):  # noqa: E501
-            raise ValueError("Invalid value for `argument`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+        if argument is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', argument):  # noqa: E501
+            raise ValueError(r"Invalid value for `argument`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._argument = argument
 
@@ -125,6 +125,9 @@ class RuleSchemaThenArgument(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(RuleSchemaThenArgument, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

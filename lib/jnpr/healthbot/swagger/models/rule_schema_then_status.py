@@ -126,6 +126,9 @@ class RuleSchemaThenStatus(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(RuleSchemaThenStatus, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

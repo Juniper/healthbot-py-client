@@ -76,8 +76,8 @@ class RetentionPolicySchema(object):
         :param duration: The duration of this RetentionPolicySchema.  # noqa: E501
         :type: str
         """
-        if duration is not None and not re.search('^[1-9][0-9]*[dh]$', duration):  # noqa: E501
-            raise ValueError("Invalid value for `duration`, must be a follow pattern or equal to `/^[1-9][0-9]*[dh]$/`")  # noqa: E501
+        if duration is not None and not re.search(r'^[1-9][0-9]*[dh]$', duration):  # noqa: E501
+            raise ValueError(r"Invalid value for `duration`, must be a follow pattern or equal to `/^[1-9][0-9]*[dh]$/`")  # noqa: E501
 
         self._duration = duration
 
@@ -128,8 +128,8 @@ class RetentionPolicySchema(object):
             raise ValueError("Invalid value for `retention_policy_name`, must not be `None`")  # noqa: E501
         if retention_policy_name is not None and len(retention_policy_name) > 64:
             raise ValueError("Invalid value for `retention_policy_name`, length must be less than or equal to `64`")  # noqa: E501
-        if retention_policy_name is not None and not re.search('^[a-zA-Z][a-zA-Z0-9_-]*$', retention_policy_name):  # noqa: E501
-            raise ValueError("Invalid value for `retention_policy_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+        if retention_policy_name is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', retention_policy_name):  # noqa: E501
+            raise ValueError(r"Invalid value for `retention_policy_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._retention_policy_name = retention_policy_name
 
@@ -154,6 +154,9 @@ class RetentionPolicySchema(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(RetentionPolicySchema, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

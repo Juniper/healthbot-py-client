@@ -69,7 +69,7 @@ class DevicegroupSchemaLoggingIAgent(object):
         :param daemons: The daemons of this DevicegroupSchemaLoggingIAgent.  # noqa: E501
         :type: list[str]
         """
-        allowed_values = ["ingest", "tand"]  # noqa: E501
+        allowed_values = ["ingest", "tand", "publishd"]  # noqa: E501
         if not set(daemons).issubset(set(allowed_values)):
             raise ValueError(
                 "Invalid values for `daemons` [{0}], must be a subset of [{1}]"  # noqa: E501
@@ -131,6 +131,9 @@ class DevicegroupSchemaLoggingIAgent(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(DevicegroupSchemaLoggingIAgent, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

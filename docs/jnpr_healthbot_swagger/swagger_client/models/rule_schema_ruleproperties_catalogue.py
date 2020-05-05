@@ -95,6 +95,9 @@ class RuleSchemaRulepropertiesCatalogue(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(RuleSchemaRulepropertiesCatalogue, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

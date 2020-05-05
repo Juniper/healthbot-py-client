@@ -94,8 +94,8 @@ class DevicegroupSchemaRawdataSummarize(object):
         """
         if time_span is None:
             raise ValueError("Invalid value for `time_span`, must not be `None`")  # noqa: E501
-        if time_span is not None and not re.search('^[1-9][0-9]*[smhdwy]$', time_span):  # noqa: E501
-            raise ValueError("Invalid value for `time_span`, must be a follow pattern or equal to `/^[1-9][0-9]*[smhdwy]$/`")  # noqa: E501
+        if time_span is not None and not re.search(r'^[1-9][0-9]*[smhdwy]$', time_span):  # noqa: E501
+            raise ValueError(r"Invalid value for `time_span`, must be a follow pattern or equal to `/^[1-9][0-9]*[smhdwy]$/`")  # noqa: E501
 
         self._time_span = time_span
 
@@ -120,6 +120,9 @@ class DevicegroupSchemaRawdataSummarize(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(DevicegroupSchemaRawdataSummarize, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

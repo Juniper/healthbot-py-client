@@ -54,7 +54,7 @@ class CaProfileSchema(object):
     def certificate_authority_crt(self):
         """Gets the certificate_authority_crt of this CaProfileSchema.  # noqa: E501
 
-        Certificate Authority certificate file name. Should be of pattern .+\\.crt  # noqa: E501
+        Certificate Authority certificate file name. Should be of pattern .+\.crt  # noqa: E501
 
         :return: The certificate_authority_crt of this CaProfileSchema.  # noqa: E501
         :rtype: str
@@ -65,15 +65,15 @@ class CaProfileSchema(object):
     def certificate_authority_crt(self, certificate_authority_crt):
         """Sets the certificate_authority_crt of this CaProfileSchema.
 
-        Certificate Authority certificate file name. Should be of pattern .+\\.crt  # noqa: E501
+        Certificate Authority certificate file name. Should be of pattern .+\.crt  # noqa: E501
 
         :param certificate_authority_crt: The certificate_authority_crt of this CaProfileSchema.  # noqa: E501
         :type: str
         """
         if certificate_authority_crt is None:
             raise ValueError("Invalid value for `certificate_authority_crt`, must not be `None`")  # noqa: E501
-        if certificate_authority_crt is not None and not re.search('^.+\\.crt$', certificate_authority_crt):  # noqa: E501
-            raise ValueError("Invalid value for `certificate_authority_crt`, must be a follow pattern or equal to `/^.+\\.crt$/`")  # noqa: E501
+        if certificate_authority_crt is not None and not re.search(r'^.+\.crt$', certificate_authority_crt):  # noqa: E501
+            raise ValueError(r"Invalid value for `certificate_authority_crt`, must be a follow pattern or equal to `/^.+\.crt$/`")  # noqa: E501
 
         self._certificate_authority_crt = certificate_authority_crt
 
@@ -81,7 +81,7 @@ class CaProfileSchema(object):
     def name(self):
         """Gets the name of this CaProfileSchema.  # noqa: E501
 
-        Certificate Authority profile name  # noqa: E501
+        Certificate Authority profile name. Should be of pattern [a-zA-Z][a-zA-Z0-9_-]*  # noqa: E501
 
         :return: The name of this CaProfileSchema.  # noqa: E501
         :rtype: str
@@ -92,13 +92,17 @@ class CaProfileSchema(object):
     def name(self, name):
         """Sets the name of this CaProfileSchema.
 
-        Certificate Authority profile name  # noqa: E501
+        Certificate Authority profile name. Should be of pattern [a-zA-Z][a-zA-Z0-9_-]*  # noqa: E501
 
         :param name: The name of this CaProfileSchema.  # noqa: E501
         :type: str
         """
         if name is None:
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if name is not None and len(name) > 64:
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `64`")  # noqa: E501
+        if name is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', name):  # noqa: E501
+            raise ValueError(r"Invalid value for `name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._name = name
 
@@ -123,6 +127,9 @@ class CaProfileSchema(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(CaProfileSchema, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

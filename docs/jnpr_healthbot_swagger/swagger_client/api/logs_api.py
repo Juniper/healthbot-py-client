@@ -38,12 +38,13 @@ class LogsApi(object):
 
         Get the logs for all the services for the given {device_group_name}  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_logs_for_device_group(device_group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_logs_for_device_group(device_group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str device_group_name: Device group name (required)
+        :param str authorization: authentication header object
         :param bool download: Download the logs
         :param str filename: Name of the log file
         :return: None
@@ -51,7 +52,7 @@ class LogsApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_logs_for_device_group_with_http_info(device_group_name, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_logs_for_device_group_with_http_info(device_group_name, **kwargs)  # noqa: E501
@@ -62,12 +63,13 @@ class LogsApi(object):
 
         Get the logs for all the services for the given {device_group_name}  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_logs_for_device_group_with_http_info(device_group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_logs_for_device_group_with_http_info(device_group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str device_group_name: Device group name (required)
+        :param str authorization: authentication header object
         :param bool download: Download the logs
         :param str filename: Name of the log file
         :return: None
@@ -75,8 +77,8 @@ class LogsApi(object):
                  returns the request thread.
         """
 
-        all_params = ['device_group_name', 'download', 'filename']  # noqa: E501
-        all_params.append('async')
+        all_params = ['device_group_name', 'authorization', 'download', 'filename']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -98,7 +100,7 @@ class LogsApi(object):
         if ('filename' in params and
                 len(params['filename']) > 64):
             raise ValueError("Invalid value for parameter `filename` when calling `retrieve_logs_for_device_group`, length must be less than or equal to `64`")  # noqa: E501
-        if 'filename' in params and not re.search('^[a-zA-Z][a-zA-Z0-9_-]*$', params['filename']):  # noqa: E501
+        if 'filename' in params and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', params['filename']):  # noqa: E501
             raise ValueError("Invalid value for parameter `filename` when calling `retrieve_logs_for_device_group`, must conform to the pattern `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -113,6 +115,8 @@ class LogsApi(object):
             query_params.append(('filename', params['filename']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -139,7 +143,7 @@ class LogsApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -150,13 +154,14 @@ class LogsApi(object):
 
         Get the logs for the service {service_name} for the given {device_group_name}  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_logs_for_device_group_service(device_group_name, service_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_logs_for_device_group_service(device_group_name, service_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str device_group_name: Device group name (required)
         :param str service_name: Device-group service name (required)
+        :param str authorization: authentication header object
         :param bool download: Download the logs
         :param str filename: Name of the log file
         :param int number_of_lines: Number of lines to show from the end of the logs
@@ -165,7 +170,7 @@ class LogsApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_logs_for_device_group_service_with_http_info(device_group_name, service_name, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_logs_for_device_group_service_with_http_info(device_group_name, service_name, **kwargs)  # noqa: E501
@@ -176,13 +181,14 @@ class LogsApi(object):
 
         Get the logs for the service {service_name} for the given {device_group_name}  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_logs_for_device_group_service_with_http_info(device_group_name, service_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_logs_for_device_group_service_with_http_info(device_group_name, service_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str device_group_name: Device group name (required)
         :param str service_name: Device-group service name (required)
+        :param str authorization: authentication header object
         :param bool download: Download the logs
         :param str filename: Name of the log file
         :param int number_of_lines: Number of lines to show from the end of the logs
@@ -191,8 +197,8 @@ class LogsApi(object):
                  returns the request thread.
         """
 
-        all_params = ['device_group_name', 'service_name', 'download', 'filename', 'number_of_lines']  # noqa: E501
-        all_params.append('async')
+        all_params = ['device_group_name', 'service_name', 'authorization', 'download', 'filename', 'number_of_lines']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -218,7 +224,7 @@ class LogsApi(object):
         if ('filename' in params and
                 len(params['filename']) > 64):
             raise ValueError("Invalid value for parameter `filename` when calling `retrieve_logs_for_device_group_service`, length must be less than or equal to `64`")  # noqa: E501
-        if 'filename' in params and not re.search('^[a-zA-Z][a-zA-Z0-9_-]*$', params['filename']):  # noqa: E501
+        if 'filename' in params and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', params['filename']):  # noqa: E501
             raise ValueError("Invalid value for parameter `filename` when calling `retrieve_logs_for_device_group_service`, must conform to the pattern `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
         if 'number_of_lines' in params and params['number_of_lines'] > 100000:  # noqa: E501
             raise ValueError("Invalid value for parameter `number_of_lines` when calling `retrieve_logs_for_device_group_service`, must be a value less than or equal to `100000`")  # noqa: E501
@@ -241,6 +247,8 @@ class LogsApi(object):
             query_params.append(('number_of_lines', params['number_of_lines']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -267,7 +275,7 @@ class LogsApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -278,12 +286,13 @@ class LogsApi(object):
 
         Get the logs for the service {service_name} for the given {network_group_name}  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_logs_for_network_group(network_group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_logs_for_network_group(network_group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str network_group_name: Network group name (required)
+        :param str authorization: authentication header object
         :param bool download: Download the logs
         :param str filename: Name of the log file
         :return: None
@@ -291,7 +300,7 @@ class LogsApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_logs_for_network_group_with_http_info(network_group_name, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_logs_for_network_group_with_http_info(network_group_name, **kwargs)  # noqa: E501
@@ -302,12 +311,13 @@ class LogsApi(object):
 
         Get the logs for the service {service_name} for the given {network_group_name}  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_logs_for_network_group_with_http_info(network_group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_logs_for_network_group_with_http_info(network_group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str network_group_name: Network group name (required)
+        :param str authorization: authentication header object
         :param bool download: Download the logs
         :param str filename: Name of the log file
         :return: None
@@ -315,8 +325,8 @@ class LogsApi(object):
                  returns the request thread.
         """
 
-        all_params = ['network_group_name', 'download', 'filename']  # noqa: E501
-        all_params.append('async')
+        all_params = ['network_group_name', 'authorization', 'download', 'filename']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -338,7 +348,7 @@ class LogsApi(object):
         if ('filename' in params and
                 len(params['filename']) > 64):
             raise ValueError("Invalid value for parameter `filename` when calling `retrieve_logs_for_network_group`, length must be less than or equal to `64`")  # noqa: E501
-        if 'filename' in params and not re.search('^[a-zA-Z][a-zA-Z0-9_-]*$', params['filename']):  # noqa: E501
+        if 'filename' in params and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', params['filename']):  # noqa: E501
             raise ValueError("Invalid value for parameter `filename` when calling `retrieve_logs_for_network_group`, must conform to the pattern `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
         collection_formats = {}
 
@@ -353,6 +363,8 @@ class LogsApi(object):
             query_params.append(('filename', params['filename']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -379,7 +391,7 @@ class LogsApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -390,13 +402,14 @@ class LogsApi(object):
 
         Get the logs for all the services for the given {network_group_name}  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_logs_for_network_group_service(network_group_name, service_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_logs_for_network_group_service(network_group_name, service_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str network_group_name: Network group name (required)
         :param str service_name: Network group service name (required)
+        :param str authorization: authentication header object
         :param bool download: Download the logs
         :param str filename: Name of the log file
         :param int number_of_lines: Number of lines to show from the end of the logs
@@ -405,7 +418,7 @@ class LogsApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_logs_for_network_group_service_with_http_info(network_group_name, service_name, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_logs_for_network_group_service_with_http_info(network_group_name, service_name, **kwargs)  # noqa: E501
@@ -416,13 +429,14 @@ class LogsApi(object):
 
         Get the logs for all the services for the given {network_group_name}  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_logs_for_network_group_service_with_http_info(network_group_name, service_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_logs_for_network_group_service_with_http_info(network_group_name, service_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str network_group_name: Network group name (required)
         :param str service_name: Network group service name (required)
+        :param str authorization: authentication header object
         :param bool download: Download the logs
         :param str filename: Name of the log file
         :param int number_of_lines: Number of lines to show from the end of the logs
@@ -431,8 +445,8 @@ class LogsApi(object):
                  returns the request thread.
         """
 
-        all_params = ['network_group_name', 'service_name', 'download', 'filename', 'number_of_lines']  # noqa: E501
-        all_params.append('async')
+        all_params = ['network_group_name', 'service_name', 'authorization', 'download', 'filename', 'number_of_lines']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -458,7 +472,7 @@ class LogsApi(object):
         if ('filename' in params and
                 len(params['filename']) > 64):
             raise ValueError("Invalid value for parameter `filename` when calling `retrieve_logs_for_network_group_service`, length must be less than or equal to `64`")  # noqa: E501
-        if 'filename' in params and not re.search('^[a-zA-Z][a-zA-Z0-9_-]*$', params['filename']):  # noqa: E501
+        if 'filename' in params and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', params['filename']):  # noqa: E501
             raise ValueError("Invalid value for parameter `filename` when calling `retrieve_logs_for_network_group_service`, must conform to the pattern `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
         if 'number_of_lines' in params and params['number_of_lines'] > 100000:  # noqa: E501
             raise ValueError("Invalid value for parameter `number_of_lines` when calling `retrieve_logs_for_network_group_service`, must be a value less than or equal to `100000`")  # noqa: E501
@@ -481,6 +495,8 @@ class LogsApi(object):
             query_params.append(('number_of_lines', params['number_of_lines']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -507,7 +523,7 @@ class LogsApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),

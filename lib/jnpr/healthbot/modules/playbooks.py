@@ -3,6 +3,7 @@ import copy
 
 from jnpr.healthbot.swagger.models.playbook_schema import PlaybookSchema
 from jnpr.healthbot.swagger.models.rule_schema_variable import RuleSchemaVariable
+from jnpr.healthbot.modules import BaseModule
 from jnpr.healthbot.modules.rules import Rule
 from jnpr.healthbot.modules.devices import Device, DeviceGroup
 
@@ -12,16 +13,14 @@ import logging
 logger = logging.getLogger(__file__)
 
 
-class Playbook(object):
+class Playbook(BaseModule):
 
     def __init__(self, hbot):
         """
         :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
         """
 
-        self.hbot = hbot
-        self.url = hbot.url
-        self.api = hbot.hbot_session
+        super().__init__(hbot)
 
     def add(self, schema: PlaybookSchema = None, **kwargs):
         """
@@ -37,17 +36,18 @@ class Playbook(object):
         ::
             from jnpr.healthbot import HealthBotClient
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            hb.playbook.add(playbook_name="HbEZ-example",
-                    rules = ['protocol.infra/check-task-momory-usage'])
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                hb.playbook.add(playbook_name="HbEZ-example",
+                        rules = ['protocol.infra/check-task-momory-usage'])
 
             # or
             from jnpr.healthbot import HealthBotClient
             from jnpr.healthbot import PlaybookSchema
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            pbs = PlaybookSchema(playbook_name="HbEZ-example",
-                    rules = ['protocol.infra/check-task-momory-usage'])
-            hb.playbook.add(pbs)
+
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                pbs = PlaybookSchema(playbook_name="HbEZ-example",
+                        rules = ['protocol.infra/check-task-momory-usage'])
+                hb.playbook.add(pbs)
 
         Returns:
             True if action successful
@@ -78,8 +78,9 @@ class Playbook(object):
         ::
             from jnpr.healthbot import HealthBotClient
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            hb.playbook.delete('linecard-kpis-playbook')
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                hb.playbook.delete('linecard-kpis-playbook')
+
         """
 
         payload = {'playbook-name': playbook_name}
@@ -102,11 +103,12 @@ class Playbook(object):
         ::
             from jnpr.healthbot import HealthBotClient
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            print(hb.playbook.get('linecard-kpis-playbook'))
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                print(hb.playbook.get('linecard-kpis-playbook'))
 
-            # for all
-            print(hb.playbook.get())
+                # for all
+                print(hb.playbook.get())
+
         """
         if playbook_name is not None:
             playbook_url = self.hbot.urlfor.playbook(playbook_name)
@@ -152,10 +154,11 @@ class Playbook(object):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            schemaObj = hb.playbook.get('xyz')
-            schemaObj.description = 'changed description'
-            hb.playbook.update(schemaObj)
+
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                schemaObj = hb.playbook.get('xyz')
+                schemaObj.description = 'changed description'
+                hb.playbook.update(schemaObj)
 
         :returns: True when OK
         """
@@ -221,28 +224,29 @@ class PlayBookInstanceBuilder(Playbook):
         Example:
         ::
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
+
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
 
             from jnpr.healthbot import PlayBookInstanceBuilder
-            pbb = PlayBookInstanceBuilder(hb, 'forwarding-table-summary', 'HbEZ-instance', 'Core')
+                pbb = PlayBookInstanceBuilder(hb, 'forwarding-table-summary', 'HbEZ-instance', 'Core')
 
-            variable = pbb.rule_variables["protocol.routesummary/check-fib-summary"]
-            variable.route_address_family = 'pqr'
-            variable.route_count_threshold = 100
+                variable = pbb.rule_variables["protocol.routesummary/check-fib-summary"]
+                variable.route_address_family = 'pqr'
+                variable.route_count_threshold = 100
 
-            # Apply variable to given device(s)
-            pbb.apply(device_ids=['vmx'])
+                # Apply variable to given device(s)
+                pbb.apply(device_ids=['vmx'])
 
-            #clear all the variable if you want to set it something else for group or other device(s)
-            pbb.clear()
+                #clear all the variable if you want to set it something else for group or other device(s)
+                pbb.clear()
 
-            variable = pbb.rule_variables["protocol.routesummary/check-fib-summary"]
-            variable.route_address_family = 'abc'
-            variable.route_count_threshold = 200
+                variable = pbb.rule_variables["protocol.routesummary/check-fib-summary"]
+                variable.route_address_family = 'abc'
+                variable.route_count_threshold = 200
 
-            pbb.apply()
+                pbb.apply()
 
-            hb.commit()
+                hb.commit()
         """
         Playbook.__init__(self, hbot)
         self.hbot = hbot
