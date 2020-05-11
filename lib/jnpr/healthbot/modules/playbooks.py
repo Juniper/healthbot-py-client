@@ -86,7 +86,7 @@ class Playbook(BaseModule):
         payload = {'playbook-name': playbook_name}
         rule_url = self.hbot.urlfor.playbook(playbook_name)
         response = self.api.delete(rule_url, json=payload)
-        if response.status_code != 200:
+        if response.status_code != 204:
             logger.error(response.text)
         response.raise_for_status()
         return True

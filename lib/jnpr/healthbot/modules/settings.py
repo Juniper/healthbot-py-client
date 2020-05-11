@@ -137,7 +137,7 @@ class Notification(BaseModule):
 
         notification_url = self.hbot.urlfor.notification(notification_name)
         response = self.api.delete(notification_url)
-        if response.status_code != 200:
+        if response.status_code != 204:
             logger.error(response.text)
         response.raise_for_status()
 
@@ -836,10 +836,7 @@ class LicenseKeyManagement(BaseModule):
                 from jnpr.healthbot import HealthBotClient
 
                 with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
-                    print(hb.settings.license.get()
-
-                    # for given licence id
-                    print(hb.settings.report.get('xxxxx')
+                    print(hb.settings.license.get_features()
 
         :return: `LicenseFeatureSchema(s) <jnpr.healthbot.swagger.models.html#licensefeatureschema>`_
 

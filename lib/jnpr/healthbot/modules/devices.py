@@ -446,7 +446,7 @@ class DeviceGroup(BaseModule):
                 response.raise_for_status()
         device_group_url = self.hbot.urlfor.device_group(device_group_name)
         response = self.api.delete(device_group_url)
-        if response.status_code != 200:
+        if response.status_code != 204:
             logger.error(response.text)
         response.raise_for_status()
 
