@@ -51,15 +51,17 @@ import time
 import swagger_client
 from swagger_client.rest import ApiException
 from pprint import pprint
+
 # create an instance of the API class
-api_instance = swagger_client.ConfigurationApi()
-device_group_name = 'device_group_name_example' # str | Name of device group
+api_instance = swagger_client.AdministrationApi(swagger_client.ApiClient(configuration))
+authorization = 'authorization_example' # str | authentication header object
+groups = [swagger_client.Groups()] # list[Groups] | group details
 
 try:
-    # Check if the un-committed configuration of the given device group is correct
-    api_instance.check_device_group_unsaved_configuration(device_group_name)
+    # Create groups
+    api_instance.create_groups(authorization, groups)
 except ApiException as e:
-    print("Exception when calling ConfigurationApi->check_device_group_unsaved_configuration: %s\n" % e)
+    print("Exception when calling AdministrationApi->create_groups: %s\n" % e)
 
 ```
 
@@ -69,6 +71,22 @@ All URIs are relative to *http://api-server/api/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AdministrationApi* | [**create_groups**](docs/AdministrationApi.md#create_groups) | **POST** /group/ | Create groups
+*AdministrationApi* | [**create_users**](docs/AdministrationApi.md#create_users) | **POST** /user/ | Create an user.
+*AdministrationApi* | [**delete_group**](docs/AdministrationApi.md#delete_group) | **DELETE** /group/{groupid}/ | Delete groups
+*AdministrationApi* | [**delete_user**](docs/AdministrationApi.md#delete_user) | **DELETE** /user/{userid}/ | Delete list of users.
+*AdministrationApi* | [**flush_groups**](docs/AdministrationApi.md#flush_groups) | **PUT** /group/ | Flush the groups
+*AdministrationApi* | [**flush_users**](docs/AdministrationApi.md#flush_users) | **PUT** /user/ | Flush user base with new set of records.
+*AdministrationApi* | [**get_group_details**](docs/AdministrationApi.md#get_group_details) | **GET** /group/{groupid}/ | Get lits of all the groups
+*AdministrationApi* | [**get_user_details**](docs/AdministrationApi.md#get_user_details) | **GET** /user/{userid}/ | Get lits of all the users
+*AdministrationApi* | [**retrieve_groups**](docs/AdministrationApi.md#retrieve_groups) | **GET** /group/ | Get lits of all the groups
+*AdministrationApi* | [**retrieve_roles**](docs/AdministrationApi.md#retrieve_roles) | **GET** /role/ | Get list of all the roles
+*AdministrationApi* | [**retrieve_users**](docs/AdministrationApi.md#retrieve_users) | **GET** /user/ | Get lits of all the users
+*AdministrationApi* | [**update_group**](docs/AdministrationApi.md#update_group) | **POST** /group/{groupid}/ | Get lits of all the roles
+*AdministrationApi* | [**update_user_profile**](docs/AdministrationApi.md#update_user_profile) | **POST** /user/{userid}/ | Update user profile informations.
+*AuthenticationApi* | [**refresh_token**](docs/AuthenticationApi.md#refresh_token) | **POST** /token/ | Re-issue tokens from existing token
+*AuthenticationApi* | [**user_login**](docs/AuthenticationApi.md#user_login) | **POST** /login/ | User login
+*AuthenticationApi* | [**user_logout**](docs/AuthenticationApi.md#user_logout) | **POST** /logout/ | User logout
 *ConfigurationApi* | [**check_device_group_unsaved_configuration**](docs/ConfigurationApi.md#check_device_group_unsaved_configuration) | **POST** /configuration/check/device-group/{device_group_name}/ | Check if the un-committed configuration of the given device group is correct
 *ConfigurationApi* | [**check_network_group_unsaved_configuration**](docs/ConfigurationApi.md#check_network_group_unsaved_configuration) | **POST** /configuration/check/network-group/{network_group_name}/ | Check if the unsaved configuration of the given network group is correct.
 *ConfigurationApi* | [**commit_unsaved_configuration**](docs/ConfigurationApi.md#commit_unsaved_configuration) | **POST** /configuration/ | Commit unsaved configuration.
@@ -84,6 +102,12 @@ Class | Method | HTTP request | Description
 *ConfigurationApi* | [**create_iceberg_playbooks_playbooks_by_id**](docs/ConfigurationApi.md#create_iceberg_playbooks_playbooks_by_id) | **POST** /playbooks/ | Update or create multiple playbooks.
 *ConfigurationApi* | [**create_iceberg_retention_policies_retention_policies_by_id**](docs/ConfigurationApi.md#create_iceberg_retention_policies_retention_policies_by_id) | **POST** /retention-policies/ | Update or create multiple retention-policies.
 *ConfigurationApi* | [**create_iceberg_retention_policy_retention_policy_by_id**](docs/ConfigurationApi.md#create_iceberg_retention_policy_retention_policy_by_id) | **POST** /retention-policy/{retention_policy_name}/ | Update or create a retention-policy.
+*ConfigurationApi* | [**create_iceberg_system_destination_by_id**](docs/ConfigurationApi.md#create_iceberg_system_destination_by_id) | **POST** /system/report-generation/destination/{name}/ | Create destination by name
+*ConfigurationApi* | [**create_iceberg_system_destinations**](docs/ConfigurationApi.md#create_iceberg_system_destinations) | **POST** /system/report-generation/destinations/ | Create destinations by name
+*ConfigurationApi* | [**create_iceberg_system_report_by_id**](docs/ConfigurationApi.md#create_iceberg_system_report_by_id) | **POST** /system/report-generation/report/{name}/ | Create report by name
+*ConfigurationApi* | [**create_iceberg_system_reports**](docs/ConfigurationApi.md#create_iceberg_system_reports) | **POST** /system/report-generation/reports/ | Create reports by name
+*ConfigurationApi* | [**create_iceberg_system_scheduler_by_id**](docs/ConfigurationApi.md#create_iceberg_system_scheduler_by_id) | **POST** /system/scheduler/{name}/ | Create scheduler by name
+*ConfigurationApi* | [**create_iceberg_system_schedulers**](docs/ConfigurationApi.md#create_iceberg_system_schedulers) | **POST** /system/schedulers/ | Create schedulers by name
 *ConfigurationApi* | [**create_iceberg_system_settings_destination_by_id**](docs/ConfigurationApi.md#create_iceberg_system_settings_destination_by_id) | **POST** /system-settings/report-generation/destination/{name}/ | Create destination by name
 *ConfigurationApi* | [**create_iceberg_system_settings_destinations**](docs/ConfigurationApi.md#create_iceberg_system_settings_destinations) | **POST** /system-settings/report-generation/destinations/ | Create destinations by name
 *ConfigurationApi* | [**create_iceberg_system_settings_report_by_id**](docs/ConfigurationApi.md#create_iceberg_system_settings_report_by_id) | **POST** /system-settings/report-generation/report/{name}/ | Create report by name
@@ -91,9 +115,11 @@ Class | Method | HTTP request | Description
 *ConfigurationApi* | [**create_iceberg_system_settings_scheduler_by_id**](docs/ConfigurationApi.md#create_iceberg_system_settings_scheduler_by_id) | **POST** /system-settings/scheduler/{name}/ | Create scheduler by name
 *ConfigurationApi* | [**create_iceberg_system_settings_schedulers**](docs/ConfigurationApi.md#create_iceberg_system_settings_schedulers) | **POST** /system-settings/schedulers/ | Create schedulers by name
 *ConfigurationApi* | [**create_iceberg_system_settings_system_settings_by_id**](docs/ConfigurationApi.md#create_iceberg_system_settings_system_settings_by_id) | **POST** /system-settings/ | Create system-settings
+*ConfigurationApi* | [**create_iceberg_system_system_by_id**](docs/ConfigurationApi.md#create_iceberg_system_system_by_id) | **POST** /system/ | Create system
 *ConfigurationApi* | [**create_iceberg_topic_rule_rule_by_id**](docs/ConfigurationApi.md#create_iceberg_topic_rule_rule_by_id) | **POST** /topic/{topic_name}/rule/{rule_name}/ | Update or create a rule.
 *ConfigurationApi* | [**create_iceberg_topic_topic_by_id**](docs/ConfigurationApi.md#create_iceberg_topic_topic_by_id) | **POST** /topic/{topic_name}/ | Update or create a topic.
 *ConfigurationApi* | [**create_iceberg_topics_topics_by_id**](docs/ConfigurationApi.md#create_iceberg_topics_topics_by_id) | **POST** /topics/ | Update or create multiple topics.
+*ConfigurationApi* | [**delete_healthbot_ingest_settings_byoi_ingest_mappings**](docs/ConfigurationApi.md#delete_healthbot_ingest_settings_byoi_ingest_mappings) | **DELETE** /ingest-settings/byoi/ingest-mappings/ | Delete all ingest-mappings.
 *ConfigurationApi* | [**delete_iceberg_device_device_by_id**](docs/ConfigurationApi.md#delete_iceberg_device_device_by_id) | **DELETE** /device/{device_id}/ | Delete device.
 *ConfigurationApi* | [**delete_iceberg_device_group_device_group_by_id**](docs/ConfigurationApi.md#delete_iceberg_device_group_device_group_by_id) | **DELETE** /device-group/{device_group_name}/ | Delete device-group.
 *ConfigurationApi* | [**delete_iceberg_device_groups_device_groups_by_id**](docs/ConfigurationApi.md#delete_iceberg_device_groups_device_groups_by_id) | **DELETE** /device-groups/ | Delete all device-groups.
@@ -106,6 +132,12 @@ Class | Method | HTTP request | Description
 *ConfigurationApi* | [**delete_iceberg_playbooks_playbooks_by_id**](docs/ConfigurationApi.md#delete_iceberg_playbooks_playbooks_by_id) | **DELETE** /playbooks/ | Delete all playbooks.
 *ConfigurationApi* | [**delete_iceberg_retention_policies_retention_policies_by_id**](docs/ConfigurationApi.md#delete_iceberg_retention_policies_retention_policies_by_id) | **DELETE** /retention-policies/ | Delete all retention-policies.
 *ConfigurationApi* | [**delete_iceberg_retention_policy_retention_policy_by_id**](docs/ConfigurationApi.md#delete_iceberg_retention_policy_retention_policy_by_id) | **DELETE** /retention-policy/{retention_policy_name}/ | Delete a retention-policy.
+*ConfigurationApi* | [**delete_iceberg_system_destination_by_id**](docs/ConfigurationApi.md#delete_iceberg_system_destination_by_id) | **DELETE** /system/report-generation/destination/{name}/ | Delete destination by name
+*ConfigurationApi* | [**delete_iceberg_system_destinations**](docs/ConfigurationApi.md#delete_iceberg_system_destinations) | **DELETE** /system/report-generation/destinations/ | Delete destinations by name
+*ConfigurationApi* | [**delete_iceberg_system_report_by_id**](docs/ConfigurationApi.md#delete_iceberg_system_report_by_id) | **DELETE** /system/report-generation/report/{name}/ | Delete report by name
+*ConfigurationApi* | [**delete_iceberg_system_reports**](docs/ConfigurationApi.md#delete_iceberg_system_reports) | **DELETE** /system/report-generation/reports/ | Delete reports by name
+*ConfigurationApi* | [**delete_iceberg_system_scheduler_by_id**](docs/ConfigurationApi.md#delete_iceberg_system_scheduler_by_id) | **DELETE** /system/scheduler/{name}/ | Delete scheduler by name
+*ConfigurationApi* | [**delete_iceberg_system_schedulers**](docs/ConfigurationApi.md#delete_iceberg_system_schedulers) | **DELETE** /system/schedulers/ | Delete schedulers by name
 *ConfigurationApi* | [**delete_iceberg_system_settings_destination_by_id**](docs/ConfigurationApi.md#delete_iceberg_system_settings_destination_by_id) | **DELETE** /system-settings/report-generation/destination/{name}/ | Delete destination by name
 *ConfigurationApi* | [**delete_iceberg_system_settings_destinations**](docs/ConfigurationApi.md#delete_iceberg_system_settings_destinations) | **DELETE** /system-settings/report-generation/destinations/ | Delete destinations by name
 *ConfigurationApi* | [**delete_iceberg_system_settings_report_by_id**](docs/ConfigurationApi.md#delete_iceberg_system_settings_report_by_id) | **DELETE** /system-settings/report-generation/report/{name}/ | Delete report by name
@@ -113,9 +145,11 @@ Class | Method | HTTP request | Description
 *ConfigurationApi* | [**delete_iceberg_system_settings_scheduler_by_id**](docs/ConfigurationApi.md#delete_iceberg_system_settings_scheduler_by_id) | **DELETE** /system-settings/scheduler/{name}/ | Delete scheduler by name
 *ConfigurationApi* | [**delete_iceberg_system_settings_schedulers**](docs/ConfigurationApi.md#delete_iceberg_system_settings_schedulers) | **DELETE** /system-settings/schedulers/ | Delete schedulers by name
 *ConfigurationApi* | [**delete_iceberg_system_settings_system_settings_by_id**](docs/ConfigurationApi.md#delete_iceberg_system_settings_system_settings_by_id) | **DELETE** /system-settings/ | Delete system-settings
+*ConfigurationApi* | [**delete_iceberg_system_system_by_id**](docs/ConfigurationApi.md#delete_iceberg_system_system_by_id) | **DELETE** /system/ | Delete system
 *ConfigurationApi* | [**delete_iceberg_topic_rule_rule_by_id**](docs/ConfigurationApi.md#delete_iceberg_topic_rule_rule_by_id) | **DELETE** /topic/{topic_name}/rule/{rule_name}/ | Delete a rule.
 *ConfigurationApi* | [**delete_iceberg_topic_topic_by_id**](docs/ConfigurationApi.md#delete_iceberg_topic_topic_by_id) | **DELETE** /topic/{topic_name}/ | Delete a topic.
 *ConfigurationApi* | [**delete_iceberg_topics_topics_by_id**](docs/ConfigurationApi.md#delete_iceberg_topics_topics_by_id) | **DELETE** /topics/ | Delete all topics.
+*ConfigurationApi* | [**first_login**](docs/ConfigurationApi.md#first_login) | **POST** /first-login/ | Change password after first login
 *ConfigurationApi* | [**retrieve_affected_groups**](docs/ConfigurationApi.md#retrieve_affected_groups) | **GET** /configuration/ | Get all groups affected by un-committed configuration changes.
 *ConfigurationApi* | [**retrieve_device_group_status**](docs/ConfigurationApi.md#retrieve_device_group_status) | **GET** /device-group/{device_group_name}/status/ | Get device-group&#39;s status.
 *ConfigurationApi* | [**retrieve_iceberg_device_device**](docs/ConfigurationApi.md#retrieve_iceberg_device_device) | **GET** /device/ | List all device-ids.
@@ -136,6 +170,12 @@ Class | Method | HTTP request | Description
 *ConfigurationApi* | [**retrieve_iceberg_retention_policies_retention_policies_by_id**](docs/ConfigurationApi.md#retrieve_iceberg_retention_policies_retention_policies_by_id) | **GET** /retention-policies/ | Get all retention-policies&#39; configuration.
 *ConfigurationApi* | [**retrieve_iceberg_retention_policy_retention_policy**](docs/ConfigurationApi.md#retrieve_iceberg_retention_policy_retention_policy) | **GET** /retention-policy/ | List all retention-policy-names.
 *ConfigurationApi* | [**retrieve_iceberg_retention_policy_retention_policy_by_id**](docs/ConfigurationApi.md#retrieve_iceberg_retention_policy_retention_policy_by_id) | **GET** /retention-policy/{retention_policy_name}/ | Get a retention-policy&#39;s configuration.
+*ConfigurationApi* | [**retrieve_iceberg_system_destination_by_id**](docs/ConfigurationApi.md#retrieve_iceberg_system_destination_by_id) | **GET** /system/report-generation/destination/{name}/ | Retrieve destination by name
+*ConfigurationApi* | [**retrieve_iceberg_system_destinations**](docs/ConfigurationApi.md#retrieve_iceberg_system_destinations) | **GET** /system/report-generation/destinations/ | Retrieve destinations by name
+*ConfigurationApi* | [**retrieve_iceberg_system_report_by_id**](docs/ConfigurationApi.md#retrieve_iceberg_system_report_by_id) | **GET** /system/report-generation/report/{name}/ | Retrieve report by name
+*ConfigurationApi* | [**retrieve_iceberg_system_reports**](docs/ConfigurationApi.md#retrieve_iceberg_system_reports) | **GET** /system/report-generation/reports/ | Retrieve reports by name
+*ConfigurationApi* | [**retrieve_iceberg_system_scheduler_by_id**](docs/ConfigurationApi.md#retrieve_iceberg_system_scheduler_by_id) | **GET** /system/scheduler/{name}/ | Retrieve scheduler by name
+*ConfigurationApi* | [**retrieve_iceberg_system_schedulers**](docs/ConfigurationApi.md#retrieve_iceberg_system_schedulers) | **GET** /system/schedulers/ | Retrieve schedulers by name
 *ConfigurationApi* | [**retrieve_iceberg_system_settings_destination_by_id**](docs/ConfigurationApi.md#retrieve_iceberg_system_settings_destination_by_id) | **GET** /system-settings/report-generation/destination/{name}/ | Retrieve destination by name
 *ConfigurationApi* | [**retrieve_iceberg_system_settings_destinations**](docs/ConfigurationApi.md#retrieve_iceberg_system_settings_destinations) | **GET** /system-settings/report-generation/destinations/ | Retrieve destinations by name
 *ConfigurationApi* | [**retrieve_iceberg_system_settings_report_by_id**](docs/ConfigurationApi.md#retrieve_iceberg_system_settings_report_by_id) | **GET** /system-settings/report-generation/report/{name}/ | Retrieve report by name
@@ -143,12 +183,14 @@ Class | Method | HTTP request | Description
 *ConfigurationApi* | [**retrieve_iceberg_system_settings_scheduler_by_id**](docs/ConfigurationApi.md#retrieve_iceberg_system_settings_scheduler_by_id) | **GET** /system-settings/scheduler/{name}/ | Retrieve scheduler by name
 *ConfigurationApi* | [**retrieve_iceberg_system_settings_schedulers**](docs/ConfigurationApi.md#retrieve_iceberg_system_settings_schedulers) | **GET** /system-settings/schedulers/ | Retrieve schedulers by name
 *ConfigurationApi* | [**retrieve_iceberg_system_settings_system_settings**](docs/ConfigurationApi.md#retrieve_iceberg_system_settings_system_settings) | **GET** /system-settings/ | Retrieve system-settings
+*ConfigurationApi* | [**retrieve_iceberg_system_system**](docs/ConfigurationApi.md#retrieve_iceberg_system_system) | **GET** /system/ | Retrieve system data
 *ConfigurationApi* | [**retrieve_iceberg_topic_rule_rule**](docs/ConfigurationApi.md#retrieve_iceberg_topic_rule_rule) | **GET** /topic/{topic_name}/rule/ | List all rule-names in a topic.
 *ConfigurationApi* | [**retrieve_iceberg_topic_rule_rule_by_id**](docs/ConfigurationApi.md#retrieve_iceberg_topic_rule_rule_by_id) | **GET** /topic/{topic_name}/rule/{rule_name}/ | Get a rule&#39;s configuration.
 *ConfigurationApi* | [**retrieve_iceberg_topic_topic**](docs/ConfigurationApi.md#retrieve_iceberg_topic_topic) | **GET** /topic/ | List all topic-names.
 *ConfigurationApi* | [**retrieve_iceberg_topic_topic_by_id**](docs/ConfigurationApi.md#retrieve_iceberg_topic_topic_by_id) | **GET** /topic/{topic_name}/ | Get a topic&#39;s configuration.
 *ConfigurationApi* | [**retrieve_iceberg_topics_topics**](docs/ConfigurationApi.md#retrieve_iceberg_topics_topics) | **GET** /topics/ | Get all topics&#39; configuration.
 *ConfigurationApi* | [**retrieve_network_group_status**](docs/ConfigurationApi.md#retrieve_network_group_status) | **GET** /network-group/{network_group_name}/status/ | Get network-group&#39;s status.
+*ConfigurationApi* | [**retrieve_orchestrator**](docs/ConfigurationApi.md#retrieve_orchestrator) | **GET** /orchestrator/ | Get Orchestrator type
 *ConfigurationApi* | [**rollback_unsaved_configuration**](docs/ConfigurationApi.md#rollback_unsaved_configuration) | **DELETE** /configuration/ | Delete the un-committed configuration.
 *ConfigurationApi* | [**update_iceberg_device_device_by_id**](docs/ConfigurationApi.md#update_iceberg_device_device_by_id) | **PUT** /device/{device_id}/ | Overwrite a device.
 *ConfigurationApi* | [**update_iceberg_device_group_device_group_by_id**](docs/ConfigurationApi.md#update_iceberg_device_group_device_group_by_id) | **PUT** /device-group/{device_group_name}/ | Overwrite a device-group.
@@ -162,6 +204,12 @@ Class | Method | HTTP request | Description
 *ConfigurationApi* | [**update_iceberg_playbooks_playbooks_by_id**](docs/ConfigurationApi.md#update_iceberg_playbooks_playbooks_by_id) | **PUT** /playbooks/ | Overwrite all playbooks.
 *ConfigurationApi* | [**update_iceberg_retention_policies_retention_policies_id**](docs/ConfigurationApi.md#update_iceberg_retention_policies_retention_policies_id) | **PUT** /retention-policies/ | Overwrite all retention-policies.
 *ConfigurationApi* | [**update_iceberg_retention_policy_retention_policy_by_id**](docs/ConfigurationApi.md#update_iceberg_retention_policy_retention_policy_by_id) | **PUT** /retention-policy/{retention_policy_name}/ | Overwrite a retention-policy.
+*ConfigurationApi* | [**update_iceberg_system_destination_by_id**](docs/ConfigurationApi.md#update_iceberg_system_destination_by_id) | **PUT** /system/report-generation/destination/{name}/ | Update destination by name
+*ConfigurationApi* | [**update_iceberg_system_destinations**](docs/ConfigurationApi.md#update_iceberg_system_destinations) | **PUT** /system/report-generation/destinations/ | Update destinations by name
+*ConfigurationApi* | [**update_iceberg_system_report_by_id**](docs/ConfigurationApi.md#update_iceberg_system_report_by_id) | **PUT** /system/report-generation/report/{name}/ | Update report by name
+*ConfigurationApi* | [**update_iceberg_system_reports**](docs/ConfigurationApi.md#update_iceberg_system_reports) | **PUT** /system/report-generation/reports/ | Update reports by name
+*ConfigurationApi* | [**update_iceberg_system_scheduler_by_id**](docs/ConfigurationApi.md#update_iceberg_system_scheduler_by_id) | **PUT** /system/scheduler/{name}/ | Update scheduler by name
+*ConfigurationApi* | [**update_iceberg_system_schedulers**](docs/ConfigurationApi.md#update_iceberg_system_schedulers) | **PUT** /system/schedulers/ | Update schedulers by name
 *ConfigurationApi* | [**update_iceberg_system_settings_destination_by_id**](docs/ConfigurationApi.md#update_iceberg_system_settings_destination_by_id) | **PUT** /system-settings/report-generation/destination/{name}/ | Update destination by name
 *ConfigurationApi* | [**update_iceberg_system_settings_destinations**](docs/ConfigurationApi.md#update_iceberg_system_settings_destinations) | **PUT** /system-settings/report-generation/destinations/ | Update destinations by name
 *ConfigurationApi* | [**update_iceberg_system_settings_report_by_id**](docs/ConfigurationApi.md#update_iceberg_system_settings_report_by_id) | **PUT** /system-settings/report-generation/report/{name}/ | Update report by name
@@ -169,42 +217,96 @@ Class | Method | HTTP request | Description
 *ConfigurationApi* | [**update_iceberg_system_settings_scheduler_by_id**](docs/ConfigurationApi.md#update_iceberg_system_settings_scheduler_by_id) | **PUT** /system-settings/scheduler/{name}/ | Update scheduler by name
 *ConfigurationApi* | [**update_iceberg_system_settings_schedulers**](docs/ConfigurationApi.md#update_iceberg_system_settings_schedulers) | **PUT** /system-settings/schedulers/ | Update schedulers by name
 *ConfigurationApi* | [**update_iceberg_system_settings_system_settings_by_id**](docs/ConfigurationApi.md#update_iceberg_system_settings_system_settings_by_id) | **PUT** /system-settings/ | Update system-settings by ID
+*ConfigurationApi* | [**update_iceberg_system_system_by_id**](docs/ConfigurationApi.md#update_iceberg_system_system_by_id) | **PUT** /system/ | Update system by ID
 *ConfigurationApi* | [**update_iceberg_topic_rule_rule_by_id**](docs/ConfigurationApi.md#update_iceberg_topic_rule_rule_by_id) | **PUT** /topic/{topic_name}/rule/{rule_name}/ | Overwrite a rule.
 *ConfigurationApi* | [**update_iceberg_topic_topic_by_id**](docs/ConfigurationApi.md#update_iceberg_topic_topic_by_id) | **PUT** /topic/{topic_name}/ | Overwrite a topic.
 *ConfigurationApi* | [**update_iceberg_topics_topics_by_id**](docs/ConfigurationApi.md#update_iceberg_topics_topics_by_id) | **PUT** /topics/ | Overwrite topics.
+*ConfigurationApi* | [**user_retrieve_user_profile**](docs/ConfigurationApi.md#user_retrieve_user_profile) | **GET** /user-profile/ | Get users profile information
+*ConfigurationApi* | [**user_update_user_profile**](docs/ConfigurationApi.md#user_update_user_profile) | **POST** /user-profile/ | Update user profile informations.
 *DataSourceApi* | [**create_data_store**](docs/DataSourceApi.md#create_data_store) | **POST** /data-store/{group_name}/ | Create dashboard details.
 *DataStoreApi* | [**delete_data_store**](docs/DataStoreApi.md#delete_data_store) | **DELETE** /data-store/{group_name}/ | Delete dashboard details.
 *DataStoreApi* | [**retrieve_data_store**](docs/DataStoreApi.md#retrieve_data_store) | **GET** /data-store/{group_name}/ | Delete dashboard details.
 *DataStoreApi* | [**update_data_store**](docs/DataStoreApi.md#update_data_store) | **PUT** /data-store/{group_name}/ | Update data_store details.
+*DebugApi* | [**healthbot_debug_generate_configuration**](docs/DebugApi.md#healthbot_debug_generate_configuration) | **POST** /debug/configuration/ | Request Healthbot MGD service to generate the debug related configuration for healthbot debugger to consume.
+*DebugApi* | [**retrieve_debug_for_scenario**](docs/DebugApi.md#retrieve_debug_for_scenario) | **POST** /debug/scenario/{scenario_name}/ | Run debugging for the given scenario name
+*DefaultApi* | [**backup_helper_files**](docs/DefaultApi.md#backup_helper_files) | **GET** /files/helper-files/backup/ | Download the tar file containing all helper files.
+*DefaultApi* | [**create_files_certificates_by_file_name**](docs/DefaultApi.md#create_files_certificates_by_file_name) | **POST** /files/certificates/{file_name}/ | Upload a certificate file.
 *DefaultApi* | [**create_files_helper_files_by_file_name**](docs/DefaultApi.md#create_files_helper_files_by_file_name) | **POST** /files/helper-files/{file_name}/ | Upload a helper-file.
+*DefaultApi* | [**create_healthbot_ingest_settings_byoi_custom_plugin_by_id**](docs/DefaultApi.md#create_healthbot_ingest_settings_byoi_custom_plugin_by_id) | **POST** /ingest-settings/byoi/custom-plugin/{name}/ | Create custom-plugin by ID
+*DefaultApi* | [**create_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id**](docs/DefaultApi.md#create_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id) | **POST** /ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/ | Create tlive-kafka-oc by ID
+*DefaultApi* | [**create_healthbot_ingest_settings_byoi_ingest_mapping_by_id**](docs/DefaultApi.md#create_healthbot_ingest_settings_byoi_ingest_mapping_by_id) | **POST** /ingest-settings/byoi/ingest-mapping/{name}/ | Create ingest-mapping by ID
+*DefaultApi* | [**create_healthbot_ingest_settings_frequency_profile_by_id**](docs/DefaultApi.md#create_healthbot_ingest_settings_frequency_profile_by_id) | **POST** /ingest-settings/frequency-profile/{name}/ | Create frequency-profile by ID
+*DefaultApi* | [**create_healthbot_system_time_series_database_time_series_database_by_id**](docs/DefaultApi.md#create_healthbot_system_time_series_database_time_series_database_by_id) | **POST** /system/tsdb/ | Create time-series-database by ID
+*DefaultApi* | [**create_iceberg_ingest_settings**](docs/DefaultApi.md#create_iceberg_ingest_settings) | **POST** /ingest-settings/ | Create ingest-settings by ID
+*DefaultApi* | [**create_iceberg_ingest_settings_flow**](docs/DefaultApi.md#create_iceberg_ingest_settings_flow) | **POST** /ingest-settings/flow/ | Create flow by ID
+*DefaultApi* | [**create_iceberg_ingest_settings_flow_template_by_id**](docs/DefaultApi.md#create_iceberg_ingest_settings_flow_template_by_id) | **POST** /ingest-settings/flow/template/{name}/ | Create template by ID
+*DefaultApi* | [**create_iceberg_ingest_settings_syslog**](docs/DefaultApi.md#create_iceberg_ingest_settings_syslog) | **POST** /ingest-settings/syslog/ | Create syslog by ID
+*DefaultApi* | [**create_iceberg_ingest_settings_syslog_pattern_by_id**](docs/DefaultApi.md#create_iceberg_ingest_settings_syslog_pattern_by_id) | **POST** /ingest-settings/syslog/pattern/{name}/ | Create pattern by ID
+*DefaultApi* | [**create_iceberg_ingest_settings_syslog_pattern_set_by_id**](docs/DefaultApi.md#create_iceberg_ingest_settings_syslog_pattern_set_by_id) | **POST** /ingest-settings/syslog/pattern-set/{name}/ | Create pattern-set by ID
 *DefaultApi* | [**create_iceberg_profile_data_summarization_raw_by_id**](docs/DefaultApi.md#create_iceberg_profile_data_summarization_raw_by_id) | **POST** /profile/data-summarization/raw/{name}/ | Create raw-data-summarization by ID
 *DefaultApi* | [**create_iceberg_profile_security_ca_profile_by_id**](docs/DefaultApi.md#create_iceberg_profile_security_ca_profile_by_id) | **POST** /profile/security/ca-profile/{name}/ | Create ca-profile by ID
 *DefaultApi* | [**create_iceberg_profile_security_local_certificate_by_id**](docs/DefaultApi.md#create_iceberg_profile_security_local_certificate_by_id) | **POST** /profile/security/local-certificate/{name}/ | Create local-certificate by ID
 *DefaultApi* | [**create_iceberg_profile_security_ssh_key_profile_by_id**](docs/DefaultApi.md#create_iceberg_profile_security_ssh_key_profile_by_id) | **POST** /profile/security/ssh-key-profile/{name}/ | Create ssh-key-profile by ID
 *DefaultApi* | [**create_iceberg_profiles**](docs/DefaultApi.md#create_iceberg_profiles) | **POST** /profiles/ | Create profile by ID
+*DefaultApi* | [**delete_files_certificates_by_file_name**](docs/DefaultApi.md#delete_files_certificates_by_file_name) | **DELETE** /files/certificates/{file_name}/ | Delete a certificate-file.
 *DefaultApi* | [**delete_files_helper_files_by_file_name**](docs/DefaultApi.md#delete_files_helper_files_by_file_name) | **DELETE** /files/helper-files/{file_name}/ | Delete a helper-file.
+*DefaultApi* | [**delete_healthbot_ingest_settings_byoi_custom_plugin_by_id**](docs/DefaultApi.md#delete_healthbot_ingest_settings_byoi_custom_plugin_by_id) | **DELETE** /ingest-settings/byoi/custom-plugin/{name}/ | Delete custom-plugin by ID
+*DefaultApi* | [**delete_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id**](docs/DefaultApi.md#delete_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id) | **DELETE** /ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/ | Delete tlive-kafka-oc by ID
+*DefaultApi* | [**delete_healthbot_ingest_settings_byoi_ingest_mapping_by_id**](docs/DefaultApi.md#delete_healthbot_ingest_settings_byoi_ingest_mapping_by_id) | **DELETE** /ingest-settings/byoi/ingest-mapping/{name}/ | Delete ingest-mapping by ID
+*DefaultApi* | [**delete_healthbot_ingest_settings_frequency_profile_by_id**](docs/DefaultApi.md#delete_healthbot_ingest_settings_frequency_profile_by_id) | **DELETE** /ingest-settings/frequency-profile/{name}/ | Delete frequency-profile by ID
+*DefaultApi* | [**delete_healthbot_system_time_series_database_time_series_database_by_id**](docs/DefaultApi.md#delete_healthbot_system_time_series_database_time_series_database_by_id) | **DELETE** /system/tsdb/ | Delete time-series-database
+*DefaultApi* | [**delete_iceberg_ingest_settings**](docs/DefaultApi.md#delete_iceberg_ingest_settings) | **DELETE** /ingest-settings/ | Delete ingest-settings by ID
+*DefaultApi* | [**delete_iceberg_ingest_settings_flow**](docs/DefaultApi.md#delete_iceberg_ingest_settings_flow) | **DELETE** /ingest-settings/flow/ | Delete flow by ID
+*DefaultApi* | [**delete_iceberg_ingest_settings_flow_template_by_id**](docs/DefaultApi.md#delete_iceberg_ingest_settings_flow_template_by_id) | **DELETE** /ingest-settings/flow/template/{name}/ | Delete template by ID
+*DefaultApi* | [**delete_iceberg_ingest_settings_syslog**](docs/DefaultApi.md#delete_iceberg_ingest_settings_syslog) | **DELETE** /ingest-settings/syslog/ | Delete syslog by ID
+*DefaultApi* | [**delete_iceberg_ingest_settings_syslog_pattern_by_id**](docs/DefaultApi.md#delete_iceberg_ingest_settings_syslog_pattern_by_id) | **DELETE** /ingest-settings/syslog/pattern/{name}/ | Delete pattern by ID
+*DefaultApi* | [**delete_iceberg_ingest_settings_syslog_pattern_set_by_id**](docs/DefaultApi.md#delete_iceberg_ingest_settings_syslog_pattern_set_by_id) | **DELETE** /ingest-settings/syslog/pattern-set/{name}/ | Delete pattern-set by ID
 *DefaultApi* | [**delete_iceberg_profile_data_summarization_raw_by_id**](docs/DefaultApi.md#delete_iceberg_profile_data_summarization_raw_by_id) | **DELETE** /profile/data-summarization/raw/{name}/ | Delete raw-data-summarization by ID
 *DefaultApi* | [**delete_iceberg_profile_security_ca_profile_by_id**](docs/DefaultApi.md#delete_iceberg_profile_security_ca_profile_by_id) | **DELETE** /profile/security/ca-profile/{name}/ | Delete ca-profile by ID
 *DefaultApi* | [**delete_iceberg_profile_security_local_certificate_by_id**](docs/DefaultApi.md#delete_iceberg_profile_security_local_certificate_by_id) | **DELETE** /profile/security/local-certificate/{name}/ | Delete local-certificate by ID
 *DefaultApi* | [**delete_iceberg_profile_security_ssh_key_profile_by_id**](docs/DefaultApi.md#delete_iceberg_profile_security_ssh_key_profile_by_id) | **DELETE** /profile/security/ssh-key-profile/{name}/ | Delete ssh-key-profile by ID
 *DefaultApi* | [**delete_iceberg_profiles**](docs/DefaultApi.md#delete_iceberg_profiles) | **DELETE** /profiles/ | Delete profile by ID
 *DefaultApi* | [**inspect_command_rpc_table_on_device**](docs/DefaultApi.md#inspect_command_rpc_table_on_device) | **POST** /inspect/command-rpc/table/ | Inspect the given iAgent table.
+*DefaultApi* | [**restore_helper_files**](docs/DefaultApi.md#restore_helper_files) | **POST** /files/helper-files/backup/ | Upload a helper-file.
 *DefaultApi* | [**retrieve_configuration_jobs**](docs/DefaultApi.md#retrieve_configuration_jobs) | **GET** /configuration/jobs/ | 
 *DefaultApi* | [**retrieve_data_database_table**](docs/DefaultApi.md#retrieve_data_database_table) | **GET** /data/database/table/ | Get information about tables for a device of a device-group.
 *DefaultApi* | [**retrieve_data_database_table_column_by_table_name**](docs/DefaultApi.md#retrieve_data_database_table_column_by_table_name) | **GET** /data/database/table/column/ | Get information about columns in a table.
 *DefaultApi* | [**retrieve_data_database_tags_by_table_name**](docs/DefaultApi.md#retrieve_data_database_tags_by_table_name) | **GET** /data/database/table/tags/ | Get information about tags keys and values in a table.
+*DefaultApi* | [**retrieve_debug_jobs**](docs/DefaultApi.md#retrieve_debug_jobs) | **GET** /debug/jobs/ | 
 *DefaultApi* | [**retrieve_event**](docs/DefaultApi.md#retrieve_event) | **GET** /event/ | Get all events for a device.
 *DefaultApi* | [**retrieve_event_by_event_name**](docs/DefaultApi.md#retrieve_event_by_event_name) | **GET** /event/{event_name}/ | Get instances of a device event.
 *DefaultApi* | [**retrieve_event_by_event_name_device_group**](docs/DefaultApi.md#retrieve_event_by_event_name_device_group) | **GET** /event/device-group/{event_name}/ | Get instances of a device-group event.
 *DefaultApi* | [**retrieve_event_by_event_name_network_group**](docs/DefaultApi.md#retrieve_event_by_event_name_network_group) | **GET** /event/network-group/{event_name}/ | Get instances of a network-group event.
 *DefaultApi* | [**retrieve_event_device_group**](docs/DefaultApi.md#retrieve_event_device_group) | **GET** /event/device-group/ | Get all events for a device-group.
 *DefaultApi* | [**retrieve_event_network_group**](docs/DefaultApi.md#retrieve_event_network_group) | **GET** /event/network-group/ | Get all events for a network-group.
+*DefaultApi* | [**retrieve_events**](docs/DefaultApi.md#retrieve_events) | **GET** /events/ | Get all events.
+*DefaultApi* | [**retrieve_files_certificates_by_file_name**](docs/DefaultApi.md#retrieve_files_certificates_by_file_name) | **GET** /files/certificates/{file_name}/ | Download a certificate-file.
 *DefaultApi* | [**retrieve_files_helper_files**](docs/DefaultApi.md#retrieve_files_helper_files) | **GET** /files/helper-files/ | Get all helper-file names.
 *DefaultApi* | [**retrieve_files_helper_files_by_file_name**](docs/DefaultApi.md#retrieve_files_helper_files_by_file_name) | **GET** /files/helper-files/{file_name}/ | Download a helper-file.
 *DefaultApi* | [**retrieve_health_all**](docs/DefaultApi.md#retrieve_health_all) | **GET** /health/ | Return a dict with health of devices in device groups and network groups
 *DefaultApi* | [**retrieve_health_tree_by_device_group**](docs/DefaultApi.md#retrieve_health_tree_by_device_group) | **GET** /health-tree/device-group/{device_group_name}/ | Get device-group health-tree.
 *DefaultApi* | [**retrieve_health_tree_by_id**](docs/DefaultApi.md#retrieve_health_tree_by_id) | **GET** /health-tree/{device_id}/ | Return a device&#39;s health-tree.
 *DefaultApi* | [**retrieve_health_tree_by_network_group**](docs/DefaultApi.md#retrieve_health_tree_by_network_group) | **GET** /health-tree/network-group/{network_group_name}/ | Get network-group health-tree.
+*DefaultApi* | [**retrieve_healthbot_ingest_settings_byoi_custom_plugin_by_id**](docs/DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_custom_plugin_by_id) | **GET** /ingest-settings/byoi/custom-plugin/{name}/ | Retrieve custom-plugin by ID
+*DefaultApi* | [**retrieve_healthbot_ingest_settings_byoi_custom_plugins**](docs/DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_custom_plugins) | **GET** /ingest-settings/byoi/custom-plugins/ | Retrieve custom-plugin by ID
+*DefaultApi* | [**retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id**](docs/DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id) | **GET** /ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/ | Retrieve tlive-kafka-oc by ID
+*DefaultApi* | [**retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafkas**](docs/DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafkas) | **GET** /ingest-settings/byoi/default-plugin/tlive-kafka-ocs/ | Retrieve tlive-kafka-oc
+*DefaultApi* | [**retrieve_healthbot_ingest_settings_byoi_ingest_mapping_by_id**](docs/DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_ingest_mapping_by_id) | **GET** /ingest-settings/byoi/ingest-mapping/{name}/ | Retrieve ingest-mapping by ID
+*DefaultApi* | [**retrieve_healthbot_ingest_settings_byoi_ingest_mappings**](docs/DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_ingest_mappings) | **GET** /ingest-settings/byoi/ingest-mappings/ | Retrieve ingest-mapping
+*DefaultApi* | [**retrieve_healthbot_ingest_settings_frequency_profile**](docs/DefaultApi.md#retrieve_healthbot_ingest_settings_frequency_profile) | **GET** /ingest-settings/frequency-profiles/ | Retrieve frequency-profile
+*DefaultApi* | [**retrieve_healthbot_ingest_settings_frequency_profile_by_id**](docs/DefaultApi.md#retrieve_healthbot_ingest_settings_frequency_profile_by_id) | **GET** /ingest-settings/frequency-profile/{name}/ | Retrieve frequency-profile by ID
+*DefaultApi* | [**retrieve_healthbot_system_time_series_database_time_series_database**](docs/DefaultApi.md#retrieve_healthbot_system_time_series_database_time_series_database) | **GET** /system/tsdb/ | Retrieve time-series-database
+*DefaultApi* | [**retrieve_iceberg_ingest_settings**](docs/DefaultApi.md#retrieve_iceberg_ingest_settings) | **GET** /ingest-settings/ | Retrieve ingest-settings
+*DefaultApi* | [**retrieve_iceberg_ingest_settings_flow**](docs/DefaultApi.md#retrieve_iceberg_ingest_settings_flow) | **GET** /ingest-settings/flow/ | Retrieve flow
+*DefaultApi* | [**retrieve_iceberg_ingest_settings_flow_template_by_id**](docs/DefaultApi.md#retrieve_iceberg_ingest_settings_flow_template_by_id) | **GET** /ingest-settings/flow/template/{name}/ | Retrieve template by ID
+*DefaultApi* | [**retrieve_iceberg_ingest_settings_flow_template_ids**](docs/DefaultApi.md#retrieve_iceberg_ingest_settings_flow_template_ids) | **GET** /ingest-settings/flow/template/ | Retrieve template
+*DefaultApi* | [**retrieve_iceberg_ingest_settings_syslog**](docs/DefaultApi.md#retrieve_iceberg_ingest_settings_syslog) | **GET** /ingest-settings/syslog/ | Retrieve syslog
+*DefaultApi* | [**retrieve_iceberg_ingest_settings_syslog_pattern_by_id**](docs/DefaultApi.md#retrieve_iceberg_ingest_settings_syslog_pattern_by_id) | **GET** /ingest-settings/syslog/pattern/{name}/ | Retrieve pattern by ID
+*DefaultApi* | [**retrieve_iceberg_ingest_settings_syslog_pattern_ids**](docs/DefaultApi.md#retrieve_iceberg_ingest_settings_syslog_pattern_ids) | **GET** /ingest-settings/syslog/pattern/ | Retrieve pattern
+*DefaultApi* | [**retrieve_iceberg_ingest_settings_syslog_pattern_set_by_id**](docs/DefaultApi.md#retrieve_iceberg_ingest_settings_syslog_pattern_set_by_id) | **GET** /ingest-settings/syslog/pattern-set/{name}/ | Retrieve pattern-set by ID
+*DefaultApi* | [**retrieve_iceberg_ingest_settings_syslog_pattern_set_ids**](docs/DefaultApi.md#retrieve_iceberg_ingest_settings_syslog_pattern_set_ids) | **GET** /ingest-settings/syslog/pattern-set/ | Retrieve pattern-set
+*DefaultApi* | [**retrieve_iceberg_ingest_settings_syslog_pattern_sets**](docs/DefaultApi.md#retrieve_iceberg_ingest_settings_syslog_pattern_sets) | **GET** /ingest-settings/syslog/pattern-sets/ | Retrieve pattern-set by ID
+*DefaultApi* | [**retrieve_iceberg_ingest_settings_syslog_patterns**](docs/DefaultApi.md#retrieve_iceberg_ingest_settings_syslog_patterns) | **GET** /ingest-settings/syslog/patterns/ | Retrieve pattern by ID
 *DefaultApi* | [**retrieve_iceberg_profile_data_summarization_raw_by_id**](docs/DefaultApi.md#retrieve_iceberg_profile_data_summarization_raw_by_id) | **GET** /profile/data-summarization/raw/{name}/ | Retrieve raw-data-summarization by ID
 *DefaultApi* | [**retrieve_iceberg_profile_data_summarizations_raw**](docs/DefaultApi.md#retrieve_iceberg_profile_data_summarizations_raw) | **GET** /profile/data-summarizations/raw/ | Retrieve raw-data-summarization
 *DefaultApi* | [**retrieve_iceberg_profile_security_ca_profile_by_id**](docs/DefaultApi.md#retrieve_iceberg_profile_security_ca_profile_by_id) | **GET** /profile/security/ca-profile/{name}/ | Retrieve ca-profile by ID
@@ -215,6 +317,17 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**retrieve_iceberg_profile_security_ssh_key_profiles**](docs/DefaultApi.md#retrieve_iceberg_profile_security_ssh_key_profiles) | **GET** /profile/security/ssh-key-profiles/ | Retrieve ssh-key-profile
 *DefaultApi* | [**retrieve_iceberg_profiles**](docs/DefaultApi.md#retrieve_iceberg_profiles) | **GET** /profiles/ | Retrieve profile
 *DefaultApi* | [**retrieve_sensors**](docs/DefaultApi.md#retrieve_sensors) | **GET** /sensors/ | List all OpenConfig sensors.
+*DefaultApi* | [**update_healthbot_ingest_settings_byoi_custom_plugin_by_id**](docs/DefaultApi.md#update_healthbot_ingest_settings_byoi_custom_plugin_by_id) | **PUT** /ingest-settings/byoi/custom-plugin/{name}/ | Update custom-plugin by ID
+*DefaultApi* | [**update_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id**](docs/DefaultApi.md#update_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id) | **PUT** /ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/ | Update tlive-kafka-oc by ID
+*DefaultApi* | [**update_healthbot_ingest_settings_byoi_ingest_mapping_by_id**](docs/DefaultApi.md#update_healthbot_ingest_settings_byoi_ingest_mapping_by_id) | **PUT** /ingest-settings/byoi/ingest-mapping/{name}/ | Update ingest-mapping by ID
+*DefaultApi* | [**update_healthbot_ingest_settings_frequency_profile_by_id**](docs/DefaultApi.md#update_healthbot_ingest_settings_frequency_profile_by_id) | **PUT** /ingest-settings/frequency-profile/{name}/ | Update frequency-profile by ID
+*DefaultApi* | [**update_healthbot_system_time_series_database_time_series_database_by_id**](docs/DefaultApi.md#update_healthbot_system_time_series_database_time_series_database_by_id) | **PUT** /system/tsdb/ | Update time-series-database by ID
+*DefaultApi* | [**update_iceberg_ingest_settings**](docs/DefaultApi.md#update_iceberg_ingest_settings) | **PUT** /ingest-settings/ | Update ingest-settings by ID
+*DefaultApi* | [**update_iceberg_ingest_settings_flow**](docs/DefaultApi.md#update_iceberg_ingest_settings_flow) | **PUT** /ingest-settings/flow/ | Update flow by ID
+*DefaultApi* | [**update_iceberg_ingest_settings_flow_template_by_id**](docs/DefaultApi.md#update_iceberg_ingest_settings_flow_template_by_id) | **PUT** /ingest-settings/flow/template/{name}/ | Update template by ID
+*DefaultApi* | [**update_iceberg_ingest_settings_syslog**](docs/DefaultApi.md#update_iceberg_ingest_settings_syslog) | **PUT** /ingest-settings/syslog/ | Update syslog by ID
+*DefaultApi* | [**update_iceberg_ingest_settings_syslog_pattern_by_id**](docs/DefaultApi.md#update_iceberg_ingest_settings_syslog_pattern_by_id) | **PUT** /ingest-settings/syslog/pattern/{name}/ | Update pattern by ID
+*DefaultApi* | [**update_iceberg_ingest_settings_syslog_pattern_set_by_id**](docs/DefaultApi.md#update_iceberg_ingest_settings_syslog_pattern_set_by_id) | **PUT** /ingest-settings/syslog/pattern-set/{name}/ | Update pattern-set by ID
 *DefaultApi* | [**update_iceberg_profile_data_summarization_raw_by_id**](docs/DefaultApi.md#update_iceberg_profile_data_summarization_raw_by_id) | **PUT** /profile/data-summarization/raw/{name}/ | Update raw-data-summarization by ID
 *DefaultApi* | [**update_iceberg_profile_security_ca_profile_by_id**](docs/DefaultApi.md#update_iceberg_profile_security_ca_profile_by_id) | **PUT** /profile/security/ca-profile/{name}/ | Update ca-profile by ID
 *DefaultApi* | [**update_iceberg_profile_security_local_certificate_by_id**](docs/DefaultApi.md#update_iceberg_profile_security_local_certificate_by_id) | **PUT** /profile/security/local-certificate/{name}/ | Update local-certificate by ID
@@ -245,7 +358,10 @@ Class | Method | HTTP request | Description
 *ServicesApi* | [**delete_services_network_group_by_network_group_name**](docs/ServicesApi.md#delete_services_network_group_by_network_group_name) | **DELETE** /services/network-group/{network_group_name}/ | Stop and remove a network-group&#39;s services.
 *ServicesApi* | [**retrieve_services_device_groups_device_group_device_group**](docs/ServicesApi.md#retrieve_services_device_groups_device_group_device_group) | **GET** /services/device-group/ | Get running &#x60;device-group-name&#x60;s.
 *ServicesApi* | [**retrieve_services_network_group**](docs/ServicesApi.md#retrieve_services_network_group) | **GET** /services/network-group/ | Get running &#x60;network-group-name&#x60;s
+*SystemApi* | [**retrieve_available_nodes**](docs/SystemApi.md#retrieve_available_nodes) | **GET** /nodes/ | List of available nodes
+*SystemApi* | [**retrieve_sensor_device_group**](docs/SystemApi.md#retrieve_sensor_device_group) | **GET** /sensor/device-group/{device_group_name}/ | Get all All API&#39;s.
 *SystemApi* | [**retrieve_system_details**](docs/SystemApi.md#retrieve_system_details) | **GET** /system-details/ | Retrieve system details.
+*SystemApi* | [**retrieve_tsdb_counters**](docs/SystemApi.md#retrieve_tsdb_counters) | **GET** /tsdb-counters/ | TSDB counters
 
 
 ## Documentation For Models
@@ -253,10 +369,23 @@ Class | Method | HTTP request | Description
  - [AffectedGroups](docs/AffectedGroups.md)
  - [ApplyMacroSchema](docs/ApplyMacroSchema.md)
  - [ApplymacroSchemaData](docs/ApplymacroSchemaData.md)
+ - [AssociatedGroupSchema](docs/AssociatedGroupSchema.md)
+ - [AssociatedRoleSchema](docs/AssociatedRoleSchema.md)
+ - [AssociatedUserSchema](docs/AssociatedUserSchema.md)
+ - [AssociatedUserSchemaInner](docs/AssociatedUserSchemaInner.md)
  - [CaProfileSchema](docs/CaProfileSchema.md)
  - [CommandRpc](docs/CommandRpc.md)
  - [CommitJob](docs/CommitJob.md)
+ - [Credential](docs/Credential.md)
+ - [CustomPluginSchema](docs/CustomPluginSchema.md)
+ - [CustomPluginsSchema](docs/CustomPluginsSchema.md)
+ - [CustompluginSchemaParameters](docs/CustompluginSchemaParameters.md)
+ - [CustompluginSchemaSecurityparameters](docs/CustompluginSchemaSecurityparameters.md)
+ - [CustompluginSchemaSecurityparametersTls](docs/CustompluginSchemaSecurityparametersTls.md)
+ - [CustompluginSchemaSecurityparametersUserauthentication](docs/CustompluginSchemaSecurityparametersUserauthentication.md)
  - [DatastoreSchema](docs/DatastoreSchema.md)
+ - [DebugArgumentsSchema](docs/DebugArgumentsSchema.md)
+ - [DebugJobResponseSchema](docs/DebugJobResponseSchema.md)
  - [DestinationSchema](docs/DestinationSchema.md)
  - [DestinationSchemaDisk](docs/DestinationSchemaDisk.md)
  - [DestinationSchemaEmail](docs/DestinationSchemaEmail.md)
@@ -267,40 +396,94 @@ Class | Method | HTTP request | Description
  - [DeviceHealthSchema](docs/DeviceHealthSchema.md)
  - [DeviceHealthTree](docs/DeviceHealthTree.md)
  - [DeviceSchema](docs/DeviceSchema.md)
+ - [DeviceSchemaFlow](docs/DeviceSchemaFlow.md)
  - [DeviceSchemaIAgent](docs/DeviceSchemaIAgent.md)
  - [DeviceSchemaOpenconfig](docs/DeviceSchemaOpenconfig.md)
  - [DeviceSchemaSnmp](docs/DeviceSchemaSnmp.md)
  - [DeviceSchemaSnmpV2](docs/DeviceSchemaSnmpV2.md)
+ - [DeviceSchemaSyslog](docs/DeviceSchemaSyslog.md)
  - [DeviceSchemaVariable](docs/DeviceSchemaVariable.md)
  - [DeviceSchemaVendor](docs/DeviceSchemaVendor.md)
  - [DeviceSchemaVendorCisco](docs/DeviceSchemaVendorCisco.md)
  - [DeviceSchemaVendorJuniper](docs/DeviceSchemaVendorJuniper.md)
+ - [DeviceSchemaVendorOthervendor](docs/DeviceSchemaVendorOthervendor.md)
  - [DevicegroupSchemaAuthentication](docs/DevicegroupSchemaAuthentication.md)
  - [DevicegroupSchemaAuthenticationPassword](docs/DevicegroupSchemaAuthenticationPassword.md)
  - [DevicegroupSchemaAuthenticationSsh](docs/DevicegroupSchemaAuthenticationSsh.md)
  - [DevicegroupSchemaAuthenticationSsl](docs/DevicegroupSchemaAuthenticationSsl.md)
+ - [DevicegroupSchemaFlow](docs/DevicegroupSchemaFlow.md)
+ - [DevicegroupSchemaFlowNetflow](docs/DevicegroupSchemaFlowNetflow.md)
  - [DevicegroupSchemaLogging](docs/DevicegroupSchemaLogging.md)
+ - [DevicegroupSchemaLoggingByoi](docs/DevicegroupSchemaLoggingByoi.md)
+ - [DevicegroupSchemaLoggingByoiService](docs/DevicegroupSchemaLoggingByoiService.md)
+ - [DevicegroupSchemaLoggingFlow](docs/DevicegroupSchemaLoggingFlow.md)
  - [DevicegroupSchemaLoggingIAgent](docs/DevicegroupSchemaLoggingIAgent.md)
+ - [DevicegroupSchemaLoggingMLmodelbuilder](docs/DevicegroupSchemaLoggingMLmodelbuilder.md)
  - [DevicegroupSchemaLoggingNativegpb](docs/DevicegroupSchemaLoggingNativegpb.md)
  - [DevicegroupSchemaLoggingNonsensorrules](docs/DevicegroupSchemaLoggingNonsensorrules.md)
  - [DevicegroupSchemaLoggingOpenconfig](docs/DevicegroupSchemaLoggingOpenconfig.md)
  - [DevicegroupSchemaLoggingReportsgeneration](docs/DevicegroupSchemaLoggingReportsgeneration.md)
  - [DevicegroupSchemaLoggingSnmp](docs/DevicegroupSchemaLoggingSnmp.md)
+ - [DevicegroupSchemaLoggingSyslog](docs/DevicegroupSchemaLoggingSyslog.md)
  - [DevicegroupSchemaLoggingTriggerevaluation](docs/DevicegroupSchemaLoggingTriggerevaluation.md)
  - [DevicegroupSchemaNativegpb](docs/DevicegroupSchemaNativegpb.md)
  - [DevicegroupSchemaNotification](docs/DevicegroupSchemaNotification.md)
+ - [DevicegroupSchemaPublish](docs/DevicegroupSchemaPublish.md)
  - [DevicegroupSchemaRawdata](docs/DevicegroupSchemaRawdata.md)
  - [DevicegroupSchemaRawdataSummarize](docs/DevicegroupSchemaRawdataSummarize.md)
  - [DevicegroupSchemaScheduler](docs/DevicegroupSchemaScheduler.md)
+ - [DevicegroupSchemaSyslog](docs/DevicegroupSchemaSyslog.md)
  - [DevicegroupSchemaVariable](docs/DevicegroupSchemaVariable.md)
  - [DevicegroupSchemaVariablevalue](docs/DevicegroupSchemaVariablevalue.md)
  - [DevicesSchema](docs/DevicesSchema.md)
  - [Error](docs/Error.md)
  - [Event](docs/Event.md)
+ - [FlowSchema](docs/FlowSchema.md)
+ - [FlowSchemaFlow](docs/FlowSchemaFlow.md)
+ - [FlowSchemaFlowRecognitionpattern](docs/FlowSchemaFlowRecognitionpattern.md)
+ - [FlowSchemaFlowTemplate](docs/FlowSchemaFlowTemplate.md)
+ - [FrequencyProfileSchema](docs/FrequencyProfileSchema.md)
+ - [FrequencyprofileSchemaNonsensor](docs/FrequencyprofileSchemaNonsensor.md)
+ - [FrequencyprofileSchemaSensor](docs/FrequencyprofileSchemaSensor.md)
+ - [Group](docs/Group.md)
  - [GroupHealthSchema](docs/GroupHealthSchema.md)
+ - [GroupgroupidRoles](docs/GroupgroupidRoles.md)
+ - [GroupgroupidUsers](docs/GroupgroupidUsers.md)
+ - [Groups](docs/Groups.md)
  - [HealthSchema](docs/HealthSchema.md)
+ - [IngestMappingSchema](docs/IngestMappingSchema.md)
+ - [IngestMappingsSchema](docs/IngestMappingsSchema.md)
+ - [IngestSettingsSchema](docs/IngestSettingsSchema.md)
+ - [IngestmappingSchemaIAgent](docs/IngestmappingSchemaIAgent.md)
+ - [IngestmappingSchemaIAgentUseplugin](docs/IngestmappingSchemaIAgentUseplugin.md)
+ - [IngestmappingSchemaNativegpb](docs/IngestmappingSchemaNativegpb.md)
+ - [IngestmappingSchemaNetflow](docs/IngestmappingSchemaNetflow.md)
+ - [IngestmappingSchemaOpenconfig](docs/IngestmappingSchemaOpenconfig.md)
+ - [IngestmappingSchemaSnmp](docs/IngestmappingSchemaSnmp.md)
+ - [IngestmappingSchemaSyslog](docs/IngestmappingSchemaSyslog.md)
+ - [IngestsettingsSchemaIngestsettings](docs/IngestsettingsSchemaIngestsettings.md)
+ - [IngestsettingsSchemaIngestsettingsByoi](docs/IngestsettingsSchemaIngestsettingsByoi.md)
+ - [IngestsettingsSchemaIngestsettingsByoiDefaultplugin](docs/IngestsettingsSchemaIngestsettingsByoiDefaultplugin.md)
+ - [IngestsettingsSchemaIngestsettingsFlow](docs/IngestsettingsSchemaIngestsettingsFlow.md)
+ - [IngestsettingsSchemaIngestsettingsFlowRecognitionpattern](docs/IngestsettingsSchemaIngestsettingsFlowRecognitionpattern.md)
+ - [IngestsettingsSchemaIngestsettingsFlowTemplate](docs/IngestsettingsSchemaIngestsettingsFlowTemplate.md)
+ - [IngestsettingsSchemaIngestsettingsFrequencyprofile](docs/IngestsettingsSchemaIngestsettingsFrequencyprofile.md)
+ - [IngestsettingsSchemaIngestsettingsSensor](docs/IngestsettingsSchemaIngestsettingsSensor.md)
+ - [IngestsettingsSchemaIngestsettingsSyslog](docs/IngestsettingsSchemaIngestsettingsSyslog.md)
+ - [IngestsettingsSchemaIngestsettingsSyslogConstant](docs/IngestsettingsSchemaIngestsettingsSyslogConstant.md)
+ - [IngestsettingsSchemaIngestsettingsSyslogField](docs/IngestsettingsSchemaIngestsettingsSyslogField.md)
+ - [IngestsettingsSchemaIngestsettingsSyslogPattern](docs/IngestsettingsSchemaIngestsettingsSyslogPattern.md)
+ - [IngestsettingsSchemaIngestsettingsSyslogPatternset](docs/IngestsettingsSchemaIngestsettingsSyslogPatternset.md)
  - [InlineResponse200](docs/InlineResponse200.md)
  - [InlineResponse2001](docs/InlineResponse2001.md)
+ - [InlineResponse2002](docs/InlineResponse2002.md)
+ - [InlineResponse2003](docs/InlineResponse2003.md)
+ - [InlineResponse2004](docs/InlineResponse2004.md)
+ - [InlineResponse2005](docs/InlineResponse2005.md)
+ - [InlineResponse2006](docs/InlineResponse2006.md)
+ - [InlineResponse2007](docs/InlineResponse2007.md)
+ - [InlineResponse2008](docs/InlineResponse2008.md)
+ - [InlineResponse2009](docs/InlineResponse2009.md)
  - [InstanceScheduleStateSchema](docs/InstanceScheduleStateSchema.md)
  - [InstancesScheduleStateSchema](docs/InstancesScheduleStateSchema.md)
  - [LicenseFeatureSchema](docs/LicenseFeatureSchema.md)
@@ -315,13 +498,22 @@ Class | Method | HTTP request | Description
  - [NetworkGroupsSchema](docs/NetworkGroupsSchema.md)
  - [NetworkHealthTree](docs/NetworkHealthTree.md)
  - [NetworkgroupSchemaLogging](docs/NetworkgroupSchemaLogging.md)
+ - [NetworkgroupSchemaPublish](docs/NetworkgroupSchemaPublish.md)
  - [NotificationSchema](docs/NotificationSchema.md)
+ - [NotificationSchemaEmails](docs/NotificationSchemaEmails.md)
+ - [NotificationSchemaEmailsFilter](docs/NotificationSchemaEmailsFilter.md)
  - [NotificationSchemaHttppost](docs/NotificationSchemaHttppost.md)
  - [NotificationSchemaHttppostBasic](docs/NotificationSchemaHttppostBasic.md)
  - [NotificationSchemaKafkapublish](docs/NotificationSchemaKafkapublish.md)
  - [NotificationSchemaKafkapublishSasl](docs/NotificationSchemaKafkapublishSasl.md)
+ - [NotificationSchemaMicrosoftteams](docs/NotificationSchemaMicrosoftteams.md)
  - [NotificationSchemaSlack](docs/NotificationSchemaSlack.md)
  - [NotificationsSchema](docs/NotificationsSchema.md)
+ - [Password](docs/Password.md)
+ - [PatternSchema](docs/PatternSchema.md)
+ - [PatternSchemaConstant](docs/PatternSchemaConstant.md)
+ - [PatternSchemaField](docs/PatternSchemaField.md)
+ - [PatternSetSchema](docs/PatternSetSchema.md)
  - [PlaybookSchema](docs/PlaybookSchema.md)
  - [PlaybooksSchema](docs/PlaybooksSchema.md)
  - [ProfileSchema](docs/ProfileSchema.md)
@@ -334,6 +526,7 @@ Class | Method | HTTP request | Description
  - [RawSchema](docs/RawSchema.md)
  - [RawSchemaDatatype](docs/RawSchemaDatatype.md)
  - [RawSchemaPath](docs/RawSchemaPath.md)
+ - [RefreshToken](docs/RefreshToken.md)
  - [ReportGenerationSchema](docs/ReportGenerationSchema.md)
  - [ReportSchema](docs/ReportSchema.md)
  - [ReportSchemaCanvaspanel](docs/ReportSchemaCanvaspanel.md)
@@ -341,17 +534,24 @@ Class | Method | HTTP request | Description
  - [ReportsSchema](docs/ReportsSchema.md)
  - [RetentionPoliciesSchema](docs/RetentionPoliciesSchema.md)
  - [RetentionPolicySchema](docs/RetentionPolicySchema.md)
+ - [RoleSchema](docs/RoleSchema.md)
+ - [RoleSchemaInner](docs/RoleSchemaInner.md)
  - [RuleSchema](docs/RuleSchema.md)
  - [RuleSchemaArgument](docs/RuleSchemaArgument.md)
+ - [RuleSchemaByoi](docs/RuleSchemaByoi.md)
+ - [RuleSchemaByoiPlugin](docs/RuleSchemaByoiPlugin.md)
+ - [RuleSchemaByoiPluginParameters](docs/RuleSchemaByoiPluginParameters.md)
  - [RuleSchemaConstant](docs/RuleSchemaConstant.md)
  - [RuleSchemaDataifmissing](docs/RuleSchemaDataifmissing.md)
  - [RuleSchemaField](docs/RuleSchemaField.md)
+ - [RuleSchemaFlow](docs/RuleSchemaFlow.md)
  - [RuleSchemaFormula](docs/RuleSchemaFormula.md)
  - [RuleSchemaFormula1](docs/RuleSchemaFormula1.md)
  - [RuleSchemaFormula1And](docs/RuleSchemaFormula1And.md)
  - [RuleSchemaFormula1Or](docs/RuleSchemaFormula1Or.md)
  - [RuleSchemaFormula1Unique](docs/RuleSchemaFormula1Unique.md)
  - [RuleSchemaFormula1Unless](docs/RuleSchemaFormula1Unless.md)
+ - [RuleSchemaFormulaAnomalydetection](docs/RuleSchemaFormulaAnomalydetection.md)
  - [RuleSchemaFormulaCount](docs/RuleSchemaFormulaCount.md)
  - [RuleSchemaFormulaDynamicthreshold](docs/RuleSchemaFormulaDynamicthreshold.md)
  - [RuleSchemaFormulaMax](docs/RuleSchemaFormulaMax.md)
@@ -364,7 +564,9 @@ Class | Method | HTTP request | Description
  - [RuleSchemaFormulaOutlierdetectionAlgorithmDbscanSensitivity](docs/RuleSchemaFormulaOutlierdetectionAlgorithmDbscanSensitivity.md)
  - [RuleSchemaFormulaOutlierdetectionAlgorithmKfold3sigma](docs/RuleSchemaFormulaOutlierdetectionAlgorithmKfold3sigma.md)
  - [RuleSchemaFormulaPredict](docs/RuleSchemaFormulaPredict.md)
+ - [RuleSchemaFormulaRateofchange](docs/RuleSchemaFormulaRateofchange.md)
  - [RuleSchemaFormulaStddev](docs/RuleSchemaFormulaStddev.md)
+ - [RuleSchemaFormulaSum](docs/RuleSchemaFormulaSum.md)
  - [RuleSchemaFormulaUserdefinedfunction](docs/RuleSchemaFormulaUserdefinedfunction.md)
  - [RuleSchemaFormulaUserdefinedfunctionArgument](docs/RuleSchemaFormulaUserdefinedfunctionArgument.md)
  - [RuleSchemaFunction](docs/RuleSchemaFunction.md)
@@ -386,6 +588,7 @@ Class | Method | HTTP request | Description
  - [RuleSchemaSensor](docs/RuleSchemaSensor.md)
  - [RuleSchemaSensor1](docs/RuleSchemaSensor1.md)
  - [RuleSchemaSnmp](docs/RuleSchemaSnmp.md)
+ - [RuleSchemaSyslog](docs/RuleSchemaSyslog.md)
  - [RuleSchemaTerm](docs/RuleSchemaTerm.md)
  - [RuleSchemaThen](docs/RuleSchemaThen.md)
  - [RuleSchemaThenArgument](docs/RuleSchemaThenArgument.md)
@@ -411,13 +614,24 @@ Class | Method | HTTP request | Description
  - [SchedulersSchema](docs/SchedulersSchema.md)
  - [ServiceStatus](docs/ServiceStatus.md)
  - [SshKeyProfileSchema](docs/SshKeyProfileSchema.md)
+ - [SyslogSchema](docs/SyslogSchema.md)
+ - [SyslogSchemaSyslog](docs/SyslogSchemaSyslog.md)
  - [SystemSettingsSchema](docs/SystemSettingsSchema.md)
- - [SystemsettingsSchemaSystemsettings](docs/SystemsettingsSchemaSystemsettings.md)
- - [SystemsettingsSchemaSystemsettingsReportgeneration](docs/SystemsettingsSchemaSystemsettingsReportgeneration.md)
  - [TableSchema](docs/TableSchema.md)
+ - [TemplateSchema](docs/TemplateSchema.md)
  - [TimeRangeMandatory](docs/TimeRangeMandatory.md)
+ - [TliveKafkaOcSchema](docs/TliveKafkaOcSchema.md)
+ - [TliveKafkaOcsSchema](docs/TliveKafkaOcsSchema.md)
+ - [TlivekafkaocSchemaSecurity](docs/TlivekafkaocSchemaSecurity.md)
+ - [TlivekafkaocSchemaSecuritySasl](docs/TlivekafkaocSchemaSecuritySasl.md)
+ - [Token](docs/Token.md)
  - [TopicSchema](docs/TopicSchema.md)
  - [TopicsSchema](docs/TopicsSchema.md)
+ - [TsdbSchema](docs/TsdbSchema.md)
+ - [User](docs/User.md)
+ - [User1](docs/User1.md)
+ - [UserSchema](docs/UserSchema.md)
+ - [UserSchemaGroups](docs/UserSchemaGroups.md)
  - [WhenLhsRhsGroup](docs/WhenLhsRhsGroup.md)
 
 

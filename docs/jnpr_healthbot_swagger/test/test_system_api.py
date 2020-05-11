@@ -29,10 +29,31 @@ class TestSystemApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_retrieve_available_nodes(self):
+        """Test case for retrieve_available_nodes
+
+        List of available nodes  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_sensor_device_group(self):
+        """Test case for retrieve_sensor_device_group
+
+        Get all All API's.  # noqa: E501
+        """
+        pass
+
     def test_retrieve_system_details(self):
         """Test case for retrieve_system_details
 
         Retrieve system details.  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_tsdb_counters(self):
+        """Test case for retrieve_tsdb_counters
+
+        TSDB counters  # noqa: E501
         """
         pass
 

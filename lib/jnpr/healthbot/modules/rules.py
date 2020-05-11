@@ -2,20 +2,18 @@ from jnpr.healthbot.swagger.models.rule_schema import RuleSchema
 from jnpr.healthbot.swagger.models.topic_schema import TopicSchema
 from jnpr.healthbot.exception import SchemaError, NotFoundError
 
+from jnpr.healthbot.modules import BaseModule
 import logging
 logger = logging.getLogger(__file__)
 
 
-class Rule(object):
+class Rule(BaseModule):
 
     def __init__(self, hbot):
         """
         :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
         """
-
-        self.hbot = hbot
-        self.url = hbot.url
-        self.api = hbot.hbot_session
+        super().__init__(hbot)
 
     def add(self, topic_name: str, schema: RuleSchema = None, **kwargs):
         """
@@ -33,86 +31,94 @@ class Rule(object):
             from jnpr.healthbot import HealthBotClient
             from jnpr.healthbot import RuleSchema
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            rs = RuleSchema(rule_name="hbez-fpc-heap-utilization")
-            rs.description = "HealthBot EZ example"
-            rs.synopsis = "Using python client for demo"
-            rs.sensor = [{'description': 'Monitors FPC buffer, heap and cpu utilization',
-                'iAgent': {'file': 'fpc-utilization.yml',
-                            'frequency': '30s',
-                            'table': 'FPCCPUHEAPutilizationTable'},
-                'sensor_name': 'fpccpuheaputilization'}]
-            rs.field = [{'constant': {'value': '{{fpc-buffer-usage-threshold}}'},
-                'description': 'This field is for buffer usage threshold',
-                'field_name': 'linecard-buffer-usage-threshold'},
-               {'constant': {'value': '{{fpc-cpu-usage-threshold}}'},
-                'description': 'This field is for linecard cpu usage threshold',
-                'field_name': 'linecard-cpu-usage-threshold'},
-               {'constant': {'value': '{{fpc-heap-usage-threshold}}'},
-                'description': 'This field is for linecard heap usage threshold',
-                'field_name': 'linecard-heap-usage-threshold'}]
-            rs.keys = ['slot']
-            rs.variable = [{'description': 'Linecard Buffer Memory usage threshold value',
-               'name': 'fpc-buffer-usage-threshold',
-               'type': 'int',
-               'value': '80'},
-              {'description': 'Linecard CPU usage threshold value',
-               'name': 'fpc-cpu-usage-threshold',
-               'type': 'int',
-               'value': '80'},
-              {'description': 'Linecard Heap Memory usage threshold value',
-               'name': 'fpc-heap-usage-threshold',
-               'type': 'int',
-               'value': '80'}]
-            rs.trigger = [{'description': 'Sets health based on linecard buffer memory',
-              'frequency': '60s',
-              'synopsis': 'Linecard buffer memory kpi',
-              'term': [{'term_name': 'is-buffer-memory-utilization-greater-than-threshold',
-                        'then': {'status': {'color': 'red',
-                                            'message': 'FPC buffer memory '
-                                                       'utilization '
-                                                       '($memory-buffer-utilization) '
-                                                       'is over threshold '
-                                                       '($linecard-buffer-usage-threshold)'}},
-                        'when': {'greater_than': [{'left_operand': '$memory-buffer-utilization',
-                                                   'right_operand': '$linecard-buffer-usage-threshold'}]}},
-                       {'term_name': 'buffer-utilization-less-than-threshold',
-                        'then': {'status': {'color': 'green'}}}],
-              'trigger_name': 'fpc-buffer-memory-utilization'},
-             {'description': 'Sets health based on linecard cpu utilization',
-              'frequency': '60s',
-              'synopsis': 'Linecard cpu utilization kpi',
-              'term': [{'term_name': 'is-cpu-utilization-greater-than-80',
-                        'then': {'status': {'color': 'red',
-                                            'message': 'FPC CPU utilization '
-                                                       '($cpu-total) is over '
-                                                       'threshold '
-                                                       '($linecard-cpu-usage-threshold)'}},
-                        'when': {'greater_than': [{'left_operand': '$cpu-total',
-                                                   'right_operand': '$linecard-cpu-usage-threshold',
-                                                   'time_range': '180s'}]}},
-                       {'term_name': 'cpu-utilization-less-than-threshold',
-                        'then': {'status': {'color': 'green'}}}],
-              'trigger_name': 'fpc-cpu-utilization'},
-             {'description': 'Sets health based on linecard heap memory '
-                             'utilization',
-              'frequency': '60s',
-              'synopsis': 'Linecard heap memory kpi',
-              'term': [{'term_name': 'is-heap-memory-utilization-greater-than-threshold',
-                        'then': {'status': {'color': 'red',
-                                            'message': 'FPC heap memory '
-                                                       'utilization '
-                                                       '($memory-heap-utilization) '
-                                                       'is over threshold '
-                                                       '($linecard-heap-usage-threshold)'}},
-                        'when': {'greater_than': [{'left_operand': '$memory-heap-utilization',
-                                                   'right_operand': '$linecard-heap-usage-threshold'}]}},
-                       {'term_name': 'heap-memory-utilization-less-than-threshold',
-                        'then': {'status': {'color': 'green'}}}],
-              'trigger_name': 'fpc-heap-memory-utilization'}]
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                rs = RuleSchema(rule_name="hbez-fpc-heap-utilization")
 
-            # Add rule to HealthBot
-            print(hb.rule.add('external', schema=rs)
+                rs.description = "HealthBot EZ example"
+                rs.synopsis = "Using python client for demo"
+
+
+                rs.sensor = [{'description': 'Monitors FPC buffer, heap and cpu utilization',
+                              'iAgent': {'file': 'fpc-utilization.yml',
+                                         'frequency': '30s',
+                                         'table': 'FPCCPUHEAPutilizationTable'},
+                              'sensor-name': 'fpccpuheaputilization'}]
+
+                from jnpr.healthbot.swagger.models.rule_schema_field import RuleSchemaField
+                from jnpr.healthbot.swagger.models.rule_schema_constant import RuleSchemaConstant
+
+                rs.field = [RuleSchemaField(constant=RuleSchemaConstant(value='{{fpc-buffer-usage-threshold}}'),
+                                            description='This field is for buffer usage threshold',
+                                            field_name='linecard-buffer-usage-threshold'),
+                            RuleSchemaField(constant=RuleSchemaConstant(value='{{fpc-cpu-usage-threshold}}'),
+                                            description='This field is for linecard cpu usage threshold',
+                                            field_name='linecard-cpu-usage-threshold'),
+                            RuleSchemaField(constant=RuleSchemaConstant(value='{{fpc-heap-usage-threshold}}'),
+                                            description='This field is for linecard heap usage threshold',
+                                            field_name='linecard-heap-usage-threshold')]
+
+                rs.keys = ['slot']
+
+                rs.variable = [{'description': 'Linecard Buffer Memory usage threshold value',
+                                'name': 'fpc-buffer-usage-threshold',
+                                'type': 'int',
+                                'value': '80'},
+                               {'description': 'Linecard CPU usage threshold value',
+                                'name': 'fpc-cpu-usage-threshold',
+                                'type': 'int',
+                                'value': '80'},
+                               {'description': 'Linecard Heap Memory usage threshold value',
+                                'name': 'fpc-heap-usage-threshold',
+                                'type': 'int',
+                                'value': '80'}]
+
+                rs.trigger = [{'description': 'Sets health based on linecard buffer memory',
+                               'frequency': '60s',
+                               'synopsis': 'Linecard buffer memory kpi',
+                               'term': [{'term-name': 'is-buffer-memory-utilization-greater-than-threshold',
+                                         'then': {'status': {'color': 'red',
+                                                             'message': 'FPC buffer memory '
+                                                                        'utilization '
+                                                                        '($memory-buffer-utilization) '
+                                                                        'is over threshold '
+                                                                        '($linecard-buffer-usage-threshold)'}},
+                                         'when': {'greater-than': [{'left-operand': '$memory-buffer-utilization',
+                                                                    'right-operand': '$linecard-buffer-usage-threshold'}]}},
+                                        {'term-name': 'buffer-utilization-less-than-threshold',
+                                         'then': {'status': {'color': 'green'}}}],
+                               'trigger-name': 'fpc-buffer-memory-utilization'},
+                              {'description': 'Sets health based on linecard cpu utilization',
+                               'frequency': '60s',
+                               'synopsis': 'Linecard cpu utilization kpi',
+                               'term': [{'term-name': 'is-cpu-utilization-greater-than-80',
+                                         'then': {'status': {'color': 'red',
+                                                             'message': 'FPC CPU utilization '
+                                                                        '($cpu-total) is over '
+                                                                        'threshold '
+                                                                        '($linecard-cpu-usage-threshold)'}},
+                                         'when': {'greater-than': [{'left-operand': '$cpu-total',
+                                                                    'right-operand': '$linecard-cpu-usage-threshold',
+                                                                    'time-range': '180s'}]}},
+                                        {'term-name': 'cpu-utilization-less-than-threshold',
+                                         'then': {'status': {'color': 'green'}}}],
+                               'trigger-name': 'fpc-cpu-utilization'},
+                              {'description': 'Sets health based on linecard heap memory '
+                                              'utilization',
+                               'frequency': '60s',
+                               'synopsis': 'Linecard heap memory kpi',
+                               'term': [{'term-name': 'is-heap-memory-utilization-greater-than-threshold',
+                                         'then': {'status': {'color': 'red',
+                                                             'message': 'FPC heap memory '
+                                                                        'utilization '
+                                                                        '($memory-heap-utilization) '
+                                                                        'is over threshold '
+                                                                        '($linecard-heap-usage-threshold)'}},
+                                         'when': {'greater-than': [{'left-operand': '$memory-heap-utilization',
+                                                                    'right-operand': '$linecard-heap-usage-threshold'}]}},
+                                        {'term-name': 'heap-memory-utilization-less-than-threshold',
+                                         'then': {'status': {'color': 'green'}}}],
+                               'trigger-name': 'fpc-heap-memory-utilization'}]
+                hb.rule.add('hbez', schema=rs)
 
         Returns:
             True if action successful
@@ -140,6 +146,7 @@ class Rule(object):
         rule_url = self.hbot.urlfor.rule(topic_name, payload['rule-name'])
         resp = self.api.get(rule_url + self.hbot.apiopt_candidate)
         if resp.ok:
+            logger.info("Rule already exists")
             return True
         response = self.api.post(rule_url, json=payload)
         if response.status_code != 200:
@@ -159,14 +166,15 @@ class Rule(object):
         ::
             from jnpr.healthbot import HealthBotClient
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            hb.rule.delete('linecard.ospf', 'check-ddos-statistics')
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                hb.rule.delete('linecard.ospf', 'check-ddos-statistics')
+
         """
 
         payload = {'rule-name': rule_name}
         rule_url = self.hbot.urlfor.rule(topic_name, rule_name)
         response = self.api.delete(rule_url, json=payload)
-        if response.status_code != 200:
+        if response.status_code != 204:
             logger.error(response.text)
         response.raise_for_status()
         return True
@@ -189,10 +197,11 @@ class Rule(object):
         ::
             from jnpr.healthbot import HealthBotClient
 
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            print(hb.rule.get('linecard.ospf', 'check-ddos-statistics')
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                print(hb.rule.get('linecard.ospf', 'check-ddos-statistics')
 
-            print(hb.rule.get('linecard.ospf')
+                print(hb.rule.get('linecard.ospf')
+
         """
         if rule_name is not None:
             rule_url = self.hbot.urlfor.rule(topic_name, rule_name)
@@ -229,10 +238,11 @@ class Rule(object):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            schemaObj = hb.rule.get(topic_name='hbez', rule_name="hbez-fpc-heap-utilization")
-            schemaObj.description = "HbEZ example"
-            hb.rule.update(topic_name='hbez', schemaObj)
+
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                schemaObj = hb.rule.get(topic_name='hbez', rule_name="hbez-fpc-heap-utilization")
+                schemaObj.description = "HbEZ example"
+                hb.rule.update(topic_name='hbez', schemaObj)
 
         :returns: True when OK
 
@@ -261,16 +271,13 @@ class Rule(object):
         return self.hbot.upload_helper_file(filename)
 
 
-class Topic(object):
+class Topic(BaseModule):
 
     def __init__(self, hbot):
         """
         :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
         """
-
-        self.hbot = hbot
-        self.url = hbot.url
-        self.api = hbot.hbot_session
+        super().__init__(hbot)
 
     def get(self, topic_name: str = None, uncommitted: bool = True):
         """
@@ -281,11 +288,12 @@ class Topic(object):
         ::
 
             from jnpr.healthbot import HealthBotClient
-            hb = HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx')
-            print(hb.topic.get('linecard.ospf'))
-            topics = hb.topic.get()
-            for topic in topics:
-                print(topic)
+
+            with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
+                print(hb.topic.get('linecard.ospf'))
+                topics = hb.topic.get()
+                for topic in topics:
+                    print(topic)
 
         :return: Single/list of `TopicSchema <jnpr.healthbot.swagger.models.html#topicchema>`_
         """

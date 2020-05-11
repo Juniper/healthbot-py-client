@@ -34,16 +34,17 @@ class FactsApi(object):
         self.api_client = api_client
 
     def retrieve_iceberg_device_device_facts_by_id(self, device_id, **kwargs):  # noqa: E501
-        """Get a device&#39;s facts.  # noqa: E501
+        """Get a device's facts.  # noqa: E501
 
         Get the fact details of a device by its `device-id`.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_device_device_facts_by_id(device_id, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_device_device_facts_by_id(device_id, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str device_id: ID of device-id (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :param bool update: true will first update facts from device and then return facts
         :param int timeout: timeout in seconds to wait for facts from given device id
@@ -52,23 +53,24 @@ class FactsApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_iceberg_device_device_facts_by_id_with_http_info(device_id, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_iceberg_device_device_facts_by_id_with_http_info(device_id, **kwargs)  # noqa: E501
             return data
 
     def retrieve_iceberg_device_device_facts_by_id_with_http_info(self, device_id, **kwargs):  # noqa: E501
-        """Get a device&#39;s facts.  # noqa: E501
+        """Get a device's facts.  # noqa: E501
 
         Get the fact details of a device by its `device-id`.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_device_device_facts_by_id_with_http_info(device_id, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_device_device_facts_by_id_with_http_info(device_id, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str device_id: ID of device-id (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :param bool update: true will first update facts from device and then return facts
         :param int timeout: timeout in seconds to wait for facts from given device id
@@ -77,8 +79,8 @@ class FactsApi(object):
                  returns the request thread.
         """
 
-        all_params = ['device_id', 'working', 'update', 'timeout']  # noqa: E501
-        all_params.append('async')
+        all_params = ['device_id', 'authorization', 'working', 'update', 'timeout']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -112,6 +114,8 @@ class FactsApi(object):
             query_params.append(('timeout', params['timeout']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -138,7 +142,7 @@ class FactsApi(object):
             files=local_var_files,
             response_type='DeviceSchema',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -149,11 +153,12 @@ class FactsApi(object):
 
         Get the fact details of every device  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_devices_devices_facts(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_devices_devices_facts(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :param bool update: true will first update facts from device and then return facts
         :param int timeout: timeout in seconds to wait for facts from every device
@@ -162,7 +167,7 @@ class FactsApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_iceberg_devices_devices_facts_with_http_info(**kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_iceberg_devices_devices_facts_with_http_info(**kwargs)  # noqa: E501
@@ -173,11 +178,12 @@ class FactsApi(object):
 
         Get the fact details of every device  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_devices_devices_facts_with_http_info(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_devices_devices_facts_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :param bool update: true will first update facts from device and then return facts
         :param int timeout: timeout in seconds to wait for facts from every device
@@ -186,8 +192,8 @@ class FactsApi(object):
                  returns the request thread.
         """
 
-        all_params = ['working', 'update', 'timeout']  # noqa: E501
-        all_params.append('async')
+        all_params = ['authorization', 'working', 'update', 'timeout']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -215,6 +221,8 @@ class FactsApi(object):
             query_params.append(('timeout', params['timeout']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -241,7 +249,7 @@ class FactsApi(object):
             files=local_var_files,
             response_type='DeviceSchema',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -252,12 +260,13 @@ class FactsApi(object):
 
         Get the fact details of every device under given group  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_devices_facts_by_group(device_group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_devices_facts_by_group(device_group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str device_group_name: ID of group (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :param bool update: true will first update facts from device and then return facts
         :param int timeout: timeout in seconds to wait for facts from every device
@@ -266,7 +275,7 @@ class FactsApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_iceberg_devices_facts_by_group_with_http_info(device_group_name, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_iceberg_devices_facts_by_group_with_http_info(device_group_name, **kwargs)  # noqa: E501
@@ -277,12 +286,13 @@ class FactsApi(object):
 
         Get the fact details of every device under given group  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_devices_facts_by_group_with_http_info(device_group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_devices_facts_by_group_with_http_info(device_group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str device_group_name: ID of group (required)
+        :param str authorization: authentication header object
         :param bool working: true queries un-committed configuration
         :param bool update: true will first update facts from device and then return facts
         :param int timeout: timeout in seconds to wait for facts from every device
@@ -291,8 +301,8 @@ class FactsApi(object):
                  returns the request thread.
         """
 
-        all_params = ['device_group_name', 'working', 'update', 'timeout']  # noqa: E501
-        all_params.append('async')
+        all_params = ['device_group_name', 'authorization', 'working', 'update', 'timeout']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -326,6 +336,8 @@ class FactsApi(object):
             query_params.append(('timeout', params['timeout']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -352,7 +364,7 @@ class FactsApi(object):
             files=local_var_files,
             response_type='DeviceSchema',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),

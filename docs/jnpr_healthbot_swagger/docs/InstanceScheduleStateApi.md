@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **retrieve_instances_schedule_state**
-> InstancesScheduleStateSchema retrieve_instances_schedule_state(group_name, group_type)
+> InstancesScheduleStateSchema retrieve_instances_schedule_state(group_name, group_type, authorization=authorization)
 
 Get scheduled state of playbook instances with schedule.
 
@@ -27,10 +27,11 @@ from pprint import pprint
 api_instance = swagger_client.InstanceScheduleStateApi()
 group_name = 'group_name_example' # str | Group name
 group_type = 'group_type_example' # str | Group type
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Get scheduled state of playbook instances with schedule.
-    api_response = api_instance.retrieve_instances_schedule_state(group_name, group_type)
+    api_response = api_instance.retrieve_instances_schedule_state(group_name, group_type, authorization=authorization)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling InstanceScheduleStateApi->retrieve_instances_schedule_state: %s\n" % e)
@@ -42,6 +43,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **group_name** | **str**| Group name | 
  **group_type** | **str**| Group type | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -59,7 +61,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_instances_schedule_state**
-> update_instances_schedule_state(group_name, group_type, instances_schedule_state)
+> update_instances_schedule_state(group_name, group_type, instances_schedule_state, authorization=authorization)
 
 Update scheduled state of playbook instances with schedule.
 
@@ -78,10 +80,11 @@ api_instance = swagger_client.InstanceScheduleStateApi()
 group_name = 'group_name_example' # str | Group name
 group_type = 'group_type_example' # str | Group type
 instances_schedule_state = swagger_client.InstancesScheduleStateSchema() # InstancesScheduleStateSchema | List of instances and their scheduled state
+authorization = 'authorization_example' # str | authentication header object (optional)
 
 try:
     # Update scheduled state of playbook instances with schedule.
-    api_instance.update_instances_schedule_state(group_name, group_type, instances_schedule_state)
+    api_instance.update_instances_schedule_state(group_name, group_type, instances_schedule_state, authorization=authorization)
 except ApiException as e:
     print("Exception when calling InstanceScheduleStateApi->update_instances_schedule_state: %s\n" % e)
 ```
@@ -93,6 +96,7 @@ Name | Type | Description  | Notes
  **group_name** | **str**| Group name | 
  **group_type** | **str**| Group type | 
  **instances_schedule_state** | [**InstancesScheduleStateSchema**](InstancesScheduleStateSchema.md)| List of instances and their scheduled state | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 

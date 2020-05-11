@@ -38,19 +38,20 @@ class InstanceScheduleStateApi(object):
 
         Retrieve the scheduled state of instances with an active scheduler attached to it and present under the group with name passed in the path parameter.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_instances_schedule_state(group_name, group_type, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_instances_schedule_state(group_name, group_type, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str group_name: Group name (required)
         :param str group_type: Group type (required)
+        :param str authorization: authentication header object
         :return: InstancesScheduleStateSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_instances_schedule_state_with_http_info(group_name, group_type, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_instances_schedule_state_with_http_info(group_name, group_type, **kwargs)  # noqa: E501
@@ -61,20 +62,21 @@ class InstanceScheduleStateApi(object):
 
         Retrieve the scheduled state of instances with an active scheduler attached to it and present under the group with name passed in the path parameter.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_instances_schedule_state_with_http_info(group_name, group_type, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_instances_schedule_state_with_http_info(group_name, group_type, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str group_name: Group name (required)
         :param str group_type: Group type (required)
+        :param str authorization: authentication header object
         :return: InstancesScheduleStateSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['group_name', 'group_type']  # noqa: E501
-        all_params.append('async')
+        all_params = ['group_name', 'group_type', 'authorization']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -108,6 +110,8 @@ class InstanceScheduleStateApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -134,7 +138,7 @@ class InstanceScheduleStateApi(object):
             files=local_var_files,
             response_type='InstancesScheduleStateSchema',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -145,20 +149,21 @@ class InstanceScheduleStateApi(object):
 
         Update the scheduled state of instances with active scheduler attached to it and present under the group with name passed in the path parameter.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_instances_schedule_state(group_name, group_type, instances_schedule_state, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_instances_schedule_state(group_name, group_type, instances_schedule_state, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str group_name: Group name (required)
         :param str group_type: Group type (required)
         :param InstancesScheduleStateSchema instances_schedule_state: List of instances and their scheduled state (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.update_instances_schedule_state_with_http_info(group_name, group_type, instances_schedule_state, **kwargs)  # noqa: E501
         else:
             (data) = self.update_instances_schedule_state_with_http_info(group_name, group_type, instances_schedule_state, **kwargs)  # noqa: E501
@@ -169,21 +174,22 @@ class InstanceScheduleStateApi(object):
 
         Update the scheduled state of instances with active scheduler attached to it and present under the group with name passed in the path parameter.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_instances_schedule_state_with_http_info(group_name, group_type, instances_schedule_state, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_instances_schedule_state_with_http_info(group_name, group_type, instances_schedule_state, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str group_name: Group name (required)
         :param str group_type: Group type (required)
         :param InstancesScheduleStateSchema instances_schedule_state: List of instances and their scheduled state (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['group_name', 'group_type', 'instances_schedule_state']  # noqa: E501
-        all_params.append('async')
+        all_params = ['group_name', 'group_type', 'instances_schedule_state', 'authorization']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -221,6 +227,8 @@ class InstanceScheduleStateApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -249,7 +257,7 @@ class InstanceScheduleStateApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),

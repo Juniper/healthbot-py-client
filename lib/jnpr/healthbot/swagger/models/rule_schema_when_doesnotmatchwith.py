@@ -193,7 +193,7 @@ class RuleSchemaWhenDoesnotmatchwith(object):
     def time_range(self):
         """Gets the time_range of this RuleSchemaWhenDoesnotmatchwith.  # noqa: E501
 
-        How much back in time should we look for data. Specify positive integer followed by s/m/h/d/w/y representing seconds/minutes/hours/days/weeks/years. Eg: 2s  # noqa: E501
+        How much back in time should we look for data. Specify positive integer followed by s/m/h/d/w/y/o representing seconds/minutes/hours/days/weeks/years/offset. Eg: 2s  # noqa: E501
 
         :return: The time_range of this RuleSchemaWhenDoesnotmatchwith.  # noqa: E501
         :rtype: str
@@ -204,13 +204,13 @@ class RuleSchemaWhenDoesnotmatchwith(object):
     def time_range(self, time_range):
         """Sets the time_range of this RuleSchemaWhenDoesnotmatchwith.
 
-        How much back in time should we look for data. Specify positive integer followed by s/m/h/d/w/y representing seconds/minutes/hours/days/weeks/years. Eg: 2s  # noqa: E501
+        How much back in time should we look for data. Specify positive integer followed by s/m/h/d/w/y/o representing seconds/minutes/hours/days/weeks/years/offset. Eg: 2s  # noqa: E501
 
         :param time_range: The time_range of this RuleSchemaWhenDoesnotmatchwith.  # noqa: E501
         :type: str
         """
-        if time_range is not None and not re.search('^[1-9][0-9]*[smhdwy]$', time_range):  # noqa: E501
-            raise ValueError("Invalid value for `time_range`, must be a follow pattern or equal to `/^[1-9][0-9]*[smhdwy]$/`")  # noqa: E501
+        if time_range is not None and not re.search(r'^[1-9][0-9]*(o|s|m|h|d|w|y|offset)$', time_range):  # noqa: E501
+            raise ValueError(r"Invalid value for `time_range`, must be a follow pattern or equal to `/^[1-9][0-9]*(o|s|m|h|d|w|y|offset)$/`")  # noqa: E501
 
         self._time_range = time_range
 
@@ -235,6 +235,9 @@ class RuleSchemaWhenDoesnotmatchwith(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(RuleSchemaWhenDoesnotmatchwith, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

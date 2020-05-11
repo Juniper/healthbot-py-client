@@ -92,6 +92,9 @@ class RuleSchemaConstant(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(RuleSchemaConstant, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

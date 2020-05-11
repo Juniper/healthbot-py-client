@@ -91,6 +91,9 @@ class DestinationSchemaDisk(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(DestinationSchemaDisk, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

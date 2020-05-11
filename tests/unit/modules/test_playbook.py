@@ -5,18 +5,24 @@ from jnpr.healthbot import HealthBotClient
 from jnpr.healthbot import PlaybookSchema
 from jnpr.healthbot import PlayBookInstanceBuilder
 from mock import patch
-
+from requests.models import Response
+from . import _mock_user_login
 
 @attr('unit')
 class TestPlaybooks(unittest.TestCase):
 
     @patch('jnpr.healthbot.healthbot.requests.Session')
-    def setUp(self, mock_request):
+    @patch('jnpr.healthbot.swagger.api.authentication_api.AuthenticationApi.user_login')
+    def setUp(self, mock_user_login, mock_request):
+        self.mock_user_login = _mock_user_login
         self.mock_request = mock_request
         self.conn = HealthBotClient(
             server='1.1.1.1',
             user='test',
-            password='password123')
+            password='password123').open()
+
+    def tearDown(self) -> None:
+        self.conn.close()
 
     def test_add_playbook_using_schema_check_existance(self):
         self.mock_request().get.side_effect = self._mock_manager
@@ -24,7 +30,8 @@ class TestPlaybooks(unittest.TestCase):
         pbs.description = "HbEZ Demo Examples"
         pbs.synopsis = 'fpc status'
         pbs.rules = ['hbez/hbez-fpc-heap-utilization']
-        self.assertTrue(self.conn.playbook.add(pbs))
+        ret = self.conn.playbook.add(pbs)
+        self.assertTrue(ret)
 
     def test_add_playbook_using_schema(self):
         self.mock_request().get.side_effect = self._mock_manager
@@ -53,7 +60,7 @@ class TestPlaybooks(unittest.TestCase):
         obj.description = "testing"
         self.conn.playbook.update(obj)
         self.assertEqual(
-            self.mock_request().mock_calls[4][2]['json']['description'],
+            self.mock_request().mock_calls[3][2]['json']['description'],
             "testing")
 
     def test_get_playbooks(self):
@@ -67,9 +74,9 @@ class TestPlaybooks(unittest.TestCase):
             self.conn, 'automation-coredump-pb', 'HbEZ-instance',
             'Core')
         pbb.apply()
-        self.assertEqual(self.mock_request().mock_calls[6][0], 'put')
+        self.assertEqual(self.mock_request().mock_calls[5][0], 'put')
         self.assertEqual(
-            self.mock_request().mock_calls[6][1][0],
+            self.mock_request().mock_calls[5][1][0],
             'https://1.1.1.1:8080/api/v1/device-group/Core')
 
     def test_playbook_instance_builder_delete(self):
@@ -78,12 +85,12 @@ class TestPlaybooks(unittest.TestCase):
             self.conn, 'automation-coredump-pb', 'HbEZ-instance',
             'Core')
         pbb.delete()
-        self.assertEqual(self.mock_request().mock_calls[7][0], 'put')
+        self.assertEqual(self.mock_request().mock_calls[6][0], 'put')
         self.assertEqual(
-            self.mock_request().mock_calls[7][1][0],
+            self.mock_request().mock_calls[6][1][0],
             'https://1.1.1.1:8080/api/v1/device/vmx')
         self.assertEqual(
-            self.mock_request().mock_calls[11][1][0],
+            self.mock_request().mock_calls[10][1][0],
             'https://1.1.1.1:8080/api/v1/device-group/Core')
 
     def test_playbook_apply_commit(self):
@@ -92,9 +99,9 @@ class TestPlaybooks(unittest.TestCase):
             self.conn, 'automation-coredump-pb', 'HbEZ-instance',
             'Core')
         pbb.apply(commit=True)
-        self.assertEqual(self.mock_request().mock_calls[10][0], 'post')
+        self.assertEqual(self.mock_request().mock_calls[9][0], 'post')
         self.assertEqual(
-            self.mock_request().mock_calls[10][1][0],
+            self.mock_request().mock_calls[9][1][0],
             'https://1.1.1.1:8080/api/v1/configuration')
 
     def test_playbook_instance_builder_with_no_device_group(self):
@@ -115,9 +122,9 @@ class TestPlaybooks(unittest.TestCase):
         routesummary_fib_summary.route_count_threshold = 200
         routesummary_fib_summary.route_address_family = 'abc'
         pbb.apply()
-        self.assertEqual(self.mock_request().mock_calls[7][0], 'put')
+        self.assertEqual(self.mock_request().mock_calls[6][0], 'put')
         self.assertEqual(
-            self.mock_request().mock_calls[7][1][0],
+            self.mock_request().mock_calls[6][1][0],
             'https://1.1.1.1:8080/api/v1/device-group/Core')
 
     def test_playbook_instance_builder_with_variable_per_device(self):
@@ -131,9 +138,9 @@ class TestPlaybooks(unittest.TestCase):
         routesummary_fib_summary.route_count_threshold = 200
         routesummary_fib_summary.route_address_family = 'abc'
         pbb.apply(device_ids=['vmx'])
-        self.assertEqual(self.mock_request().mock_calls[8][0], 'put')
+        self.assertEqual(self.mock_request().mock_calls[7][0], 'put')
         self.assertEqual(
-            self.mock_request().mock_calls[8][1][0],
+            self.mock_request().mock_calls[7][1][0],
             'https://1.1.1.1:8080/api/v1/device/vmx')
 
     def test_playbook_instance_builder_with_non_existing_device(self):
@@ -180,13 +187,15 @@ class TestPlaybooks(unittest.TestCase):
                           'dummy', 'HbEZ-instance', 'Core')
 
     def _mock_manager(self, *args):
-        class MockResponse:
+        class MockResponse(Response):
             def __init__(self, json_data, status_code):
                 self.json_data = json_data
                 self.status_code = status_code
-                self.ok = True
 
             def json(self):
+                return self.json_data
+
+            def to_dict(self):
                 return self.json_data
 
             def raise_for_status(self):
@@ -199,7 +208,6 @@ class TestPlaybooks(unittest.TestCase):
                     "protocol-automation-coredumps/check-coredumps"
                 ]
             }, 200)
-            obj.ok = True
             return obj
         if args[0] == 'https://1.1.1.1:8080/api/v1/topic/protocol-automation-coredumps/rule/check-coredumps/?working=true':
             obj = MockResponse({"description": "This rule will monitor for the automation coredumps",
@@ -251,7 +259,6 @@ class TestPlaybooks(unittest.TestCase):
                                                                            "message": "No core found"}}}],
                                              "trigger-name": "core-generated"}]},
                                200)
-            obj.ok = True
             return obj
         if args[0] == 'https://1.1.1.1:8080/api/v1/playbooks/?working=true':
             obj = MockResponse({"playbook": [{"playbook-name": "netsvc-playbook",
@@ -265,7 +272,6 @@ class TestPlaybooks(unittest.TestCase):
                                               "rules": ["protocol-eventd-debug/collect-debugs"],
                                               "synopsis": "Collect eventd logs"}]},
                                200)
-            obj.ok = True
             return obj
         if args[0] == 'https://1.1.1.1:8080/api/v1/topic/protocol.routesummary/rule/check-fib-summary/?working=true':
             obj = MockResponse({
@@ -441,7 +447,6 @@ class TestPlaybooks(unittest.TestCase):
                 ]
             },
                 200)
-            obj.ok = True
             return obj
         if args[0] == 'https://1.1.1.1:8080/api/v1/playbook/forwarding-table-summary/?working=true':
             obj = MockResponse({
@@ -452,7 +457,6 @@ class TestPlaybooks(unittest.TestCase):
                 ],
                 "synopsis": "Forwarding table and protocol routes key performance indicators"
             }, 200)
-            obj.ok = False
             return obj
         elif args[0] == 'https://1.1.1.1:8080/api/v1/device-group/Core/?working=true':
             return MockResponse({"description": "testing",
@@ -500,7 +504,6 @@ class TestPlaybooks(unittest.TestCase):
                 "detail": "Playbook not found",
                 "status": 404
             }, 404)
-            obj.ok = False
             return obj
         elif args[0] == 'https://1.1.1.1:8080/api/v1/device/vmx/?working=true':
             return MockResponse({

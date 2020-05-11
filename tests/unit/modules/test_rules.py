@@ -5,18 +5,24 @@ from mock import patch
 
 from jnpr.healthbot import HealthBotClient
 from jnpr.healthbot.modules.rules import RuleSchema
-
+from requests.models import Response
+from . import _mock_user_login
 
 @attr('unit')
 class TestRules(unittest.TestCase):
 
     @patch('jnpr.healthbot.healthbot.requests.Session')
-    def setUp(self, mock_request):
+    @patch('jnpr.healthbot.swagger.api.authentication_api.AuthenticationApi.user_login')
+    def setUp(self, mock_user_login, mock_request):
+        self.mock_user_login = _mock_user_login
         self.mock_request = mock_request
         self.conn = HealthBotClient(
             server='1.1.1.1',
             user='test',
-            password='password123')
+            password='password123').open()
+
+    def tearDown(self) -> None:
+        self.conn.close()
 
     def test_add_rule(self):
         self.mock_request().get.side_effect = self._mock_manager
@@ -132,7 +138,7 @@ class TestRules(unittest.TestCase):
             topic_name='external',
             rule_name="hbez-fpc-heap-utilization")
         self.assertTrue(ret)
-        self.assertEqual(self.mock_request().mock_calls[3][0],
+        self.assertEqual(self.mock_request().mock_calls[2][0],
                          'delete')
 
     def test_update_rule(self):
@@ -143,7 +149,7 @@ class TestRules(unittest.TestCase):
         ret.keys = ['slot']
         self.conn.rule.update(topic_name='external', schema=ret)
         self.assertEqual(
-            self.mock_request().mock_calls[4][2]['json']['keys'],
+            self.mock_request().mock_calls[3][2]['json']['keys'],
             ['slot'])
 
     def test_get_topic(self):
@@ -159,12 +165,15 @@ class TestRules(unittest.TestCase):
                          'Monitors the chassis temperatures of whole chassis')
 
     def _mock_manager(self, *args):
-        class MockResponse:
+        class MockResponse(Response):
             def __init__(self, json_data, status_code):
                 self.json_data = json_data
                 self.status_code = status_code
 
             def json(self):
+                return self.json_data
+
+            def to_dict(self):
                 return self.json_data
 
             def raise_for_status(self):
@@ -223,7 +232,6 @@ class TestRules(unittest.TestCase):
                 "sub-topics": [],
                 "topic-name": "external"
             }, 200)
-            obj.ok = False
             return obj
         elif args[0] == 'https://1.1.1.1:8080/api/v1/topic/external/rule/hbez-fpc-heap-utilization/?working=true':
             obj = MockResponse({"description": "HealthBot EZ example",
@@ -256,7 +264,6 @@ class TestRules(unittest.TestCase):
                                               "type": "int",
                                               "value": "80"}]},
                                200)
-            obj.ok = False
             return obj
         elif args[0] == 'https://1.1.1.1:8080/api/v1/topics':
             return MockResponse({

@@ -123,6 +123,9 @@ class RuleSchemaRulepropertiesHelperfiles(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(RuleSchemaRulepropertiesHelperfiles, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

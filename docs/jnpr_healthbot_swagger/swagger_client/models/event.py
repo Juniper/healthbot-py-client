@@ -179,6 +179,9 @@ class Event(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(Event, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

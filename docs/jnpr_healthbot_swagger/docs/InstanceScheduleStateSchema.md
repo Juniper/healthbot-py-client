@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **rule** | **str** | Name of the rule associated with the instance | 
 **playbook** | **str** | Name of the playbook associated with the instance | 
 **state** | **str** | Scheduled state of the instance. Can be one of active or inactive | 
+**update_time** | **object** | Time the current status is updated for this instance in elapsed seconds since epoch | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

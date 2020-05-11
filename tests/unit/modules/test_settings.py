@@ -23,6 +23,7 @@ class TestSettings(unittest.TestCase):
     def setUp(self, mock_user_login, mock_request):
         self.mock_user_login = _mock_user_login
         self.mock_request = mock_request
+        self.mock_request().get.side_effect = self._mock_manager
         self.conn = HealthBotClient(
             server='1.1.1.1',
             user='test',
@@ -134,7 +135,6 @@ class TestSettings(unittest.TestCase):
             'https://1.1.1.1:8080/api/v1/retention-policy/HbEZ-testing')
 
     def test_get_notification(self):
-        self.mock_request().get.side_effect = self._mock_manager
         ns = self.conn.settings.notification.get(
             notification_name='HbEZ-notification')
         self.assertEqual(
@@ -143,63 +143,52 @@ class TestSettings(unittest.TestCase):
         self.assertEqual(ns.notification_name, "HbEZ-notification")
 
     def test_get_notification_error(self):
-        self.mock_request().get.side_effect = self._mock_manager
         self.assertRaises(
             ValueError,
             self.conn.settings.notification.get,
             notification_name='error')
 
     def test_get_scheduler(self):
-        self.mock_request().get.side_effect = self._mock_manager
         sc = self.conn.settings.scheduler.get(name='HbEZ-schedule')
         self.assertEqual(sc.repeat, {
             "every": "week"
         })
 
     def test_get_destination(self):
-        self.mock_request().get.side_effect = self._mock_manager
         ds = self.conn.settings.destination.get(
             name='HbEZ-destination')
         self.assertEqual(ds.email, {'id': 'xyz@abc.com'})
 
     def test_get_report(self):
-        self.mock_request().get.side_effect = self._mock_manager
         rs = self.conn.settings.report.get(name="HbEZ-report")
         self.assertEqual(rs.format, 'html')
 
     def test_get_retention_policy(self):
-        self.mock_request().get.side_effect = self._mock_manager
         rp = self.conn.settings.retention_policy.get(
             'HbEZ-testing')
         self.assertEqual(rp.retention_policy_name, "HbEZ-testing")
 
     def test_get_reports(self):
-        self.mock_request().get.side_effect = self._mock_manager
         rs = self.conn.settings.report.get()
         self.assertGreater(len(rs), 0)
 
     def test_get_notifications(self):
-        self.mock_request().get.side_effect = self._mock_manager
         ns = self.conn.settings.notification.get()
         self.assertGreater(len(ns), 0)
 
     def test_get_schedulers(self):
-        self.mock_request().get.side_effect = self._mock_manager
         sc = self.conn.settings.scheduler.get()
         self.assertGreater(len(sc), 0)
 
     def test_get_destinations(self):
-        self.mock_request().get.side_effect = self._mock_manager
         des = self.conn.settings.destination.get()
         self.assertGreater(len(des), 0)
 
     def test_get_reports(self):
-        self.mock_request().get.side_effect = self._mock_manager
         rep = self.conn.settings.report.get()
         self.assertGreater(len(rep), 0)
 
     def test_get_retention_policies(self):
-        self.mock_request().get.side_effect = self._mock_manager
         rp = self.conn.settings.retention_policy.get()
         self.assertGreater(len(rp), 0)
 
@@ -238,7 +227,6 @@ class TestSettings(unittest.TestCase):
                          'delete')
 
     def test_update_notification(self):
-        self.mock_request().get.side_effect = self._mock_manager
         ns = self.conn.settings.notification.get(
             notification_name='HbEZ-notification')
         from jnpr.healthbot import NotificationSchemaHttppost
@@ -249,7 +237,6 @@ class TestSettings(unittest.TestCase):
             'https://juniper.net')
 
     def test_update_scheduler(self):
-        self.mock_request().get.side_effect = self._mock_manager
         sc = self.conn.settings.scheduler.get(name='HbEZ-schedule')
         sc.repeat = {'every': 'daily'}
         self.conn.settings.scheduler.update(sc)
@@ -258,7 +245,6 @@ class TestSettings(unittest.TestCase):
             'daily')
 
     def test_update_destination(self):
-        self.mock_request().get.side_effect = self._mock_manager
         ds = self.conn.settings.destination.get(
             name='HbEZ-destination')
         ds.email = {'id': 'pqr@abc.com'}
@@ -268,7 +254,6 @@ class TestSettings(unittest.TestCase):
             'pqr@abc.com')
 
     def test_update_report(self):
-        self.mock_request().get.side_effect = self._mock_manager
         rs = self.conn.settings.report.get(name="HbEZ-report")
         rs.format = 'json'
         self.conn.settings.report.update(rs)
@@ -277,7 +262,6 @@ class TestSettings(unittest.TestCase):
             'json')
 
     def test_update_retention_policy(self):
-        self.mock_request().get.side_effect = self._mock_manager
         rp = self.conn.settings.retention_policy.get(
             'HbEZ-testing')
         rp.duration = '10h'
@@ -286,14 +270,21 @@ class TestSettings(unittest.TestCase):
             self.mock_request().mock_calls[3][2]['json']['duration'],
             '10h')
 
-    def test_get_licence(self):
-        self.mock_request().get.side_effect = self._mock_manager
+    def test_licence_get(self):
         ret = self.conn.settings.license.get(
             'xxx-xx-xxx')
-        self.assertEqual(ret.json_data["customer-id"], "xxxx")
+        self.assertEqual(ret["customer-id"], "xxxx")
+
+    def test_licence_get_ids(self):
+        ret = self.conn.settings.license.get_ids()
+        self.assertEqual(ret, ['xxx-xx-xxx', 'yyy-yy-yyy'])
+
+    def test_licence_get_features(self):
+        ret = self.conn.settings.license.get_features()
+        self.assertEqual(ret[0]['feature_description'], "Max G8")
 
     def _mock_manager(self, *args, **kwargs):
-        class MockResponse:
+        class MockResponse(Response):
             def __init__(self, json_data, status_code):
                 self.json_data = json_data
                 self.status_code = status_code
@@ -418,21 +409,37 @@ class TestSettings(unittest.TestCase):
             return obj
         elif args[0] == '/license/key/{license_id}/contents/' and \
                 args[2] == {'license_id': 'xxx-xx-xxx'}:
-            return MockResponse({"customer-id": "xxxx",
-                                 "end-date": "2106-02-0xxx",
-                                 "features": [{"capacity-flag": False,
-                                               "capacity-value": 1,
-                                               "feature-description": "Allow a..",
-                                               "feature-id": 10001,
-                                               "feature-name": "xxxx"},
-                                              ],
-                                 "license-id": "xxx-xx-xxx",
-                                 "mode": "standalone",
-                                 "order-type": "commercial",
-                                 "sku-name": "HBxxx",
-                                 "start-date": "20xxx",
-                                 "sw-serial-id": "07xxx",
-                                 "validity-type": "xxx",
-                                 "version": 1},
-                                200)
+            return {"customer-id": "xxxx",
+                    "end-date": "2106-02-0xxx",
+                    "features": [{"capacity-flag": False,
+                                  "capacity-value": 1,
+                                  "feature-description": "Allow a..",
+                                  "feature-id": 10001,
+                                  "feature-name": "xxxx"},
+                                 ],
+                    "license-id": "xxx-xx-xxx",
+                    "mode": "standalone",
+                    "order-type": "commercial",
+                    "sku-name": "HBxxx",
+                    "start-date": "20xxx",
+                    "sw-serial-id": "07xxx",
+                    "validity-type": "xxx",
+                    "version": 1}
+        elif args[0] == '/license/keys/':
+            return ["xxx-xx-xxx", "yyy-yy-yyy"]
+        elif args[0] == '/license/status/':
+            from jnpr.healthbot import LicenseFeatureSchema
+            return LicenseFeatureSchema(**{'compliance': True,
+                     'end_date': 111,
+                     'feature_description': 'Max G8',
+                     'feature_id': 111,
+                     'feature_name': 'xxxx',
+                     'license_remaining': 1,
+                     'license_requested': 1,
+                     'license_total': 1,
+                     'license_usage': 1,
+                     'max_remaining_days': 1,
+                     'mode': 'xxxx',
+                     'valid_until': 'xxxx',
+                     'validity_type': 'xxx'})
         return MockResponse(None, 404)

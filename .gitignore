@@ -39,7 +39,6 @@ MANIFEST
 # Testing
 .tox
 
-
 # Window File Explorer
 desktop.ini
 
@@ -48,3 +47,10 @@ desktop.ini
 
 # PyCharm
 .idea
+
+.ipynb_checkpoints
+
+.swagger-codegen
+.swagger-codegen-ignore
+
+__pycache__

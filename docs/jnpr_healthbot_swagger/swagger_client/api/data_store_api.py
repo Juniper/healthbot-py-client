@@ -38,19 +38,20 @@ class DataStoreApi(object):
 
         Delete data_store details for the given group-name, or as per the keys passed in query.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_data_store(group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_data_store(group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str group_name: Group name (required)
+        :param str authorization: authentication header object
         :param list[str] key: ID of dashboard
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.delete_data_store_with_http_info(group_name, **kwargs)  # noqa: E501
         else:
             (data) = self.delete_data_store_with_http_info(group_name, **kwargs)  # noqa: E501
@@ -61,20 +62,21 @@ class DataStoreApi(object):
 
         Delete data_store details for the given group-name, or as per the keys passed in query.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_data_store_with_http_info(group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_data_store_with_http_info(group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str group_name: Group name (required)
+        :param str authorization: authentication header object
         :param list[str] key: ID of dashboard
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['group_name', 'key']  # noqa: E501
-        all_params.append('async')
+        all_params = ['group_name', 'authorization', 'key']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -105,6 +107,8 @@ class DataStoreApi(object):
             collection_formats['key'] = 'csv'  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -131,7 +135,7 @@ class DataStoreApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -142,19 +146,20 @@ class DataStoreApi(object):
 
         Retrieve data_store details for the given group-name, or as per the keys passed in query.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_data_store(group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_data_store(group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str group_name: Group name (required)
+        :param str authorization: authentication header object
         :param list[str] key: Key of data_store object
         :return: DatastoreSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_data_store_with_http_info(group_name, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_data_store_with_http_info(group_name, **kwargs)  # noqa: E501
@@ -165,20 +170,21 @@ class DataStoreApi(object):
 
         Retrieve data_store details for the given group-name, or as per the keys passed in query.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_data_store_with_http_info(group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_data_store_with_http_info(group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str group_name: Group name (required)
+        :param str authorization: authentication header object
         :param list[str] key: Key of data_store object
         :return: DatastoreSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['group_name', 'key']  # noqa: E501
-        all_params.append('async')
+        all_params = ['group_name', 'authorization', 'key']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -209,6 +215,8 @@ class DataStoreApi(object):
             collection_formats['key'] = 'csv'  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -235,7 +243,7 @@ class DataStoreApi(object):
             files=local_var_files,
             response_type='DatastoreSchema',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -246,20 +254,21 @@ class DataStoreApi(object):
 
         Update data-store details in database for the requested group name and key.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_data_store(key, data, group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_data_store(key, data, group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str key: key of data_store (required)
         :param DatastoreSchema data: value of data_store object (required)
         :param str group_name: Group name (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.update_data_store_with_http_info(key, data, group_name, **kwargs)  # noqa: E501
         else:
             (data) = self.update_data_store_with_http_info(key, data, group_name, **kwargs)  # noqa: E501
@@ -270,21 +279,22 @@ class DataStoreApi(object):
 
         Update data-store details in database for the requested group name and key.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_data_store_with_http_info(key, data, group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_data_store_with_http_info(key, data, group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str key: key of data_store (required)
         :param DatastoreSchema data: value of data_store object (required)
         :param str group_name: Group name (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['key', 'data', 'group_name']  # noqa: E501
-        all_params.append('async')
+        all_params = ['key', 'data', 'group_name', 'authorization']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -322,6 +332,8 @@ class DataStoreApi(object):
             query_params.append(('key', params['key']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -350,7 +362,7 @@ class DataStoreApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),

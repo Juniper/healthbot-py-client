@@ -82,8 +82,8 @@ class DevicegroupSchemaScheduler(object):
             raise ValueError("Invalid value for `instance_id`, must not be `None`")  # noqa: E501
         if instance_id is not None and len(instance_id) > 64:
             raise ValueError("Invalid value for `instance_id`, length must be less than or equal to `64`")  # noqa: E501
-        if instance_id is not None and not re.search('^[a-zA-Z][a-zA-Z0-9_-]*$', instance_id):  # noqa: E501
-            raise ValueError("Invalid value for `instance_id`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+        if instance_id is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', instance_id):  # noqa: E501
+            raise ValueError(r"Invalid value for `instance_id`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._instance_id = instance_id
 
@@ -111,8 +111,8 @@ class DevicegroupSchemaScheduler(object):
             raise ValueError("Invalid value for `playbook`, must not be `None`")  # noqa: E501
         if playbook is not None and len(playbook) > 64:
             raise ValueError("Invalid value for `playbook`, length must be less than or equal to `64`")  # noqa: E501
-        if playbook is not None and not re.search('^[a-zA-Z][a-zA-Z0-9_-]*$', playbook):  # noqa: E501
-            raise ValueError("Invalid value for `playbook`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+        if playbook is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', playbook):  # noqa: E501
+            raise ValueError(r"Invalid value for `playbook`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._playbook = playbook
 
@@ -140,8 +140,8 @@ class DevicegroupSchemaScheduler(object):
             raise ValueError("Invalid value for `rule`, must not be `None`")  # noqa: E501
         if rule is not None and len(rule) > 129:
             raise ValueError("Invalid value for `rule`, length must be less than or equal to `129`")  # noqa: E501
-        if rule is not None and not re.search('^[a-z][a-z-]*(\\.{1}[a-z0-9-]+)*\/[a-z][a-z0-9_-]*$', rule):  # noqa: E501
-            raise ValueError("Invalid value for `rule`, must be a follow pattern or equal to `/^[a-z][a-z-]*(\\.{1}[a-z0-9-]+)*\/[a-z][a-z0-9_-]*$/`")  # noqa: E501
+        if rule is not None and not re.search(r'^[a-z][a-z-]*(\\.{1}[a-z0-9-]+)*\/[a-z][a-z0-9_-]*$', rule):  # noqa: E501
+            raise ValueError(r"Invalid value for `rule`, must be a follow pattern or equal to `/^[a-z][a-z-]*(\\.{1}[a-z0-9-]+)*\/[a-z][a-z0-9_-]*$/`")  # noqa: E501
 
         self._rule = rule
 
@@ -169,8 +169,8 @@ class DevicegroupSchemaScheduler(object):
             raise ValueError("Invalid value for `schedule`, must not be `None`")  # noqa: E501
         if schedule is not None and len(schedule) > 64:
             raise ValueError("Invalid value for `schedule`, length must be less than or equal to `64`")  # noqa: E501
-        if schedule is not None and not re.search('^[a-zA-Z][a-zA-Z0-9_-]*$', schedule):  # noqa: E501
-            raise ValueError("Invalid value for `schedule`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+        if schedule is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', schedule):  # noqa: E501
+            raise ValueError(r"Invalid value for `schedule`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._schedule = schedule
 
@@ -195,6 +195,9 @@ class DevicegroupSchemaScheduler(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(DevicegroupSchemaScheduler, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

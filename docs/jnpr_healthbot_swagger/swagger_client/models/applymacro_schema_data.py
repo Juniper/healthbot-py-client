@@ -120,6 +120,9 @@ class ApplymacroSchemaData(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(ApplymacroSchemaData, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

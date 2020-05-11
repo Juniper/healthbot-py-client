@@ -1,2 +1,6 @@
+[run]
+omit =
+    jnpr/healthbot/swagger/models/*
+
 [report]
 show_missing = True

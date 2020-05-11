@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **repeat** | [**SchedulerSchemaRepeat**](SchedulerSchemaRepeat.md) |  | 
 **start_time** | **str** | Start scheduler at this time | 
 **run_for** | [**SchedulerSchemaRunfor**](SchedulerSchemaRunfor.md) |  | [optional] 
-**type** | **str** | Type of the scheduler. | 
+**type** | **str** | Type of the scheduler. | [optional] [default to 'continuous']
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

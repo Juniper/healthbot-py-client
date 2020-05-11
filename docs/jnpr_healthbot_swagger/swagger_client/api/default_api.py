@@ -33,25 +33,239 @@ class DefaultApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def create_files_helper_files_by_file_name(self, up_file, file_name, **kwargs):  # noqa: E501
-        """Upload a helper-file.  # noqa: E501
+    def backup_helper_files(self, **kwargs):  # noqa: E501
+        """Download the tar file containing all helper files.  # noqa: E501
 
-        Upload the specified helper-file.  # noqa: E501
+        Download helper files tar file, which will include the config and input directory.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_files_helper_files_by_file_name(up_file, file_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.backup_helper_files(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.backup_helper_files_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.backup_helper_files_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def backup_helper_files_with_http_info(self, **kwargs):  # noqa: E501
+        """Download the tar file containing all helper files.  # noqa: E501
+
+        Download helper files tar file, which will include the config and input directory.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.backup_helper_files_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method backup_helper_files" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/octet-stream'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/files/helper-files/backup/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='file',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_files_certificates_by_file_name(self, up_file, file_name, **kwargs):  # noqa: E501
+        """Upload a certificate file.  # noqa: E501
+
+        Upload the specified certificate-file.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_files_certificates_by_file_name(up_file, file_name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
         :param file up_file: File content (required)
         :param str file_name: File name (required)
-        :param str input_path: Input path
+        :param str authorization: authentication header object
+        :param str password: password
+        :param str certificate_type: Certificate type
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
+            return self.create_files_certificates_by_file_name_with_http_info(up_file, file_name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_files_certificates_by_file_name_with_http_info(up_file, file_name, **kwargs)  # noqa: E501
+            return data
+
+    def create_files_certificates_by_file_name_with_http_info(self, up_file, file_name, **kwargs):  # noqa: E501
+        """Upload a certificate file.  # noqa: E501
+
+        Upload the specified certificate-file.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_files_certificates_by_file_name_with_http_info(up_file, file_name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param file up_file: File content (required)
+        :param str file_name: File name (required)
+        :param str authorization: authentication header object
+        :param str password: password
+        :param str certificate_type: Certificate type
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['up_file', 'file_name', 'authorization', 'password', 'certificate_type']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_files_certificates_by_file_name" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'up_file' is set
+        if ('up_file' not in params or
+                params['up_file'] is None):
+            raise ValueError("Missing the required parameter `up_file` when calling `create_files_certificates_by_file_name`")  # noqa: E501
+        # verify the required parameter 'file_name' is set
+        if ('file_name' not in params or
+                params['file_name'] is None):
+            raise ValueError("Missing the required parameter `file_name` when calling `create_files_certificates_by_file_name`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'file_name' in params:
+            path_params['file_name'] = params['file_name']  # noqa: E501
+
+        query_params = []
+        if 'password' in params:
+            query_params.append(('password', params['password']))  # noqa: E501
+        if 'certificate_type' in params:
+            query_params.append(('certificate_type', params['certificate_type']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+        if 'up_file' in params:
+            local_var_files['up_file'] = params['up_file']  # noqa: E501
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'application/octet-stream'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/files/certificates/{file_name}/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_files_helper_files_by_file_name(self, up_file, file_name, **kwargs):  # noqa: E501
+        """Upload a helper-file.  # noqa: E501
+
+        Upload the specified helper-file.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_files_helper_files_by_file_name(up_file, file_name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param file up_file: File content (required)
+        :param str file_name: File name (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
             return self.create_files_helper_files_by_file_name_with_http_info(up_file, file_name, **kwargs)  # noqa: E501
         else:
             (data) = self.create_files_helper_files_by_file_name_with_http_info(up_file, file_name, **kwargs)  # noqa: E501
@@ -62,21 +276,21 @@ class DefaultApi(object):
 
         Upload the specified helper-file.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_files_helper_files_by_file_name_with_http_info(up_file, file_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_files_helper_files_by_file_name_with_http_info(up_file, file_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param file up_file: File content (required)
         :param str file_name: File name (required)
-        :param str input_path: Input path
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['up_file', 'file_name', 'input_path']  # noqa: E501
-        all_params.append('async')
+        all_params = ['up_file', 'file_name', 'authorization']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -106,10 +320,10 @@ class DefaultApi(object):
             path_params['file_name'] = params['file_name']  # noqa: E501
 
         query_params = []
-        if 'input_path' in params:
-            query_params.append(('input_path', params['input_path']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -138,7 +352,1196 @@ class DefaultApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_healthbot_ingest_settings_byoi_custom_plugin_by_id(self, name, custom_plugin, **kwargs):  # noqa: E501
+        """Create custom-plugin by ID  # noqa: E501
+
+        Create operation of resource: custom-plugin  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_healthbot_ingest_settings_byoi_custom_plugin_by_id(name, custom_plugin, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of custom-plugin (required)
+        :param CustomPluginSchema custom_plugin: custom_pluginbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.create_healthbot_ingest_settings_byoi_custom_plugin_by_id_with_http_info(name, custom_plugin, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_healthbot_ingest_settings_byoi_custom_plugin_by_id_with_http_info(name, custom_plugin, **kwargs)  # noqa: E501
+            return data
+
+    def create_healthbot_ingest_settings_byoi_custom_plugin_by_id_with_http_info(self, name, custom_plugin, **kwargs):  # noqa: E501
+        """Create custom-plugin by ID  # noqa: E501
+
+        Create operation of resource: custom-plugin  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_healthbot_ingest_settings_byoi_custom_plugin_by_id_with_http_info(name, custom_plugin, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of custom-plugin (required)
+        :param CustomPluginSchema custom_plugin: custom_pluginbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'custom_plugin', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_healthbot_ingest_settings_byoi_custom_plugin_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `create_healthbot_ingest_settings_byoi_custom_plugin_by_id`")  # noqa: E501
+        # verify the required parameter 'custom_plugin' is set
+        if ('custom_plugin' not in params or
+                params['custom_plugin'] is None):
+            raise ValueError("Missing the required parameter `custom_plugin` when calling `create_healthbot_ingest_settings_byoi_custom_plugin_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'custom_plugin' in params:
+            body_params = params['custom_plugin']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/byoi/custom-plugin/{name}/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id(self, name, tlive_kafka, **kwargs):  # noqa: E501
+        """Create tlive-kafka-oc by ID  # noqa: E501
+
+        Add/Merge a tlive-kafka-oc configuration.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id(name, tlive_kafka, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of tlive-kafka-oc (required)
+        :param TliveKafkaOcSchema tlive_kafka: tlive_kafkabody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.create_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id_with_http_info(name, tlive_kafka, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id_with_http_info(name, tlive_kafka, **kwargs)  # noqa: E501
+            return data
+
+    def create_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id_with_http_info(self, name, tlive_kafka, **kwargs):  # noqa: E501
+        """Create tlive-kafka-oc by ID  # noqa: E501
+
+        Add/Merge a tlive-kafka-oc configuration.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id_with_http_info(name, tlive_kafka, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of tlive-kafka-oc (required)
+        :param TliveKafkaOcSchema tlive_kafka: tlive_kafkabody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'tlive_kafka', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `create_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id`")  # noqa: E501
+        # verify the required parameter 'tlive_kafka' is set
+        if ('tlive_kafka' not in params or
+                params['tlive_kafka'] is None):
+            raise ValueError("Missing the required parameter `tlive_kafka` when calling `create_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'tlive_kafka' in params:
+            body_params = params['tlive_kafka']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_healthbot_ingest_settings_byoi_ingest_mapping_by_id(self, name, ingest_mapping, **kwargs):  # noqa: E501
+        """Create ingest-mapping by ID  # noqa: E501
+
+        Create ingest-mapping by name  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_healthbot_ingest_settings_byoi_ingest_mapping_by_id(name, ingest_mapping, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of ingest-mapping (required)
+        :param IngestMappingSchema ingest_mapping: ingest_mappingbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.create_healthbot_ingest_settings_byoi_ingest_mapping_by_id_with_http_info(name, ingest_mapping, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_healthbot_ingest_settings_byoi_ingest_mapping_by_id_with_http_info(name, ingest_mapping, **kwargs)  # noqa: E501
+            return data
+
+    def create_healthbot_ingest_settings_byoi_ingest_mapping_by_id_with_http_info(self, name, ingest_mapping, **kwargs):  # noqa: E501
+        """Create ingest-mapping by ID  # noqa: E501
+
+        Create ingest-mapping by name  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_healthbot_ingest_settings_byoi_ingest_mapping_by_id_with_http_info(name, ingest_mapping, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of ingest-mapping (required)
+        :param IngestMappingSchema ingest_mapping: ingest_mappingbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'ingest_mapping', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_healthbot_ingest_settings_byoi_ingest_mapping_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `create_healthbot_ingest_settings_byoi_ingest_mapping_by_id`")  # noqa: E501
+        # verify the required parameter 'ingest_mapping' is set
+        if ('ingest_mapping' not in params or
+                params['ingest_mapping'] is None):
+            raise ValueError("Missing the required parameter `ingest_mapping` when calling `create_healthbot_ingest_settings_byoi_ingest_mapping_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'ingest_mapping' in params:
+            body_params = params['ingest_mapping']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/byoi/ingest-mapping/{name}/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_healthbot_ingest_settings_frequency_profile_by_id(self, name, frequency_profile, **kwargs):  # noqa: E501
+        """Create frequency-profile by ID  # noqa: E501
+
+        Create operation of resource: frequency-profile  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_healthbot_ingest_settings_frequency_profile_by_id(name, frequency_profile, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: ID of name (required)
+        :param FrequencyProfileSchema frequency_profile: frequency_profilebody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.create_healthbot_ingest_settings_frequency_profile_by_id_with_http_info(name, frequency_profile, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_healthbot_ingest_settings_frequency_profile_by_id_with_http_info(name, frequency_profile, **kwargs)  # noqa: E501
+            return data
+
+    def create_healthbot_ingest_settings_frequency_profile_by_id_with_http_info(self, name, frequency_profile, **kwargs):  # noqa: E501
+        """Create frequency-profile by ID  # noqa: E501
+
+        Create operation of resource: frequency-profile  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_healthbot_ingest_settings_frequency_profile_by_id_with_http_info(name, frequency_profile, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: ID of name (required)
+        :param FrequencyProfileSchema frequency_profile: frequency_profilebody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'frequency_profile', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_healthbot_ingest_settings_frequency_profile_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `create_healthbot_ingest_settings_frequency_profile_by_id`")  # noqa: E501
+        # verify the required parameter 'frequency_profile' is set
+        if ('frequency_profile' not in params or
+                params['frequency_profile'] is None):
+            raise ValueError("Missing the required parameter `frequency_profile` when calling `create_healthbot_ingest_settings_frequency_profile_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'frequency_profile' in params:
+            body_params = params['frequency_profile']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/frequency-profile/{name}/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_healthbot_system_time_series_database_time_series_database_by_id(self, time_series_database, **kwargs):  # noqa: E501
+        """Create time-series-database by ID  # noqa: E501
+
+        Create operation of resource: time-series-database  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_healthbot_system_time_series_database_time_series_database_by_id(time_series_database, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param TsdbSchema time_series_database: time_series_databasebody object (required)
+        :param bool force_tsdb: force update tsdb when force is set to True
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.create_healthbot_system_time_series_database_time_series_database_by_id_with_http_info(time_series_database, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_healthbot_system_time_series_database_time_series_database_by_id_with_http_info(time_series_database, **kwargs)  # noqa: E501
+            return data
+
+    def create_healthbot_system_time_series_database_time_series_database_by_id_with_http_info(self, time_series_database, **kwargs):  # noqa: E501
+        """Create time-series-database by ID  # noqa: E501
+
+        Create operation of resource: time-series-database  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_healthbot_system_time_series_database_time_series_database_by_id_with_http_info(time_series_database, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param TsdbSchema time_series_database: time_series_databasebody object (required)
+        :param bool force_tsdb: force update tsdb when force is set to True
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['time_series_database', 'force_tsdb']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_healthbot_system_time_series_database_time_series_database_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'time_series_database' is set
+        if ('time_series_database' not in params or
+                params['time_series_database'] is None):
+            raise ValueError("Missing the required parameter `time_series_database` when calling `create_healthbot_system_time_series_database_time_series_database_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'force_tsdb' in params:
+            query_params.append(('force_tsdb', params['force_tsdb']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'time_series_database' in params:
+            body_params = params['time_series_database']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/tsdb/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_iceberg_ingest_settings(self, ingest_settings, **kwargs):  # noqa: E501
+        """Create ingest-settings by ID  # noqa: E501
+
+        Create operation of resource: ingest-settings  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_iceberg_ingest_settings(ingest_settings, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param IngestSettingsSchema ingest_settings: ingest_settingsbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.create_iceberg_ingest_settings_with_http_info(ingest_settings, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_iceberg_ingest_settings_with_http_info(ingest_settings, **kwargs)  # noqa: E501
+            return data
+
+    def create_iceberg_ingest_settings_with_http_info(self, ingest_settings, **kwargs):  # noqa: E501
+        """Create ingest-settings by ID  # noqa: E501
+
+        Create operation of resource: ingest-settings  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_iceberg_ingest_settings_with_http_info(ingest_settings, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param IngestSettingsSchema ingest_settings: ingest_settingsbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['ingest_settings', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_iceberg_ingest_settings" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'ingest_settings' is set
+        if ('ingest_settings' not in params or
+                params['ingest_settings'] is None):
+            raise ValueError("Missing the required parameter `ingest_settings` when calling `create_iceberg_ingest_settings`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'ingest_settings' in params:
+            body_params = params['ingest_settings']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_iceberg_ingest_settings_flow(self, flow, **kwargs):  # noqa: E501
+        """Create flow by ID  # noqa: E501
+
+        Create operation of resource: flow  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_iceberg_ingest_settings_flow(flow, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param FlowSchema flow: flowbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.create_iceberg_ingest_settings_flow_with_http_info(flow, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_iceberg_ingest_settings_flow_with_http_info(flow, **kwargs)  # noqa: E501
+            return data
+
+    def create_iceberg_ingest_settings_flow_with_http_info(self, flow, **kwargs):  # noqa: E501
+        """Create flow by ID  # noqa: E501
+
+        Create operation of resource: flow  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_iceberg_ingest_settings_flow_with_http_info(flow, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param FlowSchema flow: flowbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['flow', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_iceberg_ingest_settings_flow" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'flow' is set
+        if ('flow' not in params or
+                params['flow'] is None):
+            raise ValueError("Missing the required parameter `flow` when calling `create_iceberg_ingest_settings_flow`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'flow' in params:
+            body_params = params['flow']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/flow/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_iceberg_ingest_settings_flow_template_by_id(self, name, template, **kwargs):  # noqa: E501
+        """Create template by ID  # noqa: E501
+
+        Create operation of resource: template  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_iceberg_ingest_settings_flow_template_by_id(name, template, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of template (required)
+        :param TemplateSchema template: templatebody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.create_iceberg_ingest_settings_flow_template_by_id_with_http_info(name, template, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_iceberg_ingest_settings_flow_template_by_id_with_http_info(name, template, **kwargs)  # noqa: E501
+            return data
+
+    def create_iceberg_ingest_settings_flow_template_by_id_with_http_info(self, name, template, **kwargs):  # noqa: E501
+        """Create template by ID  # noqa: E501
+
+        Create operation of resource: template  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_iceberg_ingest_settings_flow_template_by_id_with_http_info(name, template, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of template (required)
+        :param TemplateSchema template: templatebody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'template', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_iceberg_ingest_settings_flow_template_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `create_iceberg_ingest_settings_flow_template_by_id`")  # noqa: E501
+        # verify the required parameter 'template' is set
+        if ('template' not in params or
+                params['template'] is None):
+            raise ValueError("Missing the required parameter `template` when calling `create_iceberg_ingest_settings_flow_template_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'template' in params:
+            body_params = params['template']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/flow/template/{name}/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_iceberg_ingest_settings_syslog(self, syslog, **kwargs):  # noqa: E501
+        """Create syslog by ID  # noqa: E501
+
+        Create operation of resource: syslog  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_iceberg_ingest_settings_syslog(syslog, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param SyslogSchema syslog: syslogbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.create_iceberg_ingest_settings_syslog_with_http_info(syslog, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_iceberg_ingest_settings_syslog_with_http_info(syslog, **kwargs)  # noqa: E501
+            return data
+
+    def create_iceberg_ingest_settings_syslog_with_http_info(self, syslog, **kwargs):  # noqa: E501
+        """Create syslog by ID  # noqa: E501
+
+        Create operation of resource: syslog  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_iceberg_ingest_settings_syslog_with_http_info(syslog, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param SyslogSchema syslog: syslogbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['syslog', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_iceberg_ingest_settings_syslog" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'syslog' is set
+        if ('syslog' not in params or
+                params['syslog'] is None):
+            raise ValueError("Missing the required parameter `syslog` when calling `create_iceberg_ingest_settings_syslog`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'syslog' in params:
+            body_params = params['syslog']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/syslog/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_iceberg_ingest_settings_syslog_pattern_by_id(self, name, pattern, **kwargs):  # noqa: E501
+        """Create pattern by ID  # noqa: E501
+
+        Create operation of resource: pattern  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_iceberg_ingest_settings_syslog_pattern_by_id(name, pattern, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of pattern (required)
+        :param PatternSchema pattern: patternbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.create_iceberg_ingest_settings_syslog_pattern_by_id_with_http_info(name, pattern, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_iceberg_ingest_settings_syslog_pattern_by_id_with_http_info(name, pattern, **kwargs)  # noqa: E501
+            return data
+
+    def create_iceberg_ingest_settings_syslog_pattern_by_id_with_http_info(self, name, pattern, **kwargs):  # noqa: E501
+        """Create pattern by ID  # noqa: E501
+
+        Create operation of resource: pattern  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_iceberg_ingest_settings_syslog_pattern_by_id_with_http_info(name, pattern, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of pattern (required)
+        :param PatternSchema pattern: patternbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'pattern', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_iceberg_ingest_settings_syslog_pattern_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `create_iceberg_ingest_settings_syslog_pattern_by_id`")  # noqa: E501
+        # verify the required parameter 'pattern' is set
+        if ('pattern' not in params or
+                params['pattern'] is None):
+            raise ValueError("Missing the required parameter `pattern` when calling `create_iceberg_ingest_settings_syslog_pattern_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'pattern' in params:
+            body_params = params['pattern']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/syslog/pattern/{name}/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_iceberg_ingest_settings_syslog_pattern_set_by_id(self, name, pattern_set, **kwargs):  # noqa: E501
+        """Create pattern-set by ID  # noqa: E501
+
+        Create operation of resource: pattern-set  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_iceberg_ingest_settings_syslog_pattern_set_by_id(name, pattern_set, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of pattern-set (required)
+        :param PatternSetSchema pattern_set: pattern_setbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.create_iceberg_ingest_settings_syslog_pattern_set_by_id_with_http_info(name, pattern_set, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_iceberg_ingest_settings_syslog_pattern_set_by_id_with_http_info(name, pattern_set, **kwargs)  # noqa: E501
+            return data
+
+    def create_iceberg_ingest_settings_syslog_pattern_set_by_id_with_http_info(self, name, pattern_set, **kwargs):  # noqa: E501
+        """Create pattern-set by ID  # noqa: E501
+
+        Create operation of resource: pattern-set  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_iceberg_ingest_settings_syslog_pattern_set_by_id_with_http_info(name, pattern_set, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of pattern-set (required)
+        :param PatternSetSchema pattern_set: pattern_setbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'pattern_set', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_iceberg_ingest_settings_syslog_pattern_set_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `create_iceberg_ingest_settings_syslog_pattern_set_by_id`")  # noqa: E501
+        # verify the required parameter 'pattern_set' is set
+        if ('pattern_set' not in params or
+                params['pattern_set'] is None):
+            raise ValueError("Missing the required parameter `pattern_set` when calling `create_iceberg_ingest_settings_syslog_pattern_set_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'pattern_set' in params:
+            body_params = params['pattern_set']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/syslog/pattern-set/{name}/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -149,19 +1552,20 @@ class DefaultApi(object):
 
         Create operation of resource: raw-data-summarization  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_iceberg_profile_data_summarization_raw_by_id(name, raw_data_summarization, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_iceberg_profile_data_summarization_raw_by_id(name, raw_data_summarization, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of raw-data-summarization (required)
         :param RawSchema raw_data_summarization: raw_data_summarizationbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.create_iceberg_profile_data_summarization_raw_by_id_with_http_info(name, raw_data_summarization, **kwargs)  # noqa: E501
         else:
             (data) = self.create_iceberg_profile_data_summarization_raw_by_id_with_http_info(name, raw_data_summarization, **kwargs)  # noqa: E501
@@ -172,20 +1576,21 @@ class DefaultApi(object):
 
         Create operation of resource: raw-data-summarization  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_iceberg_profile_data_summarization_raw_by_id_with_http_info(name, raw_data_summarization, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_iceberg_profile_data_summarization_raw_by_id_with_http_info(name, raw_data_summarization, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of raw-data-summarization (required)
         :param RawSchema raw_data_summarization: raw_data_summarizationbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'raw_data_summarization']  # noqa: E501
-        all_params.append('async')
+        all_params = ['name', 'raw_data_summarization', 'authorization']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -217,6 +1622,8 @@ class DefaultApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -245,7 +1652,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -256,19 +1663,20 @@ class DefaultApi(object):
 
         Create operation of resource: ca-profile  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_iceberg_profile_security_ca_profile_by_id(name, ca_profile, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_iceberg_profile_security_ca_profile_by_id(name, ca_profile, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of ca-profile (required)
         :param CaProfileSchema ca_profile: ca_profilebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.create_iceberg_profile_security_ca_profile_by_id_with_http_info(name, ca_profile, **kwargs)  # noqa: E501
         else:
             (data) = self.create_iceberg_profile_security_ca_profile_by_id_with_http_info(name, ca_profile, **kwargs)  # noqa: E501
@@ -279,20 +1687,21 @@ class DefaultApi(object):
 
         Create operation of resource: ca-profile  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_iceberg_profile_security_ca_profile_by_id_with_http_info(name, ca_profile, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_iceberg_profile_security_ca_profile_by_id_with_http_info(name, ca_profile, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of ca-profile (required)
         :param CaProfileSchema ca_profile: ca_profilebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'ca_profile']  # noqa: E501
-        all_params.append('async')
+        all_params = ['name', 'ca_profile', 'authorization']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -324,6 +1733,8 @@ class DefaultApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -352,7 +1763,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -363,19 +1774,20 @@ class DefaultApi(object):
 
         Create operation of resource: local-certificate  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_iceberg_profile_security_local_certificate_by_id(name, local_certificate, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_iceberg_profile_security_local_certificate_by_id(name, local_certificate, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of local-certificate (required)
         :param LocalCertificateSchema local_certificate: local_certificatebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.create_iceberg_profile_security_local_certificate_by_id_with_http_info(name, local_certificate, **kwargs)  # noqa: E501
         else:
             (data) = self.create_iceberg_profile_security_local_certificate_by_id_with_http_info(name, local_certificate, **kwargs)  # noqa: E501
@@ -386,20 +1798,21 @@ class DefaultApi(object):
 
         Create operation of resource: local-certificate  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_iceberg_profile_security_local_certificate_by_id_with_http_info(name, local_certificate, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_iceberg_profile_security_local_certificate_by_id_with_http_info(name, local_certificate, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of local-certificate (required)
         :param LocalCertificateSchema local_certificate: local_certificatebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'local_certificate']  # noqa: E501
-        all_params.append('async')
+        all_params = ['name', 'local_certificate', 'authorization']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -431,6 +1844,8 @@ class DefaultApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -459,7 +1874,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -470,19 +1885,20 @@ class DefaultApi(object):
 
         Create operation of resource: ssh-key-profile  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_iceberg_profile_security_ssh_key_profile_by_id(name, ssh_key_profile, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_iceberg_profile_security_ssh_key_profile_by_id(name, ssh_key_profile, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of ssh-key-profile (required)
         :param SshKeyProfileSchema ssh_key_profile: ssh_key_profilebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.create_iceberg_profile_security_ssh_key_profile_by_id_with_http_info(name, ssh_key_profile, **kwargs)  # noqa: E501
         else:
             (data) = self.create_iceberg_profile_security_ssh_key_profile_by_id_with_http_info(name, ssh_key_profile, **kwargs)  # noqa: E501
@@ -493,20 +1909,21 @@ class DefaultApi(object):
 
         Create operation of resource: ssh-key-profile  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_iceberg_profile_security_ssh_key_profile_by_id_with_http_info(name, ssh_key_profile, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_iceberg_profile_security_ssh_key_profile_by_id_with_http_info(name, ssh_key_profile, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of ssh-key-profile (required)
         :param SshKeyProfileSchema ssh_key_profile: ssh_key_profilebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'ssh_key_profile']  # noqa: E501
-        all_params.append('async')
+        all_params = ['name', 'ssh_key_profile', 'authorization']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -538,6 +1955,8 @@ class DefaultApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -566,7 +1985,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -577,18 +1996,19 @@ class DefaultApi(object):
 
         Create entire profile configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_iceberg_profiles(profile, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_iceberg_profiles(profile, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param ProfilesSchema profile: profilebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.create_iceberg_profiles_with_http_info(profile, **kwargs)  # noqa: E501
         else:
             (data) = self.create_iceberg_profiles_with_http_info(profile, **kwargs)  # noqa: E501
@@ -599,19 +2019,20 @@ class DefaultApi(object):
 
         Create entire profile configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.create_iceberg_profiles_with_http_info(profile, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_iceberg_profiles_with_http_info(profile, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param ProfilesSchema profile: profilebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['profile']  # noqa: E501
-        all_params.append('async')
+        all_params = ['profile', 'authorization']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -637,6 +2058,8 @@ class DefaultApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -665,7 +2088,118 @@ class DefaultApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_files_certificates_by_file_name(self, file_name, **kwargs):  # noqa: E501
+        """Delete a certificate-file.  # noqa: E501
+
+        Delete the specified certificate-file. Delete will not fail if the certificate-file is being used by some service.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_files_certificates_by_file_name(file_name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str file_name: File name (required)
+        :param str authorization: authentication header object
+        :param str input_path: Input path
+        :param str certificate_type: Certificate type
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.delete_files_certificates_by_file_name_with_http_info(file_name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_files_certificates_by_file_name_with_http_info(file_name, **kwargs)  # noqa: E501
+            return data
+
+    def delete_files_certificates_by_file_name_with_http_info(self, file_name, **kwargs):  # noqa: E501
+        """Delete a certificate-file.  # noqa: E501
+
+        Delete the specified certificate-file. Delete will not fail if the certificate-file is being used by some service.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_files_certificates_by_file_name_with_http_info(file_name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str file_name: File name (required)
+        :param str authorization: authentication header object
+        :param str input_path: Input path
+        :param str certificate_type: Certificate type
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['file_name', 'authorization', 'input_path', 'certificate_type']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_files_certificates_by_file_name" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'file_name' is set
+        if ('file_name' not in params or
+                params['file_name'] is None):
+            raise ValueError("Missing the required parameter `file_name` when calling `delete_files_certificates_by_file_name`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'file_name' in params:
+            path_params['file_name'] = params['file_name']  # noqa: E501
+
+        query_params = []
+        if 'input_path' in params:
+            query_params.append(('input_path', params['input_path']))  # noqa: E501
+        if 'certificate_type' in params:
+            query_params.append(('certificate_type', params['certificate_type']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'application/octet-stream'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/files/certificates/{file_name}/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -676,19 +2210,20 @@ class DefaultApi(object):
 
         Delete the specified helper-file. Delete will not fail if the helper-file is being used by some service.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_files_helper_files_by_file_name(file_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_files_helper_files_by_file_name(file_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str file_name: File name (required)
+        :param str authorization: authentication header object
         :param str input_path: Input path
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.delete_files_helper_files_by_file_name_with_http_info(file_name, **kwargs)  # noqa: E501
         else:
             (data) = self.delete_files_helper_files_by_file_name_with_http_info(file_name, **kwargs)  # noqa: E501
@@ -699,20 +2234,21 @@ class DefaultApi(object):
 
         Delete the specified helper-file. Delete will not fail if the helper-file is being used by some service.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_files_helper_files_by_file_name_with_http_info(file_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_files_helper_files_by_file_name_with_http_info(file_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str file_name: File name (required)
+        :param str authorization: authentication header object
         :param str input_path: Input path
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['file_name', 'input_path']  # noqa: E501
-        all_params.append('async')
+        all_params = ['file_name', 'authorization', 'input_path']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -742,6 +2278,8 @@ class DefaultApi(object):
             query_params.append(('input_path', params['input_path']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -768,7 +2306,1104 @@ class DefaultApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_healthbot_ingest_settings_byoi_custom_plugin_by_id(self, name, **kwargs):  # noqa: E501
+        """Delete custom-plugin by ID  # noqa: E501
+
+        Delete operation of resource: custom-plugin  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_healthbot_ingest_settings_byoi_custom_plugin_by_id(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of custom-plugin (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.delete_healthbot_ingest_settings_byoi_custom_plugin_by_id_with_http_info(name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_healthbot_ingest_settings_byoi_custom_plugin_by_id_with_http_info(name, **kwargs)  # noqa: E501
+            return data
+
+    def delete_healthbot_ingest_settings_byoi_custom_plugin_by_id_with_http_info(self, name, **kwargs):  # noqa: E501
+        """Delete custom-plugin by ID  # noqa: E501
+
+        Delete operation of resource: custom-plugin  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_healthbot_ingest_settings_byoi_custom_plugin_by_id_with_http_info(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of custom-plugin (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_healthbot_ingest_settings_byoi_custom_plugin_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_healthbot_ingest_settings_byoi_custom_plugin_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/byoi/custom-plugin/{name}/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id(self, name, **kwargs):  # noqa: E501
+        """Delete tlive-kafka-oc by ID  # noqa: E501
+
+        Delete operation of resource: tlive-kafka-oc  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of tlive-kafka-oc (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.delete_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id_with_http_info(name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id_with_http_info(name, **kwargs)  # noqa: E501
+            return data
+
+    def delete_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id_with_http_info(self, name, **kwargs):  # noqa: E501
+        """Delete tlive-kafka-oc by ID  # noqa: E501
+
+        Delete operation of resource: tlive-kafka-oc  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id_with_http_info(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of tlive-kafka-oc (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_healthbot_ingest_settings_byoi_ingest_mapping_by_id(self, name, **kwargs):  # noqa: E501
+        """Delete ingest-mapping by ID  # noqa: E501
+
+        Delete ingest-mapping by name  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_healthbot_ingest_settings_byoi_ingest_mapping_by_id(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of ingest-mapping (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.delete_healthbot_ingest_settings_byoi_ingest_mapping_by_id_with_http_info(name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_healthbot_ingest_settings_byoi_ingest_mapping_by_id_with_http_info(name, **kwargs)  # noqa: E501
+            return data
+
+    def delete_healthbot_ingest_settings_byoi_ingest_mapping_by_id_with_http_info(self, name, **kwargs):  # noqa: E501
+        """Delete ingest-mapping by ID  # noqa: E501
+
+        Delete ingest-mapping by name  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_healthbot_ingest_settings_byoi_ingest_mapping_by_id_with_http_info(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of ingest-mapping (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_healthbot_ingest_settings_byoi_ingest_mapping_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_healthbot_ingest_settings_byoi_ingest_mapping_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/byoi/ingest-mapping/{name}/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_healthbot_ingest_settings_frequency_profile_by_id(self, name, **kwargs):  # noqa: E501
+        """Delete frequency-profile by ID  # noqa: E501
+
+        Delete operation of resource: frequency-profile  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_healthbot_ingest_settings_frequency_profile_by_id(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: ID of name (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.delete_healthbot_ingest_settings_frequency_profile_by_id_with_http_info(name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_healthbot_ingest_settings_frequency_profile_by_id_with_http_info(name, **kwargs)  # noqa: E501
+            return data
+
+    def delete_healthbot_ingest_settings_frequency_profile_by_id_with_http_info(self, name, **kwargs):  # noqa: E501
+        """Delete frequency-profile by ID  # noqa: E501
+
+        Delete operation of resource: frequency-profile  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_healthbot_ingest_settings_frequency_profile_by_id_with_http_info(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: ID of name (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_healthbot_ingest_settings_frequency_profile_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_healthbot_ingest_settings_frequency_profile_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/frequency-profile/{name}/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_healthbot_system_time_series_database_time_series_database_by_id(self, **kwargs):  # noqa: E501
+        """Delete time-series-database  # noqa: E501
+
+        Delete operation of resource: time-series-database  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_healthbot_system_time_series_database_time_series_database_by_id(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.delete_healthbot_system_time_series_database_time_series_database_by_id_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_healthbot_system_time_series_database_time_series_database_by_id_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def delete_healthbot_system_time_series_database_time_series_database_by_id_with_http_info(self, **kwargs):  # noqa: E501
+        """Delete time-series-database  # noqa: E501
+
+        Delete operation of resource: time-series-database  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_healthbot_system_time_series_database_time_series_database_by_id_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_healthbot_system_time_series_database_time_series_database_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/tsdb/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_iceberg_ingest_settings(self, **kwargs):  # noqa: E501
+        """Delete ingest-settings by ID  # noqa: E501
+
+        Delete operation of resource: ingest-settings  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_iceberg_ingest_settings(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.delete_iceberg_ingest_settings_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_iceberg_ingest_settings_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def delete_iceberg_ingest_settings_with_http_info(self, **kwargs):  # noqa: E501
+        """Delete ingest-settings by ID  # noqa: E501
+
+        Delete operation of resource: ingest-settings  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_iceberg_ingest_settings_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_iceberg_ingest_settings" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_iceberg_ingest_settings_flow(self, **kwargs):  # noqa: E501
+        """Delete flow by ID  # noqa: E501
+
+        Delete operation of resource: flow  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_iceberg_ingest_settings_flow(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.delete_iceberg_ingest_settings_flow_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_iceberg_ingest_settings_flow_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def delete_iceberg_ingest_settings_flow_with_http_info(self, **kwargs):  # noqa: E501
+        """Delete flow by ID  # noqa: E501
+
+        Delete operation of resource: flow  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_iceberg_ingest_settings_flow_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_iceberg_ingest_settings_flow" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/flow/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_iceberg_ingest_settings_flow_template_by_id(self, name, **kwargs):  # noqa: E501
+        """Delete template by ID  # noqa: E501
+
+        Delete operation of resource: template  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_iceberg_ingest_settings_flow_template_by_id(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of template (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.delete_iceberg_ingest_settings_flow_template_by_id_with_http_info(name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_iceberg_ingest_settings_flow_template_by_id_with_http_info(name, **kwargs)  # noqa: E501
+            return data
+
+    def delete_iceberg_ingest_settings_flow_template_by_id_with_http_info(self, name, **kwargs):  # noqa: E501
+        """Delete template by ID  # noqa: E501
+
+        Delete operation of resource: template  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_iceberg_ingest_settings_flow_template_by_id_with_http_info(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of template (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_iceberg_ingest_settings_flow_template_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_iceberg_ingest_settings_flow_template_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/flow/template/{name}/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_iceberg_ingest_settings_syslog(self, **kwargs):  # noqa: E501
+        """Delete syslog by ID  # noqa: E501
+
+        Delete operation of resource: syslog  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_iceberg_ingest_settings_syslog(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.delete_iceberg_ingest_settings_syslog_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_iceberg_ingest_settings_syslog_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def delete_iceberg_ingest_settings_syslog_with_http_info(self, **kwargs):  # noqa: E501
+        """Delete syslog by ID  # noqa: E501
+
+        Delete operation of resource: syslog  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_iceberg_ingest_settings_syslog_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_iceberg_ingest_settings_syslog" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/syslog/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_iceberg_ingest_settings_syslog_pattern_by_id(self, name, **kwargs):  # noqa: E501
+        """Delete pattern by ID  # noqa: E501
+
+        Delete operation of resource: pattern  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_iceberg_ingest_settings_syslog_pattern_by_id(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of pattern (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.delete_iceberg_ingest_settings_syslog_pattern_by_id_with_http_info(name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_iceberg_ingest_settings_syslog_pattern_by_id_with_http_info(name, **kwargs)  # noqa: E501
+            return data
+
+    def delete_iceberg_ingest_settings_syslog_pattern_by_id_with_http_info(self, name, **kwargs):  # noqa: E501
+        """Delete pattern by ID  # noqa: E501
+
+        Delete operation of resource: pattern  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_iceberg_ingest_settings_syslog_pattern_by_id_with_http_info(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of pattern (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_iceberg_ingest_settings_syslog_pattern_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_iceberg_ingest_settings_syslog_pattern_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/syslog/pattern/{name}/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_iceberg_ingest_settings_syslog_pattern_set_by_id(self, name, **kwargs):  # noqa: E501
+        """Delete pattern-set by ID  # noqa: E501
+
+        Delete operation of resource: pattern-set  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_iceberg_ingest_settings_syslog_pattern_set_by_id(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of pattern-set (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.delete_iceberg_ingest_settings_syslog_pattern_set_by_id_with_http_info(name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_iceberg_ingest_settings_syslog_pattern_set_by_id_with_http_info(name, **kwargs)  # noqa: E501
+            return data
+
+    def delete_iceberg_ingest_settings_syslog_pattern_set_by_id_with_http_info(self, name, **kwargs):  # noqa: E501
+        """Delete pattern-set by ID  # noqa: E501
+
+        Delete operation of resource: pattern-set  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_iceberg_ingest_settings_syslog_pattern_set_by_id_with_http_info(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of pattern-set (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_iceberg_ingest_settings_syslog_pattern_set_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `delete_iceberg_ingest_settings_syslog_pattern_set_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/syslog/pattern-set/{name}/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -779,18 +3414,19 @@ class DefaultApi(object):
 
         Delete operation of resource: raw data-summarization  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_iceberg_profile_data_summarization_raw_by_id(name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_iceberg_profile_data_summarization_raw_by_id(name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of raw-data-summarization (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.delete_iceberg_profile_data_summarization_raw_by_id_with_http_info(name, **kwargs)  # noqa: E501
         else:
             (data) = self.delete_iceberg_profile_data_summarization_raw_by_id_with_http_info(name, **kwargs)  # noqa: E501
@@ -801,19 +3437,20 @@ class DefaultApi(object):
 
         Delete operation of resource: raw data-summarization  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_iceberg_profile_data_summarization_raw_by_id_with_http_info(name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_iceberg_profile_data_summarization_raw_by_id_with_http_info(name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of raw-data-summarization (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name']  # noqa: E501
-        all_params.append('async')
+        all_params = ['name', 'authorization']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -841,6 +3478,8 @@ class DefaultApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -867,7 +3506,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -878,18 +3517,19 @@ class DefaultApi(object):
 
         Delete operation of resource: ca-profile  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_iceberg_profile_security_ca_profile_by_id(name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_iceberg_profile_security_ca_profile_by_id(name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of ca-profile (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.delete_iceberg_profile_security_ca_profile_by_id_with_http_info(name, **kwargs)  # noqa: E501
         else:
             (data) = self.delete_iceberg_profile_security_ca_profile_by_id_with_http_info(name, **kwargs)  # noqa: E501
@@ -900,19 +3540,20 @@ class DefaultApi(object):
 
         Delete operation of resource: ca-profile  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_iceberg_profile_security_ca_profile_by_id_with_http_info(name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_iceberg_profile_security_ca_profile_by_id_with_http_info(name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of ca-profile (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name']  # noqa: E501
-        all_params.append('async')
+        all_params = ['name', 'authorization']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -940,6 +3581,8 @@ class DefaultApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -966,7 +3609,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -977,18 +3620,19 @@ class DefaultApi(object):
 
         Delete operation of resource: local-certificate  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_iceberg_profile_security_local_certificate_by_id(name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_iceberg_profile_security_local_certificate_by_id(name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of local-certificate (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.delete_iceberg_profile_security_local_certificate_by_id_with_http_info(name, **kwargs)  # noqa: E501
         else:
             (data) = self.delete_iceberg_profile_security_local_certificate_by_id_with_http_info(name, **kwargs)  # noqa: E501
@@ -999,19 +3643,20 @@ class DefaultApi(object):
 
         Delete operation of resource: local-certificate  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_iceberg_profile_security_local_certificate_by_id_with_http_info(name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_iceberg_profile_security_local_certificate_by_id_with_http_info(name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of local-certificate (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name']  # noqa: E501
-        all_params.append('async')
+        all_params = ['name', 'authorization']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1039,6 +3684,8 @@ class DefaultApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -1065,7 +3712,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -1076,18 +3723,19 @@ class DefaultApi(object):
 
         Delete operation of resource: ssh-key-profile  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_iceberg_profile_security_ssh_key_profile_by_id(name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_iceberg_profile_security_ssh_key_profile_by_id(name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of ssh-key-profile (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.delete_iceberg_profile_security_ssh_key_profile_by_id_with_http_info(name, **kwargs)  # noqa: E501
         else:
             (data) = self.delete_iceberg_profile_security_ssh_key_profile_by_id_with_http_info(name, **kwargs)  # noqa: E501
@@ -1098,19 +3746,20 @@ class DefaultApi(object):
 
         Delete operation of resource: ssh-key-profile  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_iceberg_profile_security_ssh_key_profile_by_id_with_http_info(name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_iceberg_profile_security_ssh_key_profile_by_id_with_http_info(name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of ssh-key-profile (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name']  # noqa: E501
-        all_params.append('async')
+        all_params = ['name', 'authorization']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1138,6 +3787,8 @@ class DefaultApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -1164,7 +3815,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -1175,17 +3826,18 @@ class DefaultApi(object):
 
         Delete entire profile configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_iceberg_profiles(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_iceberg_profiles(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.delete_iceberg_profiles_with_http_info(**kwargs)  # noqa: E501
         else:
             (data) = self.delete_iceberg_profiles_with_http_info(**kwargs)  # noqa: E501
@@ -1196,18 +3848,19 @@ class DefaultApi(object):
 
         Delete entire profile configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.delete_iceberg_profiles_with_http_info(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_iceberg_profiles_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
-        all_params.append('async')
+        all_params = ['authorization']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1229,6 +3882,8 @@ class DefaultApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -1255,7 +3910,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -1266,18 +3921,19 @@ class DefaultApi(object):
 
         Inspect the given iAgent table on a device and return the results.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.inspect_command_rpc_table_on_device(command_rpc_detail, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.inspect_command_rpc_table_on_device(command_rpc_detail, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param CommandRpc command_rpc_detail: command-rpc object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.inspect_command_rpc_table_on_device_with_http_info(command_rpc_detail, **kwargs)  # noqa: E501
         else:
             (data) = self.inspect_command_rpc_table_on_device_with_http_info(command_rpc_detail, **kwargs)  # noqa: E501
@@ -1288,19 +3944,20 @@ class DefaultApi(object):
 
         Inspect the given iAgent table on a device and return the results.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.inspect_command_rpc_table_on_device_with_http_info(command_rpc_detail, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.inspect_command_rpc_table_on_device_with_http_info(command_rpc_detail, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param CommandRpc command_rpc_detail: command-rpc object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['command_rpc_detail']  # noqa: E501
-        all_params.append('async')
+        all_params = ['command_rpc_detail', 'authorization']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1326,6 +3983,8 @@ class DefaultApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -1354,7 +4013,110 @@ class DefaultApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def restore_helper_files(self, restore_file, **kwargs):  # noqa: E501
+        """Upload a helper-file.  # noqa: E501
+
+        Upload tar file of helper-files  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.restore_helper_files(restore_file, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param file restore_file: File content (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.restore_helper_files_with_http_info(restore_file, **kwargs)  # noqa: E501
+        else:
+            (data) = self.restore_helper_files_with_http_info(restore_file, **kwargs)  # noqa: E501
+            return data
+
+    def restore_helper_files_with_http_info(self, restore_file, **kwargs):  # noqa: E501
+        """Upload a helper-file.  # noqa: E501
+
+        Upload tar file of helper-files  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.restore_helper_files_with_http_info(restore_file, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param file restore_file: File content (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['restore_file', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method restore_helper_files" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'restore_file' is set
+        if ('restore_file' not in params or
+                params['restore_file'] is None):
+            raise ValueError("Missing the required parameter `restore_file` when calling `restore_helper_files`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+        if 'restore_file' in params:
+            local_var_files['restore_file'] = params['restore_file']  # noqa: E501
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'application/octet-stream'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/files/helper-files/backup/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -1365,11 +4127,12 @@ class DefaultApi(object):
 
         Return list of all the Commit Job ID's  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_configuration_jobs(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_configuration_jobs(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
         :param str job_id: Id of Job
         :param str job_status: Type of job
         :return: list[InlineResponse200]
@@ -1377,7 +4140,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_configuration_jobs_with_http_info(**kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_configuration_jobs_with_http_info(**kwargs)  # noqa: E501
@@ -1388,11 +4151,12 @@ class DefaultApi(object):
 
         Return list of all the Commit Job ID's  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_configuration_jobs_with_http_info(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_configuration_jobs_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
         :param str job_id: Id of Job
         :param str job_status: Type of job
         :return: list[InlineResponse200]
@@ -1400,8 +4164,8 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['job_id', 'job_status']  # noqa: E501
-        all_params.append('async')
+        all_params = ['authorization', 'job_id', 'job_status']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1427,6 +4191,8 @@ class DefaultApi(object):
             query_params.append(('job_status', params['job_status']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -1453,7 +4219,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='list[InlineResponse200]',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -1464,11 +4230,12 @@ class DefaultApi(object):
 
         Get information about different types of tables stored for a device of a device-group.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_data_database_table(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_data_database_table(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
         :param str device_id: Name of device
         :param str device_group_name: Name of device-group
         :param str network_group_name: Name of network-group
@@ -1477,7 +4244,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_data_database_table_with_http_info(**kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_data_database_table_with_http_info(**kwargs)  # noqa: E501
@@ -1488,11 +4255,12 @@ class DefaultApi(object):
 
         Get information about different types of tables stored for a device of a device-group.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_data_database_table_with_http_info(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_data_database_table_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
         :param str device_id: Name of device
         :param str device_group_name: Name of device-group
         :param str network_group_name: Name of network-group
@@ -1501,8 +4269,8 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['device_id', 'device_group_name', 'network_group_name']  # noqa: E501
-        all_params.append('async')
+        all_params = ['authorization', 'device_id', 'device_group_name', 'network_group_name']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1530,6 +4298,8 @@ class DefaultApi(object):
             query_params.append(('network_group_name', params['network_group_name']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -1556,7 +4326,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='list[TableSchema]',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -1567,12 +4337,13 @@ class DefaultApi(object):
 
         Get information about columns in a table.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_data_database_table_column_by_table_name(table_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_data_database_table_column_by_table_name(table_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str table_name: Name of table (required)
+        :param str authorization: authentication header object
         :param str device_id: Name of device
         :param str device_group_name: Name of device-group
         :param str network_group_name: Name of network-group
@@ -1581,7 +4352,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_data_database_table_column_by_table_name_with_http_info(table_name, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_data_database_table_column_by_table_name_with_http_info(table_name, **kwargs)  # noqa: E501
@@ -1592,12 +4363,13 @@ class DefaultApi(object):
 
         Get information about columns in a table.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_data_database_table_column_by_table_name_with_http_info(table_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_data_database_table_column_by_table_name_with_http_info(table_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str table_name: Name of table (required)
+        :param str authorization: authentication header object
         :param str device_id: Name of device
         :param str device_group_name: Name of device-group
         :param str network_group_name: Name of network-group
@@ -1606,8 +4378,8 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['table_name', 'device_id', 'device_group_name', 'network_group_name']  # noqa: E501
-        all_params.append('async')
+        all_params = ['table_name', 'authorization', 'device_id', 'device_group_name', 'network_group_name']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1641,6 +4413,8 @@ class DefaultApi(object):
             query_params.append(('table_name', params['table_name']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -1667,7 +4441,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='list[str]',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -1678,12 +4452,13 @@ class DefaultApi(object):
 
         Get information about tags keys and values in a table.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_data_database_tags_by_table_name(table_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_data_database_tags_by_table_name(table_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str table_name: Name of table (required)
+        :param str authorization: authentication header object
         :param str device_id: Name of device
         :param str device_group_name: Name of device-group
         :param str network_group_name: Name of network-group
@@ -1694,7 +4469,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_data_database_tags_by_table_name_with_http_info(table_name, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_data_database_tags_by_table_name_with_http_info(table_name, **kwargs)  # noqa: E501
@@ -1705,12 +4480,13 @@ class DefaultApi(object):
 
         Get information about tags keys and values in a table.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_data_database_tags_by_table_name_with_http_info(table_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_data_database_tags_by_table_name_with_http_info(table_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str table_name: Name of table (required)
+        :param str authorization: authentication header object
         :param str device_id: Name of device
         :param str device_group_name: Name of device-group
         :param str network_group_name: Name of network-group
@@ -1721,8 +4497,8 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['table_name', 'device_id', 'device_group_name', 'network_group_name', 'tag', 'where_clause']  # noqa: E501
-        all_params.append('async')
+        all_params = ['table_name', 'authorization', 'device_id', 'device_group_name', 'network_group_name', 'tag', 'where_clause']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1760,6 +4536,8 @@ class DefaultApi(object):
             query_params.append(('where_clause', params['where_clause']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -1786,7 +4564,106 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='list[str]',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_debug_jobs(self, **kwargs):  # noqa: E501
+        """retrieve_debug_jobs  # noqa: E501
+
+        Return the status of the last \"/debug/\" job   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_debug_jobs(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param str job_id: Id of Job
+        :return: object
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_debug_jobs_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_debug_jobs_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def retrieve_debug_jobs_with_http_info(self, **kwargs):  # noqa: E501
+        """retrieve_debug_jobs  # noqa: E501
+
+        Return the status of the last \"/debug/\" job   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_debug_jobs_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param str job_id: Id of Job
+        :return: object
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization', 'job_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_debug_jobs" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'job_id' in params:
+            query_params.append(('job_id', params['job_id']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'application/octet-stream'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/debug/jobs/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='object',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -1797,13 +4674,14 @@ class DefaultApi(object):
 
         Get the list of events for a device. Filtering is possible with the use of various query parameters.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_event(from_timestamp, device_id, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_event(from_timestamp, device_id, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param datetime from_timestamp: Starting timestamp (required)
         :param str device_id: device-id of the device for which events are requested (required)
+        :param str authorization: authentication header object
         :param datetime to_timestamp: Ending timestamp
         :param str device_group_name: Device group's device-group-name of which the device is part
         :param str granularity: Granularity of query
@@ -1813,7 +4691,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_event_with_http_info(from_timestamp, device_id, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_event_with_http_info(from_timestamp, device_id, **kwargs)  # noqa: E501
@@ -1824,13 +4702,14 @@ class DefaultApi(object):
 
         Get the list of events for a device. Filtering is possible with the use of various query parameters.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_event_with_http_info(from_timestamp, device_id, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_event_with_http_info(from_timestamp, device_id, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param datetime from_timestamp: Starting timestamp (required)
         :param str device_id: device-id of the device for which events are requested (required)
+        :param str authorization: authentication header object
         :param datetime to_timestamp: Ending timestamp
         :param str device_group_name: Device group's device-group-name of which the device is part
         :param str granularity: Granularity of query
@@ -1840,8 +4719,8 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['from_timestamp', 'device_id', 'to_timestamp', 'device_group_name', 'granularity', 'color']  # noqa: E501
-        all_params.append('async')
+        all_params = ['from_timestamp', 'device_id', 'authorization', 'to_timestamp', 'device_group_name', 'granularity', 'color']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1864,7 +4743,7 @@ class DefaultApi(object):
                 params['device_id'] is None):
             raise ValueError("Missing the required parameter `device_id` when calling `retrieve_event`")  # noqa: E501
 
-        if 'granularity' in params and not re.search('^[0-9]*[\'ns\' | \'u\' | \'µ\' | \'ms\' | \'s\' | \'m\' | \'h\' | \'d\' | \'w\']$', params['granularity']):  # noqa: E501
+        if 'granularity' in params and not re.search(r'^[0-9]*[\'ns\' | \'u\' | \'µ\' | \'ms\' | \'s\' | \'m\' | \'h\' | \'d\' | \'w\']$', params['granularity']):  # noqa: E501
             raise ValueError("Invalid value for parameter `granularity` when calling `retrieve_event`, must conform to the pattern `/^[0-9]*['ns' | 'u' | 'µ' | 'ms' | 's' | 'm' | 'h' | 'd' | 'w']$/`")  # noqa: E501
         collection_formats = {}
 
@@ -1885,6 +4764,8 @@ class DefaultApi(object):
             query_params.append(('color', params['color']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -1911,7 +4792,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='list[Event]',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -1922,14 +4803,15 @@ class DefaultApi(object):
 
         Get instances of a specified device event. Filtering is possible with the use of various query parameters.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_event_by_event_name(event_name, from_timestamp, device_id, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_event_by_event_name(event_name, from_timestamp, device_id, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str event_name: Name of event (required)
         :param datetime from_timestamp: Starting timestamp (required)
         :param str device_id: device-id of the device for which events are requested (required)
+        :param str authorization: authentication header object
         :param datetime to_timestamp: Ending timestamp
         :param str device_group_name: device-group-name of which the device is part
         :param str granularity: Granularity of query
@@ -1939,7 +4821,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_event_by_event_name_with_http_info(event_name, from_timestamp, device_id, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_event_by_event_name_with_http_info(event_name, from_timestamp, device_id, **kwargs)  # noqa: E501
@@ -1950,14 +4832,15 @@ class DefaultApi(object):
 
         Get instances of a specified device event. Filtering is possible with the use of various query parameters.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_event_by_event_name_with_http_info(event_name, from_timestamp, device_id, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_event_by_event_name_with_http_info(event_name, from_timestamp, device_id, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str event_name: Name of event (required)
         :param datetime from_timestamp: Starting timestamp (required)
         :param str device_id: device-id of the device for which events are requested (required)
+        :param str authorization: authentication header object
         :param datetime to_timestamp: Ending timestamp
         :param str device_group_name: device-group-name of which the device is part
         :param str granularity: Granularity of query
@@ -1967,8 +4850,8 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['event_name', 'from_timestamp', 'device_id', 'to_timestamp', 'device_group_name', 'granularity', 'color']  # noqa: E501
-        all_params.append('async')
+        all_params = ['event_name', 'from_timestamp', 'device_id', 'authorization', 'to_timestamp', 'device_group_name', 'granularity', 'color']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -1995,7 +4878,7 @@ class DefaultApi(object):
                 params['device_id'] is None):
             raise ValueError("Missing the required parameter `device_id` when calling `retrieve_event_by_event_name`")  # noqa: E501
 
-        if 'granularity' in params and not re.search('^[0-9]*[\'ns\' | \'u\' | \'µ\' | \'ms\' | \'s\' | \'m\' | \'h\' | \'d\' | \'w\']$', params['granularity']):  # noqa: E501
+        if 'granularity' in params and not re.search(r'^[0-9]*[\'ns\' | \'u\' | \'µ\' | \'ms\' | \'s\' | \'m\' | \'h\' | \'d\' | \'w\']$', params['granularity']):  # noqa: E501
             raise ValueError("Invalid value for parameter `granularity` when calling `retrieve_event_by_event_name`, must conform to the pattern `/^[0-9]*['ns' | 'u' | 'µ' | 'ms' | 's' | 'm' | 'h' | 'd' | 'w']$/`")  # noqa: E501
         collection_formats = {}
 
@@ -2018,6 +4901,8 @@ class DefaultApi(object):
             query_params.append(('color', params['color']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2044,7 +4929,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='list[Event]',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -2055,14 +4940,15 @@ class DefaultApi(object):
 
         Get instances of a specified device-group event. Filtering is possible with the use of various query parameters.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_event_by_event_name_device_group(event_name, from_timestamp, device_group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_event_by_event_name_device_group(event_name, from_timestamp, device_group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str event_name: Name of event (required)
         :param datetime from_timestamp: Starting timestamp (required)
         :param str device_group_name: device_group_name of the device-group for which events are requested (required)
+        :param str authorization: authentication header object
         :param datetime to_timestamp: Ending timestamp
         :param str granularity: Granularity of query
         :param list[str] device_id: list of devices under a device-group to be fetched
@@ -2072,7 +4958,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_event_by_event_name_device_group_with_http_info(event_name, from_timestamp, device_group_name, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_event_by_event_name_device_group_with_http_info(event_name, from_timestamp, device_group_name, **kwargs)  # noqa: E501
@@ -2083,14 +4969,15 @@ class DefaultApi(object):
 
         Get instances of a specified device-group event. Filtering is possible with the use of various query parameters.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_event_by_event_name_device_group_with_http_info(event_name, from_timestamp, device_group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_event_by_event_name_device_group_with_http_info(event_name, from_timestamp, device_group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str event_name: Name of event (required)
         :param datetime from_timestamp: Starting timestamp (required)
         :param str device_group_name: device_group_name of the device-group for which events are requested (required)
+        :param str authorization: authentication header object
         :param datetime to_timestamp: Ending timestamp
         :param str granularity: Granularity of query
         :param list[str] device_id: list of devices under a device-group to be fetched
@@ -2100,8 +4987,8 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['event_name', 'from_timestamp', 'device_group_name', 'to_timestamp', 'granularity', 'device_id', 'color']  # noqa: E501
-        all_params.append('async')
+        all_params = ['event_name', 'from_timestamp', 'device_group_name', 'authorization', 'to_timestamp', 'granularity', 'device_id', 'color']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -2128,7 +5015,7 @@ class DefaultApi(object):
                 params['device_group_name'] is None):
             raise ValueError("Missing the required parameter `device_group_name` when calling `retrieve_event_by_event_name_device_group`")  # noqa: E501
 
-        if 'granularity' in params and not re.search('^[0-9]*[\'ns\' | \'u\' | \'µ\' | \'ms\' | \'s\' | \'m\' | \'h\' | \'d\' | \'w\']$', params['granularity']):  # noqa: E501
+        if 'granularity' in params and not re.search(r'^[0-9]*[\'ns\' | \'u\' | \'µ\' | \'ms\' | \'s\' | \'m\' | \'h\' | \'d\' | \'w\']$', params['granularity']):  # noqa: E501
             raise ValueError("Invalid value for parameter `granularity` when calling `retrieve_event_by_event_name_device_group`, must conform to the pattern `/^[0-9]*['ns' | 'u' | 'µ' | 'ms' | 's' | 'm' | 'h' | 'd' | 'w']$/`")  # noqa: E501
         collection_formats = {}
 
@@ -2152,6 +5039,8 @@ class DefaultApi(object):
             query_params.append(('color', params['color']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2178,7 +5067,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='list[Event]',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -2189,14 +5078,15 @@ class DefaultApi(object):
 
         Get instances of a specified network-group event. Filtering is possible with the use of various query parameters.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_event_by_event_name_network_group(event_name, from_timestamp, network_group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_event_by_event_name_network_group(event_name, from_timestamp, network_group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str event_name: Name of event (required)
         :param datetime from_timestamp: Starting timestamp (required)
         :param str network_group_name: network_group_name of the network-group for which events are requested (required)
+        :param str authorization: authentication header object
         :param datetime to_timestamp: Ending timestamp
         :param str granularity: Granularity of query
         :param str color: Color of events.
@@ -2205,7 +5095,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_event_by_event_name_network_group_with_http_info(event_name, from_timestamp, network_group_name, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_event_by_event_name_network_group_with_http_info(event_name, from_timestamp, network_group_name, **kwargs)  # noqa: E501
@@ -2216,14 +5106,15 @@ class DefaultApi(object):
 
         Get instances of a specified network-group event. Filtering is possible with the use of various query parameters.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_event_by_event_name_network_group_with_http_info(event_name, from_timestamp, network_group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_event_by_event_name_network_group_with_http_info(event_name, from_timestamp, network_group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str event_name: Name of event (required)
         :param datetime from_timestamp: Starting timestamp (required)
         :param str network_group_name: network_group_name of the network-group for which events are requested (required)
+        :param str authorization: authentication header object
         :param datetime to_timestamp: Ending timestamp
         :param str granularity: Granularity of query
         :param str color: Color of events.
@@ -2232,8 +5123,8 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['event_name', 'from_timestamp', 'network_group_name', 'to_timestamp', 'granularity', 'color']  # noqa: E501
-        all_params.append('async')
+        all_params = ['event_name', 'from_timestamp', 'network_group_name', 'authorization', 'to_timestamp', 'granularity', 'color']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -2260,7 +5151,7 @@ class DefaultApi(object):
                 params['network_group_name'] is None):
             raise ValueError("Missing the required parameter `network_group_name` when calling `retrieve_event_by_event_name_network_group`")  # noqa: E501
 
-        if 'granularity' in params and not re.search('^[0-9]*[\'ns\' | \'u\' | \'µ\' | \'ms\' | \'s\' | \'m\' | \'h\' | \'d\' | \'w\']$', params['granularity']):  # noqa: E501
+        if 'granularity' in params and not re.search(r'^[0-9]*[\'ns\' | \'u\' | \'µ\' | \'ms\' | \'s\' | \'m\' | \'h\' | \'d\' | \'w\']$', params['granularity']):  # noqa: E501
             raise ValueError("Invalid value for parameter `granularity` when calling `retrieve_event_by_event_name_network_group`, must conform to the pattern `/^[0-9]*['ns' | 'u' | 'µ' | 'ms' | 's' | 'm' | 'h' | 'd' | 'w']$/`")  # noqa: E501
         collection_formats = {}
 
@@ -2281,6 +5172,8 @@ class DefaultApi(object):
             query_params.append(('color', params['color']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2307,7 +5200,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='list[Event]',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -2318,13 +5211,14 @@ class DefaultApi(object):
 
         Get the list of events for a device-group. Filtering is possible with the use of various query parameters.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_event_device_group(from_timestamp, device_group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_event_device_group(from_timestamp, device_group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param datetime from_timestamp: Starting timestamp (required)
         :param str device_group_name: device_group_name of the device-group for which events are requested (required)
+        :param str authorization: authentication header object
         :param datetime to_timestamp: Ending timestamp
         :param str granularity: Granularity of query
         :param list[str] device_id: list of devices under a device-group to be fetched
@@ -2334,7 +5228,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_event_device_group_with_http_info(from_timestamp, device_group_name, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_event_device_group_with_http_info(from_timestamp, device_group_name, **kwargs)  # noqa: E501
@@ -2345,13 +5239,14 @@ class DefaultApi(object):
 
         Get the list of events for a device-group. Filtering is possible with the use of various query parameters.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_event_device_group_with_http_info(from_timestamp, device_group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_event_device_group_with_http_info(from_timestamp, device_group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param datetime from_timestamp: Starting timestamp (required)
         :param str device_group_name: device_group_name of the device-group for which events are requested (required)
+        :param str authorization: authentication header object
         :param datetime to_timestamp: Ending timestamp
         :param str granularity: Granularity of query
         :param list[str] device_id: list of devices under a device-group to be fetched
@@ -2361,8 +5256,8 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['from_timestamp', 'device_group_name', 'to_timestamp', 'granularity', 'device_id', 'color']  # noqa: E501
-        all_params.append('async')
+        all_params = ['from_timestamp', 'device_group_name', 'authorization', 'to_timestamp', 'granularity', 'device_id', 'color']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -2385,7 +5280,7 @@ class DefaultApi(object):
                 params['device_group_name'] is None):
             raise ValueError("Missing the required parameter `device_group_name` when calling `retrieve_event_device_group`")  # noqa: E501
 
-        if 'granularity' in params and not re.search('^[0-9]*[\'ns\' | \'u\' | \'µ\' | \'ms\' | \'s\' | \'m\' | \'h\' | \'d\' | \'w\']$', params['granularity']):  # noqa: E501
+        if 'granularity' in params and not re.search(r'^[0-9]*[\'ns\' | \'u\' | \'µ\' | \'ms\' | \'s\' | \'m\' | \'h\' | \'d\' | \'w\']$', params['granularity']):  # noqa: E501
             raise ValueError("Invalid value for parameter `granularity` when calling `retrieve_event_device_group`, must conform to the pattern `/^[0-9]*['ns' | 'u' | 'µ' | 'ms' | 's' | 'm' | 'h' | 'd' | 'w']$/`")  # noqa: E501
         collection_formats = {}
 
@@ -2407,6 +5302,8 @@ class DefaultApi(object):
             query_params.append(('color', params['color']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2433,7 +5330,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='list[Event]',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -2444,13 +5341,14 @@ class DefaultApi(object):
 
         Get the list of events for a network-group. Filtering is possible with the use of various query parameters.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_event_network_group(from_timestamp, network_group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_event_network_group(from_timestamp, network_group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param datetime from_timestamp: Starting timestamp (required)
         :param str network_group_name: network_group_name of the network-group for which events are requested (required)
+        :param str authorization: authentication header object
         :param datetime to_timestamp: Ending timestamp
         :param str granularity: Granularity of query
         :param str color: Color of events.
@@ -2459,7 +5357,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_event_network_group_with_http_info(from_timestamp, network_group_name, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_event_network_group_with_http_info(from_timestamp, network_group_name, **kwargs)  # noqa: E501
@@ -2470,13 +5368,14 @@ class DefaultApi(object):
 
         Get the list of events for a network-group. Filtering is possible with the use of various query parameters.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_event_network_group_with_http_info(from_timestamp, network_group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_event_network_group_with_http_info(from_timestamp, network_group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param datetime from_timestamp: Starting timestamp (required)
         :param str network_group_name: network_group_name of the network-group for which events are requested (required)
+        :param str authorization: authentication header object
         :param datetime to_timestamp: Ending timestamp
         :param str granularity: Granularity of query
         :param str color: Color of events.
@@ -2485,8 +5384,8 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['from_timestamp', 'network_group_name', 'to_timestamp', 'granularity', 'color']  # noqa: E501
-        all_params.append('async')
+        all_params = ['from_timestamp', 'network_group_name', 'authorization', 'to_timestamp', 'granularity', 'color']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -2509,7 +5408,7 @@ class DefaultApi(object):
                 params['network_group_name'] is None):
             raise ValueError("Missing the required parameter `network_group_name` when calling `retrieve_event_network_group`")  # noqa: E501
 
-        if 'granularity' in params and not re.search('^[0-9]*[\'ns\' | \'u\' | \'µ\' | \'ms\' | \'s\' | \'m\' | \'h\' | \'d\' | \'w\']$', params['granularity']):  # noqa: E501
+        if 'granularity' in params and not re.search(r'^[0-9]*[\'ns\' | \'u\' | \'µ\' | \'ms\' | \'s\' | \'m\' | \'h\' | \'d\' | \'w\']$', params['granularity']):  # noqa: E501
             raise ValueError("Invalid value for parameter `granularity` when calling `retrieve_event_network_group`, must conform to the pattern `/^[0-9]*['ns' | 'u' | 'µ' | 'ms' | 's' | 'm' | 'h' | 'd' | 'w']$/`")  # noqa: E501
         collection_formats = {}
 
@@ -2528,6 +5427,8 @@ class DefaultApi(object):
             query_params.append(('color', params['color']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2554,7 +5455,229 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='list[Event]',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_events(self, from_timestamp, **kwargs):  # noqa: E501
+        """Get all events.  # noqa: E501
+
+        Get the list of all events. Filtering is possible with the use of various query parameters.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_events(from_timestamp, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param datetime from_timestamp: Starting timestamp (required)
+        :param str authorization: authentication header object
+        :param datetime to_timestamp: Ending timestamp
+        :param str color: Color of events.
+        :return: list[Event]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_events_with_http_info(from_timestamp, **kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_events_with_http_info(from_timestamp, **kwargs)  # noqa: E501
+            return data
+
+    def retrieve_events_with_http_info(self, from_timestamp, **kwargs):  # noqa: E501
+        """Get all events.  # noqa: E501
+
+        Get the list of all events. Filtering is possible with the use of various query parameters.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_events_with_http_info(from_timestamp, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param datetime from_timestamp: Starting timestamp (required)
+        :param str authorization: authentication header object
+        :param datetime to_timestamp: Ending timestamp
+        :param str color: Color of events.
+        :return: list[Event]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['from_timestamp', 'authorization', 'to_timestamp', 'color']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_events" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'from_timestamp' is set
+        if ('from_timestamp' not in params or
+                params['from_timestamp'] is None):
+            raise ValueError("Missing the required parameter `from_timestamp` when calling `retrieve_events`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'from_timestamp' in params:
+            query_params.append(('from_timestamp', params['from_timestamp']))  # noqa: E501
+        if 'to_timestamp' in params:
+            query_params.append(('to_timestamp', params['to_timestamp']))  # noqa: E501
+        if 'color' in params:
+            query_params.append(('color', params['color']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'application/octet-stream'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/events/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[Event]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_files_certificates_by_file_name(self, file_name, **kwargs):  # noqa: E501
+        """Download a certificate-file.  # noqa: E501
+
+        Download the specified certificate-file.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_files_certificates_by_file_name(file_name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str file_name: File name (required)
+        :param str authorization: authentication header object
+        :param str input_path: Input path
+        :param str certificate_type: Certificate type
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_files_certificates_by_file_name_with_http_info(file_name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_files_certificates_by_file_name_with_http_info(file_name, **kwargs)  # noqa: E501
+            return data
+
+    def retrieve_files_certificates_by_file_name_with_http_info(self, file_name, **kwargs):  # noqa: E501
+        """Download a certificate-file.  # noqa: E501
+
+        Download the specified certificate-file.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_files_certificates_by_file_name_with_http_info(file_name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str file_name: File name (required)
+        :param str authorization: authentication header object
+        :param str input_path: Input path
+        :param str certificate_type: Certificate type
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['file_name', 'authorization', 'input_path', 'certificate_type']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_files_certificates_by_file_name" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'file_name' is set
+        if ('file_name' not in params or
+                params['file_name'] is None):
+            raise ValueError("Missing the required parameter `file_name` when calling `retrieve_files_certificates_by_file_name`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'file_name' in params:
+            path_params['file_name'] = params['file_name']  # noqa: E501
+
+        query_params = []
+        if 'input_path' in params:
+            query_params.append(('input_path', params['input_path']))  # noqa: E501
+        if 'certificate_type' in params:
+            query_params.append(('certificate_type', params['certificate_type']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/octet-stream', 'application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/files/certificates/{file_name}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='file',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -2565,18 +5688,19 @@ class DefaultApi(object):
 
         Get a list of all the helper-file file-names.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_files_helper_files(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_files_helper_files(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
         :param str input_path: Input path
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_files_helper_files_with_http_info(**kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_files_helper_files_with_http_info(**kwargs)  # noqa: E501
@@ -2587,19 +5711,20 @@ class DefaultApi(object):
 
         Get a list of all the helper-file file-names.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_files_helper_files_with_http_info(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_files_helper_files_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
         :param str input_path: Input path
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['input_path']  # noqa: E501
-        all_params.append('async')
+        all_params = ['authorization', 'input_path']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -2623,6 +5748,8 @@ class DefaultApi(object):
             query_params.append(('input_path', params['input_path']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2649,7 +5776,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='list[str]',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -2660,19 +5787,20 @@ class DefaultApi(object):
 
         Download the specified helper-file.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_files_helper_files_by_file_name(file_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_files_helper_files_by_file_name(file_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str file_name: File name (required)
+        :param str authorization: authentication header object
         :param str input_path: Input path
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_files_helper_files_by_file_name_with_http_info(file_name, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_files_helper_files_by_file_name_with_http_info(file_name, **kwargs)  # noqa: E501
@@ -2683,20 +5811,21 @@ class DefaultApi(object):
 
         Download the specified helper-file.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_files_helper_files_by_file_name_with_http_info(file_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_files_helper_files_by_file_name_with_http_info(file_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str file_name: File name (required)
+        :param str authorization: authentication header object
         :param str input_path: Input path
         :return: file
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['file_name', 'input_path']  # noqa: E501
-        all_params.append('async')
+        all_params = ['file_name', 'authorization', 'input_path']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -2726,6 +5855,8 @@ class DefaultApi(object):
             query_params.append(('input_path', params['input_path']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2752,7 +5883,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='file',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -2763,17 +5894,18 @@ class DefaultApi(object):
 
         Returns health of network-groups and devices in device-groups  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_health_all(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_health_all(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
         :return: HealthSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_health_all_with_http_info(**kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_health_all_with_http_info(**kwargs)  # noqa: E501
@@ -2784,18 +5916,19 @@ class DefaultApi(object):
 
         Returns health of network-groups and devices in device-groups  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_health_all_with_http_info(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_health_all_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
         :return: HealthSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
-        all_params.append('async')
+        all_params = ['authorization']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -2817,6 +5950,8 @@ class DefaultApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2843,7 +5978,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='HealthSchema',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -2854,12 +5989,13 @@ class DefaultApi(object):
 
         Get health-tree of a specified device-group.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_health_tree_by_device_group(device_group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_health_tree_by_device_group(device_group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str device_group_name: `device-group-name` of device-group (required)
+        :param str authorization: authentication header object
         :param datetime timestamp: Timestamp at which health tree is requested. If not specified, current server timestamp is used.
         :param int tolerance: Timestamp tolerance in seconds. With this option, health-tree will contain latest data between `timestamp-2*tolerance` and `timestamp`. Default value is `2*frequency` where `frequency` is extracted from `trigger`.
         :param list[str] device: list of devices under a device-group to be fetched
@@ -2868,7 +6004,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_health_tree_by_device_group_with_http_info(device_group_name, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_health_tree_by_device_group_with_http_info(device_group_name, **kwargs)  # noqa: E501
@@ -2879,12 +6015,13 @@ class DefaultApi(object):
 
         Get health-tree of a specified device-group.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_health_tree_by_device_group_with_http_info(device_group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_health_tree_by_device_group_with_http_info(device_group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str device_group_name: `device-group-name` of device-group (required)
+        :param str authorization: authentication header object
         :param datetime timestamp: Timestamp at which health tree is requested. If not specified, current server timestamp is used.
         :param int tolerance: Timestamp tolerance in seconds. With this option, health-tree will contain latest data between `timestamp-2*tolerance` and `timestamp`. Default value is `2*frequency` where `frequency` is extracted from `trigger`.
         :param list[str] device: list of devices under a device-group to be fetched
@@ -2893,8 +6030,8 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['device_group_name', 'timestamp', 'tolerance', 'device']  # noqa: E501
-        all_params.append('async')
+        all_params = ['device_group_name', 'authorization', 'timestamp', 'tolerance', 'device']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -2929,6 +6066,8 @@ class DefaultApi(object):
             collection_formats['device'] = 'csv'  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -2955,23 +6094,24 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='DeviceGroupHealthTree',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
     def retrieve_health_tree_by_id(self, device_id, **kwargs):  # noqa: E501
-        """Return a device&#39;s health-tree.  # noqa: E501
+        """Return a device's health-tree.  # noqa: E501
 
         Return health-tree of a specified device identified by `device-id`.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_health_tree_by_id(device_id, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_health_tree_by_id(device_id, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str device_id: `device-id` of device (required)
+        :param str authorization: authentication header object
         :param datetime timestamp: Timestamp at which health tree is requested. If not specified, current server timestamp is used.
         :param int tolerance: Timestamp tolerance in seconds. With this option, health-tree will contain latest data between `timestamp-2*tolerance` and `timestamp`. Default value is `2*frequency` where `frequency` is extracted from `trigger`.
         :return: DeviceHealthTree
@@ -2979,23 +6119,24 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_health_tree_by_id_with_http_info(device_id, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_health_tree_by_id_with_http_info(device_id, **kwargs)  # noqa: E501
             return data
 
     def retrieve_health_tree_by_id_with_http_info(self, device_id, **kwargs):  # noqa: E501
-        """Return a device&#39;s health-tree.  # noqa: E501
+        """Return a device's health-tree.  # noqa: E501
 
         Return health-tree of a specified device identified by `device-id`.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_health_tree_by_id_with_http_info(device_id, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_health_tree_by_id_with_http_info(device_id, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str device_id: `device-id` of device (required)
+        :param str authorization: authentication header object
         :param datetime timestamp: Timestamp at which health tree is requested. If not specified, current server timestamp is used.
         :param int tolerance: Timestamp tolerance in seconds. With this option, health-tree will contain latest data between `timestamp-2*tolerance` and `timestamp`. Default value is `2*frequency` where `frequency` is extracted from `trigger`.
         :return: DeviceHealthTree
@@ -3003,8 +6144,8 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['device_id', 'timestamp', 'tolerance']  # noqa: E501
-        all_params.append('async')
+        all_params = ['device_id', 'authorization', 'timestamp', 'tolerance']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -3036,6 +6177,8 @@ class DefaultApi(object):
             query_params.append(('tolerance', params['tolerance']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -3062,7 +6205,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='DeviceHealthTree',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -3073,12 +6216,13 @@ class DefaultApi(object):
 
         Get health-tree of a specified network-group.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_health_tree_by_network_group(network_group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_health_tree_by_network_group(network_group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str network_group_name: `network-group-name` of network-group (required)
+        :param str authorization: authentication header object
         :param datetime timestamp: Timestamp at which health tree is requested. If not specified, current server timestamp is used.
         :param int tolerance: Timestamp tolerance in seconds. With this option, health-tree will contain latest data between `timestamp-2*tolerance` and `timestamp`. Default value is `2*frequency` where `frequency` is extracted from `trigger`.
         :return: NetworkHealthTree
@@ -3086,7 +6230,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_health_tree_by_network_group_with_http_info(network_group_name, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_health_tree_by_network_group_with_http_info(network_group_name, **kwargs)  # noqa: E501
@@ -3097,12 +6241,13 @@ class DefaultApi(object):
 
         Get health-tree of a specified network-group.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_health_tree_by_network_group_with_http_info(network_group_name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_health_tree_by_network_group_with_http_info(network_group_name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str network_group_name: `network-group-name` of network-group (required)
+        :param str authorization: authentication header object
         :param datetime timestamp: Timestamp at which health tree is requested. If not specified, current server timestamp is used.
         :param int tolerance: Timestamp tolerance in seconds. With this option, health-tree will contain latest data between `timestamp-2*tolerance` and `timestamp`. Default value is `2*frequency` where `frequency` is extracted from `trigger`.
         :return: NetworkHealthTree
@@ -3110,8 +6255,8 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['network_group_name', 'timestamp', 'tolerance']  # noqa: E501
-        all_params.append('async')
+        all_params = ['network_group_name', 'authorization', 'timestamp', 'tolerance']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -3143,6 +6288,8 @@ class DefaultApi(object):
             query_params.append(('tolerance', params['tolerance']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -3169,7 +6316,2039 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='NetworkHealthTree',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_healthbot_ingest_settings_byoi_custom_plugin_by_id(self, name, **kwargs):  # noqa: E501
+        """Retrieve custom-plugin by ID  # noqa: E501
+
+        Retrieve operation of resource: custom-plugin  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_ingest_settings_byoi_custom_plugin_by_id(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of custom-plugin (required)
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: CustomPluginSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_healthbot_ingest_settings_byoi_custom_plugin_by_id_with_http_info(name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_healthbot_ingest_settings_byoi_custom_plugin_by_id_with_http_info(name, **kwargs)  # noqa: E501
+            return data
+
+    def retrieve_healthbot_ingest_settings_byoi_custom_plugin_by_id_with_http_info(self, name, **kwargs):  # noqa: E501
+        """Retrieve custom-plugin by ID  # noqa: E501
+
+        Retrieve operation of resource: custom-plugin  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_ingest_settings_byoi_custom_plugin_by_id_with_http_info(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of custom-plugin (required)
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: CustomPluginSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_healthbot_ingest_settings_byoi_custom_plugin_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `retrieve_healthbot_ingest_settings_byoi_custom_plugin_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/byoi/custom-plugin/{name}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='CustomPluginSchema',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_healthbot_ingest_settings_byoi_custom_plugins(self, **kwargs):  # noqa: E501
+        """Retrieve custom-plugin by ID  # noqa: E501
+
+        Retrieve all the custom-plugins configured.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_ingest_settings_byoi_custom_plugins(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: CustomPluginSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_healthbot_ingest_settings_byoi_custom_plugins_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_healthbot_ingest_settings_byoi_custom_plugins_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def retrieve_healthbot_ingest_settings_byoi_custom_plugins_with_http_info(self, **kwargs):  # noqa: E501
+        """Retrieve custom-plugin by ID  # noqa: E501
+
+        Retrieve all the custom-plugins configured.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_ingest_settings_byoi_custom_plugins_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: CustomPluginSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_healthbot_ingest_settings_byoi_custom_plugins" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/byoi/custom-plugins/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='CustomPluginSchema',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id(self, name, **kwargs):  # noqa: E501
+        """Retrieve tlive-kafka-oc by ID  # noqa: E501
+
+        Retrieve operation of resource: tlive-kafka-oc  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of tlive-kafka-oc (required)
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: TliveKafkaOcSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id_with_http_info(name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id_with_http_info(name, **kwargs)  # noqa: E501
+            return data
+
+    def retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id_with_http_info(self, name, **kwargs):  # noqa: E501
+        """Retrieve tlive-kafka-oc by ID  # noqa: E501
+
+        Retrieve operation of resource: tlive-kafka-oc  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id_with_http_info(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of tlive-kafka-oc (required)
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: TliveKafkaOcSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='TliveKafkaOcSchema',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafkas(self, **kwargs):  # noqa: E501
+        """Retrieve tlive-kafka-oc  # noqa: E501
+
+        Retrieve all the tlive-kafka-ocs configured.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafkas(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: list[str]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafkas_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafkas_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafkas_with_http_info(self, **kwargs):  # noqa: E501
+        """Retrieve tlive-kafka-oc  # noqa: E501
+
+        Retrieve all the tlive-kafka-ocs configured.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafkas_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: list[str]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafkas" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/byoi/default-plugin/tlive-kafka-ocs/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[str]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_healthbot_ingest_settings_byoi_ingest_mapping_by_id(self, name, **kwargs):  # noqa: E501
+        """Retrieve ingest-mapping by ID  # noqa: E501
+
+        Retrieve ingest-mapping by name  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_ingest_settings_byoi_ingest_mapping_by_id(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of ingest-mapping (required)
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: IngestMappingSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_healthbot_ingest_settings_byoi_ingest_mapping_by_id_with_http_info(name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_healthbot_ingest_settings_byoi_ingest_mapping_by_id_with_http_info(name, **kwargs)  # noqa: E501
+            return data
+
+    def retrieve_healthbot_ingest_settings_byoi_ingest_mapping_by_id_with_http_info(self, name, **kwargs):  # noqa: E501
+        """Retrieve ingest-mapping by ID  # noqa: E501
+
+        Retrieve ingest-mapping by name  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_ingest_settings_byoi_ingest_mapping_by_id_with_http_info(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of ingest-mapping (required)
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: IngestMappingSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_healthbot_ingest_settings_byoi_ingest_mapping_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `retrieve_healthbot_ingest_settings_byoi_ingest_mapping_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/byoi/ingest-mapping/{name}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='IngestMappingSchema',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_healthbot_ingest_settings_byoi_ingest_mappings(self, **kwargs):  # noqa: E501
+        """Retrieve ingest-mapping  # noqa: E501
+
+        Retrieve all the ingest mappings configured.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_ingest_settings_byoi_ingest_mappings(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: list[str]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_healthbot_ingest_settings_byoi_ingest_mappings_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_healthbot_ingest_settings_byoi_ingest_mappings_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def retrieve_healthbot_ingest_settings_byoi_ingest_mappings_with_http_info(self, **kwargs):  # noqa: E501
+        """Retrieve ingest-mapping  # noqa: E501
+
+        Retrieve all the ingest mappings configured.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_ingest_settings_byoi_ingest_mappings_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: list[str]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_healthbot_ingest_settings_byoi_ingest_mappings" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/byoi/ingest-mappings/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[str]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_healthbot_ingest_settings_frequency_profile(self, **kwargs):  # noqa: E501
+        """Retrieve frequency-profile  # noqa: E501
+
+        Retrieve operation of resource: frequency-profile  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_ingest_settings_frequency_profile(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: list[str]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_healthbot_ingest_settings_frequency_profile_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_healthbot_ingest_settings_frequency_profile_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def retrieve_healthbot_ingest_settings_frequency_profile_with_http_info(self, **kwargs):  # noqa: E501
+        """Retrieve frequency-profile  # noqa: E501
+
+        Retrieve operation of resource: frequency-profile  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_ingest_settings_frequency_profile_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: list[str]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_healthbot_ingest_settings_frequency_profile" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/frequency-profiles/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[str]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_healthbot_ingest_settings_frequency_profile_by_id(self, name, **kwargs):  # noqa: E501
+        """Retrieve frequency-profile by ID  # noqa: E501
+
+        Retrieve operation of resource: frequency-profile  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_ingest_settings_frequency_profile_by_id(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: ID of name (required)
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: FrequencyProfileSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_healthbot_ingest_settings_frequency_profile_by_id_with_http_info(name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_healthbot_ingest_settings_frequency_profile_by_id_with_http_info(name, **kwargs)  # noqa: E501
+            return data
+
+    def retrieve_healthbot_ingest_settings_frequency_profile_by_id_with_http_info(self, name, **kwargs):  # noqa: E501
+        """Retrieve frequency-profile by ID  # noqa: E501
+
+        Retrieve operation of resource: frequency-profile  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_ingest_settings_frequency_profile_by_id_with_http_info(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: ID of name (required)
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: FrequencyProfileSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_healthbot_ingest_settings_frequency_profile_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `retrieve_healthbot_ingest_settings_frequency_profile_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/frequency-profile/{name}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='FrequencyProfileSchema',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_healthbot_system_time_series_database_time_series_database(self, **kwargs):  # noqa: E501
+        """Retrieve time-series-database  # noqa: E501
+
+        Retrieve operation of resource: time-series-database  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_system_time_series_database_time_series_database(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param bool working: true queries undeployed configuration
+        :return: TsdbSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_healthbot_system_time_series_database_time_series_database_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_healthbot_system_time_series_database_time_series_database_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def retrieve_healthbot_system_time_series_database_time_series_database_with_http_info(self, **kwargs):  # noqa: E501
+        """Retrieve time-series-database  # noqa: E501
+
+        Retrieve operation of resource: time-series-database  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_system_time_series_database_time_series_database_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param bool working: true queries undeployed configuration
+        :return: TsdbSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['working']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_healthbot_system_time_series_database_time_series_database" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/tsdb/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='TsdbSchema',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_iceberg_ingest_settings(self, **kwargs):  # noqa: E501
+        """Retrieve ingest-settings  # noqa: E501
+
+        Retrieve operation of resource: ingest-settings  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_ingest_settings(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: IngestSettingsSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_iceberg_ingest_settings_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_iceberg_ingest_settings_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def retrieve_iceberg_ingest_settings_with_http_info(self, **kwargs):  # noqa: E501
+        """Retrieve ingest-settings  # noqa: E501
+
+        Retrieve operation of resource: ingest-settings  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_ingest_settings_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: IngestSettingsSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_iceberg_ingest_settings" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='IngestSettingsSchema',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_iceberg_ingest_settings_flow(self, **kwargs):  # noqa: E501
+        """Retrieve flow  # noqa: E501
+
+        Retrieve operation of resource: flow  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_ingest_settings_flow(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: FlowSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_iceberg_ingest_settings_flow_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_iceberg_ingest_settings_flow_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def retrieve_iceberg_ingest_settings_flow_with_http_info(self, **kwargs):  # noqa: E501
+        """Retrieve flow  # noqa: E501
+
+        Retrieve operation of resource: flow  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_ingest_settings_flow_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: FlowSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_iceberg_ingest_settings_flow" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/flow/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='FlowSchema',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_iceberg_ingest_settings_flow_template_by_id(self, name, **kwargs):  # noqa: E501
+        """Retrieve template by ID  # noqa: E501
+
+        Retrieve operation of resource: template  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_ingest_settings_flow_template_by_id(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of template (required)
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: TemplateSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_iceberg_ingest_settings_flow_template_by_id_with_http_info(name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_iceberg_ingest_settings_flow_template_by_id_with_http_info(name, **kwargs)  # noqa: E501
+            return data
+
+    def retrieve_iceberg_ingest_settings_flow_template_by_id_with_http_info(self, name, **kwargs):  # noqa: E501
+        """Retrieve template by ID  # noqa: E501
+
+        Retrieve operation of resource: template  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_ingest_settings_flow_template_by_id_with_http_info(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of template (required)
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: TemplateSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_iceberg_ingest_settings_flow_template_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `retrieve_iceberg_ingest_settings_flow_template_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/flow/template/{name}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='TemplateSchema',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_iceberg_ingest_settings_flow_template_ids(self, **kwargs):  # noqa: E501
+        """Retrieve template  # noqa: E501
+
+        Retrieve operation of resource: template  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_ingest_settings_flow_template_ids(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: list[str]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_iceberg_ingest_settings_flow_template_ids_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_iceberg_ingest_settings_flow_template_ids_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def retrieve_iceberg_ingest_settings_flow_template_ids_with_http_info(self, **kwargs):  # noqa: E501
+        """Retrieve template  # noqa: E501
+
+        Retrieve operation of resource: template  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_ingest_settings_flow_template_ids_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: list[str]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_iceberg_ingest_settings_flow_template_ids" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/flow/template/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[str]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_iceberg_ingest_settings_syslog(self, **kwargs):  # noqa: E501
+        """Retrieve syslog  # noqa: E501
+
+        Retrieve operation of resource: syslog  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_ingest_settings_syslog(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: SyslogSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_iceberg_ingest_settings_syslog_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_iceberg_ingest_settings_syslog_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def retrieve_iceberg_ingest_settings_syslog_with_http_info(self, **kwargs):  # noqa: E501
+        """Retrieve syslog  # noqa: E501
+
+        Retrieve operation of resource: syslog  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_ingest_settings_syslog_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: SyslogSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_iceberg_ingest_settings_syslog" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/syslog/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='SyslogSchema',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_iceberg_ingest_settings_syslog_pattern_by_id(self, name, **kwargs):  # noqa: E501
+        """Retrieve pattern by ID  # noqa: E501
+
+        Retrieve operation of resource: pattern  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_ingest_settings_syslog_pattern_by_id(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of pattern (required)
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: PatternSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_iceberg_ingest_settings_syslog_pattern_by_id_with_http_info(name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_iceberg_ingest_settings_syslog_pattern_by_id_with_http_info(name, **kwargs)  # noqa: E501
+            return data
+
+    def retrieve_iceberg_ingest_settings_syslog_pattern_by_id_with_http_info(self, name, **kwargs):  # noqa: E501
+        """Retrieve pattern by ID  # noqa: E501
+
+        Retrieve operation of resource: pattern  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_ingest_settings_syslog_pattern_by_id_with_http_info(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of pattern (required)
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: PatternSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_iceberg_ingest_settings_syslog_pattern_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `retrieve_iceberg_ingest_settings_syslog_pattern_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/syslog/pattern/{name}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PatternSchema',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_iceberg_ingest_settings_syslog_pattern_ids(self, **kwargs):  # noqa: E501
+        """Retrieve pattern  # noqa: E501
+
+        Retrieve operation of resource: pattern  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_ingest_settings_syslog_pattern_ids(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: list[str]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_iceberg_ingest_settings_syslog_pattern_ids_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_iceberg_ingest_settings_syslog_pattern_ids_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def retrieve_iceberg_ingest_settings_syslog_pattern_ids_with_http_info(self, **kwargs):  # noqa: E501
+        """Retrieve pattern  # noqa: E501
+
+        Retrieve operation of resource: pattern  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_ingest_settings_syslog_pattern_ids_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: list[str]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_iceberg_ingest_settings_syslog_pattern_ids" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/syslog/pattern/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[str]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_iceberg_ingest_settings_syslog_pattern_set_by_id(self, name, **kwargs):  # noqa: E501
+        """Retrieve pattern-set by ID  # noqa: E501
+
+        Retrieve operation of resource: pattern-set  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_ingest_settings_syslog_pattern_set_by_id(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of patter-set (required)
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: PatternSetSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_iceberg_ingest_settings_syslog_pattern_set_by_id_with_http_info(name, **kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_iceberg_ingest_settings_syslog_pattern_set_by_id_with_http_info(name, **kwargs)  # noqa: E501
+            return data
+
+    def retrieve_iceberg_ingest_settings_syslog_pattern_set_by_id_with_http_info(self, name, **kwargs):  # noqa: E501
+        """Retrieve pattern-set by ID  # noqa: E501
+
+        Retrieve operation of resource: pattern-set  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_ingest_settings_syslog_pattern_set_by_id_with_http_info(name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of patter-set (required)
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: PatternSetSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_iceberg_ingest_settings_syslog_pattern_set_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `retrieve_iceberg_ingest_settings_syslog_pattern_set_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/syslog/pattern-set/{name}/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='PatternSetSchema',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_iceberg_ingest_settings_syslog_pattern_set_ids(self, **kwargs):  # noqa: E501
+        """Retrieve pattern-set  # noqa: E501
+
+        Retrieve operation of resource: pattern-set  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_ingest_settings_syslog_pattern_set_ids(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: list[str]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_iceberg_ingest_settings_syslog_pattern_set_ids_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_iceberg_ingest_settings_syslog_pattern_set_ids_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def retrieve_iceberg_ingest_settings_syslog_pattern_set_ids_with_http_info(self, **kwargs):  # noqa: E501
+        """Retrieve pattern-set  # noqa: E501
+
+        Retrieve operation of resource: pattern-set  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_ingest_settings_syslog_pattern_set_ids_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: list[str]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_iceberg_ingest_settings_syslog_pattern_set_ids" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/syslog/pattern-set/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[str]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_iceberg_ingest_settings_syslog_pattern_sets(self, **kwargs):  # noqa: E501
+        """Retrieve pattern-set by ID  # noqa: E501
+
+        Retrieve operation of resource: pattern-set  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_ingest_settings_syslog_pattern_sets(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: list[PatternSetSchema]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_iceberg_ingest_settings_syslog_pattern_sets_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_iceberg_ingest_settings_syslog_pattern_sets_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def retrieve_iceberg_ingest_settings_syslog_pattern_sets_with_http_info(self, **kwargs):  # noqa: E501
+        """Retrieve pattern-set by ID  # noqa: E501
+
+        Retrieve operation of resource: pattern-set  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_ingest_settings_syslog_pattern_sets_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: list[PatternSetSchema]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_iceberg_ingest_settings_syslog_pattern_sets" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/syslog/pattern-sets/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[PatternSetSchema]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_iceberg_ingest_settings_syslog_patterns(self, **kwargs):  # noqa: E501
+        """Retrieve pattern by ID  # noqa: E501
+
+        Retrieve operation of resource: pattern  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_ingest_settings_syslog_patterns(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: list[PatternSchema]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_iceberg_ingest_settings_syslog_patterns_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_iceberg_ingest_settings_syslog_patterns_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def retrieve_iceberg_ingest_settings_syslog_patterns_with_http_info(self, **kwargs):  # noqa: E501
+        """Retrieve pattern by ID  # noqa: E501
+
+        Retrieve operation of resource: pattern  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_ingest_settings_syslog_patterns_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str authorization: authentication header object
+        :param bool working: true queries undeployed configuration
+        :return: list[PatternSchema]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_iceberg_ingest_settings_syslog_patterns" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/syslog/patterns/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[PatternSchema]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -3180,19 +8359,20 @@ class DefaultApi(object):
 
         Retrieve operation of resource: raw-data-summarization  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_profile_data_summarization_raw_by_id(name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_profile_data_summarization_raw_by_id(name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of raw-data-summarization (required)
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: RawSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_iceberg_profile_data_summarization_raw_by_id_with_http_info(name, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_iceberg_profile_data_summarization_raw_by_id_with_http_info(name, **kwargs)  # noqa: E501
@@ -3203,20 +8383,21 @@ class DefaultApi(object):
 
         Retrieve operation of resource: raw-data-summarization  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_profile_data_summarization_raw_by_id_with_http_info(name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_profile_data_summarization_raw_by_id_with_http_info(name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of raw-data-summarization (required)
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: RawSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'working']  # noqa: E501
-        all_params.append('async')
+        all_params = ['name', 'authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -3246,6 +8427,8 @@ class DefaultApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -3272,7 +8455,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='RawSchema',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -3283,18 +8466,19 @@ class DefaultApi(object):
 
         Retrieve operation of resource: raw-data-summarization  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_profile_data_summarizations_raw(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_profile_data_summarizations_raw(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: RawSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_iceberg_profile_data_summarizations_raw_with_http_info(**kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_iceberg_profile_data_summarizations_raw_with_http_info(**kwargs)  # noqa: E501
@@ -3305,19 +8489,20 @@ class DefaultApi(object):
 
         Retrieve operation of resource: raw-data-summarization  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_profile_data_summarizations_raw_with_http_info(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_profile_data_summarizations_raw_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: RawSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
-        all_params.append('async')
+        all_params = ['authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -3341,6 +8526,8 @@ class DefaultApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -3367,7 +8554,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='RawSchema',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -3378,19 +8565,20 @@ class DefaultApi(object):
 
         Retrieve operation of resource: ca-profile  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_profile_security_ca_profile_by_id(name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_profile_security_ca_profile_by_id(name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of ca-profile (required)
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: CaProfileSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_iceberg_profile_security_ca_profile_by_id_with_http_info(name, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_iceberg_profile_security_ca_profile_by_id_with_http_info(name, **kwargs)  # noqa: E501
@@ -3401,20 +8589,21 @@ class DefaultApi(object):
 
         Retrieve operation of resource: ca-profile  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_profile_security_ca_profile_by_id_with_http_info(name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_profile_security_ca_profile_by_id_with_http_info(name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of ca-profile (required)
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: CaProfileSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'working']  # noqa: E501
-        all_params.append('async')
+        all_params = ['name', 'authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -3444,6 +8633,8 @@ class DefaultApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -3470,7 +8661,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='CaProfileSchema',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -3481,18 +8672,19 @@ class DefaultApi(object):
 
         Retrieve entire ca-profiles configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_profile_security_ca_profiles(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_profile_security_ca_profiles(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_iceberg_profile_security_ca_profiles_with_http_info(**kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_iceberg_profile_security_ca_profiles_with_http_info(**kwargs)  # noqa: E501
@@ -3503,19 +8695,20 @@ class DefaultApi(object):
 
         Retrieve entire ca-profiles configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_profile_security_ca_profiles_with_http_info(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_profile_security_ca_profiles_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
-        all_params.append('async')
+        all_params = ['authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -3539,6 +8732,8 @@ class DefaultApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -3565,7 +8760,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='list[str]',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -3576,19 +8771,20 @@ class DefaultApi(object):
 
         Retrieve operation of resource: local-certificate  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_profile_security_local_certificate_by_id(name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_profile_security_local_certificate_by_id(name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of local-certificate (required)
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: LocalCertificateSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_iceberg_profile_security_local_certificate_by_id_with_http_info(name, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_iceberg_profile_security_local_certificate_by_id_with_http_info(name, **kwargs)  # noqa: E501
@@ -3599,20 +8795,21 @@ class DefaultApi(object):
 
         Retrieve operation of resource: local-certificate  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_profile_security_local_certificate_by_id_with_http_info(name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_profile_security_local_certificate_by_id_with_http_info(name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of local-certificate (required)
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: LocalCertificateSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'working']  # noqa: E501
-        all_params.append('async')
+        all_params = ['name', 'authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -3642,6 +8839,8 @@ class DefaultApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -3668,7 +8867,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='LocalCertificateSchema',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -3679,18 +8878,19 @@ class DefaultApi(object):
 
         Retrieve entire local-certificates configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_profile_security_local_certificates(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_profile_security_local_certificates(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_iceberg_profile_security_local_certificates_with_http_info(**kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_iceberg_profile_security_local_certificates_with_http_info(**kwargs)  # noqa: E501
@@ -3701,19 +8901,20 @@ class DefaultApi(object):
 
         Retrieve entire local-certificates configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_profile_security_local_certificates_with_http_info(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_profile_security_local_certificates_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
-        all_params.append('async')
+        all_params = ['authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -3737,6 +8938,8 @@ class DefaultApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -3763,7 +8966,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='list[str]',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -3774,19 +8977,20 @@ class DefaultApi(object):
 
         Retrieve operation of resource: ssh-key-profile  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_profile_security_ssh_key_profile_by_id(name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_profile_security_ssh_key_profile_by_id(name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of ssh-key-profile (required)
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: SshKeyProfileSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_iceberg_profile_security_ssh_key_profile_by_id_with_http_info(name, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_iceberg_profile_security_ssh_key_profile_by_id_with_http_info(name, **kwargs)  # noqa: E501
@@ -3797,20 +9001,21 @@ class DefaultApi(object):
 
         Retrieve operation of resource: ssh-key-profile  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_profile_security_ssh_key_profile_by_id_with_http_info(name, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_profile_security_ssh_key_profile_by_id_with_http_info(name, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of ssh-key-profile (required)
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: SshKeyProfileSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'working']  # noqa: E501
-        all_params.append('async')
+        all_params = ['name', 'authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -3840,6 +9045,8 @@ class DefaultApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -3866,7 +9073,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='SshKeyProfileSchema',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -3877,18 +9084,19 @@ class DefaultApi(object):
 
         Retrieve entire ssh-key-profiles configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_profile_security_ssh_key_profiles(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_profile_security_ssh_key_profiles(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_iceberg_profile_security_ssh_key_profiles_with_http_info(**kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_iceberg_profile_security_ssh_key_profiles_with_http_info(**kwargs)  # noqa: E501
@@ -3899,19 +9107,20 @@ class DefaultApi(object):
 
         Retrieve entire ssh-key-profiles configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_profile_security_ssh_key_profiles_with_http_info(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_profile_security_ssh_key_profiles_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: list[str]
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
-        all_params.append('async')
+        all_params = ['authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -3935,6 +9144,8 @@ class DefaultApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -3961,7 +9172,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='list[str]',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -3972,18 +9183,19 @@ class DefaultApi(object):
 
         Retrieve entire profile configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_profiles(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_profiles(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: ProfilesSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_iceberg_profiles_with_http_info(**kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_iceberg_profiles_with_http_info(**kwargs)  # noqa: E501
@@ -3994,19 +9206,20 @@ class DefaultApi(object):
 
         Retrieve entire profile configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_iceberg_profiles_with_http_info(async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_iceberg_profiles_with_http_info(async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
+        :param str authorization: authentication header object
         :param bool working: true queries undeployed configuration
         :return: ProfilesSchema
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['working']  # noqa: E501
-        all_params.append('async')
+        all_params = ['authorization', 'working']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -4030,6 +9243,8 @@ class DefaultApi(object):
             query_params.append(('working', params['working']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -4056,7 +9271,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='ProfilesSchema',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -4067,12 +9282,13 @@ class DefaultApi(object):
 
         Get a list of all the sensors for the filters provided. Filtering is possible with the use of query parameters. If you have a sensor `/1/2/3/4/5/6/` and `sensor_name=/1`and `depth=3`, the result would be `/2/3/4`. If you use `append=true`, then the result would be `/1/2/3/4`.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_sensors(sensor_type, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_sensors(sensor_type, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str sensor_type: Sensor type (required)
+        :param str authorization: authentication header object
         :param str sensor_name: Sensor name prefix.
         :param int depth: Relative depth to the `sensor_name`.
         :param bool append: Returns full path of the sensor.
@@ -4082,7 +9298,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.retrieve_sensors_with_http_info(sensor_type, **kwargs)  # noqa: E501
         else:
             (data) = self.retrieve_sensors_with_http_info(sensor_type, **kwargs)  # noqa: E501
@@ -4093,12 +9309,13 @@ class DefaultApi(object):
 
         Get a list of all the sensors for the filters provided. Filtering is possible with the use of query parameters. If you have a sensor `/1/2/3/4/5/6/` and `sensor_name=/1`and `depth=3`, the result would be `/2/3/4`. If you use `append=true`, then the result would be `/1/2/3/4`.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.retrieve_sensors_with_http_info(sensor_type, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_sensors_with_http_info(sensor_type, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param str sensor_type: Sensor type (required)
+        :param str authorization: authentication header object
         :param str sensor_name: Sensor name prefix.
         :param int depth: Relative depth to the `sensor_name`.
         :param bool append: Returns full path of the sensor.
@@ -4108,8 +9325,8 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['sensor_type', 'sensor_name', 'depth', 'append', 'snmp_table']  # noqa: E501
-        all_params.append('async')
+        all_params = ['sensor_type', 'authorization', 'sensor_name', 'depth', 'append', 'snmp_table']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -4145,6 +9362,8 @@ class DefaultApi(object):
             query_params.append(('snmp_table', params['snmp_table']))  # noqa: E501
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -4171,7 +9390,1196 @@ class DefaultApi(object):
             files=local_var_files,
             response_type='list[str]',  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_healthbot_ingest_settings_byoi_custom_plugin_by_id(self, name, custom_plugin, **kwargs):  # noqa: E501
+        """Update custom-plugin by ID  # noqa: E501
+
+        Update operation of resource: custom-plugin  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_healthbot_ingest_settings_byoi_custom_plugin_by_id(name, custom_plugin, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of custom-plugin (required)
+        :param CustomPluginSchema custom_plugin: custom_pluginbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.update_healthbot_ingest_settings_byoi_custom_plugin_by_id_with_http_info(name, custom_plugin, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_healthbot_ingest_settings_byoi_custom_plugin_by_id_with_http_info(name, custom_plugin, **kwargs)  # noqa: E501
+            return data
+
+    def update_healthbot_ingest_settings_byoi_custom_plugin_by_id_with_http_info(self, name, custom_plugin, **kwargs):  # noqa: E501
+        """Update custom-plugin by ID  # noqa: E501
+
+        Update operation of resource: custom-plugin  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_healthbot_ingest_settings_byoi_custom_plugin_by_id_with_http_info(name, custom_plugin, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of custom-plugin (required)
+        :param CustomPluginSchema custom_plugin: custom_pluginbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'custom_plugin', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_healthbot_ingest_settings_byoi_custom_plugin_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `update_healthbot_ingest_settings_byoi_custom_plugin_by_id`")  # noqa: E501
+        # verify the required parameter 'custom_plugin' is set
+        if ('custom_plugin' not in params or
+                params['custom_plugin'] is None):
+            raise ValueError("Missing the required parameter `custom_plugin` when calling `update_healthbot_ingest_settings_byoi_custom_plugin_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'custom_plugin' in params:
+            body_params = params['custom_plugin']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/byoi/custom-plugin/{name}/', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id(self, name, tlive_kafka, **kwargs):  # noqa: E501
+        """Update tlive-kafka-oc by ID  # noqa: E501
+
+        Update operation of resource: tlive-kafka-oc  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id(name, tlive_kafka, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of tlive-kafka-oc (required)
+        :param TliveKafkaOcSchema tlive_kafka: tlive_kafka body object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.update_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id_with_http_info(name, tlive_kafka, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id_with_http_info(name, tlive_kafka, **kwargs)  # noqa: E501
+            return data
+
+    def update_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id_with_http_info(self, name, tlive_kafka, **kwargs):  # noqa: E501
+        """Update tlive-kafka-oc by ID  # noqa: E501
+
+        Update operation of resource: tlive-kafka-oc  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id_with_http_info(name, tlive_kafka, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of tlive-kafka-oc (required)
+        :param TliveKafkaOcSchema tlive_kafka: tlive_kafka body object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'tlive_kafka', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `update_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id`")  # noqa: E501
+        # verify the required parameter 'tlive_kafka' is set
+        if ('tlive_kafka' not in params or
+                params['tlive_kafka'] is None):
+            raise ValueError("Missing the required parameter `tlive_kafka` when calling `update_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'tlive_kafka' in params:
+            body_params = params['tlive_kafka']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_healthbot_ingest_settings_byoi_ingest_mapping_by_id(self, name, ingest_mapping, **kwargs):  # noqa: E501
+        """Update ingest-mapping by ID  # noqa: E501
+
+        Update ingest-mapping by name  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_healthbot_ingest_settings_byoi_ingest_mapping_by_id(name, ingest_mapping, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of ingest-mapping (required)
+        :param IngestMappingSchema ingest_mapping: ingest_mappingbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.update_healthbot_ingest_settings_byoi_ingest_mapping_by_id_with_http_info(name, ingest_mapping, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_healthbot_ingest_settings_byoi_ingest_mapping_by_id_with_http_info(name, ingest_mapping, **kwargs)  # noqa: E501
+            return data
+
+    def update_healthbot_ingest_settings_byoi_ingest_mapping_by_id_with_http_info(self, name, ingest_mapping, **kwargs):  # noqa: E501
+        """Update ingest-mapping by ID  # noqa: E501
+
+        Update ingest-mapping by name  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_healthbot_ingest_settings_byoi_ingest_mapping_by_id_with_http_info(name, ingest_mapping, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of ingest-mapping (required)
+        :param IngestMappingSchema ingest_mapping: ingest_mappingbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'ingest_mapping', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_healthbot_ingest_settings_byoi_ingest_mapping_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `update_healthbot_ingest_settings_byoi_ingest_mapping_by_id`")  # noqa: E501
+        # verify the required parameter 'ingest_mapping' is set
+        if ('ingest_mapping' not in params or
+                params['ingest_mapping'] is None):
+            raise ValueError("Missing the required parameter `ingest_mapping` when calling `update_healthbot_ingest_settings_byoi_ingest_mapping_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'ingest_mapping' in params:
+            body_params = params['ingest_mapping']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/byoi/ingest-mapping/{name}/', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_healthbot_ingest_settings_frequency_profile_by_id(self, name, frequency_profile, **kwargs):  # noqa: E501
+        """Update frequency-profile by ID  # noqa: E501
+
+        Update operation of resource: frequency-profile  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_healthbot_ingest_settings_frequency_profile_by_id(name, frequency_profile, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: ID of name (required)
+        :param FrequencyProfileSchema frequency_profile: frequency_profilebody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.update_healthbot_ingest_settings_frequency_profile_by_id_with_http_info(name, frequency_profile, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_healthbot_ingest_settings_frequency_profile_by_id_with_http_info(name, frequency_profile, **kwargs)  # noqa: E501
+            return data
+
+    def update_healthbot_ingest_settings_frequency_profile_by_id_with_http_info(self, name, frequency_profile, **kwargs):  # noqa: E501
+        """Update frequency-profile by ID  # noqa: E501
+
+        Update operation of resource: frequency-profile  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_healthbot_ingest_settings_frequency_profile_by_id_with_http_info(name, frequency_profile, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: ID of name (required)
+        :param FrequencyProfileSchema frequency_profile: frequency_profilebody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'frequency_profile', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_healthbot_ingest_settings_frequency_profile_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `update_healthbot_ingest_settings_frequency_profile_by_id`")  # noqa: E501
+        # verify the required parameter 'frequency_profile' is set
+        if ('frequency_profile' not in params or
+                params['frequency_profile'] is None):
+            raise ValueError("Missing the required parameter `frequency_profile` when calling `update_healthbot_ingest_settings_frequency_profile_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'frequency_profile' in params:
+            body_params = params['frequency_profile']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/frequency-profile/{name}/', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_healthbot_system_time_series_database_time_series_database_by_id(self, time_series_database, **kwargs):  # noqa: E501
+        """Update time-series-database by ID  # noqa: E501
+
+        Update operation of resource: time-series-database  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_healthbot_system_time_series_database_time_series_database_by_id(time_series_database, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param TsdbSchema time_series_database: time_series_databasebody object (required)
+        :param bool force_tsdb: force update tsdb when force is set to True
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.update_healthbot_system_time_series_database_time_series_database_by_id_with_http_info(time_series_database, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_healthbot_system_time_series_database_time_series_database_by_id_with_http_info(time_series_database, **kwargs)  # noqa: E501
+            return data
+
+    def update_healthbot_system_time_series_database_time_series_database_by_id_with_http_info(self, time_series_database, **kwargs):  # noqa: E501
+        """Update time-series-database by ID  # noqa: E501
+
+        Update operation of resource: time-series-database  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_healthbot_system_time_series_database_time_series_database_by_id_with_http_info(time_series_database, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param TsdbSchema time_series_database: time_series_databasebody object (required)
+        :param bool force_tsdb: force update tsdb when force is set to True
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['time_series_database', 'force_tsdb']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_healthbot_system_time_series_database_time_series_database_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'time_series_database' is set
+        if ('time_series_database' not in params or
+                params['time_series_database'] is None):
+            raise ValueError("Missing the required parameter `time_series_database` when calling `update_healthbot_system_time_series_database_time_series_database_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'force_tsdb' in params:
+            query_params.append(('force_tsdb', params['force_tsdb']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'time_series_database' in params:
+            body_params = params['time_series_database']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/system/tsdb/', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_iceberg_ingest_settings(self, ingest_settings, **kwargs):  # noqa: E501
+        """Update ingest-settings by ID  # noqa: E501
+
+        Update operation of resource: ingest-settings  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_iceberg_ingest_settings(ingest_settings, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param IngestSettingsSchema ingest_settings: ingest_settingsbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.update_iceberg_ingest_settings_with_http_info(ingest_settings, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_iceberg_ingest_settings_with_http_info(ingest_settings, **kwargs)  # noqa: E501
+            return data
+
+    def update_iceberg_ingest_settings_with_http_info(self, ingest_settings, **kwargs):  # noqa: E501
+        """Update ingest-settings by ID  # noqa: E501
+
+        Update operation of resource: ingest-settings  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_iceberg_ingest_settings_with_http_info(ingest_settings, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param IngestSettingsSchema ingest_settings: ingest_settingsbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['ingest_settings', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_iceberg_ingest_settings" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'ingest_settings' is set
+        if ('ingest_settings' not in params or
+                params['ingest_settings'] is None):
+            raise ValueError("Missing the required parameter `ingest_settings` when calling `update_iceberg_ingest_settings`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'ingest_settings' in params:
+            body_params = params['ingest_settings']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_iceberg_ingest_settings_flow(self, flow, **kwargs):  # noqa: E501
+        """Update flow by ID  # noqa: E501
+
+        Update operation of resource: flow  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_iceberg_ingest_settings_flow(flow, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param FlowSchema flow: flowbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.update_iceberg_ingest_settings_flow_with_http_info(flow, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_iceberg_ingest_settings_flow_with_http_info(flow, **kwargs)  # noqa: E501
+            return data
+
+    def update_iceberg_ingest_settings_flow_with_http_info(self, flow, **kwargs):  # noqa: E501
+        """Update flow by ID  # noqa: E501
+
+        Update operation of resource: flow  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_iceberg_ingest_settings_flow_with_http_info(flow, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param FlowSchema flow: flowbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['flow', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_iceberg_ingest_settings_flow" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'flow' is set
+        if ('flow' not in params or
+                params['flow'] is None):
+            raise ValueError("Missing the required parameter `flow` when calling `update_iceberg_ingest_settings_flow`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'flow' in params:
+            body_params = params['flow']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/flow/', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_iceberg_ingest_settings_flow_template_by_id(self, name, template, **kwargs):  # noqa: E501
+        """Update template by ID  # noqa: E501
+
+        Update operation of resource: template  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_iceberg_ingest_settings_flow_template_by_id(name, template, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of template (required)
+        :param TemplateSchema template: templatebody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.update_iceberg_ingest_settings_flow_template_by_id_with_http_info(name, template, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_iceberg_ingest_settings_flow_template_by_id_with_http_info(name, template, **kwargs)  # noqa: E501
+            return data
+
+    def update_iceberg_ingest_settings_flow_template_by_id_with_http_info(self, name, template, **kwargs):  # noqa: E501
+        """Update template by ID  # noqa: E501
+
+        Update operation of resource: template  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_iceberg_ingest_settings_flow_template_by_id_with_http_info(name, template, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of template (required)
+        :param TemplateSchema template: templatebody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'template', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_iceberg_ingest_settings_flow_template_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `update_iceberg_ingest_settings_flow_template_by_id`")  # noqa: E501
+        # verify the required parameter 'template' is set
+        if ('template' not in params or
+                params['template'] is None):
+            raise ValueError("Missing the required parameter `template` when calling `update_iceberg_ingest_settings_flow_template_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'template' in params:
+            body_params = params['template']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/flow/template/{name}/', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_iceberg_ingest_settings_syslog(self, syslog, **kwargs):  # noqa: E501
+        """Update syslog by ID  # noqa: E501
+
+        Update operation of resource: syslog  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_iceberg_ingest_settings_syslog(syslog, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param SyslogSchema syslog: syslogbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.update_iceberg_ingest_settings_syslog_with_http_info(syslog, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_iceberg_ingest_settings_syslog_with_http_info(syslog, **kwargs)  # noqa: E501
+            return data
+
+    def update_iceberg_ingest_settings_syslog_with_http_info(self, syslog, **kwargs):  # noqa: E501
+        """Update syslog by ID  # noqa: E501
+
+        Update operation of resource: syslog  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_iceberg_ingest_settings_syslog_with_http_info(syslog, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param SyslogSchema syslog: syslogbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['syslog', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_iceberg_ingest_settings_syslog" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'syslog' is set
+        if ('syslog' not in params or
+                params['syslog'] is None):
+            raise ValueError("Missing the required parameter `syslog` when calling `update_iceberg_ingest_settings_syslog`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'syslog' in params:
+            body_params = params['syslog']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/syslog/', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_iceberg_ingest_settings_syslog_pattern_by_id(self, name, pattern, **kwargs):  # noqa: E501
+        """Update pattern by ID  # noqa: E501
+
+        Update operation of resource: pattern  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_iceberg_ingest_settings_syslog_pattern_by_id(name, pattern, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of pattern (required)
+        :param PatternSchema pattern: patternbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.update_iceberg_ingest_settings_syslog_pattern_by_id_with_http_info(name, pattern, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_iceberg_ingest_settings_syslog_pattern_by_id_with_http_info(name, pattern, **kwargs)  # noqa: E501
+            return data
+
+    def update_iceberg_ingest_settings_syslog_pattern_by_id_with_http_info(self, name, pattern, **kwargs):  # noqa: E501
+        """Update pattern by ID  # noqa: E501
+
+        Update operation of resource: pattern  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_iceberg_ingest_settings_syslog_pattern_by_id_with_http_info(name, pattern, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of pattern (required)
+        :param PatternSchema pattern: patternbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'pattern', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_iceberg_ingest_settings_syslog_pattern_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `update_iceberg_ingest_settings_syslog_pattern_by_id`")  # noqa: E501
+        # verify the required parameter 'pattern' is set
+        if ('pattern' not in params or
+                params['pattern'] is None):
+            raise ValueError("Missing the required parameter `pattern` when calling `update_iceberg_ingest_settings_syslog_pattern_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'pattern' in params:
+            body_params = params['pattern']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/syslog/pattern/{name}/', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_iceberg_ingest_settings_syslog_pattern_set_by_id(self, name, pattern_set, **kwargs):  # noqa: E501
+        """Update pattern-set by ID  # noqa: E501
+
+        Update operation of resource: pattern-set  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_iceberg_ingest_settings_syslog_pattern_set_by_id(name, pattern_set, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of pattern-set (required)
+        :param PatternSetSchema pattern_set: pattern_setbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.update_iceberg_ingest_settings_syslog_pattern_set_by_id_with_http_info(name, pattern_set, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_iceberg_ingest_settings_syslog_pattern_set_by_id_with_http_info(name, pattern_set, **kwargs)  # noqa: E501
+            return data
+
+    def update_iceberg_ingest_settings_syslog_pattern_set_by_id_with_http_info(self, name, pattern_set, **kwargs):  # noqa: E501
+        """Update pattern-set by ID  # noqa: E501
+
+        Update operation of resource: pattern-set  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_iceberg_ingest_settings_syslog_pattern_set_by_id_with_http_info(name, pattern_set, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str name: Name of pattern-set (required)
+        :param PatternSetSchema pattern_set: pattern_setbody object (required)
+        :param str authorization: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['name', 'pattern_set', 'authorization']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_iceberg_ingest_settings_syslog_pattern_set_by_id" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'name' is set
+        if ('name' not in params or
+                params['name'] is None):
+            raise ValueError("Missing the required parameter `name` when calling `update_iceberg_ingest_settings_syslog_pattern_set_by_id`")  # noqa: E501
+        # verify the required parameter 'pattern_set' is set
+        if ('pattern_set' not in params or
+                params['pattern_set'] is None):
+            raise ValueError("Missing the required parameter `pattern_set` when calling `update_iceberg_ingest_settings_syslog_pattern_set_by_id`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'name' in params:
+            path_params['name'] = params['name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'pattern_set' in params:
+            body_params = params['pattern_set']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/ingest-settings/syslog/pattern-set/{name}/', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -4182,19 +10590,20 @@ class DefaultApi(object):
 
         Update operation of resource: raw-data-summarization  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_iceberg_profile_data_summarization_raw_by_id(name, raw_data_summarization, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_iceberg_profile_data_summarization_raw_by_id(name, raw_data_summarization, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of raw-data-summarization (required)
         :param RawSchema raw_data_summarization: raw_data_summarizationbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.update_iceberg_profile_data_summarization_raw_by_id_with_http_info(name, raw_data_summarization, **kwargs)  # noqa: E501
         else:
             (data) = self.update_iceberg_profile_data_summarization_raw_by_id_with_http_info(name, raw_data_summarization, **kwargs)  # noqa: E501
@@ -4205,20 +10614,21 @@ class DefaultApi(object):
 
         Update operation of resource: raw-data-summarization  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_iceberg_profile_data_summarization_raw_by_id_with_http_info(name, raw_data_summarization, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_iceberg_profile_data_summarization_raw_by_id_with_http_info(name, raw_data_summarization, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of raw-data-summarization (required)
         :param RawSchema raw_data_summarization: raw_data_summarizationbody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'raw_data_summarization']  # noqa: E501
-        all_params.append('async')
+        all_params = ['name', 'raw_data_summarization', 'authorization']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -4250,6 +10660,8 @@ class DefaultApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -4278,7 +10690,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -4289,19 +10701,20 @@ class DefaultApi(object):
 
         Update operation of resource: ca-profile  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_iceberg_profile_security_ca_profile_by_id(name, ca_profile, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_iceberg_profile_security_ca_profile_by_id(name, ca_profile, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of ca-profile (required)
         :param CaProfileSchema ca_profile: ca_profilebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.update_iceberg_profile_security_ca_profile_by_id_with_http_info(name, ca_profile, **kwargs)  # noqa: E501
         else:
             (data) = self.update_iceberg_profile_security_ca_profile_by_id_with_http_info(name, ca_profile, **kwargs)  # noqa: E501
@@ -4312,20 +10725,21 @@ class DefaultApi(object):
 
         Update operation of resource: ca-profile  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_iceberg_profile_security_ca_profile_by_id_with_http_info(name, ca_profile, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_iceberg_profile_security_ca_profile_by_id_with_http_info(name, ca_profile, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of ca-profile (required)
         :param CaProfileSchema ca_profile: ca_profilebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'ca_profile']  # noqa: E501
-        all_params.append('async')
+        all_params = ['name', 'ca_profile', 'authorization']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -4357,6 +10771,8 @@ class DefaultApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -4385,7 +10801,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -4396,19 +10812,20 @@ class DefaultApi(object):
 
         Update operation of resource: local-certificate  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_iceberg_profile_security_local_certificate_by_id(name, local_certificate, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_iceberg_profile_security_local_certificate_by_id(name, local_certificate, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of local-certificate (required)
         :param LocalCertificateSchema local_certificate: local_certificatebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.update_iceberg_profile_security_local_certificate_by_id_with_http_info(name, local_certificate, **kwargs)  # noqa: E501
         else:
             (data) = self.update_iceberg_profile_security_local_certificate_by_id_with_http_info(name, local_certificate, **kwargs)  # noqa: E501
@@ -4419,20 +10836,21 @@ class DefaultApi(object):
 
         Update operation of resource: local-certificate  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_iceberg_profile_security_local_certificate_by_id_with_http_info(name, local_certificate, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_iceberg_profile_security_local_certificate_by_id_with_http_info(name, local_certificate, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of local-certificate (required)
         :param LocalCertificateSchema local_certificate: local_certificatebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'local_certificate']  # noqa: E501
-        all_params.append('async')
+        all_params = ['name', 'local_certificate', 'authorization']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -4464,6 +10882,8 @@ class DefaultApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -4492,7 +10912,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -4503,19 +10923,20 @@ class DefaultApi(object):
 
         Update operation of resource: ssh-key-profile  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_iceberg_profile_security_ssh_key_profile_by_id(name, ssh_key_profile, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_iceberg_profile_security_ssh_key_profile_by_id(name, ssh_key_profile, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of ssh-key-profile (required)
         :param SshKeyProfileSchema ssh_key_profile: ssh_key_profilebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.update_iceberg_profile_security_ssh_key_profile_by_id_with_http_info(name, ssh_key_profile, **kwargs)  # noqa: E501
         else:
             (data) = self.update_iceberg_profile_security_ssh_key_profile_by_id_with_http_info(name, ssh_key_profile, **kwargs)  # noqa: E501
@@ -4526,20 +10947,21 @@ class DefaultApi(object):
 
         Update operation of resource: ssh-key-profile  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_iceberg_profile_security_ssh_key_profile_by_id_with_http_info(name, ssh_key_profile, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_iceberg_profile_security_ssh_key_profile_by_id_with_http_info(name, ssh_key_profile, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
-        :param str name: ID of name (required)
+        :param async_req bool
+        :param str name: Name of ssh-key-profile (required)
         :param SshKeyProfileSchema ssh_key_profile: ssh_key_profilebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['name', 'ssh_key_profile']  # noqa: E501
-        all_params.append('async')
+        all_params = ['name', 'ssh_key_profile', 'authorization']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -4571,6 +10993,8 @@ class DefaultApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -4599,7 +11023,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),
@@ -4610,18 +11034,19 @@ class DefaultApi(object):
 
         Update entire profile configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_iceberg_profiles(profile, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_iceberg_profiles(profile, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param ProfilesSchema profile: profilebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async'):
+        if kwargs.get('async_req'):
             return self.update_iceberg_profiles_with_http_info(profile, **kwargs)  # noqa: E501
         else:
             (data) = self.update_iceberg_profiles_with_http_info(profile, **kwargs)  # noqa: E501
@@ -4632,19 +11057,20 @@ class DefaultApi(object):
 
         Update entire profile configuration.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async=True
-        >>> thread = api.update_iceberg_profiles_with_http_info(profile, async=True)
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_iceberg_profiles_with_http_info(profile, async_req=True)
         >>> result = thread.get()
 
-        :param async bool
+        :param async_req bool
         :param ProfilesSchema profile: profilebody object (required)
+        :param str authorization: authentication header object
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['profile']  # noqa: E501
-        all_params.append('async')
+        all_params = ['profile', 'authorization']  # noqa: E501
+        all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
         all_params.append('_request_timeout')
@@ -4670,6 +11096,8 @@ class DefaultApi(object):
         query_params = []
 
         header_params = {}
+        if 'authorization' in params:
+            header_params['Authorization'] = params['authorization']  # noqa: E501
 
         form_params = []
         local_var_files = {}
@@ -4698,7 +11126,7 @@ class DefaultApi(object):
             files=local_var_files,
             response_type=None,  # noqa: E501
             auth_settings=auth_settings,
-            async=params.get('async'),
+            async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
             _preload_content=params.get('_preload_content', True),
             _request_timeout=params.get('_request_timeout'),

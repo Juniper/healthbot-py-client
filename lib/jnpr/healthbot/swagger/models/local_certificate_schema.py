@@ -58,7 +58,7 @@ class LocalCertificateSchema(object):
     def client_crt(self):
         """Gets the client_crt of this LocalCertificateSchema.  # noqa: E501
 
-        Client certificate file name. Should be of pattern .+\\.crt  # noqa: E501
+        Client certificate file name. Should be of pattern .+\.crt  # noqa: E501
 
         :return: The client_crt of this LocalCertificateSchema.  # noqa: E501
         :rtype: str
@@ -69,15 +69,15 @@ class LocalCertificateSchema(object):
     def client_crt(self, client_crt):
         """Sets the client_crt of this LocalCertificateSchema.
 
-        Client certificate file name. Should be of pattern .+\\.crt  # noqa: E501
+        Client certificate file name. Should be of pattern .+\.crt  # noqa: E501
 
         :param client_crt: The client_crt of this LocalCertificateSchema.  # noqa: E501
         :type: str
         """
         if client_crt is None:
             raise ValueError("Invalid value for `client_crt`, must not be `None`")  # noqa: E501
-        if client_crt is not None and not re.search('^.+\\.crt$', client_crt):  # noqa: E501
-            raise ValueError("Invalid value for `client_crt`, must be a follow pattern or equal to `/^.+\\.crt$/`")  # noqa: E501
+        if client_crt is not None and not re.search(r'^.+\.crt$', client_crt):  # noqa: E501
+            raise ValueError(r"Invalid value for `client_crt`, must be a follow pattern or equal to `/^.+\.crt$/`")  # noqa: E501
 
         self._client_crt = client_crt
 
@@ -85,7 +85,7 @@ class LocalCertificateSchema(object):
     def client_key(self):
         """Gets the client_key of this LocalCertificateSchema.  # noqa: E501
 
-        Client Key file name. Should be of pattern .+\\.key  # noqa: E501
+        Client Key file name. Should be of pattern .+\.key  # noqa: E501
 
         :return: The client_key of this LocalCertificateSchema.  # noqa: E501
         :rtype: str
@@ -96,15 +96,15 @@ class LocalCertificateSchema(object):
     def client_key(self, client_key):
         """Sets the client_key of this LocalCertificateSchema.
 
-        Client Key file name. Should be of pattern .+\\.key  # noqa: E501
+        Client Key file name. Should be of pattern .+\.key  # noqa: E501
 
         :param client_key: The client_key of this LocalCertificateSchema.  # noqa: E501
         :type: str
         """
         if client_key is None:
             raise ValueError("Invalid value for `client_key`, must not be `None`")  # noqa: E501
-        if client_key is not None and not re.search('^.+\\.key$', client_key):  # noqa: E501
-            raise ValueError("Invalid value for `client_key`, must be a follow pattern or equal to `/^.+\\.key$/`")  # noqa: E501
+        if client_key is not None and not re.search(r'^.+\.key$', client_key):  # noqa: E501
+            raise ValueError(r"Invalid value for `client_key`, must be a follow pattern or equal to `/^.+\.key$/`")  # noqa: E501
 
         self._client_key = client_key
 
@@ -112,7 +112,7 @@ class LocalCertificateSchema(object):
     def name(self):
         """Gets the name of this LocalCertificateSchema.  # noqa: E501
 
-        Local Certificate profile name  # noqa: E501
+        Local Certificate profile name. Should be of pattern [a-zA-Z][a-zA-Z0-9_-]*  # noqa: E501
 
         :return: The name of this LocalCertificateSchema.  # noqa: E501
         :rtype: str
@@ -123,13 +123,17 @@ class LocalCertificateSchema(object):
     def name(self, name):
         """Sets the name of this LocalCertificateSchema.
 
-        Local Certificate profile name  # noqa: E501
+        Local Certificate profile name. Should be of pattern [a-zA-Z][a-zA-Z0-9_-]*  # noqa: E501
 
         :param name: The name of this LocalCertificateSchema.  # noqa: E501
         :type: str
         """
         if name is None:
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if name is not None and len(name) > 64:
+            raise ValueError("Invalid value for `name`, length must be less than or equal to `64`")  # noqa: E501
+        if name is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', name):  # noqa: E501
+            raise ValueError(r"Invalid value for `name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._name = name
 
@@ -154,6 +158,9 @@ class LocalCertificateSchema(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(LocalCertificateSchema, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

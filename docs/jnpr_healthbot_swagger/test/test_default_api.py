@@ -29,10 +29,101 @@ class TestDefaultApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_backup_helper_files(self):
+        """Test case for backup_helper_files
+
+        Download the tar file containing all helper files.  # noqa: E501
+        """
+        pass
+
+    def test_create_files_certificates_by_file_name(self):
+        """Test case for create_files_certificates_by_file_name
+
+        Upload a certificate file.  # noqa: E501
+        """
+        pass
+
     def test_create_files_helper_files_by_file_name(self):
         """Test case for create_files_helper_files_by_file_name
 
         Upload a helper-file.  # noqa: E501
+        """
+        pass
+
+    def test_create_healthbot_ingest_settings_byoi_custom_plugin_by_id(self):
+        """Test case for create_healthbot_ingest_settings_byoi_custom_plugin_by_id
+
+        Create custom-plugin by ID  # noqa: E501
+        """
+        pass
+
+    def test_create_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id(self):
+        """Test case for create_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id
+
+        Create tlive-kafka-oc by ID  # noqa: E501
+        """
+        pass
+
+    def test_create_healthbot_ingest_settings_byoi_ingest_mapping_by_id(self):
+        """Test case for create_healthbot_ingest_settings_byoi_ingest_mapping_by_id
+
+        Create ingest-mapping by ID  # noqa: E501
+        """
+        pass
+
+    def test_create_healthbot_ingest_settings_frequency_profile_by_id(self):
+        """Test case for create_healthbot_ingest_settings_frequency_profile_by_id
+
+        Create frequency-profile by ID  # noqa: E501
+        """
+        pass
+
+    def test_create_healthbot_system_time_series_database_time_series_database_by_id(self):
+        """Test case for create_healthbot_system_time_series_database_time_series_database_by_id
+
+        Create time-series-database by ID  # noqa: E501
+        """
+        pass
+
+    def test_create_iceberg_ingest_settings(self):
+        """Test case for create_iceberg_ingest_settings
+
+        Create ingest-settings by ID  # noqa: E501
+        """
+        pass
+
+    def test_create_iceberg_ingest_settings_flow(self):
+        """Test case for create_iceberg_ingest_settings_flow
+
+        Create flow by ID  # noqa: E501
+        """
+        pass
+
+    def test_create_iceberg_ingest_settings_flow_template_by_id(self):
+        """Test case for create_iceberg_ingest_settings_flow_template_by_id
+
+        Create template by ID  # noqa: E501
+        """
+        pass
+
+    def test_create_iceberg_ingest_settings_syslog(self):
+        """Test case for create_iceberg_ingest_settings_syslog
+
+        Create syslog by ID  # noqa: E501
+        """
+        pass
+
+    def test_create_iceberg_ingest_settings_syslog_pattern_by_id(self):
+        """Test case for create_iceberg_ingest_settings_syslog_pattern_by_id
+
+        Create pattern by ID  # noqa: E501
+        """
+        pass
+
+    def test_create_iceberg_ingest_settings_syslog_pattern_set_by_id(self):
+        """Test case for create_iceberg_ingest_settings_syslog_pattern_set_by_id
+
+        Create pattern-set by ID  # noqa: E501
         """
         pass
 
@@ -71,10 +162,94 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_files_certificates_by_file_name(self):
+        """Test case for delete_files_certificates_by_file_name
+
+        Delete a certificate-file.  # noqa: E501
+        """
+        pass
+
     def test_delete_files_helper_files_by_file_name(self):
         """Test case for delete_files_helper_files_by_file_name
 
         Delete a helper-file.  # noqa: E501
+        """
+        pass
+
+    def test_delete_healthbot_ingest_settings_byoi_custom_plugin_by_id(self):
+        """Test case for delete_healthbot_ingest_settings_byoi_custom_plugin_by_id
+
+        Delete custom-plugin by ID  # noqa: E501
+        """
+        pass
+
+    def test_delete_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id(self):
+        """Test case for delete_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id
+
+        Delete tlive-kafka-oc by ID  # noqa: E501
+        """
+        pass
+
+    def test_delete_healthbot_ingest_settings_byoi_ingest_mapping_by_id(self):
+        """Test case for delete_healthbot_ingest_settings_byoi_ingest_mapping_by_id
+
+        Delete ingest-mapping by ID  # noqa: E501
+        """
+        pass
+
+    def test_delete_healthbot_ingest_settings_frequency_profile_by_id(self):
+        """Test case for delete_healthbot_ingest_settings_frequency_profile_by_id
+
+        Delete frequency-profile by ID  # noqa: E501
+        """
+        pass
+
+    def test_delete_healthbot_system_time_series_database_time_series_database_by_id(self):
+        """Test case for delete_healthbot_system_time_series_database_time_series_database_by_id
+
+        Delete time-series-database  # noqa: E501
+        """
+        pass
+
+    def test_delete_iceberg_ingest_settings(self):
+        """Test case for delete_iceberg_ingest_settings
+
+        Delete ingest-settings by ID  # noqa: E501
+        """
+        pass
+
+    def test_delete_iceberg_ingest_settings_flow(self):
+        """Test case for delete_iceberg_ingest_settings_flow
+
+        Delete flow by ID  # noqa: E501
+        """
+        pass
+
+    def test_delete_iceberg_ingest_settings_flow_template_by_id(self):
+        """Test case for delete_iceberg_ingest_settings_flow_template_by_id
+
+        Delete template by ID  # noqa: E501
+        """
+        pass
+
+    def test_delete_iceberg_ingest_settings_syslog(self):
+        """Test case for delete_iceberg_ingest_settings_syslog
+
+        Delete syslog by ID  # noqa: E501
+        """
+        pass
+
+    def test_delete_iceberg_ingest_settings_syslog_pattern_by_id(self):
+        """Test case for delete_iceberg_ingest_settings_syslog_pattern_by_id
+
+        Delete pattern by ID  # noqa: E501
+        """
+        pass
+
+    def test_delete_iceberg_ingest_settings_syslog_pattern_set_by_id(self):
+        """Test case for delete_iceberg_ingest_settings_syslog_pattern_set_by_id
+
+        Delete pattern-set by ID  # noqa: E501
         """
         pass
 
@@ -120,6 +295,13 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_restore_helper_files(self):
+        """Test case for restore_helper_files
+
+        Upload a helper-file.  # noqa: E501
+        """
+        pass
+
     def test_retrieve_configuration_jobs(self):
         """Test case for retrieve_configuration_jobs
 
@@ -144,6 +326,12 @@ class TestDefaultApi(unittest.TestCase):
         """Test case for retrieve_data_database_tags_by_table_name
 
         Get information about tags keys and values in a table.  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_debug_jobs(self):
+        """Test case for retrieve_debug_jobs
+
         """
         pass
 
@@ -189,6 +377,20 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_retrieve_events(self):
+        """Test case for retrieve_events
+
+        Get all events.  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_files_certificates_by_file_name(self):
+        """Test case for retrieve_files_certificates_by_file_name
+
+        Download a certificate-file.  # noqa: E501
+        """
+        pass
+
     def test_retrieve_files_helper_files(self):
         """Test case for retrieve_files_helper_files
 
@@ -228,6 +430,146 @@ class TestDefaultApi(unittest.TestCase):
         """Test case for retrieve_health_tree_by_network_group
 
         Get network-group health-tree.  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_healthbot_ingest_settings_byoi_custom_plugin_by_id(self):
+        """Test case for retrieve_healthbot_ingest_settings_byoi_custom_plugin_by_id
+
+        Retrieve custom-plugin by ID  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_healthbot_ingest_settings_byoi_custom_plugins(self):
+        """Test case for retrieve_healthbot_ingest_settings_byoi_custom_plugins
+
+        Retrieve custom-plugin by ID  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id(self):
+        """Test case for retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id
+
+        Retrieve tlive-kafka-oc by ID  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafkas(self):
+        """Test case for retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafkas
+
+        Retrieve tlive-kafka-oc  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_healthbot_ingest_settings_byoi_ingest_mapping_by_id(self):
+        """Test case for retrieve_healthbot_ingest_settings_byoi_ingest_mapping_by_id
+
+        Retrieve ingest-mapping by ID  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_healthbot_ingest_settings_byoi_ingest_mappings(self):
+        """Test case for retrieve_healthbot_ingest_settings_byoi_ingest_mappings
+
+        Retrieve ingest-mapping  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_healthbot_ingest_settings_frequency_profile(self):
+        """Test case for retrieve_healthbot_ingest_settings_frequency_profile
+
+        Retrieve frequency-profile  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_healthbot_ingest_settings_frequency_profile_by_id(self):
+        """Test case for retrieve_healthbot_ingest_settings_frequency_profile_by_id
+
+        Retrieve frequency-profile by ID  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_healthbot_system_time_series_database_time_series_database(self):
+        """Test case for retrieve_healthbot_system_time_series_database_time_series_database
+
+        Retrieve time-series-database  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_iceberg_ingest_settings(self):
+        """Test case for retrieve_iceberg_ingest_settings
+
+        Retrieve ingest-settings  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_iceberg_ingest_settings_flow(self):
+        """Test case for retrieve_iceberg_ingest_settings_flow
+
+        Retrieve flow  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_iceberg_ingest_settings_flow_template_by_id(self):
+        """Test case for retrieve_iceberg_ingest_settings_flow_template_by_id
+
+        Retrieve template by ID  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_iceberg_ingest_settings_flow_template_ids(self):
+        """Test case for retrieve_iceberg_ingest_settings_flow_template_ids
+
+        Retrieve template  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_iceberg_ingest_settings_syslog(self):
+        """Test case for retrieve_iceberg_ingest_settings_syslog
+
+        Retrieve syslog  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_iceberg_ingest_settings_syslog_pattern_by_id(self):
+        """Test case for retrieve_iceberg_ingest_settings_syslog_pattern_by_id
+
+        Retrieve pattern by ID  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_iceberg_ingest_settings_syslog_pattern_ids(self):
+        """Test case for retrieve_iceberg_ingest_settings_syslog_pattern_ids
+
+        Retrieve pattern  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_iceberg_ingest_settings_syslog_pattern_set_by_id(self):
+        """Test case for retrieve_iceberg_ingest_settings_syslog_pattern_set_by_id
+
+        Retrieve pattern-set by ID  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_iceberg_ingest_settings_syslog_pattern_set_ids(self):
+        """Test case for retrieve_iceberg_ingest_settings_syslog_pattern_set_ids
+
+        Retrieve pattern-set  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_iceberg_ingest_settings_syslog_pattern_sets(self):
+        """Test case for retrieve_iceberg_ingest_settings_syslog_pattern_sets
+
+        Retrieve pattern-set by ID  # noqa: E501
+        """
+        pass
+
+    def test_retrieve_iceberg_ingest_settings_syslog_patterns(self):
+        """Test case for retrieve_iceberg_ingest_settings_syslog_patterns
+
+        Retrieve pattern by ID  # noqa: E501
         """
         pass
 
@@ -298,6 +640,83 @@ class TestDefaultApi(unittest.TestCase):
         """Test case for retrieve_sensors
 
         List all OpenConfig sensors.  # noqa: E501
+        """
+        pass
+
+    def test_update_healthbot_ingest_settings_byoi_custom_plugin_by_id(self):
+        """Test case for update_healthbot_ingest_settings_byoi_custom_plugin_by_id
+
+        Update custom-plugin by ID  # noqa: E501
+        """
+        pass
+
+    def test_update_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id(self):
+        """Test case for update_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id
+
+        Update tlive-kafka-oc by ID  # noqa: E501
+        """
+        pass
+
+    def test_update_healthbot_ingest_settings_byoi_ingest_mapping_by_id(self):
+        """Test case for update_healthbot_ingest_settings_byoi_ingest_mapping_by_id
+
+        Update ingest-mapping by ID  # noqa: E501
+        """
+        pass
+
+    def test_update_healthbot_ingest_settings_frequency_profile_by_id(self):
+        """Test case for update_healthbot_ingest_settings_frequency_profile_by_id
+
+        Update frequency-profile by ID  # noqa: E501
+        """
+        pass
+
+    def test_update_healthbot_system_time_series_database_time_series_database_by_id(self):
+        """Test case for update_healthbot_system_time_series_database_time_series_database_by_id
+
+        Update time-series-database by ID  # noqa: E501
+        """
+        pass
+
+    def test_update_iceberg_ingest_settings(self):
+        """Test case for update_iceberg_ingest_settings
+
+        Update ingest-settings by ID  # noqa: E501
+        """
+        pass
+
+    def test_update_iceberg_ingest_settings_flow(self):
+        """Test case for update_iceberg_ingest_settings_flow
+
+        Update flow by ID  # noqa: E501
+        """
+        pass
+
+    def test_update_iceberg_ingest_settings_flow_template_by_id(self):
+        """Test case for update_iceberg_ingest_settings_flow_template_by_id
+
+        Update template by ID  # noqa: E501
+        """
+        pass
+
+    def test_update_iceberg_ingest_settings_syslog(self):
+        """Test case for update_iceberg_ingest_settings_syslog
+
+        Update syslog by ID  # noqa: E501
+        """
+        pass
+
+    def test_update_iceberg_ingest_settings_syslog_pattern_by_id(self):
+        """Test case for update_iceberg_ingest_settings_syslog_pattern_by_id
+
+        Update pattern by ID  # noqa: E501
+        """
+        pass
+
+    def test_update_iceberg_ingest_settings_syslog_pattern_set_by_id(self):
+        """Test case for update_iceberg_ingest_settings_syslog_pattern_set_by_id
+
+        Update pattern-set by ID  # noqa: E501
         """
         pass
 

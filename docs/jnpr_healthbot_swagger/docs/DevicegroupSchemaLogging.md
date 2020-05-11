@@ -11,6 +11,10 @@ Name | Type | Description | Notes
 **reports_generation** | [**DevicegroupSchemaLoggingReportsgeneration**](DevicegroupSchemaLoggingReportsgeneration.md) |  | [optional] 
 **snmp** | [**DevicegroupSchemaLoggingSnmp**](DevicegroupSchemaLoggingSnmp.md) |  | [optional] 
 **trigger_evaluation** | [**DevicegroupSchemaLoggingTriggerevaluation**](DevicegroupSchemaLoggingTriggerevaluation.md) |  | [optional] 
+**ml_model_builder** | [**DevicegroupSchemaLoggingMLmodelbuilder**](DevicegroupSchemaLoggingMLmodelbuilder.md) |  | [optional] 
+**flow** | [**DevicegroupSchemaLoggingFlow**](DevicegroupSchemaLoggingFlow.md) |  | [optional] 
+**byoi** | [**DevicegroupSchemaLoggingByoi**](DevicegroupSchemaLoggingByoi.md) |  | [optional] 
+**syslog** | [**DevicegroupSchemaLoggingSyslog**](DevicegroupSchemaLoggingSyslog.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

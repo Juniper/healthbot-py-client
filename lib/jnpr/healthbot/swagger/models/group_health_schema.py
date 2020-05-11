@@ -61,6 +61,9 @@ class GroupHealthSchema(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(GroupHealthSchema, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 

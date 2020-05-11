@@ -68,6 +68,10 @@ class DeviceSchemaOpenconfig(object):
         """
         if port is None:
             raise ValueError("Invalid value for `port`, must not be `None`")  # noqa: E501
+        if port is not None and port > 65535:  # noqa: E501
+            raise ValueError("Invalid value for `port`, must be a value less than or equal to `65535`")  # noqa: E501
+        if port is not None and port < 1:  # noqa: E501
+            raise ValueError("Invalid value for `port`, must be a value greater than or equal to `1`")  # noqa: E501
 
         self._port = port
 
@@ -92,6 +96,9 @@ class DeviceSchemaOpenconfig(object):
                 ))
             else:
                 result[attr] = value
+        if issubclass(DeviceSchemaOpenconfig, dict):
+            for key, value in self.items():
+                result[key] = value
 
         return result
 
