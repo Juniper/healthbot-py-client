@@ -1,5 +1,6 @@
 [run]
 omit =
+    lib/jnpr/healthbot/swagger/models/*
     jnpr/healthbot/swagger/models/*
 
 [report]

@@ -270,18 +270,25 @@ class TestSettings(unittest.TestCase):
             self.mock_request().mock_calls[3][2]['json']['duration'],
             '10h')
 
-    def test_licence_get(self):
+    def test_license_get(self):
         ret = self.conn.settings.license.get(
             'xxx-xx-xxx')
         self.assertEqual(ret["customer-id"], "xxxx")
 
-    def test_licence_get_ids(self):
+    def test_license_get_ids(self):
         ret = self.conn.settings.license.get_ids()
         self.assertEqual(ret, ['xxx-xx-xxx', 'yyy-yy-yyy'])
 
-    def test_licence_get_features(self):
+    def test_license_get_features(self):
         ret = self.conn.settings.license.get_features()
-        self.assertEqual(ret[0]['feature_description'], "Max G8")
+        self.assertEqual(ret.feature_description, "Max G8")
+
+    def test_license_get_all(self):
+        ret = self.conn.settings.license.get()
+        self.assertEqual(ret[0].validity_type, "countdown")
+
+    def test_license_delete(self):
+        self.assertTrue(self.conn.settings.license.delete("xxx-xx-xxx"))
 
     def _mock_manager(self, *args, **kwargs):
         class MockResponse(Response):
@@ -425,11 +432,31 @@ class TestSettings(unittest.TestCase):
                     "sw-serial-id": "07xxx",
                     "validity-type": "xxx",
                     "version": 1}
+        elif args[0] == '/license/keys/contents/':
+            from jnpr.healthbot import LicenseKeySchema
+            from jnpr.healthbot import LicenseKeysSchema
+            return LicenseKeysSchema([LicenseKeySchema(**{"customer_id": "xxxx",
+                    "end_date": "2106-02-0xxx",
+                    "features": [{"capacity_flag": False,
+                                  "capacity_value": 1,
+                                  "feature_description": "Allow a..",
+                                  "feature_id": 10001,
+                                  "feature_name": "xxxx"},
+                                 ],
+                    "license_id": "xxx-xx-xxx",
+                    "mode": "standalone",
+                    "order_type": "commercial",
+                    "sku_name": "HBxxx",
+                    "start_date": "20xxx",
+                    "sw_serial_id": "07xxx",
+                    "validity_type": "countdown",
+                    "version": 1})])
         elif args[0] == '/license/keys/':
             return ["xxx-xx-xxx", "yyy-yy-yyy"]
         elif args[0] == '/license/status/':
+            from jnpr.healthbot import LicenseFeaturesSchema
             from jnpr.healthbot import LicenseFeatureSchema
-            return LicenseFeatureSchema(**{'compliance': True,
+            return LicenseFeaturesSchema(license_feature= LicenseFeatureSchema(**{'compliance': True,
                      'end_date': 111,
                      'feature_description': 'Max G8',
                      'feature_id': 111,
@@ -439,7 +466,10 @@ class TestSettings(unittest.TestCase):
                      'license_total': 1,
                      'license_usage': 1,
                      'max_remaining_days': 1,
-                     'mode': 'xxxx',
+                     'mode': 'standalone',
                      'valid_until': 'xxxx',
-                     'validity_type': 'xxx'})
+                     'validity_type': 'countdown'}))
+        elif args[0] == '/license/key/{license_id}/' and args[1] == 'DELETE' and\
+                args[2] == {'license_id': 'xxx-xx-xxx'}:
+            return None
         return MockResponse(None, 404)
