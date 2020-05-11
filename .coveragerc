@@ -1,7 +1,4 @@
-[run]
-omit =
-    lib/jnpr/healthbot/swagger/models/*
-    jnpr/healthbot/swagger/models/*
-
 [report]
+omit =
+    */jnpr/healthbot/swagger/*
 show_missing = True
