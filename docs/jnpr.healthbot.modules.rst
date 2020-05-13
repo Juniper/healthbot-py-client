@@ -1,6 +1,14 @@
 jnpr.healthbot.modules
 ======================
 
+administration
+--------------
+
+.. automodule:: jnpr.healthbot.modules.administration
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 devices
 -------
 
