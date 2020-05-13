@@ -50,7 +50,8 @@ class Notification(BaseModule):
             False restricts data set to only committed changes
 
         Example:
-            ::
+        ::
+
                 from jnpr.healthbot import HealthBotClient
 
                 with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
@@ -205,7 +206,7 @@ class RetentionPolicy(BaseModule):
             False restricts data set to only committed changes
 
         Example:
-            ::
+        ::
                 from jnpr.healthbot import HealthBotClient
 
                 with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
@@ -364,7 +365,7 @@ class Scheduler(BaseModule):
             False restricts data set to only committed changes
 
         Example:
-            ::
+        ::
                 from jnpr.healthbot import HealthBotClient
 
                 with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
@@ -516,7 +517,8 @@ class Destination(BaseModule):
             False restricts data set to only committed changes
 
         Example:
-            ::
+        ::
+
                 from jnpr.healthbot import HealthBotClient
 
                 with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
@@ -668,7 +670,8 @@ class Report(BaseModule):
             False restricts data set to only committed changes
 
         Example:
-            ::
+        ::
+
                 from jnpr.healthbot import HealthBotClient
 
                 with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
@@ -760,6 +763,7 @@ class Report(BaseModule):
 
         Example:
         ::
+
             hb.settings.report.delete('xyz')
             hb.commit()
 
@@ -832,7 +836,8 @@ class LicenseKeyManagement(BaseModule):
         :param license_id: License ID
 
         Example:
-            ::
+        ::
+
                 from jnpr.healthbot import HealthBotClient
 
                 with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
@@ -850,7 +855,8 @@ class LicenseKeyManagement(BaseModule):
         List of all licence id
 
         Example:
-            ::
+        ::
+
                 from jnpr.healthbot import HealthBotClient
 
                 with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
@@ -870,7 +876,8 @@ class LicenseKeyManagement(BaseModule):
         :param license_id: License ID
 
         Example:
-            ::
+        ::
+
                 from jnpr.healthbot import HealthBotClient
 
                 with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
@@ -918,6 +925,7 @@ class LicenseKeyManagement(BaseModule):
 
         Example:
         ::
+
             hb.settings.license.delete('xx-xxx-xxx-xxx-xx')
 
         :returns: True when OK
