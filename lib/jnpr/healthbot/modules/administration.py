@@ -43,7 +43,8 @@ class User(BaseModule):
         :param user_name: Can pass user name if user id is not known
 
         Example:
-            ::
+        ::
+
                 from jnpr.healthbot import HealthBotClient
 
                 with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
@@ -121,6 +122,7 @@ class User(BaseModule):
 
         Example:
         ::
+
             hb.administration.user.delete(userid ='425453652efwfer')
             hb.administration.user.delete(user_name='dummy')
 
@@ -216,7 +218,8 @@ class Group(BaseModule):
         :param group_name: Can pass group name if group id is not known
 
         Example:
-            ::
+        ::
+
                 from jnpr.healthbot import HealthBotClient
 
                 with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
@@ -302,6 +305,7 @@ class Group(BaseModule):
 
         Example:
         ::
+
             hb.administration.group.delete(groupid ='425453652efwfer')
             hb.administration.group.delete(group_name='test')
 
@@ -399,7 +403,8 @@ class Role(BaseModule):
         :param role_name: Can pass role name if role id is not known
 
         Example:
-            ::
+        ::
+
                 from jnpr.healthbot import HealthBotClient
 
                 with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
