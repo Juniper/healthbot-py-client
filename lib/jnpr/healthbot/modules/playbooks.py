@@ -374,8 +374,8 @@ class PlayBookInstanceBuilder(Playbook):
                     return False
 
         existing_variables = copy.copy(device_group.variable) or []
+        changed = False
         if len(existing_variables) > 0:
-            changed = False
             for variable in existing_variables:
                 if self.playbook == variable.get('playbook'):
                     if self.instance_id == variable.get('instance-id'):
@@ -387,6 +387,10 @@ class PlayBookInstanceBuilder(Playbook):
                 logger.error(
                     "Not able to update '{}' device id".format(device_id))
                 return False
+        if not changed:
+            logger.error(
+                "Does not exist '{}' instance-id".format(self.instance_id))
+            return False
         if delete_playbook_from_group:
             update_playbooks = device_group.playbooks or []
             if self.playbook in update_playbooks:
