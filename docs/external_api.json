@@ -19389,12 +19389,9 @@
         }
       },
       "required": [
-        "feature-id",
         "feature-name",
         "feature-description",
         "license-total",
-        "license-remaining",
-        "license-requested",
         "license-usage",
         "max-remaining-days",
         "validity-type",
