@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**capture_fields** | **list[str]** |  | [optional] 
 **destination** | **list[str]** |  | 
 **format** | **str** | Generated report format | 
 **graph_canvas** | [**list[ReportSchemaGraphcanvas]**](ReportSchemaGraphcanvas.md) | Canvas name | [optional] 

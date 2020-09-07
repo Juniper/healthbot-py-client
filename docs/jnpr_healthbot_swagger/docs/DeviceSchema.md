@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **open_config** | [**DeviceSchemaOpenconfig**](DeviceSchemaOpenconfig.md) |  | [optional] 
 **snmp** | [**DeviceSchemaSnmp**](DeviceSchemaSnmp.md) |  | [optional] 
 **syslog** | [**DeviceSchemaSyslog**](DeviceSchemaSyslog.md) |  | [optional] 
+**tagging_profile** | **list[str]** |  | [optional] 
 **timezone** | **str** | Timezone in the format +/-hh:mm, Example: -08:00 | [optional] 
 **system_id** | **str** | ID which is sent in the JTI UDP messages | [optional] 
 **variable** | [**list[DeviceSchemaVariable]**](DeviceSchemaVariable.md) | Playbook variable configuration | [optional] 

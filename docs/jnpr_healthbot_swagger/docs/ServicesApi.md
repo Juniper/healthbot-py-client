@@ -1,15 +1,15 @@
 # swagger_client.ServicesApi
 
-All URIs are relative to *http://api-server/api/v1*
+All URIs are relative to *http://api-server/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_services_device_groups_device_group_by_device_group_name**](ServicesApi.md#create_services_device_groups_device_group_by_device_group_name) | **POST** /services/device-group/{device_group_name}/ | Start a device-group&#39;s services.
-[**create_services_network_group_by_network_group_name**](ServicesApi.md#create_services_network_group_by_network_group_name) | **POST** /services/network-group/{network_group_name}/ | Start a network-group&#39;s services.
-[**delete_services_device_groups_device_group_by_device_group_name**](ServicesApi.md#delete_services_device_groups_device_group_by_device_group_name) | **DELETE** /services/device-group/{device_group_name}/ | Stop and remove a device-group&#39;s services.
-[**delete_services_network_group_by_network_group_name**](ServicesApi.md#delete_services_network_group_by_network_group_name) | **DELETE** /services/network-group/{network_group_name}/ | Stop and remove a network-group&#39;s services.
-[**retrieve_services_device_groups_device_group_device_group**](ServicesApi.md#retrieve_services_device_groups_device_group_device_group) | **GET** /services/device-group/ | Get running &#x60;device-group-name&#x60;s.
-[**retrieve_services_network_group**](ServicesApi.md#retrieve_services_network_group) | **GET** /services/network-group/ | Get running &#x60;network-group-name&#x60;s
+[**create_services_device_groups_device_group_by_device_group_name**](ServicesApi.md#create_services_device_groups_device_group_by_device_group_name) | **POST** /config/services/device-group/{device_group_name}/ | Start a device-group&#39;s services.
+[**create_services_network_group_by_network_group_name**](ServicesApi.md#create_services_network_group_by_network_group_name) | **POST** /config/services/network-group/{network_group_name}/ | Start a network-group&#39;s services.
+[**delete_services_device_groups_device_group_by_device_group_name**](ServicesApi.md#delete_services_device_groups_device_group_by_device_group_name) | **DELETE** /config/services/device-group/{device_group_name}/ | Stop and remove a device-group&#39;s services.
+[**delete_services_network_group_by_network_group_name**](ServicesApi.md#delete_services_network_group_by_network_group_name) | **DELETE** /config/services/network-group/{network_group_name}/ | Stop and remove a network-group&#39;s services.
+[**retrieve_services_device_groups_device_group_device_group**](ServicesApi.md#retrieve_services_device_groups_device_group_device_group) | **GET** /config/services/device-group/ | Get running &#x60;device-group-name&#x60;s.
+[**retrieve_services_network_group**](ServicesApi.md#retrieve_services_network_group) | **GET** /config/services/network-group/ | Get running &#x60;network-group-name&#x60;s
 
 
 # **create_services_device_groups_device_group_by_device_group_name**

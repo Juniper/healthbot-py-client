@@ -6,7 +6,6 @@ from __future__ import absolute_import
 from swagger_client.api.administration_api import AdministrationApi
 from swagger_client.api.authentication_api import AuthenticationApi
 from swagger_client.api.configuration_api import ConfigurationApi
-from swagger_client.api.data_source_api import DataSourceApi
 from swagger_client.api.data_store_api import DataStoreApi
 from swagger_client.api.debug_api import DebugApi
 from swagger_client.api.default_api import DefaultApi

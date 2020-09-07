@@ -1,11 +1,11 @@
 # swagger_client.InstanceScheduleStateApi
 
-All URIs are relative to *http://api-server/api/v1*
+All URIs are relative to *http://api-server/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**retrieve_instances_schedule_state**](InstanceScheduleStateApi.md#retrieve_instances_schedule_state) | **GET** /instances-schedule-state/{group_type}/{group_name}/ | Get scheduled state of playbook instances with schedule.
-[**update_instances_schedule_state**](InstanceScheduleStateApi.md#update_instances_schedule_state) | **PUT** /instances-schedule-state/{group_type}/{group_name}/ | Update scheduled state of playbook instances with schedule.
+[**retrieve_instances_schedule_state**](InstanceScheduleStateApi.md#retrieve_instances_schedule_state) | **GET** /config/instances-schedule-state/{group_type}/{group_name}/ | Get scheduled state of playbook instances with schedule.
+[**update_instances_schedule_state**](InstanceScheduleStateApi.md#update_instances_schedule_state) | **PUT** /config/instances-schedule-state/{group_type}/{group_name}/ | Update scheduled state of playbook instances with schedule.
 
 
 # **retrieve_instances_schedule_state**

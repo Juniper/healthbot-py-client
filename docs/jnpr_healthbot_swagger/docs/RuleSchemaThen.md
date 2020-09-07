@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**next** | [**list[ERRORUNKNOWN]**](.md) | Continue evaluating next term in a trigger | [optional] 
+**next** | **list[object]** | Continue evaluating next term in a trigger | [optional] 
 **status** | [**RuleSchemaThenStatus**](RuleSchemaThenStatus.md) |  | [optional] 
 **user_defined_action** | [**list[RuleSchemaThenUserdefinedaction]**](RuleSchemaThenUserdefinedaction.md) |  | [optional] 
 

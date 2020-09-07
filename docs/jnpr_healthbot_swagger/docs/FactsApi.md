@@ -1,12 +1,12 @@
 # swagger_client.FactsApi
 
-All URIs are relative to *http://api-server/api/v1*
+All URIs are relative to *http://api-server/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**retrieve_iceberg_device_device_facts_by_id**](FactsApi.md#retrieve_iceberg_device_device_facts_by_id) | **GET** /device/{device_id}/facts/ | Get a device&#39;s facts.
-[**retrieve_iceberg_devices_devices_facts**](FactsApi.md#retrieve_iceberg_devices_devices_facts) | **GET** /devices/facts/ | Get devices facts.
-[**retrieve_iceberg_devices_facts_by_group**](FactsApi.md#retrieve_iceberg_devices_facts_by_group) | **GET** /device-group/{device_group_name}/facts/ | Get a devices facts for given group.
+[**retrieve_iceberg_device_device_facts_by_id**](FactsApi.md#retrieve_iceberg_device_device_facts_by_id) | **GET** /config/device/{device_id}/facts/ | Get a device&#39;s facts.
+[**retrieve_iceberg_devices_devices_facts**](FactsApi.md#retrieve_iceberg_devices_devices_facts) | **GET** /config/devices/facts/ | Get devices facts.
+[**retrieve_iceberg_devices_facts_by_group**](FactsApi.md#retrieve_iceberg_devices_facts_by_group) | **GET** /config/device-group/{device_group_name}/facts/ | Get a devices facts for given group.
 
 
 # **retrieve_iceberg_device_device_facts_by_id**

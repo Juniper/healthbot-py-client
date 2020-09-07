@@ -1,6 +1,6 @@
 # swagger_client.DocumentationApi
 
-All URIs are relative to *http://api-server/api/v1*
+All URIs are relative to *http://api-server/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
