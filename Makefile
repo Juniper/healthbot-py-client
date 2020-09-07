@@ -17,6 +17,12 @@
 GET_VERSION= python -c 'import versioneer;print(versioneer.get_version())'
 
 build:
+	cd docs && make html
+	cp -r docs/jnpr_healthbot_swagger/swagger_client/ lib/jnpr/healthbot/swagger/
+	cd lib/jnpr/healthbot/swagger/ && sed -i '' -e 's/from\ swagger_client/from\ jnpr.healthbot.swagger/g' *.py
+	cd lib/jnpr/healthbot/swagger/ && sed -i '' -e 's/swagger_client/jnpr.healthbot.swagger/g' *.py
+	cd lib/jnpr/healthbot/swagger/api && sed -i '' -e 's/from\ swagger_client/from\ jnpr.healthbot.swagger/g' *.py
+	cd lib/jnpr/healthbot/swagger/models && sed -i '' -e 's/from\ swagger_client/from\ jnpr.healthbot.swagger/g' *.py
 	python3 setup.py bdist_wheel
 
 .PHONY: version
