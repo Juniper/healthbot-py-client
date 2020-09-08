@@ -36,7 +36,7 @@ class TestSettings(unittest.TestCase):
     def test_add_notification(self):
         ns = NotificationSchema(notification_name='HbEZ-notification')
         ns.description = "example of adding notification via API"
-        nss = NotificationSchemaSlack(channel="HbEZ", url='http://testing')
+        nss = NotificationSchemaSlack(channel="HbEZ", url='https://testing')
         ns.slack = nss
         self.assertTrue(self.conn.settings.notification.add(ns))
         self.assertEqual(self.mock_request().mock_calls[2][0], 'post')

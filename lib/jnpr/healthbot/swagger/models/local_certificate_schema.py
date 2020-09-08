@@ -76,7 +76,7 @@ class LocalCertificateSchema(object):
         """
         if client_crt is None:
             raise ValueError("Invalid value for `client_crt`, must not be `None`")  # noqa: E501
-        if client_crt is not None and not re.search(r'^.+\\.crt$', client_crt):  # noqa: E501
+        if client_crt is not None and not re.search('^.+\\.crt$', client_crt):  # noqa: E501
             raise ValueError(r"Invalid value for `client_crt`, must be a follow pattern or equal to `/^.+\\.crt$/`")  # noqa: E501
 
         self._client_crt = client_crt
@@ -103,7 +103,7 @@ class LocalCertificateSchema(object):
         """
         if client_key is None:
             raise ValueError("Invalid value for `client_key`, must not be `None`")  # noqa: E501
-        if client_key is not None and not re.search(r'^.+\\.key$', client_key):  # noqa: E501
+        if client_key is not None and not re.search('^.+\\.key$', client_key):  # noqa: E501
             raise ValueError(r"Invalid value for `client_key`, must be a follow pattern or equal to `/^.+\\.key$/`")  # noqa: E501
 
         self._client_key = client_key

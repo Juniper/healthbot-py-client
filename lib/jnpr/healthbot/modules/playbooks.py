@@ -227,7 +227,7 @@ class PlayBookInstanceBuilder(Playbook):
 
             with HealthBotClient('xx.xxx.x.xx', 'xxxx', 'xxxx') as hb:
 
-            from jnpr.healthbot import PlayBookInstanceBuilder
+                from jnpr.healthbot import PlayBookInstanceBuilder
                 pbb = PlayBookInstanceBuilder(hb, 'forwarding-table-summary', 'HbEZ-instance', 'Core')
 
                 variable = pbb.rule_variables["protocol.routesummary/check-fib-summary"]

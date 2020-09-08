@@ -143,7 +143,7 @@ class RuleSchemaWhenIncreasingatleastbyrate(object):
         """
         if field_name is None:
             raise ValueError("Invalid value for `field_name`, must not be `None`")  # noqa: E501
-        if field_name is not None and not re.search(r'^\\$[a-z][a-zA-Z0-9_-]*$', field_name):  # noqa: E501
+        if field_name is not None and not re.search('^\\$[a-z][a-zA-Z0-9_-]*$', field_name):  # noqa: E501
             raise ValueError(r"Invalid value for `field_name`, must be a follow pattern or equal to `/^\\$[a-z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._field_name = field_name
@@ -224,7 +224,7 @@ class RuleSchemaWhenIncreasingatleastbyrate(object):
         :param value: The value of this RuleSchemaWhenIncreasingatleastbyrate.  # noqa: E501
         :type: str
         """
-        if value is not None and not re.search(r'(^\\d+(\\.\\d{0,2})?$)|(^\\$[a-z][a-zA-Z0-9_-]*$)', value):  # noqa: E501
+        if value is not None and not re.search('(^\\d+(\\.\\d{0,2})?$)|(^\\$[a-z][a-zA-Z0-9_-]*$)', value):  # noqa: E501
             raise ValueError(r"Invalid value for `value`, must be a follow pattern or equal to `/(^\\d+(\\.\\d{0,2})?$)|(^\\$[a-z][a-zA-Z0-9_-]*$)/`")  # noqa: E501
 
         self._value = value
@@ -249,7 +249,7 @@ class RuleSchemaWhenIncreasingatleastbyrate(object):
         :param percentage: The percentage of this RuleSchemaWhenIncreasingatleastbyrate.  # noqa: E501
         :type: str
         """
-        if percentage is not None and not re.search(r'(^\\d+(\\.\\d{0,2})?$)|(^\\$[a-z][a-zA-Z0-9_-]*$)', percentage):  # noqa: E501
+        if percentage is not None and not re.search('(^\\d+(\\.\\d{0,2})?$)|(^\\$[a-z][a-zA-Z0-9_-]*$)', percentage):  # noqa: E501
             raise ValueError(r"Invalid value for `percentage`, must be a follow pattern or equal to `/(^\\d+(\\.\\d{0,2})?$)|(^\\$[a-z][a-zA-Z0-9_-]*$)/`")  # noqa: E501
 
         self._percentage = percentage

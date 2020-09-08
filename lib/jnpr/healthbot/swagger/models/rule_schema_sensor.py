@@ -108,7 +108,7 @@ class RuleSchemaSensor(object):
         """
         if path is None:
             raise ValueError("Invalid value for `path`, must not be `None`")  # noqa: E501
-        if path is not None and not re.search(r'^\\S+$', path):  # noqa: E501
+        if path is not None and not re.search('^\\S+$', path):  # noqa: E501
             raise ValueError(r"Invalid value for `path`, must be a follow pattern or equal to `/^\\S+$/`")  # noqa: E501
 
         self._path = path

@@ -107,7 +107,7 @@ class RuleSchemaRuleproperties(object):
         :param author: The author of this RuleSchemaRuleproperties.  # noqa: E501
         :type: str
         """
-        if author is not None and not re.search(r'^([\\w\\-_\\.]+)@([\\w])+[.][\\w]+$', author):  # noqa: E501
+        if author is not None and not re.search('^([\\w\\-_\\.]+)@([\\w])+[.][\\w]+$', author):  # noqa: E501
             raise ValueError(r"Invalid value for `author`, must be a follow pattern or equal to `/^([\\w\\-_\\.]+)@([\\w])+[.][\\w]+$/`")  # noqa: E501
 
         self._author = author
@@ -178,7 +178,7 @@ class RuleSchemaRuleproperties(object):
         :param _date: The _date of this RuleSchemaRuleproperties.  # noqa: E501
         :type: str
         """
-        if _date is not None and not re.search(r'^(19|20)\\d\\d[\/](0[1-9]|1[012])[\/](0[1-9]|[12][0-9]|3[01])$', _date):  # noqa: E501
+        if _date is not None and not re.search('^(19|20)\\d\\d[\/](0[1-9]|1[012])[\/](0[1-9]|[12][0-9]|3[01])$', _date):  # noqa: E501
             raise ValueError(r"Invalid value for `_date`, must be a follow pattern or equal to `/^(19|20)\\d\\d[\/](0[1-9]|1[012])[\/](0[1-9]|[12][0-9]|3[01])$/`")  # noqa: E501
 
         self.__date = _date
@@ -245,7 +245,7 @@ class RuleSchemaRuleproperties(object):
         :param supported_healthbot_version: The supported_healthbot_version of this RuleSchemaRuleproperties.  # noqa: E501
         :type: str
         """
-        if supported_healthbot_version is not None and not re.search(r'^(\\d){1,2}[-.](\\d){1,2}[-.](\\d){1,2}$', supported_healthbot_version):  # noqa: E501
+        if supported_healthbot_version is not None and not re.search('^(\\d){1,2}[-.](\\d){1,2}[-.](\\d){1,2}$', supported_healthbot_version):  # noqa: E501
             raise ValueError(r"Invalid value for `supported_healthbot_version`, must be a follow pattern or equal to `/^(\\d){1,2}[-.](\\d){1,2}[-.](\\d){1,2}$/`")  # noqa: E501
 
         self._supported_healthbot_version = supported_healthbot_version

@@ -144,7 +144,7 @@ class DevicegroupSchemaVariable(object):
         """
         if rule is None:
             raise ValueError("Invalid value for `rule`, must not be `None`")  # noqa: E501
-        if rule is not None and not re.search(r'^[a-z][a-z-]*(\\.{1}[a-z0-9-]+)*\/[a-z]+[a-z0-9_-]*$', rule):  # noqa: E501
+        if rule is not None and not re.search('^[a-z][a-z-]*(\\.{1}[a-z0-9-]+)*\/[a-z]+[a-z0-9_-]*$', rule):  # noqa: E501
             raise ValueError(r"Invalid value for `rule`, must be a follow pattern or equal to `/^[a-z][a-z-]*(\\.{1}[a-z0-9-]+)*\/[a-z]+[a-z0-9_-]*$/`")  # noqa: E501
 
         self._rule = rule
