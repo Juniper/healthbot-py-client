@@ -1,49 +1,78 @@
 # swagger_client.DefaultApi
 
-All URIs are relative to *http://api-server/api/v1*
+All URIs are relative to *http://api-server/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**backup_helper_files**](DefaultApi.md#backup_helper_files) | **GET** /files/helper-files/backup/ | Download the tar file containing all helper files.
-[**create_files_certificates_by_file_name**](DefaultApi.md#create_files_certificates_by_file_name) | **POST** /files/certificates/{file_name}/ | Upload a certificate file.
-[**create_files_helper_files_by_file_name**](DefaultApi.md#create_files_helper_files_by_file_name) | **POST** /files/helper-files/{file_name}/ | Upload a helper-file.
-[**create_healthbot_ingest_settings_byoi_custom_plugin_by_id**](DefaultApi.md#create_healthbot_ingest_settings_byoi_custom_plugin_by_id) | **POST** /ingest-settings/byoi/custom-plugin/{name}/ | Create custom-plugin by ID
-[**create_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id**](DefaultApi.md#create_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id) | **POST** /ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/ | Create tlive-kafka-oc by ID
-[**create_healthbot_ingest_settings_byoi_ingest_mapping_by_id**](DefaultApi.md#create_healthbot_ingest_settings_byoi_ingest_mapping_by_id) | **POST** /ingest-settings/byoi/ingest-mapping/{name}/ | Create ingest-mapping by ID
-[**create_healthbot_ingest_settings_frequency_profile_by_id**](DefaultApi.md#create_healthbot_ingest_settings_frequency_profile_by_id) | **POST** /ingest-settings/frequency-profile/{name}/ | Create frequency-profile by ID
-[**create_healthbot_system_time_series_database_time_series_database_by_id**](DefaultApi.md#create_healthbot_system_time_series_database_time_series_database_by_id) | **POST** /system/tsdb/ | Create time-series-database by ID
-[**create_iceberg_ingest_settings**](DefaultApi.md#create_iceberg_ingest_settings) | **POST** /ingest-settings/ | Create ingest-settings by ID
-[**create_iceberg_ingest_settings_flow**](DefaultApi.md#create_iceberg_ingest_settings_flow) | **POST** /ingest-settings/flow/ | Create flow by ID
-[**create_iceberg_ingest_settings_flow_template_by_id**](DefaultApi.md#create_iceberg_ingest_settings_flow_template_by_id) | **POST** /ingest-settings/flow/template/{name}/ | Create template by ID
-[**create_iceberg_ingest_settings_syslog**](DefaultApi.md#create_iceberg_ingest_settings_syslog) | **POST** /ingest-settings/syslog/ | Create syslog by ID
-[**create_iceberg_ingest_settings_syslog_pattern_by_id**](DefaultApi.md#create_iceberg_ingest_settings_syslog_pattern_by_id) | **POST** /ingest-settings/syslog/pattern/{name}/ | Create pattern by ID
-[**create_iceberg_ingest_settings_syslog_pattern_set_by_id**](DefaultApi.md#create_iceberg_ingest_settings_syslog_pattern_set_by_id) | **POST** /ingest-settings/syslog/pattern-set/{name}/ | Create pattern-set by ID
-[**create_iceberg_profile_data_summarization_raw_by_id**](DefaultApi.md#create_iceberg_profile_data_summarization_raw_by_id) | **POST** /profile/data-summarization/raw/{name}/ | Create raw-data-summarization by ID
-[**create_iceberg_profile_security_ca_profile_by_id**](DefaultApi.md#create_iceberg_profile_security_ca_profile_by_id) | **POST** /profile/security/ca-profile/{name}/ | Create ca-profile by ID
-[**create_iceberg_profile_security_local_certificate_by_id**](DefaultApi.md#create_iceberg_profile_security_local_certificate_by_id) | **POST** /profile/security/local-certificate/{name}/ | Create local-certificate by ID
-[**create_iceberg_profile_security_ssh_key_profile_by_id**](DefaultApi.md#create_iceberg_profile_security_ssh_key_profile_by_id) | **POST** /profile/security/ssh-key-profile/{name}/ | Create ssh-key-profile by ID
-[**create_iceberg_profiles**](DefaultApi.md#create_iceberg_profiles) | **POST** /profiles/ | Create profile by ID
-[**delete_files_certificates_by_file_name**](DefaultApi.md#delete_files_certificates_by_file_name) | **DELETE** /files/certificates/{file_name}/ | Delete a certificate-file.
-[**delete_files_helper_files_by_file_name**](DefaultApi.md#delete_files_helper_files_by_file_name) | **DELETE** /files/helper-files/{file_name}/ | Delete a helper-file.
-[**delete_healthbot_ingest_settings_byoi_custom_plugin_by_id**](DefaultApi.md#delete_healthbot_ingest_settings_byoi_custom_plugin_by_id) | **DELETE** /ingest-settings/byoi/custom-plugin/{name}/ | Delete custom-plugin by ID
-[**delete_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id**](DefaultApi.md#delete_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id) | **DELETE** /ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/ | Delete tlive-kafka-oc by ID
-[**delete_healthbot_ingest_settings_byoi_ingest_mapping_by_id**](DefaultApi.md#delete_healthbot_ingest_settings_byoi_ingest_mapping_by_id) | **DELETE** /ingest-settings/byoi/ingest-mapping/{name}/ | Delete ingest-mapping by ID
-[**delete_healthbot_ingest_settings_frequency_profile_by_id**](DefaultApi.md#delete_healthbot_ingest_settings_frequency_profile_by_id) | **DELETE** /ingest-settings/frequency-profile/{name}/ | Delete frequency-profile by ID
-[**delete_healthbot_system_time_series_database_time_series_database_by_id**](DefaultApi.md#delete_healthbot_system_time_series_database_time_series_database_by_id) | **DELETE** /system/tsdb/ | Delete time-series-database
-[**delete_iceberg_ingest_settings**](DefaultApi.md#delete_iceberg_ingest_settings) | **DELETE** /ingest-settings/ | Delete ingest-settings by ID
-[**delete_iceberg_ingest_settings_flow**](DefaultApi.md#delete_iceberg_ingest_settings_flow) | **DELETE** /ingest-settings/flow/ | Delete flow by ID
-[**delete_iceberg_ingest_settings_flow_template_by_id**](DefaultApi.md#delete_iceberg_ingest_settings_flow_template_by_id) | **DELETE** /ingest-settings/flow/template/{name}/ | Delete template by ID
-[**delete_iceberg_ingest_settings_syslog**](DefaultApi.md#delete_iceberg_ingest_settings_syslog) | **DELETE** /ingest-settings/syslog/ | Delete syslog by ID
-[**delete_iceberg_ingest_settings_syslog_pattern_by_id**](DefaultApi.md#delete_iceberg_ingest_settings_syslog_pattern_by_id) | **DELETE** /ingest-settings/syslog/pattern/{name}/ | Delete pattern by ID
-[**delete_iceberg_ingest_settings_syslog_pattern_set_by_id**](DefaultApi.md#delete_iceberg_ingest_settings_syslog_pattern_set_by_id) | **DELETE** /ingest-settings/syslog/pattern-set/{name}/ | Delete pattern-set by ID
-[**delete_iceberg_profile_data_summarization_raw_by_id**](DefaultApi.md#delete_iceberg_profile_data_summarization_raw_by_id) | **DELETE** /profile/data-summarization/raw/{name}/ | Delete raw-data-summarization by ID
-[**delete_iceberg_profile_security_ca_profile_by_id**](DefaultApi.md#delete_iceberg_profile_security_ca_profile_by_id) | **DELETE** /profile/security/ca-profile/{name}/ | Delete ca-profile by ID
-[**delete_iceberg_profile_security_local_certificate_by_id**](DefaultApi.md#delete_iceberg_profile_security_local_certificate_by_id) | **DELETE** /profile/security/local-certificate/{name}/ | Delete local-certificate by ID
-[**delete_iceberg_profile_security_ssh_key_profile_by_id**](DefaultApi.md#delete_iceberg_profile_security_ssh_key_profile_by_id) | **DELETE** /profile/security/ssh-key-profile/{name}/ | Delete ssh-key-profile by ID
-[**delete_iceberg_profiles**](DefaultApi.md#delete_iceberg_profiles) | **DELETE** /profiles/ | Delete profile by ID
+[**backup_helper_files**](DefaultApi.md#backup_helper_files) | **GET** /config/files/helper-files/backup/ | Download the tar file containing all helper files.
+[**create_files_certificates_by_file_name**](DefaultApi.md#create_files_certificates_by_file_name) | **POST** /config/files/certificates/{file_name}/ | Upload a certificate file.
+[**create_files_helper_files_by_file_name**](DefaultApi.md#create_files_helper_files_by_file_name) | **POST** /config/files/helper-files/{file_name}/ | Upload a helper-file.
+[**create_healthbot_ingest_byoi_custom_plugin_by_id**](DefaultApi.md#create_healthbot_ingest_byoi_custom_plugin_by_id) | **POST** /config/ingest/byoi/custom-plugin/{name}/ | Create custom-plugin by ID
+[**create_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id**](DefaultApi.md#create_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id) | **POST** /config/ingest/byoi/default-plugin/tlive-kafka-oc/{name}/ | Create tlive-kafka-oc by ID
+[**create_healthbot_ingest_byoi_ingest_mapping_by_id**](DefaultApi.md#create_healthbot_ingest_byoi_ingest_mapping_by_id) | **POST** /config/ingest/byoi/ingest-mapping/{name}/ | Create ingest-mapping by ID
+[**create_healthbot_ingest_frequency_profile_by_id**](DefaultApi.md#create_healthbot_ingest_frequency_profile_by_id) | **POST** /config/ingest/frequency-profile/{name}/ | Create frequency-profile by ID
+[**create_healthbot_ingest_settings_byoi_custom_plugin_by_id**](DefaultApi.md#create_healthbot_ingest_settings_byoi_custom_plugin_by_id) | **POST** /config/ingest-settings/byoi/custom-plugin/{name}/ | Create custom-plugin by ID
+[**create_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id**](DefaultApi.md#create_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id) | **POST** /config/ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/ | Create tlive-kafka-oc by ID
+[**create_healthbot_ingest_settings_byoi_ingest_mapping_by_id**](DefaultApi.md#create_healthbot_ingest_settings_byoi_ingest_mapping_by_id) | **POST** /config/ingest-settings/byoi/ingest-mapping/{name}/ | Create ingest-mapping by ID
+[**create_healthbot_ingest_settings_frequency_profile_by_id**](DefaultApi.md#create_healthbot_ingest_settings_frequency_profile_by_id) | **POST** /config/ingest-settings/frequency-profile/{name}/ | Create frequency-profile by ID
+[**create_healthbot_ingest_settings_tagging_profile_by_id**](DefaultApi.md#create_healthbot_ingest_settings_tagging_profile_by_id) | **POST** /config/ingest-settings/data-enrichment/tagging-profile/{name}/ | Create tagging-profile by ID
+[**create_healthbot_ingest_settings_tagging_profiles**](DefaultApi.md#create_healthbot_ingest_settings_tagging_profiles) | **POST** /config/ingest-settings/data-enrichment/tagging-profiles/ | Create tagging-profile by ID
+[**create_healthbot_ingest_tagging_profile_by_id**](DefaultApi.md#create_healthbot_ingest_tagging_profile_by_id) | **POST** /config/ingest/data-enrichment/tagging-profile/{name}/ | Create tagging-profile by ID
+[**create_healthbot_ingest_tagging_profiles**](DefaultApi.md#create_healthbot_ingest_tagging_profiles) | **POST** /config/ingest/data-enrichment/tagging-profiles/ | Create tagging-profile by ID
+[**create_healthbot_system_time_series_database_time_series_database_by_id**](DefaultApi.md#create_healthbot_system_time_series_database_time_series_database_by_id) | **POST** /config/system/tsdb/ | Create time-series-database by ID
+[**create_iceberg_ingest**](DefaultApi.md#create_iceberg_ingest) | **POST** /config/ingest/ | Create ingest by ID
+[**create_iceberg_ingest_flow**](DefaultApi.md#create_iceberg_ingest_flow) | **POST** /config/ingest/flow/ | Create flow by ID
+[**create_iceberg_ingest_flow_template_by_id**](DefaultApi.md#create_iceberg_ingest_flow_template_by_id) | **POST** /config/ingest/flow/template/{name}/ | Create template by ID
+[**create_iceberg_ingest_settings**](DefaultApi.md#create_iceberg_ingest_settings) | **POST** /config/ingest-settings/ | Create ingest-settings by ID
+[**create_iceberg_ingest_settings_flow**](DefaultApi.md#create_iceberg_ingest_settings_flow) | **POST** /config/ingest-settings/flow/ | Create flow by ID
+[**create_iceberg_ingest_settings_flow_template_by_id**](DefaultApi.md#create_iceberg_ingest_settings_flow_template_by_id) | **POST** /config/ingest-settings/flow/template/{name}/ | Create template by ID
+[**create_iceberg_ingest_settings_syslog**](DefaultApi.md#create_iceberg_ingest_settings_syslog) | **POST** /config/ingest-settings/syslog/ | Create syslog by ID
+[**create_iceberg_ingest_settings_syslog_pattern_by_id**](DefaultApi.md#create_iceberg_ingest_settings_syslog_pattern_by_id) | **POST** /config/ingest-settings/syslog/pattern/{name}/ | Create pattern by ID
+[**create_iceberg_ingest_settings_syslog_pattern_set_by_id**](DefaultApi.md#create_iceberg_ingest_settings_syslog_pattern_set_by_id) | **POST** /config/ingest-settings/syslog/pattern-set/{name}/ | Create pattern-set by ID
+[**create_iceberg_ingest_syslog**](DefaultApi.md#create_iceberg_ingest_syslog) | **POST** /config/ingest/syslog/ | Create syslog by ID
+[**create_iceberg_ingest_syslog_pattern_by_id**](DefaultApi.md#create_iceberg_ingest_syslog_pattern_by_id) | **POST** /config/ingest/syslog/pattern/{name}/ | Create pattern by ID
+[**create_iceberg_ingest_syslog_pattern_set_by_id**](DefaultApi.md#create_iceberg_ingest_syslog_pattern_set_by_id) | **POST** /config/ingest/syslog/pattern-set/{name}/ | Create pattern-set by ID
+[**create_iceberg_profile_data_summarization_raw_by_id**](DefaultApi.md#create_iceberg_profile_data_summarization_raw_by_id) | **POST** /config/profile/data-summarization/raw/{name}/ | Create raw-data-summarization by ID
+[**create_iceberg_profile_security_ca_profile_by_id**](DefaultApi.md#create_iceberg_profile_security_ca_profile_by_id) | **POST** /config/profile/security/ca-profile/{name}/ | Create ca-profile by ID
+[**create_iceberg_profile_security_local_certificate_by_id**](DefaultApi.md#create_iceberg_profile_security_local_certificate_by_id) | **POST** /config/profile/security/local-certificate/{name}/ | Create local-certificate by ID
+[**create_iceberg_profile_security_ssh_key_profile_by_id**](DefaultApi.md#create_iceberg_profile_security_ssh_key_profile_by_id) | **POST** /config/profile/security/ssh-key-profile/{name}/ | Create ssh-key-profile by ID
+[**create_iceberg_profiles**](DefaultApi.md#create_iceberg_profiles) | **POST** /config/profiles/ | Create profile by ID
+[**delete_files_certificates_by_file_name**](DefaultApi.md#delete_files_certificates_by_file_name) | **DELETE** /config/files/certificates/{file_name}/ | Delete a certificate-file.
+[**delete_files_helper_files_by_file_name**](DefaultApi.md#delete_files_helper_files_by_file_name) | **DELETE** /config/files/helper-files/{file_name}/ | Delete a helper-file.
+[**delete_healthbot_ingest_byoi_custom_plugin_by_id**](DefaultApi.md#delete_healthbot_ingest_byoi_custom_plugin_by_id) | **DELETE** /config/ingest/byoi/custom-plugin/{name}/ | Delete custom-plugin by ID
+[**delete_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id**](DefaultApi.md#delete_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id) | **DELETE** /config/ingest/byoi/default-plugin/tlive-kafka-oc/{name}/ | Delete tlive-kafka-oc by ID
+[**delete_healthbot_ingest_byoi_ingest_mapping_by_id**](DefaultApi.md#delete_healthbot_ingest_byoi_ingest_mapping_by_id) | **DELETE** /config/ingest/byoi/ingest-mapping/{name}/ | Delete ingest-mapping by ID
+[**delete_healthbot_ingest_frequency_profile_by_id**](DefaultApi.md#delete_healthbot_ingest_frequency_profile_by_id) | **DELETE** /config/ingest/frequency-profile/{name}/ | Delete frequency-profile by ID
+[**delete_healthbot_ingest_settings_byoi_custom_plugin_by_id**](DefaultApi.md#delete_healthbot_ingest_settings_byoi_custom_plugin_by_id) | **DELETE** /config/ingest-settings/byoi/custom-plugin/{name}/ | Delete custom-plugin by ID
+[**delete_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id**](DefaultApi.md#delete_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id) | **DELETE** /config/ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/ | Delete tlive-kafka-oc by ID
+[**delete_healthbot_ingest_settings_byoi_ingest_mapping_by_id**](DefaultApi.md#delete_healthbot_ingest_settings_byoi_ingest_mapping_by_id) | **DELETE** /config/ingest-settings/byoi/ingest-mapping/{name}/ | Delete ingest-mapping by ID
+[**delete_healthbot_ingest_settings_frequency_profile_by_id**](DefaultApi.md#delete_healthbot_ingest_settings_frequency_profile_by_id) | **DELETE** /config/ingest-settings/frequency-profile/{name}/ | Delete frequency-profile by ID
+[**delete_healthbot_ingest_settings_tagging_profile_by_id**](DefaultApi.md#delete_healthbot_ingest_settings_tagging_profile_by_id) | **DELETE** /config/ingest-settings/data-enrichment/tagging-profile/{name}/ | Delete tagging-profile by ID
+[**delete_healthbot_ingest_settings_tagging_profiles**](DefaultApi.md#delete_healthbot_ingest_settings_tagging_profiles) | **DELETE** /config/ingest-settings/data-enrichment/tagging-profiles/ | Delete tagging-profile by ID
+[**delete_healthbot_ingest_tagging_profile_by_id**](DefaultApi.md#delete_healthbot_ingest_tagging_profile_by_id) | **DELETE** /config/ingest/data-enrichment/tagging-profile/{name}/ | Delete tagging-profile by ID
+[**delete_healthbot_ingest_tagging_profiles**](DefaultApi.md#delete_healthbot_ingest_tagging_profiles) | **DELETE** /config/ingest/data-enrichment/tagging-profiles/ | Delete tagging-profile by ID
+[**delete_healthbot_system_time_series_database_time_series_database_by_id**](DefaultApi.md#delete_healthbot_system_time_series_database_time_series_database_by_id) | **DELETE** /config/system/tsdb/ | Delete time-series-database
+[**delete_iceberg_ingest**](DefaultApi.md#delete_iceberg_ingest) | **DELETE** /config/ingest/ | Delete ingest by ID
+[**delete_iceberg_ingest_flow**](DefaultApi.md#delete_iceberg_ingest_flow) | **DELETE** /config/ingest/flow/ | Delete flow by ID
+[**delete_iceberg_ingest_flow_template_by_id**](DefaultApi.md#delete_iceberg_ingest_flow_template_by_id) | **DELETE** /config/ingest/flow/template/{name}/ | Delete template by ID
+[**delete_iceberg_ingest_settings**](DefaultApi.md#delete_iceberg_ingest_settings) | **DELETE** /config/ingest-settings/ | Delete ingest-settings by ID
+[**delete_iceberg_ingest_settings_flow**](DefaultApi.md#delete_iceberg_ingest_settings_flow) | **DELETE** /config/ingest-settings/flow/ | Delete flow by ID
+[**delete_iceberg_ingest_settings_flow_template_by_id**](DefaultApi.md#delete_iceberg_ingest_settings_flow_template_by_id) | **DELETE** /config/ingest-settings/flow/template/{name}/ | Delete template by ID
+[**delete_iceberg_ingest_settings_syslog**](DefaultApi.md#delete_iceberg_ingest_settings_syslog) | **DELETE** /config/ingest-settings/syslog/ | Delete syslog by ID
+[**delete_iceberg_ingest_settings_syslog_pattern_by_id**](DefaultApi.md#delete_iceberg_ingest_settings_syslog_pattern_by_id) | **DELETE** /config/ingest-settings/syslog/pattern/{name}/ | Delete pattern by ID
+[**delete_iceberg_ingest_settings_syslog_pattern_set_by_id**](DefaultApi.md#delete_iceberg_ingest_settings_syslog_pattern_set_by_id) | **DELETE** /config/ingest-settings/syslog/pattern-set/{name}/ | Delete pattern-set by ID
+[**delete_iceberg_ingest_syslog**](DefaultApi.md#delete_iceberg_ingest_syslog) | **DELETE** /config/ingest/syslog/ | Delete syslog by ID
+[**delete_iceberg_ingest_syslog_pattern_by_id**](DefaultApi.md#delete_iceberg_ingest_syslog_pattern_by_id) | **DELETE** /config/ingest/syslog/pattern/{name}/ | Delete pattern by ID
+[**delete_iceberg_ingest_syslog_pattern_set_by_id**](DefaultApi.md#delete_iceberg_ingest_syslog_pattern_set_by_id) | **DELETE** /config/ingest/syslog/pattern-set/{name}/ | Delete pattern-set by ID
+[**delete_iceberg_profile_data_summarization_raw_by_id**](DefaultApi.md#delete_iceberg_profile_data_summarization_raw_by_id) | **DELETE** /config/profile/data-summarization/raw/{name}/ | Delete raw-data-summarization by ID
+[**delete_iceberg_profile_security_ca_profile_by_id**](DefaultApi.md#delete_iceberg_profile_security_ca_profile_by_id) | **DELETE** /config/profile/security/ca-profile/{name}/ | Delete ca-profile by ID
+[**delete_iceberg_profile_security_local_certificate_by_id**](DefaultApi.md#delete_iceberg_profile_security_local_certificate_by_id) | **DELETE** /config/profile/security/local-certificate/{name}/ | Delete local-certificate by ID
+[**delete_iceberg_profile_security_ssh_key_profile_by_id**](DefaultApi.md#delete_iceberg_profile_security_ssh_key_profile_by_id) | **DELETE** /config/profile/security/ssh-key-profile/{name}/ | Delete ssh-key-profile by ID
+[**delete_iceberg_profiles**](DefaultApi.md#delete_iceberg_profiles) | **DELETE** /config/profiles/ | Delete profile by ID
+[**get_fields_from_xpath**](DefaultApi.md#get_fields_from_xpath) | **GET** /field-capture/ | Get last value of all fields before a given timestamp.
 [**inspect_command_rpc_table_on_device**](DefaultApi.md#inspect_command_rpc_table_on_device) | **POST** /inspect/command-rpc/table/ | Inspect the given iAgent table.
-[**restore_helper_files**](DefaultApi.md#restore_helper_files) | **POST** /files/helper-files/backup/ | Upload a helper-file.
-[**retrieve_configuration_jobs**](DefaultApi.md#retrieve_configuration_jobs) | **GET** /configuration/jobs/ | 
+[**restore_helper_files**](DefaultApi.md#restore_helper_files) | **POST** /config/files/helper-files/backup/ | Upload a helper-file.
+[**retrieve_configuration_jobs**](DefaultApi.md#retrieve_configuration_jobs) | **GET** /config/configuration/jobs/ | 
 [**retrieve_data_database_table**](DefaultApi.md#retrieve_data_database_table) | **GET** /data/database/table/ | Get information about tables for a device of a device-group.
 [**retrieve_data_database_table_column_by_table_name**](DefaultApi.md#retrieve_data_database_table_column_by_table_name) | **GET** /data/database/table/column/ | Get information about columns in a table.
 [**retrieve_data_database_tags_by_table_name**](DefaultApi.md#retrieve_data_database_tags_by_table_name) | **GET** /data/database/table/tags/ | Get information about tags keys and values in a table.
@@ -55,59 +84,96 @@ Method | HTTP request | Description
 [**retrieve_event_device_group**](DefaultApi.md#retrieve_event_device_group) | **GET** /event/device-group/ | Get all events for a device-group.
 [**retrieve_event_network_group**](DefaultApi.md#retrieve_event_network_group) | **GET** /event/network-group/ | Get all events for a network-group.
 [**retrieve_events**](DefaultApi.md#retrieve_events) | **GET** /events/ | Get all events.
-[**retrieve_files_certificates_by_file_name**](DefaultApi.md#retrieve_files_certificates_by_file_name) | **GET** /files/certificates/{file_name}/ | Download a certificate-file.
-[**retrieve_files_helper_files**](DefaultApi.md#retrieve_files_helper_files) | **GET** /files/helper-files/ | Get all helper-file names.
-[**retrieve_files_helper_files_by_file_name**](DefaultApi.md#retrieve_files_helper_files_by_file_name) | **GET** /files/helper-files/{file_name}/ | Download a helper-file.
+[**retrieve_files_certificates_by_file_name**](DefaultApi.md#retrieve_files_certificates_by_file_name) | **GET** /config/files/certificates/{file_name}/ | Download a certificate-file.
+[**retrieve_files_helper_files**](DefaultApi.md#retrieve_files_helper_files) | **GET** /config/files/helper-files/ | Get all helper-file names.
+[**retrieve_files_helper_files_by_file_name**](DefaultApi.md#retrieve_files_helper_files_by_file_name) | **GET** /config/files/helper-files/{file_name}/ | Download a helper-file.
 [**retrieve_health_all**](DefaultApi.md#retrieve_health_all) | **GET** /health/ | Return a dict with health of devices in device groups and network groups
 [**retrieve_health_tree_by_device_group**](DefaultApi.md#retrieve_health_tree_by_device_group) | **GET** /health-tree/device-group/{device_group_name}/ | Get device-group health-tree.
 [**retrieve_health_tree_by_id**](DefaultApi.md#retrieve_health_tree_by_id) | **GET** /health-tree/{device_id}/ | Return a device&#39;s health-tree.
 [**retrieve_health_tree_by_network_group**](DefaultApi.md#retrieve_health_tree_by_network_group) | **GET** /health-tree/network-group/{network_group_name}/ | Get network-group health-tree.
-[**retrieve_healthbot_ingest_settings_byoi_custom_plugin_by_id**](DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_custom_plugin_by_id) | **GET** /ingest-settings/byoi/custom-plugin/{name}/ | Retrieve custom-plugin by ID
-[**retrieve_healthbot_ingest_settings_byoi_custom_plugins**](DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_custom_plugins) | **GET** /ingest-settings/byoi/custom-plugins/ | Retrieve custom-plugin by ID
-[**retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id**](DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id) | **GET** /ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/ | Retrieve tlive-kafka-oc by ID
-[**retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafkas**](DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafkas) | **GET** /ingest-settings/byoi/default-plugin/tlive-kafka-ocs/ | Retrieve tlive-kafka-oc
-[**retrieve_healthbot_ingest_settings_byoi_ingest_mapping_by_id**](DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_ingest_mapping_by_id) | **GET** /ingest-settings/byoi/ingest-mapping/{name}/ | Retrieve ingest-mapping by ID
-[**retrieve_healthbot_ingest_settings_byoi_ingest_mappings**](DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_ingest_mappings) | **GET** /ingest-settings/byoi/ingest-mappings/ | Retrieve ingest-mapping
-[**retrieve_healthbot_ingest_settings_frequency_profile**](DefaultApi.md#retrieve_healthbot_ingest_settings_frequency_profile) | **GET** /ingest-settings/frequency-profiles/ | Retrieve frequency-profile
-[**retrieve_healthbot_ingest_settings_frequency_profile_by_id**](DefaultApi.md#retrieve_healthbot_ingest_settings_frequency_profile_by_id) | **GET** /ingest-settings/frequency-profile/{name}/ | Retrieve frequency-profile by ID
-[**retrieve_healthbot_system_time_series_database_time_series_database**](DefaultApi.md#retrieve_healthbot_system_time_series_database_time_series_database) | **GET** /system/tsdb/ | Retrieve time-series-database
-[**retrieve_iceberg_ingest_settings**](DefaultApi.md#retrieve_iceberg_ingest_settings) | **GET** /ingest-settings/ | Retrieve ingest-settings
-[**retrieve_iceberg_ingest_settings_flow**](DefaultApi.md#retrieve_iceberg_ingest_settings_flow) | **GET** /ingest-settings/flow/ | Retrieve flow
-[**retrieve_iceberg_ingest_settings_flow_template_by_id**](DefaultApi.md#retrieve_iceberg_ingest_settings_flow_template_by_id) | **GET** /ingest-settings/flow/template/{name}/ | Retrieve template by ID
-[**retrieve_iceberg_ingest_settings_flow_template_ids**](DefaultApi.md#retrieve_iceberg_ingest_settings_flow_template_ids) | **GET** /ingest-settings/flow/template/ | Retrieve template
-[**retrieve_iceberg_ingest_settings_syslog**](DefaultApi.md#retrieve_iceberg_ingest_settings_syslog) | **GET** /ingest-settings/syslog/ | Retrieve syslog
-[**retrieve_iceberg_ingest_settings_syslog_pattern_by_id**](DefaultApi.md#retrieve_iceberg_ingest_settings_syslog_pattern_by_id) | **GET** /ingest-settings/syslog/pattern/{name}/ | Retrieve pattern by ID
-[**retrieve_iceberg_ingest_settings_syslog_pattern_ids**](DefaultApi.md#retrieve_iceberg_ingest_settings_syslog_pattern_ids) | **GET** /ingest-settings/syslog/pattern/ | Retrieve pattern
-[**retrieve_iceberg_ingest_settings_syslog_pattern_set_by_id**](DefaultApi.md#retrieve_iceberg_ingest_settings_syslog_pattern_set_by_id) | **GET** /ingest-settings/syslog/pattern-set/{name}/ | Retrieve pattern-set by ID
-[**retrieve_iceberg_ingest_settings_syslog_pattern_set_ids**](DefaultApi.md#retrieve_iceberg_ingest_settings_syslog_pattern_set_ids) | **GET** /ingest-settings/syslog/pattern-set/ | Retrieve pattern-set
-[**retrieve_iceberg_ingest_settings_syslog_pattern_sets**](DefaultApi.md#retrieve_iceberg_ingest_settings_syslog_pattern_sets) | **GET** /ingest-settings/syslog/pattern-sets/ | Retrieve pattern-set by ID
-[**retrieve_iceberg_ingest_settings_syslog_patterns**](DefaultApi.md#retrieve_iceberg_ingest_settings_syslog_patterns) | **GET** /ingest-settings/syslog/patterns/ | Retrieve pattern by ID
-[**retrieve_iceberg_profile_data_summarization_raw_by_id**](DefaultApi.md#retrieve_iceberg_profile_data_summarization_raw_by_id) | **GET** /profile/data-summarization/raw/{name}/ | Retrieve raw-data-summarization by ID
-[**retrieve_iceberg_profile_data_summarizations_raw**](DefaultApi.md#retrieve_iceberg_profile_data_summarizations_raw) | **GET** /profile/data-summarizations/raw/ | Retrieve raw-data-summarization
-[**retrieve_iceberg_profile_security_ca_profile_by_id**](DefaultApi.md#retrieve_iceberg_profile_security_ca_profile_by_id) | **GET** /profile/security/ca-profile/{name}/ | Retrieve ca-profile by ID
-[**retrieve_iceberg_profile_security_ca_profiles**](DefaultApi.md#retrieve_iceberg_profile_security_ca_profiles) | **GET** /profile/security/ca-profiles/ | Retrieve ca-profile
-[**retrieve_iceberg_profile_security_local_certificate_by_id**](DefaultApi.md#retrieve_iceberg_profile_security_local_certificate_by_id) | **GET** /profile/security/local-certificate/{name}/ | Retrieve local-certificate by ID
-[**retrieve_iceberg_profile_security_local_certificates**](DefaultApi.md#retrieve_iceberg_profile_security_local_certificates) | **GET** /profile/security/local-certificates/ | Retrieve local-certificate
-[**retrieve_iceberg_profile_security_ssh_key_profile_by_id**](DefaultApi.md#retrieve_iceberg_profile_security_ssh_key_profile_by_id) | **GET** /profile/security/ssh-key-profile/{name}/ | Retrieve ssh-key-profile by ID
-[**retrieve_iceberg_profile_security_ssh_key_profiles**](DefaultApi.md#retrieve_iceberg_profile_security_ssh_key_profiles) | **GET** /profile/security/ssh-key-profiles/ | Retrieve ssh-key-profile
-[**retrieve_iceberg_profiles**](DefaultApi.md#retrieve_iceberg_profiles) | **GET** /profiles/ | Retrieve profile
-[**retrieve_sensors**](DefaultApi.md#retrieve_sensors) | **GET** /sensors/ | List all OpenConfig sensors.
-[**update_healthbot_ingest_settings_byoi_custom_plugin_by_id**](DefaultApi.md#update_healthbot_ingest_settings_byoi_custom_plugin_by_id) | **PUT** /ingest-settings/byoi/custom-plugin/{name}/ | Update custom-plugin by ID
-[**update_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id**](DefaultApi.md#update_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id) | **PUT** /ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/ | Update tlive-kafka-oc by ID
-[**update_healthbot_ingest_settings_byoi_ingest_mapping_by_id**](DefaultApi.md#update_healthbot_ingest_settings_byoi_ingest_mapping_by_id) | **PUT** /ingest-settings/byoi/ingest-mapping/{name}/ | Update ingest-mapping by ID
-[**update_healthbot_ingest_settings_frequency_profile_by_id**](DefaultApi.md#update_healthbot_ingest_settings_frequency_profile_by_id) | **PUT** /ingest-settings/frequency-profile/{name}/ | Update frequency-profile by ID
-[**update_healthbot_system_time_series_database_time_series_database_by_id**](DefaultApi.md#update_healthbot_system_time_series_database_time_series_database_by_id) | **PUT** /system/tsdb/ | Update time-series-database by ID
-[**update_iceberg_ingest_settings**](DefaultApi.md#update_iceberg_ingest_settings) | **PUT** /ingest-settings/ | Update ingest-settings by ID
-[**update_iceberg_ingest_settings_flow**](DefaultApi.md#update_iceberg_ingest_settings_flow) | **PUT** /ingest-settings/flow/ | Update flow by ID
-[**update_iceberg_ingest_settings_flow_template_by_id**](DefaultApi.md#update_iceberg_ingest_settings_flow_template_by_id) | **PUT** /ingest-settings/flow/template/{name}/ | Update template by ID
-[**update_iceberg_ingest_settings_syslog**](DefaultApi.md#update_iceberg_ingest_settings_syslog) | **PUT** /ingest-settings/syslog/ | Update syslog by ID
-[**update_iceberg_ingest_settings_syslog_pattern_by_id**](DefaultApi.md#update_iceberg_ingest_settings_syslog_pattern_by_id) | **PUT** /ingest-settings/syslog/pattern/{name}/ | Update pattern by ID
-[**update_iceberg_ingest_settings_syslog_pattern_set_by_id**](DefaultApi.md#update_iceberg_ingest_settings_syslog_pattern_set_by_id) | **PUT** /ingest-settings/syslog/pattern-set/{name}/ | Update pattern-set by ID
-[**update_iceberg_profile_data_summarization_raw_by_id**](DefaultApi.md#update_iceberg_profile_data_summarization_raw_by_id) | **PUT** /profile/data-summarization/raw/{name}/ | Update raw-data-summarization by ID
-[**update_iceberg_profile_security_ca_profile_by_id**](DefaultApi.md#update_iceberg_profile_security_ca_profile_by_id) | **PUT** /profile/security/ca-profile/{name}/ | Update ca-profile by ID
-[**update_iceberg_profile_security_local_certificate_by_id**](DefaultApi.md#update_iceberg_profile_security_local_certificate_by_id) | **PUT** /profile/security/local-certificate/{name}/ | Update local-certificate by ID
-[**update_iceberg_profile_security_ssh_key_profile_by_id**](DefaultApi.md#update_iceberg_profile_security_ssh_key_profile_by_id) | **PUT** /profile/security/ssh-key-profile/{name}/ | Update ssh-key-profile by ID
-[**update_iceberg_profiles**](DefaultApi.md#update_iceberg_profiles) | **PUT** /profiles/ | Update profile by ID
+[**retrieve_healthbot_ingest_byoi_custom_plugin_by_id**](DefaultApi.md#retrieve_healthbot_ingest_byoi_custom_plugin_by_id) | **GET** /config/ingest/byoi/custom-plugin/{name}/ | Retrieve custom-plugin by ID
+[**retrieve_healthbot_ingest_byoi_custom_plugins**](DefaultApi.md#retrieve_healthbot_ingest_byoi_custom_plugins) | **GET** /config/ingest/byoi/custom-plugins/ | Retrieve custom-plugin by ID
+[**retrieve_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id**](DefaultApi.md#retrieve_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id) | **GET** /config/ingest/byoi/default-plugin/tlive-kafka-oc/{name}/ | Retrieve tlive-kafka-oc by ID
+[**retrieve_healthbot_ingest_byoi_default_plugin_tlive_kafkas**](DefaultApi.md#retrieve_healthbot_ingest_byoi_default_plugin_tlive_kafkas) | **GET** /config/ingest/byoi/default-plugin/tlive-kafka-ocs/ | Retrieve tlive-kafka-oc
+[**retrieve_healthbot_ingest_byoi_ingest_mapping_by_id**](DefaultApi.md#retrieve_healthbot_ingest_byoi_ingest_mapping_by_id) | **GET** /config/ingest/byoi/ingest-mapping/{name}/ | Retrieve ingest-mapping by ID
+[**retrieve_healthbot_ingest_byoi_ingest_mappings**](DefaultApi.md#retrieve_healthbot_ingest_byoi_ingest_mappings) | **GET** /config/ingest/byoi/ingest-mappings/ | Retrieve ingest-mapping
+[**retrieve_healthbot_ingest_frequency_profile**](DefaultApi.md#retrieve_healthbot_ingest_frequency_profile) | **GET** /config/ingest/frequency-profiles/ | Retrieve frequency-profile
+[**retrieve_healthbot_ingest_frequency_profile_by_id**](DefaultApi.md#retrieve_healthbot_ingest_frequency_profile_by_id) | **GET** /config/ingest/frequency-profile/{name}/ | Retrieve frequency-profile by ID
+[**retrieve_healthbot_ingest_settings_byoi_custom_plugin_by_id**](DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_custom_plugin_by_id) | **GET** /config/ingest-settings/byoi/custom-plugin/{name}/ | Retrieve custom-plugin by ID
+[**retrieve_healthbot_ingest_settings_byoi_custom_plugins**](DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_custom_plugins) | **GET** /config/ingest-settings/byoi/custom-plugins/ | Retrieve custom-plugin by ID
+[**retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id**](DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id) | **GET** /config/ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/ | Retrieve tlive-kafka-oc by ID
+[**retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafkas**](DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafkas) | **GET** /config/ingest-settings/byoi/default-plugin/tlive-kafka-ocs/ | Retrieve tlive-kafka-oc
+[**retrieve_healthbot_ingest_settings_byoi_ingest_mapping_by_id**](DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_ingest_mapping_by_id) | **GET** /config/ingest-settings/byoi/ingest-mapping/{name}/ | Retrieve ingest-mapping by ID
+[**retrieve_healthbot_ingest_settings_byoi_ingest_mappings**](DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_ingest_mappings) | **GET** /config/ingest-settings/byoi/ingest-mappings/ | Retrieve ingest-mapping
+[**retrieve_healthbot_ingest_settings_frequency_profile**](DefaultApi.md#retrieve_healthbot_ingest_settings_frequency_profile) | **GET** /config/ingest-settings/frequency-profiles/ | Retrieve frequency-profile
+[**retrieve_healthbot_ingest_settings_frequency_profile_by_id**](DefaultApi.md#retrieve_healthbot_ingest_settings_frequency_profile_by_id) | **GET** /config/ingest-settings/frequency-profile/{name}/ | Retrieve frequency-profile by ID
+[**retrieve_healthbot_ingest_settings_tagging_profile_by_id**](DefaultApi.md#retrieve_healthbot_ingest_settings_tagging_profile_by_id) | **GET** /config/ingest-settings/data-enrichment/tagging-profile/{name}/ | Retrieve tagging-profile by ID
+[**retrieve_healthbot_ingest_settings_tagging_profiles**](DefaultApi.md#retrieve_healthbot_ingest_settings_tagging_profiles) | **GET** /config/ingest-settings/data-enrichment/tagging-profiles/ | Retrieve tagging-profile by ID
+[**retrieve_healthbot_ingest_tagging_profile_by_id**](DefaultApi.md#retrieve_healthbot_ingest_tagging_profile_by_id) | **GET** /config/ingest/data-enrichment/tagging-profile/{name}/ | Retrieve tagging-profile by ID
+[**retrieve_healthbot_ingest_tagging_profiles**](DefaultApi.md#retrieve_healthbot_ingest_tagging_profiles) | **GET** /config/ingest/data-enrichment/tagging-profiles/ | Retrieve tagging-profile by ID
+[**retrieve_healthbot_system_time_series_database_time_series_database**](DefaultApi.md#retrieve_healthbot_system_time_series_database_time_series_database) | **GET** /config/system/tsdb/ | Retrieve time-series-database
+[**retrieve_iceberg_ingest**](DefaultApi.md#retrieve_iceberg_ingest) | **GET** /config/ingest/ | Retrieve ingest
+[**retrieve_iceberg_ingest_flow**](DefaultApi.md#retrieve_iceberg_ingest_flow) | **GET** /config/ingest/flow/ | Retrieve flow
+[**retrieve_iceberg_ingest_flow_template_by_id**](DefaultApi.md#retrieve_iceberg_ingest_flow_template_by_id) | **GET** /config/ingest/flow/template/{name}/ | Retrieve template by ID
+[**retrieve_iceberg_ingest_flow_template_ids**](DefaultApi.md#retrieve_iceberg_ingest_flow_template_ids) | **GET** /config/ingest/flow/template/ | Retrieve template
+[**retrieve_iceberg_ingest_settings**](DefaultApi.md#retrieve_iceberg_ingest_settings) | **GET** /config/ingest-settings/ | Retrieve ingest-settings
+[**retrieve_iceberg_ingest_settings_flow**](DefaultApi.md#retrieve_iceberg_ingest_settings_flow) | **GET** /config/ingest-settings/flow/ | Retrieve flow
+[**retrieve_iceberg_ingest_settings_flow_template_by_id**](DefaultApi.md#retrieve_iceberg_ingest_settings_flow_template_by_id) | **GET** /config/ingest-settings/flow/template/{name}/ | Retrieve template by ID
+[**retrieve_iceberg_ingest_settings_flow_template_ids**](DefaultApi.md#retrieve_iceberg_ingest_settings_flow_template_ids) | **GET** /config/ingest-settings/flow/template/ | Retrieve template
+[**retrieve_iceberg_ingest_settings_syslog**](DefaultApi.md#retrieve_iceberg_ingest_settings_syslog) | **GET** /config/ingest-settings/syslog/ | Retrieve syslog
+[**retrieve_iceberg_ingest_settings_syslog_pattern_by_id**](DefaultApi.md#retrieve_iceberg_ingest_settings_syslog_pattern_by_id) | **GET** /config/ingest-settings/syslog/pattern/{name}/ | Retrieve pattern by ID
+[**retrieve_iceberg_ingest_settings_syslog_pattern_ids**](DefaultApi.md#retrieve_iceberg_ingest_settings_syslog_pattern_ids) | **GET** /config/ingest-settings/syslog/pattern/ | Retrieve pattern
+[**retrieve_iceberg_ingest_settings_syslog_pattern_set_by_id**](DefaultApi.md#retrieve_iceberg_ingest_settings_syslog_pattern_set_by_id) | **GET** /config/ingest-settings/syslog/pattern-set/{name}/ | Retrieve pattern-set by ID
+[**retrieve_iceberg_ingest_settings_syslog_pattern_set_ids**](DefaultApi.md#retrieve_iceberg_ingest_settings_syslog_pattern_set_ids) | **GET** /config/ingest-settings/syslog/pattern-set/ | Retrieve pattern-set
+[**retrieve_iceberg_ingest_settings_syslog_pattern_sets**](DefaultApi.md#retrieve_iceberg_ingest_settings_syslog_pattern_sets) | **GET** /config/ingest-settings/syslog/pattern-sets/ | Retrieve pattern-set by ID
+[**retrieve_iceberg_ingest_settings_syslog_patterns**](DefaultApi.md#retrieve_iceberg_ingest_settings_syslog_patterns) | **GET** /config/ingest-settings/syslog/patterns/ | Retrieve pattern by ID
+[**retrieve_iceberg_ingest_syslog**](DefaultApi.md#retrieve_iceberg_ingest_syslog) | **GET** /config/ingest/syslog/ | Retrieve syslog
+[**retrieve_iceberg_ingest_syslog_pattern_by_id**](DefaultApi.md#retrieve_iceberg_ingest_syslog_pattern_by_id) | **GET** /config/ingest/syslog/pattern/{name}/ | Retrieve pattern by ID
+[**retrieve_iceberg_ingest_syslog_pattern_ids**](DefaultApi.md#retrieve_iceberg_ingest_syslog_pattern_ids) | **GET** /config/ingest/syslog/pattern/ | Retrieve pattern
+[**retrieve_iceberg_ingest_syslog_pattern_set_by_id**](DefaultApi.md#retrieve_iceberg_ingest_syslog_pattern_set_by_id) | **GET** /config/ingest/syslog/pattern-set/{name}/ | Retrieve pattern-set by ID
+[**retrieve_iceberg_ingest_syslog_pattern_set_ids**](DefaultApi.md#retrieve_iceberg_ingest_syslog_pattern_set_ids) | **GET** /config/ingest/syslog/pattern-set/ | Retrieve pattern-set
+[**retrieve_iceberg_ingest_syslog_pattern_sets**](DefaultApi.md#retrieve_iceberg_ingest_syslog_pattern_sets) | **GET** /config/ingest/syslog/pattern-sets/ | Retrieve pattern-set by ID
+[**retrieve_iceberg_ingest_syslog_patterns**](DefaultApi.md#retrieve_iceberg_ingest_syslog_patterns) | **GET** /config/ingest/syslog/patterns/ | Retrieve pattern by ID
+[**retrieve_iceberg_profile_data_summarization_raw_by_id**](DefaultApi.md#retrieve_iceberg_profile_data_summarization_raw_by_id) | **GET** /config/profile/data-summarization/raw/{name}/ | Retrieve raw-data-summarization by ID
+[**retrieve_iceberg_profile_data_summarizations_raw**](DefaultApi.md#retrieve_iceberg_profile_data_summarizations_raw) | **GET** /config/profile/data-summarizations/raw/ | Retrieve raw-data-summarization
+[**retrieve_iceberg_profile_security_ca_profile_by_id**](DefaultApi.md#retrieve_iceberg_profile_security_ca_profile_by_id) | **GET** /config/profile/security/ca-profile/{name}/ | Retrieve ca-profile by ID
+[**retrieve_iceberg_profile_security_ca_profiles**](DefaultApi.md#retrieve_iceberg_profile_security_ca_profiles) | **GET** /config/profile/security/ca-profiles/ | Retrieve ca-profile
+[**retrieve_iceberg_profile_security_local_certificate_by_id**](DefaultApi.md#retrieve_iceberg_profile_security_local_certificate_by_id) | **GET** /config/profile/security/local-certificate/{name}/ | Retrieve local-certificate by ID
+[**retrieve_iceberg_profile_security_local_certificates**](DefaultApi.md#retrieve_iceberg_profile_security_local_certificates) | **GET** /config/profile/security/local-certificates/ | Retrieve local-certificate
+[**retrieve_iceberg_profile_security_ssh_key_profile_by_id**](DefaultApi.md#retrieve_iceberg_profile_security_ssh_key_profile_by_id) | **GET** /config/profile/security/ssh-key-profile/{name}/ | Retrieve ssh-key-profile by ID
+[**retrieve_iceberg_profile_security_ssh_key_profiles**](DefaultApi.md#retrieve_iceberg_profile_security_ssh_key_profiles) | **GET** /config/profile/security/ssh-key-profiles/ | Retrieve ssh-key-profile
+[**retrieve_iceberg_profiles**](DefaultApi.md#retrieve_iceberg_profiles) | **GET** /config/profiles/ | Retrieve profile
+[**retrieve_sensors**](DefaultApi.md#retrieve_sensors) | **GET** /config/sensors/ | List all OpenConfig sensors.
+[**update_healthbot_ingest_byoi_custom_plugin_by_id**](DefaultApi.md#update_healthbot_ingest_byoi_custom_plugin_by_id) | **PUT** /config/ingest/byoi/custom-plugin/{name}/ | Update custom-plugin by ID
+[**update_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id**](DefaultApi.md#update_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id) | **PUT** /config/ingest/byoi/default-plugin/tlive-kafka-oc/{name}/ | Update tlive-kafka-oc by ID
+[**update_healthbot_ingest_byoi_ingest_mapping_by_id**](DefaultApi.md#update_healthbot_ingest_byoi_ingest_mapping_by_id) | **PUT** /config/ingest/byoi/ingest-mapping/{name}/ | Update ingest-mapping by ID
+[**update_healthbot_ingest_frequency_profile_by_id**](DefaultApi.md#update_healthbot_ingest_frequency_profile_by_id) | **PUT** /config/ingest/frequency-profile/{name}/ | Update frequency-profile by ID
+[**update_healthbot_ingest_settings_byoi_custom_plugin_by_id**](DefaultApi.md#update_healthbot_ingest_settings_byoi_custom_plugin_by_id) | **PUT** /config/ingest-settings/byoi/custom-plugin/{name}/ | Update custom-plugin by ID
+[**update_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id**](DefaultApi.md#update_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id) | **PUT** /config/ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/ | Update tlive-kafka-oc by ID
+[**update_healthbot_ingest_settings_byoi_ingest_mapping_by_id**](DefaultApi.md#update_healthbot_ingest_settings_byoi_ingest_mapping_by_id) | **PUT** /config/ingest-settings/byoi/ingest-mapping/{name}/ | Update ingest-mapping by ID
+[**update_healthbot_ingest_settings_frequency_profile_by_id**](DefaultApi.md#update_healthbot_ingest_settings_frequency_profile_by_id) | **PUT** /config/ingest-settings/frequency-profile/{name}/ | Update frequency-profile by ID
+[**update_healthbot_ingest_settings_tagging_profile_by_id**](DefaultApi.md#update_healthbot_ingest_settings_tagging_profile_by_id) | **PUT** /config/ingest-settings/data-enrichment/tagging-profile/{name}/ | Update tagging-profile by ID
+[**update_healthbot_ingest_settings_tagging_profiles**](DefaultApi.md#update_healthbot_ingest_settings_tagging_profiles) | **PUT** /config/ingest-settings/data-enrichment/tagging-profiles/ | Update tagging-profile by ID
+[**update_healthbot_ingest_tagging_profile_by_id**](DefaultApi.md#update_healthbot_ingest_tagging_profile_by_id) | **PUT** /config/ingest/data-enrichment/tagging-profile/{name}/ | Update tagging-profile by ID
+[**update_healthbot_ingest_tagging_profiles**](DefaultApi.md#update_healthbot_ingest_tagging_profiles) | **PUT** /config/ingest/data-enrichment/tagging-profiles/ | Update tagging-profile by ID
+[**update_healthbot_system_time_series_database_time_series_database_by_id**](DefaultApi.md#update_healthbot_system_time_series_database_time_series_database_by_id) | **PUT** /config/system/tsdb/ | Update time-series-database by ID
+[**update_iceberg_ingest**](DefaultApi.md#update_iceberg_ingest) | **PUT** /config/ingest/ | Update ingest by ID
+[**update_iceberg_ingest_flow**](DefaultApi.md#update_iceberg_ingest_flow) | **PUT** /config/ingest/flow/ | Update flow by ID
+[**update_iceberg_ingest_flow_template_by_id**](DefaultApi.md#update_iceberg_ingest_flow_template_by_id) | **PUT** /config/ingest/flow/template/{name}/ | Update template by ID
+[**update_iceberg_ingest_settings**](DefaultApi.md#update_iceberg_ingest_settings) | **PUT** /config/ingest-settings/ | Update ingest-settings by ID
+[**update_iceberg_ingest_settings_flow**](DefaultApi.md#update_iceberg_ingest_settings_flow) | **PUT** /config/ingest-settings/flow/ | Update flow by ID
+[**update_iceberg_ingest_settings_flow_template_by_id**](DefaultApi.md#update_iceberg_ingest_settings_flow_template_by_id) | **PUT** /config/ingest-settings/flow/template/{name}/ | Update template by ID
+[**update_iceberg_ingest_settings_syslog**](DefaultApi.md#update_iceberg_ingest_settings_syslog) | **PUT** /config/ingest-settings/syslog/ | Update syslog by ID
+[**update_iceberg_ingest_settings_syslog_pattern_by_id**](DefaultApi.md#update_iceberg_ingest_settings_syslog_pattern_by_id) | **PUT** /config/ingest-settings/syslog/pattern/{name}/ | Update pattern by ID
+[**update_iceberg_ingest_settings_syslog_pattern_set_by_id**](DefaultApi.md#update_iceberg_ingest_settings_syslog_pattern_set_by_id) | **PUT** /config/ingest-settings/syslog/pattern-set/{name}/ | Update pattern-set by ID
+[**update_iceberg_ingest_syslog**](DefaultApi.md#update_iceberg_ingest_syslog) | **PUT** /config/ingest/syslog/ | Update syslog by ID
+[**update_iceberg_ingest_syslog_pattern_by_id**](DefaultApi.md#update_iceberg_ingest_syslog_pattern_by_id) | **PUT** /config/ingest/syslog/pattern/{name}/ | Update pattern by ID
+[**update_iceberg_ingest_syslog_pattern_set_by_id**](DefaultApi.md#update_iceberg_ingest_syslog_pattern_set_by_id) | **PUT** /config/ingest/syslog/pattern-set/{name}/ | Update pattern-set by ID
+[**update_iceberg_profile_data_summarization_raw_by_id**](DefaultApi.md#update_iceberg_profile_data_summarization_raw_by_id) | **PUT** /config/profile/data-summarization/raw/{name}/ | Update raw-data-summarization by ID
+[**update_iceberg_profile_security_ca_profile_by_id**](DefaultApi.md#update_iceberg_profile_security_ca_profile_by_id) | **PUT** /config/profile/security/ca-profile/{name}/ | Update ca-profile by ID
+[**update_iceberg_profile_security_local_certificate_by_id**](DefaultApi.md#update_iceberg_profile_security_local_certificate_by_id) | **PUT** /config/profile/security/local-certificate/{name}/ | Update local-certificate by ID
+[**update_iceberg_profile_security_ssh_key_profile_by_id**](DefaultApi.md#update_iceberg_profile_security_ssh_key_profile_by_id) | **PUT** /config/profile/security/ssh-key-profile/{name}/ | Update ssh-key-profile by ID
+[**update_iceberg_profiles**](DefaultApi.md#update_iceberg_profiles) | **PUT** /config/profiles/ | Update profile by ID
 
 
 # **backup_helper_files**
@@ -261,6 +327,210 @@ No authorization required
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json, application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_healthbot_ingest_byoi_custom_plugin_by_id**
+> create_healthbot_ingest_byoi_custom_plugin_by_id(name, custom_plugin, authorization=authorization)
+
+Create custom-plugin by ID
+
+Create operation of resource: custom-plugin
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of custom-plugin
+custom_plugin = swagger_client.CustomPluginSchema() # CustomPluginSchema | custom_pluginbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Create custom-plugin by ID
+    api_instance.create_healthbot_ingest_byoi_custom_plugin_by_id(name, custom_plugin, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->create_healthbot_ingest_byoi_custom_plugin_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of custom-plugin | 
+ **custom_plugin** | [**CustomPluginSchema**](CustomPluginSchema.md)| custom_pluginbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id**
+> create_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id(name, tlive_kafka, authorization=authorization)
+
+Create tlive-kafka-oc by ID
+
+Add/Merge a tlive-kafka-oc configuration.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of tlive-kafka-oc
+tlive_kafka = swagger_client.TliveKafkaOcSchema() # TliveKafkaOcSchema | tlive_kafkabody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Create tlive-kafka-oc by ID
+    api_instance.create_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id(name, tlive_kafka, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->create_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of tlive-kafka-oc | 
+ **tlive_kafka** | [**TliveKafkaOcSchema**](TliveKafkaOcSchema.md)| tlive_kafkabody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_healthbot_ingest_byoi_ingest_mapping_by_id**
+> create_healthbot_ingest_byoi_ingest_mapping_by_id(name, ingest_mapping, authorization=authorization)
+
+Create ingest-mapping by ID
+
+Create ingest-mapping by name
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of ingest-mapping
+ingest_mapping = swagger_client.IngestMappingSchema() # IngestMappingSchema | ingest_mappingbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Create ingest-mapping by ID
+    api_instance.create_healthbot_ingest_byoi_ingest_mapping_by_id(name, ingest_mapping, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->create_healthbot_ingest_byoi_ingest_mapping_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of ingest-mapping | 
+ **ingest_mapping** | [**IngestMappingSchema**](IngestMappingSchema.md)| ingest_mappingbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_healthbot_ingest_frequency_profile_by_id**
+> create_healthbot_ingest_frequency_profile_by_id(name, frequency_profile, authorization=authorization)
+
+Create frequency-profile by ID
+
+Create operation of resource: frequency-profile
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | ID of name
+frequency_profile = swagger_client.FrequencyProfileSchema() # FrequencyProfileSchema | frequency_profilebody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Create frequency-profile by ID
+    api_instance.create_healthbot_ingest_frequency_profile_by_id(name, frequency_profile, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->create_healthbot_ingest_frequency_profile_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| ID of name | 
+ **frequency_profile** | [**FrequencyProfileSchema**](FrequencyProfileSchema.md)| frequency_profilebody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -468,6 +738,208 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_healthbot_ingest_settings_tagging_profile_by_id**
+> create_healthbot_ingest_settings_tagging_profile_by_id(name, tagging_profile, authorization=authorization)
+
+Create tagging-profile by ID
+
+Create operation of resource: tagging-profile
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | ID of name
+tagging_profile = swagger_client.TaggingProfileSchema() # TaggingProfileSchema | tagging_profilebody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Create tagging-profile by ID
+    api_instance.create_healthbot_ingest_settings_tagging_profile_by_id(name, tagging_profile, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->create_healthbot_ingest_settings_tagging_profile_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| ID of name | 
+ **tagging_profile** | [**TaggingProfileSchema**](TaggingProfileSchema.md)| tagging_profilebody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_healthbot_ingest_settings_tagging_profiles**
+> list[str] create_healthbot_ingest_settings_tagging_profiles(tagging_profile, authorization=authorization)
+
+Create tagging-profile by ID
+
+Create operation of resource: tagging-profile
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+tagging_profile = swagger_client.TaggingProfilesSchema() # TaggingProfilesSchema | tagging_profilebody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Create tagging-profile by ID
+    api_response = api_instance.create_healthbot_ingest_settings_tagging_profiles(tagging_profile, authorization=authorization)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->create_healthbot_ingest_settings_tagging_profiles: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tagging_profile** | [**TaggingProfilesSchema**](TaggingProfilesSchema.md)| tagging_profilebody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+**list[str]**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_healthbot_ingest_tagging_profile_by_id**
+> create_healthbot_ingest_tagging_profile_by_id(name, tagging_profile, authorization=authorization)
+
+Create tagging-profile by ID
+
+Create operation of resource: tagging-profile
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | ID of name
+tagging_profile = swagger_client.TaggingProfileSchema() # TaggingProfileSchema | tagging_profilebody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Create tagging-profile by ID
+    api_instance.create_healthbot_ingest_tagging_profile_by_id(name, tagging_profile, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->create_healthbot_ingest_tagging_profile_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| ID of name | 
+ **tagging_profile** | [**TaggingProfileSchema**](TaggingProfileSchema.md)| tagging_profilebody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_healthbot_ingest_tagging_profiles**
+> list[str] create_healthbot_ingest_tagging_profiles(tagging_profile, authorization=authorization)
+
+Create tagging-profile by ID
+
+Create operation of resource: tagging-profile
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+tagging_profile = swagger_client.TaggingProfilesSchema() # TaggingProfilesSchema | tagging_profilebody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Create tagging-profile by ID
+    api_response = api_instance.create_healthbot_ingest_tagging_profiles(tagging_profile, authorization=authorization)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->create_healthbot_ingest_tagging_profiles: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tagging_profile** | [**TaggingProfilesSchema**](TaggingProfilesSchema.md)| tagging_profilebody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+**list[str]**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_healthbot_system_time_series_database_time_series_database_by_id**
 > create_healthbot_system_time_series_database_time_series_database_by_id(time_series_database, force_tsdb=force_tsdb)
 
@@ -501,6 +973,155 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **time_series_database** | [**TsdbSchema**](TsdbSchema.md)| time_series_databasebody object | 
  **force_tsdb** | **bool**| force update tsdb when force is set to True | [optional] [default to false]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_iceberg_ingest**
+> create_iceberg_ingest(ingest_settings, authorization=authorization)
+
+Create ingest by ID
+
+Create operation of resource: ingest
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+ingest_settings = swagger_client.IngestSettingsSchema() # IngestSettingsSchema | ingest_settingsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Create ingest by ID
+    api_instance.create_iceberg_ingest(ingest_settings, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->create_iceberg_ingest: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ingest_settings** | [**IngestSettingsSchema**](IngestSettingsSchema.md)| ingest_settingsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_iceberg_ingest_flow**
+> create_iceberg_ingest_flow(flow, authorization=authorization)
+
+Create flow by ID
+
+Create operation of resource: flow
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+flow = swagger_client.FlowSchema() # FlowSchema | flowbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Create flow by ID
+    api_instance.create_iceberg_ingest_flow(flow, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->create_iceberg_ingest_flow: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **flow** | [**FlowSchema**](FlowSchema.md)| flowbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_iceberg_ingest_flow_template_by_id**
+> create_iceberg_ingest_flow_template_by_id(name, template, authorization=authorization)
+
+Create template by ID
+
+Create operation of resource: template
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of template
+template = swagger_client.TemplateSchema() # TemplateSchema | templatebody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Create template by ID
+    api_instance.create_iceberg_ingest_flow_template_by_id(name, template, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->create_iceberg_ingest_flow_template_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of template | 
+ **template** | [**TemplateSchema**](TemplateSchema.md)| templatebody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -792,6 +1413,157 @@ try:
     api_instance.create_iceberg_ingest_settings_syslog_pattern_set_by_id(name, pattern_set, authorization=authorization)
 except ApiException as e:
     print("Exception when calling DefaultApi->create_iceberg_ingest_settings_syslog_pattern_set_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of pattern-set | 
+ **pattern_set** | [**PatternSetSchema**](PatternSetSchema.md)| pattern_setbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_iceberg_ingest_syslog**
+> create_iceberg_ingest_syslog(syslog, authorization=authorization)
+
+Create syslog by ID
+
+Create operation of resource: syslog
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+syslog = swagger_client.SyslogSchema() # SyslogSchema | syslogbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Create syslog by ID
+    api_instance.create_iceberg_ingest_syslog(syslog, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->create_iceberg_ingest_syslog: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **syslog** | [**SyslogSchema**](SyslogSchema.md)| syslogbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_iceberg_ingest_syslog_pattern_by_id**
+> create_iceberg_ingest_syslog_pattern_by_id(name, pattern, authorization=authorization)
+
+Create pattern by ID
+
+Create operation of resource: pattern
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of pattern
+pattern = swagger_client.PatternSchema() # PatternSchema | patternbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Create pattern by ID
+    api_instance.create_iceberg_ingest_syslog_pattern_by_id(name, pattern, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->create_iceberg_ingest_syslog_pattern_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of pattern | 
+ **pattern** | [**PatternSchema**](PatternSchema.md)| patternbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_iceberg_ingest_syslog_pattern_set_by_id**
+> create_iceberg_ingest_syslog_pattern_set_by_id(name, pattern_set, authorization=authorization)
+
+Create pattern-set by ID
+
+Create operation of resource: pattern-set
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of pattern-set
+pattern_set = swagger_client.PatternSetSchema() # PatternSetSchema | pattern_setbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Create pattern-set by ID
+    api_instance.create_iceberg_ingest_syslog_pattern_set_by_id(name, pattern_set, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->create_iceberg_ingest_syslog_pattern_set_by_id: %s\n" % e)
 ```
 
 ### Parameters
@@ -1174,6 +1946,202 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_healthbot_ingest_byoi_custom_plugin_by_id**
+> delete_healthbot_ingest_byoi_custom_plugin_by_id(name, authorization=authorization)
+
+Delete custom-plugin by ID
+
+Delete operation of resource: custom-plugin
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of custom-plugin
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete custom-plugin by ID
+    api_instance.delete_healthbot_ingest_byoi_custom_plugin_by_id(name, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_healthbot_ingest_byoi_custom_plugin_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of custom-plugin | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id**
+> delete_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id(name, authorization=authorization)
+
+Delete tlive-kafka-oc by ID
+
+Delete operation of resource: tlive-kafka-oc
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of tlive-kafka-oc
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete tlive-kafka-oc by ID
+    api_instance.delete_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id(name, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of tlive-kafka-oc | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_healthbot_ingest_byoi_ingest_mapping_by_id**
+> delete_healthbot_ingest_byoi_ingest_mapping_by_id(name, authorization=authorization)
+
+Delete ingest-mapping by ID
+
+Delete ingest-mapping by name
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of ingest-mapping
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete ingest-mapping by ID
+    api_instance.delete_healthbot_ingest_byoi_ingest_mapping_by_id(name, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_healthbot_ingest_byoi_ingest_mapping_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of ingest-mapping | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_healthbot_ingest_frequency_profile_by_id**
+> delete_healthbot_ingest_frequency_profile_by_id(name, authorization=authorization)
+
+Delete frequency-profile by ID
+
+Delete operation of resource: frequency-profile
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | ID of name
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete frequency-profile by ID
+    api_instance.delete_healthbot_ingest_frequency_profile_by_id(name, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_healthbot_ingest_frequency_profile_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| ID of name | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_healthbot_ingest_settings_byoi_custom_plugin_by_id**
 > delete_healthbot_ingest_settings_byoi_custom_plugin_by_id(name, authorization=authorization)
 
@@ -1370,6 +2338,198 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_healthbot_ingest_settings_tagging_profile_by_id**
+> delete_healthbot_ingest_settings_tagging_profile_by_id(name, authorization=authorization)
+
+Delete tagging-profile by ID
+
+Delete operation of resource: tagging-profile
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | ID of name
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete tagging-profile by ID
+    api_instance.delete_healthbot_ingest_settings_tagging_profile_by_id(name, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_healthbot_ingest_settings_tagging_profile_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| ID of name | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_healthbot_ingest_settings_tagging_profiles**
+> delete_healthbot_ingest_settings_tagging_profiles(authorization=authorization)
+
+Delete tagging-profile by ID
+
+Delete operation of resource: tagging-profile
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete tagging-profile by ID
+    api_instance.delete_healthbot_ingest_settings_tagging_profiles(authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_healthbot_ingest_settings_tagging_profiles: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_healthbot_ingest_tagging_profile_by_id**
+> delete_healthbot_ingest_tagging_profile_by_id(name, authorization=authorization)
+
+Delete tagging-profile by ID
+
+Delete operation of resource: tagging-profile
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | ID of name
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete tagging-profile by ID
+    api_instance.delete_healthbot_ingest_tagging_profile_by_id(name, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_healthbot_ingest_tagging_profile_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| ID of name | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_healthbot_ingest_tagging_profiles**
+> delete_healthbot_ingest_tagging_profiles(authorization=authorization)
+
+Delete tagging-profile by ID
+
+Delete operation of resource: tagging-profile
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete tagging-profile by ID
+    api_instance.delete_healthbot_ingest_tagging_profiles(authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_healthbot_ingest_tagging_profiles: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_healthbot_system_time_series_database_time_series_database_by_id**
 > delete_healthbot_system_time_series_database_time_series_database_by_id()
 
@@ -1397,6 +2557,149 @@ except ApiException as e:
 
 ### Parameters
 This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_iceberg_ingest**
+> delete_iceberg_ingest(authorization=authorization)
+
+Delete ingest by ID
+
+Delete operation of resource: ingest
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete ingest by ID
+    api_instance.delete_iceberg_ingest(authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_iceberg_ingest: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_iceberg_ingest_flow**
+> delete_iceberg_ingest_flow(authorization=authorization)
+
+Delete flow by ID
+
+Delete operation of resource: flow
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete flow by ID
+    api_instance.delete_iceberg_ingest_flow(authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_iceberg_ingest_flow: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_iceberg_ingest_flow_template_by_id**
+> delete_iceberg_ingest_flow_template_by_id(name, authorization=authorization)
+
+Delete template by ID
+
+Delete operation of resource: template
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of template
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete template by ID
+    api_instance.delete_iceberg_ingest_flow_template_by_id(name, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_iceberg_ingest_flow_template_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of template | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -1701,6 +3004,151 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_iceberg_ingest_syslog**
+> delete_iceberg_ingest_syslog(authorization=authorization)
+
+Delete syslog by ID
+
+Delete operation of resource: syslog
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete syslog by ID
+    api_instance.delete_iceberg_ingest_syslog(authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_iceberg_ingest_syslog: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_iceberg_ingest_syslog_pattern_by_id**
+> delete_iceberg_ingest_syslog_pattern_by_id(name, authorization=authorization)
+
+Delete pattern by ID
+
+Delete operation of resource: pattern
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of pattern
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete pattern by ID
+    api_instance.delete_iceberg_ingest_syslog_pattern_by_id(name, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_iceberg_ingest_syslog_pattern_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of pattern | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_iceberg_ingest_syslog_pattern_set_by_id**
+> delete_iceberg_ingest_syslog_pattern_set_by_id(name, authorization=authorization)
+
+Delete pattern-set by ID
+
+Delete operation of resource: pattern-set
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of pattern-set
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete pattern-set by ID
+    api_instance.delete_iceberg_ingest_syslog_pattern_set_by_id(name, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_iceberg_ingest_syslog_pattern_set_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of pattern-set | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_iceberg_profile_data_summarization_raw_by_id**
 > delete_iceberg_profile_data_summarization_raw_by_id(name, authorization=authorization)
 
@@ -1941,6 +3389,56 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_fields_from_xpath**
+> FieldCaptureSchema get_fields_from_xpath(xpath, timestamp=timestamp)
+
+Get last value of all fields before a given timestamp.
+
+Get the values of all fields
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+xpath = 'xpath_example' # str | XPATH
+timestamp = 'timestamp_example' # str | Timestamp (optional)
+
+try:
+    # Get last value of all fields before a given timestamp.
+    api_response = api_instance.get_fields_from_xpath(xpath, timestamp=timestamp)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_fields_from_xpath: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xpath** | **str**| XPATH | 
+ **timestamp** | **str**| Timestamp | [optional] 
+
+### Return type
+
+[**FieldCaptureSchema**](FieldCaptureSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, multipart/form-data
+ - **Accept**: application/json, application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3096,6 +4594,414 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **retrieve_healthbot_ingest_byoi_custom_plugin_by_id**
+> CustomPluginSchema retrieve_healthbot_ingest_byoi_custom_plugin_by_id(name, authorization=authorization, working=working)
+
+Retrieve custom-plugin by ID
+
+Retrieve operation of resource: custom-plugin
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of custom-plugin
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve custom-plugin by ID
+    api_response = api_instance.retrieve_healthbot_ingest_byoi_custom_plugin_by_id(name, authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_healthbot_ingest_byoi_custom_plugin_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of custom-plugin | 
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**CustomPluginSchema**](CustomPluginSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_healthbot_ingest_byoi_custom_plugins**
+> CustomPluginSchema retrieve_healthbot_ingest_byoi_custom_plugins(authorization=authorization, working=working)
+
+Retrieve custom-plugin by ID
+
+Retrieve all the custom-plugins configured.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve custom-plugin by ID
+    api_response = api_instance.retrieve_healthbot_ingest_byoi_custom_plugins(authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_healthbot_ingest_byoi_custom_plugins: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**CustomPluginSchema**](CustomPluginSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id**
+> TliveKafkaOcSchema retrieve_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id(name, authorization=authorization, working=working)
+
+Retrieve tlive-kafka-oc by ID
+
+Retrieve operation of resource: tlive-kafka-oc
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of tlive-kafka-oc
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve tlive-kafka-oc by ID
+    api_response = api_instance.retrieve_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id(name, authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of tlive-kafka-oc | 
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**TliveKafkaOcSchema**](TliveKafkaOcSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_healthbot_ingest_byoi_default_plugin_tlive_kafkas**
+> list[str] retrieve_healthbot_ingest_byoi_default_plugin_tlive_kafkas(authorization=authorization, working=working)
+
+Retrieve tlive-kafka-oc
+
+Retrieve all the tlive-kafka-ocs configured.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve tlive-kafka-oc
+    api_response = api_instance.retrieve_healthbot_ingest_byoi_default_plugin_tlive_kafkas(authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_healthbot_ingest_byoi_default_plugin_tlive_kafkas: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+**list[str]**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_healthbot_ingest_byoi_ingest_mapping_by_id**
+> IngestMappingSchema retrieve_healthbot_ingest_byoi_ingest_mapping_by_id(name, authorization=authorization, working=working)
+
+Retrieve ingest-mapping by ID
+
+Retrieve ingest-mapping by name
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of ingest-mapping
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve ingest-mapping by ID
+    api_response = api_instance.retrieve_healthbot_ingest_byoi_ingest_mapping_by_id(name, authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_healthbot_ingest_byoi_ingest_mapping_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of ingest-mapping | 
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**IngestMappingSchema**](IngestMappingSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_healthbot_ingest_byoi_ingest_mappings**
+> list[str] retrieve_healthbot_ingest_byoi_ingest_mappings(authorization=authorization, working=working)
+
+Retrieve ingest-mapping
+
+Retrieve all the ingest mappings configured.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve ingest-mapping
+    api_response = api_instance.retrieve_healthbot_ingest_byoi_ingest_mappings(authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_healthbot_ingest_byoi_ingest_mappings: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+**list[str]**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_healthbot_ingest_frequency_profile**
+> list[str] retrieve_healthbot_ingest_frequency_profile(authorization=authorization, working=working)
+
+Retrieve frequency-profile
+
+Retrieve operation of resource: frequency-profile
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve frequency-profile
+    api_response = api_instance.retrieve_healthbot_ingest_frequency_profile(authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_healthbot_ingest_frequency_profile: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+**list[str]**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_healthbot_ingest_frequency_profile_by_id**
+> FrequencyProfileSchema retrieve_healthbot_ingest_frequency_profile_by_id(name, authorization=authorization, working=working)
+
+Retrieve frequency-profile by ID
+
+Retrieve operation of resource: frequency-profile
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | ID of name
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve frequency-profile by ID
+    api_response = api_instance.retrieve_healthbot_ingest_frequency_profile_by_id(name, authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_healthbot_ingest_frequency_profile_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| ID of name | 
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**FrequencyProfileSchema**](FrequencyProfileSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **retrieve_healthbot_ingest_settings_byoi_custom_plugin_by_id**
 > CustomPluginSchema retrieve_healthbot_ingest_settings_byoi_custom_plugin_by_id(name, authorization=authorization, working=working)
 
@@ -3504,6 +5410,210 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **retrieve_healthbot_ingest_settings_tagging_profile_by_id**
+> TaggingProfileSchema retrieve_healthbot_ingest_settings_tagging_profile_by_id(name, authorization=authorization, working=working)
+
+Retrieve tagging-profile by ID
+
+Retrieve operation of resource: tagging-profile
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | ID of name
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve tagging-profile by ID
+    api_response = api_instance.retrieve_healthbot_ingest_settings_tagging_profile_by_id(name, authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_healthbot_ingest_settings_tagging_profile_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| ID of name | 
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**TaggingProfileSchema**](TaggingProfileSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_healthbot_ingest_settings_tagging_profiles**
+> list[str] retrieve_healthbot_ingest_settings_tagging_profiles(authorization=authorization, working=working)
+
+Retrieve tagging-profile by ID
+
+Retrieve operation of resource: tagging-profile
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve tagging-profile by ID
+    api_response = api_instance.retrieve_healthbot_ingest_settings_tagging_profiles(authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_healthbot_ingest_settings_tagging_profiles: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+**list[str]**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_healthbot_ingest_tagging_profile_by_id**
+> TaggingProfileSchema retrieve_healthbot_ingest_tagging_profile_by_id(name, authorization=authorization, working=working)
+
+Retrieve tagging-profile by ID
+
+Retrieve operation of resource: tagging-profile
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | ID of name
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve tagging-profile by ID
+    api_response = api_instance.retrieve_healthbot_ingest_tagging_profile_by_id(name, authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_healthbot_ingest_tagging_profile_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| ID of name | 
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**TaggingProfileSchema**](TaggingProfileSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_healthbot_ingest_tagging_profiles**
+> list[str] retrieve_healthbot_ingest_tagging_profiles(authorization=authorization, working=working)
+
+Retrieve tagging-profile by ID
+
+Retrieve operation of resource: tagging-profile
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve tagging-profile by ID
+    api_response = api_instance.retrieve_healthbot_ingest_tagging_profiles(authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_healthbot_ingest_tagging_profiles: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+**list[str]**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **retrieve_healthbot_system_time_series_database_time_series_database**
 > TsdbSchema retrieve_healthbot_system_time_series_database_time_series_database(working=working)
 
@@ -3540,6 +5650,208 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TsdbSchema**](TsdbSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_iceberg_ingest**
+> IngestSettingsSchema retrieve_iceberg_ingest(authorization=authorization, working=working)
+
+Retrieve ingest
+
+Retrieve operation of resource: ingest
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve ingest
+    api_response = api_instance.retrieve_iceberg_ingest(authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_iceberg_ingest: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**IngestSettingsSchema**](IngestSettingsSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_iceberg_ingest_flow**
+> FlowSchema retrieve_iceberg_ingest_flow(authorization=authorization, working=working)
+
+Retrieve flow
+
+Retrieve operation of resource: flow
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve flow
+    api_response = api_instance.retrieve_iceberg_ingest_flow(authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_iceberg_ingest_flow: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**FlowSchema**](FlowSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_iceberg_ingest_flow_template_by_id**
+> TemplateSchema retrieve_iceberg_ingest_flow_template_by_id(name, authorization=authorization, working=working)
+
+Retrieve template by ID
+
+Retrieve operation of resource: template
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of template
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve template by ID
+    api_response = api_instance.retrieve_iceberg_ingest_flow_template_by_id(name, authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_iceberg_ingest_flow_template_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of template | 
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**TemplateSchema**](TemplateSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_iceberg_ingest_flow_template_ids**
+> list[str] retrieve_iceberg_ingest_flow_template_ids(authorization=authorization, working=working)
+
+Retrieve template
+
+Retrieve operation of resource: template
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve template
+    api_response = api_instance.retrieve_iceberg_ingest_flow_template_ids(authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_iceberg_ingest_flow_template_ids: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+**list[str]**
 
 ### Authorization
 
@@ -4108,6 +6420,360 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **retrieve_iceberg_ingest_syslog**
+> SyslogSchema retrieve_iceberg_ingest_syslog(authorization=authorization, working=working)
+
+Retrieve syslog
+
+Retrieve operation of resource: syslog
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve syslog
+    api_response = api_instance.retrieve_iceberg_ingest_syslog(authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_iceberg_ingest_syslog: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**SyslogSchema**](SyslogSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_iceberg_ingest_syslog_pattern_by_id**
+> PatternSchema retrieve_iceberg_ingest_syslog_pattern_by_id(name, authorization=authorization, working=working)
+
+Retrieve pattern by ID
+
+Retrieve operation of resource: pattern
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of pattern
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve pattern by ID
+    api_response = api_instance.retrieve_iceberg_ingest_syslog_pattern_by_id(name, authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_iceberg_ingest_syslog_pattern_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of pattern | 
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**PatternSchema**](PatternSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_iceberg_ingest_syslog_pattern_ids**
+> list[str] retrieve_iceberg_ingest_syslog_pattern_ids(authorization=authorization, working=working)
+
+Retrieve pattern
+
+Retrieve operation of resource: pattern
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve pattern
+    api_response = api_instance.retrieve_iceberg_ingest_syslog_pattern_ids(authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_iceberg_ingest_syslog_pattern_ids: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+**list[str]**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_iceberg_ingest_syslog_pattern_set_by_id**
+> PatternSetSchema retrieve_iceberg_ingest_syslog_pattern_set_by_id(name, authorization=authorization, working=working)
+
+Retrieve pattern-set by ID
+
+Retrieve operation of resource: pattern-set
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of pattern-set
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve pattern-set by ID
+    api_response = api_instance.retrieve_iceberg_ingest_syslog_pattern_set_by_id(name, authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_iceberg_ingest_syslog_pattern_set_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of pattern-set | 
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**PatternSetSchema**](PatternSetSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_iceberg_ingest_syslog_pattern_set_ids**
+> list[str] retrieve_iceberg_ingest_syslog_pattern_set_ids(authorization=authorization, working=working)
+
+Retrieve pattern-set
+
+Retrieve operation of resource: pattern-set
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve pattern-set
+    api_response = api_instance.retrieve_iceberg_ingest_syslog_pattern_set_ids(authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_iceberg_ingest_syslog_pattern_set_ids: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+**list[str]**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_iceberg_ingest_syslog_pattern_sets**
+> list[PatternSetSchema] retrieve_iceberg_ingest_syslog_pattern_sets(authorization=authorization, working=working)
+
+Retrieve pattern-set by ID
+
+Retrieve operation of resource: pattern-set
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve pattern-set by ID
+    api_response = api_instance.retrieve_iceberg_ingest_syslog_pattern_sets(authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_iceberg_ingest_syslog_pattern_sets: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**list[PatternSetSchema]**](PatternSetSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_iceberg_ingest_syslog_patterns**
+> list[PatternSchema] retrieve_iceberg_ingest_syslog_patterns(authorization=authorization, working=working)
+
+Retrieve pattern by ID
+
+Retrieve operation of resource: pattern
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve pattern by ID
+    api_response = api_instance.retrieve_iceberg_ingest_syslog_patterns(authorization=authorization, working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_iceberg_ingest_syslog_patterns: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**list[PatternSchema]**](PatternSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **retrieve_iceberg_profile_data_summarization_raw_by_id**
 > RawSchema retrieve_iceberg_profile_data_summarization_raw_by_id(name, authorization=authorization, working=working)
 
@@ -4624,6 +7290,210 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **update_healthbot_ingest_byoi_custom_plugin_by_id**
+> update_healthbot_ingest_byoi_custom_plugin_by_id(name, custom_plugin, authorization=authorization)
+
+Update custom-plugin by ID
+
+Update operation of resource: custom-plugin
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of custom-plugin
+custom_plugin = swagger_client.CustomPluginSchema() # CustomPluginSchema | custom_pluginbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Update custom-plugin by ID
+    api_instance.update_healthbot_ingest_byoi_custom_plugin_by_id(name, custom_plugin, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_healthbot_ingest_byoi_custom_plugin_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of custom-plugin | 
+ **custom_plugin** | [**CustomPluginSchema**](CustomPluginSchema.md)| custom_pluginbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id**
+> update_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id(name, tlive_kafka, authorization=authorization)
+
+Update tlive-kafka-oc by ID
+
+Update operation of resource: tlive-kafka-oc
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of tlive-kafka-oc
+tlive_kafka = swagger_client.TliveKafkaOcSchema() # TliveKafkaOcSchema | tlive_kafka body object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Update tlive-kafka-oc by ID
+    api_instance.update_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id(name, tlive_kafka, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of tlive-kafka-oc | 
+ **tlive_kafka** | [**TliveKafkaOcSchema**](TliveKafkaOcSchema.md)| tlive_kafka body object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_healthbot_ingest_byoi_ingest_mapping_by_id**
+> update_healthbot_ingest_byoi_ingest_mapping_by_id(name, ingest_mapping, authorization=authorization)
+
+Update ingest-mapping by ID
+
+Update ingest-mapping by name
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of ingest-mapping
+ingest_mapping = swagger_client.IngestMappingSchema() # IngestMappingSchema | ingest_mappingbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Update ingest-mapping by ID
+    api_instance.update_healthbot_ingest_byoi_ingest_mapping_by_id(name, ingest_mapping, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_healthbot_ingest_byoi_ingest_mapping_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of ingest-mapping | 
+ **ingest_mapping** | [**IngestMappingSchema**](IngestMappingSchema.md)| ingest_mappingbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_healthbot_ingest_frequency_profile_by_id**
+> update_healthbot_ingest_frequency_profile_by_id(name, frequency_profile, authorization=authorization)
+
+Update frequency-profile by ID
+
+Update operation of resource: frequency-profile
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | ID of name
+frequency_profile = swagger_client.FrequencyProfileSchema() # FrequencyProfileSchema | frequency_profilebody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Update frequency-profile by ID
+    api_instance.update_healthbot_ingest_frequency_profile_by_id(name, frequency_profile, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_healthbot_ingest_frequency_profile_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| ID of name | 
+ **frequency_profile** | [**FrequencyProfileSchema**](FrequencyProfileSchema.md)| frequency_profilebody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_healthbot_ingest_settings_byoi_custom_plugin_by_id**
 > update_healthbot_ingest_settings_byoi_custom_plugin_by_id(name, custom_plugin, authorization=authorization)
 
@@ -4828,6 +7698,208 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **update_healthbot_ingest_settings_tagging_profile_by_id**
+> update_healthbot_ingest_settings_tagging_profile_by_id(name, tagging_profile, authorization=authorization)
+
+Update tagging-profile by ID
+
+Update operation of resource: tagging-profile
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | ID of name
+tagging_profile = swagger_client.TaggingProfileSchema() # TaggingProfileSchema | tagging_profilebody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Update tagging-profile by ID
+    api_instance.update_healthbot_ingest_settings_tagging_profile_by_id(name, tagging_profile, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_healthbot_ingest_settings_tagging_profile_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| ID of name | 
+ **tagging_profile** | [**TaggingProfileSchema**](TaggingProfileSchema.md)| tagging_profilebody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_healthbot_ingest_settings_tagging_profiles**
+> list[str] update_healthbot_ingest_settings_tagging_profiles(tagging_profiles, authorization=authorization)
+
+Update tagging-profile by ID
+
+Update operation of resource: tagging-profile
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+tagging_profiles = swagger_client.TaggingProfilesSchema() # TaggingProfilesSchema | tagging_profilebody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Update tagging-profile by ID
+    api_response = api_instance.update_healthbot_ingest_settings_tagging_profiles(tagging_profiles, authorization=authorization)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_healthbot_ingest_settings_tagging_profiles: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tagging_profiles** | [**TaggingProfilesSchema**](TaggingProfilesSchema.md)| tagging_profilebody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+**list[str]**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_healthbot_ingest_tagging_profile_by_id**
+> update_healthbot_ingest_tagging_profile_by_id(name, tagging_profile, authorization=authorization)
+
+Update tagging-profile by ID
+
+Update operation of resource: tagging-profile
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | ID of name
+tagging_profile = swagger_client.TaggingProfileSchema() # TaggingProfileSchema | tagging_profilebody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Update tagging-profile by ID
+    api_instance.update_healthbot_ingest_tagging_profile_by_id(name, tagging_profile, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_healthbot_ingest_tagging_profile_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| ID of name | 
+ **tagging_profile** | [**TaggingProfileSchema**](TaggingProfileSchema.md)| tagging_profilebody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_healthbot_ingest_tagging_profiles**
+> list[str] update_healthbot_ingest_tagging_profiles(tagging_profiles, authorization=authorization)
+
+Update tagging-profile by ID
+
+Update operation of resource: tagging-profile
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+tagging_profiles = swagger_client.TaggingProfilesSchema() # TaggingProfilesSchema | tagging_profilebody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Update tagging-profile by ID
+    api_response = api_instance.update_healthbot_ingest_tagging_profiles(tagging_profiles, authorization=authorization)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_healthbot_ingest_tagging_profiles: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tagging_profiles** | [**TaggingProfilesSchema**](TaggingProfilesSchema.md)| tagging_profilebody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+**list[str]**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_healthbot_system_time_series_database_time_series_database_by_id**
 > update_healthbot_system_time_series_database_time_series_database_by_id(time_series_database, force_tsdb=force_tsdb)
 
@@ -4861,6 +7933,155 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **time_series_database** | [**TsdbSchema**](TsdbSchema.md)| time_series_databasebody object | 
  **force_tsdb** | **bool**| force update tsdb when force is set to True | [optional] [default to false]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_iceberg_ingest**
+> update_iceberg_ingest(ingest_settings, authorization=authorization)
+
+Update ingest by ID
+
+Update operation of resource: ingest
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+ingest_settings = swagger_client.IngestSettingsSchema() # IngestSettingsSchema | ingest_settingsbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Update ingest by ID
+    api_instance.update_iceberg_ingest(ingest_settings, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_iceberg_ingest: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ingest_settings** | [**IngestSettingsSchema**](IngestSettingsSchema.md)| ingest_settingsbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_iceberg_ingest_flow**
+> update_iceberg_ingest_flow(flow, authorization=authorization)
+
+Update flow by ID
+
+Update operation of resource: flow
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+flow = swagger_client.FlowSchema() # FlowSchema | flowbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Update flow by ID
+    api_instance.update_iceberg_ingest_flow(flow, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_iceberg_ingest_flow: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **flow** | [**FlowSchema**](FlowSchema.md)| flowbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_iceberg_ingest_flow_template_by_id**
+> update_iceberg_ingest_flow_template_by_id(name, template, authorization=authorization)
+
+Update template by ID
+
+Update operation of resource: template
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of template
+template = swagger_client.TemplateSchema() # TemplateSchema | templatebody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Update template by ID
+    api_instance.update_iceberg_ingest_flow_template_by_id(name, template, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_iceberg_ingest_flow_template_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of template | 
+ **template** | [**TemplateSchema**](TemplateSchema.md)| templatebody object | 
+ **authorization** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -5152,6 +8373,157 @@ try:
     api_instance.update_iceberg_ingest_settings_syslog_pattern_set_by_id(name, pattern_set, authorization=authorization)
 except ApiException as e:
     print("Exception when calling DefaultApi->update_iceberg_ingest_settings_syslog_pattern_set_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of pattern-set | 
+ **pattern_set** | [**PatternSetSchema**](PatternSetSchema.md)| pattern_setbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_iceberg_ingest_syslog**
+> update_iceberg_ingest_syslog(syslog, authorization=authorization)
+
+Update syslog by ID
+
+Update operation of resource: syslog
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+syslog = swagger_client.SyslogSchema() # SyslogSchema | syslogbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Update syslog by ID
+    api_instance.update_iceberg_ingest_syslog(syslog, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_iceberg_ingest_syslog: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **syslog** | [**SyslogSchema**](SyslogSchema.md)| syslogbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_iceberg_ingest_syslog_pattern_by_id**
+> update_iceberg_ingest_syslog_pattern_by_id(name, pattern, authorization=authorization)
+
+Update pattern by ID
+
+Update operation of resource: pattern
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of pattern
+pattern = swagger_client.PatternSchema() # PatternSchema | patternbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Update pattern by ID
+    api_instance.update_iceberg_ingest_syslog_pattern_by_id(name, pattern, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_iceberg_ingest_syslog_pattern_by_id: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **str**| Name of pattern | 
+ **pattern** | [**PatternSchema**](PatternSchema.md)| patternbody object | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_iceberg_ingest_syslog_pattern_set_by_id**
+> update_iceberg_ingest_syslog_pattern_set_by_id(name, pattern_set, authorization=authorization)
+
+Update pattern-set by ID
+
+Update operation of resource: pattern-set
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+name = 'name_example' # str | Name of pattern-set
+pattern_set = swagger_client.PatternSetSchema() # PatternSetSchema | pattern_setbody object
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Update pattern-set by ID
+    api_instance.update_iceberg_ingest_syslog_pattern_set_by_id(name, pattern_set, authorization=authorization)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_iceberg_ingest_syslog_pattern_set_by_id: %s\n" % e)
 ```
 
 ### Parameters

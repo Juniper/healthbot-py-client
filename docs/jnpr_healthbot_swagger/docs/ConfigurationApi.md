@@ -1,143 +1,146 @@
 # swagger_client.ConfigurationApi
 
-All URIs are relative to *http://api-server/api/v1*
+All URIs are relative to *http://api-server/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**check_device_group_unsaved_configuration**](ConfigurationApi.md#check_device_group_unsaved_configuration) | **POST** /configuration/check/device-group/{device_group_name}/ | Check if the un-committed configuration of the given device group is correct
-[**check_network_group_unsaved_configuration**](ConfigurationApi.md#check_network_group_unsaved_configuration) | **POST** /configuration/check/network-group/{network_group_name}/ | Check if the unsaved configuration of the given network group is correct.
-[**commit_unsaved_configuration**](ConfigurationApi.md#commit_unsaved_configuration) | **POST** /configuration/ | Commit unsaved configuration.
-[**create_iceberg_device_device_by_id**](ConfigurationApi.md#create_iceberg_device_device_by_id) | **POST** /device/{device_id}/ | Update or create a device.
-[**create_iceberg_device_group_device_group_by_id**](ConfigurationApi.md#create_iceberg_device_group_device_group_by_id) | **POST** /device-group/{device_group_name}/ | Update or create a device-group.
-[**create_iceberg_device_groups_device_groups_by_id**](ConfigurationApi.md#create_iceberg_device_groups_device_groups_by_id) | **POST** /device-groups/ | Update or create multiple device-groups.
-[**create_iceberg_devices_devices_by_id**](ConfigurationApi.md#create_iceberg_devices_devices_by_id) | **POST** /devices/ | Update or create multiple devices.
-[**create_iceberg_network_group_network_group_by_id**](ConfigurationApi.md#create_iceberg_network_group_network_group_by_id) | **POST** /network-group/{network_group_name}/ | Update or create a network-group.
-[**create_iceberg_network_groups_network_groups_by_id**](ConfigurationApi.md#create_iceberg_network_groups_network_groups_by_id) | **POST** /network-groups/ | Update or create multiple network-groups.
-[**create_iceberg_notification_notification_by_id**](ConfigurationApi.md#create_iceberg_notification_notification_by_id) | **POST** /notification/{notification_name}/ | Update or create a notification
-[**create_iceberg_notifications_notifications_by_id**](ConfigurationApi.md#create_iceberg_notifications_notifications_by_id) | **POST** /notifications/ | Update or create multiple notifications.
-[**create_iceberg_playbook_playbook_by_id**](ConfigurationApi.md#create_iceberg_playbook_playbook_by_id) | **POST** /playbook/{playbook_name}/ | Update or create a playbook.
-[**create_iceberg_playbooks_playbooks_by_id**](ConfigurationApi.md#create_iceberg_playbooks_playbooks_by_id) | **POST** /playbooks/ | Update or create multiple playbooks.
-[**create_iceberg_retention_policies_retention_policies_by_id**](ConfigurationApi.md#create_iceberg_retention_policies_retention_policies_by_id) | **POST** /retention-policies/ | Update or create multiple retention-policies.
-[**create_iceberg_retention_policy_retention_policy_by_id**](ConfigurationApi.md#create_iceberg_retention_policy_retention_policy_by_id) | **POST** /retention-policy/{retention_policy_name}/ | Update or create a retention-policy.
-[**create_iceberg_system_destination_by_id**](ConfigurationApi.md#create_iceberg_system_destination_by_id) | **POST** /system/report-generation/destination/{name}/ | Create destination by name
-[**create_iceberg_system_destinations**](ConfigurationApi.md#create_iceberg_system_destinations) | **POST** /system/report-generation/destinations/ | Create destinations by name
-[**create_iceberg_system_report_by_id**](ConfigurationApi.md#create_iceberg_system_report_by_id) | **POST** /system/report-generation/report/{name}/ | Create report by name
-[**create_iceberg_system_reports**](ConfigurationApi.md#create_iceberg_system_reports) | **POST** /system/report-generation/reports/ | Create reports by name
-[**create_iceberg_system_scheduler_by_id**](ConfigurationApi.md#create_iceberg_system_scheduler_by_id) | **POST** /system/scheduler/{name}/ | Create scheduler by name
-[**create_iceberg_system_schedulers**](ConfigurationApi.md#create_iceberg_system_schedulers) | **POST** /system/schedulers/ | Create schedulers by name
-[**create_iceberg_system_settings_destination_by_id**](ConfigurationApi.md#create_iceberg_system_settings_destination_by_id) | **POST** /system-settings/report-generation/destination/{name}/ | Create destination by name
-[**create_iceberg_system_settings_destinations**](ConfigurationApi.md#create_iceberg_system_settings_destinations) | **POST** /system-settings/report-generation/destinations/ | Create destinations by name
-[**create_iceberg_system_settings_report_by_id**](ConfigurationApi.md#create_iceberg_system_settings_report_by_id) | **POST** /system-settings/report-generation/report/{name}/ | Create report by name
-[**create_iceberg_system_settings_reports**](ConfigurationApi.md#create_iceberg_system_settings_reports) | **POST** /system-settings/report-generation/reports/ | Create reports by name
-[**create_iceberg_system_settings_scheduler_by_id**](ConfigurationApi.md#create_iceberg_system_settings_scheduler_by_id) | **POST** /system-settings/scheduler/{name}/ | Create scheduler by name
-[**create_iceberg_system_settings_schedulers**](ConfigurationApi.md#create_iceberg_system_settings_schedulers) | **POST** /system-settings/schedulers/ | Create schedulers by name
-[**create_iceberg_system_settings_system_settings_by_id**](ConfigurationApi.md#create_iceberg_system_settings_system_settings_by_id) | **POST** /system-settings/ | Create system-settings
-[**create_iceberg_system_system_by_id**](ConfigurationApi.md#create_iceberg_system_system_by_id) | **POST** /system/ | Create system
-[**create_iceberg_topic_rule_rule_by_id**](ConfigurationApi.md#create_iceberg_topic_rule_rule_by_id) | **POST** /topic/{topic_name}/rule/{rule_name}/ | Update or create a rule.
-[**create_iceberg_topic_topic_by_id**](ConfigurationApi.md#create_iceberg_topic_topic_by_id) | **POST** /topic/{topic_name}/ | Update or create a topic.
-[**create_iceberg_topics_topics_by_id**](ConfigurationApi.md#create_iceberg_topics_topics_by_id) | **POST** /topics/ | Update or create multiple topics.
-[**delete_healthbot_ingest_settings_byoi_ingest_mappings**](ConfigurationApi.md#delete_healthbot_ingest_settings_byoi_ingest_mappings) | **DELETE** /ingest-settings/byoi/ingest-mappings/ | Delete all ingest-mappings.
-[**delete_iceberg_device_device_by_id**](ConfigurationApi.md#delete_iceberg_device_device_by_id) | **DELETE** /device/{device_id}/ | Delete device.
-[**delete_iceberg_device_group_device_group_by_id**](ConfigurationApi.md#delete_iceberg_device_group_device_group_by_id) | **DELETE** /device-group/{device_group_name}/ | Delete device-group.
-[**delete_iceberg_device_groups_device_groups_by_id**](ConfigurationApi.md#delete_iceberg_device_groups_device_groups_by_id) | **DELETE** /device-groups/ | Delete all device-groups.
-[**delete_iceberg_devices_devices_by_id**](ConfigurationApi.md#delete_iceberg_devices_devices_by_id) | **DELETE** /devices/ | Delete all devices.
-[**delete_iceberg_network_group_network_group_by_id**](ConfigurationApi.md#delete_iceberg_network_group_network_group_by_id) | **DELETE** /network-group/{network_group_name}/ | Delete network-group.
-[**delete_iceberg_network_groups_network_groups_by_id**](ConfigurationApi.md#delete_iceberg_network_groups_network_groups_by_id) | **DELETE** /network-groups/ | Delete all network-groups.
-[**delete_iceberg_notification_notification_by_id**](ConfigurationApi.md#delete_iceberg_notification_notification_by_id) | **DELETE** /notification/{notification_name}/ | Delete a notification.
-[**delete_iceberg_notifications_notifications_by_id**](ConfigurationApi.md#delete_iceberg_notifications_notifications_by_id) | **DELETE** /notifications/ | Delete all notifications.
-[**delete_iceberg_playbook_playbook_by_id**](ConfigurationApi.md#delete_iceberg_playbook_playbook_by_id) | **DELETE** /playbook/{playbook_name}/ | Delete a playbook.
-[**delete_iceberg_playbooks_playbooks_by_id**](ConfigurationApi.md#delete_iceberg_playbooks_playbooks_by_id) | **DELETE** /playbooks/ | Delete all playbooks.
-[**delete_iceberg_retention_policies_retention_policies_by_id**](ConfigurationApi.md#delete_iceberg_retention_policies_retention_policies_by_id) | **DELETE** /retention-policies/ | Delete all retention-policies.
-[**delete_iceberg_retention_policy_retention_policy_by_id**](ConfigurationApi.md#delete_iceberg_retention_policy_retention_policy_by_id) | **DELETE** /retention-policy/{retention_policy_name}/ | Delete a retention-policy.
-[**delete_iceberg_system_destination_by_id**](ConfigurationApi.md#delete_iceberg_system_destination_by_id) | **DELETE** /system/report-generation/destination/{name}/ | Delete destination by name
-[**delete_iceberg_system_destinations**](ConfigurationApi.md#delete_iceberg_system_destinations) | **DELETE** /system/report-generation/destinations/ | Delete destinations by name
-[**delete_iceberg_system_report_by_id**](ConfigurationApi.md#delete_iceberg_system_report_by_id) | **DELETE** /system/report-generation/report/{name}/ | Delete report by name
-[**delete_iceberg_system_reports**](ConfigurationApi.md#delete_iceberg_system_reports) | **DELETE** /system/report-generation/reports/ | Delete reports by name
-[**delete_iceberg_system_scheduler_by_id**](ConfigurationApi.md#delete_iceberg_system_scheduler_by_id) | **DELETE** /system/scheduler/{name}/ | Delete scheduler by name
-[**delete_iceberg_system_schedulers**](ConfigurationApi.md#delete_iceberg_system_schedulers) | **DELETE** /system/schedulers/ | Delete schedulers by name
-[**delete_iceberg_system_settings_destination_by_id**](ConfigurationApi.md#delete_iceberg_system_settings_destination_by_id) | **DELETE** /system-settings/report-generation/destination/{name}/ | Delete destination by name
-[**delete_iceberg_system_settings_destinations**](ConfigurationApi.md#delete_iceberg_system_settings_destinations) | **DELETE** /system-settings/report-generation/destinations/ | Delete destinations by name
-[**delete_iceberg_system_settings_report_by_id**](ConfigurationApi.md#delete_iceberg_system_settings_report_by_id) | **DELETE** /system-settings/report-generation/report/{name}/ | Delete report by name
-[**delete_iceberg_system_settings_reports**](ConfigurationApi.md#delete_iceberg_system_settings_reports) | **DELETE** /system-settings/report-generation/reports/ | Delete reports by name
-[**delete_iceberg_system_settings_scheduler_by_id**](ConfigurationApi.md#delete_iceberg_system_settings_scheduler_by_id) | **DELETE** /system-settings/scheduler/{name}/ | Delete scheduler by name
-[**delete_iceberg_system_settings_schedulers**](ConfigurationApi.md#delete_iceberg_system_settings_schedulers) | **DELETE** /system-settings/schedulers/ | Delete schedulers by name
-[**delete_iceberg_system_settings_system_settings_by_id**](ConfigurationApi.md#delete_iceberg_system_settings_system_settings_by_id) | **DELETE** /system-settings/ | Delete system-settings
-[**delete_iceberg_system_system_by_id**](ConfigurationApi.md#delete_iceberg_system_system_by_id) | **DELETE** /system/ | Delete system
-[**delete_iceberg_topic_rule_rule_by_id**](ConfigurationApi.md#delete_iceberg_topic_rule_rule_by_id) | **DELETE** /topic/{topic_name}/rule/{rule_name}/ | Delete a rule.
-[**delete_iceberg_topic_topic_by_id**](ConfigurationApi.md#delete_iceberg_topic_topic_by_id) | **DELETE** /topic/{topic_name}/ | Delete a topic.
-[**delete_iceberg_topics_topics_by_id**](ConfigurationApi.md#delete_iceberg_topics_topics_by_id) | **DELETE** /topics/ | Delete all topics.
+[**check_device_group_unsaved_configuration**](ConfigurationApi.md#check_device_group_unsaved_configuration) | **POST** /config/configuration/check/device-group/{device_group_name}/ | Check if the un-committed configuration of the given device group is correct
+[**check_network_group_unsaved_configuration**](ConfigurationApi.md#check_network_group_unsaved_configuration) | **POST** /config/configuration/check/network-group/{network_group_name}/ | Check if the unsaved configuration of the given network group is correct.
+[**commit_unsaved_configuration**](ConfigurationApi.md#commit_unsaved_configuration) | **POST** /config/configuration/ | Commit unsaved configuration.
+[**create_iceberg_device_device_by_id**](ConfigurationApi.md#create_iceberg_device_device_by_id) | **POST** /config/device/{device_id}/ | Update or create a device.
+[**create_iceberg_device_group_device_group_by_id**](ConfigurationApi.md#create_iceberg_device_group_device_group_by_id) | **POST** /config/device-group/{device_group_name}/ | Update or create a device-group.
+[**create_iceberg_device_groups_device_groups_by_id**](ConfigurationApi.md#create_iceberg_device_groups_device_groups_by_id) | **POST** /config/device-groups/ | Update or create multiple device-groups.
+[**create_iceberg_devices_devices_by_id**](ConfigurationApi.md#create_iceberg_devices_devices_by_id) | **POST** /config/devices/ | Update or create multiple devices.
+[**create_iceberg_network_group_network_group_by_id**](ConfigurationApi.md#create_iceberg_network_group_network_group_by_id) | **POST** /config/network-group/{network_group_name}/ | Update or create a network-group.
+[**create_iceberg_network_groups_network_groups_by_id**](ConfigurationApi.md#create_iceberg_network_groups_network_groups_by_id) | **POST** /config/network-groups/ | Update or create multiple network-groups.
+[**create_iceberg_notification_notification_by_id**](ConfigurationApi.md#create_iceberg_notification_notification_by_id) | **POST** /config/notification/{notification_name}/ | Update or create a notification
+[**create_iceberg_notifications_notifications_by_id**](ConfigurationApi.md#create_iceberg_notifications_notifications_by_id) | **POST** /config/notifications/ | Update or create multiple notifications.
+[**create_iceberg_playbook_playbook_by_id**](ConfigurationApi.md#create_iceberg_playbook_playbook_by_id) | **POST** /config/playbook/{playbook_name}/ | Update or create a playbook.
+[**create_iceberg_playbooks_playbooks_by_id**](ConfigurationApi.md#create_iceberg_playbooks_playbooks_by_id) | **POST** /config/playbooks/ | Update or create multiple playbooks.
+[**create_iceberg_retention_policies_retention_policies_by_id**](ConfigurationApi.md#create_iceberg_retention_policies_retention_policies_by_id) | **POST** /config/retention-policies/ | Update or create multiple retention-policies.
+[**create_iceberg_retention_policy_retention_policy_by_id**](ConfigurationApi.md#create_iceberg_retention_policy_retention_policy_by_id) | **POST** /config/retention-policy/{retention_policy_name}/ | Update or create a retention-policy.
+[**create_iceberg_system_destination_by_id**](ConfigurationApi.md#create_iceberg_system_destination_by_id) | **POST** /config/system/report-generation/destination/{name}/ | Create destination by name
+[**create_iceberg_system_destinations**](ConfigurationApi.md#create_iceberg_system_destinations) | **POST** /config/system/report-generation/destinations/ | Create destinations by name
+[**create_iceberg_system_report_by_id**](ConfigurationApi.md#create_iceberg_system_report_by_id) | **POST** /config/system/report-generation/report/{name}/ | Create report by name
+[**create_iceberg_system_reports**](ConfigurationApi.md#create_iceberg_system_reports) | **POST** /config/system/report-generation/reports/ | Create reports by name
+[**create_iceberg_system_scheduler_by_id**](ConfigurationApi.md#create_iceberg_system_scheduler_by_id) | **POST** /config/system/scheduler/{name}/ | Create scheduler by name
+[**create_iceberg_system_schedulers**](ConfigurationApi.md#create_iceberg_system_schedulers) | **POST** /config/system/schedulers/ | Create schedulers by name
+[**create_iceberg_system_settings_destination_by_id**](ConfigurationApi.md#create_iceberg_system_settings_destination_by_id) | **POST** /config/system-settings/report-generation/destination/{name}/ | Create destination by name
+[**create_iceberg_system_settings_destinations**](ConfigurationApi.md#create_iceberg_system_settings_destinations) | **POST** /config/system-settings/report-generation/destinations/ | Create destinations by name
+[**create_iceberg_system_settings_report_by_id**](ConfigurationApi.md#create_iceberg_system_settings_report_by_id) | **POST** /config/system-settings/report-generation/report/{name}/ | Create report by name
+[**create_iceberg_system_settings_reports**](ConfigurationApi.md#create_iceberg_system_settings_reports) | **POST** /config/system-settings/report-generation/reports/ | Create reports by name
+[**create_iceberg_system_settings_scheduler_by_id**](ConfigurationApi.md#create_iceberg_system_settings_scheduler_by_id) | **POST** /config/system-settings/scheduler/{name}/ | Create scheduler by name
+[**create_iceberg_system_settings_schedulers**](ConfigurationApi.md#create_iceberg_system_settings_schedulers) | **POST** /config/system-settings/schedulers/ | Create schedulers by name
+[**create_iceberg_system_settings_system_settings_by_id**](ConfigurationApi.md#create_iceberg_system_settings_system_settings_by_id) | **POST** /config/system-settings/ | Create system-settings
+[**create_iceberg_system_system_by_id**](ConfigurationApi.md#create_iceberg_system_system_by_id) | **POST** /config/system/ | Create system
+[**create_iceberg_topic_rule_rule_by_id**](ConfigurationApi.md#create_iceberg_topic_rule_rule_by_id) | **POST** /config/topic/{topic_name}/rule/{rule_name}/ | Update or create a rule.
+[**create_iceberg_topic_topic_by_id**](ConfigurationApi.md#create_iceberg_topic_topic_by_id) | **POST** /config/topic/{topic_name}/ | Update or create a topic.
+[**create_iceberg_topics_topics_by_id**](ConfigurationApi.md#create_iceberg_topics_topics_by_id) | **POST** /config/topics/ | Update or create multiple topics.
+[**delete_healthbot_ingest_byoi_ingest_mappings**](ConfigurationApi.md#delete_healthbot_ingest_byoi_ingest_mappings) | **DELETE** /config/ingest/byoi/ingest-mappings/ | Delete all ingest-mappings.
+[**delete_healthbot_ingest_settings_byoi_ingest_mappings**](ConfigurationApi.md#delete_healthbot_ingest_settings_byoi_ingest_mappings) | **DELETE** /config/ingest-settings/byoi/ingest-mappings/ | Delete all ingest-mappings.
+[**delete_iceberg_device_device_by_id**](ConfigurationApi.md#delete_iceberg_device_device_by_id) | **DELETE** /config/device/{device_id}/ | Delete device.
+[**delete_iceberg_device_group_device_group_by_id**](ConfigurationApi.md#delete_iceberg_device_group_device_group_by_id) | **DELETE** /config/device-group/{device_group_name}/ | Delete device-group.
+[**delete_iceberg_device_groups_device_groups_by_id**](ConfigurationApi.md#delete_iceberg_device_groups_device_groups_by_id) | **DELETE** /config/device-groups/ | Delete all device-groups.
+[**delete_iceberg_devices_devices_by_id**](ConfigurationApi.md#delete_iceberg_devices_devices_by_id) | **DELETE** /config/devices/ | Delete all devices.
+[**delete_iceberg_network_group_network_group_by_id**](ConfigurationApi.md#delete_iceberg_network_group_network_group_by_id) | **DELETE** /config/network-group/{network_group_name}/ | Delete network-group.
+[**delete_iceberg_network_groups_network_groups_by_id**](ConfigurationApi.md#delete_iceberg_network_groups_network_groups_by_id) | **DELETE** /config/network-groups/ | Delete all network-groups.
+[**delete_iceberg_notification_notification_by_id**](ConfigurationApi.md#delete_iceberg_notification_notification_by_id) | **DELETE** /config/notification/{notification_name}/ | Delete a notification.
+[**delete_iceberg_notifications_notifications_by_id**](ConfigurationApi.md#delete_iceberg_notifications_notifications_by_id) | **DELETE** /config/notifications/ | Delete all notifications.
+[**delete_iceberg_playbook_playbook_by_id**](ConfigurationApi.md#delete_iceberg_playbook_playbook_by_id) | **DELETE** /config/playbook/{playbook_name}/ | Delete a playbook.
+[**delete_iceberg_playbooks_playbooks_by_id**](ConfigurationApi.md#delete_iceberg_playbooks_playbooks_by_id) | **DELETE** /config/playbooks/ | Delete all playbooks.
+[**delete_iceberg_retention_policies_retention_policies_by_id**](ConfigurationApi.md#delete_iceberg_retention_policies_retention_policies_by_id) | **DELETE** /config/retention-policies/ | Delete all retention-policies.
+[**delete_iceberg_retention_policy_retention_policy_by_id**](ConfigurationApi.md#delete_iceberg_retention_policy_retention_policy_by_id) | **DELETE** /config/retention-policy/{retention_policy_name}/ | Delete a retention-policy.
+[**delete_iceberg_system_destination_by_id**](ConfigurationApi.md#delete_iceberg_system_destination_by_id) | **DELETE** /config/system/report-generation/destination/{name}/ | Delete destination by name
+[**delete_iceberg_system_destinations**](ConfigurationApi.md#delete_iceberg_system_destinations) | **DELETE** /config/system/report-generation/destinations/ | Delete destinations by name
+[**delete_iceberg_system_report_by_id**](ConfigurationApi.md#delete_iceberg_system_report_by_id) | **DELETE** /config/system/report-generation/report/{name}/ | Delete report by name
+[**delete_iceberg_system_reports**](ConfigurationApi.md#delete_iceberg_system_reports) | **DELETE** /config/system/report-generation/reports/ | Delete reports by name
+[**delete_iceberg_system_scheduler_by_id**](ConfigurationApi.md#delete_iceberg_system_scheduler_by_id) | **DELETE** /config/system/scheduler/{name}/ | Delete scheduler by name
+[**delete_iceberg_system_schedulers**](ConfigurationApi.md#delete_iceberg_system_schedulers) | **DELETE** /config/system/schedulers/ | Delete schedulers by name
+[**delete_iceberg_system_settings_destination_by_id**](ConfigurationApi.md#delete_iceberg_system_settings_destination_by_id) | **DELETE** /config/system-settings/report-generation/destination/{name}/ | Delete destination by name
+[**delete_iceberg_system_settings_destinations**](ConfigurationApi.md#delete_iceberg_system_settings_destinations) | **DELETE** /config/system-settings/report-generation/destinations/ | Delete destinations by name
+[**delete_iceberg_system_settings_report_by_id**](ConfigurationApi.md#delete_iceberg_system_settings_report_by_id) | **DELETE** /config/system-settings/report-generation/report/{name}/ | Delete report by name
+[**delete_iceberg_system_settings_reports**](ConfigurationApi.md#delete_iceberg_system_settings_reports) | **DELETE** /config/system-settings/report-generation/reports/ | Delete reports by name
+[**delete_iceberg_system_settings_scheduler_by_id**](ConfigurationApi.md#delete_iceberg_system_settings_scheduler_by_id) | **DELETE** /config/system-settings/scheduler/{name}/ | Delete scheduler by name
+[**delete_iceberg_system_settings_schedulers**](ConfigurationApi.md#delete_iceberg_system_settings_schedulers) | **DELETE** /config/system-settings/schedulers/ | Delete schedulers by name
+[**delete_iceberg_system_settings_system_settings_by_id**](ConfigurationApi.md#delete_iceberg_system_settings_system_settings_by_id) | **DELETE** /config/system-settings/ | Delete system-settings
+[**delete_iceberg_system_system_by_id**](ConfigurationApi.md#delete_iceberg_system_system_by_id) | **DELETE** /config/system/ | Delete system
+[**delete_iceberg_topic_rule_rule_by_id**](ConfigurationApi.md#delete_iceberg_topic_rule_rule_by_id) | **DELETE** /config/topic/{topic_name}/rule/{rule_name}/ | Delete a rule.
+[**delete_iceberg_topic_topic_by_id**](ConfigurationApi.md#delete_iceberg_topic_topic_by_id) | **DELETE** /config/topic/{topic_name}/ | Delete a topic.
+[**delete_iceberg_topics_topics_by_id**](ConfigurationApi.md#delete_iceberg_topics_topics_by_id) | **DELETE** /config/topics/ | Delete all topics.
 [**first_login**](ConfigurationApi.md#first_login) | **POST** /first-login/ | Change password after first login
-[**retrieve_affected_groups**](ConfigurationApi.md#retrieve_affected_groups) | **GET** /configuration/ | Get all groups affected by un-committed configuration changes.
+[**retrieve_affected_groups**](ConfigurationApi.md#retrieve_affected_groups) | **GET** /config/configuration/ | Get all groups affected by un-committed configuration changes.
 [**retrieve_device_group_status**](ConfigurationApi.md#retrieve_device_group_status) | **GET** /device-group/{device_group_name}/status/ | Get device-group&#39;s status.
-[**retrieve_iceberg_device_device**](ConfigurationApi.md#retrieve_iceberg_device_device) | **GET** /device/ | List all device-ids.
-[**retrieve_iceberg_device_device_by_id**](ConfigurationApi.md#retrieve_iceberg_device_device_by_id) | **GET** /device/{device_id}/ | Get a device&#39;s configuration.
-[**retrieve_iceberg_device_group_device_group**](ConfigurationApi.md#retrieve_iceberg_device_group_device_group) | **GET** /device-group/ | List all device-group names.
-[**retrieve_iceberg_device_group_device_group_by_id**](ConfigurationApi.md#retrieve_iceberg_device_group_device_group_by_id) | **GET** /device-group/{device_group_name}/ | Get device-group&#39;s configuration.
-[**retrieve_iceberg_device_groups_device_groups**](ConfigurationApi.md#retrieve_iceberg_device_groups_device_groups) | **GET** /device-groups/ | Get all device-groups&#39; configuration.
-[**retrieve_iceberg_devices_devices**](ConfigurationApi.md#retrieve_iceberg_devices_devices) | **GET** /devices/ | Get all devices&#39; configuration.
-[**retrieve_iceberg_network_group_network_group**](ConfigurationApi.md#retrieve_iceberg_network_group_network_group) | **GET** /network-group/ | List all network-group names.
-[**retrieve_iceberg_network_group_network_group_by_id**](ConfigurationApi.md#retrieve_iceberg_network_group_network_group_by_id) | **GET** /network-group/{network_group_name}/ | Get network-group&#39;s configuration.
-[**retrieve_iceberg_network_groups_network_groups**](ConfigurationApi.md#retrieve_iceberg_network_groups_network_groups) | **GET** /network-groups/ | Get all network-groups&#39; configuration.
-[**retrieve_iceberg_notification_notification**](ConfigurationApi.md#retrieve_iceberg_notification_notification) | **GET** /notification/ | List all notification-names.
-[**retrieve_iceberg_notification_notification_by_id**](ConfigurationApi.md#retrieve_iceberg_notification_notification_by_id) | **GET** /notification/{notification_name}/ | Get a notification&#39;s configuration.
-[**retrieve_iceberg_notifications_notifications_by_id**](ConfigurationApi.md#retrieve_iceberg_notifications_notifications_by_id) | **GET** /notifications/ | Get all notifications&#39; configuration.
-[**retrieve_iceberg_playbook_playbook**](ConfigurationApi.md#retrieve_iceberg_playbook_playbook) | **GET** /playbook/ | List all playbook-names.
-[**retrieve_iceberg_playbook_playbook_by_id**](ConfigurationApi.md#retrieve_iceberg_playbook_playbook_by_id) | **GET** /playbook/{playbook_name}/ | Get a playbook&#39;s configuration.
-[**retrieve_iceberg_playbooks_playbooks_by_id**](ConfigurationApi.md#retrieve_iceberg_playbooks_playbooks_by_id) | **GET** /playbooks/ | Get all playbooks&#39; configuration.
-[**retrieve_iceberg_retention_policies_retention_policies_by_id**](ConfigurationApi.md#retrieve_iceberg_retention_policies_retention_policies_by_id) | **GET** /retention-policies/ | Get all retention-policies&#39; configuration.
-[**retrieve_iceberg_retention_policy_retention_policy**](ConfigurationApi.md#retrieve_iceberg_retention_policy_retention_policy) | **GET** /retention-policy/ | List all retention-policy-names.
-[**retrieve_iceberg_retention_policy_retention_policy_by_id**](ConfigurationApi.md#retrieve_iceberg_retention_policy_retention_policy_by_id) | **GET** /retention-policy/{retention_policy_name}/ | Get a retention-policy&#39;s configuration.
-[**retrieve_iceberg_system_destination_by_id**](ConfigurationApi.md#retrieve_iceberg_system_destination_by_id) | **GET** /system/report-generation/destination/{name}/ | Retrieve destination by name
-[**retrieve_iceberg_system_destinations**](ConfigurationApi.md#retrieve_iceberg_system_destinations) | **GET** /system/report-generation/destinations/ | Retrieve destinations by name
-[**retrieve_iceberg_system_report_by_id**](ConfigurationApi.md#retrieve_iceberg_system_report_by_id) | **GET** /system/report-generation/report/{name}/ | Retrieve report by name
-[**retrieve_iceberg_system_reports**](ConfigurationApi.md#retrieve_iceberg_system_reports) | **GET** /system/report-generation/reports/ | Retrieve reports by name
-[**retrieve_iceberg_system_scheduler_by_id**](ConfigurationApi.md#retrieve_iceberg_system_scheduler_by_id) | **GET** /system/scheduler/{name}/ | Retrieve scheduler by name
-[**retrieve_iceberg_system_schedulers**](ConfigurationApi.md#retrieve_iceberg_system_schedulers) | **GET** /system/schedulers/ | Retrieve schedulers by name
-[**retrieve_iceberg_system_settings_destination_by_id**](ConfigurationApi.md#retrieve_iceberg_system_settings_destination_by_id) | **GET** /system-settings/report-generation/destination/{name}/ | Retrieve destination by name
-[**retrieve_iceberg_system_settings_destinations**](ConfigurationApi.md#retrieve_iceberg_system_settings_destinations) | **GET** /system-settings/report-generation/destinations/ | Retrieve destinations by name
-[**retrieve_iceberg_system_settings_report_by_id**](ConfigurationApi.md#retrieve_iceberg_system_settings_report_by_id) | **GET** /system-settings/report-generation/report/{name}/ | Retrieve report by name
-[**retrieve_iceberg_system_settings_reports**](ConfigurationApi.md#retrieve_iceberg_system_settings_reports) | **GET** /system-settings/report-generation/reports/ | Retrieve reports by name
-[**retrieve_iceberg_system_settings_scheduler_by_id**](ConfigurationApi.md#retrieve_iceberg_system_settings_scheduler_by_id) | **GET** /system-settings/scheduler/{name}/ | Retrieve scheduler by name
-[**retrieve_iceberg_system_settings_schedulers**](ConfigurationApi.md#retrieve_iceberg_system_settings_schedulers) | **GET** /system-settings/schedulers/ | Retrieve schedulers by name
-[**retrieve_iceberg_system_settings_system_settings**](ConfigurationApi.md#retrieve_iceberg_system_settings_system_settings) | **GET** /system-settings/ | Retrieve system-settings
-[**retrieve_iceberg_system_system**](ConfigurationApi.md#retrieve_iceberg_system_system) | **GET** /system/ | Retrieve system data
-[**retrieve_iceberg_topic_rule_rule**](ConfigurationApi.md#retrieve_iceberg_topic_rule_rule) | **GET** /topic/{topic_name}/rule/ | List all rule-names in a topic.
-[**retrieve_iceberg_topic_rule_rule_by_id**](ConfigurationApi.md#retrieve_iceberg_topic_rule_rule_by_id) | **GET** /topic/{topic_name}/rule/{rule_name}/ | Get a rule&#39;s configuration.
-[**retrieve_iceberg_topic_topic**](ConfigurationApi.md#retrieve_iceberg_topic_topic) | **GET** /topic/ | List all topic-names.
-[**retrieve_iceberg_topic_topic_by_id**](ConfigurationApi.md#retrieve_iceberg_topic_topic_by_id) | **GET** /topic/{topic_name}/ | Get a topic&#39;s configuration.
-[**retrieve_iceberg_topics_topics**](ConfigurationApi.md#retrieve_iceberg_topics_topics) | **GET** /topics/ | Get all topics&#39; configuration.
+[**retrieve_device_group_trigger_info**](ConfigurationApi.md#retrieve_device_group_trigger_info) | **GET** /device-group/{device_group_name}/trigger_info/ | Get device-group&#39;s trigger info.
+[**retrieve_iceberg_device_device**](ConfigurationApi.md#retrieve_iceberg_device_device) | **GET** /config/device/ | List all device-ids.
+[**retrieve_iceberg_device_device_by_id**](ConfigurationApi.md#retrieve_iceberg_device_device_by_id) | **GET** /config/device/{device_id}/ | Get a device&#39;s configuration.
+[**retrieve_iceberg_device_group_device_group**](ConfigurationApi.md#retrieve_iceberg_device_group_device_group) | **GET** /config/device-group/ | List all device-group names.
+[**retrieve_iceberg_device_group_device_group_by_id**](ConfigurationApi.md#retrieve_iceberg_device_group_device_group_by_id) | **GET** /config/device-group/{device_group_name}/ | Get device-group&#39;s configuration.
+[**retrieve_iceberg_device_groups_device_groups**](ConfigurationApi.md#retrieve_iceberg_device_groups_device_groups) | **GET** /config/device-groups/ | Get all device-groups&#39; configuration.
+[**retrieve_iceberg_devices_devices**](ConfigurationApi.md#retrieve_iceberg_devices_devices) | **GET** /config/devices/ | Get all devices&#39; configuration.
+[**retrieve_iceberg_network_group_network_group**](ConfigurationApi.md#retrieve_iceberg_network_group_network_group) | **GET** /config/network-group/ | List all network-group names.
+[**retrieve_iceberg_network_group_network_group_by_id**](ConfigurationApi.md#retrieve_iceberg_network_group_network_group_by_id) | **GET** /config/network-group/{network_group_name}/ | Get network-group&#39;s configuration.
+[**retrieve_iceberg_network_groups_network_groups**](ConfigurationApi.md#retrieve_iceberg_network_groups_network_groups) | **GET** /config/network-groups/ | Get all network-groups&#39; configuration.
+[**retrieve_iceberg_notification_notification**](ConfigurationApi.md#retrieve_iceberg_notification_notification) | **GET** /config/notification/ | List all notification-names.
+[**retrieve_iceberg_notification_notification_by_id**](ConfigurationApi.md#retrieve_iceberg_notification_notification_by_id) | **GET** /config/notification/{notification_name}/ | Get a notification&#39;s configuration.
+[**retrieve_iceberg_notifications_notifications_by_id**](ConfigurationApi.md#retrieve_iceberg_notifications_notifications_by_id) | **GET** /config/notifications/ | Get all notifications&#39; configuration.
+[**retrieve_iceberg_playbook_playbook**](ConfigurationApi.md#retrieve_iceberg_playbook_playbook) | **GET** /config/playbook/ | List all playbook-names.
+[**retrieve_iceberg_playbook_playbook_by_id**](ConfigurationApi.md#retrieve_iceberg_playbook_playbook_by_id) | **GET** /config/playbook/{playbook_name}/ | Get a playbook&#39;s configuration.
+[**retrieve_iceberg_playbooks_playbooks_by_id**](ConfigurationApi.md#retrieve_iceberg_playbooks_playbooks_by_id) | **GET** /config/playbooks/ | Get all playbooks&#39; configuration.
+[**retrieve_iceberg_retention_policies_retention_policies_by_id**](ConfigurationApi.md#retrieve_iceberg_retention_policies_retention_policies_by_id) | **GET** /config/retention-policies/ | Get all retention-policies&#39; configuration.
+[**retrieve_iceberg_retention_policy_retention_policy**](ConfigurationApi.md#retrieve_iceberg_retention_policy_retention_policy) | **GET** /config/retention-policy/ | List all retention-policy-names.
+[**retrieve_iceberg_retention_policy_retention_policy_by_id**](ConfigurationApi.md#retrieve_iceberg_retention_policy_retention_policy_by_id) | **GET** /config/retention-policy/{retention_policy_name}/ | Get a retention-policy&#39;s configuration.
+[**retrieve_iceberg_system_destination_by_id**](ConfigurationApi.md#retrieve_iceberg_system_destination_by_id) | **GET** /config/system/report-generation/destination/{name}/ | Retrieve destination by name
+[**retrieve_iceberg_system_destinations**](ConfigurationApi.md#retrieve_iceberg_system_destinations) | **GET** /config/system/report-generation/destinations/ | Retrieve destinations by name
+[**retrieve_iceberg_system_report_by_id**](ConfigurationApi.md#retrieve_iceberg_system_report_by_id) | **GET** /config/system/report-generation/report/{name}/ | Retrieve report by name
+[**retrieve_iceberg_system_reports**](ConfigurationApi.md#retrieve_iceberg_system_reports) | **GET** /config/system/report-generation/reports/ | Retrieve reports by name
+[**retrieve_iceberg_system_scheduler_by_id**](ConfigurationApi.md#retrieve_iceberg_system_scheduler_by_id) | **GET** /config/system/scheduler/{name}/ | Retrieve scheduler by name
+[**retrieve_iceberg_system_schedulers**](ConfigurationApi.md#retrieve_iceberg_system_schedulers) | **GET** /config/system/schedulers/ | Retrieve schedulers by name
+[**retrieve_iceberg_system_settings_destination_by_id**](ConfigurationApi.md#retrieve_iceberg_system_settings_destination_by_id) | **GET** /config/system-settings/report-generation/destination/{name}/ | Retrieve destination by name
+[**retrieve_iceberg_system_settings_destinations**](ConfigurationApi.md#retrieve_iceberg_system_settings_destinations) | **GET** /config/system-settings/report-generation/destinations/ | Retrieve destinations by name
+[**retrieve_iceberg_system_settings_report_by_id**](ConfigurationApi.md#retrieve_iceberg_system_settings_report_by_id) | **GET** /config/system-settings/report-generation/report/{name}/ | Retrieve report by name
+[**retrieve_iceberg_system_settings_reports**](ConfigurationApi.md#retrieve_iceberg_system_settings_reports) | **GET** /config/system-settings/report-generation/reports/ | Retrieve reports by name
+[**retrieve_iceberg_system_settings_scheduler_by_id**](ConfigurationApi.md#retrieve_iceberg_system_settings_scheduler_by_id) | **GET** /config/system-settings/scheduler/{name}/ | Retrieve scheduler by name
+[**retrieve_iceberg_system_settings_schedulers**](ConfigurationApi.md#retrieve_iceberg_system_settings_schedulers) | **GET** /config/system-settings/schedulers/ | Retrieve schedulers by name
+[**retrieve_iceberg_system_settings_system_settings**](ConfigurationApi.md#retrieve_iceberg_system_settings_system_settings) | **GET** /config/system-settings/ | Retrieve system-settings
+[**retrieve_iceberg_system_system**](ConfigurationApi.md#retrieve_iceberg_system_system) | **GET** /config/system/ | Retrieve system data
+[**retrieve_iceberg_topic_rule_rule**](ConfigurationApi.md#retrieve_iceberg_topic_rule_rule) | **GET** /config/topic/{topic_name}/rule/ | List all rule-names in a topic.
+[**retrieve_iceberg_topic_rule_rule_by_id**](ConfigurationApi.md#retrieve_iceberg_topic_rule_rule_by_id) | **GET** /config/topic/{topic_name}/rule/{rule_name}/ | Get a rule&#39;s configuration.
+[**retrieve_iceberg_topic_topic**](ConfigurationApi.md#retrieve_iceberg_topic_topic) | **GET** /config/topic/ | List all topic-names.
+[**retrieve_iceberg_topic_topic_by_id**](ConfigurationApi.md#retrieve_iceberg_topic_topic_by_id) | **GET** /config/topic/{topic_name}/ | Get a topic&#39;s configuration.
+[**retrieve_iceberg_topics_topics**](ConfigurationApi.md#retrieve_iceberg_topics_topics) | **GET** /config/topics/ | Get all topics&#39; configuration.
 [**retrieve_network_group_status**](ConfigurationApi.md#retrieve_network_group_status) | **GET** /network-group/{network_group_name}/status/ | Get network-group&#39;s status.
+[**retrieve_network_group_trigger_info**](ConfigurationApi.md#retrieve_network_group_trigger_info) | **GET** /network-group/{network_group_name}/trigger_info/ | Get network-group&#39;s trigger info.
 [**retrieve_orchestrator**](ConfigurationApi.md#retrieve_orchestrator) | **GET** /orchestrator/ | Get Orchestrator type
-[**rollback_unsaved_configuration**](ConfigurationApi.md#rollback_unsaved_configuration) | **DELETE** /configuration/ | Delete the un-committed configuration.
-[**update_iceberg_device_device_by_id**](ConfigurationApi.md#update_iceberg_device_device_by_id) | **PUT** /device/{device_id}/ | Overwrite a device.
-[**update_iceberg_device_group_device_group_by_id**](ConfigurationApi.md#update_iceberg_device_group_device_group_by_id) | **PUT** /device-group/{device_group_name}/ | Overwrite a device-group.
-[**update_iceberg_device_groups_device_groups_by_id**](ConfigurationApi.md#update_iceberg_device_groups_device_groups_by_id) | **PUT** /device-groups/ | Overwrite device-groups.
-[**update_iceberg_devices_devices_by_id**](ConfigurationApi.md#update_iceberg_devices_devices_by_id) | **PUT** /devices/ | Overwrite devices.
-[**update_iceberg_network_group_network_group_by_id**](ConfigurationApi.md#update_iceberg_network_group_network_group_by_id) | **PUT** /network-group/{network_group_name}/ | Overwrite a network-group.
-[**update_iceberg_network_groups_network_groups_by_id**](ConfigurationApi.md#update_iceberg_network_groups_network_groups_by_id) | **PUT** /network-groups/ | Overwrite network-groups.
-[**update_iceberg_notification_notification_by_id**](ConfigurationApi.md#update_iceberg_notification_notification_by_id) | **PUT** /notification/{notification_name}/ | Overwrite a notification.
-[**update_iceberg_notifications_notifications_by_id**](ConfigurationApi.md#update_iceberg_notifications_notifications_by_id) | **PUT** /notifications/ | Overwrite notifications.
-[**update_iceberg_playbook_playbook_by_id**](ConfigurationApi.md#update_iceberg_playbook_playbook_by_id) | **PUT** /playbook/{playbook_name}/ | Overwrite a playbook.
-[**update_iceberg_playbooks_playbooks_by_id**](ConfigurationApi.md#update_iceberg_playbooks_playbooks_by_id) | **PUT** /playbooks/ | Overwrite all playbooks.
-[**update_iceberg_retention_policies_retention_policies_id**](ConfigurationApi.md#update_iceberg_retention_policies_retention_policies_id) | **PUT** /retention-policies/ | Overwrite all retention-policies.
-[**update_iceberg_retention_policy_retention_policy_by_id**](ConfigurationApi.md#update_iceberg_retention_policy_retention_policy_by_id) | **PUT** /retention-policy/{retention_policy_name}/ | Overwrite a retention-policy.
-[**update_iceberg_system_destination_by_id**](ConfigurationApi.md#update_iceberg_system_destination_by_id) | **PUT** /system/report-generation/destination/{name}/ | Update destination by name
-[**update_iceberg_system_destinations**](ConfigurationApi.md#update_iceberg_system_destinations) | **PUT** /system/report-generation/destinations/ | Update destinations by name
-[**update_iceberg_system_report_by_id**](ConfigurationApi.md#update_iceberg_system_report_by_id) | **PUT** /system/report-generation/report/{name}/ | Update report by name
-[**update_iceberg_system_reports**](ConfigurationApi.md#update_iceberg_system_reports) | **PUT** /system/report-generation/reports/ | Update reports by name
-[**update_iceberg_system_scheduler_by_id**](ConfigurationApi.md#update_iceberg_system_scheduler_by_id) | **PUT** /system/scheduler/{name}/ | Update scheduler by name
-[**update_iceberg_system_schedulers**](ConfigurationApi.md#update_iceberg_system_schedulers) | **PUT** /system/schedulers/ | Update schedulers by name
-[**update_iceberg_system_settings_destination_by_id**](ConfigurationApi.md#update_iceberg_system_settings_destination_by_id) | **PUT** /system-settings/report-generation/destination/{name}/ | Update destination by name
-[**update_iceberg_system_settings_destinations**](ConfigurationApi.md#update_iceberg_system_settings_destinations) | **PUT** /system-settings/report-generation/destinations/ | Update destinations by name
-[**update_iceberg_system_settings_report_by_id**](ConfigurationApi.md#update_iceberg_system_settings_report_by_id) | **PUT** /system-settings/report-generation/report/{name}/ | Update report by name
-[**update_iceberg_system_settings_reports**](ConfigurationApi.md#update_iceberg_system_settings_reports) | **PUT** /system-settings/report-generation/reports/ | Update reports by name
-[**update_iceberg_system_settings_scheduler_by_id**](ConfigurationApi.md#update_iceberg_system_settings_scheduler_by_id) | **PUT** /system-settings/scheduler/{name}/ | Update scheduler by name
-[**update_iceberg_system_settings_schedulers**](ConfigurationApi.md#update_iceberg_system_settings_schedulers) | **PUT** /system-settings/schedulers/ | Update schedulers by name
-[**update_iceberg_system_settings_system_settings_by_id**](ConfigurationApi.md#update_iceberg_system_settings_system_settings_by_id) | **PUT** /system-settings/ | Update system-settings by ID
-[**update_iceberg_system_system_by_id**](ConfigurationApi.md#update_iceberg_system_system_by_id) | **PUT** /system/ | Update system by ID
-[**update_iceberg_topic_rule_rule_by_id**](ConfigurationApi.md#update_iceberg_topic_rule_rule_by_id) | **PUT** /topic/{topic_name}/rule/{rule_name}/ | Overwrite a rule.
-[**update_iceberg_topic_topic_by_id**](ConfigurationApi.md#update_iceberg_topic_topic_by_id) | **PUT** /topic/{topic_name}/ | Overwrite a topic.
-[**update_iceberg_topics_topics_by_id**](ConfigurationApi.md#update_iceberg_topics_topics_by_id) | **PUT** /topics/ | Overwrite topics.
+[**rollback_unsaved_configuration**](ConfigurationApi.md#rollback_unsaved_configuration) | **DELETE** /config/configuration/ | Delete the un-committed configuration.
+[**update_iceberg_device_device_by_id**](ConfigurationApi.md#update_iceberg_device_device_by_id) | **PUT** /config/device/{device_id}/ | Overwrite a device.
+[**update_iceberg_device_group_device_group_by_id**](ConfigurationApi.md#update_iceberg_device_group_device_group_by_id) | **PUT** /config/device-group/{device_group_name}/ | Overwrite a device-group.
+[**update_iceberg_device_groups_device_groups_by_id**](ConfigurationApi.md#update_iceberg_device_groups_device_groups_by_id) | **PUT** /config/device-groups/ | Overwrite device-groups.
+[**update_iceberg_devices_devices_by_id**](ConfigurationApi.md#update_iceberg_devices_devices_by_id) | **PUT** /config/devices/ | Overwrite devices.
+[**update_iceberg_network_group_network_group_by_id**](ConfigurationApi.md#update_iceberg_network_group_network_group_by_id) | **PUT** /config/network-group/{network_group_name}/ | Overwrite a network-group.
+[**update_iceberg_network_groups_network_groups_by_id**](ConfigurationApi.md#update_iceberg_network_groups_network_groups_by_id) | **PUT** /config/network-groups/ | Overwrite network-groups.
+[**update_iceberg_notification_notification_by_id**](ConfigurationApi.md#update_iceberg_notification_notification_by_id) | **PUT** /config/notification/{notification_name}/ | Overwrite a notification.
+[**update_iceberg_notifications_notifications_by_id**](ConfigurationApi.md#update_iceberg_notifications_notifications_by_id) | **PUT** /config/notifications/ | Overwrite notifications.
+[**update_iceberg_playbook_playbook_by_id**](ConfigurationApi.md#update_iceberg_playbook_playbook_by_id) | **PUT** /config/playbook/{playbook_name}/ | Overwrite a playbook.
+[**update_iceberg_playbooks_playbooks_by_id**](ConfigurationApi.md#update_iceberg_playbooks_playbooks_by_id) | **PUT** /config/playbooks/ | Overwrite all playbooks.
+[**update_iceberg_retention_policies_retention_policies_id**](ConfigurationApi.md#update_iceberg_retention_policies_retention_policies_id) | **PUT** /config/retention-policies/ | Overwrite all retention-policies.
+[**update_iceberg_retention_policy_retention_policy_by_id**](ConfigurationApi.md#update_iceberg_retention_policy_retention_policy_by_id) | **PUT** /config/retention-policy/{retention_policy_name}/ | Overwrite a retention-policy.
+[**update_iceberg_system_destination_by_id**](ConfigurationApi.md#update_iceberg_system_destination_by_id) | **PUT** /config/system/report-generation/destination/{name}/ | Update destination by name
+[**update_iceberg_system_destinations**](ConfigurationApi.md#update_iceberg_system_destinations) | **PUT** /config/system/report-generation/destinations/ | Update destinations by name
+[**update_iceberg_system_report_by_id**](ConfigurationApi.md#update_iceberg_system_report_by_id) | **PUT** /config/system/report-generation/report/{name}/ | Update report by name
+[**update_iceberg_system_reports**](ConfigurationApi.md#update_iceberg_system_reports) | **PUT** /config/system/report-generation/reports/ | Update reports by name
+[**update_iceberg_system_scheduler_by_id**](ConfigurationApi.md#update_iceberg_system_scheduler_by_id) | **PUT** /config/system/scheduler/{name}/ | Update scheduler by name
+[**update_iceberg_system_schedulers**](ConfigurationApi.md#update_iceberg_system_schedulers) | **PUT** /config/system/schedulers/ | Update schedulers by name
+[**update_iceberg_system_settings_destination_by_id**](ConfigurationApi.md#update_iceberg_system_settings_destination_by_id) | **PUT** /config/system-settings/report-generation/destination/{name}/ | Update destination by name
+[**update_iceberg_system_settings_destinations**](ConfigurationApi.md#update_iceberg_system_settings_destinations) | **PUT** /config/system-settings/report-generation/destinations/ | Update destinations by name
+[**update_iceberg_system_settings_report_by_id**](ConfigurationApi.md#update_iceberg_system_settings_report_by_id) | **PUT** /config/system-settings/report-generation/report/{name}/ | Update report by name
+[**update_iceberg_system_settings_reports**](ConfigurationApi.md#update_iceberg_system_settings_reports) | **PUT** /config/system-settings/report-generation/reports/ | Update reports by name
+[**update_iceberg_system_settings_scheduler_by_id**](ConfigurationApi.md#update_iceberg_system_settings_scheduler_by_id) | **PUT** /config/system-settings/scheduler/{name}/ | Update scheduler by name
+[**update_iceberg_system_settings_schedulers**](ConfigurationApi.md#update_iceberg_system_settings_schedulers) | **PUT** /config/system-settings/schedulers/ | Update schedulers by name
+[**update_iceberg_system_settings_system_settings_by_id**](ConfigurationApi.md#update_iceberg_system_settings_system_settings_by_id) | **PUT** /config/system-settings/ | Update system-settings by ID
+[**update_iceberg_system_system_by_id**](ConfigurationApi.md#update_iceberg_system_system_by_id) | **PUT** /config/system/ | Update system by ID
+[**update_iceberg_topic_rule_rule_by_id**](ConfigurationApi.md#update_iceberg_topic_rule_rule_by_id) | **PUT** /config/topic/{topic_name}/rule/{rule_name}/ | Overwrite a rule.
+[**update_iceberg_topic_topic_by_id**](ConfigurationApi.md#update_iceberg_topic_topic_by_id) | **PUT** /config/topic/{topic_name}/ | Overwrite a topic.
+[**update_iceberg_topics_topics_by_id**](ConfigurationApi.md#update_iceberg_topics_topics_by_id) | **PUT** /config/topics/ | Overwrite topics.
 [**user_retrieve_user_profile**](ConfigurationApi.md#user_retrieve_user_profile) | **GET** /user-profile/ | Get users profile information
 [**user_update_user_profile**](ConfigurationApi.md#user_update_user_profile) | **POST** /user-profile/ | Update user profile informations.
 
@@ -1744,6 +1747,53 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_healthbot_ingest_byoi_ingest_mappings**
+> delete_healthbot_ingest_byoi_ingest_mappings(authorization=authorization)
+
+Delete all ingest-mappings.
+
+Delete all ingest-mappings.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Delete all ingest-mappings.
+    api_instance.delete_healthbot_ingest_byoi_ingest_mappings(authorization=authorization)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->delete_healthbot_ingest_byoi_ingest_mappings: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_healthbot_ingest_settings_byoi_ingest_mappings**
 > delete_healthbot_ingest_settings_byoi_ingest_mappings(authorization=authorization)
 
@@ -3319,6 +3369,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ServiceStatus**](ServiceStatus.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, multipart/form-data
+ - **Accept**: application/json, application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_device_group_trigger_info**
+> TriggerSchema retrieve_device_group_trigger_info(device_group_name, authorization=authorization)
+
+Get device-group's trigger info.
+
+Get information about the triggers in a device-group.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+device_group_name = 'device_group_name_example' # str | Name of device-group
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Get device-group's trigger info.
+    api_response = api_instance.retrieve_device_group_trigger_info(device_group_name, authorization=authorization)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->retrieve_device_group_trigger_info: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **device_group_name** | **str**| Name of device-group | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+[**TriggerSchema**](TriggerSchema.md)
 
 ### Authorization
 
@@ -5255,6 +5355,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ServiceStatus**](ServiceStatus.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, multipart/form-data
+ - **Accept**: application/json, application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_network_group_trigger_info**
+> TriggerSchema retrieve_network_group_trigger_info(network_group_name, authorization=authorization)
+
+Get network-group's trigger info.
+
+Get information about the triggers in a device-group.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.ConfigurationApi()
+network_group_name = 'network_group_name_example' # str | Name of network-group
+authorization = 'authorization_example' # str | authentication header object (optional)
+
+try:
+    # Get network-group's trigger info.
+    api_response = api_instance.retrieve_network_group_trigger_info(network_group_name, authorization=authorization)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ConfigurationApi->retrieve_network_group_trigger_info: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **network_group_name** | **str**| Name of network-group | 
+ **authorization** | **str**| authentication header object | [optional] 
+
+### Return type
+
+[**TriggerSchema**](TriggerSchema.md)
 
 ### Authorization
 

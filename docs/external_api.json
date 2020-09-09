@@ -1,17 +1,17 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "1.0.0",
+    "version": "3.1.0",
     "title": "Healthbot APIs",
     "description": "API interface for Healthbot application",
     "contact": {
-      "name": "Healthbot team",
-      "email": "healthbot-hackers@juniper.net",
-      "url": "https://iceberg.juniper.net"
+      "name": "Healthbot Team",
+      "email": "healthbot-feedback@juniper.net",
+      "url": "https://www.juniper.net/documentation/product/en_US/healthbot"
     }
   },
   "host": "api-server",
-  "basePath": "/api/v1",
+  "basePath": "/api/v2",
   "schemes": [
     "http"
   ],
@@ -182,7 +182,253 @@
         ]
       }
     },
-    "/configuration/": {
+    "/tsdb/query": {
+      "get": {
+        "description": "Query TSDB",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "Name of the database. Multiple databases should be separated by ','. '*' can be used to specify all databases.",
+            "in": "query",
+            "name": "db",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the deviceGroup(s). Multiple device groups should be separated by ','. This can be used in combination with device, but is not mandatory. If device is given, then query will be executed only for that particular devices in the given device group, else all devices in group will be considered. Given devices will be applicable for all give device-groups.",
+            "in": "query",
+            "name": "deviceGroup",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the device. Multiple device should be separated by ','. This should be used along with deviceGroup. Without deviceGroup, this config will not be considered",
+            "in": "query",
+            "name": "device",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the measurement. Optional if topic/rule/trigger is used",
+            "in": "query",
+            "name": "measurement",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Name of Healthbot topic. Optional if measurement is used",
+            "in": "query",
+            "name": "topic",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Name of Healthbot rule. Required if topic is used. Optional if measurement is used",
+            "in": "query",
+            "name": "rule",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Name of Healthbot trigger. Optional if measurement is used or rule table is being queried",
+            "in": "query",
+            "name": "trigger",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Fields that needs to be retrieved. Use * for to query all fields. Eg: fields=field1, field2",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Sort points in descending order based on time. By default points will be sorted in ascending order. Eg: order=desc",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Group results based on specified tags. Use * to group by all tags. Eg: groupBy=key1, key2",
+            "in": "query",
+            "name": "groupBy",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Limit number of points in the result. If groupBy is used limit is applied per group. Eg: limit=10",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Where clause filters data based on fields, tags, and/or timestamps. Eg: where=\"interface-name\" = 'ge-0/0/1' and \"in-pkts\" > 0",
+            "in": "query",
+            "name": "where",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation. NOTE: the \"values\" in the query result is a list of list. Elements in this list can be of any type string/integer/float/boolean. Because of the limitation in swagger 2.0, this information could not be encoded. So for now it is maked as string",
+            "schema": {
+              "$ref": "#/definitions/tsdb_results"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/TsdbError"
+            }
+          },
+          "500": {
+            "description": "Innternal Error",
+            "schema": {
+              "$ref": "#/definitions/TsdbError"
+            }
+          }
+        },
+        "operationId": "query_tsdb",
+        "summary": "TSDB query",
+        "tags": [
+          "system"
+        ]
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Query TSDB",
+        "parameters": [
+          {
+            "description": "Query TSDB body object",
+            "in": "body",
+            "name": "tsdb_query_body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/tsdb_post_body",
+              "type": "array"
+            }
+          },
+          {
+            "description": "Name of the database. Multiple databases should be separated by ','. '*' can be used to specify all databases.",
+            "in": "query",
+            "name": "db",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the deviceGroup(s). Multiple device groups should be separated by ','. This can be used in combination with device, but is not mandatory. If device is given, then query will be executed only for that particular devices in the given device group, else all devices in group will be considered. Given devices will be applicable for all give device-groups.",
+            "in": "query",
+            "name": "deviceGroup",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the device. Multiple device should be separated by ','. This should be used along with deviceGroup. Without deviceGroup, this config will not be considered",
+            "in": "query",
+            "name": "device",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Name of the measurement. Optional if topic/rule/trigger is used",
+            "in": "query",
+            "name": "measurement",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Name of Healthbot topic. Optional if measurement is used",
+            "in": "query",
+            "name": "topic",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Name of Healthbot rule. Required if topic is used. Optional if measurement is used",
+            "in": "query",
+            "name": "rule",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Name of Healthbot trigger. Optional if measurement is used or rule table is being queried",
+            "in": "query",
+            "name": "trigger",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Fields that needs to be retrieved. Use * for to query all fields. Eg: fields=field1, field2",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Sort points in descending order based on time. By default points will be sorted in ascending order. Eg: order=desc",
+            "in": "query",
+            "name": "order",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Group results based on specified tags. Use * to group by all tags. Eg: groupBy=key1, key2",
+            "in": "query",
+            "name": "groupBy",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Limit number of points in the result. If groupBy is used limit is applied per group. Eg: limit=10",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Where clause filters data based on fields, tags, and/or timestamps. Eg: where=\"interface-name\" = 'ge-0/0/1' and \"in-pkts\" > 0",
+            "in": "query",
+            "name": "where",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation. NOTE: the \"values\" in the query result is a list of list. Elements in this list can be of any type string/integer/float/boolean. Because of the limitation in swagger 2.0, this information could not be encoded. So for now it is maked as string",
+            "schema": {
+              "$ref": "#/definitions/tsdb_results"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/TsdbError"
+            }
+          },
+          "500": {
+            "description": "Innternal Error",
+            "schema": {
+              "$ref": "#/definitions/TsdbError"
+            }
+          }
+        },
+        "operationId": "query_tsdb_post",
+        "summary": "TSDB query",
+        "tags": [
+          "system"
+        ]
+      }
+    },
+    "/config/configuration/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -285,7 +531,2295 @@
         ]
       }
     },
-    "/ingest-settings/": {
+    "/config/ingest/": {
+      "delete": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Delete operation of resource: ingest",
+        "operationId": "delete_iceberg_ingest",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Delete ingest by ID",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          }
+        ]
+      },
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve operation of resource: ingest",
+        "operationId": "retrieve_iceberg_ingest",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/ingest-settings_schema"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve ingest"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Create operation of resource: ingest",
+        "operationId": "create_iceberg_ingest",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "ingest_settingsbody object",
+            "in": "body",
+            "name": "ingest_settings",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ingest-settings_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Create ingest by ID"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Update operation of resource: ingest",
+        "operationId": "update_iceberg_ingest",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "ingest_settingsbody object",
+            "in": "body",
+            "name": "ingest_settings",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ingest-settings_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Update ingest by ID"
+      }
+    },
+    "/config/ingest/data-enrichment/tagging-profiles/": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve operation of resource: tagging-profile",
+        "operationId": "retrieve_healthbot_ingest_tagging_profiles",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "items": {
+                "type": "string",
+                "x-path": "/healthbot/ingest-settings/data-enrichment/tagging-profile/{name}/"
+              },
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve tagging-profile by ID"
+      },
+      "delete": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Delete operation of resource: tagging-profile",
+        "operationId": "delete_healthbot_ingest_tagging_profiles",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Delete tagging-profile by ID"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Create operation of resource: tagging-profile",
+        "operationId": "create_healthbot_ingest_tagging_profiles",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "tagging_profilebody object",
+            "in": "body",
+            "name": "tagging_profile",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tagging-profiles_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "items": {
+                "type": "string",
+                "x-path": "/healthbot/ingest-settings/data-enrichment/tagging-profile/{name}/"
+              },
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Create tagging-profile by ID"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Update operation of resource: tagging-profile",
+        "operationId": "update_healthbot_ingest_tagging_profiles",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "tagging_profilebody object",
+            "in": "body",
+            "name": "tagging_profiles",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tagging-profiles_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "items": {
+                "type": "string",
+                "x-path": "/healthbot/ingest-settings/data-enrichment/tagging-profile/{name}/"
+              },
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Update tagging-profile by ID"
+      }
+    },
+    "/config/ingest/data-enrichment/tagging-profile/{name}/": {
+      "delete": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Delete operation of resource: tagging-profile",
+        "operationId": "delete_healthbot_ingest_tagging_profile_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "ID of name",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Delete tagging-profile by ID"
+      },
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve operation of resource: tagging-profile",
+        "operationId": "retrieve_healthbot_ingest_tagging_profile_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "ID of name",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/tagging-profile_schema"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve tagging-profile by ID"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Create operation of resource: tagging-profile",
+        "operationId": "create_healthbot_ingest_tagging_profile_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "ID of name",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "tagging_profilebody object",
+            "in": "body",
+            "name": "tagging_profile",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tagging-profile_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Create tagging-profile by ID"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Update operation of resource: tagging-profile",
+        "operationId": "update_healthbot_ingest_tagging_profile_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "ID of name",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "tagging_profilebody object",
+            "in": "body",
+            "name": "tagging_profile",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tagging-profile_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Update tagging-profile by ID"
+      }
+    },
+    "/config/ingest/flow/": {
+      "delete": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Delete operation of resource: flow",
+        "operationId": "delete_iceberg_ingest_flow",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Delete flow by ID",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          }
+        ]
+      },
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve operation of resource: flow",
+        "operationId": "retrieve_iceberg_ingest_flow",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/flow_schema"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve flow"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Create operation of resource: flow",
+        "operationId": "create_iceberg_ingest_flow",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "flowbody object",
+            "in": "body",
+            "name": "flow",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/flow_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Create flow by ID"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Update operation of resource: flow",
+        "operationId": "update_iceberg_ingest_flow",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "flowbody object",
+            "in": "body",
+            "name": "flow",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/flow_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Update flow by ID"
+      }
+    },
+    "/config/ingest/flow/template/": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve operation of resource: template",
+        "operationId": "retrieve_iceberg_ingest_flow_template_ids",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "items": {
+                "type": "string",
+                "x-path": "/healthbot/ingest/flow/template/{name}/"
+              },
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve template"
+      }
+    },
+    "/config/ingest/flow/template/{name}/": {
+      "delete": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Delete operation of resource: template",
+        "operationId": "delete_iceberg_ingest_flow_template_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of template",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Delete template by ID"
+      },
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve operation of resource: template",
+        "operationId": "retrieve_iceberg_ingest_flow_template_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of template",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/template_schema"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve template by ID"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Create operation of resource: template",
+        "operationId": "create_iceberg_ingest_flow_template_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of template",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "templatebody object",
+            "in": "body",
+            "name": "template",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/template_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Create template by ID"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Update operation of resource: template",
+        "operationId": "update_iceberg_ingest_flow_template_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of template",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "templatebody object",
+            "in": "body",
+            "name": "template",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/template_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Update template by ID"
+      }
+    },
+    "/config/ingest/frequency-profiles/": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve operation of resource: frequency-profile",
+        "operationId": "retrieve_healthbot_ingest_frequency_profile",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "items": {
+                "type": "string",
+                "x-path": "/healthbot/ingest/frequency-profile/{name}/"
+              },
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve frequency-profile"
+      }
+    },
+    "/config/ingest/frequency-profile/{name}/": {
+      "delete": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Delete operation of resource: frequency-profile",
+        "operationId": "delete_healthbot_ingest_frequency_profile__by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "ID of name",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Delete frequency-profile by ID"
+      },
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve operation of resource: frequency-profile",
+        "operationId": "retrieve_healthbot_ingest_frequency_profile_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "ID of name",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/frequency-profile_schema"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve frequency-profile by ID"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Create operation of resource: frequency-profile",
+        "operationId": "create_healthbot_ingest_frequency_profile_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "ID of name",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "frequency_profilebody object",
+            "in": "body",
+            "name": "frequency_profile",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/frequency-profile_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Create frequency-profile by ID"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Update operation of resource: frequency-profile",
+        "operationId": "update_healthbot_ingest_frequency_profile_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "ID of name",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "frequency_profilebody object",
+            "in": "body",
+            "name": "frequency_profile",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/frequency-profile_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Update frequency-profile by ID"
+      }
+    },
+    "/config/ingest/syslog/": {
+      "delete": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Delete operation of resource: syslog",
+        "operationId": "delete_iceberg_ingest_syslog",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Delete syslog by ID",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          }
+        ]
+      },
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve operation of resource: syslog",
+        "operationId": "retrieve_iceberg_ingest_syslog",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/syslog_schema"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve syslog"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Create operation of resource: syslog",
+        "operationId": "create_iceberg_ingest_syslog",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "syslogbody object",
+            "in": "body",
+            "name": "syslog",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/syslog_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Create syslog by ID"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Update operation of resource: syslog",
+        "operationId": "update_iceberg_ingest_syslog",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "syslogbody object",
+            "in": "body",
+            "name": "syslog",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/syslog_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Update syslog by ID"
+      }
+    },
+    "/config/ingest/syslog/pattern-set/": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve operation of resource: pattern-set",
+        "operationId": "retrieve_iceberg_ingest_syslog_pattern_set_ids",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "items": {
+                "type": "string",
+                "x-path": "/iceberg/ingest/syslog/pattern-set/{name}/"
+              },
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve pattern-set"
+      }
+    },
+    "/config/ingest/syslog/pattern-sets/": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve operation of resource: pattern-set",
+        "operationId": "retrieve_iceberg_ingest_syslog_pattern_sets",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/pattern-set_schema"
+              },
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve pattern-set by ID"
+      }
+    },
+    "/config/ingest/syslog/pattern-set/{name}/": {
+      "delete": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Delete operation of resource: pattern-set",
+        "operationId": "delete_iceberg_ingest_syslog_pattern_set_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of pattern-set",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Delete pattern-set by ID"
+      },
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve operation of resource: pattern-set",
+        "operationId": "retrieve_iceberg_ingest_syslog_pattern_set_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of pattern-set",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/pattern-set_schema"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve pattern-set by ID"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Create operation of resource: pattern-set",
+        "operationId": "create_iceberg_ingest_syslog_pattern_set_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of pattern-set",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "pattern_setbody object",
+            "in": "body",
+            "name": "pattern_set",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pattern-set_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Create pattern-set by ID"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Update operation of resource: pattern-set",
+        "operationId": "update_iceberg_ingest_syslog_pattern_set_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of pattern-set",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "pattern_setbody object",
+            "in": "body",
+            "name": "pattern_set",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pattern-set_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Update pattern-set by ID"
+      }
+    },
+    "/config/ingest/syslog/pattern/": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve operation of resource: pattern",
+        "operationId": "retrieve_iceberg_ingest_syslog_pattern_ids",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "items": {
+                "type": "string",
+                "x-path": "/iceberg/ingest/syslog/pattern/{name}/"
+              },
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve pattern"
+      }
+    },
+    "/config/ingest/syslog/patterns/": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve operation of resource: pattern",
+        "operationId": "retrieve_iceberg_ingest_syslog_patterns",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/pattern_schema"
+              },
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve pattern by ID"
+      }
+    },
+    "/config/ingest/syslog/pattern/{name}/": {
+      "delete": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Delete operation of resource: pattern",
+        "operationId": "delete_iceberg_ingest_syslog_pattern_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of pattern",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Delete pattern by ID"
+      },
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve operation of resource: pattern",
+        "operationId": "retrieve_iceberg_ingest_syslog_pattern_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of pattern",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/pattern_schema"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve pattern by ID"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Create operation of resource: pattern",
+        "operationId": "create_iceberg_ingest_syslog_pattern_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of pattern",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "patternbody object",
+            "in": "body",
+            "name": "pattern",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pattern_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Create pattern by ID"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Update operation of resource: pattern",
+        "operationId": "update_iceberg_ingest_syslog_pattern_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of pattern",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "patternbody object",
+            "in": "body",
+            "name": "pattern",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pattern_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Update pattern by ID"
+      }
+    },
+    "/config/ingest/byoi/custom-plugins/": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve all the custom-plugins configured.",
+        "operationId": "retrieve_healthbot_ingest_byoi_custom_plugins",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/custom-plugin_schema"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve custom-plugin by ID"
+      }
+    },
+    "/config/ingest/byoi/custom-plugin/{name}/": {
+      "delete": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Delete operation of resource: custom-plugin",
+        "operationId": "delete_healthbot_ingest_byoi_custom_plugin_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of custom-plugin",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Delete custom-plugin by ID"
+      },
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve operation of resource: custom-plugin",
+        "operationId": "retrieve_healthbot_ingest_byoi_custom_plugin_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of custom-plugin",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/custom-plugin_schema"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve custom-plugin by ID"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Create operation of resource: custom-plugin",
+        "operationId": "create_healthbot_ingest_byoi_custom_plugin_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of custom-plugin",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "custom_pluginbody object",
+            "in": "body",
+            "name": "custom_plugin",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/custom-plugin_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Create custom-plugin by ID"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Update operation of resource: custom-plugin",
+        "operationId": "update_healthbot_ingest_byoi_custom_plugin_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of custom-plugin",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "custom_pluginbody object",
+            "in": "body",
+            "name": "custom_plugin",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/custom-plugin_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Update custom-plugin by ID"
+      }
+    },
+    "/config/ingest/byoi/default-plugin/tlive-kafka-ocs/": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve all the tlive-kafka-ocs configured.",
+        "operationId": "retrieve_healthbot_ingest_byoi_default_plugin_tlive_kafkas",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "items": {
+                "type": "string",
+                "x-path": "/healthbot/ingest/byoi/default-plugin/tlive-kafka-oc/{name}/"
+              },
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve tlive-kafka-oc"
+      }
+    },
+    "/config/ingest/byoi/default-plugin/tlive-kafka-oc/{name}/": {
+      "delete": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Delete operation of resource: tlive-kafka-oc",
+        "operationId": "delete_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of tlive-kafka-oc",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Delete tlive-kafka-oc by ID"
+      },
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve operation of resource: tlive-kafka-oc",
+        "operationId": "retrieve_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of tlive-kafka-oc",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/tlive-kafka-oc_schema"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve tlive-kafka-oc by ID"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Add/Merge a tlive-kafka-oc configuration.",
+        "operationId": "create_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of tlive-kafka-oc",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "tlive_kafkabody object",
+            "in": "body",
+            "name": "tlive_kafka",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tlive-kafka-oc_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Create tlive-kafka-oc by ID"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Update operation of resource: tlive-kafka-oc",
+        "operationId": "update_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of tlive-kafka-oc",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "tlive_kafka body object",
+            "in": "body",
+            "name": "tlive_kafka",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tlive-kafka-oc_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Update tlive-kafka-oc by ID"
+      }
+    },
+    "/config/ingest/byoi/ingest-mappings/": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve all the ingest mappings configured.",
+        "operationId": "retrieve_healthbot_ingest_byoi_ingest_mappings",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "items": {
+                "type": "string",
+                "x-path": "/healthbot/ingest/byoi/ingest-mapping/{name}/"
+              },
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve ingest-mapping"
+      },
+      "delete": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Delete all ingest-mappings.",
+        "operationId": "delete_healthbot_ingest_byoi_ingest_mappings",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Delete all ingest-mappings.",
+        "tags": [
+          "configuration"
+        ],
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/config/ingest/byoi/ingest-mapping/{name}/": {
+      "delete": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Delete ingest-mapping by name",
+        "operationId": "delete_healthbot_ingest_byoi_ingest_mapping_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of ingest-mapping",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Delete ingest-mapping by ID"
+      },
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve ingest-mapping by name",
+        "operationId": "retrieve_healthbot_ingest_byoi_ingest_mapping_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of ingest-mapping",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/ingest-mapping_schema"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve ingest-mapping by ID"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Create ingest-mapping by name",
+        "operationId": "create_healthbot_ingest_byoi_ingest_mapping_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of ingest-mapping",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "ingest_mappingbody object",
+            "in": "body",
+            "name": "ingest_mapping",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ingest-mapping_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Create ingest-mapping by ID"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Update ingest-mapping by name",
+        "operationId": "update_healthbot_ingest_byoi_ingest_mapping_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of ingest-mapping",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "ingest_mappingbody object",
+            "in": "body",
+            "name": "ingest_mapping",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ingest-mapping_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Update ingest-mapping by ID"
+      }
+    },
+    "/config/ingest-settings/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -304,7 +2838,7 @@
           }
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -423,7 +2957,327 @@
         "summary": "Update ingest-settings by ID"
       }
     },
-    "/ingest-settings/flow/": {
+    "/config/ingest-settings/data-enrichment/tagging-profiles/": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve operation of resource: tagging-profile",
+        "operationId": "retrieve_healthbot_ingest_settings_tagging_profiles",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "items": {
+                "type": "string",
+                "x-path": "/healthbot/ingest-settings/data-enrichment/tagging-profile/{name}/"
+              },
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve tagging-profile by ID"
+      },
+      "delete": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Delete operation of resource: tagging-profile",
+        "operationId": "delete_healthbot_ingest_settings_tagging_profiles",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Delete tagging-profile by ID"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Create operation of resource: tagging-profile",
+        "operationId": "create_healthbot_ingest_settings_tagging_profiles",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "tagging_profilebody object",
+            "in": "body",
+            "name": "tagging_profile",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tagging-profiles_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "items": {
+                "type": "string",
+                "x-path": "/healthbot/ingest-settings/data-enrichment/tagging-profile/{name}/"
+              },
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Create tagging-profile by ID"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Update operation of resource: tagging-profile",
+        "operationId": "update_healthbot_ingest_settings_tagging_profiles",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "tagging_profilebody object",
+            "in": "body",
+            "name": "tagging_profiles",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tagging-profiles_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "items": {
+                "type": "string",
+                "x-path": "/healthbot/ingest-settings/data-enrichment/tagging-profile/{name}/"
+              },
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Update tagging-profile by ID"
+      }
+    },
+    "/config/ingest-settings/data-enrichment/tagging-profile/{name}/": {
+      "delete": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Delete operation of resource: tagging-profile",
+        "operationId": "delete_healthbot_ingest_settings_tagging_profile_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "ID of name",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Delete tagging-profile by ID"
+      },
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve operation of resource: tagging-profile",
+        "operationId": "retrieve_healthbot_ingest_settings_tagging_profile_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "ID of name",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/tagging-profile_schema"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve tagging-profile by ID"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Create operation of resource: tagging-profile",
+        "operationId": "create_healthbot_ingest_settings_tagging_profile_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "ID of name",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "tagging_profilebody object",
+            "in": "body",
+            "name": "tagging_profile",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tagging-profile_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Create tagging-profile by ID"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Update operation of resource: tagging-profile",
+        "operationId": "update_healthbot_ingest_settings_tagging_profile_by_id",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "ID of name",
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "tagging_profilebody object",
+            "in": "body",
+            "name": "tagging_profile",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/tagging-profile_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Update tagging-profile by ID"
+      }
+    },
+    "/config/ingest-settings/flow/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -442,7 +3296,7 @@
           }
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -560,7 +3414,7 @@
         "summary": "Update flow by ID"
       }
     },
-    "/ingest-settings/flow/template/": {
+    "/config/ingest-settings/flow/template/": {
       "get": {
         "consumes": [
           "application/json"
@@ -602,7 +3456,7 @@
         "summary": "Retrieve template"
       }
     },
-    "/ingest-settings/flow/template/{name}/": {
+    "/config/ingest-settings/flow/template/{name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -628,7 +3482,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -767,7 +3621,7 @@
         "summary": "Update template by ID"
       }
     },
-    "/ingest-settings/frequency-profiles/": {
+    "/config/ingest-settings/frequency-profiles/": {
       "get": {
         "consumes": [
           "application/json"
@@ -809,7 +3663,7 @@
         "summary": "Retrieve frequency-profile"
       }
     },
-    "/ingest-settings/frequency-profile/{name}/": {
+    "/config/ingest-settings/frequency-profile/{name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -835,7 +3689,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -974,7 +3828,7 @@
         "summary": "Update frequency-profile by ID"
       }
     },
-    "/ingest-settings/syslog/": {
+    "/config/ingest-settings/syslog/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -993,7 +3847,7 @@
           }
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -1111,7 +3965,7 @@
         "summary": "Update syslog by ID"
       }
     },
-    "/ingest-settings/syslog/pattern-set/": {
+    "/config/ingest-settings/syslog/pattern-set/": {
       "get": {
         "consumes": [
           "application/json"
@@ -1153,7 +4007,7 @@
         "summary": "Retrieve pattern-set"
       }
     },
-    "/ingest-settings/syslog/pattern-sets/": {
+    "/config/ingest-settings/syslog/pattern-sets/": {
       "get": {
         "consumes": [
           "application/json"
@@ -1194,7 +4048,7 @@
         "summary": "Retrieve pattern-set by ID"
       }
     },
-    "/ingest-settings/syslog/pattern-set/{name}/": {
+    "/config/ingest-settings/syslog/pattern-set/{name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -1220,7 +4074,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -1359,7 +4213,7 @@
         "summary": "Update pattern-set by ID"
       }
     },
-    "/ingest-settings/syslog/pattern/": {
+    "/config/ingest-settings/syslog/pattern/": {
       "get": {
         "consumes": [
           "application/json"
@@ -1401,7 +4255,7 @@
         "summary": "Retrieve pattern"
       }
     },
-    "/ingest-settings/syslog/patterns/": {
+    "/config/ingest-settings/syslog/patterns/": {
       "get": {
         "consumes": [
           "application/json"
@@ -1442,7 +4296,7 @@
         "summary": "Retrieve pattern by ID"
       }
     },
-    "/ingest-settings/syslog/pattern/{name}/": {
+    "/config/ingest-settings/syslog/pattern/{name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -1468,7 +4322,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -1607,7 +4461,7 @@
         "summary": "Update pattern by ID"
       }
     },
-    "/ingest-settings/byoi/custom-plugins/": {
+    "/config/ingest-settings/byoi/custom-plugins/": {
       "get": {
         "consumes": [
           "application/json"
@@ -1645,7 +4499,7 @@
         "summary": "Retrieve custom-plugin by ID"
       }
     },
-    "/ingest-settings/byoi/custom-plugin/{name}/": {
+    "/config/ingest-settings/byoi/custom-plugin/{name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -1671,7 +4525,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -1810,7 +4664,7 @@
         "summary": "Update custom-plugin by ID"
       }
     },
-    "/ingest-settings/byoi/default-plugin/tlive-kafka-ocs/": {
+    "/config/ingest-settings/byoi/default-plugin/tlive-kafka-ocs/": {
       "get": {
         "consumes": [
           "application/json"
@@ -1852,7 +4706,7 @@
         "summary": "Retrieve tlive-kafka-oc"
       }
     },
-    "/ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/": {
+    "/config/ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -1878,7 +4732,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -2017,7 +4871,7 @@
         "summary": "Update tlive-kafka-oc by ID"
       }
     },
-    "/ingest-settings/byoi/ingest-mappings/": {
+    "/config/ingest-settings/byoi/ingest-mappings/": {
       "get": {
         "consumes": [
           "application/json"
@@ -2089,7 +4943,7 @@
         ]
       }
     },
-    "/ingest-settings/byoi/ingest-mapping/{name}/": {
+    "/config/ingest-settings/byoi/ingest-mapping/{name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -2115,7 +4969,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -2254,7 +5108,7 @@
         "summary": "Update ingest-mapping by ID"
       }
     },
-    "/configuration/check/device-group/{device_group_name}/": {
+    "/config/configuration/check/device-group/{device_group_name}/": {
       "post": {
         "description": "Checks if the un-committed configuration of a device-group is correct. The un-committed changes are merged with the committed configuration and the complete configuration required for the supplied device-group is validated.",
         "operationId": "check_device_group_unsaved_configuration",
@@ -2290,7 +5144,7 @@
         ]
       }
     },
-    "/configuration/check/network-group/{network_group_name}/": {
+    "/config/configuration/check/network-group/{network_group_name}/": {
       "post": {
         "description": "Checks if the un-committed configuration of a network-group is correct. The un-committed changes are merged with the committed configuration and the complete configuration required for the supplied network-group is validated.",
         "operationId": "check_network_group_unsaved_configuration",
@@ -2326,7 +5180,7 @@
         ]
       }
     },
-    "/configuration/jobs/": {
+    "/config/configuration/jobs/": {
       "get": {
         "description": "Return list of all the Commit Job ID's",
         "operationId": "retrieve_configuration_jobs",
@@ -2589,7 +5443,7 @@
         "summary": "Get information about tags keys and values in a table."
       }
     },
-    "/data-store/{group_name}/": {
+    "/config/data-store/{group_name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -2737,7 +5591,7 @@
         },
         "summary": "Create dashboard details.",
         "tags": [
-          "data-source"
+          "data-store"
         ]
       },
       "put": {
@@ -2794,7 +5648,7 @@
         ]
       }
     },
-    "/instances-schedule-state/{group_type}/{group_name}/": {
+    "/config/instances-schedule-state/{group_type}/{group_name}/": {
       "get": {
         "consumes": [
           "application/json"
@@ -2896,7 +5750,7 @@
         ]
       }
     },
-    "/device-group/": {
+    "/config/device-group/": {
       "get": {
         "consumes": [
           "application/json"
@@ -2947,7 +5801,7 @@
         ]
       }
     },
-    "/device-group/{device_group_name}/": {
+    "/config/device-group/{device_group_name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -3163,7 +6017,46 @@
         ]
       }
     },
-    "/device-group/{device_group_name}/facts/": {
+    "/device-group/{device_group_name}/trigger_info/": {
+      "get": {
+        "description": "Get information about the triggers in a device-group.",
+        "operationId": "retrieve_device_group_trigger_info",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of device-group",
+            "in": "path",
+            "name": "device_group_name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Trigger info for a device group.",
+            "schema": {
+              "$ref": "#/definitions/trigger_schema"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "summary": "Get device-group's trigger info.",
+        "tags": [
+          "configuration"
+        ]
+      }
+    },
+    "/config/device-group/{device_group_name}/facts/": {
       "get": {
         "description": "Get the fact details of every device under given group",
         "operationId": "retrieve_iceberg_devices_facts_by_group",
@@ -3222,7 +6115,7 @@
         ]
       }
     },
-    "/device-groups/": {
+    "/config/device-groups/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -3372,7 +6265,7 @@
         ]
       }
     },
-    "/device/": {
+    "/config/device/": {
       "get": {
         "consumes": [
           "application/json"
@@ -3423,7 +6316,7 @@
         ]
       }
     },
-    "/device/{device_id}/": {
+    "/config/device/{device_id}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -3600,7 +6493,7 @@
         ]
       }
     },
-    "/device/{device_id}/facts/": {
+    "/config/device/{device_id}/facts/": {
       "get": {
         "description": "Get the fact details of a device by its `device-id`.",
         "operationId": "retrieve_iceberg_device_device_facts_by_id",
@@ -3659,7 +6552,7 @@
         ]
       }
     },
-    "/devices/": {
+    "/config/devices/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -3809,7 +6702,7 @@
         ]
       }
     },
-    "/devices/facts/": {
+    "/config/devices/facts/": {
       "get": {
         "description": "Get the fact details of every device",
         "operationId": "retrieve_iceberg_devices_devices_facts",
@@ -4440,7 +7333,44 @@
         "summary": "Get instances of a device event."
       }
     },
-    "/files/helper-files/": {
+    "/field-capture/": {
+      "get": {
+        "description": "Get the values of all fields",
+        "operationId": "get_fields_from_xpath",
+        "parameters": [
+          {
+            "description": "XPATH",
+            "in": "query",
+            "name": "xpath",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Timestamp",
+            "in": "query",
+            "name": "timestamp",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/field-capture_schema"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "summary": "Get last value of all fields before a given timestamp."
+      }
+    },
+    "/config/files/helper-files/": {
       "get": {
         "description": "Get a list of all the helper-file file-names.",
         "operationId": "retrieve_files_helper_files",
@@ -4485,7 +7415,7 @@
         "summary": "Get all helper-file names."
       }
     },
-    "/files/helper-files/{file_name}/": {
+    "/config/files/helper-files/{file_name}/": {
       "delete": {
         "description": "Delete the specified helper-file. Delete will not fail if the helper-file is being used by some service.",
         "operationId": "delete_files_helper_files_by_file_name",
@@ -4614,7 +7544,7 @@
         "summary": "Upload a helper-file."
       }
     },
-    "/files/helper-files/backup/": {
+    "/config/files/helper-files/backup/": {
       "get": {
         "description": "Download helper files tar file, which will include the config and input directory.",
         "operationId": "backup_helper_files",
@@ -4680,7 +7610,7 @@
         "summary": "Upload a helper-file."
       }
     },
-    "/files/certificates/{file_name}/": {
+    "/config/files/certificates/{file_name}/": {
       "delete": {
         "description": "Delete the specified certificate-file. Delete will not fail if the certificate-file is being used by some service.",
         "operationId": "delete_files_certificates_by_file_name",
@@ -4837,7 +7767,7 @@
         "summary": "Upload a certificate file."
       }
     },
-    "/sensor/device-group/{device_group_name}/": {
+    "/config/sensor/device-group/{device_group_name}/": {
       "get": {
         "description": "GET sensors subscribed for a device-group",
         "operationId": "retrieve_sensor_device_group",
@@ -5873,7 +8803,7 @@
         ]
       }
     },
-    "/network-group/": {
+    "/config/network-group/": {
       "get": {
         "consumes": [
           "application/json"
@@ -5924,7 +8854,7 @@
         ]
       }
     },
-    "/network-group/{network_group_name}/": {
+    "/config/network-group/{network_group_name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -5950,7 +8880,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -6140,7 +9070,46 @@
         ]
       }
     },
-    "/network-groups/": {
+    "/network-group/{network_group_name}/trigger_info/": {
+      "get": {
+        "description": "Get information about the triggers in a device-group.",
+        "operationId": "retrieve_network_group_trigger_info",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "Authorization",
+            "type": "string"
+          },
+          {
+            "description": "Name of network-group",
+            "in": "path",
+            "name": "network_group_name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Trigger info for a network group.",
+            "schema": {
+              "$ref": "#/definitions/trigger_schema"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "summary": "Get network-group's trigger info.",
+        "tags": [
+          "configuration"
+        ]
+      }
+    },
+    "/config/network-groups/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -6290,7 +9259,7 @@
         ]
       }
     },
-    "/notification/": {
+    "/config/notification/": {
       "get": {
         "consumes": [
           "application/json"
@@ -6341,7 +9310,7 @@
         ]
       }
     },
-    "/notification/{notification_name}/": {
+    "/config/notification/{notification_name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -6518,7 +9487,7 @@
         ]
       }
     },
-    "/notifications/": {
+    "/config/notifications/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -6668,7 +9637,7 @@
         ]
       }
     },
-    "/playbook/": {
+    "/config/playbook/": {
       "get": {
         "consumes": [
           "application/json"
@@ -6719,7 +9688,7 @@
         ]
       }
     },
-    "/playbook/{playbook_name}/": {
+    "/config/playbook/{playbook_name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -6896,7 +9865,7 @@
         ]
       }
     },
-    "/playbooks/": {
+    "/config/playbooks/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -7046,7 +10015,7 @@
         ]
       }
     },
-    "/profiles/": {
+    "/config/profiles/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -7065,7 +10034,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -7183,7 +10152,7 @@
         "summary": "Update profile by ID"
       }
     },
-    "/profile/security/ca-profiles/": {
+    "/config/profile/security/ca-profiles/": {
       "get": {
         "consumes": [
           "application/json"
@@ -7225,7 +10194,7 @@
         "summary": "Retrieve ca-profile"
       }
     },
-    "/profile/security/ca-profile/{name}/": {
+    "/config/profile/security/ca-profile/{name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -7251,7 +10220,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -7390,7 +10359,7 @@
         "summary": "Update ca-profile by ID"
       }
     },
-    "/profile/security/local-certificates/": {
+    "/config/profile/security/local-certificates/": {
       "get": {
         "consumes": [
           "application/json"
@@ -7432,7 +10401,7 @@
         "summary": "Retrieve local-certificate"
       }
     },
-    "/profile/security/local-certificate/{name}/": {
+    "/config/profile/security/local-certificate/{name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -7458,7 +10427,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -7597,7 +10566,7 @@
         "summary": "Update local-certificate by ID"
       }
     },
-    "/profile/security/ssh-key-profiles/": {
+    "/config/profile/security/ssh-key-profiles/": {
       "get": {
         "consumes": [
           "application/json"
@@ -7639,7 +10608,7 @@
         "summary": "Retrieve ssh-key-profile"
       }
     },
-    "/profile/security/ssh-key-profile/{name}/": {
+    "/config/profile/security/ssh-key-profile/{name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -7665,7 +10634,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -7804,7 +10773,7 @@
         "summary": "Update ssh-key-profile by ID"
       }
     },
-    "/profile/data-summarizations/raw/": {
+    "/config/profile/data-summarizations/raw/": {
       "get": {
         "consumes": [
           "application/json"
@@ -7842,7 +10811,7 @@
         "summary": "Retrieve raw-data-summarization"
       }
     },
-    "/profile/data-summarization/raw/{name}/": {
+    "/config/profile/data-summarization/raw/{name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -7868,7 +10837,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -8007,7 +10976,7 @@
         "summary": "Update raw-data-summarization by ID"
       }
     },
-    "/retention-policies/": {
+    "/config/retention-policies/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -8157,7 +11126,7 @@
         ]
       }
     },
-    "/retention-policy/": {
+    "/config/retention-policy/": {
       "get": {
         "consumes": [
           "application/json"
@@ -8208,7 +11177,7 @@
         ]
       }
     },
-    "/retention-policy/{retention_policy_name}/": {
+    "/config/retention-policy/{retention_policy_name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -8234,7 +11203,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -8385,7 +11354,7 @@
         ]
       }
     },
-    "/sensors/": {
+    "/config/sensors/": {
       "get": {
         "description": "Get a list of all the sensors for the filters provided. Filtering is possible with the use of query parameters.\nIf you have a sensor `/1/2/3/4/5/6/` and `sensor_name=/1`and `depth=3`, the result would be `/2/3/4`. If you use `append=true`, then the result would be `/1/2/3/4`.",
         "operationId": "retrieve_sensors",
@@ -8467,7 +11436,7 @@
         "summary": "List all OpenConfig sensors."
       }
     },
-    "/services/device-group/": {
+    "/config/services/device-group/": {
       "get": {
         "consumes": [
           "application/json"
@@ -8511,7 +11480,7 @@
         ]
       }
     },
-    "/services/device-group/{device_group_name}/": {
+    "/config/services/device-group/{device_group_name}/": {
       "delete": {
         "description": "Stop and clean services of a device-group. This will remove all the services for a device-group, however, it  will not clean up the collected data.",
         "operationId": "delete_services_device-groups_device-group_by_device_group_name",
@@ -8581,7 +11550,7 @@
         ]
       }
     },
-    "/services/network-group/": {
+    "/config/services/network-group/": {
       "get": {
         "consumes": [
           "application/json"
@@ -8625,7 +11594,7 @@
         ]
       }
     },
-    "/services/network-group/{network_group_name}/": {
+    "/config/services/network-group/{network_group_name}/": {
       "delete": {
         "description": "Stop and clean the services of a network group. This will remove all the services for a network-group, however, it will not clean up the collected data.",
         "operationId": "delete_services_network-group_by_network_group_name",
@@ -8695,7 +11664,7 @@
         ]
       }
     },
-    "/system/": {
+    "/config/system/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -8862,7 +11831,7 @@
         ]
       }
     },
-    "/system/schedulers/": {
+    "/config/system/schedulers/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -8881,7 +11850,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -9011,7 +11980,7 @@
         ]
       }
     },
-    "/system/scheduler/{name}/": {
+    "/config/system/scheduler/{name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -9037,7 +12006,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -9188,7 +12157,7 @@
         ]
       }
     },
-    "/system/report-generation/destinations/": {
+    "/config/system/report-generation/destinations/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -9207,7 +12176,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -9337,7 +12306,7 @@
         ]
       }
     },
-    "/system/report-generation/destination/{name}/": {
+    "/config/system/report-generation/destination/{name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -9363,7 +12332,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -9514,7 +12483,7 @@
         ]
       }
     },
-    "/system/report-generation/reports/": {
+    "/config/system/report-generation/reports/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -9533,7 +12502,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -9663,7 +12632,7 @@
         ]
       }
     },
-    "/system/report-generation/report/{name}/": {
+    "/config/system/report-generation/report/{name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -9689,7 +12658,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -9840,7 +12809,7 @@
         ]
       }
     },
-    "/system/tsdb/": {
+    "/config/system/tsdb/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -9851,7 +12820,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -10005,7 +12974,7 @@
         ]
       }
     },
-    "/system-settings/": {
+    "/config/system-settings/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -10172,7 +13141,7 @@
         ]
       }
     },
-    "/system-settings/schedulers/": {
+    "/config/system-settings/schedulers/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -10191,7 +13160,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -10321,7 +13290,7 @@
         ]
       }
     },
-    "/system-settings/scheduler/{name}/": {
+    "/config/system-settings/scheduler/{name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -10347,7 +13316,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -10498,7 +13467,7 @@
         ]
       }
     },
-    "/system-settings/report-generation/destinations/": {
+    "/config/system-settings/report-generation/destinations/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -10517,7 +13486,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -10647,7 +13616,7 @@
         ]
       }
     },
-    "/system-settings/report-generation/destination/{name}/": {
+    "/config/system-settings/report-generation/destination/{name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -10673,7 +13642,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -10824,7 +13793,7 @@
         ]
       }
     },
-    "/system-settings/report-generation/reports/": {
+    "/config/system-settings/report-generation/reports/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -10843,7 +13812,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -10973,7 +13942,7 @@
         ]
       }
     },
-    "/system-settings/report-generation/report/{name}/": {
+    "/config/system-settings/report-generation/report/{name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -10999,7 +13968,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -11150,7 +14119,7 @@
         ]
       }
     },
-    "/topic/": {
+    "/config/topic/": {
       "get": {
         "consumes": [
           "application/json"
@@ -11201,7 +14170,7 @@
         ]
       }
     },
-    "/topic/{topic_name}/": {
+    "/config/topic/{topic_name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -11378,7 +14347,7 @@
         ]
       }
     },
-    "/topic/{topic_name}/rule/": {
+    "/config/topic/{topic_name}/rule/": {
       "get": {
         "consumes": [
           "application/json"
@@ -11442,7 +14411,7 @@
         ]
       }
     },
-    "/topic/{topic_name}/rule/{rule_name}/": {
+    "/config/topic/{topic_name}/rule/{rule_name}/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -11647,7 +14616,7 @@
         ]
       }
     },
-    "/topics/": {
+    "/config/topics/": {
       "delete": {
         "consumes": [
           "application/json"
@@ -12886,7 +15855,7 @@
           "application/json"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful operation"
           },
           "400": {
@@ -12958,6 +15927,26 @@
         "detail"
       ],
       "type": "object"
+    },
+    "TsdbError": {
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "statement_id": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "error": {
+                "type": "string",
+                "format": "string"
+              }
+            }
+          }
+        }
+      }
     },
     "flow_schema": {
       "additionalProperties": false,
@@ -14218,7 +17207,9 @@
               "name": {
                 "description": "Sensor field path for which summarization should be changed. Apart from JTI OC sensor path, '<sensor-name>:' should be prepended to the sensor path",
                 "format": "string",
-                "type": "string"
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
               }
             },
             "required": [
@@ -14426,7 +17417,7 @@
           "type": "string"
         },
         "device-group-name": {
-          "description": "Name of the group. Should be of pattern [a-zA-Z][a-zA-Z0-9_-]*",
+          "description": "Name of the group. Should be of pattern [a-zA-Z][a-zA-Z0-9-]*",
           "format": "string",
           "maxLength": 64,
           "pattern": "^[a-zA-Z][a-zA-Z0-9-]*$",
@@ -15018,7 +18009,8 @@
             "enable": {
               "description": "Turn on notifications",
               "items": {
-                "type": "null"
+                "type": "object",
+                "x-nullable": true
               },
               "type": "array"
             },
@@ -15042,6 +18034,10 @@
               },
               "type": "array"
             },
+            "no-initial-normal-notify-suppression": {
+              "description": "If true, Don't suppress the initial normal notifications",
+              "type": "boolean"
+            },
             "normal": {
               "items": {
                 "description": "List of notification groups on which normal notification needs to be sent",
@@ -15051,6 +18047,45 @@
                 "x-path": "../../../notification/notification-name"
               },
               "type": "array"
+            }
+          },
+          "type": "object"
+        },
+        "open-config": {
+          "additionalProperties": false,
+          "patternProperties": {
+            "^@": {
+              "type": "object"
+            }
+          },
+          "properties": {
+            "initial-sync": {
+              "description": "If true, enable initial sync packets processing",
+              "type": "boolean"
+            },
+            "gnmi": {
+              "additionalProperties": false,
+              "patternProperties": {
+                "^@": {
+                  "type": "object"
+                }
+              },
+              "properties": {
+                "enable": {
+                  "description": "If true, enable gnmi",
+                  "type": "boolean"
+                },
+                "encoding": {
+                  "description": "Encoding to be used, default is protobuf",
+                  "enum": [
+                    "protobuf",
+                    "json",
+                    "json_ietf"
+                  ],
+                  "type": "string"
+                }
+              },
+              "type": "object"
             }
           },
           "type": "object"
@@ -15270,6 +18305,14 @@
             }
           },
           "type": "object"
+        },
+        "tagging-profile": {
+          "items": {
+            "description": "Name of the tagging-profile to be used",
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
         },
         "timezone": {
           "description": "Timezone in the format +/-hh:mm, Example: -08:00",
@@ -15788,6 +18831,34 @@
             }
           },
           "properties": {
+            "initial-sync": {
+              "description": "If true, enable initial sync packets processing",
+              "type": "boolean"
+            },
+            "gnmi": {
+              "additionalProperties": false,
+              "patternProperties": {
+                "^@": {
+                  "type": "object"
+                }
+              },
+              "properties": {
+                "enable": {
+                  "description": "If true, enable gnmi",
+                  "type": "boolean"
+                },
+                "encoding": {
+                  "description": "Encoding to be used, default is protobuf",
+                  "enum": [
+                    "protobuf",
+                    "json",
+                    "json_ietf"
+                  ],
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
             "port": {
               "description": "Port on which gRPC connection needs to be established",
               "format": "int32",
@@ -15864,6 +18935,14 @@
             }
           },
           "type": "object"
+        },
+        "tagging-profile": {
+          "items": {
+            "description": "Name of the tagging-profile to be used",
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
         },
         "timezone": {
           "description": "Timezone in the format +/-hh:mm, Example: -08:00",
@@ -15955,8 +19034,9 @@
             }
           },
           "properties": {
-            "cisco": {
+            "arista": {
               "additionalProperties": false,
+              "description": "Arista device",
               "patternProperties": {
                 "^@": {
                   "type": "object"
@@ -15966,7 +19046,32 @@
                 "operating-system": {
                   "description": "Operating system of the device",
                   "enum": [
-                    "iosxr"
+                    "eos"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "operating-system"
+              ],
+              "type": "object",
+              "x-choice": "vendor-name",
+              "x-choice-case": "arista"
+            },
+            "cisco": {
+              "additionalProperties": false,
+              "description": "Cisco device",
+              "patternProperties": {
+                "^@": {
+                  "type": "object"
+                }
+              },
+              "properties": {
+                "operating-system": {
+                  "description": "Operating system of the device",
+                  "enum": [
+                    "iosxr",
+                    "nxos"
                   ],
                   "type": "string"
                 }
@@ -15980,6 +19085,7 @@
             },
             "juniper": {
               "additionalProperties": false,
+              "description": "Juniper device",
               "patternProperties": {
                 "^@": {
                   "type": "object"
@@ -16002,9 +19108,33 @@
               "x-choice": "vendor-name",
               "x-choice-case": "juniper"
             },
+            "linux": {
+              "additionalProperties": false,
+              "description": "Linux device",
+              "patternProperties": {
+                "^@": {
+                  "type": "object"
+                }
+              },
+              "properties": {
+                "operating-system": {
+                  "description": "Distribution/Flavour of linux, Should be of pattern [a-zA-Z][a-zA-Z0-9_-]*",
+                  "format": "string",
+                  "maxLength": 64,
+                  "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "operating-system"
+              ],
+              "type": "object",
+              "x-choice": "vendor-name",
+              "x-choice-case": "linux"
+            },
             "other-vendor": {
               "additionalProperties": false,
-              "description": "Other vendor devices",
+              "description": "Other vendor device",
               "patternProperties": {
                 "^@": {
                   "type": "object"
@@ -16032,6 +19162,30 @@
               "type": "object",
               "x-choice": "vendor-name",
               "x-choice-case": "other-vendor"
+            },
+            "paloalto": {
+              "additionalProperties": false,
+              "description": "Pal Alto device",
+              "patternProperties": {
+                "^@": {
+                  "type": "object"
+                }
+              },
+              "properties": {
+                "operating-system": {
+                  "description": "Operating system of the device",
+                  "enum": [
+                    "panos"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "operating-system"
+              ],
+              "type": "object",
+              "x-choice": "vendor-name",
+              "x-choice-case": "paloalto"
             }
           },
           "type": "object"
@@ -16087,6 +19241,70 @@
           "type": "string"
         }
       }
+    },
+    "field-capture_schema": {
+      "type": "object",
+      "patternProperties": {
+        "^@": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": {
+        "$ref": "#/definitions/device-group-field-capture_schema"
+      }
+    },
+    "device-group-field-capture_schema": {
+      "type": "object",
+      "patternProperties": {
+        "^@": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": {
+        "$ref": "#/definitions/device-field-capture_schema"
+      }
+    },
+    "device-field-capture_schema": {
+      "type": "object",
+      "patternProperties": {
+        "^@": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": {
+        "$ref": "#/definitions/topic-field-capture_schema"
+      }
+    },
+    "topic-field-capture_schema": {
+      "type": "object",
+      "patternProperties": {
+        "^@": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": {
+        "$ref": "#/definitions/rule-field-capture_schema"
+      }
+    },
+    "rule-field-capture_schema": {
+      "type": "object",
+      "patternProperties": {
+        "^@": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": {
+        "$ref": "#/definitions/field-field-capture_schema"
+      }
+    },
+    "field-field-capture_schema": {
+      "type": "object",
+      "patternProperties": {
+        "^@": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": true
     },
     "license-feature_schema": {
       "additionalProperties": false,
@@ -16171,12 +19389,9 @@
         }
       },
       "required": [
-        "feature-id",
         "feature-name",
         "feature-description",
         "license-total",
-        "license-remaining",
-        "license-requested",
         "license-usage",
         "max-remaining-days",
         "validity-type",
@@ -16451,7 +19666,7 @@
           "type": "array"
         },
         "network-group-name": {
-          "description": "Name of the network group. Should be of pattern [a-zA-Z][a-zA-Z0-9_-]*",
+          "description": "Name of the network group. Should be of pattern [a-zA-Z][a-zA-Z0-9-]*",
           "format": "string",
           "maxLength": 64,
           "pattern": "^[a-zA-Z][a-zA-Z0-9-]*$",
@@ -16659,7 +19874,8 @@
             "enable": {
               "description": "Turn on notifications",
               "items": {
-                "type": "null"
+                "type": "object",
+                "x-nullable": true
               },
               "type": "array"
             },
@@ -16703,6 +19919,14 @@
             "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$",
             "type": "string",
             "x-path": "../../playbook/playbook-name"
+          },
+          "type": "array"
+        },
+        "tagging-profile": {
+          "items": {
+            "description": "Name of the tagging-profile to be used",
+            "format": "string",
+            "type": "string"
           },
           "type": "array"
         },
@@ -16948,6 +20172,7 @@
             "url": {
               "description": "URL on which slack notification needs to be posted",
               "format": "string",
+              "pattern": "^(https)://[^\\s/$.?#].[^\\s]*$",
               "type": "string"
             }
           },
@@ -16971,6 +20196,7 @@
             "channel": {
               "description": "Connector channel on which notification is to be posted",
               "format": "string",
+              "pattern": "^(https)://[^\\s/$.?#].[^\\s]*$",
               "type": "string"
             }
           },
@@ -17074,6 +20300,10 @@
               "maxLength": 249,
               "pattern": "^\\.*[a-zA-Z0-9_-]+[a-zA-Z0-9\\._-]*$",
               "type": "string"
+            },
+            "use-hash-partitioner": {
+              "description": "If true, key will be generated which will be hashed to provide a consistent partition number for the given kafka topic",
+              "type": "boolean"
             }
           },
           "required": [
@@ -17142,6 +20372,12 @@
           "description": "Short description about this playbook",
           "format": "string",
           "type": "string"
+        },
+        "classification": {
+          "description": "Classification info for this playbook",
+          "format": "string",
+          "type": "string",
+          "readOnly": true
         }
       },
       "required": [
@@ -17644,7 +20880,8 @@
                         "description": "Algorithm used to learn the dynamic threshold value",
                         "enum": [
                           "3sigma",
-                          "k-means"
+                          "k-means",
+                          "holt-winters"
                         ],
                         "type": "string"
                       },
@@ -17752,6 +20989,28 @@
                     "type": "object",
                     "x-choice": "formula-type",
                     "x-choice-case": "dynamic-threshold"
+                  },
+                  "eval": {
+                    "additionalProperties": false,
+                    "description": "Evaluates the expression",
+                    "patternProperties": {
+                      "^@": {
+                        "type": "object"
+                      }
+                    },
+                    "properties": {
+                      "expression": {
+                        "description": "Expression for evaluation must be a valid golang expression. Field-name if used in expression must be prefixed with $. operators should be prefix and suffix with spaces. For Example: $a + $b - $c",
+                        "format": "string",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "expression"
+                    ],
+                    "type": "object",
+                    "x-choice": "formula-type",
+                    "x-choice-case": "eval"
                   },
                   "max": {
                     "additionalProperties": false,
@@ -18043,7 +21302,8 @@
                       "algorithm": {
                         "description": "Algorithm used to create baseline thresholds",
                         "enum": [
-                          "median-prediction"
+                          "median-prediction",
+                          "holt-winters"
                         ],
                         "type": "string"
                       },
@@ -18319,6 +21579,7 @@
                     "path": {
                       "description": "Sensor path",
                       "format": "string",
+                      "pattern": "^\\S+$",
                       "type": "string"
                     },
                     "sensor-name": {
@@ -18354,7 +21615,8 @@
                     "zero-suppression": {
                       "description": "Assign zero as default value for field in case of zero-suppression",
                       "items": {
-                        "type": "null"
+                        "type": "object",
+                        "x-nullable": true
                       },
                       "type": "array"
                     }
@@ -18413,7 +21675,8 @@
                     "mandatory": {
                       "description": "Flag to indicate a mandatory attribute",
                       "items": {
-                        "type": "null"
+                        "type": "object",
+                        "x-nullable": true
                       },
                       "type": "array"
                     }
@@ -18470,7 +21733,8 @@
         "network-rule": {
           "description": "Flag to denote a network rule",
           "items": {
-            "type": "null"
+            "type": "object",
+            "x-nullable": true
           },
           "type": "array"
         },
@@ -18611,7 +21875,8 @@
                   "sensor-name": {
                     "description": "Sensor to subscribe",
                     "format": "string",
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^\\S+$"
                   }
                 },
                 "required": [
@@ -18639,7 +21904,8 @@
                   "sensor-name": {
                     "description": "Sensor to subscribe",
                     "format": "string",
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^\\S+$"
                   }
                 },
                 "required": [
@@ -18828,7 +22094,8 @@
               "disable-alarm-deduplication": {
                 "description": "Disable alarm deduplication, so that alarms are always generated",
                 "items": {
-                  "type": "null"
+                  "type": "object",
+                  "x-nullable": true
                 },
                 "type": "array"
               },
@@ -18859,7 +22126,8 @@
                         "next": {
                           "description": "Continue evaluating next term in a trigger",
                           "items": {
-                            "type": "null"
+                            "type": "object",
+                            "x-nullable": true
                           },
                           "type": "array"
                         },
@@ -18969,7 +22237,8 @@
                               "all": {
                                 "description": "With this flag, result is set to True only if all the data matches the given condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -18978,7 +22247,8 @@
                               "any": {
                                 "description": "With this flag, result is set to True if any one of the data matches the condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -18987,7 +22257,8 @@
                               "ignore-case": {
                                 "description": "Flag to ignore case while matching the string",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array"
                               },
@@ -19032,7 +22303,8 @@
                               "all": {
                                 "description": "With this flag, result is set to True only if all the data matches the given condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19041,7 +22313,8 @@
                               "any": {
                                 "description": "With this flag, result is set to True if any one of the data matches the condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19088,7 +22361,8 @@
                               "all": {
                                 "description": "With this flag, result is set to True only if all the data matches the given condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19097,7 +22371,8 @@
                               "any": {
                                 "description": "With this flag, result is set to True if any one of the data matches the condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19138,7 +22413,8 @@
                               "all": {
                                 "description": "With this flag, result is set to True only if all the data matches the given condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19147,7 +22423,8 @@
                               "any": {
                                 "description": "With this flag, result is set to True if any one of the data matches the condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19194,7 +22471,8 @@
                               "all": {
                                 "description": "With this flag, result is set to True only if all the data matches the given condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19203,7 +22481,8 @@
                               "any": {
                                 "description": "With this flag, result is set to True if any one of the data matches the condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19251,7 +22530,8 @@
                               "all": {
                                 "description": "With this flag, result is set to True only if all the data matches the given condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19260,7 +22540,8 @@
                               "any": {
                                 "description": "With this flag, result is set to True if any one of the data matches the condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19333,7 +22614,8 @@
                               "all": {
                                 "description": "With this flag, result is set to True only if all the data matches the given condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19342,7 +22624,8 @@
                               "any": {
                                 "description": "With this flag, result is set to True if any one of the data matches the condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19390,7 +22673,8 @@
                               "all": {
                                 "description": "With this flag, result is set to True only if all the data matches the given condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19399,7 +22683,8 @@
                               "any": {
                                 "description": "With this flag, result is set to True if any one of the data matches the condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19472,7 +22757,8 @@
                               "all": {
                                 "description": "With this flag, result is set to True only if all the data matches the given condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19481,7 +22767,8 @@
                               "any": {
                                 "description": "With this flag, result is set to True if any one of the data matches the condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19528,7 +22815,8 @@
                               "all": {
                                 "description": "With this flag, result is set to True only if all the data matches the given condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19537,7 +22825,8 @@
                               "any": {
                                 "description": "With this flag, result is set to True if any one of the data matches the condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19584,7 +22873,8 @@
                               "all": {
                                 "description": "With this flag, result is set to True only if all the data matches the given condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19593,7 +22883,8 @@
                               "any": {
                                 "description": "With this flag, result is set to True if any one of the data matches the condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19640,7 +22931,8 @@
                               "all": {
                                 "description": "With this flag, result is set to True only if all the data matches the given condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19649,7 +22941,8 @@
                               "any": {
                                 "description": "With this flag, result is set to True if any one of the data matches the condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19658,7 +22951,8 @@
                               "ignore-case": {
                                 "description": "Flag to ignore case while matching the string",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array"
                               },
@@ -19703,7 +22997,8 @@
                               "all": {
                                 "description": "With this flag, result is set to True only if all the data matches the given condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19712,7 +23007,8 @@
                               "any": {
                                 "description": "With this flag, result is set to True if any one of the data matches the condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19758,7 +23054,8 @@
                               "all": {
                                 "description": "With this flag, result is set to True only if all the data matches the given condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19767,7 +23064,8 @@
                               "any": {
                                 "description": "With this flag, result is set to True if any one of the data matches the condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19813,7 +23111,8 @@
                               "all": {
                                 "description": "With this flag, result is set to True only if all the data matches the given condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19822,7 +23121,8 @@
                               "any": {
                                 "description": "With this flag, result is set to True if any one of the data matches the condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19869,7 +23169,8 @@
                               "all": {
                                 "description": "With this flag, result is set to True only if all the data matches the given condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19878,7 +23179,8 @@
                               "any": {
                                 "description": "With this flag, result is set to True if any one of the data matches the condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19931,7 +23233,8 @@
                               "all": {
                                 "description": "With this flag, result is set to True only if all the data matches the given condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -19940,7 +23243,8 @@
                               "any": {
                                 "description": "With this flag, result is set to True if any one of the data matches the condition",
                                 "items": {
-                                  "type": "null"
+                                  "type": "object",
+                                  "x-nullable": true
                                 },
                                 "type": "array",
                                 "x-choice": "condition-check",
@@ -20311,6 +23615,7 @@
                     "items": {
                       "format": "string",
                       "maxLength": 64,
+                      "minLength": 1,
                       "type": "string"
                     },
                     "minItems": 1,
@@ -20608,10 +23913,8 @@
       "patternProperties": {
         "^@": {
           "type": "object"
-        }
-      },
-      "properties": {
-        "ingest-settings": {
+        },
+        "(\\bingest\\b)|(\\bingest-settings\\b)": {
           "additionalProperties": false,
           "description": "Ingest settings configuration",
           "patternProperties": {
@@ -20953,97 +24256,122 @@
               "type": "object"
             },
             "frequency-profile": {
-            "items": {
+              "items": {
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "name": {
+                    "description": "Frequency profile name",
+                    "format": "string",
+                    "maxLength": 64,
+                    "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$",
+                    "type": "string"
+                  },
+                  "non-sensor": {
+                    "items": {
+                      "additionalProperties": false,
+                      "patternProperties": {
+                        "^@": {
+                          "type": "object"
+                        }
+                      },
+                      "properties": {
+                        "frequency": {
+                          "description": "Sensor subscription duration. Specify integer >= 0 followed by s/m/h/d/w/y representing seconds/minutes/hours/days/weeks/years. Eg: 2s. A frequency of zero should be used only in case of events subscription",
+                          "pattern": "^[0-9]+(seconds|minutes|hours|days|weeks|years)$",
+                          "format": "string",
+                          "type": "string"
+                        },
+                        "rule-name": {
+                          "description": "Name of non-sensor or network rule i.e topic-name/rule-name",
+                          "format": "string",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "frequency",
+                        "rule-name"
+                      ]
+                    },
+                    "type": "array",
+                    "x-key": "rule-name"
+                  },
+                  "sensor": {
+                    "items": {
+                      "additionalProperties": false,
+                      "patternProperties": {
+                        "^@": {
+                          "type": "object"
+                        }
+                      },
+                      "properties": {
+                        "frequency": {
+                          "description": "Sensor subscription duration. Specify integer >= 0 followed by s/m/h/d/w/y representing seconds/minutes/hours/days/weeks/years. Eg: 2s. A frequency of zero should be used only in case of events subscription",
+                          "pattern": "^[0-9]+(seconds|minutes|hours|days|weeks|years)$",
+                          "format": "string",
+                          "type": "string"
+                        },
+                        "sensor-name": {
+                          "description": "Name of sensor. Should be of pattern [a-zA-Z][a-zA-Z0-9_-]*",
+                          "format": "string",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "frequency",
+                        "sensor-name"
+                      ]
+                    },
+                    "type": "array",
+                    "x-key": "sensor-name"
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              },
+              "type": "array",
+              "x-key": "name"
+            },
+            "data-enrichment": {
               "additionalProperties": false,
+              "description": "Data enrichment details",
               "patternProperties": {
                 "^@": {
                   "type": "object"
                 }
               },
               "properties": {
-                "name": {
-                  "description": "Frequency profile name",
-                  "format": "string",
-                  "maxLength": 64,
-                  "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$",
-                  "type": "string"
-                },
-                "non-sensor": {
+                "tagging-profile": {
+                  "description": "Tagging-profile details",
                   "items": {
-                    "additionalProperties": false,
-                    "patternProperties": {
-                      "^@": {
-                        "type": "object"
-                      }
-                    },
-                    "properties": {
-                      "frequency": {
-                        "description": "Sensor subscription duration. Specify integer >= 0 followed by s/m/h/d/w/y representing seconds/minutes/hours/days/weeks/years. Eg: 2s. A frequency of zero should be used only in case of events subscription",
-                        "pattern": "^[0-9]+(seconds|minutes|hours|days|weeks|years)$",
-                        "format": "string",
-                        "type": "string"
-                      },
-                      "rule-name": {
-                        "description": "Name of non-sensor or network rule i.e topic-name/rule-name",
-                        "format": "string",
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "frequency",
-                      "rule-name"
-                    ]
+                    "$ref": "#/definitions/tagging-profile_schema"
                   },
                   "type": "array",
-                  "x-key": "rule-name"
-                },
-                "sensor": {
-                  "items": {
-                    "additionalProperties": false,
-                    "patternProperties": {
-                      "^@": {
-                        "type": "object"
-                      }
-                    },
-                    "properties": {
-                      "frequency": {
-                        "description": "Sensor subscription duration. Specify integer >= 0 followed by s/m/h/d/w/y representing seconds/minutes/hours/days/weeks/years. Eg: 2s. A frequency of zero should be used only in case of events subscription",
-                        "pattern": "^[0-9]+(seconds|minutes|hours|days|weeks|years)$",
-                        "format": "string",
-                        "type": "string"
-                      },
-                      "sensor-name": {
-                        "description": "Name of sensor. Should be of pattern [a-zA-Z][a-zA-Z0-9_-]*",
-                        "format": "string",
-                        "type": "string"
-                      }
-                    },
-                    "required": [
-                      "frequency",
-                      "sensor-name"
-                    ]
-                  },
-                  "type": "array",
-                  "x-key": "sensor-name"
+                  "x-key": "name"
                 }
               },
               "required": [
-                "name"
-              ]
-            },
-            "type": "array",
-            "x-key": "name"
-          }
+                "tagging-profile"
+              ],
+              "type": "object"
+            }
           },
           "type": "object",
           "x-ref": [
-            "frequency-profile-group"
+            "frequency-profile-group",
+            "data-enrichment-group"
           ]
         }
       },
       "type": "object",
       "x-ref": [
-        "frequency-profile-group"
+        "frequency-profile-group",
+        "data-enrichment-group"
       ]
     },
     "system-settings_schema": {
@@ -21063,7 +24391,8 @@
             "persist-raw-data": {
               "description": "Persist raw data in the database",
               "items": {
-                "type": "null"
+                "type": "object",
+                "x-nullable": true
               },
               "type": "array"
             },
@@ -21099,7 +24428,7 @@
               "x-key": "name"
             },
             "time-series-database": {
-                "$ref": "#/definitions/tsdb_schema"
+              "$ref": "#/definitions/tsdb_schema"
             }
           },
           "type": "object"
@@ -21253,6 +24582,25 @@
       },
       "type": "object"
     },
+    "lhs-rhs-group": {
+      "additionalProperties": false,
+      "patternProperties": {
+        "^@": {
+          "type": "object"
+        }
+      },
+      "properties": {
+        "left-operand": {
+          "description": "Left operand",
+          "type": "string"
+        },
+        "right-operand": {
+          "description": "right operand",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "apply-macro_schema": {
       "additionalProperties": false,
       "patternProperties": {
@@ -21398,7 +24746,8 @@
             "never": {
               "description": "Never repeat scheduling",
               "items": {
-                "type": "null"
+                "type": "object",
+                "x-nullable": true
               },
               "type": "array"
             }
@@ -21647,6 +24996,14 @@
         }
       },
       "properties": {
+        "capture-fields": {
+          "items": {
+            "description": "List of XPATHs specifying fields to capture",
+            "format": "string",
+            "type": "string"
+          },
+          "type": "array"
+        },
         "destination": {
           "items": {
             "description": "Report destination",
@@ -21737,7 +25094,8 @@
       ],
       "type": "object",
       "x-ref": [
-        "graph-canvas"
+        "graph-canvas",
+        "capture-fields"
       ]
     },
     "reports_schema": {
@@ -21990,6 +25348,689 @@
           "roleName": {
             "type": "string"
           }
+        }
+      }
+    },
+    "tsdb_post_body": {
+      "additionalProperties": false,
+      "description": "TSDB Post Body",
+      "properties": {
+        "items": {
+          "type": "object",
+          "properties": {
+            "queryName": {
+              "type": "string",
+              "description": "Name of the query object. Optional. Not used for now"
+            },
+            "deviceGroup": {
+              "type": "string",
+              "description": "Name of the deviceGroup(s). Multiple device groups should be separated by ','. This can be used in combination with device, but is not mandatory. If device is given, then query will be executed only for that particular devices in the given device group, else all devices in group will be considered. Given devices will be applicable for all give device-groups."
+            },
+            "device": {
+              "type": "string",
+              "description": "Name of the device. Multiple device should be separated by ','. This should be used along with deviceGroup. Without deviceGroup, this config will not be considered"
+            },
+            "db": {
+              "type": "string",
+              "description": "Name of the database. Multiple databases should be separated by ','. '*' can be used to specify all databases."
+            },
+            "topic": {
+              "type": "string",
+              "description": "Name of Healthbot topic. Optional if measurement is used"
+            },
+            "rule": {
+              "type": "string",
+              "description": "Name of Healthbot rule. Required if topic is used. Optional if measurement is used"
+            },
+            "trigger": {
+              "type": "string",
+              "description": "Name of Healthbot trigger. Optional if measurement is used or rule table is being queried"
+            },
+            "measurement": {
+              "type": "string",
+              "description": "Name of the measurement. Optional if topic/rule/trigger is used"
+            },
+            "where": {
+              "type": "string",
+              "description": "Where clause filters data based on fields, tags, and/or timestamps. Eg: where=\"interface-name\" = 'ge-0/0/1' and \"in-pkts\" > 0"
+            },
+            "order": {
+              "type": "string",
+              "description": "Sort points in descending order based on time. By default points will be sorted in ascending order. Eg: order=desc"
+            },
+            "limit": {
+              "type": "integer",
+              "format": "int32",
+              "description": "Limit number of points in the result. If groupBy is used limit is applied per group. Eg: limit=10"
+            },
+            "fields": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "Fields that needs to be retrieved. Use * for to query all fields"
+              }
+            },
+            "GroupBy": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "Group results based on specified tags. Use * to group by all tags"
+              }
+            }
+          }
+        }
+      }
+    },
+    "tsdb_results": {
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "statement_id": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "database": {
+                "type": "string"
+              },
+              "series": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "tags": {
+                      "type": "object",
+                      "additionalProperties":{
+                        "type": "string"
+                      }
+                    },
+                    "columns": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "values": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "tagging-profiles_schema": {
+      "additionalProperties": false,
+      "patternProperties": {
+        "^@": {
+          "type": "object"
+        }
+      },
+      "properties": {
+        "tagging-profile": {
+          "items": {
+            "$ref": "#/definitions/tagging-profile_schema"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "tagging-profile"
+      ],
+      "type": "object"
+    },
+    "tagging-profile_schema": {
+      "additionalProperties": false,
+      "patternProperties": {
+        "^@": {
+          "type": "object"
+        }
+      },
+      "properties": {
+        "description": {
+          "description": "Description about this tagging profile",
+          "format": "string",
+          "type": "string"
+        },
+        "name": {
+          "description": "Tagging profile name. Should be of pattern [a-zA-Z][a-zA-Z0-9_-]*",
+          "format": "string",
+          "maxLength": 64,
+          "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$",
+          "type": "string"
+        },
+        "policy": {
+          "description": "Policy details",
+          "items": {
+            "additionalProperties": false,
+            "patternProperties": {
+              "^@": {
+                "type": "object"
+              }
+            },
+            "properties": {
+              "description": {
+                "description": "Description about policy",
+                "format": "string",
+                "type": "string"
+              },
+              "name": {
+                "description": "Policy name. Should be of pattern [a-zA-Z][a-zA-Z0-9_-]*",
+                "format": "string",
+                "maxLength": 64,
+                "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$",
+                "type": "string"
+              },
+              "rules": {
+                "items": {
+                  "description": "List of rules over which this profile will be applied. This can also consist of Unix filename pattern matching. For Example: 'topic-name/*' will match all rules within topic-name",
+                  "format": "string",
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "term": {
+                "items": {
+                  "additionalProperties": false,
+                  "patternProperties": {
+                    "^@": {
+                      "type": "object"
+                    }
+                  },
+                  "properties": {
+                    "term-name": {
+                      "description": "Term name. Should be of pattern [a-zA-Z][a-zA-Z0-9_-]*",
+                      "format": "string",
+                      "maxLength": 64,
+                      "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$",
+                      "type": "string"
+                    },
+                    "then": {
+                      "additionalProperties": false,
+                      "patternProperties": {
+                        "^@": {
+                          "type": "object"
+                        }
+                      },
+                      "properties": {
+                        "add-field": {
+                          "items": {
+                            "additionalProperties": false,
+                            "patternProperties": {
+                              "^@": {
+                                "type": "object"
+                              }
+                            },
+                            "properties": {
+                              "name": {
+                                "description": "Tagged field name",
+                                "format": "string",
+                                "maxLength": 64,
+                                "pattern": "^[a-z][a-zA-Z0-9_-]*$",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "string",
+                                  "integer",
+                                  "float"
+                                ],
+                                "type": "string"
+                              },
+                              "value": {
+                                "description": "Tagged value",
+                                "format": "string",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "value",
+                              "name"
+                            ]
+                          },
+                          "type": "array",
+                          "x-key": "name"
+                        },
+                        "add-key": {
+                          "items": {
+                            "additionalProperties": false,
+                            "patternProperties": {
+                              "^@": {
+                                "type": "object"
+                              }
+                            },
+                            "properties": {
+                              "name": {
+                                "description": "Tagged key field name",
+                                "format": "string",
+                                "maxLength": 64,
+                                "pattern": "^[a-z][a-zA-Z0-9_-]*$",
+                                "type": "string"
+                              },
+                              "value": {
+                                "description": "Tagged value",
+                                "format": "string",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "value",
+                              "name"
+                            ]
+                          },
+                          "type": "array",
+                          "x-key": "name"
+                        },
+                        "next": {
+                          "description": "Continue evaluating next term in the policy",
+                          "items": {
+                            "type": "object",
+                            "x-nullable": true
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "when": {
+                      "additionalProperties": false,
+                      "patternProperties": {
+                        "^@": {
+                          "type": "object"
+                        }
+                      },
+                      "properties": {
+                        "does-not-match-with": {
+                          "items": {
+                            "additionalProperties": false,
+                            "patternProperties": {
+                              "^@": {
+                                "type": "object"
+                              }
+                            },
+                            "properties": {
+                              "left-operand": {
+                                "description": "Left operand. This is the string in which we have to match the expression",
+                                "format": "string",
+                                "type": "string"
+                              },
+                              "right-operand": {
+                                "description": "Right operand. This is the match expression",
+                                "format": "string",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "left-operand",
+                              "right-operand"
+                            ]
+                          },
+                          "type": "array",
+                          "x-key": "left-operand right-operand"
+                        },
+                        "equal-to": {
+                          "items": {
+                            "additionalProperties": false,
+                            "patternProperties": {
+                              "^@": {
+                                "type": "object"
+                              }
+                            },
+                            "properties": {
+                              "left-operand": {
+                                "description": "Left operand",
+                                "format": "string",
+                                "pattern": "^\\S+$",
+                                "type": "string"
+                              },
+                              "right-operand": {
+                                "description": "right operand",
+                                "format": "string",
+                                "pattern": "^\\S+$",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "left-operand",
+                              "right-operand"
+                            ],
+                            "x-ref": [
+                              "lhs-rhs-group"
+                            ]
+                          },
+                          "type": "array",
+                          "x-key": "left-operand right-operand"
+                        },
+                        "eval": {
+                          "items": {
+                            "additionalProperties": false,
+                            "patternProperties": {
+                              "^@": {
+                                "type": "object"
+                              }
+                            },
+                            "properties": {
+                              "expression": {
+                                "description": "Expression for evaluation must be a valid golang expression. Field-name if used in expression must be prefixed with $. operators should be prefix and suffix with spaces. For Example: $a + $b > $c",
+                                "format": "string",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "expression"
+                            ]
+                          },
+                          "type": "array",
+                          "x-key": "expression"
+                        },
+                        "greater-than": {
+                          "items": {
+                            "additionalProperties": false,
+                            "patternProperties": {
+                              "^@": {
+                                "type": "object"
+                              }
+                            },
+                            "properties": {
+                              "left-operand": {
+                                "description": "Left operand",
+                                "format": "string",
+                                "pattern": "^\\S+$",
+                                "type": "string"
+                              },
+                              "right-operand": {
+                                "description": "right operand",
+                                "format": "string",
+                                "pattern": "^\\S+$",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "left-operand",
+                              "right-operand"
+                            ],
+                            "x-ref": [
+                              "lhs-rhs-group"
+                            ]
+                          },
+                          "type": "array",
+                          "x-key": "left-operand right-operand"
+                        },
+                        "greater-than-or-equal-to": {
+                          "items": {
+                            "additionalProperties": false,
+                            "patternProperties": {
+                              "^@": {
+                                "type": "object"
+                              }
+                            },
+                            "properties": {
+                              "left-operand": {
+                                "description": "Left operand",
+                                "format": "string",
+                                "pattern": "^\\S+$",
+                                "type": "string"
+                              },
+                              "right-operand": {
+                                "description": "right operand",
+                                "format": "string",
+                                "pattern": "^\\S+$",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "left-operand",
+                              "right-operand"
+                            ],
+                            "x-ref": [
+                              "lhs-rhs-group"
+                            ]
+                          },
+                          "type": "array",
+                          "x-key": "left-operand right-operand"
+                        },
+                        "less-than": {
+                          "items": {
+                            "additionalProperties": false,
+                            "patternProperties": {
+                              "^@": {
+                                "type": "object"
+                              }
+                            },
+                            "properties": {
+                              "left-operand": {
+                                "description": "Left operand",
+                                "format": "string",
+                                "pattern": "^\\S+$",
+                                "type": "string"
+                              },
+                              "right-operand": {
+                                "description": "right operand",
+                                "format": "string",
+                                "pattern": "^\\S+$",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "left-operand",
+                              "right-operand"
+                            ],
+                            "x-ref": [
+                              "lhs-rhs-group"
+                            ]
+                          },
+                          "type": "array",
+                          "x-key": "left-operand right-operand"
+                        },
+                        "less-than-or-equal-to": {
+                          "items": {
+                            "additionalProperties": false,
+                            "patternProperties": {
+                              "^@": {
+                                "type": "object"
+                              }
+                            },
+                            "properties": {
+                              "left-operand": {
+                                "description": "Left operand",
+                                "format": "string",
+                                "pattern": "^\\S+$",
+                                "type": "string"
+                              },
+                              "right-operand": {
+                                "description": "right operand",
+                                "format": "string",
+                                "pattern": "^\\S+$",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "left-operand",
+                              "right-operand"
+                            ],
+                            "x-ref": [
+                              "lhs-rhs-group"
+                            ]
+                          },
+                          "type": "array",
+                          "x-key": "left-operand right-operand"
+                        },
+                        "matches-with": {
+                          "items": {
+                            "additionalProperties": false,
+                            "patternProperties": {
+                              "^@": {
+                                "type": "object"
+                              }
+                            },
+                            "properties": {
+                              "left-operand": {
+                                "description": "Left operand. This is the string in which we have to match the expression",
+                                "format": "string",
+                                "type": "string"
+                              },
+                              "right-operand": {
+                                "description": "Right operand. This is the match expression",
+                                "format": "string",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "left-operand",
+                              "right-operand"
+                            ]
+                          },
+                          "type": "array",
+                          "x-key": "left-operand right-operand"
+                        },
+                        "matches-with-scheduler": {
+                          "additionalProperties": false,
+                          "patternProperties": {
+                            "^@": {
+                              "type": "object"
+                            }
+                          },
+                          "properties": {
+                            "scheduler": {
+                              "description": "Name of the scheduler defined within system/scheduler hierarchy",
+                              "format": "string",
+                              "type": "string"
+                            },
+                            "time": {
+                              "description": "Field holding time in UNIX time format. Optional default is point time",
+                              "format": "string",
+                              "pattern": "^[$][a-z][a-zA-Z0-9_-]*$",
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "scheduler"
+                          ],
+                          "type": "object"
+                        },
+                        "does-not-match-with-scheduler": {
+                          "additionalProperties": false,
+                          "patternProperties": {
+                            "^@": {
+                              "type": "object"
+                            }
+                          },
+                          "properties": {
+                            "scheduler": {
+                              "description": "Name of the scheduler defined within system/scheduler hierarchy",
+                              "format": "string",
+                              "type": "string"
+                            },
+                            "time": {
+                              "description": "Field holding time in UNIX time format. Optional default is point time",
+                              "format": "string",
+                              "pattern": "^[$][a-z][a-zA-Z0-9_-]*$",
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "scheduler"
+                          ],
+                          "type": "object"
+                        },
+                        "not-equal-to": {
+                          "items": {
+                            "additionalProperties": false,
+                            "patternProperties": {
+                              "^@": {
+                                "type": "object"
+                              }
+                            },
+                            "properties": {
+                              "left-operand": {
+                                "description": "Left operand",
+                                "format": "string",
+                                "pattern": "^\\S+$",
+                                "type": "string"
+                              },
+                              "right-operand": {
+                                "description": "right operand",
+                                "format": "string",
+                                "pattern": "^\\S+$",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "left-operand",
+                              "right-operand"
+                            ],
+                            "x-ref": [
+                              "lhs-rhs-group"
+                            ]
+                          },
+                          "type": "array",
+                          "x-key": "left-operand right-operand"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "term-name"
+                  ]
+                },
+                "minItems": 1,
+                "type": "array",
+                "x-key": "term-name"
+              }
+            },
+            "required": [
+              "term",
+              "name",
+              "rules"
+            ]
+          },
+          "type": "array",
+          "x-key": "name"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "trigger_schema": {
+      "additionalProperties": false,
+      "properties": {
+        "triggers": {
+          "items": {
+            "type": "object",
+            "properties": {
+              "fields": {
+                "items": {
+                  "description": "List of fields used in evaluating the trigger",
+                  "format": "string",
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "name": {
+                "description": "Name of the trigger",
+                "format": "string",
+                "type": "string"
+              }
+            }
+          },
+          "type": "array",
+          "x-key": "name"
         }
       }
     }

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **anomaly_detection** | [**RuleSchemaFormulaAnomalydetection**](RuleSchemaFormulaAnomalydetection.md) |  | [optional] 
 **count** | [**RuleSchemaFormulaCount**](RuleSchemaFormulaCount.md) |  | [optional] 
 **dynamic_threshold** | [**RuleSchemaFormulaDynamicthreshold**](RuleSchemaFormulaDynamicthreshold.md) |  | [optional] 
+**eval** | [**RuleSchemaFormulaEval**](RuleSchemaFormulaEval.md) |  | [optional] 
 **max** | [**RuleSchemaFormulaMax**](RuleSchemaFormulaMax.md) |  | [optional] 
 **mean** | [**RuleSchemaFormulaMean**](RuleSchemaFormulaMean.md) |  | [optional] 
 **microburst** | [**RuleSchemaFormulaMicroburst**](RuleSchemaFormulaMicroburst.md) |  | [optional] 
