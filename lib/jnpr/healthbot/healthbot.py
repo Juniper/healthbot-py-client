@@ -284,7 +284,7 @@ class HealthBotClient(object):
         Hence this function will give config URL
 
         """
-        if self.version >= "3.0.0":
+        if self.version >= "3.1.0":
             return self.url + "/config"
         else:
             self.url
@@ -298,7 +298,7 @@ class HealthBotClient(object):
             str: Initials of URL to be used for API call.
         """
         url_initials = "https://" + self.server + ":" + str(self.port) + "/api/"
-        if self._version == "" or self.version < "3.0.0":
+        if self._version == "" or self.version < "3.1.0":
             return url_initials + "v1"
         else:
             return url_initials + "v2"
