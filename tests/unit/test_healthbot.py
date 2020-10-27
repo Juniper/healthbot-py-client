@@ -6,7 +6,7 @@ from jnpr.healthbot.modules.devices import Device
 from jnpr.healthbot.modules.playbooks import Playbook
 from jnpr.healthbot.modules.rules import Rule
 
-from mock import patch
+from mock import patch, PropertyMock
 from requests.models import Response
 from . import _mock_user_login
 
@@ -18,10 +18,16 @@ class TestHealthBotClient(unittest.TestCase):
     def setUp(self, mock_user_login, mock_request):
         self.mock_user_login = _mock_user_login
         self.mock_request = mock_request
-        self.conn = HealthBotClient(
-            server='1.1.1.1',
-            user='test',
-            password='password123').open()
+        with patch('jnpr.healthbot.healthbot.HealthBotClient.version',
+                   new_callable=PropertyMock) as mock_ver:
+            with patch('jnpr.healthbot.healthbot.HealthBotClient.config_url',
+                       new_callable=PropertyMock) as mock_cnf:
+                mock_ver.return_value = '2.1.0'
+                mock_cnf.return_value = "https://1.1.1.1:8080/api/v1"
+                self.conn = HealthBotClient(
+                    server='1.1.1.1',
+                    user='test',
+                    password='password123').open()
 
     def test_check_attributes(self):
         self.assertIsInstance(self.conn.device, Device)
@@ -53,15 +59,22 @@ class TestHealthBotClient(unittest.TestCase):
         self.assertEqual(self.conn.version, '2.1.0')
 
     def test_version_old_versions(self):
-        self.assertEqual(self.conn.version, '2.0.1')
+        self.assertEqual(self.conn.version, "2.1.0")
 
     @patch('jnpr.healthbot.healthbot.requests.Session')
     @patch('jnpr.healthbot.swagger.api.authentication_api.AuthenticationApi.user_login')
     @patch('jnpr.healthbot.swagger.api.authentication_api.AuthenticationApi.user_logout')
     def test_context_manager(self, mock_user_logout, mock_user_login, mock_request):
         self.mock_user_login = _mock_user_login
-        with HealthBotClient(server='1.1.1.1', user='test', password='password123') as conn:
-            self.assertEqual(conn.version, '2.0.1')
+        with patch('jnpr.healthbot.healthbot.HealthBotClient.version',
+                   new_callable=PropertyMock) as mock_ver:
+            with patch('jnpr.healthbot.healthbot.HealthBotClient.config_url',
+                       new_callable=PropertyMock) as mock_cnf:
+                mock_ver.return_value = '2.0.1'
+                mock_cnf.return_value = "https://1.1.1.1:8080/api/v1"
+                with HealthBotClient(server='1.1.1.1', user='test',
+                                     password='password123') as conn:
+                    self.assertEqual(conn.version, '2.0.1')
 
     def test_rollback(self):
         self.conn.rollback()
