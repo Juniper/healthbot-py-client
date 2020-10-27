@@ -14,6 +14,7 @@ from jnpr.healthbot.modules import database
 from jnpr.healthbot.modules import settings
 from jnpr.healthbot.modules import profiles
 from jnpr.healthbot.modules import administration
+from jnpr.healthbot.modules import BaseModule
 
 from jnpr.healthbot.swagger.api.authentication_api import AuthenticationApi
 from jnpr.healthbot.swagger.api_client import ApiClient
@@ -21,6 +22,17 @@ from jnpr.healthbot.swagger.configuration import Configuration
 from jnpr.healthbot.swagger.models.health_schema import HealthSchema
 from jnpr.healthbot.swagger.models.refresh_token import RefreshToken
 from jnpr.healthbot.swagger.models.token import Token
+
+from jnpr.healthbot.swagger.api.configuration_api import ConfigurationApi
+from jnpr.healthbot.swagger.api.default_api import DefaultApi
+from jnpr.healthbot.swagger.api.authentication_api import AuthenticationApi
+from jnpr.healthbot.swagger.api.data_source_api import DataSourceApi
+from jnpr.healthbot.swagger.api.data_store_api import DataStoreApi
+from jnpr.healthbot.swagger.api.debug_api import DebugApi
+from jnpr.healthbot.swagger.api.instance_schedule_state_api import InstanceScheduleStateApi
+from jnpr.healthbot.swagger.api.license_api import LicenseApi
+from jnpr.healthbot.swagger.api.services_api import ServicesApi
+from jnpr.healthbot.swagger.api.system_api import SystemApi
 
 from jnpr.healthbot.swagger.rest import ApiException
 from jnpr.healthbot.urlfor import UrlFor
@@ -100,10 +112,9 @@ class HealthBotClient(object):
         self.server = server
         self.user = user
         self.password = password
+        self._version = ""
 
         self.port = kwargs.get('port', 8080)
-
-        self.url = "https://" + server + ":" + str(self.port) + "/api/" + self.api_version
 
         if server is None or server is "":
             raise ValueError("You must provide 'server' of HealthBot")
@@ -147,6 +158,8 @@ class HealthBotClient(object):
                 logger.debug(
                     "Connected to HealthBot Server({}) on port {}".format(
                         self.server, self.port))
+
+        self._version = self.version
         self.urlfor = UrlFor(self)
         self.device = devices.Device(self)
         self.device_group = devices.DeviceGroup(self)
@@ -157,6 +170,20 @@ class HealthBotClient(object):
         self.settings = settings.Settings(self)
         self.profile = profiles.Profile(self)
         self.administration = administration.Administration(self)
+
+        config_bm = BaseModule(self, self.config_url)
+        self.authorization = config_bm.authorization
+        self.configuration = ConfigurationApi(config_bm.api_client)
+
+        self.data_store = DataStoreApi(config_bm.api_client)
+        self.services = ServicesApi(config_bm.api_client)
+        self.default = DefaultApi(config_bm.api_client)
+        self.instance_schedule = InstanceScheduleStateApi(config_bm.api_client)
+        non_config_bm = BaseModule(self, self.url)
+        self.license = LicenseApi(non_config_bm.api_client)
+        self.data_source = DataSourceApi(non_config_bm.api_client)
+        self.system = SystemApi(non_config_bm.api_client)
+        self.debug = DebugApi(non_config_bm.api_client)
         return self
 
     login = open
@@ -247,14 +274,34 @@ class HealthBotClient(object):
         raise RuntimeError("tsdb is read-only!")
 
     @property
-    def api_version(self):
-        """ placeholder for rest API version check
+    def config_url(self):
+        """
+        With 3.1.0 all endpoints are divided into 
+        a) configuration endpoints  - /api/v2/config/ (e.g. /api/v2/config/devices/)
+        b) non-configuration endpoints - /api/v2/ (e.g. /api/v2/health/)
+        Once we have all customer moved o 3.1.0 and higher, remove condition check
+
+        Hence this function will give config URL
+
+        """
+        if self.version >= "3.1.0":
+            return self.url + "/config"
+        else:
+            self.url
+
+    @property
+    def url(self):
+        """ Initials of URL to be used for API call.
+        Once we have all customer moved o 3.1.0 and higher, remove v1
 
         :returns:
-            str: API server version.
+            str: Initials of URL to be used for API call.
         """
-
-        return 'v1'
+        url_initials = "https://" + self.server + ":" + str(self.port) + "/api/"
+        if self._version == "" or self.version < "3.1.0":
+            return url_initials + "v1"
+        else:
+            return url_initials + "v2"
 
     @property
     def version(self):
@@ -263,15 +310,18 @@ class HealthBotClient(object):
         :returns:
             str: API server version.
         """
-        system_details_url = self.urlfor.system_details()
-        resp = self.api.get(system_details_url)
-        if resp.status_code == 200:
-            hb_version = resp.json().get('version', '')
-            obj = re.search(r'HealthBot (\d\.\d\.\d)', hb_version)
-            if obj:
-                return obj.group(1)
-        # older version of Healtbot, so return default supported version
-        return '2.0.1'
+        if self._version == "":
+            system_details_url = "{api}/system-details".format(api=self.url)
+            resp = self.api.get(system_details_url)
+            if resp.status_code == 200:
+                hb_version = resp.json().get('version', '')
+                obj = re.search(r'HealthBot (\d\.\d\.\d)', hb_version)
+                if obj:
+                    self._version = obj.group(1)
+                    # to refresh user token to use v2, as we started with v1
+                    # this should be cleaned/deleted in future.
+                    self.api_client.configuration.host = self.url
+        return self._version
 
     @property
     def api(self):

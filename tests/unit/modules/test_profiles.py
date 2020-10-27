@@ -1,7 +1,7 @@
 import unittest
 from nose.plugins.attrib import attr
 
-from mock import patch
+from mock import patch, PropertyMock
 
 from jnpr.healthbot import HealthBotClient
 from jnpr.healthbot import CaProfileSchema
@@ -18,10 +18,16 @@ class TestProfiles(unittest.TestCase):
     def setUp(self, mock_user_login, mock_request):
         self.mock_user_login = _mock_user_login
         self.mock_request = mock_request
-        self.conn = HealthBotClient(
-            server='1.1.1.1',
-            user='test',
-            password='password123').open()
+        with patch('jnpr.healthbot.healthbot.HealthBotClient.version',
+                   new_callable=PropertyMock) as mock_ver:
+            with patch('jnpr.healthbot.healthbot.HealthBotClient.config_url',
+                       new_callable=PropertyMock) as mock_cnf:
+                mock_ver.return_value = '2.1.0'
+                mock_cnf.return_value = "https://1.1.1.1:8080/api/v1"
+                self.conn = HealthBotClient(
+                    server='1.1.1.1',
+                    user='test',
+                    password='password123').open()
 
     def tearDown(self) -> None:
         self.conn.close()
