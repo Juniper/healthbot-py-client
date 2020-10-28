@@ -101,14 +101,17 @@ class TestPlaybooks(unittest.TestCase):
 
     def test_playbook_apply_commit(self):
         self.mock_request().get.side_effect = self._mock_manager
-        pbb = PlayBookInstanceBuilder(
-            self.conn, 'automation-coredump-pb', 'HbEZ-instance',
-            'Core')
-        pbb.apply(commit=True)
-        self.assertEqual(self.mock_request().mock_calls[9][0], 'post')
-        self.assertEqual(
-            self.mock_request().mock_calls[9][1][0],
-            'https://1.1.1.1:8080/api/v1/configuration')
+        with patch('jnpr.healthbot.healthbot.HealthBotClient.config_url',
+                   new_callable=PropertyMock) as mock_cnf:
+            mock_cnf.return_value = "https://1.1.1.1:8080/api/v1"
+            pbb = PlayBookInstanceBuilder(
+                self.conn, 'automation-coredump-pb', 'HbEZ-instance',
+                'Core')
+            pbb.apply(commit=True)
+            self.assertEqual(self.mock_request().mock_calls[9][0], 'post')
+            self.assertEqual(
+                self.mock_request().mock_calls[9][1][0],
+                'https://1.1.1.1:8080/api/v1/configuration')
 
     def test_playbook_instance_builder_with_no_device_group(self):
         from jnpr.healthbot.exception import NotFoundError
