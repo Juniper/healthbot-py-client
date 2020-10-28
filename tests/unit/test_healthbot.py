@@ -10,6 +10,7 @@ from mock import patch, PropertyMock
 from requests.models import Response
 from . import _mock_user_login
 
+
 @attr('unit')
 class TestHealthBotClient(unittest.TestCase):
 
@@ -82,11 +83,14 @@ class TestHealthBotClient(unittest.TestCase):
                          'delete')
 
     def test_commit(self):
-        self.conn.commit()
-        self.assertEqual(self.mock_request().mock_calls[2][0],
-                         'post')
-        self.assertEqual(self.mock_request().mock_calls[2][1],
-                         ('https://1.1.1.1:8080/api/v1/configuration',))
+        with patch('jnpr.healthbot.healthbot.HealthBotClient.config_url',
+                   new_callable=PropertyMock) as mock_cnf:
+            mock_cnf.return_value = "https://1.1.1.1:8080/api/v1"
+            self.conn.commit()
+            self.assertEqual(self.mock_request().mock_calls[2][0],
+                             'post')
+            self.assertEqual(self.mock_request().mock_calls[2][1],
+                             ('https://1.1.1.1:8080/api/v1/configuration',))
 
     @patch('jnpr.healthbot.healthbot.Path.open')
     def test_upload_helper_file(self, mock_open):

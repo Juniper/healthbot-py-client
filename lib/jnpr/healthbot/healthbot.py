@@ -355,7 +355,7 @@ class HealthBotClient(object):
         :returns: True when OK
         """
         response = self.hbot_session.post(
-            "{api}/configuration".format(api=self.url))
+            "{api}/configuration".format(api=self.config_url))
         if response.status_code != 200:
             logger.error(response.text)
         response.raise_for_status()
