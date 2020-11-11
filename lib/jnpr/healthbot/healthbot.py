@@ -287,7 +287,7 @@ class HealthBotClient(object):
         if self.version >= "3.1.0":
             return self.url + "/config"
         else:
-            self.url
+            return self.url
 
     @property
     def url(self):
