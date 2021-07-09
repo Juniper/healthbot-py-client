@@ -5,7 +5,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **does_not_match_with** | [**list[TaggingprofileSchemaWhenDoesnotmatchwith]**](TaggingprofileSchemaWhenDoesnotmatchwith.md) |  | [optional] 
 **equal_to** | [**list[TaggingprofileSchemaWhenEqualto]**](TaggingprofileSchemaWhenEqualto.md) |  | [optional] 
-**eval** | [**list[TaggingprofileSchemaWhenEval]**](TaggingprofileSchemaWhenEval.md) |  | [optional] 
+**eval** | [**list[TopicSchemaWhereEval]**](TopicSchemaWhereEval.md) |  | [optional] 
+**exists** | [**list[TaggingprofileSchemaWhenExists]**](TaggingprofileSchemaWhenExists.md) |  | [optional] 
 **greater_than** | [**list[TaggingprofileSchemaWhenEqualto]**](TaggingprofileSchemaWhenEqualto.md) |  | [optional] 
 **greater_than_or_equal_to** | [**list[TaggingprofileSchemaWhenEqualto]**](TaggingprofileSchemaWhenEqualto.md) |  | [optional] 
 **less_than** | [**list[TaggingprofileSchemaWhenEqualto]**](TaggingprofileSchemaWhenEqualto.md) |  | [optional] 

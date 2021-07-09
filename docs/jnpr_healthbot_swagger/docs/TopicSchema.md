@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | **str** | Description about this topic | [optional] 
+**resource** | [**list[TopicSchemaResource]**](TopicSchemaResource.md) |  | [optional] 
 **rule** | [**list[RuleSchema]**](RuleSchema.md) |  | [optional] 
 **sub_topics** | **list[str]** |  | [optional] 
 **synopsis** | **str** | Short description about this topic | [optional] 

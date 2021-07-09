@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **microsoft_teams** | [**NotificationSchemaMicrosoftteams**](NotificationSchemaMicrosoftteams.md) |  | [optional] 
 **emails** | [**NotificationSchemaEmails**](NotificationSchemaEmails.md) |  | [optional] 
 **kafka_publish** | [**NotificationSchemaKafkapublish**](NotificationSchemaKafkapublish.md) |  | [optional] 
+**amqp_publish** | [**NotificationSchemaAmqppublish**](NotificationSchemaAmqppublish.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

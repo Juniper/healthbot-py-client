@@ -25,9 +25,12 @@ build:
 	cd lib/jnpr/healthbot/swagger/models && sed -i '' -e 's/from\ swagger_client/from\ jnpr.healthbot.swagger/g' *.py
 	python3 setup.py bdist_wheel
 
-.PHONY: version
+.PHONY: version clean
 version:
 	@$(call GET_VERSION)
 
 test:
 	tox -e unittest
+
+clean:
+	rm -rf build dist docs/_build .tox .coverage lib/hbez.egg-info

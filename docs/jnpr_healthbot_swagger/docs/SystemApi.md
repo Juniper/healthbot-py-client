@@ -4,6 +4,7 @@ All URIs are relative to *http://api-server/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**generate_resource_dependencies**](SystemApi.md#generate_resource_dependencies) | **GET** /config/rca/generate-resource-dependencies | Resource dependencies
 [**query_tsdb**](SystemApi.md#query_tsdb) | **GET** /tsdb/query | TSDB query
 [**query_tsdb_post**](SystemApi.md#query_tsdb_post) | **POST** /tsdb/query | TSDB query
 [**retrieve_available_nodes**](SystemApi.md#retrieve_available_nodes) | **GET** /nodes/ | List of available nodes
@@ -12,8 +13,55 @@ Method | HTTP request | Description
 [**retrieve_tsdb_counters**](SystemApi.md#retrieve_tsdb_counters) | **GET** /tsdb-counters/ | TSDB counters
 
 
+# **generate_resource_dependencies**
+> generate_resource_dependencies(x_iam_token=x_iam_token)
+
+Resource dependencies
+
+Get resource dependency events. Internal API
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.SystemApi()
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
+
+try:
+    # Resource dependencies
+    api_instance.generate_resource_dependencies(x_iam_token=x_iam_token)
+except ApiException as e:
+    print("Exception when calling SystemApi->generate_resource_dependencies: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **x_iam_token** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **query_tsdb**
-> TsdbResults query_tsdb(db, device_group, device, measurement=measurement, topic=topic, rule=rule, trigger=trigger, fields=fields, order=order, group_by=group_by, limit=limit, where=where)
+> TsdbResults query_tsdb(db, device_group, device, measurement=measurement, topic=topic, rule=rule, trigger=trigger, fields=fields, order=order, group_by=group_by, limit=limit, where=where, q=q)
 
 TSDB query
 
@@ -41,10 +89,11 @@ order = 'order_example' # str | Sort points in descending order based on time. B
 group_by = 'group_by_example' # str | Group results based on specified tags. Use * to group by all tags. Eg: groupBy=key1, key2 (optional)
 limit = 'limit_example' # str | Limit number of points in the result. If groupBy is used limit is applied per group. Eg: limit=10 (optional)
 where = 'where_example' # str | Where clause filters data based on fields, tags, and/or timestamps. Eg: where=\"interface-name\" = 'ge-0/0/1' and \"in-pkts\" > 0 (optional)
+q = 'q_example' # str | Influx query string. Use this when custom query format does not support a query (optional)
 
 try:
     # TSDB query
-    api_response = api_instance.query_tsdb(db, device_group, device, measurement=measurement, topic=topic, rule=rule, trigger=trigger, fields=fields, order=order, group_by=group_by, limit=limit, where=where)
+    api_response = api_instance.query_tsdb(db, device_group, device, measurement=measurement, topic=topic, rule=rule, trigger=trigger, fields=fields, order=order, group_by=group_by, limit=limit, where=where, q=q)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SystemApi->query_tsdb: %s\n" % e)
@@ -66,6 +115,7 @@ Name | Type | Description  | Notes
  **group_by** | **str**| Group results based on specified tags. Use * to group by all tags. Eg: groupBy&#x3D;key1, key2 | [optional] 
  **limit** | **str**| Limit number of points in the result. If groupBy is used limit is applied per group. Eg: limit&#x3D;10 | [optional] 
  **where** | **str**| Where clause filters data based on fields, tags, and/or timestamps. Eg: where&#x3D;\&quot;interface-name\&quot; &#x3D; &#39;ge-0/0/1&#39; and \&quot;in-pkts\&quot; &gt; 0 | [optional] 
+ **q** | **str**| Influx query string. Use this when custom query format does not support a query | [optional] 
 
 ### Return type
 
@@ -83,7 +133,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **query_tsdb_post**
-> TsdbResults query_tsdb_post(db, device_group, device, tsdb_query_body=tsdb_query_body, measurement=measurement, topic=topic, rule=rule, trigger=trigger, fields=fields, order=order, group_by=group_by, limit=limit, where=where)
+> TsdbResults query_tsdb_post(db, device_group, device, tsdb_query_body=tsdb_query_body, measurement=measurement, topic=topic, rule=rule, trigger=trigger, fields=fields, order=order, group_by=group_by, limit=limit, where=where, q=q)
 
 TSDB query
 
@@ -112,10 +162,11 @@ order = 'order_example' # str | Sort points in descending order based on time. B
 group_by = 'group_by_example' # str | Group results based on specified tags. Use * to group by all tags. Eg: groupBy=key1, key2 (optional)
 limit = 'limit_example' # str | Limit number of points in the result. If groupBy is used limit is applied per group. Eg: limit=10 (optional)
 where = 'where_example' # str | Where clause filters data based on fields, tags, and/or timestamps. Eg: where=\"interface-name\" = 'ge-0/0/1' and \"in-pkts\" > 0 (optional)
+q = 'q_example' # str | Influx query string. Use this when custom query format does not support a query (optional)
 
 try:
     # TSDB query
-    api_response = api_instance.query_tsdb_post(db, device_group, device, tsdb_query_body=tsdb_query_body, measurement=measurement, topic=topic, rule=rule, trigger=trigger, fields=fields, order=order, group_by=group_by, limit=limit, where=where)
+    api_response = api_instance.query_tsdb_post(db, device_group, device, tsdb_query_body=tsdb_query_body, measurement=measurement, topic=topic, rule=rule, trigger=trigger, fields=fields, order=order, group_by=group_by, limit=limit, where=where, q=q)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling SystemApi->query_tsdb_post: %s\n" % e)
@@ -138,6 +189,7 @@ Name | Type | Description  | Notes
  **group_by** | **str**| Group results based on specified tags. Use * to group by all tags. Eg: groupBy&#x3D;key1, key2 | [optional] 
  **limit** | **str**| Limit number of points in the result. If groupBy is used limit is applied per group. Eg: limit&#x3D;10 | [optional] 
  **where** | **str**| Where clause filters data based on fields, tags, and/or timestamps. Eg: where&#x3D;\&quot;interface-name\&quot; &#x3D; &#39;ge-0/0/1&#39; and \&quot;in-pkts\&quot; &gt; 0 | [optional] 
+ **q** | **str**| Influx query string. Use this when custom query format does not support a query | [optional] 
 
 ### Return type
 
@@ -155,7 +207,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_available_nodes**
-> retrieve_available_nodes(authorization=authorization)
+> retrieve_available_nodes(x_iam_token=x_iam_token)
 
 List of available nodes
 
@@ -171,11 +223,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.SystemApi()
-authorization = 'authorization_example' # str | authentication header object (optional)
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
 
 try:
     # List of available nodes
-    api_instance.retrieve_available_nodes(authorization=authorization)
+    api_instance.retrieve_available_nodes(x_iam_token=x_iam_token)
 except ApiException as e:
     print("Exception when calling SystemApi->retrieve_available_nodes: %s\n" % e)
 ```
@@ -184,7 +236,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **str**| authentication header object | [optional] 
+ **x_iam_token** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -202,7 +254,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_sensor_device_group**
-> retrieve_sensor_device_group(device_group_name, authorization=authorization)
+> retrieve_sensor_device_group(device_group_name, x_iam_token=x_iam_token)
 
 Get all All API's.
 
@@ -219,11 +271,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.SystemApi()
 device_group_name = 'device_group_name_example' # str | Device Group
-authorization = 'authorization_example' # str | authentication header object (optional)
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
 
 try:
     # Get all All API's.
-    api_instance.retrieve_sensor_device_group(device_group_name, authorization=authorization)
+    api_instance.retrieve_sensor_device_group(device_group_name, x_iam_token=x_iam_token)
 except ApiException as e:
     print("Exception when calling SystemApi->retrieve_sensor_device_group: %s\n" % e)
 ```
@@ -233,7 +285,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **device_group_name** | **str**| Device Group | 
- **authorization** | **str**| authentication header object | [optional] 
+ **x_iam_token** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -251,7 +303,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_system_details**
-> retrieve_system_details(authorization=authorization, service_name=service_name)
+> retrieve_system_details(x_iam_token=x_iam_token, service_name=service_name)
 
 Retrieve system details.
 
@@ -267,12 +319,12 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.SystemApi()
-authorization = 'authorization_example' # str | authentication header object (optional)
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
 service_name = 'service_name_example' # str | service name takes in the name of the service for which details are required. (optional)
 
 try:
     # Retrieve system details.
-    api_instance.retrieve_system_details(authorization=authorization, service_name=service_name)
+    api_instance.retrieve_system_details(x_iam_token=x_iam_token, service_name=service_name)
 except ApiException as e:
     print("Exception when calling SystemApi->retrieve_system_details: %s\n" % e)
 ```
@@ -281,7 +333,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **str**| authentication header object | [optional] 
+ **x_iam_token** | **str**| authentication header object | [optional] 
  **service_name** | **str**| service name takes in the name of the service for which details are required. | [optional] 
 
 ### Return type
@@ -300,7 +352,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_tsdb_counters**
-> retrieve_tsdb_counters(authorization=authorization)
+> retrieve_tsdb_counters(x_iam_token=x_iam_token)
 
 TSDB counters
 
@@ -316,11 +368,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.SystemApi()
-authorization = 'authorization_example' # str | authentication header object (optional)
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
 
 try:
     # TSDB counters
-    api_instance.retrieve_tsdb_counters(authorization=authorization)
+    api_instance.retrieve_tsdb_counters(x_iam_token=x_iam_token)
 except ApiException as e:
     print("Exception when calling SystemApi->retrieve_tsdb_counters: %s\n" % e)
 ```
@@ -329,7 +381,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **str**| authentication header object | [optional] 
+ **x_iam_token** | **str**| authentication header object | [optional] 
 
 ### Return type
 

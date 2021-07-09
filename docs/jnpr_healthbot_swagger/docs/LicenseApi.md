@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **create_iceberg_add_license_from_file**
-> InlineResponse2001 create_iceberg_add_license_from_file(license_file, authorization=authorization)
+> InlineResponse2001 create_iceberg_add_license_from_file(license_file, x_iam_token=x_iam_token)
 
 Add license from file.
 
@@ -33,11 +33,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.LicenseApi()
 license_file = '/path/to/file.txt' # file | License key file content
-authorization = 'authorization_example' # str | authentication header object (optional)
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
 
 try:
     # Add license from file.
-    api_response = api_instance.create_iceberg_add_license_from_file(license_file, authorization=authorization)
+    api_response = api_instance.create_iceberg_add_license_from_file(license_file, x_iam_token=x_iam_token)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling LicenseApi->create_iceberg_add_license_from_file: %s\n" % e)
@@ -48,7 +48,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **license_file** | **file**| License key file content | 
- **authorization** | **str**| authentication header object | [optional] 
+ **x_iam_token** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -66,7 +66,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_delete_all_license**
-> delete_iceberg_delete_all_license(authorization=authorization)
+> delete_iceberg_delete_all_license(x_iam_token=x_iam_token)
 
 Delete all licenses.
 
@@ -82,11 +82,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.LicenseApi()
-authorization = 'authorization_example' # str | authentication header object (optional)
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
 
 try:
     # Delete all licenses.
-    api_instance.delete_iceberg_delete_all_license(authorization=authorization)
+    api_instance.delete_iceberg_delete_all_license(x_iam_token=x_iam_token)
 except ApiException as e:
     print("Exception when calling LicenseApi->delete_iceberg_delete_all_license: %s\n" % e)
 ```
@@ -95,7 +95,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **str**| authentication header object | [optional] 
+ **x_iam_token** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -113,7 +113,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_iceberg_delete_license_by_id**
-> delete_iceberg_delete_license_by_id(license_id, authorization=authorization)
+> delete_iceberg_delete_license_by_id(license_id, x_iam_token=x_iam_token)
 
 Delete a license.
 
@@ -130,11 +130,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.LicenseApi()
 license_id = 'license_id_example' # str | License id
-authorization = 'authorization_example' # str | authentication header object (optional)
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
 
 try:
     # Delete a license.
-    api_instance.delete_iceberg_delete_license_by_id(license_id, authorization=authorization)
+    api_instance.delete_iceberg_delete_license_by_id(license_id, x_iam_token=x_iam_token)
 except ApiException as e:
     print("Exception when calling LicenseApi->delete_iceberg_delete_license_by_id: %s\n" % e)
 ```
@@ -144,7 +144,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **license_id** | **str**| License id | 
- **authorization** | **str**| authentication header object | [optional] 
+ **x_iam_token** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -162,7 +162,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_get_all_license_id**
-> list[str] retrieve_iceberg_get_all_license_id(authorization=authorization)
+> list[str] retrieve_iceberg_get_all_license_id(x_iam_token=x_iam_token)
 
 List of available license id's.
 
@@ -178,11 +178,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.LicenseApi()
-authorization = 'authorization_example' # str | authentication header object (optional)
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
 
 try:
     # List of available license id's.
-    api_response = api_instance.retrieve_iceberg_get_all_license_id(authorization=authorization)
+    api_response = api_instance.retrieve_iceberg_get_all_license_id(x_iam_token=x_iam_token)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling LicenseApi->retrieve_iceberg_get_all_license_id: %s\n" % e)
@@ -192,7 +192,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **str**| authentication header object | [optional] 
+ **x_iam_token** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -210,7 +210,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_license_features_info**
-> LicenseFeaturesSchema retrieve_iceberg_license_features_info(authorization=authorization)
+> LicenseFeaturesSchema retrieve_iceberg_license_features_info(x_iam_token=x_iam_token)
 
 Status of all the licensed features.
 
@@ -226,11 +226,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.LicenseApi()
-authorization = 'authorization_example' # str | authentication header object (optional)
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
 
 try:
     # Status of all the licensed features.
-    api_response = api_instance.retrieve_iceberg_license_features_info(authorization=authorization)
+    api_response = api_instance.retrieve_iceberg_license_features_info(x_iam_token=x_iam_token)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling LicenseApi->retrieve_iceberg_license_features_info: %s\n" % e)
@@ -240,7 +240,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **str**| authentication header object | [optional] 
+ **x_iam_token** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -258,7 +258,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_license_file_by_license_id**
-> file retrieve_iceberg_license_file_by_license_id(license_id, authorization=authorization)
+> file retrieve_iceberg_license_file_by_license_id(license_id, x_iam_token=x_iam_token)
 
 Download license file.
 
@@ -275,11 +275,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.LicenseApi()
 license_id = 'license_id_example' # str | License id
-authorization = 'authorization_example' # str | authentication header object (optional)
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
 
 try:
     # Download license file.
-    api_response = api_instance.retrieve_iceberg_license_file_by_license_id(license_id, authorization=authorization)
+    api_response = api_instance.retrieve_iceberg_license_file_by_license_id(license_id, x_iam_token=x_iam_token)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling LicenseApi->retrieve_iceberg_license_file_by_license_id: %s\n" % e)
@@ -290,7 +290,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **license_id** | **str**| License id | 
- **authorization** | **str**| authentication header object | [optional] 
+ **x_iam_token** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -308,7 +308,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_license_key_contents**
-> LicenseKeysSchema retrieve_iceberg_license_key_contents(authorization=authorization)
+> LicenseKeysSchema retrieve_iceberg_license_key_contents(x_iam_token=x_iam_token)
 
 Get the contents of all licenses.
 
@@ -324,11 +324,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.LicenseApi()
-authorization = 'authorization_example' # str | authentication header object (optional)
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
 
 try:
     # Get the contents of all licenses.
-    api_response = api_instance.retrieve_iceberg_license_key_contents(authorization=authorization)
+    api_response = api_instance.retrieve_iceberg_license_key_contents(x_iam_token=x_iam_token)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling LicenseApi->retrieve_iceberg_license_key_contents: %s\n" % e)
@@ -338,7 +338,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **str**| authentication header object | [optional] 
+ **x_iam_token** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -356,7 +356,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_iceberg_license_key_contents_by_id**
-> LicenseKeySchema retrieve_iceberg_license_key_contents_by_id(license_id, authorization=authorization)
+> LicenseKeySchema retrieve_iceberg_license_key_contents_by_id(license_id, x_iam_token=x_iam_token)
 
 Get the contents of a license.
 
@@ -373,11 +373,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.LicenseApi()
 license_id = 'license_id_example' # str | License id
-authorization = 'authorization_example' # str | authentication header object (optional)
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
 
 try:
     # Get the contents of a license.
-    api_response = api_instance.retrieve_iceberg_license_key_contents_by_id(license_id, authorization=authorization)
+    api_response = api_instance.retrieve_iceberg_license_key_contents_by_id(license_id, x_iam_token=x_iam_token)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling LicenseApi->retrieve_iceberg_license_key_contents_by_id: %s\n" % e)
@@ -388,7 +388,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **license_id** | **str**| License id | 
- **authorization** | **str**| authentication header object | [optional] 
+ **x_iam_token** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -406,7 +406,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_iceberg_replace_license**
-> InlineResponse2001 update_iceberg_replace_license(license_raw_keys, authorization=authorization)
+> InlineResponse2001 update_iceberg_replace_license(license_raw_keys, x_iam_token=x_iam_token)
 
 Update the license.
 
@@ -423,11 +423,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.LicenseApi()
 license_raw_keys = swagger_client.LicenseRawKeysSchema() # LicenseRawKeysSchema | License raw keys contents
-authorization = 'authorization_example' # str | authentication header object (optional)
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
 
 try:
     # Update the license.
-    api_response = api_instance.update_iceberg_replace_license(license_raw_keys, authorization=authorization)
+    api_response = api_instance.update_iceberg_replace_license(license_raw_keys, x_iam_token=x_iam_token)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling LicenseApi->update_iceberg_replace_license: %s\n" % e)
@@ -438,7 +438,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **license_raw_keys** | [**LicenseRawKeysSchema**](LicenseRawKeysSchema.md)| License raw keys contents | 
- **authorization** | **str**| authentication header object | [optional] 
+ **x_iam_token** | **str**| authentication header object | [optional] 
 
 ### Return type
 

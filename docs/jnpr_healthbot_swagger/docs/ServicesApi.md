@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **create_services_device_groups_device_group_by_device_group_name**
-> create_services_device_groups_device_group_by_device_group_name(device_group_name, authorization=authorization)
+> create_services_device_groups_device_group_by_device_group_name(device_group_name, x_iam_token=x_iam_token)
 
 Start a device-group's services.
 
@@ -30,11 +30,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ServicesApi()
 device_group_name = 'device_group_name_example' # str | Name of device group
-authorization = 'authorization_example' # str | authentication header object (optional)
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
 
 try:
     # Start a device-group's services.
-    api_instance.create_services_device_groups_device_group_by_device_group_name(device_group_name, authorization=authorization)
+    api_instance.create_services_device_groups_device_group_by_device_group_name(device_group_name, x_iam_token=x_iam_token)
 except ApiException as e:
     print("Exception when calling ServicesApi->create_services_device_groups_device_group_by_device_group_name: %s\n" % e)
 ```
@@ -44,7 +44,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **device_group_name** | **str**| Name of device group | 
- **authorization** | **str**| authentication header object | [optional] 
+ **x_iam_token** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -62,7 +62,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_services_network_group_by_network_group_name**
-> create_services_network_group_by_network_group_name(network_group_name, authorization=authorization)
+> create_services_network_group_by_network_group_name(network_group_name, x_iam_token=x_iam_token)
 
 Start a network-group's services.
 
@@ -79,11 +79,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ServicesApi()
 network_group_name = 'network_group_name_example' # str | Name of network group
-authorization = 'authorization_example' # str | authentication header object (optional)
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
 
 try:
     # Start a network-group's services.
-    api_instance.create_services_network_group_by_network_group_name(network_group_name, authorization=authorization)
+    api_instance.create_services_network_group_by_network_group_name(network_group_name, x_iam_token=x_iam_token)
 except ApiException as e:
     print("Exception when calling ServicesApi->create_services_network_group_by_network_group_name: %s\n" % e)
 ```
@@ -93,7 +93,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **network_group_name** | **str**| Name of network group | 
- **authorization** | **str**| authentication header object | [optional] 
+ **x_iam_token** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -111,7 +111,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_services_device_groups_device_group_by_device_group_name**
-> delete_services_device_groups_device_group_by_device_group_name(device_group_name, authorization=authorization)
+> delete_services_device_groups_device_group_by_device_group_name(device_group_name, x_iam_token=x_iam_token)
 
 Stop and remove a device-group's services.
 
@@ -128,11 +128,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ServicesApi()
 device_group_name = 'device_group_name_example' # str | Name of device group
-authorization = 'authorization_example' # str | authentication header object (optional)
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
 
 try:
     # Stop and remove a device-group's services.
-    api_instance.delete_services_device_groups_device_group_by_device_group_name(device_group_name, authorization=authorization)
+    api_instance.delete_services_device_groups_device_group_by_device_group_name(device_group_name, x_iam_token=x_iam_token)
 except ApiException as e:
     print("Exception when calling ServicesApi->delete_services_device_groups_device_group_by_device_group_name: %s\n" % e)
 ```
@@ -142,7 +142,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **device_group_name** | **str**| Name of device group | 
- **authorization** | **str**| authentication header object | [optional] 
+ **x_iam_token** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -160,7 +160,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_services_network_group_by_network_group_name**
-> delete_services_network_group_by_network_group_name(network_group_name, authorization=authorization)
+> delete_services_network_group_by_network_group_name(network_group_name, x_iam_token=x_iam_token)
 
 Stop and remove a network-group's services.
 
@@ -177,11 +177,11 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.ServicesApi()
 network_group_name = 'network_group_name_example' # str | Name of network group
-authorization = 'authorization_example' # str | authentication header object (optional)
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
 
 try:
     # Stop and remove a network-group's services.
-    api_instance.delete_services_network_group_by_network_group_name(network_group_name, authorization=authorization)
+    api_instance.delete_services_network_group_by_network_group_name(network_group_name, x_iam_token=x_iam_token)
 except ApiException as e:
     print("Exception when calling ServicesApi->delete_services_network_group_by_network_group_name: %s\n" % e)
 ```
@@ -191,7 +191,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **network_group_name** | **str**| Name of network group | 
- **authorization** | **str**| authentication header object | [optional] 
+ **x_iam_token** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -209,7 +209,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_services_device_groups_device_group_device_group**
-> list[str] retrieve_services_device_groups_device_group_device_group(authorization=authorization)
+> list[str] retrieve_services_device_groups_device_group_device_group(x_iam_token=x_iam_token)
 
 Get running `device-group-name`s.
 
@@ -225,11 +225,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ServicesApi()
-authorization = 'authorization_example' # str | authentication header object (optional)
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
 
 try:
     # Get running `device-group-name`s.
-    api_response = api_instance.retrieve_services_device_groups_device_group_device_group(authorization=authorization)
+    api_response = api_instance.retrieve_services_device_groups_device_group_device_group(x_iam_token=x_iam_token)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ServicesApi->retrieve_services_device_groups_device_group_device_group: %s\n" % e)
@@ -239,7 +239,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **str**| authentication header object | [optional] 
+ **x_iam_token** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -257,7 +257,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_services_network_group**
-> list[str] retrieve_services_network_group(authorization=authorization)
+> list[str] retrieve_services_network_group(x_iam_token=x_iam_token)
 
 Get running `network-group-name`s
 
@@ -273,11 +273,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.ServicesApi()
-authorization = 'authorization_example' # str | authentication header object (optional)
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
 
 try:
     # Get running `network-group-name`s
-    api_response = api_instance.retrieve_services_network_group(authorization=authorization)
+    api_response = api_instance.retrieve_services_network_group(x_iam_token=x_iam_token)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ServicesApi->retrieve_services_network_group: %s\n" % e)
@@ -287,7 +287,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **str**| authentication header object | [optional] 
+ **x_iam_token** | **str**| authentication header object | [optional] 
 
 ### Return type
 

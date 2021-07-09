@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **publish** | [**NetworkgroupSchemaPublish**](NetworkgroupSchemaPublish.md) |  | [optional] 
 **logging** | [**NetworkgroupSchemaLogging**](NetworkgroupSchemaLogging.md) |  | [optional] 
 **reports** | **list[str]** |  | [optional] 
+**root_cause_analysis** | [**DevicegroupSchemaRootcauseanalysis**](DevicegroupSchemaRootcauseanalysis.md) |  | [optional] 
 **notification** | [**NetworkgroupSchemaNotification**](NetworkgroupSchemaNotification.md) |  | [optional] 
 **playbooks** | **list[str]** |  | [optional] 
 **tagging_profile** | **list[str]** |  | [optional] 
