@@ -133,6 +133,8 @@ from jnpr.healthbot.swagger.models.flow_schema_flow_template import FlowSchemaFl
 from jnpr.healthbot.swagger.models.frequency_profile_schema import FrequencyProfileSchema
 from jnpr.healthbot.swagger.models.frequencyprofile_schema_nonsensor import FrequencyprofileSchemaNonsensor
 from jnpr.healthbot.swagger.models.frequencyprofile_schema_sensor import FrequencyprofileSchemaSensor
+from jnpr.healthbot.swagger.models.groups import Groups
+from jnpr.healthbot.swagger.models.groupgroupid_roles import GroupgroupidRoles
 from jnpr.healthbot.swagger.models.group_health_schema import GroupHealthSchema
 from jnpr.healthbot.swagger.models.header_pattern_schema import HeaderPatternSchema
 from jnpr.healthbot.swagger.models.headerpattern_schema_field import HeaderpatternSchemaField
