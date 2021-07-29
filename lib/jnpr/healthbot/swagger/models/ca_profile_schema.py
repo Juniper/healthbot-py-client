@@ -72,8 +72,8 @@ class CaProfileSchema(object):
         """
         if certificate_authority_crt is None:
             raise ValueError("Invalid value for `certificate_authority_crt`, must not be `None`")  # noqa: E501
-        if certificate_authority_crt is not None and not re.search(r'^.+\\.crt$', certificate_authority_crt):  # noqa: E501
-            raise ValueError(r"Invalid value for `certificate_authority_crt`, must be a follow pattern or equal to `/^.+\\.crt$/`")  # noqa: E501
+        if certificate_authority_crt is not None and not re.search('^.+\\.crt$', certificate_authority_crt):  # noqa: E501
+            raise ValueError("Invalid value for `certificate_authority_crt`, must be a follow pattern or equal to `/^.+\\.crt$/`")  # noqa: E501
 
         self._certificate_authority_crt = certificate_authority_crt
 

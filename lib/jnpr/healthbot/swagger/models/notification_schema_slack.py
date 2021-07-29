@@ -97,8 +97,8 @@ class NotificationSchemaSlack(object):
         """
         if url is None:
             raise ValueError("Invalid value for `url`, must not be `None`")  # noqa: E501
-        if url is not None and not re.search(r'^(https):\/\/[^\\s\/$.?#].[^\\s]*$', url):  # noqa: E501
-            raise ValueError(r"Invalid value for `url`, must be a follow pattern or equal to `/^(https):\/\/[^\\s\/$.?#].[^\\s]*$/`")  # noqa: E501
+        if url is not None and not re.search('^(https):\/\/[^\\s\/$.?#].[^\\s]*$', url):  # noqa: E501
+            raise ValueError("Invalid value for `url`, must be a follow pattern or equal to `/^(https):\/\/[^\\s\/$.?#].[^\\s]*$/`")  # noqa: E501
 
         self._url = url
 
