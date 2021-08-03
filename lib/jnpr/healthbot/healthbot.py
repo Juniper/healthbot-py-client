@@ -13,7 +13,6 @@ from jnpr.healthbot.modules import playbooks
 from jnpr.healthbot.modules import database
 from jnpr.healthbot.modules import settings
 from jnpr.healthbot.modules import profiles
-from jnpr.healthbot.modules import administration
 from jnpr.healthbot.modules import BaseModule
 
 from jnpr.healthbot.swagger.api.authentication_api import AuthenticationApi
@@ -169,7 +168,6 @@ class HealthBotClient(object):
         self.playbook = playbooks.Playbook(self)
         self.settings = settings.Settings(self)
         self.profile = profiles.Profile(self)
-        self.administration = administration.Administration(self)
 
         config_bm = BaseModule(self, self.config_url)
         self.authorization = config_bm.authorization
