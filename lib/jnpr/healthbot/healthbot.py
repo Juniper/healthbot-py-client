@@ -13,7 +13,6 @@ from jnpr.healthbot.modules import playbooks
 from jnpr.healthbot.modules import database
 from jnpr.healthbot.modules import settings
 from jnpr.healthbot.modules import profiles
-from jnpr.healthbot.modules import administration
 from jnpr.healthbot.modules import BaseModule
 
 from jnpr.healthbot.swagger.api.authentication_api import AuthenticationApi
@@ -116,13 +115,13 @@ class HealthBotClient(object):
 
         self.port = kwargs.get('port', 8080)
 
-        if server is None or server is "":
+        if server is None or server == "":
             raise ValueError("You must provide 'server' of HealthBot")
 
-        if user is None or user is "":
+        if user is None or user == "":
             raise ValueError("You must provide 'user' of HealthBot")
 
-        if password is None or password is "":
+        if password is None or password == "":
             raise ValueError("You must provide 'password' of HealthBot")
 
         self._hbot_session = None
@@ -169,7 +168,6 @@ class HealthBotClient(object):
         self.playbook = playbooks.Playbook(self)
         self.settings = settings.Settings(self)
         self.profile = profiles.Profile(self)
-        self.administration = administration.Administration(self)
 
         config_bm = BaseModule(self, self.config_url)
         self.authorization = config_bm.authorization
@@ -206,7 +204,7 @@ class HealthBotClient(object):
             self._token_expire_time = time.time() + \
                                       int(self._user_token.token_expires)
             self.hbot_session.headers.update({
-                'Authorization': 'Bearer ' + self._user_token.access_token})
+              'x-iam-token': self._user_token.access_token})
             self.connected = True
         except ApiException as ex:
             logger.debug("Check if given HealthBot version support authorization key")
@@ -245,7 +243,7 @@ class HealthBotClient(object):
             self._user_token.access_token = obj.access_token
             self._user_token.refresh_token = obj.refresh_token
             self._hbot_session.headers.update({
-                'Authorization': 'Bearer ' + self._user_token.access_token})
+                    'x-iam-token': self._user_token.access_token})
             self._token_expire_time = time.time() + \
                                       int(self._user_token.token_expires)
         return self._user_token

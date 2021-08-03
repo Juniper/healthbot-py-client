@@ -847,7 +847,7 @@ class LicenseKeyManagement(BaseModule):
 
         """
         response = self._license_api.retrieve_iceberg_license_features_info(
-            authorization=self.authorization)
+            x_iam_token=self.authorization)
         return response.license_feature
 
     def get_ids(self):
@@ -866,7 +866,7 @@ class LicenseKeyManagement(BaseModule):
 
         """
         return self._license_api.retrieve_iceberg_get_all_license_id(
-            authorization=self.authorization)
+            x_iam_token=self.authorization)
 
     def get(self, license_id: str = None):
         """
@@ -890,10 +890,10 @@ class LicenseKeyManagement(BaseModule):
         """
         if license_id is not None:
             return self._license_api.retrieve_iceberg_license_key_contents_by_id(
-                    license_id, authorization=self.authorization)
+                    license_id, x_iam_token=self.authorization)
         else:
             response = self._license_api.retrieve_iceberg_license_key_contents(
-                authorization=self.authorization)
+                x_iam_token=self.authorization)
             return response.license_key
 
     def add(self, license_file):
@@ -914,7 +914,7 @@ class LicenseKeyManagement(BaseModule):
 
         """
         response = self._license_api.create_iceberg_add_license_from_file(
-            license_file, authorization=self.authorization)
+            license_file, x_iam_token=self.authorization)
         return response.license_id
 
     def delete(self, license_id: str):
@@ -932,6 +932,6 @@ class LicenseKeyManagement(BaseModule):
         """
 
         self._license_api.delete_iceberg_delete_license_by_id(
-            license_id, authorization=self.authorization)
+            license_id, x_iam_token=self.authorization)
 
         return True

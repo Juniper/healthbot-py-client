@@ -1938,6 +1938,9 @@ pbb.apply()
     True
 
 
+# VERSIONS
+Healthbot versions upto 3.2.0 are supported by `https://github.com/Juniper/healthbot-py-client/releases/tag/v2.0.0` 
+Healthbot/Paragon Insights 4.0.0 and above are supported by `https://github.com/Juniper/healthbot-py-client`
 
 # LICENSE
 

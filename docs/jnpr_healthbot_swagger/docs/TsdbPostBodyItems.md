@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **limit** | **int** | Limit number of points in the result. If groupBy is used limit is applied per group. Eg: limit&#x3D;10 | [optional] 
 **fields** | **list[str]** |  | [optional] 
 **group_by** | **list[str]** |  | [optional] 
+**outer_queries** | [**list[TsdbPostBodyItemsOuterQueries]**](TsdbPostBodyItemsOuterQueries.md) |  | [optional] 
+**device_aggregation** | [**TsdbPostBodyItemsDeviceAggregation**](TsdbPostBodyItemsDeviceAggregation.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

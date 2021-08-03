@@ -21,4 +21,4 @@ class BaseModule(object):
 
     @property
     def authorization(self):
-        return 'Bearer ' + self.hbot.user_token.access_token
+        return 'x-iam-token ' + self.hbot.user_token.access_token

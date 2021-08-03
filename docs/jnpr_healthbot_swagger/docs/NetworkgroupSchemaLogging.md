@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **reports_generation** | [**DevicegroupSchemaLoggingReportsgeneration**](DevicegroupSchemaLoggingReportsgeneration.md) |  | [optional] 
 **trigger_evaluation** | [**DevicegroupSchemaLoggingTriggerevaluation**](DevicegroupSchemaLoggingTriggerevaluation.md) |  | [optional] 
 **ml_model_builder** | [**DevicegroupSchemaLoggingMLmodelbuilder**](DevicegroupSchemaLoggingMLmodelbuilder.md) |  | [optional] 
+**resource_discovery** | [**DevicegroupSchemaLoggingResourcediscovery**](DevicegroupSchemaLoggingResourcediscovery.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

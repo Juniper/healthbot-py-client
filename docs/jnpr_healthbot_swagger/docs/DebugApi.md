@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **healthbot_debug_generate_configuration**
-> healthbot_debug_generate_configuration(authorization=authorization)
+> healthbot_debug_generate_configuration(x_iam_token=x_iam_token)
 
 Request Healthbot MGD service to generate the debug related configuration for healthbot debugger to consume.
 
@@ -25,11 +25,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = swagger_client.DebugApi()
-authorization = 'authorization_example' # str | authentication header object (optional)
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
 
 try:
     # Request Healthbot MGD service to generate the debug related configuration for healthbot debugger to consume.
-    api_instance.healthbot_debug_generate_configuration(authorization=authorization)
+    api_instance.healthbot_debug_generate_configuration(x_iam_token=x_iam_token)
 except ApiException as e:
     print("Exception when calling DebugApi->healthbot_debug_generate_configuration: %s\n" % e)
 ```
@@ -38,7 +38,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **str**| authentication header object | [optional] 
+ **x_iam_token** | **str**| authentication header object | [optional] 
 
 ### Return type
 
@@ -56,7 +56,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve_debug_for_scenario**
-> object retrieve_debug_for_scenario(scenario_name, authorization=authorization, debug_arguments=debug_arguments)
+> object retrieve_debug_for_scenario(scenario_name, x_iam_token=x_iam_token, debug_arguments=debug_arguments)
 
 Run debugging for the given scenario name
 
@@ -73,12 +73,12 @@ from pprint import pprint
 # create an instance of the API class
 api_instance = swagger_client.DebugApi()
 scenario_name = 'scenario_name_example' # str | Scenario name
-authorization = 'authorization_example' # str | authentication header object (optional)
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
 debug_arguments = swagger_client.DebugArgumentsSchema() # DebugArgumentsSchema | Debug arguments object (optional)
 
 try:
     # Run debugging for the given scenario name
-    api_response = api_instance.retrieve_debug_for_scenario(scenario_name, authorization=authorization, debug_arguments=debug_arguments)
+    api_response = api_instance.retrieve_debug_for_scenario(scenario_name, x_iam_token=x_iam_token, debug_arguments=debug_arguments)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DebugApi->retrieve_debug_for_scenario: %s\n" % e)
@@ -89,7 +89,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scenario_name** | **str**| Scenario name | 
- **authorization** | **str**| authentication header object | [optional] 
+ **x_iam_token** | **str**| authentication header object | [optional] 
  **debug_arguments** | [**DebugArgumentsSchema**](DebugArgumentsSchema.md)| Debug arguments object | [optional] 
 
 ### Return type

@@ -14,5 +14,8 @@ from jnpr.healthbot.swagger.api.facts_api import FactsApi
 from jnpr.healthbot.swagger.api.instance_schedule_state_api import InstanceScheduleStateApi
 from jnpr.healthbot.swagger.api.license_api import LicenseApi
 from jnpr.healthbot.swagger.api.logs_api import LogsApi
+from jnpr.healthbot.swagger.api.organization_api import OrganizationApi
 from jnpr.healthbot.swagger.api.services_api import ServicesApi
 from jnpr.healthbot.swagger.api.system_api import SystemApi
+from jnpr.healthbot.swagger.api.workflow_api import WorkflowApi
+from jnpr.healthbot.swagger.api.workflow_instance_api import WorkflowInstanceApi

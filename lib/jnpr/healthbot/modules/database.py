@@ -12,8 +12,8 @@ class Database(InfluxDBClient):
 
         Example:
         ::
-            hb.database.query("show databases")
-            hb.database.query('select * from "protocol-eventd-host/check-host-traffic/packet-loss" limit 10',
+            hb.tsdb.query("show databases")
+            hb.tsdb.query('select * from "protocol-eventd-host/check-host-traffic/packet-loss" limit 10',
                               database='Core:vmx')
         """
         self.hbot = hbot

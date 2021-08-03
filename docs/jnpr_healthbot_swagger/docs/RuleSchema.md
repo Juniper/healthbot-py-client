@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **rule_name** | **str** | Name of the rule. Should be of pattern [a-z][a-z0-9_-]* | 
 **sensor** | [**list[RuleSchemaSensor1]**](RuleSchemaSensor1.md) |  | [optional] 
 **synopsis** | **str** | Synopsis about the rule | [optional] 
-**field_aggregation_time_range** | **str** | How much back in time should we look for field aggregation. Specify positive integer followed by s/m/h/d/w/y representing seconds/minutes/hours/days/weeks/years. Eg: 2s | [optional] 
+**field_aggregation_time_range** | **str** | How much back in time should we look for field aggregation. Specify positive integer followed by o/s/m/h/d/w/y/offset representing seconds/minutes/hours/days/weeks/years. Eg: 2s | [optional] 
 **trigger** | [**list[RuleSchemaTrigger]**](RuleSchemaTrigger.md) |  | [optional] 
 **variable** | [**list[RuleSchemaVariable]**](RuleSchemaVariable.md) | Playbook variable configuration | [optional] 
 **vector** | [**list[RuleSchemaVector]**](RuleSchemaVector.md) |  | [optional] 
