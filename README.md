@@ -1939,7 +1939,9 @@ pbb.apply()
 
 
 # VERSIONS
-Healthbot versions upto 3.2.0 are supported by `https://pypi.org/project/hbez/2.0.0/` 
+
+Healthbot versions upto 3.2.0 are supported by `https://pypi.org/project/hbez/2.0.0/`
+
 Healthbot/Paragon Insights 4.0.0 and above will be supported by `https://pypi.org/project/hbez/4.0.0/` and above
 
 # LICENSE
@@ -1953,3 +1955,5 @@ Juniper Networks is actively contributing to and maintaining this repo. Please c
 *Contributors:*
 
 * v1.0.0: [Nitin Kumar](https://github.com/vnitinv)
+* v2.0.0: [Nitin Kumar](https://github.com/vnitinv)
+* v4.0.0: [Sharanya Bhat](https://github.com/sharanyabhat)
