@@ -33534,6 +33534,710 @@
       },
       "type": "object"
     },
+    "panel_schema": {
+      "additionalProperties": false,
+      "properties": {
+        "db": {
+          "description": "database name",
+          "type": "string"
+        },
+        "decimals": {
+          "description": "decimal value",
+          "type": "string"
+        },
+        "panelData": {
+          "description": "Panel data",
+          "items":{
+            "$ref": "#/definitions/panel_data_schema"
+                },
+          "type": "array"
+        },
+        "panelName": {
+          "description": "Name of the panel",
+          "type": "string"
+        },
+        "panelQuery": {
+          "description": "Queries for the configured panel",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^@": {
+              "type": "object"
+            }
+          },
+          "properties": {
+            "query": {
+              "description": "Panel Query.",
+              "format": "string",
+              "type": "string"
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "type": "array"
+        },
+        "panelType": {
+          "description": "Type of chart",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^@": {
+              "type": "object"
+            }
+          },
+          "properties": {
+            "label": {
+              "description": "Label name",
+              "format": "string",
+              "type": "string"
+            },
+            "value": {
+              "description": "Value of the label",
+              "format": "string",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "panelUid": {
+          "description": "Unique identifier for panel",
+          "type": "string"
+        },
+        "timeRange": {
+          "description": "Time range configured by user",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^@": {
+              "type": "object"
+            }
+          },
+          "properties": {
+            "label": {
+              "description": "Label name",
+              "format": "string",
+              "type": "string"
+            },
+            "value": {
+              "description": "Value of label",
+              "format": "string",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "unitType": {
+          "description": "Unit configured",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^@": {
+              "type": "object"
+            }
+          },
+          "properties": {
+            "label": {
+              "description": "Label name",
+              "format": "string",
+              "type": "string"
+            },
+            "value": {
+              "description": "Value of label",
+              "format": "string",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "yLabel": {
+          "description": "yLabel values",
+          "type": "string"
+        },
+        "yMax": {
+          "description": "yMax value",
+          "type": "string"
+        },
+        "yMin": {
+          "description": "yMin value",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "panel_data_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "addGroupByTag": {
+            "description": "Group by values",
+            "additionalProperties": false,
+            "patternProperties": {
+              "^@": {
+                "type": "object"
+              }
+            },
+            "properties": {
+                  "dataType": {
+                    "description": "Data type of the tag",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "label": {
+                    "description": "label name",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "type": {
+                    "description": "key type or field type",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Value of label",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+            "type": "array"
+          },
+          "addWhereCondition": {
+            "description": "Where condition to filter",
+            "additionalProperties": false,
+            "patternProperties": {
+              "^@": {
+                "type": "object"
+              }
+            },
+            "properties": {
+              "keyOrField": {
+                "description": "Configured value is field/key type in influx",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "dataType": {
+                    "description": "Data type of the field/key",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "label": {
+                    "description": "label name",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "type": {
+                    "description": "key type or field type",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Value of label",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "keyOrFieldValue": {
+                "description": "Key or Field value for the where condition",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "label": {
+                    "description": "Name of the panel.",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Name of the panel.",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "operator": {
+                "description": "operator for where condition",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "label": {
+                    "description": "Name of the panel.",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Name of the panel.",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "type": "array"
+          },
+          "changeWhereKeyField": {
+            "description": "Change where key field",
+            "additionalProperties": false,
+            "patternProperties": {
+              "^@": {
+                "type": "object"
+              }
+            },
+            "properties": {
+              "keyField": {
+                "description": "key field",
+                "type": "object"
+              }
+            },
+            "type": "array"
+          },
+          "groupByFill": {
+                "description": "Group By Fill",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "label": {
+                    "description": "Label Name",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Label Value",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+          "groupByTime": {
+                "description": "Group by time",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "label": {
+                    "description": "Label Name",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Label Value",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+          "groupType": {
+            "description": "Group type(device/network)",
+            "type": "string"
+          },
+          "selectedAggregation": {
+                "description": "Aggregation type",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "label": {
+                    "description": "Label Name",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Label value",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+          "selectedDevice": {
+                "description": "Device name",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "label": {
+                    "description": "Label Name",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Label Value",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+          "selectedDropdown": {
+            "description": "Boolean value if selected from dropdown or not",
+            "additionalProperties": false,
+            "patternProperties": {
+              "^@": {
+                "type": "object"
+              }
+            },
+            "properties": {
+              "value": {
+                "description": "Stores boolean value",
+                "type": "boolean"
+              }
+            },
+            "type": "array"
+          },
+          "selectedField": {
+                "description": "Field selected for the panel",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "label": {
+                    "description": "Label name",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Label value",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+          "selectedGroup": {
+                "description": "Device/Network group name",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "label": {
+                    "description": "Label name",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "type": {
+                    "description": "Group type(device/network)",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Label value",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+          "selectedLogicalOperator": {
+            "description": "Logical operator",
+            "additionalProperties": false,
+            "patternProperties": {
+              "^@": {
+                "type": "object"
+              }
+            },
+            "properties": {
+              "value": {
+                "description": "Name of the panel.",
+                "format": "string",
+                "type": "string"
+              }
+            },
+            "type": "array"
+          },
+          "selectedTopic": {
+                "description": "Topic name",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "label": {
+                    "description": "Label name(Topic/rule name)",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "retention-policy": {
+                    "description": "Retention policy of the topic",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "type": {
+                    "description": "Type of measurement(field-table/trigger-table/rollup-table)",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Label value",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+          "selectedTransformation": {
+                "description": "Transformation type",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "label": {
+                    "description": "Label name",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Label value",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+        },
+        "type": "object"
+      },
+    "pin_graphs": {
+      "description": "Create Panels in a Canvas",
+      "properties": {
+        "graph_name": {
+          "description": "Graph name",
+          "type": "string"
+        },
+        "graph_description": {
+          "description": "Graph description",
+          "type": "string"
+        },
+        "graph_type": {
+          "description": "Graph type: Time Series or Histogram or Heatmap",
+          "enum": [
+            "Time Series",
+            "Histogram",
+            "Heatmap"
+          ],
+          "type": "string"
+        },
+        "time_range": {
+          "description": "Time range for the graph",
+          "enum": [
+            "1h",
+            "3h",
+            "6h",
+            "12h",
+            "1d",
+            "2d",
+            "3d",
+            "4d",
+            "5d",
+            "6d",
+            "7d"
+          ],
+          "type": "string"
+        },
+        "query": {
+          "description": "Query for the graph",
+          "properties": {
+            "group_name": {
+              "description": "Device/Network group name",
+              "format": "string",
+              "type": "string"
+            },
+            "group_type": {
+              "description": "Device/Network group type",
+              "enum": [
+                "device",
+                "network"
+              ],
+              "type": "string"
+            },
+            "device_name": {
+              "description": "label name",
+              "format": "string",
+              "type": "string"
+            },
+            "measurement_name": {
+              "description": "Measurement name (topic/rule name)",
+              "format": "string",
+              "type": "string"
+            },
+            "measurement_type": {
+              "description": "Measurement type: Field table/Trigger table/Rollup table",
+              "enum": [
+                "Field table",
+                "Trigger table",
+                "Rollup table"
+              ],
+              "type": "string"
+            },
+            "transformation": {
+              "description": "Transformation value for query",
+              "enum": [
+                "derivative",
+                "spread",
+                "non-negative-derivative",
+                "difference",
+                "cumulative-sum",
+                "elapsed"
+              ],
+              "type": "string"
+            },
+            "field_name": {
+              "description": "Field name of a measurement ",
+              "format": "string",
+              "type": "string"
+            },
+            "field_type": {
+              "description": "Field type of the measurement (int, float, string, uint)",
+              "format": "string",
+              "type": "string"
+            },
+            "field_aggregation": {
+              "description": "Data aggregation type of the field/key",
+              "enum": [
+                "mean",
+                "mode",
+                "median",
+                "count",
+                "sum",
+                "integral",
+                "distinct"
+              ],
+              "type": "string"
+            },
+            "where": {
+              "description": "where clause for graph",
+              "properties": {
+                "where_clause": {
+                  "description": "label name",
+                  "properties": {
+                    "key": {
+                      "description": "Field or key (type)",
+                      "enum": [
+                        "key",
+                        "field"
+                      ],
+                      "type": "string"
+                    },
+                    "operator": {
+                      "description": "Operator for where clause",
+                      "enum": [
+                        "=",
+                        "!=",
+                        "=~",
+                        "!~"
+                      ],
+                      "type": "string"
+                    },
+                    "value": {
+                      "description": "Value for the field_tag_name to be validated",
+                      "format": "string",
+                      "type": "string"
+                    },
+                    "logical_operation": {
+                      "description": "Graph type",
+                      "enum": [
+                        "AND",
+                        "OR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "type": "list"
+                }
+              },
+              "type": "list"
+            },
+            "group_by_interval": {
+              "description": "Group by interval of the query",
+              "format": "string",
+              "type": "string"
+            },
+            "group_by_fill": {
+              "description": "Group by fill value of the query",
+              "enum": ["fill(null)", "none"],
+              "type": "string"
+            },
+            "group_by_tag_key": {
+              "description": "Group by tag key value of the query",
+              "format": "string",
+              "type": "string"
+            },
+            "retention_policy": {
+              "description": "Retention policy name",
+              "format": "string",
+              "type": "string"
+            }
+          },
+          "type": "list"
+        },
+        "y_label": {
+          "description": "Y Label value in visualization",
+          "type": "string"
+        },
+        "y_max": {
+          "description": "Y max value in visualization",
+          "type": "string"
+        },
+        "y_min": {
+          "description": "Y min value in visualization",
+          "type": "string"
+        },
+        "unit_type": {
+          "description": "unit type value in visualization",
+          "enum": [
+            "Short",
+            "Percentage(0-100)",
+            "Bits",
+            "Bytes",
+            "Kilobytes",
+            "Megabytes",
+            "Gigabytes",
+            "Parts per million(ppm)",
+            "Parts per billion(ppb)"
+          ],
+          "type": "string"
+        },
+        "decimals": {
+          "description": "Decimals value in visualization",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "scheduler_schema": {
       "additionalProperties": false,
       "patternProperties": {

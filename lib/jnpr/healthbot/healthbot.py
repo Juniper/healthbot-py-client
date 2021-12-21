@@ -6,6 +6,7 @@ import logging
 import re
 import os
 import time
+import jwt
 from jnpr.healthbot.exception import ConnectAuthError
 from jnpr.healthbot.modules import devices
 from jnpr.healthbot.modules import rules
@@ -13,6 +14,7 @@ from jnpr.healthbot.modules import playbooks
 from jnpr.healthbot.modules import database
 from jnpr.healthbot.modules import settings
 from jnpr.healthbot.modules import profiles
+from jnpr.healthbot.modules import graph
 from jnpr.healthbot.modules import BaseModule
 
 from jnpr.healthbot.swagger.api.authentication_api import AuthenticationApi
@@ -130,6 +132,7 @@ class HealthBotClient(object):
         self._auth = None
         self.connected = False
         self._token_expire_time = None
+        self.tenant = None
 
     def open(self):
         """
@@ -168,6 +171,7 @@ class HealthBotClient(object):
         self.playbook = playbooks.Playbook(self)
         self.settings = settings.Settings(self)
         self.profile = profiles.Profile(self)
+        self.charts = graph.HealthbotCharts(self)
 
         config_bm = BaseModule(self, self.config_url)
         self.authorization = config_bm.authorization
@@ -206,6 +210,9 @@ class HealthBotClient(object):
             self.hbot_session.headers.update({
               'x-iam-token': self._user_token.access_token})
             self.connected = True
+            raw_data = jwt.decode(self._user_token.access_token,
+                                  options={"verify_aud": False, "verify_signature": False, "verify_nbf": False})
+            self.tenant = raw_data['scope']['Name']
         except ApiException as ex:
             logger.debug("Check if given HealthBot version support authorization key")
             # set user/password used by older healthbot version APIs
@@ -282,10 +289,7 @@ class HealthBotClient(object):
         Hence this function will give config URL
 
         """
-        if self.version >= "3.1.0":
-            return self.url + "/config"
-        else:
-            return self.url
+        return self.url + "/config"
 
     @property
     def url(self):
@@ -295,11 +299,11 @@ class HealthBotClient(object):
         :returns:
             str: Initials of URL to be used for API call.
         """
-        url_initials = "https://" + self.server + ":" + str(self.port) + "/api/"
-        if self._version == "" or self.version < "3.1.0":
-            return url_initials + "v1"
-        else:
-            return url_initials + "v2"
+        return "https://" + self.server + ":" + str(self.port) + "/api/" + "v2"
+
+    @property
+    def grafana_url(self):
+        return "https://" + self.server + ":" + str(self.port) + "/grafana/api"
 
     @property
     def version(self):
