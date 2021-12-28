@@ -10,7 +10,6 @@ gui_password = 'pwd'
 
 
 with HealthBotClient(ip, gui_username, gui_password, port=8080) as hb:
-    # Adding a new canvas with a single graph
 
     # group_name, device_name, measurement_name, field_name are compulsory fields here
     q1 = HbGraphsQuery(group_name='dg-junos', device_name="d2", measurement_name="system.commit/commit-history",
@@ -23,6 +22,7 @@ with HealthBotClient(ip, gui_username, gui_password, port=8080) as hb:
                   time_range='3h', query=[q1], y_label=None, y_max=None,
                   y_min=None, unit_type=None, decimals=None)
 
+    # Adding a new canvas with a single graph
     hb.charts.add_canvas(canvas_name="mycanvas1", graphs=g1)
     hb.commit()
     # pprint(hb.charts.get_canvas("mycanvas1"))
