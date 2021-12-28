@@ -134,6 +134,10 @@ from jnpr.healthbot.swagger.models.frequency_profile_schema import FrequencyProf
 from jnpr.healthbot.swagger.models.frequencyprofile_schema_nonsensor import FrequencyprofileSchemaNonsensor
 from jnpr.healthbot.swagger.models.frequencyprofile_schema_sensor import FrequencyprofileSchemaSensor
 from jnpr.healthbot.swagger.models.group_health_schema import GroupHealthSchema
+from jnpr.healthbot.swagger.models.hb_graphs import HbGraphs
+from jnpr.healthbot.swagger.models.hb_graphs_query import HbGraphsQuery
+from jnpr.healthbot.swagger.models.hb_graphs_query_where import HbGraphsQueryWhere
+from jnpr.healthbot.swagger.models.hb_graphs_query_where_where_clause import HbGraphsQueryWhereWhereClause
 from jnpr.healthbot.swagger.models.header_pattern_schema import HeaderPatternSchema
 from jnpr.healthbot.swagger.models.headerpattern_schema_field import HeaderpatternSchemaField
 from jnpr.healthbot.swagger.models.health_schema import HealthSchema
@@ -209,10 +213,6 @@ from jnpr.healthbot.swagger.models.pattern_schema import PatternSchema
 from jnpr.healthbot.swagger.models.pattern_schema_constant import PatternSchemaConstant
 from jnpr.healthbot.swagger.models.pattern_schema_field import PatternSchemaField
 from jnpr.healthbot.swagger.models.pattern_set_schema import PatternSetSchema
-from jnpr.healthbot.swagger.models.pin_graphs import PinGraphs
-from jnpr.healthbot.swagger.models.pin_graphs_query import PinGraphsQuery
-from jnpr.healthbot.swagger.models.pin_graphs_query_where import PinGraphsQueryWhere
-from jnpr.healthbot.swagger.models.pin_graphs_query_where_where_clause import PinGraphsQueryWhereWhereClause
 from jnpr.healthbot.swagger.models.playbook_schema import PlaybookSchema
 from jnpr.healthbot.swagger.models.playbooks_schema import PlaybooksSchema
 from jnpr.healthbot.swagger.models.profile_schema import ProfileSchema

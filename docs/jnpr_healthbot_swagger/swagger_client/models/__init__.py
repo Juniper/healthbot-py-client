@@ -134,6 +134,10 @@ from swagger_client.models.frequency_profile_schema import FrequencyProfileSchem
 from swagger_client.models.frequencyprofile_schema_nonsensor import FrequencyprofileSchemaNonsensor
 from swagger_client.models.frequencyprofile_schema_sensor import FrequencyprofileSchemaSensor
 from swagger_client.models.group_health_schema import GroupHealthSchema
+from swagger_client.models.hb_graphs import HbGraphs
+from swagger_client.models.hb_graphs_query import HbGraphsQuery
+from swagger_client.models.hb_graphs_query_where import HbGraphsQueryWhere
+from swagger_client.models.hb_graphs_query_where_where_clause import HbGraphsQueryWhereWhereClause
 from swagger_client.models.header_pattern_schema import HeaderPatternSchema
 from swagger_client.models.headerpattern_schema_field import HeaderpatternSchemaField
 from swagger_client.models.health_schema import HealthSchema
@@ -209,10 +213,6 @@ from swagger_client.models.pattern_schema import PatternSchema
 from swagger_client.models.pattern_schema_constant import PatternSchemaConstant
 from swagger_client.models.pattern_schema_field import PatternSchemaField
 from swagger_client.models.pattern_set_schema import PatternSetSchema
-from swagger_client.models.pin_graphs import PinGraphs
-from swagger_client.models.pin_graphs_query import PinGraphsQuery
-from swagger_client.models.pin_graphs_query_where import PinGraphsQueryWhere
-from swagger_client.models.pin_graphs_query_where_where_clause import PinGraphsQueryWhereWhereClause
 from swagger_client.models.playbook_schema import PlaybookSchema
 from swagger_client.models.playbooks_schema import PlaybooksSchema
 from swagger_client.models.profile_schema import ProfileSchema

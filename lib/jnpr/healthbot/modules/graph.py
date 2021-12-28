@@ -1,8 +1,8 @@
 from jnpr.healthbot.swagger.models.datastore_schema import DatastoreSchema
 from jnpr.healthbot.swagger.models.panel_schema import PanelSchema
 from jnpr.healthbot.swagger.models.panel_data_schema import PanelDataSchema
-from jnpr.healthbot.swagger.models.pin_graphs import PinGraphs
-from jnpr.healthbot.swagger.models.pin_graphs_query import PinGraphsQuery
+from jnpr.healthbot.swagger.models.hb_graphs import HbGraphs
+from jnpr.healthbot.swagger.models.hb_graphs_query import HbGraphsQuery
 from jnpr.healthbot.swagger.models.panel_data_schema_add_group_by_tag \
     import PanelDataSchemaAddGroupByTag
 from jnpr.healthbot.swagger.models.panel_data_schema_add_where_condition \
@@ -242,28 +242,28 @@ class HBCharts(BaseModule):
                 if (graph.graph_name is None) or (graph.graph_name == ""):
                     return False, "Please enter a valid graph name"
 
-                if not isinstance(graph, PinGraphs):
-                    return False, "Graphs is not of type PinGraphs Schema." + sample_submission
+                if not isinstance(graph, HbGraphs):
+                    return False, "Graphs is not of type HbGraphs Schema." + sample_submission
 
                 if graph.time_range is None:
-                    return False, " `time_range` parameter missing in PinGraphs object." + sample_submission
+                    return False, " `time_range` parameter missing in HbGraphs object." + sample_submission
                 if graph.graph_type is None:
-                    return False, " `graph_type` parameter missing in PinGraphs object." + sample_submission
+                    return False, " `graph_type` parameter missing in HbGraphs object." + sample_submission
 
                 if (graph.query is None) or (graph.query is []):
-                    return False, "`query` parameter missing in PinGraphs object." + sample_submission
+                    return False, "`query` parameter missing in HbGraphs object." + sample_submission
 
                 for query in graph.query:
-                    if not isinstance(query, PinGraphsQuery):
-                        return False, "Query value(s) are not of type PinGraphsQuery Schema." + sample_submission
+                    if not isinstance(query, HbGraphsQuery):
+                        return False, "Query value(s) are not of type HbGraphsQuery Schema." + sample_submission
 
                     if query.group_name is None:
-                        return False, " `group_name` parameter missing in PinGraphs object." + sample_submission
+                        return False, " `group_name` parameter missing in HbGraphs object." + sample_submission
 
                     if query.measurement_name is None:
-                        return False, " `measurement_name` parameter missing in PinGraphs object." + sample_submission
+                        return False, " `measurement_name` parameter missing in HbGraphs object." + sample_submission
                     if query.field_name is None:
-                        return False, " `field_name` parameter missing in PinGraphs object." + sample_submission
+                        return False, " `field_name` parameter missing in HbGraphs object." + sample_submission
                     if query.where is not None:
                         if not isinstance(query.where, list):
                             return False, "Query's where parameters value(s) must be a list." + sample_submission
