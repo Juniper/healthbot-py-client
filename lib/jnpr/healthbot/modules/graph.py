@@ -41,7 +41,7 @@ import logging
 logger = logging.getLogger(__file__)
 
 
-class HealthbotCharts(BaseModule):
+class HBCharts(BaseModule):
 
     def __init__(self, hbot):
         """
@@ -314,8 +314,19 @@ class HealthbotCharts(BaseModule):
                         query.where = []
                     query.field_list = []
                     query.key_dict = {}
-                    if query.group_name in dg_list:
-                        query.group_type = "device"
+                    if query.group_type is None:
+                        if query.group_name in dg_list:
+                            query.group_type = "device"
+                        elif query.group_name in ng_list:
+                            query.group_type = "network"
+                        else:
+                            raise ValueError("The group : {} does not exist, please configure a "
+                                             "valid device/network group".format(query.group_name))
+
+                    if query.group_type == "device":
+                        if query.group_name not in dg_list:
+                            raise ValueError("The device group : {} does not exist".format(query.group_name))
+
                         if query.device_name is None:
                             raise ValueError("No device configured for graph {}"
                                              .format(graph.graph_name))
@@ -360,8 +371,9 @@ class HealthbotCharts(BaseModule):
                                 table_name=query.measurement_name))
                             query.key_dict = tags_dict
 
-                    elif query.group_name in ng_list:
-                        query.group_type = "network"
+                    elif query.group_type == "network":
+                        if query.group_name not in ng_list:
+                            raise ValueError("The network group : {} does not exist".format(query.group_name))
                         measurements_details = _get_response(self.hbot.urlfor.ng_measurements_list
                                                              (network_group=query.group_name))
                         measurement_exists = False
@@ -396,9 +408,7 @@ class HealthbotCharts(BaseModule):
                             table_name=query.measurement_name))
                         query.key_dict = tags_dict
 
-                    else:
-                        raise ValueError("The group : {} does not exist, please configure a "
-                                         "valid device/network group".format(query.group_name))
+
 
                     if query.group_by_tag_key is  None:
                         query.group_by_tag_key = []

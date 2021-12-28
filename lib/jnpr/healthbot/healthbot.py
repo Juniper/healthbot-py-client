@@ -171,7 +171,7 @@ class HealthBotClient(object):
         self.playbook = playbooks.Playbook(self)
         self.settings = settings.Settings(self)
         self.profile = profiles.Profile(self)
-        self.charts = graph.HealthbotCharts(self)
+        self.charts = graph.HBCharts(self)
 
         config_bm = BaseModule(self, self.config_url)
         self.authorization = config_bm.authorization

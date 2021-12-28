@@ -34031,7 +34031,7 @@
         },
         "type": "object"
       },
-    "pin_graphs": {
+    "hb_graphs": {
       "description": "Create Panels in a Canvas",
       "properties": {
         "graph_name": {
