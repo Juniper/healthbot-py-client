@@ -226,6 +226,7 @@ Class | Method | HTTP request | Description
 *DataStoreApi* | [**update_data_store**](docs/DataStoreApi.md#update_data_store) | **PUT** /config/data-store/{group_name}/ | Update data_store details.
 *DebugApi* | [**healthbot_debug_generate_configuration**](docs/DebugApi.md#healthbot_debug_generate_configuration) | **POST** /debug/configuration/ | Request Healthbot MGD service to generate the debug related configuration for healthbot debugger to consume.
 *DebugApi* | [**retrieve_debug_for_scenario**](docs/DebugApi.md#retrieve_debug_for_scenario) | **POST** /debug/scenario/{scenario_name}/ | Run debugging for the given scenario name
+*DefaultApi* | [**backup_grafana**](docs/DefaultApi.md#backup_grafana) | **GET** /grafana/backup/ | Take backup of Grafana configuration
 *DefaultApi* | [**backup_helper_files**](docs/DefaultApi.md#backup_helper_files) | **GET** /config/files/helper-files/backup/ | Download the tar file containing all helper files.
 *DefaultApi* | [**create_dynamic_tagging_by_key**](docs/DefaultApi.md#create_dynamic_tagging_by_key) | **POST** /config/dynamic-tagging/key/ | Creates Dynamic-tagging key-value
 *DefaultApi* | [**create_files_certificates_by_file_name**](docs/DefaultApi.md#create_files_certificates_by_file_name) | **POST** /config/files/certificates/{file_name}/ | Upload a certificate file.
@@ -236,6 +237,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**create_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id**](docs/DefaultApi.md#create_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id) | **POST** /config/ingest/byoi/default-plugin/tlive-kafka-oc/{name}/ | Create tlive-kafka-oc by ID
 *DefaultApi* | [**create_healthbot_ingest_byoi_ingest_mapping_by_id**](docs/DefaultApi.md#create_healthbot_ingest_byoi_ingest_mapping_by_id) | **POST** /config/ingest/byoi/ingest-mapping/{name}/ | Create ingest-mapping by ID
 *DefaultApi* | [**create_healthbot_ingest_frequency_profile_by_id**](docs/DefaultApi.md#create_healthbot_ingest_frequency_profile_by_id) | **POST** /config/ingest/frequency-profile/{name}/ | Create frequency-profile by ID
+*DefaultApi* | [**create_healthbot_ingest_outbound_ssh**](docs/DefaultApi.md#create_healthbot_ingest_outbound_ssh) | **POST** /config/ingest/outbound-ssh/ | Create outbound-ssh by ID
 *DefaultApi* | [**create_healthbot_ingest_settings_byoi_custom_plugin_by_id**](docs/DefaultApi.md#create_healthbot_ingest_settings_byoi_custom_plugin_by_id) | **POST** /config/ingest-settings/byoi/custom-plugin/{name}/ | Create custom-plugin by ID
 *DefaultApi* | [**create_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id**](docs/DefaultApi.md#create_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id) | **POST** /config/ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/ | Create tlive-kafka-oc by ID
 *DefaultApi* | [**create_healthbot_ingest_settings_byoi_ingest_mapping_by_id**](docs/DefaultApi.md#create_healthbot_ingest_settings_byoi_ingest_mapping_by_id) | **POST** /config/ingest-settings/byoi/ingest-mapping/{name}/ | Create ingest-mapping by ID
@@ -255,6 +257,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**create_healthbot_organization_organization_by_id**](docs/DefaultApi.md#create_healthbot_organization_organization_by_id) | **POST** /config/organization/{organization_name}/ | Create organization by ID
 *DefaultApi* | [**create_healthbot_profile_rollup_summarization_field_profile_field_profile_by_id**](docs/DefaultApi.md#create_healthbot_profile_rollup_summarization_field_profile_field_profile_by_id) | **POST** /config/profile/rollup-summarization/field-profile/{profile_id}/ | Create field-profile by ID
 *DefaultApi* | [**create_healthbot_system_time_series_database_time_series_database_by_id**](docs/DefaultApi.md#create_healthbot_system_time_series_database_time_series_database_by_id) | **POST** /config/system/tsdb/ | Create time-series-database by ID
+*DefaultApi* | [**create_healthbot_system_trigger_action**](docs/DefaultApi.md#create_healthbot_system_trigger_action) | **POST** /config/system/trigger_action/ | Create trigger-action
 *DefaultApi* | [**create_iceberg_ingest**](docs/DefaultApi.md#create_iceberg_ingest) | **POST** /config/ingest/ | Create ingest by ID
 *DefaultApi* | [**create_iceberg_ingest_flow**](docs/DefaultApi.md#create_iceberg_ingest_flow) | **POST** /config/ingest/flow/ | Create flow by ID
 *DefaultApi* | [**create_iceberg_ingest_flow_template_by_id**](docs/DefaultApi.md#create_iceberg_ingest_flow_template_by_id) | **POST** /config/ingest/flow/template/{name}/ | Create template by ID
@@ -282,6 +285,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**delete_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id**](docs/DefaultApi.md#delete_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id) | **DELETE** /config/ingest/byoi/default-plugin/tlive-kafka-oc/{name}/ | Delete tlive-kafka-oc by ID
 *DefaultApi* | [**delete_healthbot_ingest_byoi_ingest_mapping_by_id**](docs/DefaultApi.md#delete_healthbot_ingest_byoi_ingest_mapping_by_id) | **DELETE** /config/ingest/byoi/ingest-mapping/{name}/ | Delete ingest-mapping by ID
 *DefaultApi* | [**delete_healthbot_ingest_frequency_profile_by_id**](docs/DefaultApi.md#delete_healthbot_ingest_frequency_profile_by_id) | **DELETE** /config/ingest/frequency-profile/{name}/ | Delete frequency-profile by ID
+*DefaultApi* | [**delete_healthbot_ingest_outbound_ssh**](docs/DefaultApi.md#delete_healthbot_ingest_outbound_ssh) | **DELETE** /config/ingest/outbound-ssh/ | Delete outbound-ssh by ID
 *DefaultApi* | [**delete_healthbot_ingest_settings_byoi_custom_plugin_by_id**](docs/DefaultApi.md#delete_healthbot_ingest_settings_byoi_custom_plugin_by_id) | **DELETE** /config/ingest-settings/byoi/custom-plugin/{name}/ | Delete custom-plugin by ID
 *DefaultApi* | [**delete_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id**](docs/DefaultApi.md#delete_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id) | **DELETE** /config/ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/ | Delete tlive-kafka-oc by ID
 *DefaultApi* | [**delete_healthbot_ingest_settings_byoi_ingest_mapping_by_id**](docs/DefaultApi.md#delete_healthbot_ingest_settings_byoi_ingest_mapping_by_id) | **DELETE** /config/ingest-settings/byoi/ingest-mapping/{name}/ | Delete ingest-mapping by ID
@@ -301,6 +305,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**delete_healthbot_organization_organization_by_id**](docs/DefaultApi.md#delete_healthbot_organization_organization_by_id) | **DELETE** /config/organization/{organization_name}/ | Delete organization by ID
 *DefaultApi* | [**delete_healthbot_profile_rollup_summarization_field_profile_field_profile_by_id**](docs/DefaultApi.md#delete_healthbot_profile_rollup_summarization_field_profile_field_profile_by_id) | **DELETE** /config/profile/rollup-summarization/field-profile/{profile_id}/ | Delete field-profile by ID
 *DefaultApi* | [**delete_healthbot_system_time_series_database_time_series_database_by_id**](docs/DefaultApi.md#delete_healthbot_system_time_series_database_time_series_database_by_id) | **DELETE** /config/system/tsdb/ | Delete time-series-database
+*DefaultApi* | [**delete_healthbot_system_trigger_action**](docs/DefaultApi.md#delete_healthbot_system_trigger_action) | **DELETE** /config/system/trigger_action/ | Delete trigger-action schedulers
 *DefaultApi* | [**delete_iceberg_ingest**](docs/DefaultApi.md#delete_iceberg_ingest) | **DELETE** /config/ingest/ | Delete ingest by ID
 *DefaultApi* | [**delete_iceberg_ingest_flow**](docs/DefaultApi.md#delete_iceberg_ingest_flow) | **DELETE** /config/ingest/flow/ | Delete flow by ID
 *DefaultApi* | [**delete_iceberg_ingest_flow_template_by_id**](docs/DefaultApi.md#delete_iceberg_ingest_flow_template_by_id) | **DELETE** /config/ingest/flow/template/{name}/ | Delete template by ID
@@ -321,7 +326,9 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**delete_iceberg_profiles**](docs/DefaultApi.md#delete_iceberg_profiles) | **DELETE** /config/profiles/ | Delete profile by ID
 *DefaultApi* | [**get_dynamic_tagging_by_key**](docs/DefaultApi.md#get_dynamic_tagging_by_key) | **GET** /config/dynamic-tagging/key/ | Get value of corresponding Dynamic-tagging key
 *DefaultApi* | [**get_fields_from_xpath**](docs/DefaultApi.md#get_fields_from_xpath) | **GET** /field-capture/ | Get last value of all fields before a given timestamp.
+*DefaultApi* | [**grafana_login**](docs/DefaultApi.md#grafana_login) | **GET** /grafana/login/ | Login to grafana
 *DefaultApi* | [**inspect_command_rpc_table_on_device**](docs/DefaultApi.md#inspect_command_rpc_table_on_device) | **POST** /inspect/command-rpc/table/ | Inspect the given iAgent table.
+*DefaultApi* | [**restore_grafana**](docs/DefaultApi.md#restore_grafana) | **POST** /grafana/restore/ | Restore Grafana configuration
 *DefaultApi* | [**restore_helper_files**](docs/DefaultApi.md#restore_helper_files) | **POST** /config/files/helper-files/backup/ | Upload a helper-file.
 *DefaultApi* | [**retrieve_configuration_jobs**](docs/DefaultApi.md#retrieve_configuration_jobs) | **GET** /config/configuration/jobs/ | 
 *DefaultApi* | [**retrieve_data_database_table**](docs/DefaultApi.md#retrieve_data_database_table) | **GET** /data/database/table/ | Get information about tables for a device of a device-group.
@@ -343,6 +350,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**retrieve_health_tree_by_id**](docs/DefaultApi.md#retrieve_health_tree_by_id) | **GET** /health-tree/{device_id}/ | Return a device&#39;s health-tree.
 *DefaultApi* | [**retrieve_health_tree_by_network_group**](docs/DefaultApi.md#retrieve_health_tree_by_network_group) | **GET** /health-tree/network-group/{network_group_name}/ | Get network-group health-tree.
 *DefaultApi* | [**retrieve_healthbot_deployment_deployment**](docs/DefaultApi.md#retrieve_healthbot_deployment_deployment) | **GET** /config/deployment/ | Retrieve deployment
+*DefaultApi* | [**retrieve_healthbot_device_details_by_uuids**](docs/DefaultApi.md#retrieve_healthbot_device_details_by_uuids) | **POST** /deployed-device-details/ | Get device-identifying details by for specified UUIDs.
 *DefaultApi* | [**retrieve_healthbot_dynamic_tagging**](docs/DefaultApi.md#retrieve_healthbot_dynamic_tagging) | **GET** /config/dynamic-tagging/keys/ | Retrieve dynamic-tagging by ID
 *DefaultApi* | [**retrieve_healthbot_ingest_byoi_custom_plugin_by_id**](docs/DefaultApi.md#retrieve_healthbot_ingest_byoi_custom_plugin_by_id) | **GET** /config/ingest/byoi/custom-plugin/{name}/ | Retrieve custom-plugin by ID
 *DefaultApi* | [**retrieve_healthbot_ingest_byoi_custom_plugins**](docs/DefaultApi.md#retrieve_healthbot_ingest_byoi_custom_plugins) | **GET** /config/ingest/byoi/custom-plugins/ | Retrieve custom-plugin by ID
@@ -352,6 +360,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**retrieve_healthbot_ingest_byoi_ingest_mappings**](docs/DefaultApi.md#retrieve_healthbot_ingest_byoi_ingest_mappings) | **GET** /config/ingest/byoi/ingest-mappings/ | Retrieve ingest-mapping
 *DefaultApi* | [**retrieve_healthbot_ingest_frequency_profile**](docs/DefaultApi.md#retrieve_healthbot_ingest_frequency_profile) | **GET** /config/ingest/frequency-profiles/ | Retrieve frequency-profile
 *DefaultApi* | [**retrieve_healthbot_ingest_frequency_profile_by_id**](docs/DefaultApi.md#retrieve_healthbot_ingest_frequency_profile_by_id) | **GET** /config/ingest/frequency-profile/{name}/ | Retrieve frequency-profile by ID
+*DefaultApi* | [**retrieve_healthbot_ingest_outbound_ssh**](docs/DefaultApi.md#retrieve_healthbot_ingest_outbound_ssh) | **GET** /config/ingest/outbound-ssh/ | Retrieve outbound-ssh
 *DefaultApi* | [**retrieve_healthbot_ingest_settings_byoi_custom_plugin_by_id**](docs/DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_custom_plugin_by_id) | **GET** /config/ingest-settings/byoi/custom-plugin/{name}/ | Retrieve custom-plugin by ID
 *DefaultApi* | [**retrieve_healthbot_ingest_settings_byoi_custom_plugins**](docs/DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_custom_plugins) | **GET** /config/ingest-settings/byoi/custom-plugins/ | Retrieve custom-plugin by ID
 *DefaultApi* | [**retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id**](docs/DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id) | **GET** /config/ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/ | Retrieve tlive-kafka-oc by ID
@@ -381,6 +390,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**retrieve_healthbot_profile_rollup_summarization_field_profile_field_profile_by_id**](docs/DefaultApi.md#retrieve_healthbot_profile_rollup_summarization_field_profile_field_profile_by_id) | **GET** /config/profile/rollup-summarization/field-profile/{profile_id}/ | Retrieve field-profile by ID
 *DefaultApi* | [**retrieve_healthbot_profile_rollup_summarization_field_profile_profile**](docs/DefaultApi.md#retrieve_healthbot_profile_rollup_summarization_field_profile_profile) | **GET** /config/profile/rollup-summarization/field-profile/ | Retrieve field-profile
 *DefaultApi* | [**retrieve_healthbot_system_time_series_database_time_series_database**](docs/DefaultApi.md#retrieve_healthbot_system_time_series_database_time_series_database) | **GET** /config/system/tsdb/ | Retrieve time-series-database
+*DefaultApi* | [**retrieve_healthbot_system_trigger_action**](docs/DefaultApi.md#retrieve_healthbot_system_trigger_action) | **GET** /config/system/trigger_action/ | Retrieve trigger-action
 *DefaultApi* | [**retrieve_healthbot_topic_resource_resource**](docs/DefaultApi.md#retrieve_healthbot_topic_resource_resource) | **GET** /config/topic/{topic_name}/resource/ | List all resource-names in a topic
 *DefaultApi* | [**retrieve_healthbot_topic_resource_resource_by_id**](docs/DefaultApi.md#retrieve_healthbot_topic_resource_resource_by_id) | **GET** /config/topic/{topic_name}/resource/{resource_name}/ | Get a resource&#39;s configuration
 *DefaultApi* | [**retrieve_iceberg_ingest**](docs/DefaultApi.md#retrieve_iceberg_ingest) | **GET** /config/ingest/ | Retrieve ingest
@@ -423,6 +433,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**update_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id**](docs/DefaultApi.md#update_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id) | **PUT** /config/ingest/byoi/default-plugin/tlive-kafka-oc/{name}/ | Update tlive-kafka-oc by ID
 *DefaultApi* | [**update_healthbot_ingest_byoi_ingest_mapping_by_id**](docs/DefaultApi.md#update_healthbot_ingest_byoi_ingest_mapping_by_id) | **PUT** /config/ingest/byoi/ingest-mapping/{name}/ | Update ingest-mapping by ID
 *DefaultApi* | [**update_healthbot_ingest_frequency_profile_by_id**](docs/DefaultApi.md#update_healthbot_ingest_frequency_profile_by_id) | **PUT** /config/ingest/frequency-profile/{name}/ | Update frequency-profile by ID
+*DefaultApi* | [**update_healthbot_ingest_outbound_ssh**](docs/DefaultApi.md#update_healthbot_ingest_outbound_ssh) | **PUT** /config/ingest/outbound-ssh/ | Update outbound-ssh by ID
 *DefaultApi* | [**update_healthbot_ingest_settings_byoi_custom_plugin_by_id**](docs/DefaultApi.md#update_healthbot_ingest_settings_byoi_custom_plugin_by_id) | **PUT** /config/ingest-settings/byoi/custom-plugin/{name}/ | Update custom-plugin by ID
 *DefaultApi* | [**update_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id**](docs/DefaultApi.md#update_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id) | **PUT** /config/ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/ | Update tlive-kafka-oc by ID
 *DefaultApi* | [**update_healthbot_ingest_settings_byoi_ingest_mapping_by_id**](docs/DefaultApi.md#update_healthbot_ingest_settings_byoi_ingest_mapping_by_id) | **PUT** /config/ingest-settings/byoi/ingest-mapping/{name}/ | Update ingest-mapping by ID
@@ -442,6 +453,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**update_healthbot_organization_organization_by_id**](docs/DefaultApi.md#update_healthbot_organization_organization_by_id) | **PUT** /config/organization/{organization_name}/ | Update organization by ID
 *DefaultApi* | [**update_healthbot_profile_rollup_summarization_field_profile_field_profile_by_id**](docs/DefaultApi.md#update_healthbot_profile_rollup_summarization_field_profile_field_profile_by_id) | **PUT** /config/profile/rollup-summarization/field-profile/{profile_id}/ | Update field-profile by ID
 *DefaultApi* | [**update_healthbot_system_time_series_database_time_series_database_by_id**](docs/DefaultApi.md#update_healthbot_system_time_series_database_time_series_database_by_id) | **PUT** /config/system/tsdb/ | Update time-series-database by ID
+*DefaultApi* | [**update_healthbot_system_trigger_action**](docs/DefaultApi.md#update_healthbot_system_trigger_action) | **PUT** /config/system/trigger_action/ | Update trigger-action
 *DefaultApi* | [**update_iceberg_ingest**](docs/DefaultApi.md#update_iceberg_ingest) | **PUT** /config/ingest/ | Update ingest by ID
 *DefaultApi* | [**update_iceberg_ingest_flow**](docs/DefaultApi.md#update_iceberg_ingest_flow) | **PUT** /config/ingest/flow/ | Update flow by ID
 *DefaultApi* | [**update_iceberg_ingest_flow_template_by_id**](docs/DefaultApi.md#update_iceberg_ingest_flow_template_by_id) | **PUT** /config/ingest/flow/template/{name}/ | Update template by ID
@@ -517,6 +529,7 @@ Class | Method | HTTP request | Description
 *WorkflowInstanceApi* | [**retrieve_healthbot_workflow_instances**](docs/WorkflowInstanceApi.md#retrieve_healthbot_workflow_instances) | **GET** /workflow-instances/ | Retrieve workflow instances
 *WorkflowInstanceApi* | [**update_healthbot_workflow_instance_by_id**](docs/WorkflowInstanceApi.md#update_healthbot_workflow_instance_by_id) | **PUT** /workflow-instance/{workflow_name}/ | Retrieve workflow by ID
 *WorkflowInstanceApi* | [**update_healthbot_workflow_instances**](docs/WorkflowInstanceApi.md#update_healthbot_workflow_instances) | **PUT** /workflow-instances/ | Update workflow instances
+*WorkflowStatisticsApi* | [**retrieve_healthbot_workflow_statistics**](docs/WorkflowStatisticsApi.md#retrieve_healthbot_workflow_statistics) | **GET** /workflow-statistics/ | Retrieve workflow statistics
 
 
 ## Documentation For Models
@@ -553,6 +566,7 @@ Class | Method | HTTP request | Description
  - [DestinationSchemaDisk](docs/DestinationSchemaDisk.md)
  - [DestinationSchemaEmail](docs/DestinationSchemaEmail.md)
  - [DestinationsSchema](docs/DestinationsSchema.md)
+ - [DeviceDetailsSchema](docs/DeviceDetailsSchema.md)
  - [DeviceFieldCaptureSchema](docs/DeviceFieldCaptureSchema.md)
  - [DeviceGroupFieldCaptureSchema](docs/DeviceGroupFieldCaptureSchema.md)
  - [DeviceGroupHealthTree](docs/DeviceGroupHealthTree.md)
@@ -580,6 +594,7 @@ Class | Method | HTTP request | Description
  - [DeviceSchemaVendorLinux](docs/DeviceSchemaVendorLinux.md)
  - [DeviceSchemaVendorOthervendor](docs/DeviceSchemaVendorOthervendor.md)
  - [DeviceSchemaVendorPaloalto](docs/DeviceSchemaVendorPaloalto.md)
+ - [DevicegroupSchemaActionscheduler](docs/DevicegroupSchemaActionscheduler.md)
  - [DevicegroupSchemaAuthentication](docs/DevicegroupSchemaAuthentication.md)
  - [DevicegroupSchemaAuthenticationPassword](docs/DevicegroupSchemaAuthenticationPassword.md)
  - [DevicegroupSchemaAuthenticationSsh](docs/DevicegroupSchemaAuthenticationSsh.md)
@@ -600,6 +615,7 @@ Class | Method | HTTP request | Description
  - [DevicegroupSchemaLoggingOpenconfig](docs/DevicegroupSchemaLoggingOpenconfig.md)
  - [DevicegroupSchemaLoggingReportsgeneration](docs/DevicegroupSchemaLoggingReportsgeneration.md)
  - [DevicegroupSchemaLoggingResourcediscovery](docs/DevicegroupSchemaLoggingResourcediscovery.md)
+ - [DevicegroupSchemaLoggingServermonitoring](docs/DevicegroupSchemaLoggingServermonitoring.md)
  - [DevicegroupSchemaLoggingSflow](docs/DevicegroupSchemaLoggingSflow.md)
  - [DevicegroupSchemaLoggingSnmp](docs/DevicegroupSchemaLoggingSnmp.md)
  - [DevicegroupSchemaLoggingSnmpnotification](docs/DevicegroupSchemaLoggingSnmpnotification.md)
@@ -693,6 +709,8 @@ Class | Method | HTTP request | Description
  - [NotificationsSchema](docs/NotificationsSchema.md)
  - [OrganizationSchema](docs/OrganizationSchema.md)
  - [OrganizationsSchema](docs/OrganizationsSchema.md)
+ - [OutboundSshSchema](docs/OutboundSshSchema.md)
+ - [OutboundsshSchemaOutboundssh](docs/OutboundsshSchemaOutboundssh.md)
  - [PanelDataSchema](docs/PanelDataSchema.md)
  - [PanelDataSchemaAddGroupByTag](docs/PanelDataSchemaAddGroupByTag.md)
  - [PanelDataSchemaAddWhereCondition](docs/PanelDataSchemaAddWhereCondition.md)
@@ -915,6 +933,7 @@ Class | Method | HTTP request | Description
  - [TopicSchemaWhereUserdefinedfunction](docs/TopicSchemaWhereUserdefinedfunction.md)
  - [TopicSchemaWithcapturegroup](docs/TopicSchemaWithcapturegroup.md)
  - [TopicsSchema](docs/TopicsSchema.md)
+ - [TriggerActionSchema](docs/TriggerActionSchema.md)
  - [TriggerSchema](docs/TriggerSchema.md)
  - [TriggerSchemaTriggers](docs/TriggerSchemaTriggers.md)
  - [TsdbError](docs/TsdbError.md)
@@ -929,11 +948,13 @@ Class | Method | HTTP request | Description
  - [TsdbSchema](docs/TsdbSchema.md)
  - [UserSchema](docs/UserSchema.md)
  - [UserSchemaGroups](docs/UserSchemaGroups.md)
+ - [UuidObject](docs/UuidObject.md)
  - [WhenLhsRhsGroup](docs/WhenLhsRhsGroup.md)
  - [WorkflowArgumentGroupSchema](docs/WorkflowArgumentGroupSchema.md)
  - [WorkflowArgumentGroupSchemaInner](docs/WorkflowArgumentGroupSchemaInner.md)
  - [WorkflowCommandSchema](docs/WorkflowCommandSchema.md)
  - [WorkflowCommandSchemaCommands](docs/WorkflowCommandSchemaCommands.md)
+ - [WorkflowCronOptionsSchema](docs/WorkflowCronOptionsSchema.md)
  - [WorkflowInstanceSchema](docs/WorkflowInstanceSchema.md)
  - [WorkflowInstanceSchemaParameters](docs/WorkflowInstanceSchemaParameters.md)
  - [WorkflowInstancesSchema](docs/WorkflowInstancesSchema.md)
@@ -951,6 +972,7 @@ Class | Method | HTTP request | Description
  - [WorkflowSchemaTask](docs/WorkflowSchemaTask.md)
  - [WorkflowSchemaTask1](docs/WorkflowSchemaTask1.md)
  - [WorkflowSchemaWorkflow](docs/WorkflowSchemaWorkflow.md)
+ - [WorkflowStatisticsSchema](docs/WorkflowStatisticsSchema.md)
  - [WorkflowsSchema](docs/WorkflowsSchema.md)
 
 

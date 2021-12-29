@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **entry_task** | **str** | Starting entry task of this workflow | [optional] 
 **exit_task** | **str** | Exit/Cleanup task to invoke after the completion of the workflow | [optional] 
 **argument** | [**WorkflowArgumentGroupSchema**](WorkflowArgumentGroupSchema.md) |  | [optional] 
+**cron_options** | [**WorkflowCronOptionsSchema**](WorkflowCronOptionsSchema.md) |  | [optional] 
 **batch** | **int** | Maximum parallel steps launched | [optional] 
 **retry** | [**RuleSchemaThenRetry**](RuleSchemaThenRetry.md) |  | [optional] 
 **timeout** | **str** | Maximum time to wait for the step completion before bailing out (default 60 seconds) | [optional] 

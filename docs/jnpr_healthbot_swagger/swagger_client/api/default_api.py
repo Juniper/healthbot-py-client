@@ -33,6 +33,101 @@ class DefaultApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
+    def backup_grafana(self, **kwargs):  # noqa: E501
+        """Take backup of Grafana configuration  # noqa: E501
+
+        Take backup of Grafana configuration  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.backup_grafana(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str x_iam_token: authentication header object
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.backup_grafana_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.backup_grafana_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def backup_grafana_with_http_info(self, **kwargs):  # noqa: E501
+        """Take backup of Grafana configuration  # noqa: E501
+
+        Take backup of Grafana configuration  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.backup_grafana_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str x_iam_token: authentication header object
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['x_iam_token']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method backup_grafana" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'x_iam_token' in params:
+            header_params['x-iam-token'] = params['x_iam_token']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/octet-stream'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json', 'multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/grafana/backup/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='file',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def backup_helper_files(self, **kwargs):  # noqa: E501
         """Download the tar file containing all helper files.  # noqa: E501
 
@@ -1105,6 +1200,109 @@ class DefaultApi(object):
 
         return self.api_client.call_api(
             '/config/ingest/frequency-profile/{name}/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_healthbot_ingest_outbound_ssh(self, outbound_ssh, **kwargs):  # noqa: E501
+        """Create outbound-ssh by ID  # noqa: E501
+
+        Create operation of resource: outbound-ssh  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_healthbot_ingest_outbound_ssh(outbound_ssh, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param OutboundSshSchema outbound_ssh: outbound_ssh body object (required)
+        :param str x_iam_token: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.create_healthbot_ingest_outbound_ssh_with_http_info(outbound_ssh, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_healthbot_ingest_outbound_ssh_with_http_info(outbound_ssh, **kwargs)  # noqa: E501
+            return data
+
+    def create_healthbot_ingest_outbound_ssh_with_http_info(self, outbound_ssh, **kwargs):  # noqa: E501
+        """Create outbound-ssh by ID  # noqa: E501
+
+        Create operation of resource: outbound-ssh  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_healthbot_ingest_outbound_ssh_with_http_info(outbound_ssh, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param OutboundSshSchema outbound_ssh: outbound_ssh body object (required)
+        :param str x_iam_token: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['outbound_ssh', 'x_iam_token']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_healthbot_ingest_outbound_ssh" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'outbound_ssh' is set
+        if ('outbound_ssh' not in params or
+                params['outbound_ssh'] is None):
+            raise ValueError("Missing the required parameter `outbound_ssh` when calling `create_healthbot_ingest_outbound_ssh`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'x_iam_token' in params:
+            header_params['x-iam-token'] = params['x_iam_token']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'outbound_ssh' in params:
+            body_params = params['outbound_ssh']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/config/ingest/outbound-ssh/', 'POST',
             path_params,
             query_params,
             header_params,
@@ -3174,6 +3372,105 @@ class DefaultApi(object):
 
         return self.api_client.call_api(
             '/config/system/tsdb/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def create_healthbot_system_trigger_action(self, trigger_action, **kwargs):  # noqa: E501
+        """Create trigger-action  # noqa: E501
+
+        Create operation of resource: trigger-action  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_healthbot_system_trigger_action(trigger_action, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param TriggerActionSchema trigger_action: trigger_action object (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.create_healthbot_system_trigger_action_with_http_info(trigger_action, **kwargs)  # noqa: E501
+        else:
+            (data) = self.create_healthbot_system_trigger_action_with_http_info(trigger_action, **kwargs)  # noqa: E501
+            return data
+
+    def create_healthbot_system_trigger_action_with_http_info(self, trigger_action, **kwargs):  # noqa: E501
+        """Create trigger-action  # noqa: E501
+
+        Create operation of resource: trigger-action  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.create_healthbot_system_trigger_action_with_http_info(trigger_action, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param TriggerActionSchema trigger_action: trigger_action object (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['trigger_action']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_healthbot_system_trigger_action" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'trigger_action' is set
+        if ('trigger_action' not in params or
+                params['trigger_action'] is None):
+            raise ValueError("Missing the required parameter `trigger_action` when calling `create_healthbot_system_trigger_action`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'trigger_action' in params:
+            body_params = params['trigger_action']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/config/system/trigger_action/', 'POST',
             path_params,
             query_params,
             header_params,
@@ -6045,6 +6342,101 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def delete_healthbot_ingest_outbound_ssh(self, **kwargs):  # noqa: E501
+        """Delete outbound-ssh by ID  # noqa: E501
+
+        Delete operation of resource: outbound-ssh  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_healthbot_ingest_outbound_ssh(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str x_iam_token: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.delete_healthbot_ingest_outbound_ssh_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_healthbot_ingest_outbound_ssh_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def delete_healthbot_ingest_outbound_ssh_with_http_info(self, **kwargs):  # noqa: E501
+        """Delete outbound-ssh by ID  # noqa: E501
+
+        Delete operation of resource: outbound-ssh  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_healthbot_ingest_outbound_ssh_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str x_iam_token: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['x_iam_token']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_healthbot_ingest_outbound_ssh" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'x_iam_token' in params:
+            header_params['x-iam-token'] = params['x_iam_token']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/config/ingest/outbound-ssh/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def delete_healthbot_ingest_settings_byoi_custom_plugin_by_id(self, name, **kwargs):  # noqa: E501
         """Delete custom-plugin by ID  # noqa: E501
 
@@ -7944,6 +8336,97 @@ class DefaultApi(object):
 
         return self.api_client.call_api(
             '/config/system/tsdb/', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def delete_healthbot_system_trigger_action(self, **kwargs):  # noqa: E501
+        """Delete trigger-action schedulers  # noqa: E501
+
+        Delete operation of resource: trigger-action  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_healthbot_system_trigger_action(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.delete_healthbot_system_trigger_action_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.delete_healthbot_system_trigger_action_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def delete_healthbot_system_trigger_action_with_http_info(self, **kwargs):  # noqa: E501
+        """Delete trigger-action schedulers  # noqa: E501
+
+        Delete operation of resource: trigger-action  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.delete_healthbot_system_trigger_action_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method delete_healthbot_system_trigger_action" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/config/system/trigger_action/', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -9954,6 +10437,101 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def grafana_login(self, **kwargs):  # noqa: E501
+        """Login to grafana  # noqa: E501
+
+        Login to Grafana  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.grafana_login(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str x_iam_token: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.grafana_login_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.grafana_login_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def grafana_login_with_http_info(self, **kwargs):  # noqa: E501
+        """Login to grafana  # noqa: E501
+
+        Login to Grafana  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.grafana_login_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str x_iam_token: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['x_iam_token']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method grafana_login" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'x_iam_token' in params:
+            header_params['x-iam-token'] = params['x_iam_token']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/grafana/login/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def inspect_command_rpc_table_on_device(self, command_rpc_detail, **kwargs):  # noqa: E501
         """Inspect the given iAgent table.  # noqa: E501
 
@@ -10043,6 +10621,109 @@ class DefaultApi(object):
 
         return self.api_client.call_api(
             '/inspect/command-rpc/table/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def restore_grafana(self, restore_file, **kwargs):  # noqa: E501
+        """Restore Grafana configuration  # noqa: E501
+
+        Restore Grafana configuration  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.restore_grafana(restore_file, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param file restore_file: File content (required)
+        :param str x_iam_token: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.restore_grafana_with_http_info(restore_file, **kwargs)  # noqa: E501
+        else:
+            (data) = self.restore_grafana_with_http_info(restore_file, **kwargs)  # noqa: E501
+            return data
+
+    def restore_grafana_with_http_info(self, restore_file, **kwargs):  # noqa: E501
+        """Restore Grafana configuration  # noqa: E501
+
+        Restore Grafana configuration  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.restore_grafana_with_http_info(restore_file, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param file restore_file: File content (required)
+        :param str x_iam_token: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['restore_file', 'x_iam_token']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method restore_grafana" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'restore_file' is set
+        if ('restore_file' not in params or
+                params['restore_file'] is None):
+            raise ValueError("Missing the required parameter `restore_file` when calling `restore_grafana`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'x_iam_token' in params:
+            header_params['x-iam-token'] = params['x_iam_token']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+        if 'restore_file' in params:
+            local_var_files['restore_file'] = params['restore_file']  # noqa: E501
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json', 'application/octet-stream'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/grafana/restore/', 'POST',
             path_params,
             query_params,
             header_params,
@@ -12459,6 +13140,109 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def retrieve_healthbot_device_details_by_uuids(self, uuid_object, **kwargs):  # noqa: E501
+        """Get device-identifying details by for specified UUIDs.  # noqa: E501
+
+        Get device-identifying details (device-id and TSDB databases if playbooks are deployed on it) for all the UUIDs present in the request body.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_device_details_by_uuids(uuid_object, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param UuidObject uuid_object: device_uuids object (required)
+        :param str x_iam_token: authentication header object
+        :return: DeviceDetailsSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_healthbot_device_details_by_uuids_with_http_info(uuid_object, **kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_healthbot_device_details_by_uuids_with_http_info(uuid_object, **kwargs)  # noqa: E501
+            return data
+
+    def retrieve_healthbot_device_details_by_uuids_with_http_info(self, uuid_object, **kwargs):  # noqa: E501
+        """Get device-identifying details by for specified UUIDs.  # noqa: E501
+
+        Get device-identifying details (device-id and TSDB databases if playbooks are deployed on it) for all the UUIDs present in the request body.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_device_details_by_uuids_with_http_info(uuid_object, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param UuidObject uuid_object: device_uuids object (required)
+        :param str x_iam_token: authentication header object
+        :return: DeviceDetailsSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['uuid_object', 'x_iam_token']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_healthbot_device_details_by_uuids" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'uuid_object' is set
+        if ('uuid_object' not in params or
+                params['uuid_object'] is None):
+            raise ValueError("Missing the required parameter `uuid_object` when calling `retrieve_healthbot_device_details_by_uuids`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'x_iam_token' in params:
+            header_params['x-iam-token'] = params['x_iam_token']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'uuid_object' in params:
+            body_params = params['uuid_object']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/deployed-device-details/', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='DeviceDetailsSchema',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def retrieve_healthbot_dynamic_tagging(self, **kwargs):  # noqa: E501
         """Retrieve dynamic-tagging by ID  # noqa: E501
 
@@ -13371,6 +14155,105 @@ class DefaultApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='FrequencyProfileSchema',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_healthbot_ingest_outbound_ssh(self, **kwargs):  # noqa: E501
+        """Retrieve outbound-ssh  # noqa: E501
+
+        Retrieve operation of resource: outbound-ssh  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_ingest_outbound_ssh(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param bool working: true queries undeployed configuration
+        :param str x_iam_token: authentication header object
+        :return: OutboundSshSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_healthbot_ingest_outbound_ssh_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_healthbot_ingest_outbound_ssh_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def retrieve_healthbot_ingest_outbound_ssh_with_http_info(self, **kwargs):  # noqa: E501
+        """Retrieve outbound-ssh  # noqa: E501
+
+        Retrieve operation of resource: outbound-ssh  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_ingest_outbound_ssh_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param bool working: true queries undeployed configuration
+        :param str x_iam_token: authentication header object
+        :return: OutboundSshSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['working', 'x_iam_token']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_healthbot_ingest_outbound_ssh" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+        if 'x_iam_token' in params:
+            header_params['x-iam-token'] = params['x_iam_token']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/config/ingest/outbound-ssh/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='OutboundSshSchema',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -16346,6 +17229,101 @@ class DefaultApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='TsdbSchema',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def retrieve_healthbot_system_trigger_action(self, **kwargs):  # noqa: E501
+        """Retrieve trigger-action  # noqa: E501
+
+        Retrieve operation of resource: trigger-action  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_system_trigger_action(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param bool working: true queries undeployed configuration
+        :return: TriggerActionSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.retrieve_healthbot_system_trigger_action_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.retrieve_healthbot_system_trigger_action_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def retrieve_healthbot_system_trigger_action_with_http_info(self, **kwargs):  # noqa: E501
+        """Retrieve trigger-action  # noqa: E501
+
+        Retrieve operation of resource: trigger-action  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.retrieve_healthbot_system_trigger_action_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param bool working: true queries undeployed configuration
+        :return: TriggerActionSchema
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['working']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method retrieve_healthbot_system_trigger_action" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'working' in params:
+            query_params.append(('working', params['working']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/config/system/trigger_action/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='TriggerActionSchema',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -20707,6 +21685,109 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def update_healthbot_ingest_outbound_ssh(self, outbound_ssh, **kwargs):  # noqa: E501
+        """Update outbound-ssh by ID  # noqa: E501
+
+        Update operation of resource: outbound-ssh  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_healthbot_ingest_outbound_ssh(outbound_ssh, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param OutboundSshSchema outbound_ssh: outbound_sshbody object (required)
+        :param str x_iam_token: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.update_healthbot_ingest_outbound_ssh_with_http_info(outbound_ssh, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_healthbot_ingest_outbound_ssh_with_http_info(outbound_ssh, **kwargs)  # noqa: E501
+            return data
+
+    def update_healthbot_ingest_outbound_ssh_with_http_info(self, outbound_ssh, **kwargs):  # noqa: E501
+        """Update outbound-ssh by ID  # noqa: E501
+
+        Update operation of resource: outbound-ssh  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_healthbot_ingest_outbound_ssh_with_http_info(outbound_ssh, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param OutboundSshSchema outbound_ssh: outbound_sshbody object (required)
+        :param str x_iam_token: authentication header object
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['outbound_ssh', 'x_iam_token']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_healthbot_ingest_outbound_ssh" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'outbound_ssh' is set
+        if ('outbound_ssh' not in params or
+                params['outbound_ssh'] is None):
+            raise ValueError("Missing the required parameter `outbound_ssh` when calling `update_healthbot_ingest_outbound_ssh`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+        if 'x_iam_token' in params:
+            header_params['x-iam-token'] = params['x_iam_token']  # noqa: E501
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'outbound_ssh' in params:
+            body_params = params['outbound_ssh']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/config/ingest/outbound-ssh/', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def update_healthbot_ingest_settings_byoi_custom_plugin_by_id(self, name, custom_plugin, **kwargs):  # noqa: E501
         """Update custom-plugin by ID  # noqa: E501
 
@@ -22762,6 +23843,105 @@ class DefaultApi(object):
 
         return self.api_client.call_api(
             '/config/system/tsdb/', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def update_healthbot_system_trigger_action(self, trigger_action, **kwargs):  # noqa: E501
+        """Update trigger-action  # noqa: E501
+
+        Update operation of resource: trigger-action  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_healthbot_system_trigger_action(trigger_action, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param TriggerActionSchema trigger_action: trigger_action object (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.update_healthbot_system_trigger_action_with_http_info(trigger_action, **kwargs)  # noqa: E501
+        else:
+            (data) = self.update_healthbot_system_trigger_action_with_http_info(trigger_action, **kwargs)  # noqa: E501
+            return data
+
+    def update_healthbot_system_trigger_action_with_http_info(self, trigger_action, **kwargs):  # noqa: E501
+        """Update trigger-action  # noqa: E501
+
+        Update operation of resource: trigger-action  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.update_healthbot_system_trigger_action_with_http_info(trigger_action, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param TriggerActionSchema trigger_action: trigger_action object (required)
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['trigger_action']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_healthbot_system_trigger_action" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'trigger_action' is set
+        if ('trigger_action' not in params or
+                params['trigger_action'] is None):
+            raise ValueError("Missing the required parameter `trigger_action` when calling `update_healthbot_system_trigger_action`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'trigger_action' in params:
+            body_params = params['trigger_action']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/config/system/trigger_action/', 'PUT',
             path_params,
             query_params,
             header_params,

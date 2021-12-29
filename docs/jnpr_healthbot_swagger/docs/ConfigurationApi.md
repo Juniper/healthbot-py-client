@@ -5782,7 +5782,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **rollback_unsaved_configuration**
-> rollback_unsaved_configuration(x_iam_token=x_iam_token, ems_sanity=ems_sanity, committed_sanity=committed_sanity)
+> rollback_unsaved_configuration(x_iam_token=x_iam_token, ems_sanity=ems_sanity)
 
 Delete the un-committed configuration.
 
@@ -5800,11 +5800,10 @@ from pprint import pprint
 api_instance = swagger_client.ConfigurationApi()
 x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
 ems_sanity = false # bool | DEBUG (Use with caution): roll-back a faulty transaction in HB-EMS communication (optional) (default to false)
-committed_sanity = false # bool | DEBUG (Use with caution): roll-back a faulty transaction in the production db-session (optional) (default to false)
 
 try:
     # Delete the un-committed configuration.
-    api_instance.rollback_unsaved_configuration(x_iam_token=x_iam_token, ems_sanity=ems_sanity, committed_sanity=committed_sanity)
+    api_instance.rollback_unsaved_configuration(x_iam_token=x_iam_token, ems_sanity=ems_sanity)
 except ApiException as e:
     print("Exception when calling ConfigurationApi->rollback_unsaved_configuration: %s\n" % e)
 ```
@@ -5815,7 +5814,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **x_iam_token** | **str**| authentication header object | [optional] 
  **ems_sanity** | **bool**| DEBUG (Use with caution): roll-back a faulty transaction in HB-EMS communication | [optional] [default to false]
- **committed_sanity** | **bool**| DEBUG (Use with caution): roll-back a faulty transaction in the production db-session | [optional] [default to false]
 
 ### Return type
 

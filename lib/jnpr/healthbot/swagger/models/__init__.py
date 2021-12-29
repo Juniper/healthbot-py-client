@@ -47,6 +47,7 @@ from jnpr.healthbot.swagger.models.destination_schema import DestinationSchema
 from jnpr.healthbot.swagger.models.destination_schema_disk import DestinationSchemaDisk
 from jnpr.healthbot.swagger.models.destination_schema_email import DestinationSchemaEmail
 from jnpr.healthbot.swagger.models.destinations_schema import DestinationsSchema
+from jnpr.healthbot.swagger.models.device_details_schema import DeviceDetailsSchema
 from jnpr.healthbot.swagger.models.device_field_capture_schema import DeviceFieldCaptureSchema
 from jnpr.healthbot.swagger.models.device_group_field_capture_schema import DeviceGroupFieldCaptureSchema
 from jnpr.healthbot.swagger.models.device_group_health_tree import DeviceGroupHealthTree
@@ -74,6 +75,7 @@ from jnpr.healthbot.swagger.models.device_schema_vendor_juniper import DeviceSch
 from jnpr.healthbot.swagger.models.device_schema_vendor_linux import DeviceSchemaVendorLinux
 from jnpr.healthbot.swagger.models.device_schema_vendor_othervendor import DeviceSchemaVendorOthervendor
 from jnpr.healthbot.swagger.models.device_schema_vendor_paloalto import DeviceSchemaVendorPaloalto
+from jnpr.healthbot.swagger.models.devicegroup_schema_actionscheduler import DevicegroupSchemaActionscheduler
 from jnpr.healthbot.swagger.models.devicegroup_schema_authentication import DevicegroupSchemaAuthentication
 from jnpr.healthbot.swagger.models.devicegroup_schema_authentication_password import DevicegroupSchemaAuthenticationPassword
 from jnpr.healthbot.swagger.models.devicegroup_schema_authentication_ssh import DevicegroupSchemaAuthenticationSsh
@@ -94,6 +96,7 @@ from jnpr.healthbot.swagger.models.devicegroup_schema_logging_nonsensorrules imp
 from jnpr.healthbot.swagger.models.devicegroup_schema_logging_openconfig import DevicegroupSchemaLoggingOpenconfig
 from jnpr.healthbot.swagger.models.devicegroup_schema_logging_reportsgeneration import DevicegroupSchemaLoggingReportsgeneration
 from jnpr.healthbot.swagger.models.devicegroup_schema_logging_resourcediscovery import DevicegroupSchemaLoggingResourcediscovery
+from jnpr.healthbot.swagger.models.devicegroup_schema_logging_servermonitoring import DevicegroupSchemaLoggingServermonitoring
 from jnpr.healthbot.swagger.models.devicegroup_schema_logging_sflow import DevicegroupSchemaLoggingSflow
 from jnpr.healthbot.swagger.models.devicegroup_schema_logging_snmp import DevicegroupSchemaLoggingSnmp
 from jnpr.healthbot.swagger.models.devicegroup_schema_logging_snmpnotification import DevicegroupSchemaLoggingSnmpnotification
@@ -187,6 +190,8 @@ from jnpr.healthbot.swagger.models.notification_schema_slack import Notification
 from jnpr.healthbot.swagger.models.notifications_schema import NotificationsSchema
 from jnpr.healthbot.swagger.models.organization_schema import OrganizationSchema
 from jnpr.healthbot.swagger.models.organizations_schema import OrganizationsSchema
+from jnpr.healthbot.swagger.models.outbound_ssh_schema import OutboundSshSchema
+from jnpr.healthbot.swagger.models.outboundssh_schema_outboundssh import OutboundsshSchemaOutboundssh
 from jnpr.healthbot.swagger.models.panel_data_schema import PanelDataSchema
 from jnpr.healthbot.swagger.models.panel_data_schema_add_group_by_tag import PanelDataSchemaAddGroupByTag
 from jnpr.healthbot.swagger.models.panel_data_schema_add_where_condition import PanelDataSchemaAddWhereCondition
@@ -409,6 +414,7 @@ from jnpr.healthbot.swagger.models.topic_schema_where_matcheswith import TopicSc
 from jnpr.healthbot.swagger.models.topic_schema_where_userdefinedfunction import TopicSchemaWhereUserdefinedfunction
 from jnpr.healthbot.swagger.models.topic_schema_withcapturegroup import TopicSchemaWithcapturegroup
 from jnpr.healthbot.swagger.models.topics_schema import TopicsSchema
+from jnpr.healthbot.swagger.models.trigger_action_schema import TriggerActionSchema
 from jnpr.healthbot.swagger.models.trigger_schema import TriggerSchema
 from jnpr.healthbot.swagger.models.trigger_schema_triggers import TriggerSchemaTriggers
 from jnpr.healthbot.swagger.models.tsdb_error import TsdbError
@@ -423,11 +429,13 @@ from jnpr.healthbot.swagger.models.tsdb_results_series import TsdbResultsSeries
 from jnpr.healthbot.swagger.models.tsdb_schema import TsdbSchema
 from jnpr.healthbot.swagger.models.user_schema import UserSchema
 from jnpr.healthbot.swagger.models.user_schema_groups import UserSchemaGroups
+from jnpr.healthbot.swagger.models.uuid_object import UuidObject
 from jnpr.healthbot.swagger.models.when_lhs_rhs_group import WhenLhsRhsGroup
 from jnpr.healthbot.swagger.models.workflow_argument_group_schema import WorkflowArgumentGroupSchema
 from jnpr.healthbot.swagger.models.workflow_argument_group_schema_inner import WorkflowArgumentGroupSchemaInner
 from jnpr.healthbot.swagger.models.workflow_command_schema import WorkflowCommandSchema
 from jnpr.healthbot.swagger.models.workflow_command_schema_commands import WorkflowCommandSchemaCommands
+from jnpr.healthbot.swagger.models.workflow_cron_options_schema import WorkflowCronOptionsSchema
 from jnpr.healthbot.swagger.models.workflow_instance_schema import WorkflowInstanceSchema
 from jnpr.healthbot.swagger.models.workflow_instance_schema_parameters import WorkflowInstanceSchemaParameters
 from jnpr.healthbot.swagger.models.workflow_instances_schema import WorkflowInstancesSchema
@@ -445,4 +453,5 @@ from jnpr.healthbot.swagger.models.workflow_schema_suspend import WorkflowSchema
 from jnpr.healthbot.swagger.models.workflow_schema_task import WorkflowSchemaTask
 from jnpr.healthbot.swagger.models.workflow_schema_task1 import WorkflowSchemaTask1
 from jnpr.healthbot.swagger.models.workflow_schema_workflow import WorkflowSchemaWorkflow
+from jnpr.healthbot.swagger.models.workflow_statistics_schema import WorkflowStatisticsSchema
 from jnpr.healthbot.swagger.models.workflows_schema import WorkflowsSchema

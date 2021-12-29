@@ -19,3 +19,4 @@ from jnpr.healthbot.swagger.api.services_api import ServicesApi
 from jnpr.healthbot.swagger.api.system_api import SystemApi
 from jnpr.healthbot.swagger.api.workflow_api import WorkflowApi
 from jnpr.healthbot.swagger.api.workflow_instance_api import WorkflowInstanceApi
+from jnpr.healthbot.swagger.api.workflow_statistics_api import WorkflowStatisticsApi

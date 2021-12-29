@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **tagging_profile** | **list[str]** |  | [optional] 
 **scheduler** | [**list[DevicegroupSchemaScheduler]**](DevicegroupSchemaScheduler.md) | List of schedulers associated with the playbook instances | [optional] 
 **variable** | [**list[DevicegroupSchemaVariable]**](DevicegroupSchemaVariable.md) | Playbook variable configuration | [optional] 
+**action_scheduler** | [**DevicegroupSchemaActionscheduler**](DevicegroupSchemaActionscheduler.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

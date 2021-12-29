@@ -41,6 +41,7 @@ class WorkflowInstanceSchema(object):
         'device_groups': 'list[str]',
         'parameters': 'list[WorkflowInstanceSchemaParameters]',
         'argument': 'WorkflowArgumentGroupSchema',
+        'cron_options': 'WorkflowCronOptionsSchema',
         'batch': 'int',
         'retry': 'RuleSchemaThenRetry',
         'timeout': 'str',
@@ -59,6 +60,7 @@ class WorkflowInstanceSchema(object):
         'device_groups': 'device-groups',
         'parameters': 'parameters',
         'argument': 'argument',
+        'cron_options': 'cron-options',
         'batch': 'batch',
         'retry': 'retry',
         'timeout': 'timeout',
@@ -66,7 +68,7 @@ class WorkflowInstanceSchema(object):
         'workflow_name': 'workflow-name'
     }
 
-    def __init__(self, description=None, created_at=None, started_at=None, finished_at=None, status=None, message=None, devices=None, device_groups=None, parameters=None, argument=None, batch=None, retry=None, timeout=None, workflow_instance_name=None, workflow_name=None):  # noqa: E501
+    def __init__(self, description=None, created_at=None, started_at=None, finished_at=None, status=None, message=None, devices=None, device_groups=None, parameters=None, argument=None, cron_options=None, batch=None, retry=None, timeout=None, workflow_instance_name=None, workflow_name=None):  # noqa: E501
         """WorkflowInstanceSchema - a model defined in Swagger"""  # noqa: E501
 
         self._description = None
@@ -79,6 +81,7 @@ class WorkflowInstanceSchema(object):
         self._device_groups = None
         self._parameters = None
         self._argument = None
+        self._cron_options = None
         self._batch = None
         self._retry = None
         self._timeout = None
@@ -106,6 +109,8 @@ class WorkflowInstanceSchema(object):
             self.parameters = parameters
         if argument is not None:
             self.argument = argument
+        if cron_options is not None:
+            self.cron_options = cron_options
         if batch is not None:
             self.batch = batch
         if retry is not None:
@@ -337,6 +342,27 @@ class WorkflowInstanceSchema(object):
         """
 
         self._argument = argument
+
+    @property
+    def cron_options(self):
+        """Gets the cron_options of this WorkflowInstanceSchema.  # noqa: E501
+
+
+        :return: The cron_options of this WorkflowInstanceSchema.  # noqa: E501
+        :rtype: WorkflowCronOptionsSchema
+        """
+        return self._cron_options
+
+    @cron_options.setter
+    def cron_options(self, cron_options):
+        """Sets the cron_options of this WorkflowInstanceSchema.
+
+
+        :param cron_options: The cron_options of this WorkflowInstanceSchema.  # noqa: E501
+        :type: WorkflowCronOptionsSchema
+        """
+
+        self._cron_options = cron_options
 
     @property
     def batch(self):

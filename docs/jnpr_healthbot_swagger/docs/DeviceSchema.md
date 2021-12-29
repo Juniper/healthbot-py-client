@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **host** | **str** | Name or IP of the device | 
 **i_agent** | [**DeviceSchemaIAgent**](DeviceSchemaIAgent.md) |  | [optional] 
 **open_config** | [**DeviceSchemaOpenconfig**](DeviceSchemaOpenconfig.md) |  | [optional] 
+**server_monitoring** | [**DeviceSchemaOpenconfig**](DeviceSchemaOpenconfig.md) |  | [optional] 
 **outbound_ssh** | [**DeviceSchemaOutboundssh**](DeviceSchemaOutboundssh.md) |  | [optional] 
 **owner** | **str** | Owner of the device: this is a read-only attribute and should not be added to the request payload, value if added will be discarded. | [optional] 
 **snmp** | [**DeviceSchemaSnmp**](DeviceSchemaSnmp.md) |  | [optional] 
@@ -18,6 +19,7 @@ Name | Type | Description | Notes
 **tagging_profile** | **list[str]** |  | [optional] 
 **timezone** | **str** | Timezone in the format +/-hh:mm, Example: -08:00 | [optional] 
 **system_id** | **str** | ID which is sent in the JTI UDP messages | [optional] 
+**use_ingest_receive_time** | **list[object]** | Enable using ingest receive time in formulas like elapsed-time and rate-of-change | [optional] 
 **variable** | [**list[DeviceSchemaVariable]**](DeviceSchemaVariable.md) | Playbook variable configuration | [optional] 
 **vendor** | [**DeviceSchemaVendor**](DeviceSchemaVendor.md) |  | [optional] 
 

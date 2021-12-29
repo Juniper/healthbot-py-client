@@ -529,13 +529,6 @@
             "name": "ems_sanity",
             "type": "boolean",
             "default": false
-          },
-          {
-            "description": "DEBUG (Use with caution): roll-back a faulty transaction in the production db-session",
-            "in": "query",
-            "name": "committed_sanity",
-            "type": "boolean",
-            "default": false
           }
         ],
         "responses": {
@@ -2651,6 +2644,143 @@
           }
         },
         "summary": "Update native-gpb by ID"
+      }
+    },
+    "/config/ingest/outbound-ssh/": {
+      "delete": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Delete operation of resource: outbound-ssh",
+        "operationId": "delete_healthbot_ingest_outbound_ssh",
+        "parameters" : [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "x-iam-token",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Delete outbound-ssh by ID"
+      },
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve operation of resource: outbound-ssh",
+        "operationId": "retrieve_healthbot_ingest_outbound_ssh",
+        "parameters": [
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          },
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "x-iam-token",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/outbound-ssh_schema"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve outbound-ssh"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Create operation of resource: outbound-ssh",
+        "operationId": "create_healthbot_ingest_outbound_ssh",
+        "parameters": [
+          {
+            "description": "outbound_ssh body object",
+            "in": "body",
+            "name": "outbound_ssh",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/outbound-ssh_schema"
+            }
+          },
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "x-iam-token",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Create outbound-ssh by ID"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Update operation of resource: outbound-ssh",
+        "operationId": "update_healthbot_ingest_outbound_ssh",
+        "parameters": [
+          {
+            "description": "outbound_sshbody object",
+            "in": "body",
+            "name": "outbound_ssh",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/outbound-ssh_schema"
+            }
+          },
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "x-iam-token",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Update outbound-ssh by ID"
       }
     },
     "/config/ingest/snmp-notification/": {
@@ -8149,6 +8279,91 @@
         ]
       }
     },
+    "/deployed-device-details/": {
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Get device-identifying details (device-id and TSDB databases if playbooks are deployed on it) for all the UUIDs present in the request body.",
+        "operationId": "retrieve_healthbot_device_details_by_uuids",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "x-iam-token",
+            "type": "string"
+          },
+          {
+            "description": "device_uuids object",
+            "in": "body",
+            "name": "uuid_object",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": [
+                "uuids"
+              ],
+              "properties":{
+                "uuids": {
+                  "type": "array",
+                  "description": "list of device uuids",
+                  "items": {
+                    "type": "string",
+                    "x-path": "/iceberg/device/{uuid}/",
+                    "format":  "uuid"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/device-details_schema"
+            },
+            "examples": {
+              "application/json": [
+                {
+                  "1000-1000-1000-1000": {
+                    "device-id": "r1",
+                    "groups": [
+                        "Core1",
+                        "Core2"
+                    ],
+                    "databases": {
+                        "Core1": "Core1:r1",
+                        "Core2": "Core2:r1"
+                    }
+                  }
+                },
+                {
+                  "2000-2000-2000-2000": {
+                      "device-id": "r2",
+                      "groups": [
+                          "Core1",
+                          "Core3"
+                      ],
+                      "databases": {
+                          "Core1": "Core1:r2",
+                          "Core2": "Core3:r2"
+                      }
+                  }
+                }
+              ]
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "summary": "Get device-identifying details by for specified UUIDs."
+      }
+    },
     "/config/device/": {
       "get": {
         "consumes": [
@@ -9426,6 +9641,74 @@
           }
         },
         "summary": "Upload a helper-file."
+      }
+    },
+    "/grafana/restore/": {
+      "post": {
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "description": "Restore Grafana configuration",
+        "operationId": "restore_grafana",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "x-iam-token",
+            "type": "string"
+          },
+          {
+            "description": "File content",
+            "in": "formData",
+            "name": "restore_file",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "summary": "Restore Grafana configuration"
+      }
+    },
+    "/grafana/backup/": {
+      "get": {
+        "description": "Take backup of Grafana configuration",
+        "operationId": "backup_grafana",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "x-iam-token",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/octet-stream"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "file"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "summary": "Take backup of Grafana configuration"
       }
     },
     "/config/files/helper-files/backup/": {
@@ -13781,6 +14064,7 @@
               "iagent",
               "snmp",
               "native-gpb",
+              "server-monitoring",
               "open-config",
               "syslog",
               "byoi",
@@ -15374,6 +15658,117 @@
           }
         },
         "summary": "Update time-series-database by ID"
+      }
+    },
+    "/config/system/trigger_action/": {
+      "delete": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Delete operation of resource: trigger-action",
+        "operationId": "delete_healthbot_system_trigger_action",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Delete trigger-action schedulers"
+      },
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve operation of resource: trigger-action",
+        "operationId": "retrieve_healthbot_system_trigger_action",
+        "parameters": [
+          {
+            "description": "true queries undeployed configuration",
+            "in": "query",
+            "name": "working",
+            "type": "boolean"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/trigger_action_schema"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve trigger-action"
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Create operation of resource: trigger-action",
+        "operationId": "create_healthbot_system_trigger_action",
+        "parameters": [
+          {
+            "description": "trigger_action object",
+            "in": "body",
+            "name": "trigger_action",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/trigger_action_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Create trigger-action"
+      },
+      "put": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Update operation of resource: trigger-action",
+        "operationId": "update_healthbot_system_trigger_action",
+        "parameters": [
+          {
+            "description": "trigger_action object",
+            "in": "body",
+            "name": "trigger_action",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/trigger_action_schema"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Update trigger-action"
       }
     },
     "/system-details/": {
@@ -17480,6 +17875,35 @@
         ]
       }
     },
+    "/grafana/login/": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Login to Grafana",
+        "operationId": "grafana_login",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "x-iam-token",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Login to grafana"
+      }
+    },
     "/login/": {
       "post": {
         "consumes": [
@@ -18007,6 +18431,41 @@
         "summary": "Update workflow instances",
         "tags": [
           "workflow-instance"
+        ]
+      }
+    },
+    "/workflow-statistics/": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Retrieve operation of all workflow instances statistics",
+        "operationId": "retrieve_healthbot_workflow_statistics",
+        "parameters": [
+          {
+            "description": "authentication header object",
+            "in": "header",
+            "name": "x-iam-token",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "$ref": "#/definitions/workflow_statistics_schema"
+            }
+          },
+          "400": {
+            "description": "Internal Error"
+          }
+        },
+        "summary": "Retrieve workflow statistics",
+        "tags": [
+          "workflow-statistics"
         ]
       }
     },
@@ -20932,6 +21391,36 @@
       },
       "type": "object"
     },
+    "outbound-ssh_schema": {
+      "additionalProperties": false,
+      "description": "Outbound SSH ingest configuration",
+      "patternProperties": {
+        "^@": {
+          "type": "object"
+        }
+      },
+      "properties": {
+        "outbound-ssh": {
+          "additionalProperties": false,
+          "patternProperties": {
+            "^@": {
+              "type": "object"
+            }
+          },
+          "properties": {
+            "port": {
+              "description": "Port to listen for Outbound SSH connection",
+              "format": "int32",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 65535
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
     "syslog_schema": {
       "additionalProperties": false,
       "patternProperties": {
@@ -21685,7 +22174,119 @@
           },
           "type": "object",
           "x-choice": "ingest-type",
+          "x-choice-case": "server-monitoring",
+          "x-ref": [
+            "ingest-mapping-group"
+          ]
+        },
+        "server-monitoring": {
+          "additionalProperties": false,
+          "patternProperties": {
+            "^@": {
+              "type": "object"
+            }
+          },
+          "properties": {
+            "for-device-groups": {
+              "items": {
+                "description": "Only map these device-groups",
+                "format": "string",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "use-plugin": {
+              "additionalProperties": false,
+              "patternProperties": {
+                "^@": {
+                  "type": "object"
+                }
+              },
+              "properties": {
+                "instance": {
+                  "description": "Plugin instance name",
+                  "format": "string",
+                  "type": "string"
+                },
+                "name": {
+                  "description": "BYOI plugin name",
+                  "format": "string",
+                  "type": "string"
+                },
+                "type": {
+                  "description": "Plugin type",
+                  "enum": [
+                    "default-plugin"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "name"
+              ],
+              "type": "object"
+            }
+          },
+          "type": "object",
+          "x-choice": "ingest-type",
           "x-choice-case": "open-config",
+          "x-ref": [
+            "ingest-mapping-group"
+          ]
+        },
+        "server-monitoring": {
+          "additionalProperties": false,
+          "patternProperties": {
+            "^@": {
+              "type": "object"
+            }
+          },
+          "properties": {
+            "for-device-groups": {
+              "items": {
+                "description": "Only map these device-groups",
+                "format": "string",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "use-plugin": {
+              "additionalProperties": false,
+              "patternProperties": {
+                "^@": {
+                  "type": "object"
+                }
+              },
+              "properties": {
+                "instance": {
+                  "description": "Plugin instance name",
+                  "format": "string",
+                  "type": "string"
+                },
+                "name": {
+                  "description": "BYOI plugin name",
+                  "format": "string",
+                  "type": "string"
+                },
+                "type": {
+                  "description": "Plugin type",
+                  "enum": [
+                    "default-plugin"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "name"
+              ],
+              "type": "object"
+            }
+          },
+          "type": "object",
+          "x-choice": "ingest-type",
+          "x-choice-case": "server-monitoring",
           "x-ref": [
             "ingest-mapping-group"
           ]
@@ -22721,6 +23322,21 @@
           "pattern": "^([a-zA-Z][a-zA-Z0-9_-]*\\.){2}[a-zA-Z][a-zA-Z0-9_-]*$",
           "type": "string"
         },
+        "action-scheduler": {
+          "additionalProperties": false,
+          "patternProperties": {
+            "^@": {
+              "type": "object"
+            }
+          },
+          "properties": {
+            "disable-trigger-action-schedulers": {
+              "description": "If true, disable trigger-action-schedulers service",
+              "type": "boolean"
+            }
+          },
+          "type": "object"
+        },
         "description": {
           "description": "Description about the device group",
           "format": "string",
@@ -22925,6 +23541,47 @@
                 "ingest-daemon-group"
               ]
             },
+            "server-monitoring": {
+                            "additionalProperties": false,
+                            "description": "Service responsible for server-monitoring sensor data collection",
+                            "patternProperties": {
+                                "^@": {
+                                    "type": "object"
+                                }
+                            },
+                            "properties": {
+                                "daemons": {
+                                    "items": {
+                                        "description": "List of daemons for which log-level needs to be applied",
+                                        "enum": [
+                                            "ingest",
+                                            "tand",
+                                            "publishd"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "type": "array"
+                                },
+                                "log-level": {
+                                    "description": "Set the logging level",
+                                    "enum": [
+                                        "error",
+                                        "debug",
+                                        "warn",
+                                        "info"
+                                    ],
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "log-level"
+                            ],
+                            "type": "object",
+                            "x-ref": [
+                                "log-level-group",
+                                "ingest-daemon-group"
+                            ]
+                        },
             "reports-generation": {
               "additionalProperties": false,
               "description": "Service responsible for generating reports",
@@ -24042,6 +24699,14 @@
           "format": "string",
           "type": "string",
           "pattern": "^((\\+|-)((([0-1][0-9])|(2[0-3])):([0-5][0-9])))$"
+        },
+        "use-ingest-receive-time": {
+          "description": "Enable using ingest receive time in formulas like elapsed-time and rate-of-change",
+          "items": {
+            "type": "object",
+            "x-nullable": true
+          },
+          "type": "array"
         }
       },
       "required": [
@@ -24600,6 +25265,55 @@
           ],
           "type": "object"
         },
+        "server-monitoring": {
+          "additionalProperties": false,
+          "patternProperties": {
+            "^@": {
+              "type": "object"
+            }
+          },
+          "properties": {
+            "initial-sync": {
+              "description": "If true, enable initial sync packets processing",
+              "type": "boolean"
+            },
+            "gnmi": {
+              "additionalProperties": false,
+              "patternProperties": {
+                "^@": {
+                  "type": "object"
+                }
+              },
+              "properties": {
+                "enable": {
+                  "description": "If true, enable gnmi",
+                  "type": "boolean"
+                },
+                "encoding": {
+                  "description": "Encoding to be used, default is protobuf",
+                  "enum": [
+                    "protobuf",
+                    "json",
+                    "json_ietf"
+                  ],
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "port": {
+              "description": "Port on which gRPC connection needs to be established",
+              "format": "int32",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 65535
+            }
+          },
+          "required": [
+            "port"
+          ],
+          "type": "object"
+        },
         "outbound-ssh": {
           "additionalProperties": false,
           "description": "Disable Outbound-SSH  service for a device",
@@ -24914,6 +25628,14 @@
           "description": "ID which is sent in the JTI UDP messages",
           "format": "string",
           "type": "string"
+        },
+        "use-ingest-receive-time": {
+          "description": "Enable using ingest receive time in formulas like elapsed-time and rate-of-change",
+          "items": {
+            "type": "object",
+            "x-nullable": true
+          },
+          "type": "array"
         },
         "variable": {
           "description": "Playbook variable configuration",
@@ -25320,6 +26042,33 @@
       "required": [
         "device"
       ],
+      "type": "object"
+    },
+    "device-details_schema": {
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "device-id": {
+          "description": "Event name",
+          "type": "string"
+        },
+            "databases": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "groups": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
       "type": "object"
     },
     "event": {
@@ -26227,6 +26976,21 @@
           },
           "type": "array",
           "x-key": "instance-id playbook rule"
+        },
+        "action-scheduler": {
+          "additionalProperties": false,
+          "patternProperties": {
+            "^@": {
+              "type": "object"
+            }
+          },
+          "properties": {
+            "disable-trigger-action-schedulers": {
+              "description": "If true, disable trigger-action-schedulers service",
+              "type": "boolean"
+            }
+          },
+          "type": "object"
         }
       },
       "required": [
@@ -27635,7 +28399,8 @@
                         "description": "Algorithm used to create baseline thresholds",
                         "enum": [
                           "median-prediction",
-                          "holt-winters"
+                          "holt-winters",
+                          "hidden-markov"
                         ],
                         "type": "string"
                       },
@@ -28155,6 +28920,14 @@
           },
           "type": "array"
         },
+        "disable-no-data-alarm": {
+          "description": "Disable No Data Alarm",
+          "items": {
+            "type": "object",
+            "x-nullable": true
+          },
+          "type": "array"
+        },
         "rule-frequency": {
           "description": "Frequency at which the rule\u2019s field, reference, and vector elements should be computed. Required only when a rule doesn\u2019t have a sensor defined. Specify integer >= 0 followed by s/m/h/d/w/y representing seconds/minutes/hours/days/weeks/years. Eg: 2s",
           "format": "string",
@@ -28355,6 +29128,35 @@
                 "x-choice": "sensor-type",
                 "x-choice-case": "open-config"
               },
+              "server-monitoring": {
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "frequency": {
+                    "description": "Sensor subscription duration. Specify integer >= 0 followed by s/m/h/d/w/y representing seconds/minutes/hours/days/weeks/years. Eg: 2s. A frequency of zero should be used only in case of events subscription",
+                    "format": "string",
+                    "pattern": "^[0-9]+[smhdwy]$",
+                    "type": "string"
+                  },
+                  "sensor-name": {
+                    "description": "Sensor to subscribe",
+                    "format": "string",
+                    "type": "string",
+                    "pattern": "^\\S+$"
+                  }
+                },
+                "required": [
+                  "frequency",
+                  "sensor-name"
+                ],
+                "type": "object",
+                "x-choice": "sensor-type",
+                "x-choice-case": "open-config"
+              },
               "sensor-name": {
                 "description": "Name of sensor. Should be of pattern [a-zA-Z][a-zA-Z0-9_-]*",
                 "format": "string",
@@ -28376,6 +29178,14 @@
                     "pattern": "^[1-9][0-9]*[smhdwy]$",
                     "type": "string"
                   },
+                  "scalars": {
+                    "items": {
+                      "description": "List of SNMP scalar OIDs",
+                      "format": "string",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
                   "table": {
                     "description": "OID of an SNMP table",
                     "format": "string",
@@ -28383,7 +29193,6 @@
                   }
                 },
                 "required": [
-                  "table",
                   "frequency"
                 ],
                 "type": "object",
@@ -31627,6 +32436,23 @@
               },
               "type": "object"
             },
+            "outbound-ssh": {
+              "additionalProperties": false,
+              "description": "Outbound SSH ingest configuration",
+              "patternProperties": {
+                "^@": {
+                  "type": "object"
+                }
+              },
+              "properties": {
+                "port": {
+                  "description": "Port to listen for Outbound SSH connection",
+                  "format": "int32",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            },
             "snmp-notification": {
               "additionalProperties": false,
               "description": "SNMP Notification messages(Traps/Informs) ingest configuration",
@@ -32313,6 +33139,9 @@
             },
             "time-series-database": {
               "$ref": "#/definitions/tsdb_schema"
+            },
+            "trigger-action": {
+              "$ref": "#/definitions/trigger_action_schema"
             }
           },
           "type": "object"
@@ -32343,6 +33172,10 @@
         },
         "db_name": {
           "description": "Database name in which the measurement is present.",
+          "type": "string"
+        },
+        "retention_policy": {
+          "description":  "Retention policy of the measurement",
           "type": "string"
         }
       },
@@ -33534,710 +34367,6 @@
       },
       "type": "object"
     },
-    "panel_schema": {
-      "additionalProperties": false,
-      "properties": {
-        "db": {
-          "description": "database name",
-          "type": "string"
-        },
-        "decimals": {
-          "description": "decimal value",
-          "type": "string"
-        },
-        "panelData": {
-          "description": "Panel data",
-          "items":{
-            "$ref": "#/definitions/panel_data_schema"
-                },
-          "type": "array"
-        },
-        "panelName": {
-          "description": "Name of the panel",
-          "type": "string"
-        },
-        "panelQuery": {
-          "description": "Queries for the configured panel",
-          "additionalProperties": false,
-          "patternProperties": {
-            "^@": {
-              "type": "object"
-            }
-          },
-          "properties": {
-            "query": {
-              "description": "Panel Query.",
-              "format": "string",
-              "type": "string"
-            }
-          },
-          "required": [
-            "query"
-          ],
-          "type": "array"
-        },
-        "panelType": {
-          "description": "Type of chart",
-          "additionalProperties": false,
-          "patternProperties": {
-            "^@": {
-              "type": "object"
-            }
-          },
-          "properties": {
-            "label": {
-              "description": "Label name",
-              "format": "string",
-              "type": "string"
-            },
-            "value": {
-              "description": "Value of the label",
-              "format": "string",
-              "type": "string"
-            }
-          },
-          "type": "object"
-        },
-        "panelUid": {
-          "description": "Unique identifier for panel",
-          "type": "string"
-        },
-        "timeRange": {
-          "description": "Time range configured by user",
-          "additionalProperties": false,
-          "patternProperties": {
-            "^@": {
-              "type": "object"
-            }
-          },
-          "properties": {
-            "label": {
-              "description": "Label name",
-              "format": "string",
-              "type": "string"
-            },
-            "value": {
-              "description": "Value of label",
-              "format": "string",
-              "type": "string"
-            }
-          },
-          "type": "object"
-        },
-        "unitType": {
-          "description": "Unit configured",
-          "additionalProperties": false,
-          "patternProperties": {
-            "^@": {
-              "type": "object"
-            }
-          },
-          "properties": {
-            "label": {
-              "description": "Label name",
-              "format": "string",
-              "type": "string"
-            },
-            "value": {
-              "description": "Value of label",
-              "format": "string",
-              "type": "string"
-            }
-          },
-          "type": "object"
-        },
-        "yLabel": {
-          "description": "yLabel values",
-          "type": "string"
-        },
-        "yMax": {
-          "description": "yMax value",
-          "type": "string"
-        },
-        "yMin": {
-          "description": "yMin value",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "panel_data_schema": {
-        "additionalProperties": false,
-        "properties": {
-          "addGroupByTag": {
-            "description": "Group by values",
-            "additionalProperties": false,
-            "patternProperties": {
-              "^@": {
-                "type": "object"
-              }
-            },
-            "properties": {
-                  "dataType": {
-                    "description": "Data type of the tag",
-                    "format": "string",
-                    "type": "string"
-                  },
-                  "label": {
-                    "description": "label name",
-                    "format": "string",
-                    "type": "string"
-                  },
-                  "type": {
-                    "description": "key type or field type",
-                    "format": "string",
-                    "type": "string"
-                  },
-                  "value": {
-                    "description": "Value of label",
-                    "format": "string",
-                    "type": "string"
-                  }
-                },
-            "type": "array"
-          },
-          "addWhereCondition": {
-            "description": "Where condition to filter",
-            "additionalProperties": false,
-            "patternProperties": {
-              "^@": {
-                "type": "object"
-              }
-            },
-            "properties": {
-              "keyOrField": {
-                "description": "Configured value is field/key type in influx",
-                "additionalProperties": false,
-                "patternProperties": {
-                  "^@": {
-                    "type": "object"
-                  }
-                },
-                "properties": {
-                  "dataType": {
-                    "description": "Data type of the field/key",
-                    "format": "string",
-                    "type": "string"
-                  },
-                  "label": {
-                    "description": "label name",
-                    "format": "string",
-                    "type": "string"
-                  },
-                  "type": {
-                    "description": "key type or field type",
-                    "format": "string",
-                    "type": "string"
-                  },
-                  "value": {
-                    "description": "Value of label",
-                    "format": "string",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              "keyOrFieldValue": {
-                "description": "Key or Field value for the where condition",
-                "additionalProperties": false,
-                "patternProperties": {
-                  "^@": {
-                    "type": "object"
-                  }
-                },
-                "properties": {
-                  "label": {
-                    "description": "Name of the panel.",
-                    "format": "string",
-                    "type": "string"
-                  },
-                  "value": {
-                    "description": "Name of the panel.",
-                    "format": "string",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              "operator": {
-                "description": "operator for where condition",
-                "additionalProperties": false,
-                "patternProperties": {
-                  "^@": {
-                    "type": "object"
-                  }
-                },
-                "properties": {
-                  "label": {
-                    "description": "Name of the panel.",
-                    "format": "string",
-                    "type": "string"
-                  },
-                  "value": {
-                    "description": "Name of the panel.",
-                    "format": "string",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              }
-            },
-            "type": "array"
-          },
-          "changeWhereKeyField": {
-            "description": "Change where key field",
-            "additionalProperties": false,
-            "patternProperties": {
-              "^@": {
-                "type": "object"
-              }
-            },
-            "properties": {
-              "keyField": {
-                "description": "key field",
-                "type": "object"
-              }
-            },
-            "type": "array"
-          },
-          "groupByFill": {
-                "description": "Group By Fill",
-                "additionalProperties": false,
-                "patternProperties": {
-                  "^@": {
-                    "type": "object"
-                  }
-                },
-                "properties": {
-                  "label": {
-                    "description": "Label Name",
-                    "format": "string",
-                    "type": "string"
-                  },
-                  "value": {
-                    "description": "Label Value",
-                    "format": "string",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-          "groupByTime": {
-                "description": "Group by time",
-                "additionalProperties": false,
-                "patternProperties": {
-                  "^@": {
-                    "type": "object"
-                  }
-                },
-                "properties": {
-                  "label": {
-                    "description": "Label Name",
-                    "format": "string",
-                    "type": "string"
-                  },
-                  "value": {
-                    "description": "Label Value",
-                    "format": "string",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-          "groupType": {
-            "description": "Group type(device/network)",
-            "type": "string"
-          },
-          "selectedAggregation": {
-                "description": "Aggregation type",
-                "additionalProperties": false,
-                "patternProperties": {
-                  "^@": {
-                    "type": "object"
-                  }
-                },
-                "properties": {
-                  "label": {
-                    "description": "Label Name",
-                    "format": "string",
-                    "type": "string"
-                  },
-                  "value": {
-                    "description": "Label value",
-                    "format": "string",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-          "selectedDevice": {
-                "description": "Device name",
-                "additionalProperties": false,
-                "patternProperties": {
-                  "^@": {
-                    "type": "object"
-                  }
-                },
-                "properties": {
-                  "label": {
-                    "description": "Label Name",
-                    "format": "string",
-                    "type": "string"
-                  },
-                  "value": {
-                    "description": "Label Value",
-                    "format": "string",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-          "selectedDropdown": {
-            "description": "Boolean value if selected from dropdown or not",
-            "additionalProperties": false,
-            "patternProperties": {
-              "^@": {
-                "type": "object"
-              }
-            },
-            "properties": {
-              "value": {
-                "description": "Stores boolean value",
-                "type": "boolean"
-              }
-            },
-            "type": "array"
-          },
-          "selectedField": {
-                "description": "Field selected for the panel",
-                "additionalProperties": false,
-                "patternProperties": {
-                  "^@": {
-                    "type": "object"
-                  }
-                },
-                "properties": {
-                  "label": {
-                    "description": "Label name",
-                    "format": "string",
-                    "type": "string"
-                  },
-                  "value": {
-                    "description": "Label value",
-                    "format": "string",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-          "selectedGroup": {
-                "description": "Device/Network group name",
-                "additionalProperties": false,
-                "patternProperties": {
-                  "^@": {
-                    "type": "object"
-                  }
-                },
-                "properties": {
-                  "label": {
-                    "description": "Label name",
-                    "format": "string",
-                    "type": "string"
-                  },
-                  "type": {
-                    "description": "Group type(device/network)",
-                    "format": "string",
-                    "type": "string"
-                  },
-                  "value": {
-                    "description": "Label value",
-                    "format": "string",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-          "selectedLogicalOperator": {
-            "description": "Logical operator",
-            "additionalProperties": false,
-            "patternProperties": {
-              "^@": {
-                "type": "object"
-              }
-            },
-            "properties": {
-              "value": {
-                "description": "Name of the panel.",
-                "format": "string",
-                "type": "string"
-              }
-            },
-            "type": "array"
-          },
-          "selectedTopic": {
-                "description": "Topic name",
-                "additionalProperties": false,
-                "patternProperties": {
-                  "^@": {
-                    "type": "object"
-                  }
-                },
-                "properties": {
-                  "label": {
-                    "description": "Label name(Topic/rule name)",
-                    "format": "string",
-                    "type": "string"
-                  },
-                  "retention-policy": {
-                    "description": "Retention policy of the topic",
-                    "format": "string",
-                    "type": "string"
-                  },
-                  "type": {
-                    "description": "Type of measurement(field-table/trigger-table/rollup-table)",
-                    "format": "string",
-                    "type": "string"
-                  },
-                  "value": {
-                    "description": "Label value",
-                    "format": "string",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-          "selectedTransformation": {
-                "description": "Transformation type",
-                "additionalProperties": false,
-                "patternProperties": {
-                  "^@": {
-                    "type": "object"
-                  }
-                },
-                "properties": {
-                  "label": {
-                    "description": "Label name",
-                    "format": "string",
-                    "type": "string"
-                  },
-                  "value": {
-                    "description": "Label value",
-                    "format": "string",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              }
-        },
-        "type": "object"
-      },
-    "hb_graphs": {
-      "description": "Create Panels in a Canvas",
-      "properties": {
-        "graph_name": {
-          "description": "Graph name",
-          "type": "string"
-        },
-        "graph_description": {
-          "description": "Graph description",
-          "type": "string"
-        },
-        "graph_type": {
-          "description": "Graph type: Time Series or Histogram or Heatmap",
-          "enum": [
-            "Time Series",
-            "Histogram",
-            "Heatmap"
-          ],
-          "type": "string"
-        },
-        "time_range": {
-          "description": "Time range for the graph",
-          "enum": [
-            "1h",
-            "3h",
-            "6h",
-            "12h",
-            "1d",
-            "2d",
-            "3d",
-            "4d",
-            "5d",
-            "6d",
-            "7d"
-          ],
-          "type": "string"
-        },
-        "query": {
-          "description": "Query for the graph",
-          "properties": {
-            "group_name": {
-              "description": "Device/Network group name",
-              "format": "string",
-              "type": "string"
-            },
-            "group_type": {
-              "description": "Device/Network group type",
-              "enum": [
-                "device",
-                "network"
-              ],
-              "type": "string"
-            },
-            "device_name": {
-              "description": "label name",
-              "format": "string",
-              "type": "string"
-            },
-            "measurement_name": {
-              "description": "Measurement name (topic/rule name)",
-              "format": "string",
-              "type": "string"
-            },
-            "measurement_type": {
-              "description": "Measurement type: Field table/Trigger table/Rollup table",
-              "enum": [
-                "Field table",
-                "Trigger table",
-                "Rollup table"
-              ],
-              "type": "string"
-            },
-            "transformation": {
-              "description": "Transformation value for query",
-              "enum": [
-                "derivative",
-                "spread",
-                "non-negative-derivative",
-                "difference",
-                "cumulative-sum",
-                "elapsed"
-              ],
-              "type": "string"
-            },
-            "field_name": {
-              "description": "Field name of a measurement ",
-              "format": "string",
-              "type": "string"
-            },
-            "field_type": {
-              "description": "Field type of the measurement (int, float, string, uint)",
-              "format": "string",
-              "type": "string"
-            },
-            "field_aggregation": {
-              "description": "Data aggregation type of the field/key",
-              "enum": [
-                "mean",
-                "mode",
-                "median",
-                "count",
-                "sum",
-                "integral",
-                "distinct"
-              ],
-              "type": "string"
-            },
-            "where": {
-              "description": "where clause for graph",
-              "properties": {
-                "where_clause": {
-                  "description": "label name",
-                  "properties": {
-                    "key": {
-                      "description": "Field or key (type)",
-                      "enum": [
-                        "key",
-                        "field"
-                      ],
-                      "type": "string"
-                    },
-                    "operator": {
-                      "description": "Operator for where clause",
-                      "enum": [
-                        "=",
-                        "!=",
-                        "=~",
-                        "!~"
-                      ],
-                      "type": "string"
-                    },
-                    "value": {
-                      "description": "Value for the field_tag_name to be validated",
-                      "format": "string",
-                      "type": "string"
-                    },
-                    "logical_operation": {
-                      "description": "Graph type",
-                      "enum": [
-                        "AND",
-                        "OR"
-                      ],
-                      "type": "string"
-                    }
-                  },
-                  "type": "list"
-                }
-              },
-              "type": "list"
-            },
-            "group_by_interval": {
-              "description": "Group by interval of the query",
-              "format": "string",
-              "type": "string"
-            },
-            "group_by_fill": {
-              "description": "Group by fill value of the query",
-              "enum": ["fill(null)", "none"],
-              "type": "string"
-            },
-            "group_by_tag_key": {
-              "description": "Group by tag key value of the query",
-              "format": "string",
-              "type": "string"
-            },
-            "retention_policy": {
-              "description": "Retention policy name",
-              "format": "string",
-              "type": "string"
-            }
-          },
-          "type": "list"
-        },
-        "y_label": {
-          "description": "Y Label value in visualization",
-          "type": "string"
-        },
-        "y_max": {
-          "description": "Y max value in visualization",
-          "type": "string"
-        },
-        "y_min": {
-          "description": "Y min value in visualization",
-          "type": "string"
-        },
-        "unit_type": {
-          "description": "unit type value in visualization",
-          "enum": [
-            "Short",
-            "Percentage(0-100)",
-            "Bits",
-            "Bytes",
-            "Kilobytes",
-            "Megabytes",
-            "Gigabytes",
-            "Parts per million(ppm)",
-            "Parts per billion(ppb)"
-          ],
-          "type": "string"
-        },
-        "decimals": {
-          "description": "Decimals value in visualization",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "scheduler_schema": {
       "additionalProperties": false,
       "patternProperties": {
@@ -34401,6 +34530,28 @@
           "description": "High availability. Number of copies of data to be stored",
           "format": "int32",
           "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "trigger_action_schema": {
+      "additionalProperties": false,
+      "description": "Action schedulers associated with triggers",
+      "patternProperties": {
+        "^@": {
+          "type": "object"
+        }
+      },
+      "properties": {
+        "schedulers": {
+          "items": {
+            "description": "List of action schedulers",
+            "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$",
+            "type": "string",
+            "x-path": "../../scheduler/name"
+          },
+          "minItems": 1,
+          "type": "array"
         }
       },
       "type": "object"
@@ -34586,7 +34737,8 @@
           "description": "Generated report format",
           "enum": [
             "json",
-            "html"
+            "html",
+            "pdf"
           ],
           "type": "string"
         },
@@ -35967,6 +36119,55 @@
       "type": "array",
       "x-key": "name"
     },
+    "workflow_cron_options_schema": {
+      "description": "Workflow Cron Workflow Options information",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^@": {
+          "type": "object"
+        }
+      },
+      "properties": {
+        "description": {
+          "description": "Description about this cron workflow options",
+          "format": "string",
+          "type": "string"
+        },
+        "schedule": {
+          "description": "Cron expression of time at which workflow will be run",
+          "format": "string",
+          "type": "string"
+        },
+        "concurrency-policy": {
+          "description": "Policy that determines what to do if multiple Workflows are scheduled at the same time",
+          "format": "string",
+          "enum": [
+            "allow",
+            "replace",
+            "forbid"
+          ],
+          "type": "string"
+        },
+        "starting-deadline-duration": {
+          "description": "Duration after the last successful run during which a missed Workflow will be run",
+          "format": "string",
+          "type": "string"
+        },
+        "successful-jobs-history-limit": {
+          "description": "Number of successful Workflows that will be persisted at a time",
+          "format": "int32",
+          "type": "integer"
+        },
+        "failed-jobs-history-limit": {
+          "description": "Policy that determines what to do if multiple Workflows are scheduled at the same time",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "schedule"
+      ]
+    },
     "workflow_notification_schema": {
       "description": "Workflow notification configuration",
       "additionalProperties": false,
@@ -36126,6 +36327,9 @@
         },
         "argument": {
           "$ref": "#/definitions/workflow_argument_group_schema"
+        },
+        "cron-options": {
+          "$ref": "#/definitions/workflow_cron_options_schema"
         },
         "batch": {
           "description": "Maximum parallel steps launched",
@@ -36707,6 +36911,9 @@
         "argument": {
           "$ref": "#/definitions/workflow_argument_group_schema"
         },
+        "cron-options": {
+          "$ref": "#/definitions/workflow_cron_options_schema"
+        },
         "batch": {
           "description": "Maximum parallel steps launched",
           "format": "int32",
@@ -36779,6 +36986,48 @@
       "required": [
         "workflow-name"
       ]
+    },
+    "workflow_statistics_schema": {
+      "description": "Workflow statistics information",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^@": {
+          "type": "object"
+        }
+      },
+      "properties": {
+        "description": {
+          "description": "Description about this workflow statistics",
+          "format": "string",
+          "type": "string"
+        },
+        "total_run": {
+          "description": "Total workflow instances run",
+          "type": "integer",
+          "minimum": 0
+        },
+        "total_succeeded": {
+          "description": "Total workflow instances succeeded",
+          "type": "integer",
+          "minimum": 0
+        },
+        "total_failed": {
+          "description": "Total workflow instances failed",
+          "type": "integer",
+          "minimum": 0
+        },
+        "total_running": {
+          "description": "Total workflow instances running currently",
+          "type": "integer",
+          "minimum": 0
+        },
+        "total_suspended": {
+          "description": "Total workflow instances suspended",
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "type": "object"
     },
     "workflow_instances_schema": {
       "additionalProperties": false,
@@ -37797,6 +38046,710 @@
         "dependency-group",
         "resource-variables-group"
       ]
+    },
+    "panel_schema": {
+      "additionalProperties": false,
+      "properties": {
+        "db": {
+          "description": "database name",
+          "type": "string"
+        },
+        "decimals": {
+          "description": "decimal value",
+          "type": "string"
+        },
+        "panelData": {
+          "description": "Panel data",
+          "items":{
+            "$ref": "#/definitions/panel_data_schema"
+                },
+          "type": "array"
+        },
+        "panelName": {
+          "description": "Name of the panel",
+          "type": "string"
+        },
+        "panelQuery": {
+          "description": "Queries for the configured panel",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^@": {
+              "type": "object"
+            }
+          },
+          "properties": {
+            "query": {
+              "description": "Panel Query.",
+              "format": "string",
+              "type": "string"
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "type": "array"
+        },
+        "panelType": {
+          "description": "Type of chart",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^@": {
+              "type": "object"
+            }
+          },
+          "properties": {
+            "label": {
+              "description": "Label name",
+              "format": "string",
+              "type": "string"
+            },
+            "value": {
+              "description": "Value of the label",
+              "format": "string",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "panelUid": {
+          "description": "Unique identifier for panel",
+          "type": "string"
+        },
+        "timeRange": {
+          "description": "Time range configured by user",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^@": {
+              "type": "object"
+            }
+          },
+          "properties": {
+            "label": {
+              "description": "Label name",
+              "format": "string",
+              "type": "string"
+            },
+            "value": {
+              "description": "Value of label",
+              "format": "string",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "unitType": {
+          "description": "Unit configured",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^@": {
+              "type": "object"
+            }
+          },
+          "properties": {
+            "label": {
+              "description": "Label name",
+              "format": "string",
+              "type": "string"
+            },
+            "value": {
+              "description": "Value of label",
+              "format": "string",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "yLabel": {
+          "description": "yLabel values",
+          "type": "string"
+        },
+        "yMax": {
+          "description": "yMax value",
+          "type": "string"
+        },
+        "yMin": {
+          "description": "yMin value",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "panel_data_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "addGroupByTag": {
+            "description": "Group by values",
+            "additionalProperties": false,
+            "patternProperties": {
+              "^@": {
+                "type": "object"
+              }
+            },
+            "properties": {
+                  "dataType": {
+                    "description": "Data type of the tag",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "label": {
+                    "description": "label name",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "type": {
+                    "description": "key type or field type",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Value of label",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+            "type": "array"
+          },
+          "addWhereCondition": {
+            "description": "Where condition to filter",
+            "additionalProperties": false,
+            "patternProperties": {
+              "^@": {
+                "type": "object"
+              }
+            },
+            "properties": {
+              "keyOrField": {
+                "description": "Configured value is field/key type in influx",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "dataType": {
+                    "description": "Data type of the field/key",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "label": {
+                    "description": "label name",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "type": {
+                    "description": "key type or field type",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Value of label",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "keyOrFieldValue": {
+                "description": "Key or Field value for the where condition",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "label": {
+                    "description": "Name of the panel.",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Name of the panel.",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "operator": {
+                "description": "operator for where condition",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "label": {
+                    "description": "Name of the panel.",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Name of the panel.",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "type": "array"
+          },
+          "changeWhereKeyField": {
+            "description": "Change where key field",
+            "additionalProperties": false,
+            "patternProperties": {
+              "^@": {
+                "type": "object"
+              }
+            },
+            "properties": {
+              "keyField": {
+                "description": "key field",
+                "type": "object"
+              }
+            },
+            "type": "array"
+          },
+          "groupByFill": {
+                "description": "Group By Fill",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "label": {
+                    "description": "Label Name",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Label Value",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+          "groupByTime": {
+                "description": "Group by time",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "label": {
+                    "description": "Label Name",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Label Value",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+          "groupType": {
+            "description": "Group type(device/network)",
+            "type": "string"
+          },
+          "selectedAggregation": {
+                "description": "Aggregation type",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "label": {
+                    "description": "Label Name",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Label value",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+          "selectedDevice": {
+                "description": "Device name",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "label": {
+                    "description": "Label Name",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Label Value",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+          "selectedDropdown": {
+            "description": "Boolean value if selected from dropdown or not",
+            "additionalProperties": false,
+            "patternProperties": {
+              "^@": {
+                "type": "object"
+              }
+            },
+            "properties": {
+              "value": {
+                "description": "Stores boolean value",
+                "type": "boolean"
+              }
+            },
+            "type": "array"
+          },
+          "selectedField": {
+                "description": "Field selected for the panel",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "label": {
+                    "description": "Label name",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Label value",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+          "selectedGroup": {
+                "description": "Device/Network group name",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "label": {
+                    "description": "Label name",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "type": {
+                    "description": "Group type(device/network)",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Label value",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+          "selectedLogicalOperator": {
+            "description": "Logical operator",
+            "additionalProperties": false,
+            "patternProperties": {
+              "^@": {
+                "type": "object"
+              }
+            },
+            "properties": {
+              "value": {
+                "description": "Name of the panel.",
+                "format": "string",
+                "type": "string"
+              }
+            },
+            "type": "array"
+          },
+          "selectedTopic": {
+                "description": "Topic name",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "label": {
+                    "description": "Label name(Topic/rule name)",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "retention-policy": {
+                    "description": "Retention policy of the topic",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "type": {
+                    "description": "Type of measurement(field-table/trigger-table/rollup-table)",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Label value",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+          "selectedTransformation": {
+                "description": "Transformation type",
+                "additionalProperties": false,
+                "patternProperties": {
+                  "^@": {
+                    "type": "object"
+                  }
+                },
+                "properties": {
+                  "label": {
+                    "description": "Label name",
+                    "format": "string",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Label value",
+                    "format": "string",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+        },
+        "type": "object"
+      },
+    "hb_graphs": {
+      "description": "Create Panels in a Canvas",
+      "properties": {
+        "graph_name": {
+          "description": "Graph name",
+          "type": "string"
+        },
+        "graph_description": {
+          "description": "Graph description",
+          "type": "string"
+        },
+        "graph_type": {
+          "description": "Graph type: Time Series or Histogram or Heatmap",
+          "enum": [
+            "Time Series",
+            "Histogram",
+            "Heatmap"
+          ],
+          "type": "string"
+        },
+        "time_range": {
+          "description": "Time range for the graph",
+          "enum": [
+            "1h",
+            "3h",
+            "6h",
+            "12h",
+            "1d",
+            "2d",
+            "3d",
+            "4d",
+            "5d",
+            "6d",
+            "7d"
+          ],
+          "type": "string"
+        },
+        "query": {
+          "description": "Query for the graph",
+          "properties": {
+            "group_name": {
+              "description": "Device/Network group name",
+              "format": "string",
+              "type": "string"
+            },
+            "group_type": {
+              "description": "Device/Network group type",
+              "enum": [
+                "device",
+                "network"
+              ],
+              "type": "string"
+            },
+            "device_name": {
+              "description": "label name",
+              "format": "string",
+              "type": "string"
+            },
+            "measurement_name": {
+              "description": "Measurement name (topic/rule name)",
+              "format": "string",
+              "type": "string"
+            },
+            "measurement_type": {
+              "description": "Measurement type: Field table/Trigger table/Rollup table",
+              "enum": [
+                "Field table",
+                "Trigger table",
+                "Rollup table"
+              ],
+              "type": "string"
+            },
+            "transformation": {
+              "description": "Transformation value for query",
+              "enum": [
+                "derivative",
+                "spread",
+                "non-negative-derivative",
+                "difference",
+                "cumulative-sum",
+                "elapsed"
+              ],
+              "type": "string"
+            },
+            "field_name": {
+              "description": "Field name of a measurement ",
+              "format": "string",
+              "type": "string"
+            },
+            "field_type": {
+              "description": "Field type of the measurement (int, float, string, uint)",
+              "format": "string",
+              "type": "string"
+            },
+            "field_aggregation": {
+              "description": "Data aggregation type of the field/key",
+              "enum": [
+                "mean",
+                "mode",
+                "median",
+                "count",
+                "sum",
+                "integral",
+                "distinct"
+              ],
+              "type": "string"
+            },
+            "where": {
+              "description": "where clause for graph",
+              "properties": {
+                "where_clause": {
+                  "description": "label name",
+                  "properties": {
+                    "key": {
+                      "description": "Field or key (type)",
+                      "enum": [
+                        "key",
+                        "field"
+                      ],
+                      "type": "string"
+                    },
+                    "operator": {
+                      "description": "Operator for where clause",
+                      "enum": [
+                        "=",
+                        "!=",
+                        "=~",
+                        "!~"
+                      ],
+                      "type": "string"
+                    },
+                    "value": {
+                      "description": "Value for the field_tag_name to be validated",
+                      "format": "string",
+                      "type": "string"
+                    },
+                    "logical_operation": {
+                      "description": "Graph type",
+                      "enum": [
+                        "AND",
+                        "OR"
+                      ],
+                      "type": "string"
+                    }
+                  },
+                  "type": "list"
+                }
+              },
+              "type": "list"
+            },
+            "group_by_interval": {
+              "description": "Group by interval of the query",
+              "format": "string",
+              "type": "string"
+            },
+            "group_by_fill": {
+              "description": "Group by fill value of the query",
+              "enum": ["fill(null)", "none"],
+              "type": "string"
+            },
+            "group_by_tag_key": {
+              "description": "Group by tag key value of the query",
+              "format": "string",
+              "type": "string"
+            },
+            "retention_policy": {
+              "description": "Retention policy name",
+              "format": "string",
+              "type": "string"
+            }
+          },
+          "type": "list"
+        },
+        "y_label": {
+          "description": "Y Label value in visualization",
+          "type": "string"
+        },
+        "y_max": {
+          "description": "Y max value in visualization",
+          "type": "string"
+        },
+        "y_min": {
+          "description": "Y min value in visualization",
+          "type": "string"
+        },
+        "unit_type": {
+          "description": "unit type value in visualization",
+          "enum": [
+            "Short",
+            "Percentage(0-100)",
+            "Bits",
+            "Bytes",
+            "Kilobytes",
+            "Megabytes",
+            "Gigabytes",
+            "Parts per million(ppm)",
+            "Parts per billion(ppb)"
+          ],
+          "type": "string"
+        },
+        "decimals": {
+          "description": "Decimals value in visualization",
+          "type": "string"
+        }
+      },
+      "type": "object"
     }
   }
 }

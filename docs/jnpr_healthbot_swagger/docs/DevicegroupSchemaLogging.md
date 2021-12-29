@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **native_gpb** | [**DevicegroupSchemaLoggingNativegpb**](DevicegroupSchemaLoggingNativegpb.md) |  | [optional] 
 **non_sensor_rules** | [**DevicegroupSchemaLoggingNonsensorrules**](DevicegroupSchemaLoggingNonsensorrules.md) |  | [optional] 
 **open_config** | [**DevicegroupSchemaLoggingOpenconfig**](DevicegroupSchemaLoggingOpenconfig.md) |  | [optional] 
+**server_monitoring** | [**DevicegroupSchemaLoggingServermonitoring**](DevicegroupSchemaLoggingServermonitoring.md) |  | [optional] 
 **reports_generation** | [**DevicegroupSchemaLoggingReportsgeneration**](DevicegroupSchemaLoggingReportsgeneration.md) |  | [optional] 
 **snmp** | [**DevicegroupSchemaLoggingSnmp**](DevicegroupSchemaLoggingSnmp.md) |  | [optional] 
 **trigger_evaluation** | [**DevicegroupSchemaLoggingTriggerevaluation**](DevicegroupSchemaLoggingTriggerevaluation.md) |  | [optional] 

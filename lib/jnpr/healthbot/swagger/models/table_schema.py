@@ -33,27 +33,32 @@ class TableSchema(object):
     swagger_types = {
         'name': 'str',
         'type': 'str',
-        'db_name': 'str'
+        'db_name': 'str',
+        'retention_policy': 'str'
     }
 
     attribute_map = {
         'name': 'name',
         'type': 'type',
-        'db_name': 'db_name'
+        'db_name': 'db_name',
+        'retention_policy': 'retention_policy'
     }
 
-    def __init__(self, name=None, type=None, db_name=None):  # noqa: E501
+    def __init__(self, name=None, type=None, db_name=None, retention_policy=None):  # noqa: E501
         """TableSchema - a model defined in Swagger"""  # noqa: E501
 
         self._name = None
         self._type = None
         self._db_name = None
+        self._retention_policy = None
         self.discriminator = None
 
         self.name = name
         self.type = type
         if db_name is not None:
             self.db_name = db_name
+        if retention_policy is not None:
+            self.retention_policy = retention_policy
 
     @property
     def name(self):
@@ -131,6 +136,29 @@ class TableSchema(object):
         """
 
         self._db_name = db_name
+
+    @property
+    def retention_policy(self):
+        """Gets the retention_policy of this TableSchema.  # noqa: E501
+
+        Retention policy of the measurement  # noqa: E501
+
+        :return: The retention_policy of this TableSchema.  # noqa: E501
+        :rtype: str
+        """
+        return self._retention_policy
+
+    @retention_policy.setter
+    def retention_policy(self, retention_policy):
+        """Sets the retention_policy of this TableSchema.
+
+        Retention policy of the measurement  # noqa: E501
+
+        :param retention_policy: The retention_policy of this TableSchema.  # noqa: E501
+        :type: str
+        """
+
+        self._retention_policy = retention_policy
 
     def to_dict(self):
         """Returns the model properties as a dict"""
