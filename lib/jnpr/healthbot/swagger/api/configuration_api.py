@@ -11684,7 +11684,6 @@ class ConfigurationApi(object):
         :param async_req bool
         :param str x_iam_token: authentication header object
         :param bool ems_sanity: DEBUG (Use with caution): roll-back a faulty transaction in HB-EMS communication
-        :param bool committed_sanity: DEBUG (Use with caution): roll-back a faulty transaction in the production db-session
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -11708,13 +11707,12 @@ class ConfigurationApi(object):
         :param async_req bool
         :param str x_iam_token: authentication header object
         :param bool ems_sanity: DEBUG (Use with caution): roll-back a faulty transaction in HB-EMS communication
-        :param bool committed_sanity: DEBUG (Use with caution): roll-back a faulty transaction in the production db-session
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['x_iam_token', 'ems_sanity', 'committed_sanity']  # noqa: E501
+        all_params = ['x_iam_token', 'ems_sanity']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -11737,8 +11735,6 @@ class ConfigurationApi(object):
         query_params = []
         if 'ems_sanity' in params:
             query_params.append(('ems_sanity', params['ems_sanity']))  # noqa: E501
-        if 'committed_sanity' in params:
-            query_params.append(('committed_sanity', params['committed_sanity']))  # noqa: E501
 
         header_params = {}
         if 'x_iam_token' in params:

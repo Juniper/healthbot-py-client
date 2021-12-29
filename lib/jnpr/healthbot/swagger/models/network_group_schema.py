@@ -42,7 +42,8 @@ class NetworkGroupSchema(object):
         'playbooks': 'list[str]',
         'tagging_profile': 'list[str]',
         'scheduler': 'list[DevicegroupSchemaScheduler]',
-        'variable': 'list[DevicegroupSchemaVariable]'
+        'variable': 'list[DevicegroupSchemaVariable]',
+        'action_scheduler': 'DevicegroupSchemaActionscheduler'
     }
 
     attribute_map = {
@@ -57,10 +58,11 @@ class NetworkGroupSchema(object):
         'playbooks': 'playbooks',
         'tagging_profile': 'tagging-profile',
         'scheduler': 'scheduler',
-        'variable': 'variable'
+        'variable': 'variable',
+        'action_scheduler': 'action-scheduler'
     }
 
-    def __init__(self, description=None, ingest_frequency=None, network_group_name=None, publish=None, logging=None, reports=None, root_cause_analysis=None, notification=None, playbooks=None, tagging_profile=None, scheduler=None, variable=None):  # noqa: E501
+    def __init__(self, description=None, ingest_frequency=None, network_group_name=None, publish=None, logging=None, reports=None, root_cause_analysis=None, notification=None, playbooks=None, tagging_profile=None, scheduler=None, variable=None, action_scheduler=None):  # noqa: E501
         """NetworkGroupSchema - a model defined in Swagger"""  # noqa: E501
 
         self._description = None
@@ -75,6 +77,7 @@ class NetworkGroupSchema(object):
         self._tagging_profile = None
         self._scheduler = None
         self._variable = None
+        self._action_scheduler = None
         self.discriminator = None
 
         if description is not None:
@@ -100,6 +103,8 @@ class NetworkGroupSchema(object):
             self.scheduler = scheduler
         if variable is not None:
             self.variable = variable
+        if action_scheduler is not None:
+            self.action_scheduler = action_scheduler
 
     @property
     def description(self):
@@ -366,6 +371,27 @@ class NetworkGroupSchema(object):
         """
 
         self._variable = variable
+
+    @property
+    def action_scheduler(self):
+        """Gets the action_scheduler of this NetworkGroupSchema.  # noqa: E501
+
+
+        :return: The action_scheduler of this NetworkGroupSchema.  # noqa: E501
+        :rtype: DevicegroupSchemaActionscheduler
+        """
+        return self._action_scheduler
+
+    @action_scheduler.setter
+    def action_scheduler(self, action_scheduler):
+        """Sets the action_scheduler of this NetworkGroupSchema.
+
+
+        :param action_scheduler: The action_scheduler of this NetworkGroupSchema.  # noqa: E501
+        :type: DevicegroupSchemaActionscheduler
+        """
+
+        self._action_scheduler = action_scheduler
 
     def to_dict(self):
         """Returns the model properties as a dict"""

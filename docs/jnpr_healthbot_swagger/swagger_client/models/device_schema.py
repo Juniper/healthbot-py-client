@@ -39,6 +39,7 @@ class DeviceSchema(object):
         'host': 'str',
         'i_agent': 'DeviceSchemaIAgent',
         'open_config': 'DeviceSchemaOpenconfig',
+        'server_monitoring': 'DeviceSchemaOpenconfig',
         'outbound_ssh': 'DeviceSchemaOutboundssh',
         'owner': 'str',
         'snmp': 'DeviceSchemaSnmp',
@@ -46,6 +47,7 @@ class DeviceSchema(object):
         'tagging_profile': 'list[str]',
         'timezone': 'str',
         'system_id': 'str',
+        'use_ingest_receive_time': 'list[object]',
         'variable': 'list[DeviceSchemaVariable]',
         'vendor': 'DeviceSchemaVendor'
     }
@@ -59,6 +61,7 @@ class DeviceSchema(object):
         'host': 'host',
         'i_agent': 'iAgent',
         'open_config': 'open-config',
+        'server_monitoring': 'server-monitoring',
         'outbound_ssh': 'outbound-ssh',
         'owner': 'owner',
         'snmp': 'snmp',
@@ -66,11 +69,12 @@ class DeviceSchema(object):
         'tagging_profile': 'tagging-profile',
         'timezone': 'timezone',
         'system_id': 'system-id',
+        'use_ingest_receive_time': 'use-ingest-receive-time',
         'variable': 'variable',
         'vendor': 'vendor'
     }
 
-    def __init__(self, authentication=None, description=None, device_id=None, uuid=None, flow=None, host=None, i_agent=None, open_config=None, outbound_ssh=None, owner=None, snmp=None, syslog=None, tagging_profile=None, timezone=None, system_id=None, variable=None, vendor=None):  # noqa: E501
+    def __init__(self, authentication=None, description=None, device_id=None, uuid=None, flow=None, host=None, i_agent=None, open_config=None, server_monitoring=None, outbound_ssh=None, owner=None, snmp=None, syslog=None, tagging_profile=None, timezone=None, system_id=None, use_ingest_receive_time=None, variable=None, vendor=None):  # noqa: E501
         """DeviceSchema - a model defined in Swagger"""  # noqa: E501
 
         self._authentication = None
@@ -81,6 +85,7 @@ class DeviceSchema(object):
         self._host = None
         self._i_agent = None
         self._open_config = None
+        self._server_monitoring = None
         self._outbound_ssh = None
         self._owner = None
         self._snmp = None
@@ -88,6 +93,7 @@ class DeviceSchema(object):
         self._tagging_profile = None
         self._timezone = None
         self._system_id = None
+        self._use_ingest_receive_time = None
         self._variable = None
         self._vendor = None
         self.discriminator = None
@@ -106,6 +112,8 @@ class DeviceSchema(object):
             self.i_agent = i_agent
         if open_config is not None:
             self.open_config = open_config
+        if server_monitoring is not None:
+            self.server_monitoring = server_monitoring
         if outbound_ssh is not None:
             self.outbound_ssh = outbound_ssh
         if owner is not None:
@@ -120,6 +128,8 @@ class DeviceSchema(object):
             self.timezone = timezone
         if system_id is not None:
             self.system_id = system_id
+        if use_ingest_receive_time is not None:
+            self.use_ingest_receive_time = use_ingest_receive_time
         if variable is not None:
             self.variable = variable
         if vendor is not None:
@@ -314,6 +324,27 @@ class DeviceSchema(object):
         self._open_config = open_config
 
     @property
+    def server_monitoring(self):
+        """Gets the server_monitoring of this DeviceSchema.  # noqa: E501
+
+
+        :return: The server_monitoring of this DeviceSchema.  # noqa: E501
+        :rtype: DeviceSchemaOpenconfig
+        """
+        return self._server_monitoring
+
+    @server_monitoring.setter
+    def server_monitoring(self, server_monitoring):
+        """Sets the server_monitoring of this DeviceSchema.
+
+
+        :param server_monitoring: The server_monitoring of this DeviceSchema.  # noqa: E501
+        :type: DeviceSchemaOpenconfig
+        """
+
+        self._server_monitoring = server_monitoring
+
+    @property
     def outbound_ssh(self):
         """Gets the outbound_ssh of this DeviceSchema.  # noqa: E501
 
@@ -467,6 +498,29 @@ class DeviceSchema(object):
         """
 
         self._system_id = system_id
+
+    @property
+    def use_ingest_receive_time(self):
+        """Gets the use_ingest_receive_time of this DeviceSchema.  # noqa: E501
+
+        Enable using ingest receive time in formulas like elapsed-time and rate-of-change  # noqa: E501
+
+        :return: The use_ingest_receive_time of this DeviceSchema.  # noqa: E501
+        :rtype: list[object]
+        """
+        return self._use_ingest_receive_time
+
+    @use_ingest_receive_time.setter
+    def use_ingest_receive_time(self, use_ingest_receive_time):
+        """Sets the use_ingest_receive_time of this DeviceSchema.
+
+        Enable using ingest receive time in formulas like elapsed-time and rate-of-change  # noqa: E501
+
+        :param use_ingest_receive_time: The use_ingest_receive_time of this DeviceSchema.  # noqa: E501
+        :type: list[object]
+        """
+
+        self._use_ingest_receive_time = use_ingest_receive_time
 
     @property
     def variable(self):

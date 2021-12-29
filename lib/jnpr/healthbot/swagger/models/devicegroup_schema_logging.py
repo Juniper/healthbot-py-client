@@ -36,6 +36,7 @@ class DevicegroupSchemaLogging(object):
         'native_gpb': 'DevicegroupSchemaLoggingNativegpb',
         'non_sensor_rules': 'DevicegroupSchemaLoggingNonsensorrules',
         'open_config': 'DevicegroupSchemaLoggingOpenconfig',
+        'server_monitoring': 'DevicegroupSchemaLoggingServermonitoring',
         'reports_generation': 'DevicegroupSchemaLoggingReportsgeneration',
         'snmp': 'DevicegroupSchemaLoggingSnmp',
         'trigger_evaluation': 'DevicegroupSchemaLoggingTriggerevaluation',
@@ -54,6 +55,7 @@ class DevicegroupSchemaLogging(object):
         'native_gpb': 'native-gpb',
         'non_sensor_rules': 'non-sensor-rules',
         'open_config': 'open-config',
+        'server_monitoring': 'server-monitoring',
         'reports_generation': 'reports-generation',
         'snmp': 'snmp',
         'trigger_evaluation': 'trigger-evaluation',
@@ -66,7 +68,7 @@ class DevicegroupSchemaLogging(object):
         'syslog': 'syslog'
     }
 
-    def __init__(self, i_agent=None, log_level=None, native_gpb=None, non_sensor_rules=None, open_config=None, reports_generation=None, snmp=None, trigger_evaluation=None, ml_model_builder=None, resource_discovery=None, flow=None, sflow=None, byoi=None, snmp_notification=None, syslog=None):  # noqa: E501
+    def __init__(self, i_agent=None, log_level=None, native_gpb=None, non_sensor_rules=None, open_config=None, server_monitoring=None, reports_generation=None, snmp=None, trigger_evaluation=None, ml_model_builder=None, resource_discovery=None, flow=None, sflow=None, byoi=None, snmp_notification=None, syslog=None):  # noqa: E501
         """DevicegroupSchemaLogging - a model defined in Swagger"""  # noqa: E501
 
         self._i_agent = None
@@ -74,6 +76,7 @@ class DevicegroupSchemaLogging(object):
         self._native_gpb = None
         self._non_sensor_rules = None
         self._open_config = None
+        self._server_monitoring = None
         self._reports_generation = None
         self._snmp = None
         self._trigger_evaluation = None
@@ -96,6 +99,8 @@ class DevicegroupSchemaLogging(object):
             self.non_sensor_rules = non_sensor_rules
         if open_config is not None:
             self.open_config = open_config
+        if server_monitoring is not None:
+            self.server_monitoring = server_monitoring
         if reports_generation is not None:
             self.reports_generation = reports_generation
         if snmp is not None:
@@ -229,6 +234,27 @@ class DevicegroupSchemaLogging(object):
         """
 
         self._open_config = open_config
+
+    @property
+    def server_monitoring(self):
+        """Gets the server_monitoring of this DevicegroupSchemaLogging.  # noqa: E501
+
+
+        :return: The server_monitoring of this DevicegroupSchemaLogging.  # noqa: E501
+        :rtype: DevicegroupSchemaLoggingServermonitoring
+        """
+        return self._server_monitoring
+
+    @server_monitoring.setter
+    def server_monitoring(self, server_monitoring):
+        """Sets the server_monitoring of this DevicegroupSchemaLogging.
+
+
+        :param server_monitoring: The server_monitoring of this DevicegroupSchemaLogging.  # noqa: E501
+        :type: DevicegroupSchemaLoggingServermonitoring
+        """
+
+        self._server_monitoring = server_monitoring
 
     @property
     def reports_generation(self):

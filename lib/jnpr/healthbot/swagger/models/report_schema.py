@@ -134,7 +134,7 @@ class ReportSchema(object):
         """
         if format is None:
             raise ValueError("Invalid value for `format`, must not be `None`")  # noqa: E501
-        allowed_values = ["json", "html"]  # noqa: E501
+        allowed_values = ["json", "html", "pdf"]  # noqa: E501
         if format not in allowed_values:
             raise ValueError(
                 "Invalid value for `format` ({0}), must be one of {1}"  # noqa: E501

@@ -35,6 +35,7 @@ class WorkflowSchema(object):
         'entry_task': 'str',
         'exit_task': 'str',
         'argument': 'WorkflowArgumentGroupSchema',
+        'cron_options': 'WorkflowCronOptionsSchema',
         'batch': 'int',
         'retry': 'RuleSchemaThenRetry',
         'timeout': 'str',
@@ -47,6 +48,7 @@ class WorkflowSchema(object):
         'entry_task': 'entry-task',
         'exit_task': 'exit-task',
         'argument': 'argument',
+        'cron_options': 'cron-options',
         'batch': 'batch',
         'retry': 'retry',
         'timeout': 'timeout',
@@ -54,13 +56,14 @@ class WorkflowSchema(object):
         'workflow_name': 'workflow-name'
     }
 
-    def __init__(self, description=None, entry_task=None, exit_task=None, argument=None, batch=None, retry=None, timeout=None, task=None, workflow_name=None):  # noqa: E501
+    def __init__(self, description=None, entry_task=None, exit_task=None, argument=None, cron_options=None, batch=None, retry=None, timeout=None, task=None, workflow_name=None):  # noqa: E501
         """WorkflowSchema - a model defined in Swagger"""  # noqa: E501
 
         self._description = None
         self._entry_task = None
         self._exit_task = None
         self._argument = None
+        self._cron_options = None
         self._batch = None
         self._retry = None
         self._timeout = None
@@ -76,6 +79,8 @@ class WorkflowSchema(object):
             self.exit_task = exit_task
         if argument is not None:
             self.argument = argument
+        if cron_options is not None:
+            self.cron_options = cron_options
         if batch is not None:
             self.batch = batch
         if retry is not None:
@@ -187,6 +192,27 @@ class WorkflowSchema(object):
         """
 
         self._argument = argument
+
+    @property
+    def cron_options(self):
+        """Gets the cron_options of this WorkflowSchema.  # noqa: E501
+
+
+        :return: The cron_options of this WorkflowSchema.  # noqa: E501
+        :rtype: WorkflowCronOptionsSchema
+        """
+        return self._cron_options
+
+    @cron_options.setter
+    def cron_options(self, cron_options):
+        """Sets the cron_options of this WorkflowSchema.
+
+
+        :param cron_options: The cron_options of this WorkflowSchema.  # noqa: E501
+        :type: WorkflowCronOptionsSchema
+        """
+
+        self._cron_options = cron_options
 
     @property
     def batch(self):

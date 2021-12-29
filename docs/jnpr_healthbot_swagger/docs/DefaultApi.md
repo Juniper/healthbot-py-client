@@ -4,6 +4,7 @@ All URIs are relative to *http://api-server/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**backup_grafana**](DefaultApi.md#backup_grafana) | **GET** /grafana/backup/ | Take backup of Grafana configuration
 [**backup_helper_files**](DefaultApi.md#backup_helper_files) | **GET** /config/files/helper-files/backup/ | Download the tar file containing all helper files.
 [**create_dynamic_tagging_by_key**](DefaultApi.md#create_dynamic_tagging_by_key) | **POST** /config/dynamic-tagging/key/ | Creates Dynamic-tagging key-value
 [**create_files_certificates_by_file_name**](DefaultApi.md#create_files_certificates_by_file_name) | **POST** /config/files/certificates/{file_name}/ | Upload a certificate file.
@@ -14,6 +15,7 @@ Method | HTTP request | Description
 [**create_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id**](DefaultApi.md#create_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id) | **POST** /config/ingest/byoi/default-plugin/tlive-kafka-oc/{name}/ | Create tlive-kafka-oc by ID
 [**create_healthbot_ingest_byoi_ingest_mapping_by_id**](DefaultApi.md#create_healthbot_ingest_byoi_ingest_mapping_by_id) | **POST** /config/ingest/byoi/ingest-mapping/{name}/ | Create ingest-mapping by ID
 [**create_healthbot_ingest_frequency_profile_by_id**](DefaultApi.md#create_healthbot_ingest_frequency_profile_by_id) | **POST** /config/ingest/frequency-profile/{name}/ | Create frequency-profile by ID
+[**create_healthbot_ingest_outbound_ssh**](DefaultApi.md#create_healthbot_ingest_outbound_ssh) | **POST** /config/ingest/outbound-ssh/ | Create outbound-ssh by ID
 [**create_healthbot_ingest_settings_byoi_custom_plugin_by_id**](DefaultApi.md#create_healthbot_ingest_settings_byoi_custom_plugin_by_id) | **POST** /config/ingest-settings/byoi/custom-plugin/{name}/ | Create custom-plugin by ID
 [**create_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id**](DefaultApi.md#create_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id) | **POST** /config/ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/ | Create tlive-kafka-oc by ID
 [**create_healthbot_ingest_settings_byoi_ingest_mapping_by_id**](DefaultApi.md#create_healthbot_ingest_settings_byoi_ingest_mapping_by_id) | **POST** /config/ingest-settings/byoi/ingest-mapping/{name}/ | Create ingest-mapping by ID
@@ -33,6 +35,7 @@ Method | HTTP request | Description
 [**create_healthbot_organization_organization_by_id**](DefaultApi.md#create_healthbot_organization_organization_by_id) | **POST** /config/organization/{organization_name}/ | Create organization by ID
 [**create_healthbot_profile_rollup_summarization_field_profile_field_profile_by_id**](DefaultApi.md#create_healthbot_profile_rollup_summarization_field_profile_field_profile_by_id) | **POST** /config/profile/rollup-summarization/field-profile/{profile_id}/ | Create field-profile by ID
 [**create_healthbot_system_time_series_database_time_series_database_by_id**](DefaultApi.md#create_healthbot_system_time_series_database_time_series_database_by_id) | **POST** /config/system/tsdb/ | Create time-series-database by ID
+[**create_healthbot_system_trigger_action**](DefaultApi.md#create_healthbot_system_trigger_action) | **POST** /config/system/trigger_action/ | Create trigger-action
 [**create_iceberg_ingest**](DefaultApi.md#create_iceberg_ingest) | **POST** /config/ingest/ | Create ingest by ID
 [**create_iceberg_ingest_flow**](DefaultApi.md#create_iceberg_ingest_flow) | **POST** /config/ingest/flow/ | Create flow by ID
 [**create_iceberg_ingest_flow_template_by_id**](DefaultApi.md#create_iceberg_ingest_flow_template_by_id) | **POST** /config/ingest/flow/template/{name}/ | Create template by ID
@@ -60,6 +63,7 @@ Method | HTTP request | Description
 [**delete_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id**](DefaultApi.md#delete_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id) | **DELETE** /config/ingest/byoi/default-plugin/tlive-kafka-oc/{name}/ | Delete tlive-kafka-oc by ID
 [**delete_healthbot_ingest_byoi_ingest_mapping_by_id**](DefaultApi.md#delete_healthbot_ingest_byoi_ingest_mapping_by_id) | **DELETE** /config/ingest/byoi/ingest-mapping/{name}/ | Delete ingest-mapping by ID
 [**delete_healthbot_ingest_frequency_profile_by_id**](DefaultApi.md#delete_healthbot_ingest_frequency_profile_by_id) | **DELETE** /config/ingest/frequency-profile/{name}/ | Delete frequency-profile by ID
+[**delete_healthbot_ingest_outbound_ssh**](DefaultApi.md#delete_healthbot_ingest_outbound_ssh) | **DELETE** /config/ingest/outbound-ssh/ | Delete outbound-ssh by ID
 [**delete_healthbot_ingest_settings_byoi_custom_plugin_by_id**](DefaultApi.md#delete_healthbot_ingest_settings_byoi_custom_plugin_by_id) | **DELETE** /config/ingest-settings/byoi/custom-plugin/{name}/ | Delete custom-plugin by ID
 [**delete_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id**](DefaultApi.md#delete_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id) | **DELETE** /config/ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/ | Delete tlive-kafka-oc by ID
 [**delete_healthbot_ingest_settings_byoi_ingest_mapping_by_id**](DefaultApi.md#delete_healthbot_ingest_settings_byoi_ingest_mapping_by_id) | **DELETE** /config/ingest-settings/byoi/ingest-mapping/{name}/ | Delete ingest-mapping by ID
@@ -79,6 +83,7 @@ Method | HTTP request | Description
 [**delete_healthbot_organization_organization_by_id**](DefaultApi.md#delete_healthbot_organization_organization_by_id) | **DELETE** /config/organization/{organization_name}/ | Delete organization by ID
 [**delete_healthbot_profile_rollup_summarization_field_profile_field_profile_by_id**](DefaultApi.md#delete_healthbot_profile_rollup_summarization_field_profile_field_profile_by_id) | **DELETE** /config/profile/rollup-summarization/field-profile/{profile_id}/ | Delete field-profile by ID
 [**delete_healthbot_system_time_series_database_time_series_database_by_id**](DefaultApi.md#delete_healthbot_system_time_series_database_time_series_database_by_id) | **DELETE** /config/system/tsdb/ | Delete time-series-database
+[**delete_healthbot_system_trigger_action**](DefaultApi.md#delete_healthbot_system_trigger_action) | **DELETE** /config/system/trigger_action/ | Delete trigger-action schedulers
 [**delete_iceberg_ingest**](DefaultApi.md#delete_iceberg_ingest) | **DELETE** /config/ingest/ | Delete ingest by ID
 [**delete_iceberg_ingest_flow**](DefaultApi.md#delete_iceberg_ingest_flow) | **DELETE** /config/ingest/flow/ | Delete flow by ID
 [**delete_iceberg_ingest_flow_template_by_id**](DefaultApi.md#delete_iceberg_ingest_flow_template_by_id) | **DELETE** /config/ingest/flow/template/{name}/ | Delete template by ID
@@ -99,7 +104,9 @@ Method | HTTP request | Description
 [**delete_iceberg_profiles**](DefaultApi.md#delete_iceberg_profiles) | **DELETE** /config/profiles/ | Delete profile by ID
 [**get_dynamic_tagging_by_key**](DefaultApi.md#get_dynamic_tagging_by_key) | **GET** /config/dynamic-tagging/key/ | Get value of corresponding Dynamic-tagging key
 [**get_fields_from_xpath**](DefaultApi.md#get_fields_from_xpath) | **GET** /field-capture/ | Get last value of all fields before a given timestamp.
+[**grafana_login**](DefaultApi.md#grafana_login) | **GET** /grafana/login/ | Login to grafana
 [**inspect_command_rpc_table_on_device**](DefaultApi.md#inspect_command_rpc_table_on_device) | **POST** /inspect/command-rpc/table/ | Inspect the given iAgent table.
+[**restore_grafana**](DefaultApi.md#restore_grafana) | **POST** /grafana/restore/ | Restore Grafana configuration
 [**restore_helper_files**](DefaultApi.md#restore_helper_files) | **POST** /config/files/helper-files/backup/ | Upload a helper-file.
 [**retrieve_configuration_jobs**](DefaultApi.md#retrieve_configuration_jobs) | **GET** /config/configuration/jobs/ | 
 [**retrieve_data_database_table**](DefaultApi.md#retrieve_data_database_table) | **GET** /data/database/table/ | Get information about tables for a device of a device-group.
@@ -121,6 +128,7 @@ Method | HTTP request | Description
 [**retrieve_health_tree_by_id**](DefaultApi.md#retrieve_health_tree_by_id) | **GET** /health-tree/{device_id}/ | Return a device&#39;s health-tree.
 [**retrieve_health_tree_by_network_group**](DefaultApi.md#retrieve_health_tree_by_network_group) | **GET** /health-tree/network-group/{network_group_name}/ | Get network-group health-tree.
 [**retrieve_healthbot_deployment_deployment**](DefaultApi.md#retrieve_healthbot_deployment_deployment) | **GET** /config/deployment/ | Retrieve deployment
+[**retrieve_healthbot_device_details_by_uuids**](DefaultApi.md#retrieve_healthbot_device_details_by_uuids) | **POST** /deployed-device-details/ | Get device-identifying details by for specified UUIDs.
 [**retrieve_healthbot_dynamic_tagging**](DefaultApi.md#retrieve_healthbot_dynamic_tagging) | **GET** /config/dynamic-tagging/keys/ | Retrieve dynamic-tagging by ID
 [**retrieve_healthbot_ingest_byoi_custom_plugin_by_id**](DefaultApi.md#retrieve_healthbot_ingest_byoi_custom_plugin_by_id) | **GET** /config/ingest/byoi/custom-plugin/{name}/ | Retrieve custom-plugin by ID
 [**retrieve_healthbot_ingest_byoi_custom_plugins**](DefaultApi.md#retrieve_healthbot_ingest_byoi_custom_plugins) | **GET** /config/ingest/byoi/custom-plugins/ | Retrieve custom-plugin by ID
@@ -130,6 +138,7 @@ Method | HTTP request | Description
 [**retrieve_healthbot_ingest_byoi_ingest_mappings**](DefaultApi.md#retrieve_healthbot_ingest_byoi_ingest_mappings) | **GET** /config/ingest/byoi/ingest-mappings/ | Retrieve ingest-mapping
 [**retrieve_healthbot_ingest_frequency_profile**](DefaultApi.md#retrieve_healthbot_ingest_frequency_profile) | **GET** /config/ingest/frequency-profiles/ | Retrieve frequency-profile
 [**retrieve_healthbot_ingest_frequency_profile_by_id**](DefaultApi.md#retrieve_healthbot_ingest_frequency_profile_by_id) | **GET** /config/ingest/frequency-profile/{name}/ | Retrieve frequency-profile by ID
+[**retrieve_healthbot_ingest_outbound_ssh**](DefaultApi.md#retrieve_healthbot_ingest_outbound_ssh) | **GET** /config/ingest/outbound-ssh/ | Retrieve outbound-ssh
 [**retrieve_healthbot_ingest_settings_byoi_custom_plugin_by_id**](DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_custom_plugin_by_id) | **GET** /config/ingest-settings/byoi/custom-plugin/{name}/ | Retrieve custom-plugin by ID
 [**retrieve_healthbot_ingest_settings_byoi_custom_plugins**](DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_custom_plugins) | **GET** /config/ingest-settings/byoi/custom-plugins/ | Retrieve custom-plugin by ID
 [**retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id**](DefaultApi.md#retrieve_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id) | **GET** /config/ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/ | Retrieve tlive-kafka-oc by ID
@@ -159,6 +168,7 @@ Method | HTTP request | Description
 [**retrieve_healthbot_profile_rollup_summarization_field_profile_field_profile_by_id**](DefaultApi.md#retrieve_healthbot_profile_rollup_summarization_field_profile_field_profile_by_id) | **GET** /config/profile/rollup-summarization/field-profile/{profile_id}/ | Retrieve field-profile by ID
 [**retrieve_healthbot_profile_rollup_summarization_field_profile_profile**](DefaultApi.md#retrieve_healthbot_profile_rollup_summarization_field_profile_profile) | **GET** /config/profile/rollup-summarization/field-profile/ | Retrieve field-profile
 [**retrieve_healthbot_system_time_series_database_time_series_database**](DefaultApi.md#retrieve_healthbot_system_time_series_database_time_series_database) | **GET** /config/system/tsdb/ | Retrieve time-series-database
+[**retrieve_healthbot_system_trigger_action**](DefaultApi.md#retrieve_healthbot_system_trigger_action) | **GET** /config/system/trigger_action/ | Retrieve trigger-action
 [**retrieve_healthbot_topic_resource_resource**](DefaultApi.md#retrieve_healthbot_topic_resource_resource) | **GET** /config/topic/{topic_name}/resource/ | List all resource-names in a topic
 [**retrieve_healthbot_topic_resource_resource_by_id**](DefaultApi.md#retrieve_healthbot_topic_resource_resource_by_id) | **GET** /config/topic/{topic_name}/resource/{resource_name}/ | Get a resource&#39;s configuration
 [**retrieve_iceberg_ingest**](DefaultApi.md#retrieve_iceberg_ingest) | **GET** /config/ingest/ | Retrieve ingest
@@ -201,6 +211,7 @@ Method | HTTP request | Description
 [**update_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id**](DefaultApi.md#update_healthbot_ingest_byoi_default_plugin_tlive_kafka_by_id) | **PUT** /config/ingest/byoi/default-plugin/tlive-kafka-oc/{name}/ | Update tlive-kafka-oc by ID
 [**update_healthbot_ingest_byoi_ingest_mapping_by_id**](DefaultApi.md#update_healthbot_ingest_byoi_ingest_mapping_by_id) | **PUT** /config/ingest/byoi/ingest-mapping/{name}/ | Update ingest-mapping by ID
 [**update_healthbot_ingest_frequency_profile_by_id**](DefaultApi.md#update_healthbot_ingest_frequency_profile_by_id) | **PUT** /config/ingest/frequency-profile/{name}/ | Update frequency-profile by ID
+[**update_healthbot_ingest_outbound_ssh**](DefaultApi.md#update_healthbot_ingest_outbound_ssh) | **PUT** /config/ingest/outbound-ssh/ | Update outbound-ssh by ID
 [**update_healthbot_ingest_settings_byoi_custom_plugin_by_id**](DefaultApi.md#update_healthbot_ingest_settings_byoi_custom_plugin_by_id) | **PUT** /config/ingest-settings/byoi/custom-plugin/{name}/ | Update custom-plugin by ID
 [**update_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id**](DefaultApi.md#update_healthbot_ingest_settings_byoi_default_plugin_tlive_kafka_by_id) | **PUT** /config/ingest-settings/byoi/default-plugin/tlive-kafka-oc/{name}/ | Update tlive-kafka-oc by ID
 [**update_healthbot_ingest_settings_byoi_ingest_mapping_by_id**](DefaultApi.md#update_healthbot_ingest_settings_byoi_ingest_mapping_by_id) | **PUT** /config/ingest-settings/byoi/ingest-mapping/{name}/ | Update ingest-mapping by ID
@@ -220,6 +231,7 @@ Method | HTTP request | Description
 [**update_healthbot_organization_organization_by_id**](DefaultApi.md#update_healthbot_organization_organization_by_id) | **PUT** /config/organization/{organization_name}/ | Update organization by ID
 [**update_healthbot_profile_rollup_summarization_field_profile_field_profile_by_id**](DefaultApi.md#update_healthbot_profile_rollup_summarization_field_profile_field_profile_by_id) | **PUT** /config/profile/rollup-summarization/field-profile/{profile_id}/ | Update field-profile by ID
 [**update_healthbot_system_time_series_database_time_series_database_by_id**](DefaultApi.md#update_healthbot_system_time_series_database_time_series_database_by_id) | **PUT** /config/system/tsdb/ | Update time-series-database by ID
+[**update_healthbot_system_trigger_action**](DefaultApi.md#update_healthbot_system_trigger_action) | **PUT** /config/system/trigger_action/ | Update trigger-action
 [**update_iceberg_ingest**](DefaultApi.md#update_iceberg_ingest) | **PUT** /config/ingest/ | Update ingest by ID
 [**update_iceberg_ingest_flow**](DefaultApi.md#update_iceberg_ingest_flow) | **PUT** /config/ingest/flow/ | Update flow by ID
 [**update_iceberg_ingest_flow_template_by_id**](DefaultApi.md#update_iceberg_ingest_flow_template_by_id) | **PUT** /config/ingest/flow/template/{name}/ | Update template by ID
@@ -239,6 +251,54 @@ Method | HTTP request | Description
 [**update_iceberg_profile_security_ssh_key_profile_by_id**](DefaultApi.md#update_iceberg_profile_security_ssh_key_profile_by_id) | **PUT** /config/profile/security/ssh-key-profile/{name}/ | Update ssh-key-profile by ID
 [**update_iceberg_profiles**](DefaultApi.md#update_iceberg_profiles) | **PUT** /config/profiles/ | Update profile by ID
 
+
+# **backup_grafana**
+> file backup_grafana(x_iam_token=x_iam_token)
+
+Take backup of Grafana configuration
+
+Take backup of Grafana configuration
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
+
+try:
+    # Take backup of Grafana configuration
+    api_response = api_instance.backup_grafana(x_iam_token=x_iam_token)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->backup_grafana: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **x_iam_token** | **str**| authentication header object | [optional] 
+
+### Return type
+
+[**file**](file.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, multipart/form-data
+ - **Accept**: application/octet-stream
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **backup_helper_files**
 > file backup_helper_files(x_iam_token=x_iam_token)
@@ -731,6 +791,55 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **str**| ID of name | 
  **frequency_profile** | [**FrequencyProfileSchema**](FrequencyProfileSchema.md)| frequency_profilebody object | 
+ **x_iam_token** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_healthbot_ingest_outbound_ssh**
+> create_healthbot_ingest_outbound_ssh(outbound_ssh, x_iam_token=x_iam_token)
+
+Create outbound-ssh by ID
+
+Create operation of resource: outbound-ssh
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+outbound_ssh = swagger_client.OutboundSshSchema() # OutboundSshSchema | outbound_ssh body object
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
+
+try:
+    # Create outbound-ssh by ID
+    api_instance.create_healthbot_ingest_outbound_ssh(outbound_ssh, x_iam_token=x_iam_token)
+except ApiException as e:
+    print("Exception when calling DefaultApi->create_healthbot_ingest_outbound_ssh: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **outbound_ssh** | [**OutboundSshSchema**](OutboundSshSchema.md)| outbound_ssh body object | 
  **x_iam_token** | **str**| authentication header object | [optional] 
 
 ### Return type
@@ -1693,6 +1802,53 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **time_series_database** | [**TsdbSchema**](TsdbSchema.md)| time_series_databasebody object | 
  **force_tsdb** | **bool**| force update tsdb when force is set to True | [optional] [default to false]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_healthbot_system_trigger_action**
+> create_healthbot_system_trigger_action(trigger_action)
+
+Create trigger-action
+
+Create operation of resource: trigger-action
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+trigger_action = swagger_client.TriggerActionSchema() # TriggerActionSchema | trigger_action object
+
+try:
+    # Create trigger-action
+    api_instance.create_healthbot_system_trigger_action(trigger_action)
+except ApiException as e:
+    print("Exception when calling DefaultApi->create_healthbot_system_trigger_action: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **trigger_action** | [**TriggerActionSchema**](TriggerActionSchema.md)| trigger_action object | 
 
 ### Return type
 
@@ -3054,6 +3210,53 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_healthbot_ingest_outbound_ssh**
+> delete_healthbot_ingest_outbound_ssh(x_iam_token=x_iam_token)
+
+Delete outbound-ssh by ID
+
+Delete operation of resource: outbound-ssh
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
+
+try:
+    # Delete outbound-ssh by ID
+    api_instance.delete_healthbot_ingest_outbound_ssh(x_iam_token=x_iam_token)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_healthbot_ingest_outbound_ssh: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **x_iam_token** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_healthbot_ingest_settings_byoi_custom_plugin_by_id**
 > delete_healthbot_ingest_settings_byoi_custom_plugin_by_id(name, x_iam_token=x_iam_token)
 
@@ -3951,6 +4154,49 @@ try:
     api_instance.delete_healthbot_system_time_series_database_time_series_database_by_id()
 except ApiException as e:
     print("Exception when calling DefaultApi->delete_healthbot_system_time_series_database_time_series_database_by_id: %s\n" % e)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_healthbot_system_trigger_action**
+> delete_healthbot_system_trigger_action()
+
+Delete trigger-action schedulers
+
+Delete operation of resource: trigger-action
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+
+try:
+    # Delete trigger-action schedulers
+    api_instance.delete_healthbot_system_trigger_action()
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_healthbot_system_trigger_action: %s\n" % e)
 ```
 
 ### Parameters
@@ -4937,6 +5183,53 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **grafana_login**
+> grafana_login(x_iam_token=x_iam_token)
+
+Login to grafana
+
+Login to Grafana
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
+
+try:
+    # Login to grafana
+    api_instance.grafana_login(x_iam_token=x_iam_token)
+except ApiException as e:
+    print("Exception when calling DefaultApi->grafana_login: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **x_iam_token** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **inspect_command_rpc_table_on_device**
 > inspect_command_rpc_table_on_device(command_rpc_detail, x_iam_token=x_iam_token)
 
@@ -4983,6 +5276,55 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **restore_grafana**
+> restore_grafana(restore_file, x_iam_token=x_iam_token)
+
+Restore Grafana configuration
+
+Restore Grafana configuration
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+restore_file = '/path/to/file.txt' # file | File content
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
+
+try:
+    # Restore Grafana configuration
+    api_instance.restore_grafana(restore_file, x_iam_token=x_iam_token)
+except ApiException as e:
+    print("Exception when calling DefaultApi->restore_grafana: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **restore_file** | **file**| File content | 
+ **x_iam_token** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json, application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6139,6 +6481,56 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **retrieve_healthbot_device_details_by_uuids**
+> DeviceDetailsSchema retrieve_healthbot_device_details_by_uuids(uuid_object, x_iam_token=x_iam_token)
+
+Get device-identifying details by for specified UUIDs.
+
+Get device-identifying details (device-id and TSDB databases if playbooks are deployed on it) for all the UUIDs present in the request body.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+uuid_object = swagger_client.UuidObject() # UuidObject | device_uuids object
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
+
+try:
+    # Get device-identifying details by for specified UUIDs.
+    api_response = api_instance.retrieve_healthbot_device_details_by_uuids(uuid_object, x_iam_token=x_iam_token)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_healthbot_device_details_by_uuids: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uuid_object** | [**UuidObject**](UuidObject.md)| device_uuids object | 
+ **x_iam_token** | **str**| authentication header object | [optional] 
+
+### Return type
+
+[**DeviceDetailsSchema**](DeviceDetailsSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **retrieve_healthbot_dynamic_tagging**
 > list[str] retrieve_healthbot_dynamic_tagging(x_iam_token=x_iam_token)
 
@@ -6583,6 +6975,56 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FrequencyProfileSchema**](FrequencyProfileSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_healthbot_ingest_outbound_ssh**
+> OutboundSshSchema retrieve_healthbot_ingest_outbound_ssh(working=working, x_iam_token=x_iam_token)
+
+Retrieve outbound-ssh
+
+Retrieve operation of resource: outbound-ssh
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+working = true # bool | true queries undeployed configuration (optional)
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
+
+try:
+    # Retrieve outbound-ssh
+    api_response = api_instance.retrieve_healthbot_ingest_outbound_ssh(working=working, x_iam_token=x_iam_token)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_healthbot_ingest_outbound_ssh: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+ **x_iam_token** | **str**| authentication header object | [optional] 
+
+### Return type
+
+[**OutboundSshSchema**](OutboundSshSchema.md)
 
 ### Authorization
 
@@ -8057,6 +8499,54 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TsdbSchema**](TsdbSchema.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve_healthbot_system_trigger_action**
+> TriggerActionSchema retrieve_healthbot_system_trigger_action(working=working)
+
+Retrieve trigger-action
+
+Retrieve operation of resource: trigger-action
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+working = true # bool | true queries undeployed configuration (optional)
+
+try:
+    # Retrieve trigger-action
+    api_response = api_instance.retrieve_healthbot_system_trigger_action(working=working)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->retrieve_healthbot_system_trigger_action: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **working** | **bool**| true queries undeployed configuration | [optional] 
+
+### Return type
+
+[**TriggerActionSchema**](TriggerActionSchema.md)
 
 ### Authorization
 
@@ -10209,6 +10699,55 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **update_healthbot_ingest_outbound_ssh**
+> update_healthbot_ingest_outbound_ssh(outbound_ssh, x_iam_token=x_iam_token)
+
+Update outbound-ssh by ID
+
+Update operation of resource: outbound-ssh
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+outbound_ssh = swagger_client.OutboundSshSchema() # OutboundSshSchema | outbound_sshbody object
+x_iam_token = 'x_iam_token_example' # str | authentication header object (optional)
+
+try:
+    # Update outbound-ssh by ID
+    api_instance.update_healthbot_ingest_outbound_ssh(outbound_ssh, x_iam_token=x_iam_token)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_healthbot_ingest_outbound_ssh: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **outbound_ssh** | [**OutboundSshSchema**](OutboundSshSchema.md)| outbound_sshbody object | 
+ **x_iam_token** | **str**| authentication header object | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_healthbot_ingest_settings_byoi_custom_plugin_by_id**
 > update_healthbot_ingest_settings_byoi_custom_plugin_by_id(name, custom_plugin, x_iam_token=x_iam_token)
 
@@ -11154,6 +11693,53 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **time_series_database** | [**TsdbSchema**](TsdbSchema.md)| time_series_databasebody object | 
  **force_tsdb** | **bool**| force update tsdb when force is set to True | [optional] [default to false]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_healthbot_system_trigger_action**
+> update_healthbot_system_trigger_action(trigger_action)
+
+Update trigger-action
+
+Update operation of resource: trigger-action
+
+### Example
+```python
+from __future__ import print_function
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+trigger_action = swagger_client.TriggerActionSchema() # TriggerActionSchema | trigger_action object
+
+try:
+    # Update trigger-action
+    api_instance.update_healthbot_system_trigger_action(trigger_action)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_healthbot_system_trigger_action: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **trigger_action** | [**TriggerActionSchema**](TriggerActionSchema.md)| trigger_action object | 
 
 ### Return type
 

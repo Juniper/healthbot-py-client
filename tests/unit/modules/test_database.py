@@ -44,7 +44,7 @@ class TestDatabase(unittest.TestCase):
             def raise_for_status(self):
                 return None
 
-        if args[0] == 'https://1.1.1.1:8080/api/v1/data/database/table':
+        if args[0] == 'https://1.1.1.1:8080/api/v2/data/database/table':
             return MockResponse({
                 "name": "test", "type": "Field table"
             }, 200)

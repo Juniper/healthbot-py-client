@@ -32,23 +32,29 @@ class RuleSchemaSnmp(object):
     """
     swagger_types = {
         'frequency': 'str',
+        'scalars': 'list[str]',
         'table': 'str'
     }
 
     attribute_map = {
         'frequency': 'frequency',
+        'scalars': 'scalars',
         'table': 'table'
     }
 
-    def __init__(self, frequency=None, table=None):  # noqa: E501
+    def __init__(self, frequency=None, scalars=None, table=None):  # noqa: E501
         """RuleSchemaSnmp - a model defined in Swagger"""  # noqa: E501
 
         self._frequency = None
+        self._scalars = None
         self._table = None
         self.discriminator = None
 
         self.frequency = frequency
-        self.table = table
+        if scalars is not None:
+            self.scalars = scalars
+        if table is not None:
+            self.table = table
 
     @property
     def frequency(self):
@@ -78,6 +84,27 @@ class RuleSchemaSnmp(object):
         self._frequency = frequency
 
     @property
+    def scalars(self):
+        """Gets the scalars of this RuleSchemaSnmp.  # noqa: E501
+
+
+        :return: The scalars of this RuleSchemaSnmp.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._scalars
+
+    @scalars.setter
+    def scalars(self, scalars):
+        """Sets the scalars of this RuleSchemaSnmp.
+
+
+        :param scalars: The scalars of this RuleSchemaSnmp.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._scalars = scalars
+
+    @property
     def table(self):
         """Gets the table of this RuleSchemaSnmp.  # noqa: E501
 
@@ -97,8 +124,6 @@ class RuleSchemaSnmp(object):
         :param table: The table of this RuleSchemaSnmp.  # noqa: E501
         :type: str
         """
-        if table is None:
-            raise ValueError("Invalid value for `table`, must not be `None`")  # noqa: E501
 
         self._table = table
 

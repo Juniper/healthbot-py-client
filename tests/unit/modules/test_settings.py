@@ -28,8 +28,8 @@ class TestSettings(unittest.TestCase):
                    new_callable=PropertyMock) as mock_ver:
             with patch('jnpr.healthbot.healthbot.HealthBotClient.config_url',
                        new_callable=PropertyMock) as mock_cnf:
-                mock_ver.return_value = '2.1.0'
-                mock_cnf.return_value = "https://1.1.1.1:8080/api/v1"
+                mock_ver.return_value = '4.0.0'
+                mock_cnf.return_value = "https://1.1.1.1:8080/api/v2/config"
                 self.conn = HealthBotClient(
                     server='1.1.1.1',
                     user='test',
@@ -48,7 +48,7 @@ class TestSettings(unittest.TestCase):
         self.assertEqual(self.mock_request().mock_calls[2][0], 'post')
         self.assertEqual(
             self.mock_request().mock_calls[2][1][0],
-            'https://1.1.1.1:8080/api/v1/notification/HbEZ-notification')
+            'https://1.1.1.1:8080/api/v2/config/notification/HbEZ-notification')
         # add without schema
         self.assertTrue(
             self.conn.settings.notification.add(
@@ -57,7 +57,7 @@ class TestSettings(unittest.TestCase):
         self.assertEqual(self.mock_request().mock_calls[2][0], 'post')
         self.assertEqual(
             self.mock_request().mock_calls[2][1][0],
-            'https://1.1.1.1:8080/api/v1/notification/HbEZ-notification')
+            'https://1.1.1.1:8080/api/v2/config/notification/HbEZ-notification')
 
     def test_add_scheduler(self):
         sc = SchedulerSchema(
@@ -69,7 +69,7 @@ class TestSettings(unittest.TestCase):
         self.assertEqual(self.mock_request().mock_calls[2][0], 'post')
         self.assertEqual(
             self.mock_request().mock_calls[2][1][0],
-            'https://1.1.1.1:8080/api/v1/system-settings/scheduler/HbEZ-schedule')
+            'https://1.1.1.1:8080/api/v2/config/system-settings/scheduler/HbEZ-schedule')
         # add without schema
         self.assertTrue(
             self.conn.settings.scheduler.add(
@@ -80,7 +80,7 @@ class TestSettings(unittest.TestCase):
         self.assertEqual(self.mock_request().mock_calls[2][0], 'post')
         self.assertEqual(
             self.mock_request().mock_calls[2][1][0],
-            'https://1.1.1.1:8080/api/v1/system-settings/scheduler/HbEZ-schedule')
+            'https://1.1.1.1:8080/api/v2/config/system-settings/scheduler/HbEZ-schedule')
 
     def test_add_destinaton(self):
         ds = DestinationSchema(
@@ -91,14 +91,14 @@ class TestSettings(unittest.TestCase):
         self.assertEqual(self.mock_request().mock_calls[2][0], 'post')
         self.assertEqual(
             self.mock_request().mock_calls[2][1][0],
-            'https://1.1.1.1:8080/api/v1/system-settings/report-generation/destination/HbEZ-destination')
+            'https://1.1.1.1:8080/api/v2/config/system-settings/report-generation/destination/HbEZ-destination')
         # add without schema
         self.assertTrue(self.conn.settings.destination.add(
             name='HbEZ-destination', email={'id': 'xyz@abc.com'}))
         self.assertEqual(self.mock_request().mock_calls[2][0], 'post')
         self.assertEqual(
             self.mock_request().mock_calls[2][1][0],
-            'https://1.1.1.1:8080/api/v1/system-settings/report-generation/destination/HbEZ-destination')
+            'https://1.1.1.1:8080/api/v2/config/system-settings/report-generation/destination/HbEZ-destination')
 
     def test_add_report(self):
         rs = ReportSchema(
@@ -110,7 +110,7 @@ class TestSettings(unittest.TestCase):
         self.assertEqual(self.mock_request().mock_calls[2][0], 'post')
         self.assertEqual(
             self.mock_request().mock_calls[2][1][0],
-            'https://1.1.1.1:8080/api/v1/system-settings/report-generation/report/HbEZ-report')
+            'https://1.1.1.1:8080/api/v2/config/system-settings/report-generation/report/HbEZ-report')
         # add without schema
         self.assertTrue(
             self.conn.settings.report.add(
@@ -121,7 +121,7 @@ class TestSettings(unittest.TestCase):
         self.assertEqual(self.mock_request().mock_calls[2][0], 'post')
         self.assertEqual(
             self.mock_request().mock_calls[2][1][0],
-            'https://1.1.1.1:8080/api/v1/system-settings/report-generation/report/HbEZ-report')
+            'https://1.1.1.1:8080/api/v2/config/system-settings/report-generation/report/HbEZ-report')
 
     def test_add_retention_policy(self):
         rps = RetentionPolicySchema(retention_policy_name='HbEZ-testing')
@@ -130,7 +130,7 @@ class TestSettings(unittest.TestCase):
         self.assertEqual(self.mock_request().mock_calls[2][0], 'post')
         self.assertEqual(
             self.mock_request().mock_calls[2][1][0],
-            'https://1.1.1.1:8080/api/v1/retention-policy/HbEZ-testing')
+            'https://1.1.1.1:8080/api/v2/config/retention-policy/HbEZ-testing')
         # without creating schema
         self.assertTrue(
             self.conn.settings.retention_policy.add(
@@ -138,7 +138,7 @@ class TestSettings(unittest.TestCase):
         self.assertEqual(self.mock_request().mock_calls[2][0], 'post')
         self.assertEqual(
             self.mock_request().mock_calls[2][1][0],
-            'https://1.1.1.1:8080/api/v1/retention-policy/HbEZ-testing')
+            'https://1.1.1.1:8080/api/v2/config/retention-policy/HbEZ-testing')
 
     def test_get_notification(self):
         ns = self.conn.settings.notification.get(
@@ -315,7 +315,7 @@ class TestSettings(unittest.TestCase):
             def raise_for_status(self):
                 return None
 
-        if args[0] == 'https://1.1.1.1:8080/api/v1/notification/HbEZ-notification/?working=true':
+        if args[0] == 'https://1.1.1.1:8080/api/v2/config/notification/HbEZ-notification/?working=true':
             return MockResponse({
                 "description": "example of adding notification via API",
                 "notification-name": "HbEZ-notification",
@@ -324,7 +324,7 @@ class TestSettings(unittest.TestCase):
                     "url": "http://testing"
                 }
             }, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/system-settings/scheduler/HbEZ-schedule/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/system-settings/scheduler/HbEZ-schedule/?working=true':
             return MockResponse({
                 "name": "HbEZ-schedule",
                 "repeat": {
@@ -332,14 +332,14 @@ class TestSettings(unittest.TestCase):
                 },
                 "start-time": "2019-07-22T05:32:23Z"
             }, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/system-settings/report-generation/destination/HbEZ-destination/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/system-settings/report-generation/destination/HbEZ-destination/?working=true':
             return MockResponse({
                 "email": {
                     "id": "xyz@abc.com"
                 },
                 "name": "HbEZ-destination"
             }, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/system-settings/report-generation/report/HbEZ-report/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/system-settings/report-generation/report/HbEZ-report/?working=true':
             return MockResponse({
                 "destination": [
                     "HbEZ-destination"
@@ -350,7 +350,7 @@ class TestSettings(unittest.TestCase):
                     "HbEZ-schedule"
                 ]
             }, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/system-settings/report-generation/reports/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/system-settings/report-generation/reports/?working=true':
             return MockResponse({
                 "report": [
                     {
@@ -365,7 +365,7 @@ class TestSettings(unittest.TestCase):
                     }
                 ]
             }, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/notifications/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/notifications/?working=true':
             return MockResponse({
                 "notification": [
                     {
@@ -378,7 +378,7 @@ class TestSettings(unittest.TestCase):
                     }
                 ]
             }, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/system-settings/schedulers/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/system-settings/schedulers/?working=true':
             return MockResponse({
                 "scheduler": [
                     {
@@ -390,7 +390,7 @@ class TestSettings(unittest.TestCase):
                     }
                 ]
             }, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/system-settings/report-generation/destinations/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/system-settings/report-generation/destinations/?working=true':
             return MockResponse({
                 "destination": [
                     {
@@ -401,11 +401,11 @@ class TestSettings(unittest.TestCase):
                     }
                 ]
             }, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/retention-policy/HbEZ-testing/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/retention-policy/HbEZ-testing/?working=true':
             return MockResponse({
                 "retention-policy-name": "HbEZ-testing"
             }, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/retention-policies/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/retention-policies/?working=true':
             return MockResponse({
                 "retention-policy": [
                     {
@@ -413,7 +413,7 @@ class TestSettings(unittest.TestCase):
                     }
                 ]
             }, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/notification/error/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/notification/error/?working=true':
             obj = MockResponse(None, 404)
 
             def fn():

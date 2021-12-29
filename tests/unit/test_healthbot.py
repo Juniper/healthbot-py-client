@@ -23,12 +23,16 @@ class TestHealthBotClient(unittest.TestCase):
                    new_callable=PropertyMock) as mock_ver:
             with patch('jnpr.healthbot.healthbot.HealthBotClient.config_url',
                        new_callable=PropertyMock) as mock_cnf:
-                mock_ver.return_value = '2.1.0'
-                mock_cnf.return_value = "https://1.1.1.1:8080/api/v1"
-                self.conn = HealthBotClient(
-                    server='1.1.1.1',
-                    user='test',
-                    password='password123').open()
+                with patch('jnpr.healthbot.healthbot.HealthBotClient.tenant',
+                           new_callable=PropertyMock) as mock_tenant:
+
+                    mock_ver.return_value = '4.0.0'
+                    mock_cnf.return_value = "https://1.1.1.1:8080/api/v2/config"
+                    mock_tenant.return_value = "default"
+                    self.conn = HealthBotClient(
+                        server='1.1.1.1',
+                        user='test',
+                        password='password123').open()
 
     def test_check_attributes(self):
         self.assertIsInstance(self.conn.device, Device)
@@ -57,10 +61,10 @@ class TestHealthBotClient(unittest.TestCase):
 
     def test_version_new_versions(self):
         self.mock_request().get.side_effect = self._mock_manager
-        self.assertEqual(self.conn.version, '2.1.0')
+        self.assertEqual(self.conn.version, '4.0.0')
 
     def test_version_old_versions(self):
-        self.assertEqual(self.conn.version, "2.1.0")
+        self.assertEqual(self.conn.version, "4.0.0")
 
     @patch('jnpr.healthbot.healthbot.requests.Session')
     @patch('jnpr.healthbot.swagger.api.authentication_api.AuthenticationApi.user_login')
@@ -72,7 +76,7 @@ class TestHealthBotClient(unittest.TestCase):
             with patch('jnpr.healthbot.healthbot.HealthBotClient.config_url',
                        new_callable=PropertyMock) as mock_cnf:
                 mock_ver.return_value = '2.0.1'
-                mock_cnf.return_value = "https://1.1.1.1:8080/api/v1"
+                mock_cnf.return_value = "https://1.1.1.1:8080/api/v2/config"
                 with HealthBotClient(server='1.1.1.1', user='test',
                                      password='password123') as conn:
                     self.assertEqual(conn.version, '2.0.1')
@@ -85,12 +89,12 @@ class TestHealthBotClient(unittest.TestCase):
     def test_commit(self):
         with patch('jnpr.healthbot.healthbot.HealthBotClient.config_url',
                    new_callable=PropertyMock) as mock_cnf:
-            mock_cnf.return_value = "https://1.1.1.1:8080/api/v1"
+            mock_cnf.return_value = "https://1.1.1.1:8080/api/v2/config"
             self.conn.commit()
             self.assertEqual(self.mock_request().mock_calls[2][0],
                              'post')
             self.assertEqual(self.mock_request().mock_calls[2][1],
-                             ('https://1.1.1.1:8080/api/v1/configuration',))
+                             ('https://1.1.1.1:8080/api/v2/config/configuration',))
 
     @patch('jnpr.healthbot.healthbot.Path.open')
     def test_upload_helper_file(self, mock_open):
@@ -120,23 +124,23 @@ class TestHealthBotClient(unittest.TestCase):
                 return None
 
         if 'url' in kwargs:
-            if kwargs['url'] == 'https://1.1.1.1:8080/api/v1/files/helper-files/text':
+            if kwargs['url'] == 'https://1.1.1.1:8080/api/v2/config/files/helper-files/text':
                 return MockResponse({}, 200)
-            if kwargs['url'] == 'https://1.1.1.1:8080/api/v1/topics':
+            if kwargs['url'] == 'https://1.1.1.1:8080/api/v2/config/topics':
                 return MockResponse({}, 200)
-            if kwargs['url'] == 'https://1.1.1.1:8080/api/v1/playbooks':
+            if kwargs['url'] == 'https://1.1.1.1:8080/api/v2/config/playbooks':
                 return MockResponse({}, 200)
-        if args[0] == 'https://1.1.1.1:8080/api/v1/system-details':
+        if args[0] == 'https://1.1.1.1:8080/api/v2/system-details':
             return MockResponse({
                 "server-time": "2019-07-24T12:51:20Z",
-                "version": "HealthBot 2.1.0"
+                "version": "HealthBot 4.0.0"
             }, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/system-details':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/system-details':
             return MockResponse({
                 "server-time": "2019-07-24T12:51:20Z",
-                "version": "HealthBot 2.1.0"
+                "version": "HealthBot 4.0.0"
             }, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/health':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/health':
             return MockResponse({
                 "device-health": {
                     "EVO": {

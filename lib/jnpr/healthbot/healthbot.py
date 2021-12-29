@@ -6,6 +6,7 @@ import logging
 import re
 import os
 import time
+import jwt
 from jnpr.healthbot.exception import ConnectAuthError
 from jnpr.healthbot.modules import devices
 from jnpr.healthbot.modules import rules
@@ -13,6 +14,7 @@ from jnpr.healthbot.modules import playbooks
 from jnpr.healthbot.modules import database
 from jnpr.healthbot.modules import settings
 from jnpr.healthbot.modules import profiles
+from jnpr.healthbot.modules import graph
 from jnpr.healthbot.modules import BaseModule
 
 from jnpr.healthbot.swagger.api.authentication_api import AuthenticationApi
@@ -168,6 +170,7 @@ class HealthBotClient(object):
         self.playbook = playbooks.Playbook(self)
         self.settings = settings.Settings(self)
         self.profile = profiles.Profile(self)
+        self.charts = graph.HBCharts(self)
 
         config_bm = BaseModule(self, self.config_url)
         self.authorization = config_bm.authorization
@@ -215,6 +218,12 @@ class HealthBotClient(object):
             logger.error("User Login Error: {}".format(ex))
             raise ex
         return True
+
+    @property
+    def tenant(self):
+        raw_data = jwt.decode(self._user_token.access_token,
+                              options={"verify_aud": False, "verify_signature": False, "verify_nbf": False})
+        return raw_data['scope']['Name']
 
     @property
     def hbot_session(self):
@@ -274,32 +283,23 @@ class HealthBotClient(object):
     @property
     def config_url(self):
         """
-        With 3.1.0 all endpoints are divided into 
-        a) configuration endpoints  - /api/v2/config/ (e.g. /api/v2/config/devices/)
-        b) non-configuration endpoints - /api/v2/ (e.g. /api/v2/health/)
-        Once we have all customer moved o 3.1.0 and higher, remove condition check
-
-        Hence this function will give config URL
+        This function will give config URL
 
         """
-        if self.version >= "3.1.0":
-            return self.url + "/config"
-        else:
-            return self.url
+        return self.url + "/config"
 
     @property
     def url(self):
         """ Initials of URL to be used for API call.
-        Once we have all customer moved o 3.1.0 and higher, remove v1
-
         :returns:
             str: Initials of URL to be used for API call.
         """
         url_initials = "https://" + self.server + ":" + str(self.port) + "/api/"
-        if self._version == "" or self.version < "3.1.0":
-            return url_initials + "v1"
-        else:
-            return url_initials + "v2"
+        return url_initials + "v2"
+
+    @property
+    def grafana_url(self):
+        return "https://" + self.server + ":" + str(self.port) + "/grafana/api"
 
     @property
     def version(self):

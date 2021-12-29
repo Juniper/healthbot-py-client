@@ -20,8 +20,8 @@ class TestPlaybooks(unittest.TestCase):
                    new_callable=PropertyMock) as mock_ver:
             with patch('jnpr.healthbot.healthbot.HealthBotClient.config_url',
                        new_callable=PropertyMock) as mock_cnf:
-                mock_ver.return_value = '2.1.0'
-                mock_cnf.return_value = "https://1.1.1.1:8080/api/v1"
+                mock_ver.return_value = '4.0.0'
+                mock_cnf.return_value = "https://1.1.1.1:8080/api/v2/config"
                 self.conn = HealthBotClient(
                     server='1.1.1.1',
                     user='test',
@@ -83,7 +83,7 @@ class TestPlaybooks(unittest.TestCase):
         self.assertEqual(self.mock_request().mock_calls[5][0], 'put')
         self.assertEqual(
             self.mock_request().mock_calls[5][1][0],
-            'https://1.1.1.1:8080/api/v1/device-group/Core')
+            'https://1.1.1.1:8080/api/v2/config/device-group/Core')
 
     def test_playbook_instance_builder_delete(self):
         self.mock_request().get.side_effect = self._mock_manager
@@ -94,16 +94,16 @@ class TestPlaybooks(unittest.TestCase):
         self.assertEqual(self.mock_request().mock_calls[6][0], 'put')
         self.assertEqual(
             self.mock_request().mock_calls[6][1][0],
-            'https://1.1.1.1:8080/api/v1/device/vmx')
+            'https://1.1.1.1:8080/api/v2/config/device/vmx')
         self.assertEqual(
             self.mock_request().mock_calls[10][1][0],
-            'https://1.1.1.1:8080/api/v1/device-group/Core')
+            'https://1.1.1.1:8080/api/v2/config/device-group/Core')
 
     def test_playbook_apply_commit(self):
         self.mock_request().get.side_effect = self._mock_manager
         with patch('jnpr.healthbot.healthbot.HealthBotClient.config_url',
                    new_callable=PropertyMock) as mock_cnf:
-            mock_cnf.return_value = "https://1.1.1.1:8080/api/v1"
+            mock_cnf.return_value = "https://1.1.1.1:8080/api/v2/config"
             pbb = PlayBookInstanceBuilder(
                 self.conn, 'automation-coredump-pb', 'HbEZ-instance',
                 'Core')
@@ -111,7 +111,7 @@ class TestPlaybooks(unittest.TestCase):
             self.assertEqual(self.mock_request().mock_calls[9][0], 'post')
             self.assertEqual(
                 self.mock_request().mock_calls[9][1][0],
-                'https://1.1.1.1:8080/api/v1/configuration')
+                'https://1.1.1.1:8080/api/v2/config/configuration')
 
     def test_playbook_instance_builder_with_no_device_group(self):
         from jnpr.healthbot.exception import NotFoundError
@@ -134,7 +134,7 @@ class TestPlaybooks(unittest.TestCase):
         self.assertEqual(self.mock_request().mock_calls[6][0], 'put')
         self.assertEqual(
             self.mock_request().mock_calls[6][1][0],
-            'https://1.1.1.1:8080/api/v1/device-group/Core')
+            'https://1.1.1.1:8080/api/v2/config/device-group/Core')
 
     def test_playbook_instance_builder_with_variable_per_device(self):
         self.mock_request().get.side_effect = self._mock_manager
@@ -150,7 +150,7 @@ class TestPlaybooks(unittest.TestCase):
         self.assertEqual(self.mock_request().mock_calls[7][0], 'put')
         self.assertEqual(
             self.mock_request().mock_calls[7][1][0],
-            'https://1.1.1.1:8080/api/v1/device/vmx')
+            'https://1.1.1.1:8080/api/v2/config/device/vmx')
 
     def test_playbook_instance_builder_with_non_existing_device(self):
         self.mock_request().get.side_effect = self._mock_manager
@@ -210,7 +210,7 @@ class TestPlaybooks(unittest.TestCase):
             def raise_for_status(self):
                 return None
 
-        if args[0] == 'https://1.1.1.1:8080/api/v1/playbook/automation-coredump-pb/?working=true':
+        if args[0] == 'https://1.1.1.1:8080/api/v2/config/playbook/automation-coredump-pb/?working=true':
             obj = MockResponse({
                 "playbook-name": "automation-coredump-pb",
                 "rules": [
@@ -218,7 +218,7 @@ class TestPlaybooks(unittest.TestCase):
                 ]
             }, 200)
             return obj
-        if args[0] == 'https://1.1.1.1:8080/api/v1/topic/protocol-automation-coredumps/rule/check-coredumps/?working=true':
+        if args[0] == 'https://1.1.1.1:8080/api/v2/config/topic/protocol-automation-coredumps/rule/check-coredumps/?working=true':
             obj = MockResponse({"description": "This rule will monitor for the automation coredumps",
                                 "field": [{"description": "Actual coredump filename",
                                            "field-name": "coredump-filename",
@@ -269,7 +269,7 @@ class TestPlaybooks(unittest.TestCase):
                                              "trigger-name": "core-generated"}]},
                                200)
             return obj
-        if args[0] == 'https://1.1.1.1:8080/api/v1/playbooks/?working=true':
+        if args[0] == 'https://1.1.1.1:8080/api/v2/config/playbooks/?working=true':
             obj = MockResponse({"playbook": [{"playbook-name": "netsvc-playbook",
                                               "rules": ["chassis.networkservices/netsvc-rule"]},
                                              {"playbook-name": "phyport",
@@ -282,7 +282,7 @@ class TestPlaybooks(unittest.TestCase):
                                               "synopsis": "Collect eventd logs"}]},
                                200)
             return obj
-        if args[0] == 'https://1.1.1.1:8080/api/v1/topic/protocol.routesummary/rule/check-fib-summary/?working=true':
+        if args[0] == 'https://1.1.1.1:8080/api/v2/config/topic/protocol.routesummary/rule/check-fib-summary/?working=true':
             obj = MockResponse({
                 "description": "Collects forwarding-table's total-route-count of each protocol and sets dynamic thresholds and notify anomaly when route count is abnormal",
                 "field": [
@@ -457,7 +457,7 @@ class TestPlaybooks(unittest.TestCase):
             },
                 200)
             return obj
-        if args[0] == 'https://1.1.1.1:8080/api/v1/playbook/forwarding-table-summary/?working=true':
+        if args[0] == 'https://1.1.1.1:8080/api/v2/config/playbook/forwarding-table-summary/?working=true':
             obj = MockResponse({
                 "description": "Playbook monitors forwarding-table's each protocol's route count and notifies anomaly when route count is above static or dynamic threshold",
                 "playbook-name": "forwarding-table-summary",
@@ -467,7 +467,7 @@ class TestPlaybooks(unittest.TestCase):
                 "synopsis": "Forwarding table and protocol routes key performance indicators"
             }, 200)
             return obj
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/device-group/Core/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/device-group/Core/?working=true':
             return MockResponse({"description": "testing",
                                  "device-group-name": "Core",
                                  "devices": ["vmx"],
@@ -483,7 +483,7 @@ class TestPlaybooks(unittest.TestCase):
                                                "rule": "x/y",
                                                "variable-value": []}]},
                                 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/device/vmx/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/device/vmx/?working=true':
             return MockResponse({
                 "authentication": {
                     "password": {
@@ -508,13 +508,13 @@ class TestPlaybooks(unittest.TestCase):
                     }
                 }
             }, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/playbook/testing/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/playbook/testing/?working=true':
             obj = MockResponse({
                 "detail": "Playbook not found",
                 "status": 404
             }, 404)
             return obj
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/device/vmx/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/device/vmx/?working=true':
             return MockResponse({
                 "authentication": {
                     "password": {

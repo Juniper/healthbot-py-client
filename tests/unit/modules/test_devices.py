@@ -20,8 +20,8 @@ class TestDevices(unittest.TestCase):
                    new_callable=PropertyMock) as mock_ver:
             with patch('jnpr.healthbot.healthbot.HealthBotClient.config_url',
                        new_callable=PropertyMock) as mock_cnf:
-                mock_ver.return_value = '2.1.0'
-                mock_cnf.return_value = "https://1.1.1.1:8080/api/v1"
+                mock_ver.return_value = '4.0.0'
+                mock_cnf.return_value = "https://1.1.1.1:8080/api/v2/config"
                 self.conn = HealthBotClient(
                     server='1.1.1.1',
                     user='test',
@@ -74,9 +74,9 @@ class TestDevices(unittest.TestCase):
         self.assertEqual(self.mock_request().mock_calls[2][0], 'get')
         self.assertEqual(self.mock_request().mock_calls[4][0], 'put')
         self.assertEqual(self.mock_request().mock_calls[2][1][0],
-                         'https://1.1.1.1:8080/api/v1/device-groups')
+                         'https://1.1.1.1:8080/api/v2/config/device-groups')
         self.assertEqual(self.mock_request().mock_calls[4][1][0],
-                         'https://1.1.1.1:8080/api/v1/device-group/edge')
+                         'https://1.1.1.1:8080/api/v2/config/device-group/edge')
         self.assertEqual(self.mock_request().mock_calls[4][2]['json'],
                          {'description': 'testing', 'device-group-name': 'edge',
                           'devices': ['demo'], 'native-gpb': {'ports': [22000]},
@@ -250,10 +250,10 @@ class TestDevices(unittest.TestCase):
             def raise_for_status(self):
                 return None
 
-        if args[0] == 'https://1.1.1.1:8080/api/v1/device/core' and kwargs != {}:
+        if args[0] == 'https://1.1.1.1:8080/api/v2/config/device/core' and kwargs != {}:
             return MockResponse({}, 200)
-        elif args[0] in ['https://1.1.1.1:8080/api/v1/device-groups',
-                         'https://1.1.1.1:8080/api/v1/device-groups/?working=true']:
+        elif args[0] in ['https://1.1.1.1:8080/api/v2/config/device-groups',
+                         'https://1.1.1.1:8080/api/v2/config/device-groups/?working=true']:
             return MockResponse({
                 "device-group": [
                     {
@@ -349,8 +349,8 @@ class TestDevices(unittest.TestCase):
                     }
                 ]
             }, 200)
-        elif args[0] in ['https://1.1.1.1:8080/api/v1/device-group/Core/?working=true',
-                         'https://1.1.1.1:8080/api/v1/device-group/Core']:
+        elif args[0] in ['https://1.1.1.1:8080/api/v2/config/device-group/Core/?working=true',
+                         'https://1.1.1.1:8080/api/v2/config/device-group/Core']:
             return MockResponse({
                 "description": "testing",
                 "device-group-name": "Core",
@@ -371,8 +371,8 @@ class TestDevices(unittest.TestCase):
                 "reports": [],
                 "variable": []
             }, 200)
-        elif args[0] in ['https://1.1.1.1:8080/api/v1/device-group/edge/?working=true',
-                         'https://1.1.1.1:8080/api/v1/device-group/edge']:
+        elif args[0] in ['https://1.1.1.1:8080/api/v2/config/device-group/edge/?working=true',
+                         'https://1.1.1.1:8080/api/v2/config/device-group/edge']:
             return MockResponse({
                 "description": "testing",
                 "device-group-name": "edge",
@@ -393,11 +393,11 @@ class TestDevices(unittest.TestCase):
                 "reports": [],
                 "variable": []
             }, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/device-group/QFabric':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/device-group/QFabric':
             return MockResponse({}, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/device/core':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/device/core':
             return MockResponse({}, 204)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/device/core/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/device/core/?working=true':
             return MockResponse({
                 "authentication": {
                     "password": {
@@ -418,7 +418,7 @@ class TestDevices(unittest.TestCase):
                     }
                 }
             }, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/device/core/facts/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/device/core/facts/?working=true':
             return MockResponse({"device-id": "core",
                                  "facts": {"fpc": [],
                                            "hostname": "R1_re0",
@@ -428,7 +428,7 @@ class TestDevices(unittest.TestCase):
                                            "product": "MX",
                                            }},
                                 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/devices/facts/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/devices/facts/?working=true':
             return MockResponse([{"device-id": "core",
                                   "facts": {"fpc": [],
                                             "hostname": "R1_re0",
@@ -438,7 +438,7 @@ class TestDevices(unittest.TestCase):
                                             "product": "MX",
                                             }}],
                                 200)
-        if args[0] == 'https://1.1.1.1:8080/api/v1/devices/?working=true':
+        if args[0] == 'https://1.1.1.1:8080/api/v2/config/devices/?working=true':
             return MockResponse({"device": [
                 {
                     "authentication": {
@@ -509,7 +509,7 @@ class TestDevices(unittest.TestCase):
                 }
             ]
             }, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/network-group/HbEZ/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/network-group/HbEZ/?working=true':
             obj = MockResponse({'description': "testing",
                                 'network-group-name': 'HbEZ',
                                 'notification': {},
@@ -517,7 +517,7 @@ class TestDevices(unittest.TestCase):
                                 'reports': [],
                                 'variable': None}, 200)
             return obj
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/network-groups/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/network-groups/?working=true':
             obj = MockResponse({
                 "network-group": [
                     {
@@ -529,9 +529,9 @@ class TestDevices(unittest.TestCase):
                 ]
             }, 200)
             return obj
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/services/device-group/':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/services/device-group/':
             return MockResponse(["edge"], 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/health-tree/avro':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/health-tree/avro':
             return MockResponse({'children': [{'children': [{'children': [{'children': [{'color': 'red',
                                                                                          'data': 'either is '
                                                                                          'down',
@@ -561,8 +561,8 @@ class TestDevices(unittest.TestCase):
                                  'name': 'avro',
                                  'timestamp': None},
                                 200)
-        elif args[0] in ['https://1.1.1.1:8080/api/v1/health-tree/device-group/Core',
-                         'https://1.1.1.1:8080/api/v1/health-tree/Core']:
+        elif args[0] in ['https://1.1.1.1:8080/api/v2/health-tree/device-group/Core',
+                         'https://1.1.1.1:8080/api/v2/health-tree/Core']:
             return MockResponse({"children": [{"children": [{"children": [],
                                                              "name": "interface.statistics"},
                                                             {"children": [],
@@ -578,7 +578,7 @@ class TestDevices(unittest.TestCase):
                                  "color": "yellow",
                                  "name": "Core"},
                                 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/health-tree/network-group/Core':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/health-tree/network-group/Core':
             return MockResponse({"children": [{"children": [{"children": [],
                                                              "name": "interface.statistics"},
                                                             {"children": [],

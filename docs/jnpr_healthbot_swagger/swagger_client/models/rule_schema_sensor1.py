@@ -37,6 +37,7 @@ class RuleSchemaSensor1(object):
         'i_agent': 'RuleSchemaIAgent',
         'native_gpb': 'RuleSchemaNativegpb',
         'open_config': 'RuleSchemaOpenconfig',
+        'server_monitoring': 'RuleSchemaOpenconfig',
         'sensor_name': 'str',
         'snmp': 'RuleSchemaSnmp',
         'snmp_notification': 'RuleSchemaSnmpnotification',
@@ -52,6 +53,7 @@ class RuleSchemaSensor1(object):
         'i_agent': 'iAgent',
         'native_gpb': 'native-gpb',
         'open_config': 'open-config',
+        'server_monitoring': 'server-monitoring',
         'sensor_name': 'sensor-name',
         'snmp': 'snmp',
         'snmp_notification': 'snmp-notification',
@@ -60,7 +62,7 @@ class RuleSchemaSensor1(object):
         'byoi': 'byoi'
     }
 
-    def __init__(self, description=None, sflow=None, flow=None, i_agent=None, native_gpb=None, open_config=None, sensor_name=None, snmp=None, snmp_notification=None, syslog=None, synopsis=None, byoi=None):  # noqa: E501
+    def __init__(self, description=None, sflow=None, flow=None, i_agent=None, native_gpb=None, open_config=None, server_monitoring=None, sensor_name=None, snmp=None, snmp_notification=None, syslog=None, synopsis=None, byoi=None):  # noqa: E501
         """RuleSchemaSensor1 - a model defined in Swagger"""  # noqa: E501
 
         self._description = None
@@ -69,6 +71,7 @@ class RuleSchemaSensor1(object):
         self._i_agent = None
         self._native_gpb = None
         self._open_config = None
+        self._server_monitoring = None
         self._sensor_name = None
         self._snmp = None
         self._snmp_notification = None
@@ -89,6 +92,8 @@ class RuleSchemaSensor1(object):
             self.native_gpb = native_gpb
         if open_config is not None:
             self.open_config = open_config
+        if server_monitoring is not None:
+            self.server_monitoring = server_monitoring
         self.sensor_name = sensor_name
         if snmp is not None:
             self.snmp = snmp
@@ -228,6 +233,27 @@ class RuleSchemaSensor1(object):
         """
 
         self._open_config = open_config
+
+    @property
+    def server_monitoring(self):
+        """Gets the server_monitoring of this RuleSchemaSensor1.  # noqa: E501
+
+
+        :return: The server_monitoring of this RuleSchemaSensor1.  # noqa: E501
+        :rtype: RuleSchemaOpenconfig
+        """
+        return self._server_monitoring
+
+    @server_monitoring.setter
+    def server_monitoring(self, server_monitoring):
+        """Sets the server_monitoring of this RuleSchemaSensor1.
+
+
+        :param server_monitoring: The server_monitoring of this RuleSchemaSensor1.  # noqa: E501
+        :type: RuleSchemaOpenconfig
+        """
+
+        self._server_monitoring = server_monitoring
 
     @property
     def sensor_name(self):
