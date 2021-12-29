@@ -33,7 +33,7 @@ from jnpr.healthbot.swagger.models.panel_schema_panel_type \
     import PanelSchemaPanelType
 from jnpr.healthbot.swagger.models.panel_schema_time_range import PanelSchemaTimeRange
 from jnpr.healthbot.swagger.models.panel_schema_unit_type import PanelSchemaUnitType
-from jnpr.healthbot.exception import SchemaError, NotFoundError
+from jnpr.healthbot.exception import NotFoundError
 from jnpr.healthbot.modules import BaseModule
 from uuid import uuid4
 import logging
@@ -62,11 +62,6 @@ class HBCharts(BaseModule):
             return str(uuid4().hex)[0:20]
 
         def _get_panel_query(panel_data_list):
-            """
-            'SELECT derivative(mean("new")) FROM "hb-default:pqw:pqw"."None"."test122" WHERE $timeFilter AND ("a1" = \'0\') GROUP BY time(10s) , "check12" fill(previous)']
-            "SELECT derivative(mean(\"l1-threshold\")) FROM \"hb-default:bng-junos:R1_re0\".\"hb-default:bng-junos:R1_re0\".\"system.commit/commit-history\" WHERE $timeFilter AND (\"sequence-number\" = '0'  AND \"sequence-number\" = '0'  AND \"sequence-number\" = '') GROUP BY time(1s) , \"sequence-number\", \"sequence-number\", \"sequence-number\" fill(previous)",
-
-            """
             queries = []
             for panel in panel_data_list:
                 logical_operator = panel.selected_logical_operator
@@ -150,7 +145,7 @@ class HBCharts(BaseModule):
                         datatype = 'string'
                         label = condition.get('key')
                         value = condition.get('value')
-                        # Vaidate value of tags #TODO
+                        # Validate value of tags #TODO
                     else:
                         field_exists = False
                         for field in query.field_list:
@@ -200,8 +195,10 @@ class HBCharts(BaseModule):
                     selected_group=PanelDataSchemaSelectedGroup(label=query.group_name, type=query.group_type,
                                                                 value=query.group_name),
                     selected_logical_operator=selected_logical_operator,
-                    selected_topic=PanelDataSchemaSelectedTopic(label=query.measurement_name, retention_policy=query.retention_policy,
-                                                                type=query.measurement_type, value=query.measurement_name),
+                    selected_topic=PanelDataSchemaSelectedTopic(label=query.measurement_name,
+                                                                retention_policy=query.retention_policy,
+                                                                type=query.measurement_type,
+                                                                value=query.measurement_name),
                     selected_transformation=transformation
                 )
                 panel_data_list.append(panel_data)
@@ -407,8 +404,6 @@ class HBCharts(BaseModule):
                             device_id=query.device_name, device_group=query.group_name,
                             table_name=query.measurement_name))
                         query.key_dict = tags_dict
-
-
 
                     if query.group_by_tag_key is  None:
                         query.group_by_tag_key = []
