@@ -299,7 +299,8 @@ class HealthBotClient(object):
         :returns:
             str: Initials of URL to be used for API call.
         """
-        return "https://" + self.server + ":" + str(self.port) + "/api/" + "v2"
+        url_initials = "https://" + self.server + ":" + str(self.port) + "/api/"
+        return url_initials + "v2"
 
     @property
     def grafana_url(self):
