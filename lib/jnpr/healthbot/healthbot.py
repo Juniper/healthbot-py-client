@@ -281,12 +281,7 @@ class HealthBotClient(object):
     @property
     def config_url(self):
         """
-        With 3.1.0 all endpoints are divided into 
-        a) configuration endpoints  - /api/v2/config/ (e.g. /api/v2/config/devices/)
-        b) non-configuration endpoints - /api/v2/ (e.g. /api/v2/health/)
-        Once we have all customer moved o 3.1.0 and higher, remove condition check
-
-        Hence this function will give config URL
+        This function will give config URL
 
         """
         return self.url + "/config"
@@ -294,8 +289,6 @@ class HealthBotClient(object):
     @property
     def url(self):
         """ Initials of URL to be used for API call.
-        Once we have all customer moved o 3.1.0 and higher, remove v1
-
         :returns:
             str: Initials of URL to be used for API call.
         """
