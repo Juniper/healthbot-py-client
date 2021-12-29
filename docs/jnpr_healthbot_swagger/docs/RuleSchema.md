@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **function** | [**list[RuleSchemaFunction]**](RuleSchemaFunction.md) |  | [optional] 
 **keys** | **list[str]** |  | [optional] 
 **network_rule** | **list[object]** | Flag to denote a network rule | [optional] 
+**disable_no_data_alarm** | **list[object]** | Disable No Data Alarm | [optional] 
 **rule_frequency** | **str** | Frequency at which the rule’s field, reference, and vector elements should be computed. Required only when a rule doesn’t have a sensor defined. Specify integer &gt;&#x3D; 0 followed by s/m/h/d/w/y representing seconds/minutes/hours/days/weeks/years. Eg: 2s | [optional] 
 **rule_name** | **str** | Name of the rule. Should be of pattern [a-z][a-z0-9_-]* | 
 **sensor** | [**list[RuleSchemaSensor1]**](RuleSchemaSensor1.md) |  | [optional] 

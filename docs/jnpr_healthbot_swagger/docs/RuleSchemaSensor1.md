@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **i_agent** | [**RuleSchemaIAgent**](RuleSchemaIAgent.md) |  | [optional] 
 **native_gpb** | [**RuleSchemaNativegpb**](RuleSchemaNativegpb.md) |  | [optional] 
 **open_config** | [**RuleSchemaOpenconfig**](RuleSchemaOpenconfig.md) |  | [optional] 
+**server_monitoring** | [**RuleSchemaOpenconfig**](RuleSchemaOpenconfig.md) |  | [optional] 
 **sensor_name** | **str** | Name of sensor. Should be of pattern [a-zA-Z][a-zA-Z0-9_-]* | 
 **snmp** | [**RuleSchemaSnmp**](RuleSchemaSnmp.md) |  | [optional] 
 **snmp_notification** | [**RuleSchemaSnmpnotification**](RuleSchemaSnmpnotification.md) |  | [optional] 

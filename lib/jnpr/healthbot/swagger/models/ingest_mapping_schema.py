@@ -36,6 +36,7 @@ class IngestMappingSchema(object):
         'native_gpb': 'IngestmappingSchemaNativegpb',
         'netflow': 'IngestmappingSchemaNetflow',
         'open_config': 'IngestmappingSchemaOpenconfig',
+        'server_monitoring': 'IngestmappingSchemaOpenconfig',
         'snmp': 'IngestmappingSchemaSnmp',
         'syslog': 'IngestmappingSchemaSyslog'
     }
@@ -46,11 +47,12 @@ class IngestMappingSchema(object):
         'native_gpb': 'native-gpb',
         'netflow': 'netflow',
         'open_config': 'open-config',
+        'server_monitoring': 'server-monitoring',
         'snmp': 'snmp',
         'syslog': 'syslog'
     }
 
-    def __init__(self, i_agent=None, name=None, native_gpb=None, netflow=None, open_config=None, snmp=None, syslog=None):  # noqa: E501
+    def __init__(self, i_agent=None, name=None, native_gpb=None, netflow=None, open_config=None, server_monitoring=None, snmp=None, syslog=None):  # noqa: E501
         """IngestMappingSchema - a model defined in Swagger"""  # noqa: E501
 
         self._i_agent = None
@@ -58,6 +60,7 @@ class IngestMappingSchema(object):
         self._native_gpb = None
         self._netflow = None
         self._open_config = None
+        self._server_monitoring = None
         self._snmp = None
         self._syslog = None
         self.discriminator = None
@@ -71,6 +74,8 @@ class IngestMappingSchema(object):
             self.netflow = netflow
         if open_config is not None:
             self.open_config = open_config
+        if server_monitoring is not None:
+            self.server_monitoring = server_monitoring
         if snmp is not None:
             self.snmp = snmp
         if syslog is not None:
@@ -188,6 +193,27 @@ class IngestMappingSchema(object):
         """
 
         self._open_config = open_config
+
+    @property
+    def server_monitoring(self):
+        """Gets the server_monitoring of this IngestMappingSchema.  # noqa: E501
+
+
+        :return: The server_monitoring of this IngestMappingSchema.  # noqa: E501
+        :rtype: IngestmappingSchemaOpenconfig
+        """
+        return self._server_monitoring
+
+    @server_monitoring.setter
+    def server_monitoring(self, server_monitoring):
+        """Sets the server_monitoring of this IngestMappingSchema.
+
+
+        :param server_monitoring: The server_monitoring of this IngestMappingSchema.  # noqa: E501
+        :type: IngestmappingSchemaOpenconfig
+        """
+
+        self._server_monitoring = server_monitoring
 
     @property
     def snmp(self):

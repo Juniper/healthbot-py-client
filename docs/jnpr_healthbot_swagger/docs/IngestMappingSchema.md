@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **native_gpb** | [**IngestmappingSchemaNativegpb**](IngestmappingSchemaNativegpb.md) |  | [optional] 
 **netflow** | [**IngestmappingSchemaNetflow**](IngestmappingSchemaNetflow.md) |  | [optional] 
 **open_config** | [**IngestmappingSchemaOpenconfig**](IngestmappingSchemaOpenconfig.md) |  | [optional] 
+**server_monitoring** | [**IngestmappingSchemaOpenconfig**](IngestmappingSchemaOpenconfig.md) |  | [optional] 
 **snmp** | [**IngestmappingSchemaSnmp**](IngestmappingSchemaSnmp.md) |  | [optional] 
 **syslog** | [**IngestmappingSchemaSyslog**](IngestmappingSchemaSyslog.md) |  | [optional] 
 

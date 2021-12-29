@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **device_groups** | **list[str]** |  | [optional] 
 **parameters** | [**list[WorkflowInstanceSchemaParameters]**](WorkflowInstanceSchemaParameters.md) |  | [optional] 
 **argument** | [**WorkflowArgumentGroupSchema**](WorkflowArgumentGroupSchema.md) |  | [optional] 
+**cron_options** | [**WorkflowCronOptionsSchema**](WorkflowCronOptionsSchema.md) |  | [optional] 
 **batch** | **int** | Maximum parallel steps launched | [optional] 
 **retry** | [**RuleSchemaThenRetry**](RuleSchemaThenRetry.md) |  | [optional] 
 **timeout** | **str** | Maximum time to wait for the step completion before bailing out (default 60 seconds) | [optional] 

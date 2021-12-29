@@ -90,7 +90,7 @@ class RuleSchemaFormulaPredict(object):
         """
         if algorithm is None:
             raise ValueError("Invalid value for `algorithm`, must not be `None`")  # noqa: E501
-        allowed_values = ["median-prediction", "holt-winters"]  # noqa: E501
+        allowed_values = ["median-prediction", "holt-winters", "hidden-markov"]  # noqa: E501
         if algorithm not in allowed_values:
             raise ValueError(
                 "Invalid value for `algorithm` ({0}), must be one of {1}"  # noqa: E501

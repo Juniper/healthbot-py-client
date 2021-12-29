@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **authentication** | [**DevicegroupSchemaAuthentication**](DevicegroupSchemaAuthentication.md) |  | [optional] 
 **edge** | **str** | JFM: edge this device group belongs to. This should be of the format &lt;organization-name&gt;.&lt;site-name&gt;.&lt;edge-name&gt; | [optional] 
+**action_scheduler** | [**DevicegroupSchemaActionscheduler**](DevicegroupSchemaActionscheduler.md) |  | [optional] 
 **description** | **str** | Description about the device group | [optional] 
 **device_group_name** | **str** | Name of the group. Should be of pattern [a-zA-Z][a-zA-Z0-9-]* | 
 **devices** | **list[str]** |  | [optional] 
@@ -28,6 +29,7 @@ Name | Type | Description | Notes
 **syslog** | [**DevicegroupSchemaSyslog**](DevicegroupSchemaSyslog.md) |  | [optional] 
 **tagging_profile** | **list[str]** |  | [optional] 
 **timezone** | **str** | Timezone in the format +/-hh:mm, Example: -08:00 | [optional] 
+**use_ingest_receive_time** | **list[object]** | Enable using ingest receive time in formulas like elapsed-time and rate-of-change | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -33,6 +33,7 @@ class DeviceGroupSchema(object):
     swagger_types = {
         'authentication': 'DevicegroupSchemaAuthentication',
         'edge': 'str',
+        'action_scheduler': 'DevicegroupSchemaActionscheduler',
         'description': 'str',
         'device_group_name': 'str',
         'devices': 'list[str]',
@@ -55,12 +56,14 @@ class DeviceGroupSchema(object):
         'snmp': 'DevicegroupSchemaSnmp',
         'syslog': 'DevicegroupSchemaSyslog',
         'tagging_profile': 'list[str]',
-        'timezone': 'str'
+        'timezone': 'str',
+        'use_ingest_receive_time': 'list[object]'
     }
 
     attribute_map = {
         'authentication': 'authentication',
         'edge': 'edge',
+        'action_scheduler': 'action-scheduler',
         'description': 'description',
         'device_group_name': 'device-group-name',
         'devices': 'devices',
@@ -83,14 +86,16 @@ class DeviceGroupSchema(object):
         'snmp': 'snmp',
         'syslog': 'syslog',
         'tagging_profile': 'tagging-profile',
-        'timezone': 'timezone'
+        'timezone': 'timezone',
+        'use_ingest_receive_time': 'use-ingest-receive-time'
     }
 
-    def __init__(self, authentication=None, edge=None, description=None, device_group_name=None, devices=None, logging=None, native_gpb=None, flow=None, ingest_frequency=None, raw_data=None, field_data=None, notification=None, open_config=None, outbound_ssh=None, playbooks=None, publish=None, reports=None, retention_policy=None, root_cause_analysis=None, scheduler=None, variable=None, snmp=None, syslog=None, tagging_profile=None, timezone=None):  # noqa: E501
+    def __init__(self, authentication=None, edge=None, action_scheduler=None, description=None, device_group_name=None, devices=None, logging=None, native_gpb=None, flow=None, ingest_frequency=None, raw_data=None, field_data=None, notification=None, open_config=None, outbound_ssh=None, playbooks=None, publish=None, reports=None, retention_policy=None, root_cause_analysis=None, scheduler=None, variable=None, snmp=None, syslog=None, tagging_profile=None, timezone=None, use_ingest_receive_time=None):  # noqa: E501
         """DeviceGroupSchema - a model defined in Swagger"""  # noqa: E501
 
         self._authentication = None
         self._edge = None
+        self._action_scheduler = None
         self._description = None
         self._device_group_name = None
         self._devices = None
@@ -114,12 +119,15 @@ class DeviceGroupSchema(object):
         self._syslog = None
         self._tagging_profile = None
         self._timezone = None
+        self._use_ingest_receive_time = None
         self.discriminator = None
 
         if authentication is not None:
             self.authentication = authentication
         if edge is not None:
             self.edge = edge
+        if action_scheduler is not None:
+            self.action_scheduler = action_scheduler
         if description is not None:
             self.description = description
         self.device_group_name = device_group_name
@@ -165,6 +173,8 @@ class DeviceGroupSchema(object):
             self.tagging_profile = tagging_profile
         if timezone is not None:
             self.timezone = timezone
+        if use_ingest_receive_time is not None:
+            self.use_ingest_receive_time = use_ingest_receive_time
 
     @property
     def authentication(self):
@@ -215,6 +225,27 @@ class DeviceGroupSchema(object):
             raise ValueError(r"Invalid value for `edge`, must be a follow pattern or equal to `/^([a-zA-Z][a-zA-Z0-9_-]*\\.){2}[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._edge = edge
+
+    @property
+    def action_scheduler(self):
+        """Gets the action_scheduler of this DeviceGroupSchema.  # noqa: E501
+
+
+        :return: The action_scheduler of this DeviceGroupSchema.  # noqa: E501
+        :rtype: DevicegroupSchemaActionscheduler
+        """
+        return self._action_scheduler
+
+    @action_scheduler.setter
+    def action_scheduler(self, action_scheduler):
+        """Sets the action_scheduler of this DeviceGroupSchema.
+
+
+        :param action_scheduler: The action_scheduler of this DeviceGroupSchema.  # noqa: E501
+        :type: DevicegroupSchemaActionscheduler
+        """
+
+        self._action_scheduler = action_scheduler
 
     @property
     def description(self):
@@ -722,6 +753,29 @@ class DeviceGroupSchema(object):
             raise ValueError(r"Invalid value for `timezone`, must be a follow pattern or equal to `/^((\\+|-)((([0-1][0-9])|(2[0-3])):([0-5][0-9])))$/`")  # noqa: E501
 
         self._timezone = timezone
+
+    @property
+    def use_ingest_receive_time(self):
+        """Gets the use_ingest_receive_time of this DeviceGroupSchema.  # noqa: E501
+
+        Enable using ingest receive time in formulas like elapsed-time and rate-of-change  # noqa: E501
+
+        :return: The use_ingest_receive_time of this DeviceGroupSchema.  # noqa: E501
+        :rtype: list[object]
+        """
+        return self._use_ingest_receive_time
+
+    @use_ingest_receive_time.setter
+    def use_ingest_receive_time(self, use_ingest_receive_time):
+        """Sets the use_ingest_receive_time of this DeviceGroupSchema.
+
+        Enable using ingest receive time in formulas like elapsed-time and rate-of-change  # noqa: E501
+
+        :param use_ingest_receive_time: The use_ingest_receive_time of this DeviceGroupSchema.  # noqa: E501
+        :type: list[object]
+        """
+
+        self._use_ingest_receive_time = use_ingest_receive_time
 
     def to_dict(self):
         """Returns the model properties as a dict"""

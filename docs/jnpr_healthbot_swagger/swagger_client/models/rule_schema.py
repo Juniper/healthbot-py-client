@@ -36,6 +36,7 @@ class RuleSchema(object):
         'function': 'list[RuleSchemaFunction]',
         'keys': 'list[str]',
         'network_rule': 'list[object]',
+        'disable_no_data_alarm': 'list[object]',
         'rule_frequency': 'str',
         'rule_name': 'str',
         'sensor': 'list[RuleSchemaSensor1]',
@@ -53,6 +54,7 @@ class RuleSchema(object):
         'function': 'function',
         'keys': 'keys',
         'network_rule': 'network-rule',
+        'disable_no_data_alarm': 'disable-no-data-alarm',
         'rule_frequency': 'rule-frequency',
         'rule_name': 'rule-name',
         'sensor': 'sensor',
@@ -64,7 +66,7 @@ class RuleSchema(object):
         'rule_properties': 'rule-properties'
     }
 
-    def __init__(self, description=None, field=None, function=None, keys=None, network_rule=None, rule_frequency=None, rule_name=None, sensor=None, synopsis=None, field_aggregation_time_range=None, trigger=None, variable=None, vector=None, rule_properties=None):  # noqa: E501
+    def __init__(self, description=None, field=None, function=None, keys=None, network_rule=None, disable_no_data_alarm=None, rule_frequency=None, rule_name=None, sensor=None, synopsis=None, field_aggregation_time_range=None, trigger=None, variable=None, vector=None, rule_properties=None):  # noqa: E501
         """RuleSchema - a model defined in Swagger"""  # noqa: E501
 
         self._description = None
@@ -72,6 +74,7 @@ class RuleSchema(object):
         self._function = None
         self._keys = None
         self._network_rule = None
+        self._disable_no_data_alarm = None
         self._rule_frequency = None
         self._rule_name = None
         self._sensor = None
@@ -93,6 +96,8 @@ class RuleSchema(object):
             self.keys = keys
         if network_rule is not None:
             self.network_rule = network_rule
+        if disable_no_data_alarm is not None:
+            self.disable_no_data_alarm = disable_no_data_alarm
         if rule_frequency is not None:
             self.rule_frequency = rule_frequency
         self.rule_name = rule_name
@@ -219,6 +224,29 @@ class RuleSchema(object):
         """
 
         self._network_rule = network_rule
+
+    @property
+    def disable_no_data_alarm(self):
+        """Gets the disable_no_data_alarm of this RuleSchema.  # noqa: E501
+
+        Disable No Data Alarm  # noqa: E501
+
+        :return: The disable_no_data_alarm of this RuleSchema.  # noqa: E501
+        :rtype: list[object]
+        """
+        return self._disable_no_data_alarm
+
+    @disable_no_data_alarm.setter
+    def disable_no_data_alarm(self, disable_no_data_alarm):
+        """Sets the disable_no_data_alarm of this RuleSchema.
+
+        Disable No Data Alarm  # noqa: E501
+
+        :param disable_no_data_alarm: The disable_no_data_alarm of this RuleSchema.  # noqa: E501
+        :type: list[object]
+        """
+
+        self._disable_no_data_alarm = disable_no_data_alarm
 
     @property
     def rule_frequency(self):
