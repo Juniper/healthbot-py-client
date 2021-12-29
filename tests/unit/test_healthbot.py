@@ -23,12 +23,16 @@ class TestHealthBotClient(unittest.TestCase):
                    new_callable=PropertyMock) as mock_ver:
             with patch('jnpr.healthbot.healthbot.HealthBotClient.config_url',
                        new_callable=PropertyMock) as mock_cnf:
-                mock_ver.return_value = '4.0.0'
-                mock_cnf.return_value = "https://1.1.1.1:8080/api/v2/config"
-                self.conn = HealthBotClient(
-                    server='1.1.1.1',
-                    user='test',
-                    password='password123').open()
+                with patch('jnpr.healthbot.healthbot.HealthBotClient.tenant',
+                           new_callable=PropertyMock) as mock_tenant:
+
+                    mock_ver.return_value = '4.0.0'
+                    mock_cnf.return_value = "https://1.1.1.1:8080/api/v2/config"
+                    mock_tenant.return_value = "default"
+                    self.conn = HealthBotClient(
+                        server='1.1.1.1',
+                        user='test',
+                        password='password123').open()
 
     def test_check_attributes(self):
         self.assertIsInstance(self.conn.device, Device)

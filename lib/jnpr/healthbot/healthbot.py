@@ -132,7 +132,6 @@ class HealthBotClient(object):
         self._auth = None
         self.connected = False
         self._token_expire_time = None
-        self.tenant = None
 
     def open(self):
         """
@@ -210,9 +209,6 @@ class HealthBotClient(object):
             self.hbot_session.headers.update({
               'x-iam-token': self._user_token.access_token})
             self.connected = True
-            raw_data = jwt.decode(self._user_token.access_token,
-                                  options={"verify_aud": False, "verify_signature": False, "verify_nbf": False})
-            self.tenant = raw_data['scope']['Name']
         except ApiException as ex:
             logger.debug("Check if given HealthBot version support authorization key")
             # set user/password used by older healthbot version APIs
@@ -222,6 +218,12 @@ class HealthBotClient(object):
             logger.error("User Login Error: {}".format(ex))
             raise ex
         return True
+
+    @property
+    def tenant(self):
+        raw_data = jwt.decode(self._user_token.access_token,
+                              options={"verify_aud": False, "verify_signature": False, "verify_nbf": False})
+        return raw_data['scope']['Name']
 
     @property
     def hbot_session(self):
