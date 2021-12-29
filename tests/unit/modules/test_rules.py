@@ -20,8 +20,8 @@ class TestRules(unittest.TestCase):
                    new_callable=PropertyMock) as mock_ver:
             with patch('jnpr.healthbot.healthbot.HealthBotClient.config_url',
                        new_callable=PropertyMock) as mock_cnf:
-                mock_ver.return_value = '2.1.0'
-                mock_cnf.return_value = "https://1.1.1.1:8080/api/v1"
+                mock_ver.return_value = '4.0.0'
+                mock_cnf.return_value = "https://1.1.1.1:8080/api/v2/config"
                 self.conn = HealthBotClient(
                     server='1.1.1.1',
                     user='test',
@@ -185,7 +185,7 @@ class TestRules(unittest.TestCase):
             def raise_for_status(self):
                 return None
 
-        if args[0] == 'https://1.1.1.1:8080/api/v1/topic/external/?working=true':
+        if args[0] == 'https://1.1.1.1:8080/api/v2/config/topic/external/?working=true':
             obj = MockResponse({
                 "rule": [
                     {
@@ -239,7 +239,7 @@ class TestRules(unittest.TestCase):
                 "topic-name": "external"
             }, 200)
             return obj
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/topic/external/rule/hbez-fpc-heap-utilization/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/topic/external/rule/hbez-fpc-heap-utilization/?working=true':
             obj = MockResponse({"description": "HealthBot EZ example",
                                 "field": [{"constant": {"value": "{{fpc-buffer-usage-threshold}}"},
                                            "description": "This field is for buffer usage threshold",
@@ -271,7 +271,7 @@ class TestRules(unittest.TestCase):
                                               "value": "80"}]},
                                200)
             return obj
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/topics':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/topics':
             return MockResponse({
                 "topic": [
                     {

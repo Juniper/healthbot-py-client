@@ -23,7 +23,7 @@ class TestHealthBotClient(unittest.TestCase):
                    new_callable=PropertyMock) as mock_ver:
             with patch('jnpr.healthbot.healthbot.HealthBotClient.config_url',
                        new_callable=PropertyMock) as mock_cnf:
-                mock_ver.return_value = '2.1.0'
+                mock_ver.return_value = '4.0.0'
                 mock_cnf.return_value = "https://1.1.1.1:8080/api/v2/config"
                 self.conn = HealthBotClient(
                     server='1.1.1.1',
@@ -57,10 +57,10 @@ class TestHealthBotClient(unittest.TestCase):
 
     def test_version_new_versions(self):
         self.mock_request().get.side_effect = self._mock_manager
-        self.assertEqual(self.conn.version, '2.1.0')
+        self.assertEqual(self.conn.version, '4.0.0')
 
     def test_version_old_versions(self):
-        self.assertEqual(self.conn.version, "2.1.0")
+        self.assertEqual(self.conn.version, "4.0.0")
 
     @patch('jnpr.healthbot.healthbot.requests.Session')
     @patch('jnpr.healthbot.swagger.api.authentication_api.AuthenticationApi.user_login')
@@ -129,12 +129,12 @@ class TestHealthBotClient(unittest.TestCase):
         if args[0] == 'https://1.1.1.1:8080/api/v2/system-details':
             return MockResponse({
                 "server-time": "2019-07-24T12:51:20Z",
-                "version": "HealthBot 2.1.0"
+                "version": "HealthBot 4.0.0"
             }, 200)
         elif args[0] == 'https://1.1.1.1:8080/api/v2/system-details':
             return MockResponse({
                 "server-time": "2019-07-24T12:51:20Z",
-                "version": "HealthBot 2.1.0"
+                "version": "HealthBot 4.0.0"
             }, 200)
         elif args[0] == 'https://1.1.1.1:8080/api/v2/health':
             return MockResponse({

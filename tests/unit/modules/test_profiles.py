@@ -22,8 +22,8 @@ class TestProfiles(unittest.TestCase):
                    new_callable=PropertyMock) as mock_ver:
             with patch('jnpr.healthbot.healthbot.HealthBotClient.config_url',
                        new_callable=PropertyMock) as mock_cnf:
-                mock_ver.return_value = '2.1.0'
-                mock_cnf.return_value = "https://1.1.1.1:8080/api/v1"
+                mock_ver.return_value = '4.0.0'
+                mock_cnf.return_value = "https://1.1.1.1:8080/api/v2/config"
                 self.conn = HealthBotClient(
                     server='1.1.1.1',
                     user='test',
@@ -150,7 +150,7 @@ class TestProfiles(unittest.TestCase):
             def raise_for_status(self):
                 return None
 
-        if args[0] == 'https://1.1.1.1:8080/api/v1/profile/security/ca-profiles/?working=true':
+        if args[0] == 'https://1.1.1.1:8080/api/v2/config/profile/security/ca-profiles/?working=true':
             return MockResponse({
                 "ca-profile": [
                     {
@@ -159,12 +159,12 @@ class TestProfiles(unittest.TestCase):
                     }
                 ]
             }, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/profile/security/ca-profile/hbez/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/profile/security/ca-profile/hbez/?working=true':
             return MockResponse({
                 "certificate-authority-crt": "test.crt",
                 "name": "hbez"
             }, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/profile/security/local-certificates/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/profile/security/local-certificates/?working=true':
             return MockResponse({
                 "local-certificate": [
                     {
@@ -174,13 +174,13 @@ class TestProfiles(unittest.TestCase):
                     }
                 ]
             }, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/profile/security/local-certificate/hbez/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/profile/security/local-certificate/hbez/?working=true':
             return MockResponse({
                 "client-crt": "test.crt",
                 "client-key": "test.key",
                 "name": "hbez"
             }, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/profile/security/ssh-key-profiles/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/profile/security/ssh-key-profiles/?working=true':
             return MockResponse({
                 "ssh-key-profile": [
                     {
@@ -190,13 +190,13 @@ class TestProfiles(unittest.TestCase):
                     }
                 ]
             }, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/profile/security/ssh-key-profile/hbez/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/profile/security/ssh-key-profile/hbez/?working=true':
             return MockResponse({
                 "name": "hbez",
                 "ssh-private-key-file": "test.key",
                 "ssh-private-key-passphrase": "$9$AQhzt1heK87dsWLZUiHmP1RE"
             }, 200)
-        elif args[0] == 'https://1.1.1.1:8080/api/v1/notification/error/?working=true':
+        elif args[0] == 'https://1.1.1.1:8080/api/v2/config/notification/error/?working=true':
             obj = MockResponse(None, 404)
 
             def fn():
