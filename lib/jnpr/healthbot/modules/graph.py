@@ -487,7 +487,7 @@ class HBCharts(BaseModule):
         schema = DatastoreSchema(group_name='grafana', key=canvas_name, value=value)
         return schema
 
-    def get_canvas(self, canvas_name: str = None, uncommitted=True):
+    def get_canvas(self, canvas_name: str = None):
         if canvas_name is not None:
             hb_chart_url = self.hbot.urlfor.data_store_schema(canvas_name)
             # if uncommitted:
@@ -512,35 +512,17 @@ class HBCharts(BaseModule):
         response.raise_for_status()
         return True
 
-    def update_canavas(self, schema: DatastoreSchema = None, **kwargs):
-        # TODO
-        if schema is None:
-            schema = DatastoreSchema(**kwargs)
-            call = self.api.post
-        else:
-            if not isinstance(schema, DatastoreSchema):
-                raise SchemaError(DatastoreSchema)
-            call = self.api.put
+    def update_canvas(self, canvas_name, graphs):
+        schema = self.get_add_canvas_schema(canvas_name, graphs)
         payload = self.hbot._create_payload(schema)
-        hb_chart_url = self.hbot.urlfor.data_store_schema(
-            payload['key'])
-        response = call(hb_chart_url, json=payload)
+        hb_chart_url = self.hbot.urlfor.data_store_schema(canvas_name)
+        response = self.api.put(hb_chart_url, json=payload)
         if response.status_code != 200:
             logger.error(response.text)
         response.raise_for_status()
         return True
 
-    def delete_canvas(self, canvas_name: str = None, force: bool = False):
-        # TODO
-        if force:
-            hb_chart_url = self.hbot.urlfor.data_store_schema(canvas_name)
-            response = self.api.get(hb_chart_url)
-            if hb_chart_url in response.json():
-                hb_chart_url = self.hbot.urlfor.data_store_schema(canvas_name)
-                response = self.api.delete(hb_chart_url)
-                if response.status_code != 204:
-                    logger.error(response.text)
-                response.raise_for_status()
+    def delete_canvas(self, canvas_name: str = None):
         hb_chart_url = self.hbot.urlfor.data_store_schema(canvas_name)
         response = self.api.delete(hb_chart_url)
         if response.status_code != 204:
