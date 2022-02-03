@@ -30,10 +30,8 @@ setup(
     include_package_data=True,
     license=__licence__,
     keywords=['Juniper HealthBot'],
-    python_requires='>=3.4',
+    python_requires='>=3.6',
     classifiers=[
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',

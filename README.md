@@ -8,6 +8,8 @@ This repo contains a Python package to control HealthBot
 The purpose of this package is to provide a Python library that 
 automates the provisioning of the HealthBot server.
 
+Requires: Python >=3.6
+
 # Examples
 
 
