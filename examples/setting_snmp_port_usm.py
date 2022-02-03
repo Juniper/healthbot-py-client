@@ -23,7 +23,7 @@ with HealthBotClient(ip, gui_username, gui_password, port=8080) as hb:
                 }
             }
         }
-    response = hb.api.put(hb.config_url + snmp_payload)
+    response = hb.api.put(snmp_url, snmp_payload)
     if response.status_code != 200:
         print(response.text)
     response.raise_for_status()
@@ -62,7 +62,7 @@ with HealthBotClient(ip, gui_username, gui_password, port=8080) as hb:
                 }
             }
         }
-    response = hb.api.put(hb.config_url + snmp_payload)
+    response = hb.api.put(snmp_url, snmp_payload)
     if response.status_code != 200:
         print(response.text)
     response.raise_for_status()
