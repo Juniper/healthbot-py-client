@@ -18,9 +18,7 @@ with HealthBotClient(ip, gui_username, gui_password, port=8080) as hb:
                 "port": 2029,           # Replace your port here
                 "v3": {
                     "usm": {
-                        "users": [
-
-                        ]
+                        "users": []
                     }
                 }
             }
@@ -55,7 +53,7 @@ with HealthBotClient(ip, gui_username, gui_password, port=8080) as hb:
                                 },
                                 "privacy": {
                                     "passphrase": "12345678",
-                                    "protocol": "DES"
+                                    "protocol": "DES1"
                                 },
                                 "username": "root1"
                             }
