@@ -78,7 +78,7 @@ class NotificationSchemaKafkapublishSasl(object):
         :type: str
         """
         if certificate is not None and not re.search(r'^.+\\.pem$', certificate):  # noqa: E501
-            raise ValueError(r"Invalid value for `certificate`, must be a follow pattern or equal to `/^.+\\.pem$/`")  # noqa: E501
+            raise ValueError("Invalid value for `certificate`, must be a follow pattern or equal to `/^.+\\.pem$/`")  # noqa: E501
 
         self._certificate = certificate
 

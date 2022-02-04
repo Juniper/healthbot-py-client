@@ -173,7 +173,7 @@ class NotificationSchemaAmqppublish(object):
         if routing_key is not None and len(routing_key) < 1:
             raise ValueError("Invalid value for `routing_key`, length must be greater than or equal to `1`")  # noqa: E501
         if routing_key is not None and not re.search(r'^\\.*[a-zA-Z0-9_-]+[a-zA-Z0-9\\._-]*$', routing_key):  # noqa: E501
-            raise ValueError(r"Invalid value for `routing_key`, must be a follow pattern or equal to `/^\\.*[a-zA-Z0-9_-]+[a-zA-Z0-9\\._-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `routing_key`, must be a follow pattern or equal to `/^\\.*[a-zA-Z0-9_-]+[a-zA-Z0-9\\._-]*$/`")  # noqa: E501
 
         self._routing_key = routing_key
 

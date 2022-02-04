@@ -130,7 +130,7 @@ class EdgeSchema(object):
         if edge_name is not None and len(edge_name) < 1:
             raise ValueError("Invalid value for `edge_name`, length must be greater than or equal to `1`")  # noqa: E501
         if edge_name is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', edge_name):  # noqa: E501
-            raise ValueError(r"Invalid value for `edge_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `edge_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._edge_name = edge_name
 

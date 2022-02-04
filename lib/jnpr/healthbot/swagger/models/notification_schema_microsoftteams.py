@@ -69,7 +69,7 @@ class NotificationSchemaMicrosoftteams(object):
         if channel is None:
             raise ValueError("Invalid value for `channel`, must not be `None`")  # noqa: E501
         if channel is not None and not re.search(r'^(https):\/\/[^\\s\/$.?#].[^\\s]*$', channel):  # noqa: E501
-            raise ValueError(r"Invalid value for `channel`, must be a follow pattern or equal to `/^(https):\/\/[^\\s\/$.?#].[^\\s]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `channel`, must be a follow pattern or equal to `/^(https):\/\/[^\\s\/$.?#].[^\\s]*$/`")  # noqa: E501
 
         self._channel = channel
 

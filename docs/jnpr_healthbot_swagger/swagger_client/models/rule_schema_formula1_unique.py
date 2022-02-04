@@ -69,7 +69,7 @@ class RuleSchemaFormula1Unique(object):
         if vector_name is None:
             raise ValueError("Invalid value for `vector_name`, must not be `None`")  # noqa: E501
         if vector_name is not None and not re.search(r'^@[a-z][a-zA-Z0-9_-]*$', vector_name):  # noqa: E501
-            raise ValueError(r"Invalid value for `vector_name`, must be a follow pattern or equal to `/^@[a-z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `vector_name`, must be a follow pattern or equal to `/^@[a-z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._vector_name = vector_name
 

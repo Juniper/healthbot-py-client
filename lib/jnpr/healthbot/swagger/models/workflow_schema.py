@@ -139,7 +139,7 @@ class WorkflowSchema(object):
         if entry_task is not None and len(entry_task) < 1:
             raise ValueError("Invalid value for `entry_task`, length must be greater than or equal to `1`")  # noqa: E501
         if entry_task is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', entry_task):  # noqa: E501
-            raise ValueError(r"Invalid value for `entry_task`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `entry_task`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._entry_task = entry_task
 
@@ -168,7 +168,7 @@ class WorkflowSchema(object):
         if exit_task is not None and len(exit_task) < 1:
             raise ValueError("Invalid value for `exit_task`, length must be greater than or equal to `1`")  # noqa: E501
         if exit_task is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', exit_task):  # noqa: E501
-            raise ValueError(r"Invalid value for `exit_task`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `exit_task`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._exit_task = exit_task
 
@@ -331,7 +331,7 @@ class WorkflowSchema(object):
         if workflow_name is not None and len(workflow_name) < 1:
             raise ValueError("Invalid value for `workflow_name`, length must be greater than or equal to `1`")  # noqa: E501
         if workflow_name is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', workflow_name):  # noqa: E501
-            raise ValueError(r"Invalid value for `workflow_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `workflow_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._workflow_name = workflow_name
 

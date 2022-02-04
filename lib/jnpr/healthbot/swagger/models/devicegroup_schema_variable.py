@@ -89,7 +89,7 @@ class DevicegroupSchemaVariable(object):
         if instance_id is not None and len(instance_id) > 64:
             raise ValueError("Invalid value for `instance_id`, length must be less than or equal to `64`")  # noqa: E501
         if instance_id is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', instance_id):  # noqa: E501
-            raise ValueError(r"Invalid value for `instance_id`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `instance_id`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._instance_id = instance_id
 
@@ -118,7 +118,7 @@ class DevicegroupSchemaVariable(object):
         if playbook is not None and len(playbook) > 64:
             raise ValueError("Invalid value for `playbook`, length must be less than or equal to `64`")  # noqa: E501
         if playbook is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', playbook):  # noqa: E501
-            raise ValueError(r"Invalid value for `playbook`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `playbook`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._playbook = playbook
 
@@ -145,7 +145,7 @@ class DevicegroupSchemaVariable(object):
         if rule is None:
             raise ValueError("Invalid value for `rule`, must not be `None`")  # noqa: E501
         if rule is not None and not re.search(r'^[a-z][a-z-]*(\\.{1}[a-z0-9-]+)*\/[a-z]+[a-z0-9_-]*$', rule):  # noqa: E501
-            raise ValueError(r"Invalid value for `rule`, must be a follow pattern or equal to `/^[a-z][a-z-]*(\\.{1}[a-z0-9-]+)*\/[a-z]+[a-z0-9_-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `rule`, must be a follow pattern or equal to `/^[a-z][a-z-]*(\\.{1}[a-z0-9-]+)*\/[a-z]+[a-z0-9_-]*$/`")  # noqa: E501
 
         self._rule = rule
 

@@ -78,7 +78,7 @@ class TaggingprofileSchemaWhenEqualto(object):
         if left_operand is None:
             raise ValueError("Invalid value for `left_operand`, must not be `None`")  # noqa: E501
         if left_operand is not None and not re.search(r'^\\S+$', left_operand):  # noqa: E501
-            raise ValueError(r"Invalid value for `left_operand`, must be a follow pattern or equal to `/^\\S+$/`")  # noqa: E501
+            raise ValueError("Invalid value for `left_operand`, must be a follow pattern or equal to `/^\\S+$/`")  # noqa: E501
 
         self._left_operand = left_operand
 
@@ -105,7 +105,7 @@ class TaggingprofileSchemaWhenEqualto(object):
         if right_operand is None:
             raise ValueError("Invalid value for `right_operand`, must not be `None`")  # noqa: E501
         if right_operand is not None and not re.search(r'^\\S+$', right_operand):  # noqa: E501
-            raise ValueError(r"Invalid value for `right_operand`, must be a follow pattern or equal to `/^\\S+$/`")  # noqa: E501
+            raise ValueError("Invalid value for `right_operand`, must be a follow pattern or equal to `/^\\S+$/`")  # noqa: E501
 
         self._right_operand = right_operand
 

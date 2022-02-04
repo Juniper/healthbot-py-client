@@ -83,7 +83,7 @@ class RuleSchemaRulepropertiesSupporteddevicesJuniperPlatforms(object):
         if platform_name is not None and len(platform_name) < 1:
             raise ValueError("Invalid value for `platform_name`, length must be greater than or equal to `1`")  # noqa: E501
         if platform_name is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', platform_name):  # noqa: E501
-            raise ValueError(r"Invalid value for `platform_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `platform_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._platform_name = platform_name
 

@@ -124,7 +124,7 @@ class RuleSchemaVector(object):
         :type: str
         """
         if time_range is not None and not re.search(r'^[1-9][0-9]*(\\.[0-9]+)?(o|s|m|h|d|w|y|offset)$', time_range):  # noqa: E501
-            raise ValueError(r"Invalid value for `time_range`, must be a follow pattern or equal to `/^[1-9][0-9]*(\\.[0-9]+)?(o|s|m|h|d|w|y|offset)$/`")  # noqa: E501
+            raise ValueError("Invalid value for `time_range`, must be a follow pattern or equal to `/^[1-9][0-9]*(\\.[0-9]+)?(o|s|m|h|d|w|y|offset)$/`")  # noqa: E501
 
         self._time_range = time_range
 
@@ -153,7 +153,7 @@ class RuleSchemaVector(object):
         if vector_name is not None and len(vector_name) > 64:
             raise ValueError("Invalid value for `vector_name`, length must be less than or equal to `64`")  # noqa: E501
         if vector_name is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', vector_name):  # noqa: E501
-            raise ValueError(r"Invalid value for `vector_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `vector_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._vector_name = vector_name
 

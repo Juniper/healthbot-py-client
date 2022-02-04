@@ -76,7 +76,7 @@ class RuleSchemaArgument(object):
         if argument_name is not None and len(argument_name) > 64:
             raise ValueError("Invalid value for `argument_name`, length must be less than or equal to `64`")  # noqa: E501
         if argument_name is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', argument_name):  # noqa: E501
-            raise ValueError(r"Invalid value for `argument_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `argument_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._argument_name = argument_name
 

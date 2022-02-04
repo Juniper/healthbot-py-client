@@ -215,7 +215,7 @@ class TopicSchemaTerm(object):
         if term_name is not None and len(term_name) < 1:
             raise ValueError("Invalid value for `term_name`, length must be greater than or equal to `1`")  # noqa: E501
         if term_name is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9-]*$', term_name):  # noqa: E501
-            raise ValueError(r"Invalid value for `term_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `term_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9-]*$/`")  # noqa: E501
 
         self._term_name = term_name
 

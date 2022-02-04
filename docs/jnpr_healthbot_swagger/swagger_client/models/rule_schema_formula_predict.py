@@ -147,7 +147,7 @@ class RuleSchemaFormulaPredict(object):
         if learning_period is None:
             raise ValueError("Invalid value for `learning_period`, must not be `None`")  # noqa: E501
         if learning_period is not None and not re.search(r'^[1-9][0-9]*(\\.[0-9]+)?(offset|seconds|minutes|hours|days|weeks|years|o|s|m|h|d|w|y)$', learning_period):  # noqa: E501
-            raise ValueError(r"Invalid value for `learning_period`, must be a follow pattern or equal to `/^[1-9][0-9]*(\\.[0-9]+)?(offset|seconds|minutes|hours|days|weeks|years|o|s|m|h|d|w|y)$/`")  # noqa: E501
+            raise ValueError("Invalid value for `learning_period`, must be a follow pattern or equal to `/^[1-9][0-9]*(\\.[0-9]+)?(offset|seconds|minutes|hours|days|weeks|years|o|s|m|h|d|w|y)$/`")  # noqa: E501
 
         self._learning_period = learning_period
 
@@ -172,7 +172,7 @@ class RuleSchemaFormulaPredict(object):
         :type: str
         """
         if pattern_periodicity is not None and not re.search(r'^[1-9][0-9]*(minutes|hours|days|weeks|months|t|h|d|w|m|T|H|D|W|M)(,[1-9][0-9]*(minutes|hours|days|weeks|months|t|h|d|w|m|T|H|D|W|M))*$', pattern_periodicity):  # noqa: E501
-            raise ValueError(r"Invalid value for `pattern_periodicity`, must be a follow pattern or equal to `/^[1-9][0-9]*(minutes|hours|days|weeks|months|t|h|d|w|m|T|H|D|W|M)(,[1-9][0-9]*(minutes|hours|days|weeks|months|t|h|d|w|m|T|H|D|W|M))*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `pattern_periodicity`, must be a follow pattern or equal to `/^[1-9][0-9]*(minutes|hours|days|weeks|months|t|h|d|w|m|T|H|D|W|M)(,[1-9][0-9]*(minutes|hours|days|weeks|months|t|h|d|w|m|T|H|D|W|M))*$/`")  # noqa: E501
 
         self._pattern_periodicity = pattern_periodicity
 
@@ -197,7 +197,7 @@ class RuleSchemaFormulaPredict(object):
         :type: str
         """
         if seasonality is not None and not re.search(r'^[1-9][0-9]*(minutes|hours|days|weeks|months|t|h|d|w|m|T|H|D|W|M)(,[1-9][0-9]*(minutes|hours|days|weeks|months|t|h|d|w|m|T|H|D|W|M))*$', seasonality):  # noqa: E501
-            raise ValueError(r"Invalid value for `seasonality`, must be a follow pattern or equal to `/^[1-9][0-9]*(minutes|hours|days|weeks|months|t|h|d|w|m|T|H|D|W|M)(,[1-9][0-9]*(minutes|hours|days|weeks|months|t|h|d|w|m|T|H|D|W|M))*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `seasonality`, must be a follow pattern or equal to `/^[1-9][0-9]*(minutes|hours|days|weeks|months|t|h|d|w|m|T|H|D|W|M)(,[1-9][0-9]*(minutes|hours|days|weeks|months|t|h|d|w|m|T|H|D|W|M))*$/`")  # noqa: E501
 
         self._seasonality = seasonality
 
@@ -224,7 +224,7 @@ class RuleSchemaFormulaPredict(object):
         if prediction_offset is None:
             raise ValueError("Invalid value for `prediction_offset`, must not be `None`")  # noqa: E501
         if prediction_offset is not None and not re.search(r'^[1-9][0-9]*(\\.[0-9]+)?(offset|seconds|minutes|hours|days|weeks|years|o|s|m|h|d|w|y)$', prediction_offset):  # noqa: E501
-            raise ValueError(r"Invalid value for `prediction_offset`, must be a follow pattern or equal to `/^[1-9][0-9]*(\\.[0-9]+)?(offset|seconds|minutes|hours|days|weeks|years|o|s|m|h|d|w|y)$/`")  # noqa: E501
+            raise ValueError("Invalid value for `prediction_offset`, must be a follow pattern or equal to `/^[1-9][0-9]*(\\.[0-9]+)?(offset|seconds|minutes|hours|days|weeks|years|o|s|m|h|d|w|y)$/`")  # noqa: E501
 
         self._prediction_offset = prediction_offset
 
