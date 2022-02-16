@@ -270,6 +270,15 @@ class Rule(BaseModule):
         """
         return self.hbot.upload_helper_file(filename)
 
+    def download_rule(self, topic_name: str, rule_name: str):
+        if (rule_name is not None) and (topic_name is not None):
+            rule_url = self.hbot.urlfor.download_rule(topic_name, rule_name)
+            response = self.api.get(rule_url)
+            if response.status_code != 200:
+                logger.error(response.text)
+            response.raise_for_status()
+            return response
+
 
 class Topic(BaseModule):
 

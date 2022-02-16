@@ -6,6 +6,12 @@ from jnpr.healthbot.swagger.models.scheduler_schema import SchedulerSchema
 from jnpr.healthbot.swagger.models.report_schema import ReportSchema
 from jnpr.healthbot.swagger.models.destination_schema import DestinationSchema
 from jnpr.healthbot.swagger.api.license_api import LicenseApi
+from jnpr.healthbot.swagger.models.deployment_schema import DeploymentSchema
+from jnpr.healthbot.swagger.models.deployment_schema_deployment import DeploymentSchemaDeployment
+from jnpr.healthbot.swagger.models.deployment_schema_deployment_kubernetes import DeploymentSchemaDeploymentKubernetes
+from jnpr.healthbot.swagger.models.deployment_schema_deployment_kubernetes_loadbalancer import DeploymentSchemaDeploymentKubernetesLoadbalancer
+from jnpr.healthbot.swagger.models.deployment_schema_deployment_kubernetes_loadbalancer_snmpproxy import DeploymentSchemaDeploymentKubernetesLoadbalancerSnmpproxy
+from jnpr.healthbot.swagger.models.snmp_notification_schema import SnmpNotificationSchema
 from jnpr.healthbot.exception import SchemaError, NotFoundError
 
 from jnpr.healthbot.modules import BaseModule
@@ -30,7 +36,8 @@ class Settings(object):
         self.destination = Destination(hbot)
         self.security = Security(hbot)
         self.license = LicenseKeyManagement(hbot)
-
+        self.deployment = Deployment(hbot)
+        self.snmp_notification = SnmpNotification(hbot)
 
 class Notification(BaseModule):
 
@@ -935,3 +942,127 @@ class LicenseKeyManagement(BaseModule):
             license_id, x_iam_token=self.authorization)
 
         return True
+
+
+class Deployment(BaseModule):
+    def __init__(self, hbot):
+        """
+        :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
+        """
+        super().__init__(hbot)
+
+    def add(self, schema: DeploymentSchema = None, ip=None):
+        if schema is None:
+            if ip is not None:
+                schema = DeploymentSchema(
+                    deployment=DeploymentSchemaDeployment(
+                        kubernetes=DeploymentSchemaDeploymentKubernetes(
+                            loadbalancer=DeploymentSchemaDeploymentKubernetesLoadbalancer(
+                                snmp_proxy=DeploymentSchemaDeploymentKubernetesLoadbalancerSnmpproxy(
+                                    virtual_ip_address=ip)))))
+            else:
+                logger.error("Please configure IP address or pass the DeploymentSchema")
+
+        payload = self.hbot._create_payload(schema)
+        deployment_url = self.hbot.urlfor.deployment()
+        # TODO, change it to post once IAM roles are added for post endpoint of /deployment
+        response = self.api.put(deployment_url, json=payload)
+        if response.status_code != 200:
+            logger.error(response.text)
+        response.raise_for_status()
+        return True
+
+    def get(self, uncommitted: bool = True):
+        deployment_url = self.hbot.urlfor.deployment()
+        if uncommitted:
+            deployment_url += self.hbot.apiopt_candidate
+        response = self.api.get(deployment_url)
+        response_json = response.json()
+        if response.status_code != 200:
+            logger.error(response.text)
+            raise NotFoundError(response_json)
+        return  response_json
+
+    def delete(self):
+        deployment_url = self.hbot.urlfor.deployment()
+        response = self.api.delete(deployment_url)
+        if response.status_code != 200:
+            logger.error(response.text)
+        response.raise_for_status()
+        return True
+
+    def update(self, schema: DeploymentSchema = None, ip=None):
+        if schema is None:
+            if ip is not None:
+                schema = DeploymentSchema(
+                    deployment=DeploymentSchemaDeployment(
+                        kubernetes=DeploymentSchemaDeploymentKubernetes(
+                            loadbalancer=DeploymentSchemaDeploymentKubernetesLoadbalancer(
+                                snmp_proxy=DeploymentSchemaDeploymentKubernetesLoadbalancerSnmpproxy(
+                                    virtual_ip_address=ip)))))
+            else:
+                logger.error("Please configure IP address or pass the DeploymentSchema")
+
+        payload = self.hbot._create_payload(schema)
+        deployment_url = self.hbot.urlfor.deployment()
+        response = self.api.put(deployment_url, json=payload)
+        if response.status_code != 200:
+            logger.error(response.text)
+        response.raise_for_status()
+        return True
+
+
+class SnmpNotification(BaseModule):
+    def __init__(self, hbot):
+        """
+        :param object hbot: :class:`jnpr.healthbot.HealthBotClient` client instance
+        """
+        super().__init__(hbot)
+
+    def add(self, schema: SnmpNotificationSchema = None, **kwargs):
+        if kwargs:
+            if schema is not None:
+                raise SystemError("schema and kwargs are mutually exclusive")
+            else:
+                schema = SnmpNotificationSchema(**kwargs)
+        payload = self.hbot._create_payload(schema)
+        snmp_notifications_url = self.hbot.urlfor.snmp_notifications()
+        response = self.api.post(snmp_notifications_url, json=payload)
+        if response.status_code != 200:
+            logger.error(response.text)
+        response.raise_for_status()
+        return True
+
+    def update(self, schema: SnmpNotificationSchema = None, **kwargs):
+        if kwargs:
+            if schema is not None:
+                raise SystemError("schema and kwargs are mutually exclusive")
+            else:
+                schema = SnmpNotificationSchema(**kwargs)
+        payload = self.hbot._create_payload(schema)
+        snmp_notifications_url = self.hbot.urlfor.snmp_notifications()
+        response = self.api.put(snmp_notifications_url, json=payload)
+        if response.status_code != 200:
+            logger.error(response.text)
+        response.raise_for_status()
+        return True
+
+    def get(self, uncommitted: bool = True):
+        snmp_notifications_url = self.hbot.urlfor.snmp_notifications()
+        if uncommitted:
+            snmp_notifications_url += self.hbot.apiopt_candidate
+        response = self.api.get(snmp_notifications_url)
+        response_json = response.json()
+        if response.status_code != 200:
+            logger.error(response.text)
+            raise NotFoundError(response_json)
+        return  response_json
+
+    def delete(self):
+        snmp_notifications_url = self.hbot.urlfor.snmp_notifications()
+        response = self.api.delete(snmp_notifications_url)
+        if response.status_code != 200:
+            logger.error(response.text)
+        response.raise_for_status()
+        return True
+
