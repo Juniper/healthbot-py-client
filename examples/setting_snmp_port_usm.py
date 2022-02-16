@@ -1,74 +1,76 @@
 # Settings --> Ingest --> Snmp Notification
-
+from jnpr.healthbot.swagger.models.snmp_notification_schema import SnmpNotificationSchema
+from jnpr.healthbot.swagger.models.snmpnotification_schema_snmpnotification import SnmpnotificationSchemaSnmpnotification
+from jnpr.healthbot.swagger.models.snmpnotification_schema_snmpnotification_v3 import SnmpnotificationSchemaSnmpnotificationV3
 
 from jnpr.healthbot import HealthBotClient
-SNMP_ENDPOINT = "/ingest/snmp-notification"
 
 ip = 'ip'
 gui_username = 'admin'
 gui_password = 'pwd'
 
 with HealthBotClient(ip, gui_username, gui_password, port=8080) as hb:
-    snmp_url = hb.config_url + SNMP_ENDPOINT
 
-    # Adding snmp port only in Snmp Notification
-    snmp_payload = \
-        {
-            "snmp-notification": {
-                "port": 2029,           # Replace your port here
-                "v3": {
-                    "usm": {
-                        "users": []
-                    }
-                }
-            }
-        }
-    response = hb.api.put(snmp_url, snmp_payload)
-    if response.status_code != 200:
-        print(response.text)
-    response.raise_for_status()
+    # Adding SNMP notification settings wit USM
+    schema = SnmpNotificationSchema(
+        snmp_notification=SnmpnotificationSchemaSnmpnotification(
+            port=199,
+            v3=SnmpnotificationSchemaSnmpnotificationV3(
+                usm={
+                    "users": [
+                                {
+                                    "authentication": {
+                                        "passphrase": "Testing@123",
+                                        "protocol": "SHA"
+                                    },
+                                    "privacy": {
+                                        "passphrase": "Testing@123",
+                                        "protocol": "AES"
+                                    },
+                                    "username": "snmp-collector"
+                                },
+                                {
+                                    "authentication": {
+                                        "passphrase": "Testing@123",
+                                        "protocol": "MD5"
+                                    },
+                                    "privacy": {
+                                        "passphrase": "Testing@123",
+                                        "protocol": "AES256"
+                                    },
+                                    "username": "cisco-collector"
+                                }
+                            ]}
+            )))
+    hb.settings.snmp_notification.add(schema)
     hb.commit()
 
-    # Adding snmp port with usm in Snmp Notification
-    snmp_payload = \
-        {
-            "snmp-notification": {
-                "port": 2029,                                       # Replace your port here
-                "v3": {
-                    "usm": {
-                        "users": [                                  # Replace values accordingly
-                            {
-                                "authentication-none": [
-                                    "None"
-                                ],
-                                "privacy-none": [
-                                    "None"
-                                ],
-                                "username": "root"
+    # Getting the configured SNMP notification settings
+    print(hb.settings.snmp_notification.get())
+
+    # Updating the configured SNMP notification settings
+    schema_new = SnmpNotificationSchema(
+        snmp_notification=SnmpnotificationSchemaSnmpnotification(
+            port=161,
+            v3=SnmpnotificationSchemaSnmpnotificationV3(
+                usm={
+                    "users": [
+                        {
+                            "authentication": {
+                                "passphrase": "Testing@123",
+                                "protocol": "MD5"
                             },
-                            {
-                                "authentication": {
-                                    "passphrase": "12345678",
-                                    "protocol": "MD5"
-                                },
-                                "privacy": {
-                                    "passphrase": "12345678",
-                                    "protocol": "DES1"
-                                },
-                                "username": "root1"
-                            }
-                        ]
-                    }
-                }
-            }
-        }
-    response = hb.api.put(snmp_url, snmp_payload)
-    if response.status_code != 200:
-        print(response.text)
-    response.raise_for_status()
+                            "privacy": {
+                                "passphrase": "Testing@123",
+                                "protocol": "AES256"
+                            },
+                            "username": "cisco-collector"
+                        }
+                    ]}
+            )))
+    hb.settings.snmp_notification.update(schema_new)
     hb.commit()
 
-    # Getting the value set for Snmp Notification
-    response = hb.api.get(snmp_url)
-    response_json = response.json()
-    print(response_json)
+    # Deleting the configured SNMP notification settings
+    hb.settings.snmp_notification.delete()
+    hb.commit()

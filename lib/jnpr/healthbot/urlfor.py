@@ -52,10 +52,6 @@ class UrlFor(object):
         return "{api}/topic/{topic_name}/rule/{rule_name}".format(
             api=self.config_url, topic_name=topic_name, rule_name=rule_name)
 
-    def download_rule(self, topic_name, rule_name):
-        return "{api}/topic/{topic_name}/rule/{rule_name}?download=True".format(
-            api=self.config_url, topic_name=topic_name, rule_name=rule_name)
-
     def topics(self):
         return "{api}/topics".format(api=self.config_url)
 

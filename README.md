@@ -1884,6 +1884,66 @@ hb.settings.report.add(rs)
     True
 
 
+```python
+# Adding a loadbalancer IP
+hb.settings.deployment.add(ip="1.1.1.1")
+hb.commit()
+
+# Updating the loadbalancer IP
+hb.settings.deployment.update(ip="1.1.1.2")
+hb.commit()
+
+# Getting the configured loadbalancer IP
+pprint(hb.settings.deployment.get())
+```
+
+
+
+
+
+
+    {'deployment': {'kubernetes': {'loadbalancer': {'snmp-proxy': {'virtual-ip-address': '1.1.1.2'}}}}}
+
+
+
+```python
+from jnpr.healthbot.swagger.models.snmp_notification_schema import SnmpNotificationSchema
+from jnpr.healthbot.swagger.models.snmpnotification_schema_snmpnotification import SnmpnotificationSchemaSnmpnotification
+from jnpr.healthbot.swagger.models.snmpnotification_schema_snmpnotification_v3 import SnmpnotificationSchemaSnmpnotificationV3
+schema = SnmpNotificationSchema(
+    snmp_notification=SnmpnotificationSchemaSnmpnotification(
+        port=199,
+        v3=SnmpnotificationSchemaSnmpnotificationV3(
+            usm={
+                "users": [
+                            {
+                                "authentication": {
+                                    "passphrase": "Testing@123",
+                                    "protocol": "SHA"
+                                },
+                                "privacy": {
+                                    "passphrase": "Testing@123",
+                                    "protocol": "AES"
+                                },
+                                "username": "snmp-collector"
+                            }
+                        ]}
+        )))
+hb.settings.snmp_notification.add(schema)
+hb.commit()
+
+# Getting the configured SNMP notification settings
+pprint(hb.settings.snmp_notification.get())
+
+```
+
+
+
+
+    {'snmp-notification': {'engine-id': '80004fb8056865616c7468626f742d766d310001b788', 'port': 199, 'v3': {'usm': {'users': [{'authentication': {'passphrase': '$9$pOEPuRcKvLNVY8XYoZjPf69AtpO1RhyevB1', 'protocol': 'SHA'}, 'privacy': {'passphrase': '$9$2MgGjmPQn9pTzpBRSMWdbsY2oJGDH.PaJ', 'protocol': 'AES'}, 'username': 'snmp-collector'}, {'authentication': {'passphrase': '$9$j.iPT6/tOIcApclvLVbaZUDjk.P5zn/q.', 'protocol': 'MD5'}]}}}}
+
+
+
 
 # Use Case: PlayBook Instance
 

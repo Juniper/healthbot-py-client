@@ -984,6 +984,7 @@ class Deployment(BaseModule):
         return  response_json
 
     def delete(self):
+        # Delete end point for deployment works from PI 5.0.0 onwards
         deployment_url = self.hbot.urlfor.deployment()
         response = self.api.delete(deployment_url)
         if response.status_code != 200:
