@@ -175,7 +175,7 @@ class NetworkGroupSchema(object):
         if network_group_name is not None and len(network_group_name) > 40:
             raise ValueError("Invalid value for `network_group_name`, length must be less than or equal to `40`")  # noqa: E501
         if network_group_name is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9-]*$', network_group_name):  # noqa: E501
-            raise ValueError(r"Invalid value for `network_group_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `network_group_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9-]*$/`")  # noqa: E501
 
         self._network_group_name = network_group_name
 

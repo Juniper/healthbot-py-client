@@ -79,7 +79,7 @@ class RuleSchemaFormulaElapsedtime(object):
         if field_name is None:
             raise ValueError("Invalid value for `field_name`, must not be `None`")  # noqa: E501
         if field_name is not None and not re.search(r'^[$][a-z][a-zA-Z0-9_-]*$', field_name):  # noqa: E501
-            raise ValueError(r"Invalid value for `field_name`, must be a follow pattern or equal to `/^[$][a-z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `field_name`, must be a follow pattern or equal to `/^[$][a-z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._field_name = field_name
 
@@ -104,7 +104,7 @@ class RuleSchemaFormulaElapsedtime(object):
         :type: str
         """
         if hold_time is not None and not re.search(r'[0-9]*(\\.[0-9]+)?(seconds|minutes|hours|days|weeks|years|offset)', hold_time):  # noqa: E501
-            raise ValueError(r"Invalid value for `hold_time`, must be a follow pattern or equal to `/[0-9]*(\\.[0-9]+)?(seconds|minutes|hours|days|weeks|years|offset)/`")  # noqa: E501
+            raise ValueError("Invalid value for `hold_time`, must be a follow pattern or equal to `/[0-9]*(\\.[0-9]+)?(seconds|minutes|hours|days|weeks|years|offset)/`")  # noqa: E501
 
         self._hold_time = hold_time
 

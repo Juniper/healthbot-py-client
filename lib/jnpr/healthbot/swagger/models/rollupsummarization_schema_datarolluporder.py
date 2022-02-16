@@ -82,7 +82,7 @@ class RollupsummarizationSchemaDatarolluporder(object):
         if instance_id is not None and len(instance_id) < 1:
             raise ValueError("Invalid value for `instance_id`, length must be greater than or equal to `1`")  # noqa: E501
         if instance_id is not None and not re.search(r'^[a-zA-Z0-9]([a-zA-Z0-9_-]*\\.*)*$', instance_id):  # noqa: E501
-            raise ValueError(r"Invalid value for `instance_id`, must be a follow pattern or equal to `/^[a-zA-Z0-9]([a-zA-Z0-9_-]*\\.*)*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `instance_id`, must be a follow pattern or equal to `/^[a-zA-Z0-9]([a-zA-Z0-9_-]*\\.*)*$/`")  # noqa: E501
 
         self._instance_id = instance_id
 
@@ -109,7 +109,7 @@ class RollupsummarizationSchemaDatarolluporder(object):
         if interval is None:
             raise ValueError("Invalid value for `interval`, must not be `None`")  # noqa: E501
         if interval is not None and not re.search(r'^[1-9][0-9]*[mhdw]$', interval):  # noqa: E501
-            raise ValueError(r"Invalid value for `interval`, must be a follow pattern or equal to `/^[1-9][0-9]*[mhdw]$/`")  # noqa: E501
+            raise ValueError("Invalid value for `interval`, must be a follow pattern or equal to `/^[1-9][0-9]*[mhdw]$/`")  # noqa: E501
 
         self._interval = interval
 
@@ -138,7 +138,7 @@ class RollupsummarizationSchemaDatarolluporder(object):
         if retention_policy is not None and len(retention_policy) < 1:
             raise ValueError("Invalid value for `retention_policy`, length must be greater than or equal to `1`")  # noqa: E501
         if retention_policy is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', retention_policy):  # noqa: E501
-            raise ValueError(r"Invalid value for `retention_policy`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `retention_policy`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._retention_policy = retention_policy
 

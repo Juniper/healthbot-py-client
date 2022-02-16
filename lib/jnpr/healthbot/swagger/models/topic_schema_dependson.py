@@ -139,7 +139,7 @@ class TopicSchemaDependson(object):
         if resource_name is None:
             raise ValueError("Invalid value for `resource_name`, must not be `None`")  # noqa: E501
         if resource_name is not None and not re.search(r'^[a-z][a-z-]*(\\.{1}[a-z0-9-]+)*\/[a-z][a-z0-9-]*$', resource_name):  # noqa: E501
-            raise ValueError(r"Invalid value for `resource_name`, must be a follow pattern or equal to `/^[a-z][a-z-]*(\\.{1}[a-z0-9-]+)*\/[a-z][a-z0-9-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `resource_name`, must be a follow pattern or equal to `/^[a-z][a-z-]*(\\.{1}[a-z0-9-]+)*\/[a-z][a-z0-9-]*$/`")  # noqa: E501
 
         self._resource_name = resource_name
 

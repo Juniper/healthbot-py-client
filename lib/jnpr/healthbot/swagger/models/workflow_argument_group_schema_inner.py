@@ -106,7 +106,7 @@ class WorkflowArgumentGroupSchemaInner(object):
         if name is not None and len(name) < 1:
             raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
         if name is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', name):  # noqa: E501
-            raise ValueError(r"Invalid value for `name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._name = name
 

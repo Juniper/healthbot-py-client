@@ -280,7 +280,7 @@ class RuleSchemaSensor1(object):
         if sensor_name is not None and len(sensor_name) > 64:
             raise ValueError("Invalid value for `sensor_name`, length must be less than or equal to `64`")  # noqa: E501
         if sensor_name is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', sensor_name):  # noqa: E501
-            raise ValueError(r"Invalid value for `sensor_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `sensor_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._sensor_name = sensor_name
 

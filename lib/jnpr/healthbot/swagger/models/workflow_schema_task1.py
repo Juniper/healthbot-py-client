@@ -129,7 +129,7 @@ class WorkflowSchemaTask1(object):
         if task_name is not None and len(task_name) < 1:
             raise ValueError("Invalid value for `task_name`, length must be greater than or equal to `1`")  # noqa: E501
         if task_name is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', task_name):  # noqa: E501
-            raise ValueError(r"Invalid value for `task_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `task_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._task_name = task_name
 

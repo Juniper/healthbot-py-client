@@ -73,7 +73,7 @@ class RuleSchemaFormula1Or(object):
         if left_vector is None:
             raise ValueError("Invalid value for `left_vector`, must not be `None`")  # noqa: E501
         if left_vector is not None and not re.search(r'^@[a-z][a-zA-Z0-9_-]*$', left_vector):  # noqa: E501
-            raise ValueError(r"Invalid value for `left_vector`, must be a follow pattern or equal to `/^@[a-z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `left_vector`, must be a follow pattern or equal to `/^@[a-z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._left_vector = left_vector
 
@@ -100,7 +100,7 @@ class RuleSchemaFormula1Or(object):
         if right_vector is None:
             raise ValueError("Invalid value for `right_vector`, must not be `None`")  # noqa: E501
         if right_vector is not None and not re.search(r'^@[a-z][a-zA-Z0-9_-]*$', right_vector):  # noqa: E501
-            raise ValueError(r"Invalid value for `right_vector`, must be a follow pattern or equal to `/^@[a-z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `right_vector`, must be a follow pattern or equal to `/^@[a-z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._right_vector = right_vector
 

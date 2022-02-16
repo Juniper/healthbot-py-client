@@ -85,7 +85,7 @@ class TopicSchemaLocateresource(object):
         if label_as is not None and len(label_as) < 1:
             raise ValueError("Invalid value for `label_as`, length must be greater than or equal to `1`")  # noqa: E501
         if label_as is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9-]*$', label_as):  # noqa: E501
-            raise ValueError(r"Invalid value for `label_as`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `label_as`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9-]*$/`")  # noqa: E501
 
         self._label_as = label_as
 
@@ -112,7 +112,7 @@ class TopicSchemaLocateresource(object):
         if resource is None:
             raise ValueError("Invalid value for `resource`, must not be `None`")  # noqa: E501
         if resource is not None and not re.search(r'^([a-zA-Z][a-zA-Z0-9-]*:)?[a-z][a-z-]*(\\.{1}[a-z0-9-]+)*\/[a-z][a-z0-9-]*$', resource):  # noqa: E501
-            raise ValueError(r"Invalid value for `resource`, must be a follow pattern or equal to `/^([a-zA-Z][a-zA-Z0-9-]*:)?[a-z][a-z-]*(\\.{1}[a-z0-9-]+)*\/[a-z][a-z0-9-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `resource`, must be a follow pattern or equal to `/^([a-zA-Z][a-zA-Z0-9-]*:)?[a-z][a-z-]*(\\.{1}[a-z0-9-]+)*\/[a-z][a-z0-9-]*$/`")  # noqa: E501
 
         self._resource = resource
 

@@ -114,7 +114,7 @@ class PlaybookSchema(object):
         if playbook_name is not None and len(playbook_name) > 64:
             raise ValueError("Invalid value for `playbook_name`, length must be less than or equal to `64`")  # noqa: E501
         if playbook_name is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', playbook_name):  # noqa: E501
-            raise ValueError(r"Invalid value for `playbook_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `playbook_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._playbook_name = playbook_name
 

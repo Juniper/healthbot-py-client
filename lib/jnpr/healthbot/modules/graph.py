@@ -54,9 +54,12 @@ class HBCharts(BaseModule):
 
         def _get_database_name(group_name, group_type="device", device_name=None):
             if group_type == "network":
-                return f'hb-{self.hbot.tenant}:__network:{group_name}'
+                return 'hb-{tenant_name}:__network:{group_name}'\
+                    .format(tenant_name=self.hbot.tenant, group_name=group_name)
             else:
-                return f'hb-{self.hbot.tenant}:{group_name}:{device_name}'
+                return 'hb-{tenant_name}:{group_name}:{device_name}'\
+                    .format(tenant_name=self.hbot.tenant, group_name=group_name,
+                            device_name=device_name)
 
         def _get_panel_uid():
             return str(uuid4().hex)[0:20]
@@ -75,17 +78,22 @@ class HBCharts(BaseModule):
                 retention_policy = panel.selected_topic.retention_policy
 
                 # Select expression
-                select_expr = f'"{panel.selected_field.value}"'
+                select_expr = '"{panel_selected_field_value}"'\
+                    .format(panel_selected_field_value=panel.selected_field.value)
                 if panel.selected_aggregation.value is not None:
-                    select_expr = panel.selected_aggregation.value + f"({select_expr})"
+                    select_expr = panel.selected_aggregation.value + \
+                                  "({select_expr})".format(select_expr=select_expr)
                 if panel.selected_transformation != "":
-                    select_expr = panel.selected_transformation.value + f"({select_expr})"
+                    select_expr = panel.selected_transformation.value + \
+                                  "({select_expr})".format(select_expr=select_expr)
 
                 # From expression
-                from_expr = f'\"{db_name}"."{retention_policy}"."{panel.selected_topic.value}"'
+                from_expr = '\"{db_name}"."{retention_policy}"."{panel_selected_topic_value}"'\
+                    .format(db_name=db_name, retention_policy=retention_policy,
+                            panel_selected_topic_value=panel.selected_topic.value)
 
                 # Where expression
-                where_expr = f''
+                where_expr = ''
                 where_count = len(panel.add_where_condition)
                 for count in range(0, where_count):
                     key_or_field = panel.add_where_condition[count].key_or_field
@@ -96,29 +104,42 @@ class HBCharts(BaseModule):
                     if count != (where_count - 1):
                         logic_operator = logical_operator[count - 0]
                     if (opr_value == "=~") or (opr_value == "!~"):
-                        where_expr = f'{where_expr} {logic_operator}'
-                        where_expr = f'{where_expr} "{key_or_field.value}" {opr_value} /{key_or_field_value.value} / '
+                        where_expr = '{where_expr} {logic_operator}'.format(where_expr=where_expr,
+                                                                            logic_operator=logic_operator)
+                        where_expr = '{where_expr} "{key_or_field_value}" {opr_value} /{key_or_field_value.value} / '\
+                            .format(where_expr=where_expr, key_or_field_value=key_or_field.value,
+                                    opr_value=opr_value, key_or_field_value_value=key_or_field_value.value)
                     elif key_or_field.data_type == "number":
-                        where_expr = f'{where_expr} {logic_operator}'
-                        where_expr = f'{where_expr} "{key_or_field.value}" {opr_value} {key_or_field_value.value}'
+                        where_expr = '{where_expr} {logic_operator}'.format(where_expr=where_expr,
+                                                                            logic_operator=logic_operator)
+                        where_expr = '{where_expr} "{key_or_field_value}" {opr_value} {key_or_field_value_value}'\
+                            .format(where_expr=where_expr, key_or_field_value=key_or_field.value, opr_value=opr_value,
+                                    key_or_field_value_value=key_or_field_value.value)
                     else:
-                        where_expr = f'{where_expr} {logic_operator}'
-                        where_expr = f'''{where_expr} "{key_or_field.value}" {opr_value} '{key_or_field_value.value}' '''
+                        where_expr = '{where_expr} {logic_operator}'.format(where_expr=where_expr,
+                                                                            logic_operator=logic_operator)
+                        where_expr = '''{where_expr} "{key_or_field_value}" {opr_value} '{key_or_field_value_value}' '''\
+                            .format(where_expr=where_expr, key_or_field_value=key_or_field.value,
+                                    opr_value=opr_value, key_or_field_value_value=key_or_field_value.value)
 
                     if where_expr != "":
-                        where_expr = f'{time_filter} AND ({where_expr.rstrip().lstrip()})'
+                        where_expr = '{time_filter} AND ({where_expr})'\
+                            .format(time_filter=time_filter, where_expr=where_expr.rstrip().lstrip())
                     else:
-                        where_expr = f'{time_filter}'
+                        where_expr = '{time_filter}'.format(time_filter=time_filter)
 
                 # Group by Expression
-                group_by_expr = f'time({time}) fill({fill})'
+                group_by_expr = 'time({time}) fill({fill})'.format(time=time, fill=fill)
                 if len(key) > 0:
                     group_by_expr = ""
                     for k in key:
-                        group_by_expr = group_by_expr + f', "{k.value}"'
-                    group_by_expr = f'time({time}) {group_by_expr} fill({fill})'
+                        group_by_expr = group_by_expr + ', "{k_value}"'.format(k_value=k.value)
+                    group_by_expr = 'time({time}) {group_by_expr} fill({fill})'\
+                        .format(time=time, group_by_expr=group_by_expr, fill=fill)
 
-                query_string = f"SELECT {select_expr} FROM {from_expr} WHERE {where_expr} GROUP BY {group_by_expr}"
+                query_string = "SELECT {select_expr} FROM {from_expr} WHERE {where_expr} GROUP BY {group_by_expr}"\
+                    .format(select_expr=select_expr, from_expr=from_expr,
+                            where_expr=where_expr, group_by_expr=group_by_expr)
                 queries.append(query_string)
 
             return queries

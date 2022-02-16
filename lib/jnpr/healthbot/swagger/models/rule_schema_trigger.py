@@ -114,7 +114,7 @@ class RuleSchemaTrigger(object):
         :type: str
         """
         if frequency is not None and not re.search(r'^[1-9][0-9]*(\\.[0-9]+)?(o|s|m|h|d|w|y|offset)$', frequency):  # noqa: E501
-            raise ValueError(r"Invalid value for `frequency`, must be a follow pattern or equal to `/^[1-9][0-9]*(\\.[0-9]+)?(o|s|m|h|d|w|y|offset)$/`")  # noqa: E501
+            raise ValueError("Invalid value for `frequency`, must be a follow pattern or equal to `/^[1-9][0-9]*(\\.[0-9]+)?(o|s|m|h|d|w|y|offset)$/`")  # noqa: E501
 
         self._frequency = frequency
 
@@ -212,7 +212,7 @@ class RuleSchemaTrigger(object):
         if trigger_name is not None and len(trigger_name) > 64:
             raise ValueError("Invalid value for `trigger_name`, length must be less than or equal to `64`")  # noqa: E501
         if trigger_name is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', trigger_name):  # noqa: E501
-            raise ValueError(r"Invalid value for `trigger_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `trigger_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._trigger_name = trigger_name
 

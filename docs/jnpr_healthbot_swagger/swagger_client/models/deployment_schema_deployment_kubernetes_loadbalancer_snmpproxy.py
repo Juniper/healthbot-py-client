@@ -69,7 +69,7 @@ class DeploymentSchemaDeploymentKubernetesLoadbalancerSnmpproxy(object):
         if virtual_ip_address is None:
             raise ValueError("Invalid value for `virtual_ip_address`, must not be `None`")  # noqa: E501
         if virtual_ip_address is not None and not re.search(r'^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$', virtual_ip_address):  # noqa: E501
-            raise ValueError(r"Invalid value for `virtual_ip_address`, must be a follow pattern or equal to `/^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$/`")  # noqa: E501
+            raise ValueError("Invalid value for `virtual_ip_address`, must be a follow pattern or equal to `/^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])$/`")  # noqa: E501
 
         self._virtual_ip_address = virtual_ip_address
 

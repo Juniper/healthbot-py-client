@@ -125,7 +125,7 @@ class TopicSchemaForeverydevice(object):
         if label_as is not None and len(label_as) < 1:
             raise ValueError("Invalid value for `label_as`, length must be greater than or equal to `1`")  # noqa: E501
         if label_as is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9-]*$', label_as):  # noqa: E501
-            raise ValueError(r"Invalid value for `label_as`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `label_as`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9-]*$/`")  # noqa: E501
 
         self._label_as = label_as
 

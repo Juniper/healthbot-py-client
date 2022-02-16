@@ -205,7 +205,7 @@ class ResourceSchema(object):
         if resource_name is not None and len(resource_name) < 1:
             raise ValueError("Invalid value for `resource_name`, length must be greater than or equal to `1`")  # noqa: E501
         if resource_name is not None and not re.search(r'^[a-z][a-z0-9-]*$', resource_name):  # noqa: E501
-            raise ValueError(r"Invalid value for `resource_name`, must be a follow pattern or equal to `/^[a-z][a-z0-9-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `resource_name`, must be a follow pattern or equal to `/^[a-z][a-z0-9-]*$/`")  # noqa: E501
 
         self._resource_name = resource_name
 

@@ -133,7 +133,7 @@ class RuleSchemaFunction(object):
         if function_name is not None and len(function_name) > 64:
             raise ValueError("Invalid value for `function_name`, length must be less than or equal to `64`")  # noqa: E501
         if function_name is not None and not re.search(r'^[a-zA-Z][a-zA-Z0-9_-]*$', function_name):  # noqa: E501
-            raise ValueError(r"Invalid value for `function_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
+            raise ValueError("Invalid value for `function_name`, must be a follow pattern or equal to `/^[a-zA-Z][a-zA-Z0-9_-]*$/`")  # noqa: E501
 
         self._function_name = function_name
 

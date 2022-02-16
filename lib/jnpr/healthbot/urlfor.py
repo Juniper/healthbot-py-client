@@ -52,10 +52,6 @@ class UrlFor(object):
         return "{api}/topic/{topic_name}/rule/{rule_name}".format(
             api=self.config_url, topic_name=topic_name, rule_name=rule_name)
 
-    def topic(self, topic_name):
-        return "{api}/topic/{topic_name}".format(
-            api=self.config_url, topic_name=topic_name)
-
     def topics(self):
         return "{api}/topics".format(api=self.config_url)
 
@@ -197,4 +193,10 @@ class UrlFor(object):
 
     def grafana_home_dashboard(self):
         return "{grafana_url}/dashboards/home".format(grafana_url=self.grafana_url)
+
+    def deployment(self):
+        return "{api}/deployment".format(api=self.config_url)
+
+    def snmp_notifications(self):
+        return "{api}/ingest/snmp-notification".format(api=self.config_url)
 

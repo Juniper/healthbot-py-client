@@ -76,7 +76,7 @@ class RuleSchemaNativegpb(object):
         :type: str
         """
         if frequency is not None and not re.search(r'^[0-9]+[smhdwy]$', frequency):  # noqa: E501
-            raise ValueError(r"Invalid value for `frequency`, must be a follow pattern or equal to `/^[0-9]+[smhdwy]$/`")  # noqa: E501
+            raise ValueError("Invalid value for `frequency`, must be a follow pattern or equal to `/^[0-9]+[smhdwy]$/`")  # noqa: E501
 
         self._frequency = frequency
 
@@ -132,7 +132,7 @@ class RuleSchemaNativegpb(object):
         if sensor_name is None:
             raise ValueError("Invalid value for `sensor_name`, must not be `None`")  # noqa: E501
         if sensor_name is not None and not re.search(r'^\\S+$', sensor_name):  # noqa: E501
-            raise ValueError(r"Invalid value for `sensor_name`, must be a follow pattern or equal to `/^\\S+$/`")  # noqa: E501
+            raise ValueError("Invalid value for `sensor_name`, must be a follow pattern or equal to `/^\\S+$/`")  # noqa: E501
 
         self._sensor_name = sensor_name
 
